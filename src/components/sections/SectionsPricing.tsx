@@ -43,7 +43,7 @@ export function Pricing() {
         { l: 'Agente IA conversacional', v: 'Básico' },
         { l: 'Soporte', v: 'Email · 48h' },
         { l: 'Módulo de contratos eIDAS', v: false },
-        { l: 'Integraciones OTA (Viator, Civitatis)', v: false },
+        { l: 'Integraciones OTA (Viator, GetYourGuide)', v: false },
         { l: 'TPV integrado', v: false },
         { l: 'Account manager', v: false },
         { l: 'Roadmap influence', v: false },
@@ -65,7 +65,7 @@ export function Pricing() {
         { l: 'Agente IA conversacional', v: 'Completo' },
         { l: 'Soporte', v: 'WhatsApp · 24h' },
         { l: 'Módulo de contratos eIDAS', v: true },
-        { l: 'Integraciones OTA (Viator, Civitatis)', v: true },
+        { l: 'Integraciones OTA (Viator, GetYourGuide)', v: true },
         { l: 'TPV integrado', v: true, tag: 'cuando esté listo' },
         { l: 'Account manager', v: false },
         { l: 'Roadmap influence', v: false },
@@ -85,7 +85,7 @@ export function Pricing() {
         { l: 'Agente IA conversacional', v: 'Completo + prioridad' },
         { l: 'Soporte', v: 'WhatsApp dedicado · 4h' },
         { l: 'Módulo de contratos eIDAS', v: true },
-        { l: 'Integraciones OTA (Viator, Civitatis)', v: true },
+        { l: 'Integraciones OTA (Viator, GetYourGuide)', v: true },
         { l: 'TPV integrado', v: true, tag: 'cuando esté listo' },
         { l: 'Account manager', v: true, tag: 'dedicado' },
         { l: 'Roadmap influence', v: true },
@@ -109,7 +109,7 @@ export function Pricing() {
         >
           <div style={{ maxWidth: 820, flex: 1 }}>
             <SectionHead
-              eyebrow="08.5 · Pricing"
+              eyebrow="07 · Pricing"
               title={<>Tres planes. Un modelo alineado.</>}
               lede="Pagás por uso real: comisión sobre lo que generamos, conversaciones de IA y un fee por base cuando ya estás en volumen. Sin sorpresas."
             />

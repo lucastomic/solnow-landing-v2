@@ -318,7 +318,7 @@ function WhatsAppMock() {
             S
           </div>
           <div style={{ flex: 1 }}>
-            <div style={{ fontSize: 13.5, fontWeight: 500, color: '#ffffff' }}>MarinaJets · Reservas</div>
+            <div style={{ fontSize: 13.5, fontWeight: 500, color: '#ffffff' }}>Jetski · Reservas</div>
             <div style={{ fontSize: 11, color: '#7fe0b3', display: 'flex', alignItems: 'center', gap: 5 }}>
               <span className="live-dot" style={{ width: 5, height: 5 }} />
               agente IA · responde en &lt; 30s
@@ -519,7 +519,7 @@ function ContractMock() {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', marginBottom: 14 }}>
           <div>
             <div className="mono" style={{ fontSize: 9, letterSpacing: '0.1em', color: 'oklch(0.50 0 0)' }}>CONTRATO DE ALQUILER</div>
-            <div style={{ fontSize: 16, fontWeight: 600, marginTop: 4 }}>MarinaJets · #C-2026-0847</div>
+            <div style={{ fontSize: 16, fontWeight: 600, marginTop: 4 }}>Banana Jetski SL · #C-2026-0847</div>
           </div>
           <div
             className="chip"
@@ -671,6 +671,7 @@ function Area3() {
             <QRMock />
             <DelayToast />
             <BulletList
+              color="#ffffff"
               items={[
                 'Dashboard en tiempo real multi-base',
                 'Escaneo QR de embarque',

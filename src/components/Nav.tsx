@@ -14,7 +14,6 @@ export default function Nav() {
 
   const items: [string, string][] = [
     ['Producto', '#producto'],
-    ['Para quién', '#para-quien'],
     ['Comparativa', '#comparativa'],
     ['Implementación', '#implementacion'],
     ['FAQ', '#faq'],
@@ -36,9 +35,15 @@ export default function Nav() {
       }}
     >
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 64 }}>
-        <a href="#top" style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
-          <Image src="/assets/solnow-wordmark-color.png" alt="Solnow" width={104} height={26} style={{ height: 26, width: 'auto' }} />
-          <span className="chip" style={{ marginLeft: 4, padding: '2px 7px', fontSize: 10 }}>BETA</span>
+        <a href="#top" style={{ display: 'inline-flex', alignItems: 'center' }}>
+          <Image
+            src="/hollow_logo_name_color.png"
+            alt="Solnow"
+            width={162}
+            height={28}
+            priority
+            style={{ height: 28, width: 'auto' }}
+          />
         </a>
         <nav style={{ display: 'flex', alignItems: 'center', gap: 28 }}>
           {items.map(([l, h]) => (

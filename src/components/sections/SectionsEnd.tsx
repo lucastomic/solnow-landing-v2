@@ -23,7 +23,7 @@ export function Onboarding() {
       day: 'Días 5–6',
       label: 'Web e integraciones',
       h: 'Conectamos web, OTAs y pagos',
-      points: ['Motor de reservas integrado a tu web', 'Viator · Click&Boat · Civitatis · Stripe', 'Migración de datos históricos'],
+      points: ['Motor de reservas integrado a tu web', 'Viator · GetYourGuide · Stripe', 'Migración de datos históricos'],
       you: 'Darnos acceso a tus cuentas',
     },
     {
@@ -54,7 +54,7 @@ export function Onboarding() {
     <section id="implementacion" className="section" style={{ paddingBlock: 120 }}>
       <div className="container">
         <SectionHead
-          eyebrow="09 · Implementación"
+          eyebrow="08 · Implementación"
           title={<>En 7 días tu operación digital corre sobre Solnow</>}
           lede="Nosotros hacemos el 95% del trabajo de implementación. Vos seguís operando."
         />
@@ -213,98 +213,48 @@ export function SocialProof() {
     },
   ];
 
-  const logos = ['MarinaJets', 'BaleariJet', 'CostaSports', 'AquaRent', 'NauticBoost', 'JetMallorca', 'Marbella Riders', 'IbizaSplash'];
+  const logos: { src: string; alt: string; w: number; h: number }[] = [
+    { src: '/logos/marina-jets.png', alt: 'MarinaJets', w: 151, h: 149 },
+    { src: '/logos/cocoon.webp', alt: 'Cocoon', w: 671, h: 320 },
+    { src: '/logos/elysium.webp', alt: 'Elysium', w: 1576, h: 432 },
+    { src: '/logos/jaloque.svg', alt: 'Jaloque', w: 172, h: 82 },
+    { src: '/logos/jetskilloret.png', alt: 'Jet Ski Lloret', w: 400, h: 127 },
+    { src: '/logos/ibizarentaboat.png', alt: 'Ibiza Rent a Boat', w: 186, h: 60 },
+    { src: '/logos/morairaboatsadventures.png', alt: 'Moraira Boats Adventures', w: 1080, h: 1080 },
+    { src: '/logos/primeyachtmallorca.png', alt: 'Prime Yacht Mallorca', w: 920, h: 856 },
+    { src: '/logos/rentboatinalicante.png', alt: 'Rent Boat in Alicante', w: 1201, h: 900 },
+    { src: '/logos/trulovesailing.png', alt: 'Trulove Sailing', w: 923, h: 254 },
+  ];
 
   return (
     <section className="section" style={{ paddingBlock: 120 }}>
       <div className="container">
-        <SectionHead eyebrow="10 · Prueba social" title={<>Operadores que ya operan con Solnow</>} />
+        <SectionHead eyebrow="09 · OPERADORES CON SOLNOW EN PRODUCCIÓN" title={<>Operadores que ya trabajan con Solnow</>} />
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, marginBottom: 56 }}>
-          {testimonials.map((t, i) => (
-            <div
-              key={i}
-              className="reveal card"
-              style={{ ['--reveal-delay' as string]: `${i * 90}ms`, padding: 28, display: 'flex', flexDirection: 'column', gap: 18 }}
-            >
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: 10 }}>
-                <span
-                  style={{
-                    fontSize: 38,
-                    fontWeight: 500,
-                    color: 'var(--accent)',
-                    letterSpacing: '-0.03em',
-                    lineHeight: 1,
-                    fontFamily: 'var(--font-serif)',
-                    fontStyle: 'italic',
-                  }}
-                >
-                  {t.kpi}
-                </span>
-                <span className="mono" style={{ fontSize: 11, color: 'var(--muted)', letterSpacing: '0.06em' }}>{t.kpiLabel}</span>
-              </div>
-              <p style={{ margin: 0, fontSize: 15.5, color: 'var(--fg-2)', lineHeight: 1.5 }}>
-                <span className="serif" style={{ color: 'var(--accent)', fontSize: 24, lineHeight: 0, marginRight: 4 }}>"</span>
-                {t.quote}
-              </p>
-              <div
-                style={{
-                  marginTop: 'auto',
-                  paddingTop: 14,
-                  borderTop: '1px solid var(--line-soft)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 12,
-                }}
-              >
-                <div
-                  style={{
-                    width: 36,
-                    height: 36,
-                    borderRadius: '50%',
-                    background: 'oklch(0.30 0.04 240)',
-                    border: '1px solid var(--line)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: 13,
-                    fontWeight: 600,
-                    color: 'var(--fg-2)',
-                  }}
-                >
-                  {t.who.split(' ').map((w) => w[0]).join('').slice(0, 2)}
-                </div>
-                <div>
-                  <div style={{ fontSize: 13.5, fontWeight: 500 }}>{t.who}</div>
-                  <div className="mono" style={{ fontSize: 11, color: 'var(--muted)' }}>{t.role}</div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+
 
         <div className="reveal" style={{ padding: '24px 0', borderBlock: '1px solid var(--line-soft)', background: 'oklch(1 0 0 / 0.012)' }}>
-          <div className="mono" style={{ fontSize: 10.5, color: 'var(--muted-2)', letterSpacing: '0.12em', textAlign: 'center', marginBottom: 16 }}>
-            OPERADORES CON SOLNOW EN PRODUCCIÓN
-          </div>
+    
           <div className="marquee">
             <div className="marquee-track">
               {[...logos, ...logos].map((l, i) => (
                 <span
                   key={i}
                   style={{
-                    fontSize: 18,
-                    fontWeight: 600,
-                    color: 'var(--muted)',
-                    letterSpacing: '-0.014em',
-                    opacity: 0.7,
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: 10,
+                    justifyContent: 'center',
+                    height: 96,
                   }}
                 >
-                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent-dim)' }} />
-                  {l}
+                  <Image
+                    src={l.src}
+                    alt={l.alt}
+                    width={l.w}
+                    height={l.h}
+                    unoptimized
+                    style={{ height: 64, width: 'auto', maxWidth: 240, objectFit: 'contain' }}
+                  />
                 </span>
               ))}
             </div>
@@ -315,12 +265,22 @@ export function SocialProof() {
           {[
             ['LANZADERA', 'Empresa acelerada'],
             ['VIATOR', 'Partner OTAs'],
-            ['CLICK&BOAT', 'Integración nativa'],
-            ['CIVITATIS', 'Integración nativa'],
+            ['GETYOURGUIDE', 'Integración nativa'],
             ['STRIPE', 'Verified partner'],
           ].map(([n, s]) => (
-            <div key={n} style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-              <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--fg-2)', letterSpacing: '-0.012em' }}>{n}</span>
+            <div key={n} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+              {n === 'LANZADERA' ? (
+                <Image
+                  src="/logos/lanzadera.png"
+                  alt="Lanzadera"
+                  width={500}
+                  height={500}
+                  unoptimized
+                  style={{ height: 28, width: 'auto', objectFit: 'contain' }}
+                />
+              ) : (
+                <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--fg-2)', letterSpacing: '-0.012em' }}>{n}</span>
+              )}
               <span className="mono" style={{ fontSize: 10.5, color: 'var(--muted-2)', letterSpacing: '0.06em' }}>{s}</span>
             </div>
           ))}
@@ -353,8 +313,8 @@ export function FAQ() {
       a: 'Sí. Plantillas específicas con campos para tutor legal, firma del padre/madre, validación de documentación. Conforme a normativa española y compatible con regulaciones de capitanía.',
     },
     {
-      q: '¿Se integra con Viator / Click&Boat / Civitatis?',
-      a: 'Integraciones nativas con las tres. Inventario sincronizado en tiempo real, sin overbookings entre canales. Stripe para pagos. Otras OTAs bajo demanda.',
+      q: '¿Se integra con Viator / GetYourGuide?',
+      a: 'Integraciones nativas con ambas. Inventario sincronizado en tiempo real, sin overbookings entre canales. Stripe para pagos. Otras OTAs bajo demanda.',
     },
     {
       q: '¿Puedo configurar precios distintos por temporada?',
@@ -371,7 +331,7 @@ export function FAQ() {
   return (
     <section id="faq" className="section" style={{ paddingBlock: 120 }}>
       <div className="container" style={{ maxWidth: 1000 }}>
-        <SectionHead eyebrow="11 · FAQ" title={<>Preguntas frecuentes</>} />
+        <SectionHead eyebrow="10 · FAQ" title={<>Preguntas frecuentes</>} />
         <div style={{ borderTop: '1px solid var(--line-soft)' }}>
           {faqs.map((f, i) => {
             const isOpen = open === i;
@@ -456,7 +416,7 @@ export function FinalCTA() {
       <div className="container" style={{ position: 'relative' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 80, alignItems: 'center' }}>
           <div className="reveal">
-            <span className="eyebrow">12 · Demo</span>
+            <span className="eyebrow">11 · Demo</span>
             <h2 className="h-display" style={{ margin: '16px 0 24px', fontSize: 'clamp(38px, 5.4vw, 72px)' }}>
               ¿Te suena alguno de{' '}
               <em className="serif" style={{ color: 'var(--accent)' }}>

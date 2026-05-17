@@ -55,14 +55,6 @@ export default function Hero({ variant = 'a' }: HeroProps) {
       />
 
       <div className="container" style={{ position: 'relative' }}>
-        <div className="reveal" style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 28 }}>
-          <span className="eyebrow">Solnow OS · v3 · 2026</span>
-          <span style={{ height: 16, width: 1, background: 'var(--line)' }} />
-          <span className="mono" style={{ fontSize: 11, color: 'var(--muted)', letterSpacing: '0.04em' }}>
-            Empresa Lanzadera · MarinaJets como cliente ancla
-          </span>
-        </div>
-
         <div
           style={{
             display: 'grid',
@@ -89,41 +81,7 @@ export default function Hero({ variant = 'a' }: HeroProps) {
               </a>
             </div>
 
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 18,
-                flexWrap: 'wrap',
-                paddingTop: 28,
-                borderTop: '1px solid var(--line-soft)',
-              }}
-            >
-              <span className="mono" style={{ fontSize: 11, letterSpacing: '0.1em', color: 'var(--muted)', textTransform: 'uppercase' }}>
-                Operando con
-              </span>
-              <div style={{ display: 'flex', gap: 22, alignItems: 'center', flexWrap: 'wrap' }}>
-                {['MarinaJets', 'BaleariJet', 'CostaSports', 'AquaRent', 'Lanzadera'].map((l, i) => (
-                  <span
-                    key={l}
-                    style={{
-                      fontFamily: i === 4 ? 'var(--font-mono)' : 'var(--font-sans)',
-                      fontWeight: 600,
-                      fontSize: 13.5,
-                      color: 'var(--fg-2)',
-                      opacity: 0.7,
-                      letterSpacing: i === 4 ? '0.05em' : '-0.012em',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: 6,
-                    }}
-                  >
-                    {i === 4 && <span style={{ width: 6, height: 6, background: 'var(--accent)', borderRadius: '50%' }} />}
-                    {l}
-                  </span>
-                ))}
-              </div>
-            </div>
+      
           </div>
 
           <div className="reveal" style={{ ['--reveal-delay' as string]: '120ms', position: 'relative' }}>

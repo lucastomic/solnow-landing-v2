@@ -1,229 +1,6 @@
 'use client';
 import { SectionHead } from '../atoms';
 
-export function Pillars() {
-  const pillars = [
-    {
-      n: '01',
-      h: 'Cobertura operativa real',
-      s: 'Antes + durante + después. No solo reservas.',
-      icon: (
-        <svg width="44" height="44" viewBox="0 0 44 44" fill="none" stroke="currentColor" strokeWidth="1.4">
-          <circle cx="22" cy="22" r="20" />
-          <circle cx="22" cy="22" r="13" opacity="0.55" />
-          <circle cx="22" cy="22" r="6" opacity="0.3" />
-          <circle cx="22" cy="22" r="2" fill="currentColor" stroke="none" />
-        </svg>
-      ),
-    },
-    {
-      n: '02',
-      h: 'Vertical específico jet ski',
-      s: 'Construido para alto volumen multi-base desde cero.',
-      icon: (
-        <svg width="44" height="44" viewBox="0 0 44 44" fill="none" stroke="currentColor" strokeWidth="1.4">
-          <path d="M2 32h40M2 26h40M2 20h40" opacity="0.4" />
-          <path d="M6 12 L22 4 L38 12" />
-          <circle cx="22" cy="14" r="2" fill="currentColor" stroke="none" />
-        </svg>
-      ),
-    },
-    {
-      n: '03',
-      h: 'IA nativa integrada',
-      s: 'Cierra ventas en WhatsApp, no responde FAQs.',
-      icon: (
-        <svg width="44" height="44" viewBox="0 0 44 44" fill="none" stroke="currentColor" strokeWidth="1.4">
-          <rect x="6" y="6" width="32" height="32" rx="6" />
-          <path d="M14 24 L20 30 L32 16" />
-        </svg>
-      ),
-    },
-  ];
-
-  return (
-    <section className="section" style={{ paddingBlock: 120 }}>
-      <div className="container">
-        <SectionHead
-          eyebrow="05 · Defendibilidad"
-          title={<>Tres pilares que no se replican por separado</>}
-          lede="Por qué ningún competidor puede copiar las tres cosas a la vez sin reescribir su producto desde cero."
-        />
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: 1,
-            background: 'var(--line-soft)',
-            borderRadius: 18,
-            overflow: 'hidden',
-            border: '1px solid var(--line-soft)',
-          }}
-        >
-          {pillars.map((p, i) => (
-            <div
-              key={p.n}
-              className="reveal"
-              style={{
-                ['--reveal-delay' as string]: `${i * 80}ms`,
-                background: 'var(--bg)',
-                padding: '40px 32px',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 18,
-                minHeight: 280,
-              }}
-            >
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start' }}>
-                <span style={{ color: 'var(--accent)' }}>{p.icon}</span>
-                <span className="mono" style={{ fontSize: 11, color: 'var(--muted-2)', letterSpacing: '0.1em' }}>{p.n}</span>
-              </div>
-              <h3 className="h-3" style={{ marginTop: 12, fontSize: 22, letterSpacing: '-0.018em' }}>{p.h}</h3>
-              <p style={{ color: 'var(--muted)', fontSize: 15, margin: 0 }}>{p.s}</p>
-            </div>
-          ))}
-        </div>
-        <div
-          className="reveal"
-          style={{
-            marginTop: 32,
-            padding: '20px 26px',
-            border: '1px solid var(--line-soft)',
-            borderRadius: 12,
-            background: 'oklch(1 0 0 / 0.02)',
-            fontSize: 15,
-            color: 'var(--fg-2)',
-            display: 'flex',
-            alignItems: 'center',
-            gap: 14,
-          }}
-        >
-          <span style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: 26, color: 'var(--accent)', lineHeight: 1 }}>"</span>
-          Quitar cualquiera de los tres debilita los otros dos. Por eso el combo es lo defendible, no las piezas separadas.
-        </div>
-      </div>
-    </section>
-  );
-}
-
-export function ForWhom() {
-  const yes = [
-    'Operás 10+ motos de agua',
-    'Tenés 2+ bases físicas',
-    'Gestionás 30+ reservas/día en temporada alta',
-    'Recibís alto volumen de consultas por WhatsApp',
-    'Ya probaste software genérico o Excel y no escala',
-  ];
-  const no = [
-    'Tenés una flota chica que gestionás con calendario',
-    'Hacés charter con tripulación',
-    'Operás catamaranes de tours compartidos',
-    'Sos broker sin flota propia',
-    'Hacés excursiones organizadas con guía',
-  ];
-  return (
-    <section id="para-quien" className="section" style={{ paddingBlock: 120 }}>
-      <div className="container">
-        <SectionHead
-          eyebrow="06 · Para quién"
-          title={<>Si entrás en este perfil, te ahorrás la demo basura</>}
-          lede="Solnow está construido para un cliente muy específico. Te decimos antes de la llamada si tu negocio encaja."
-        />
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 28 }}>
-          <Qualifier kind="yes" title="Solnow es para vos si:" items={yes} />
-          <Qualifier kind="no" title="Solnow no es para vos si:" items={no} />
-        </div>
-
-        <div
-          className="reveal"
-          style={{
-            marginTop: 28,
-            padding: '28px 32px',
-            border: '1px solid var(--line-soft)',
-            borderRadius: 16,
-            background: 'linear-gradient(135deg, var(--accent-bg), transparent)',
-            display: 'grid',
-            gridTemplateColumns: 'auto 1fr',
-            gap: 24,
-            alignItems: 'center',
-          }}
-        >
-          <div
-            style={{
-              width: 56,
-              height: 56,
-              borderRadius: 14,
-              background: 'oklch(1 0 0 / 0.04)',
-              border: '1px solid var(--line-soft)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="var(--accent)" strokeWidth="1.4">
-              <circle cx="9" cy="14" r="4" />
-              <circle cx="19" cy="14" r="4" />
-              <path d="M9 18 L19 18 M14 6 L14 10" />
-            </svg>
-          </div>
-          <div>
-            <div className="h-3" style={{ marginBottom: 6, fontSize: 18 }}>¿Y si tengo flota mixta?</div>
-            <p style={{ margin: 0, color: 'var(--muted)', fontSize: 14.5, maxWidth: '64ch' }}>
-              Solnow funciona para operadores donde las motos de agua son el activo principal pero también ofrecen quads, kayaks,
-              paddle o parasailing. El sistema gestiona toda la flota como un único inventario.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Qualifier({ kind, title, items }: { kind: 'yes' | 'no'; title: string; items: string[] }) {
-  const isYes = kind === 'yes';
-  return (
-    <div
-      className="reveal"
-      style={{
-        padding: 32,
-        borderRadius: 18,
-        border: '1px solid ' + (isYes ? 'var(--accent-dim)' : 'var(--line-soft)'),
-        background: isYes ? 'linear-gradient(180deg, var(--accent-bg), oklch(1 0 0 / 0.02))' : 'oklch(1 0 0 / 0.015)',
-      }}
-    >
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
-        <h3 className="h-3" style={{ fontSize: 20, color: isYes ? 'var(--fg)' : 'var(--fg-2)' }}>{title}</h3>
-        <span className="mono" style={{ fontSize: 11, color: isYes ? 'var(--accent)' : 'var(--muted-2)', letterSpacing: '0.08em' }}>
-          {isYes ? '✓ MATCH' : '✗ SKIP'}
-        </span>
-      </div>
-      <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column' }}>
-        {items.map((it, i) => (
-          <li
-            key={i}
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '22px 1fr',
-              gap: 12,
-              padding: '13px 0',
-              borderTop: '1px solid var(--line-soft)',
-              color: isYes ? 'var(--fg)' : 'var(--muted)',
-              fontSize: 15,
-              textDecoration: isYes ? 'none' : 'line-through',
-              textDecorationColor: 'oklch(0.40 0.01 240)',
-            }}
-          >
-            <span style={{ color: isYes ? 'var(--accent)' : 'var(--muted-2)', fontFamily: 'var(--font-mono)', fontSize: 14 }}>
-              {isYes ? '✓' : '✕'}
-            </span>
-            <span>{it}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
 export function Comparison() {
   const cols = [
     { k: 'gen', name: 'Motores genéricos', sub: 'FareHarbor · Bookeo' },
@@ -259,8 +36,8 @@ export function Comparison() {
     <section id="comparativa" className="section" style={{ paddingBlock: 120 }}>
       <div className="container">
         <SectionHead
-          eyebrow="07 · Comparativa"
-          title={<>Las comparaciones que el prospect ya está haciendo en su cabeza</>}
+          eyebrow="05 · Comparativa"
+          title={<>Cómo nos comparamos con las otras opciones que estás evaluando</>}
         />
         <div
           className="reveal"
@@ -268,14 +45,14 @@ export function Comparison() {
             border: '1px solid var(--line)',
             borderRadius: 18,
             overflow: 'hidden',
-            background: 'linear-gradient(180deg, oklch(0.18 0.022 240), oklch(0.15 0.020 240))',
+            background: 'var(--bg-2)',
           }}
         >
           <div
             style={{
               display: 'grid',
               gridTemplateColumns: '2fr repeat(4, 1fr)',
-              background: 'oklch(0 0 0 / 0.2)',
+              background: 'var(--bg)',
               borderBottom: '1px solid var(--line)',
             }}
           >
@@ -302,7 +79,7 @@ export function Comparison() {
                       transform: 'translateY(-50%)',
                       fontSize: 9.5,
                       letterSpacing: '0.1em',
-                      color: 'oklch(0.12 0.02 240)',
+                      color: 'var(--accent-fg)',
                       background: 'var(--accent)',
                       padding: '3px 7px',
                       borderRadius: 4,
@@ -336,7 +113,7 @@ export function Comparison() {
                 borderBottom: i < rows.length - 1 ? '1px solid var(--line-soft)' : 0,
                 transition: 'background .2s ease',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.background = 'oklch(1 0 0 / 0.015)')}
+              onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--line-soft)')}
               onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
             >
               <div style={{ padding: '18px 24px', fontSize: 14.5, color: 'var(--fg-2)' }}>{r[0]}</div>
@@ -403,7 +180,7 @@ export function Partner() {
     <section className="section" style={{ paddingBlock: 120 }}>
       <div className="container">
         <SectionHead
-          eyebrow="08 · Modelo de partner"
+          eyebrow="06 · Modelo de partner"
           title={<>No somos un proveedor. Somos un partner que cobra cuando vos facturás.</>}
         />
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>

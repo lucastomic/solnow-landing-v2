@@ -31,7 +31,7 @@ export function SectionHead({ eyebrow, title, lede, align = 'left', accent }: Se
   );
 }
 
-export function BulletList({ items }: { items: string[] }) {
+export function BulletList({ items, color }: { items: string[]; color?: string }) {
   return (
     <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column' }}>
       {items.map((it, i) => (
@@ -46,7 +46,7 @@ export function BulletList({ items }: { items: string[] }) {
             borderTop: i === 0 ? '1px solid var(--line-soft)' : 'none',
             borderBottom: '1px solid var(--line-soft)',
             fontSize: 15.5,
-            color: 'var(--fg-2)',
+            color: color ?? 'var(--fg-2)',
             lineHeight: 1.5,
           }}
         >
