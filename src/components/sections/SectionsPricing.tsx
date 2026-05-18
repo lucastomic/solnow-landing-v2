@@ -14,9 +14,11 @@ interface Tier {
   pitch: string;
   feeNum: number;
   commissionPct: number;
-  aiPerConv: number;
-  bases: string;
+  aiConv: number;
+  aiAdv: number;
   feeSuffix: string;
+  annualDiscount: number;
+  annualNote?: string;
   highlight?: boolean;
   badge?: string;
   features: Feature[];
@@ -26,8 +28,6 @@ interface Tier {
 export function Pricing() {
   const [billing, setBilling] = useState<'monthly' | 'annual'>('monthly');
   const isAnnual = billing === 'annual';
-  const discount = 0.10;
-  const f = isAnnual ? (1 - discount) : 1;
 
   const tiers: Tier[] = [
     {
@@ -35,18 +35,16 @@ export function Pricing() {
       name: 'Starter',
       pitch: 'Para arrancar con una sola base sin fee fijo.',
       feeNum: 0,
-      commissionPct: 0.030,
-      aiPerConv: 0.50,
-      bases: '1 base',
+      commissionPct: 0.035,
+      aiConv: 0.49,
+      aiAdv: 0.79,
       feeSuffix: '/ mes',
+      annualDiscount: 0,
       features: [
-        { l: 'Agente IA conversacional', v: 'Básico' },
-        { l: 'Soporte', v: 'Email · 48h' },
-        { l: 'Módulo de contratos eIDAS', v: false },
-        { l: 'Integraciones OTA (Viator, GetYourGuide)', v: false },
-        { l: 'TPV integrado', v: false },
+        { l: 'TPV (Staff Mode + Kiosk)', v: false },
+        { l: 'Resto de features del producto', v: true },
         { l: 'Account manager', v: false },
-        { l: 'Roadmap influence', v: false },
+        { l: 'Soporte', v: 'Email · 48h hábiles' },
       ],
       cta: 'Empezar con Starter',
     },
@@ -54,21 +52,20 @@ export function Pricing() {
       key: 'pro',
       name: 'Pro',
       pitch: 'El plan para operadores serios con varias bases.',
-      feeNum: 179,
-      commissionPct: 0.015,
-      aiPerConv: 0.40,
-      bases: 'Hasta 5 bases',
+      feeNum: 99,
+      commissionPct: 0.020,
+      aiConv: 0.35,
+      aiAdv: 0.65,
       feeSuffix: '/ mes · por base',
+      annualDiscount: 1 / 6,
+      annualNote: '2 meses gratis · 16,7%',
       highlight: true,
       badge: 'Más elegido',
       features: [
-        { l: 'Agente IA conversacional', v: 'Completo' },
-        { l: 'Soporte', v: 'WhatsApp · 24h' },
-        { l: 'Módulo de contratos eIDAS', v: true },
-        { l: 'Integraciones OTA (Viator, GetYourGuide)', v: true },
-        { l: 'TPV integrado', v: true, tag: 'cuando esté listo' },
+        { l: 'TPV (Staff Mode + Kiosk)', v: true },
+        { l: 'Resto de features del producto', v: true },
         { l: 'Account manager', v: false },
-        { l: 'Roadmap influence', v: false },
+        { l: 'Soporte', v: 'WhatsApp · 24h hábiles' },
       ],
       cta: 'Pedir demo del plan Pro',
     },
@@ -76,19 +73,18 @@ export function Pricing() {
       key: 'scale',
       name: 'Scale',
       pitch: 'Para grupos multi-base con operación crítica.',
-      feeNum: 129,
+      feeNum: 199,
       commissionPct: 0.010,
-      aiPerConv: 0.30,
-      bases: 'Sin límite',
-      feeSuffix: '/ mes · por base · mín. 3',
+      aiConv: 0.29,
+      aiAdv: 0.59,
+      feeSuffix: '/ mes · por base',
+      annualDiscount: 0.20,
+      annualNote: 'Ahorro 20%',
       features: [
-        { l: 'Agente IA conversacional', v: 'Completo + prioridad' },
-        { l: 'Soporte', v: 'WhatsApp dedicado · 4h' },
-        { l: 'Módulo de contratos eIDAS', v: true },
-        { l: 'Integraciones OTA (Viator, GetYourGuide)', v: true },
-        { l: 'TPV integrado', v: true, tag: 'cuando esté listo' },
-        { l: 'Account manager', v: true, tag: 'dedicado' },
-        { l: 'Roadmap influence', v: true },
+        { l: 'TPV (Staff Mode + Kiosk)', v: true },
+        { l: 'Resto de features del producto', v: true },
+        { l: 'Account manager', v: 'Compartido' },
+        { l: 'Soporte', v: 'WhatsApp prioritario · 8h hábiles' },
       ],
       cta: 'Hablar con el equipo',
     },
@@ -115,13 +111,13 @@ export function Pricing() {
             />
           </div>
           <div style={{ marginBottom: 8 }}>
-            <BillingToggle value={billing} onChange={setBilling} discount={discount} />
+            <BillingToggle value={billing} onChange={setBilling} />
           </div>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, alignItems: 'stretch' }}>
           {tiers.map((t, i) => (
-            <PricingCard key={t.key} t={t} i={i} f={f} isAnnual={isAnnual} />
+            <PricingCard key={t.key} t={t} i={i} isAnnual={isAnnual} />
           ))}
         </div>
 
@@ -161,15 +157,16 @@ export function Pricing() {
   );
 }
 
-function PricingCard({ t, i, f = 1, isAnnual = false }: { t: Tier; i: number; f: number; isAnnual: boolean }) {
+function PricingCard({ t, i, isAnnual = false }: { t: Tier; i: number; isAnnual: boolean }) {
   const hi = t.highlight;
   const fmtEur = (n: number) => '€' + (n % 1 === 0 ? n : n.toFixed(0));
-  const feeNow = t.feeNum * f;
+  const feeFactor = isAnnual ? 1 - t.annualDiscount : 1;
+  const feeNow = t.feeNum * feeFactor;
   const feeOrig = t.feeNum;
-  const commNow = t.commissionPct * f * 100;
-  const commOrig = t.commissionPct * 100;
-  const aiNow = t.aiPerConv * f;
-  const aiOrig = t.aiPerConv;
+  const hasAnnualOff = isAnnual && t.annualDiscount > 0;
+  const comm = t.commissionPct * 100;
+  const aiConv = t.aiConv;
+  const aiAdv = t.aiAdv;
   const fmtPct = (n: number) => (n % 1 === 0 ? n + '%' : n.toFixed(2).replace(/\.?0+$/, '') + '%');
   const fmtConv = (n: number) => '€' + n.toFixed(2).replace('.', ',');
 
@@ -261,7 +258,7 @@ function PricingCard({ t, i, f = 1, isAnnual = false }: { t: Tier; i: number; f:
             >
               {feeNow === 0 ? '€0' : fmtEur(feeNow)}
             </span>
-            {isAnnual && feeOrig > 0 && (
+            {hasAnnualOff && feeOrig > 0 && (
               <span
                 style={{
                   fontSize: 16,
@@ -276,27 +273,27 @@ function PricingCard({ t, i, f = 1, isAnnual = false }: { t: Tier; i: number; f:
             )}
             <span style={{ fontSize: 13, color: hi ? 'var(--ink-muted)' : 'var(--muted)' }}>{t.feeSuffix}</span>
           </div>
-          {isAnnual && (
+          {hasAnnualOff && t.annualNote && (
             <div
               className="mono"
               style={{ fontSize: 10.5, letterSpacing: '0.06em', color: hi ? 'var(--accent-2)' : 'var(--accent)', marginTop: 6 }}
             >
-              FACTURADO ANUAL · AHORRO 10% EN TODO
+              FACTURADO ANUAL · {t.annualNote.toUpperCase()} · SOLO FEE
             </div>
           )}
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, marginTop: 16 }}>
             {(
               [
-                ['Comisión', fmtPct(commNow), fmtPct(commOrig)],
-                ['IA', fmtConv(aiNow) + ' / conv', fmtConv(aiOrig) + ' / conv'],
-                ['Bases', t.bases, null],
+                ['Comisión', fmtPct(comm), null],
+                ['IA Conv.', fmtConv(aiConv) + ' / conv', null],
+                ['IA Avanz.', fmtConv(aiAdv) + ' / conv', null],
               ] as [string, string, string | null][]
-            ).map(([k, v, vOrig], idx) => (
+            ).map(([k, v, vOrig]) => (
               <div
                 key={k}
                 style={{
-                  gridColumn: idx === 2 ? '1 / -1' : 'auto',
+                  gridColumn: k === 'Comisión' ? '1 / -1' : 'auto',
                   padding: '8px 12px',
                   borderRadius: 8,
                   background: hi ? 'rgba(255,255,255,0.05)' : 'var(--surface-2)',
@@ -324,7 +321,7 @@ function PricingCard({ t, i, f = 1, isAnnual = false }: { t: Tier; i: number; f:
                     marginTop: 2,
                     letterSpacing: '-0.01em',
                     color: hi ? 'var(--ink-fg)' : 'var(--fg)',
-                    fontFamily: idx === 0 || idx === 1 ? 'var(--font-mono)' : 'var(--font-sans)',
+                    fontFamily: 'var(--font-mono)',
                   }}
                 >
                   <span>{v}</span>
@@ -467,13 +464,10 @@ function FeatureIcon({ ok, hi }: { ok: boolean; hi: boolean }) {
 function BillingToggle({
   value,
   onChange,
-  discount,
 }: {
   value: string;
   onChange: (v: 'monthly' | 'annual') => void;
-  discount: number;
 }) {
-  const pct = Math.round(discount * 100);
   return (
     <div
       style={{
@@ -490,7 +484,7 @@ function BillingToggle({
       {(
         [
           { v: 'monthly', l: 'Mensual' },
-          { v: 'annual', l: `Anual −${pct}%` },
+          { v: 'annual', l: 'Anual' },
         ] as { v: 'monthly' | 'annual'; l: string }[]
       ).map((opt) => {
         const active = value === opt.v;
@@ -540,7 +534,7 @@ interface PlanCalc {
   commission: number;
   ai: number;
   total: number;
-  cfg: { fee: number; commission: number; ai: number; maxBases: number; minBases: number };
+  cfg: { fee: number; commission: number; ai: number; maxBases: number; minBases: number; annual: number };
 }
 
 function PriceCalculator() {
@@ -549,31 +543,30 @@ function PriceCalculator() {
   const [ticket, setTicket] = useState(130);
   const [convs, setConvs] = useState(900);
   const [billing, setBilling] = useState<'monthly' | 'annual'>('monthly');
-  const annualDiscount = 0.10;
   const [throughSolnow, setThroughSolnow] = useState(75);
 
   const billable = Math.round(reservas * (throughSolnow / 100));
   const gmv = billable * ticket;
   const totalRevenue = reservas * ticket;
   const isAnnual = billing === 'annual';
-  const factor = isAnnual ? (1 - annualDiscount) : 1;
 
   const plans = useMemo<PlanCalc[]>(() => {
-    const cfgs: Record<string, { fee: number; commission: number; ai: number; maxBases: number; minBases: number }> = {
-      starter: { fee: 0,   commission: 0.030, ai: 0.50, maxBases: 1,        minBases: 1 },
-      pro:     { fee: 179, commission: 0.015, ai: 0.40, maxBases: 5,        minBases: 1 },
-      scale:   { fee: 129, commission: 0.010, ai: 0.30, maxBases: Infinity, minBases: 3 },
+    const cfgs: Record<string, { fee: number; commission: number; ai: number; maxBases: number; minBases: number; annual: number }> = {
+      starter: { fee: 0,   commission: 0.035, ai: 0.49, maxBases: 1,  minBases: 1, annual: 0 },
+      pro:     { fee: 99,  commission: 0.020, ai: 0.35, maxBases: 5,  minBases: 1, annual: 1 / 6 },
+      scale:   { fee: 199, commission: 0.010, ai: 0.29, maxBases: 10, minBases: 1, annual: 0.20 },
     };
     return ['starter', 'pro', 'scale'].map((key) => {
       const cfg = cfgs[key];
       const eligible = bases >= cfg.minBases && bases <= cfg.maxBases;
-      const feeTotal = cfg.fee * bases * factor;
-      const commission = gmv * cfg.commission * factor;
-      const aiCost = convs * cfg.ai * factor;
+      const feeFactor = isAnnual ? 1 - cfg.annual : 1;
+      const feeTotal = cfg.fee * bases * feeFactor;
+      const commission = gmv * cfg.commission;
+      const aiCost = convs * cfg.ai;
       const total = feeTotal + commission + aiCost;
       return { key, eligible, fee: feeTotal, commission, ai: aiCost, total, cfg };
     });
-  }, [bases, gmv, convs, factor]);
+  }, [bases, gmv, convs, isAnnual]);
 
   const eligiblePlans = plans.filter((p) => p.eligible);
   const best = eligiblePlans.reduce<PlanCalc | null>((a, b) => (a && a.total <= b.total ? a : b), null);
@@ -628,7 +621,7 @@ function PriceCalculator() {
             <div style={{ fontSize: 16, fontWeight: 500, letterSpacing: '-0.014em' }}>¿Cuánto pagarías cada mes?</div>
           </div>
         </div>
-        <BillingToggle value={billing} onChange={setBilling} discount={annualDiscount} />
+        <BillingToggle value={billing} onChange={setBilling} />
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.1fr', minHeight: 480 }}>
@@ -644,7 +637,16 @@ function PriceCalculator() {
           <Slider label="Bases activas" unit=" base/s" value={bases} min={1} max={10} step={1} onChange={setBases} />
           <Slider label="Reservas / mes" unit="" value={reservas} min={30} max={3000} step={10} onChange={setReservas} />
           <Slider label="Ticket medio" unit=" €" value={ticket} min={60} max={400} step={5} onChange={setTicket} />
-          <Slider label="Conversaciones IA / mes" unit="" value={convs} min={100} max={6000} step={50} onChange={setConvs} />
+          <Slider
+            label="Conversaciones IA / mes"
+            unit=""
+            value={convs}
+            min={100}
+            max={6000}
+            step={50}
+            onChange={setConvs}
+            hint="Estimado con tarifa IA Conversacional"
+          />
           <Slider
             label="% de reservas vía Solnow"
             unit=" %"
@@ -870,7 +872,7 @@ function PlanResult({
               RECOMENDADO
             </span>
           )}
-          {isAnnual && !disabled && (
+          {isAnnual && !disabled && p.cfg.annual > 0 && (
             <span
               className="mono"
               style={{
@@ -883,7 +885,7 @@ function PlanResult({
                 borderRadius: 4,
               }}
             >
-              −10%
+              −{Math.round(p.cfg.annual * 100)}% fee
             </span>
           )}
           {disabled && (
@@ -892,7 +894,7 @@ function PlanResult({
               style={{ fontSize: 9.5, letterSpacing: '0.06em', color: 'var(--muted-2)', padding: '2px 6px', borderRadius: 4, border: '1px solid var(--line-soft)' }}
             >
               {p.key === 'starter' && 'solo 1 base'}
-              {p.key === 'scale' && 'mín. 3 bases'}
+              {p.key === 'pro' && 'máx. 5 bases'}
             </span>
           )}
         </div>

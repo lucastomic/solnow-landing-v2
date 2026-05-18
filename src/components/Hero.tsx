@@ -31,7 +31,7 @@ export default function Hero({ variant = 'a' }: HeroProps) {
   const c = headlines[variant] || headlines.a;
 
   return (
-    <section id="top" style={{ position: 'relative', paddingTop: 140, paddingBottom: 80, overflow: 'hidden' }}>
+    <section id="top" style={{ position: 'relative', paddingTop: 116, paddingBottom: 64, overflow: 'hidden' }}>
       <div
         aria-hidden
         style={{
@@ -123,7 +123,7 @@ function FleetDashboard() {
 
   return (
     <WindowChrome title="solnow.app  /  ops · multi-base" status="EN VIVO">
-      <div style={{ padding: 16, display: 'flex', flexDirection: 'column', gap: 12 }}>
+      <div style={{ padding: 12, display: 'flex', flexDirection: 'column', gap: 10 }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 8 }}>
           {(
             [
@@ -136,7 +136,7 @@ function FleetDashboard() {
             <div
               key={k}
               style={{
-                padding: '10px 12px',
+                padding: '7px 10px',
                 borderRadius: 10,
                 background: i === 3 ? 'rgba(200,74,58,0.18)' : 'rgba(255,255,255,0.04)',
                 border: '1px solid ' + (i === 3 ? 'rgba(220,110,90,0.45)' : 'var(--ink-line)'),
@@ -145,7 +145,7 @@ function FleetDashboard() {
               <div className="mono" style={{ fontSize: 9.5, letterSpacing: '0.1em', color: 'var(--ink-muted)' }}>{k}</div>
               <div
                 style={{
-                  fontSize: 22,
+                  fontSize: 18,
                   fontWeight: 600,
                   letterSpacing: '-0.02em',
                   lineHeight: 1.1,
@@ -162,7 +162,7 @@ function FleetDashboard() {
 
         <div
           style={{
-            height: 110,
+            height: 78,
             borderRadius: 10,
             position: 'relative',
             overflow: 'hidden',
@@ -187,7 +187,7 @@ function FleetDashboard() {
               key={b}
               style={{
                 position: 'absolute',
-                top: 10 + (i % 2) * 14,
+                top: 6 + (i % 2) * 12,
                 left: 24 + i * 22 + '%',
                 fontFamily: 'var(--font-mono)',
                 fontSize: 10,
@@ -245,7 +245,7 @@ function FleetDashboard() {
               display: 'grid',
               gridTemplateColumns: '74px 1fr 80px 96px 24px',
               gap: 10,
-              padding: '8px 12px',
+              padding: '6px 12px',
               fontSize: 10,
               letterSpacing: '0.08em',
               color: 'var(--ink-muted-2)',
@@ -269,7 +269,7 @@ function FleetDashboard() {
                   display: 'grid',
                   gridTemplateColumns: '74px 1fr 80px 96px 24px',
                   gap: 10,
-                  padding: '11px 12px',
+                  padding: '7px 12px',
                   alignItems: 'center',
                   borderBottom: i < fleet.length - 1 ? '1px solid var(--ink-line-2)' : 0,
                   background: isLate ? 'rgba(200,74,58,0.10)' : 'transparent',
@@ -302,7 +302,7 @@ function FleetDashboard() {
 
         <div
           style={{
-            padding: '10px 12px',
+            padding: '8px 12px',
             borderRadius: 10,
             background: 'rgba(200,74,58,0.20)',
             border: '1px solid rgba(220,110,90,0.55)',
