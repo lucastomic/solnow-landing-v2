@@ -1,6 +1,8 @@
 'use client';
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import Script from 'next/script';
 import { useRouter, usePathname } from 'next/navigation';
 import { SectionHead } from '../atoms';
 import { useT, useLocale } from '@/i18n/I18nProvider';
@@ -25,6 +27,7 @@ export function Onboarding() {
         <div style={{ position: 'relative', marginBottom: 56 }}>
           <div
             aria-hidden
+            className="r-hide"
             style={{
               position: 'absolute',
               top: 30,
@@ -34,7 +37,7 @@ export function Onboarding() {
               background: 'linear-gradient(90deg, transparent, var(--line) 8%, var(--line) 92%, transparent)',
             }}
           />
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 18 }}>
+          <div className="r-cols-4" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 18 }}>
             {steps.map((s, i) => (
               <div
                 key={i}
@@ -98,7 +101,7 @@ export function Onboarding() {
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, marginTop: 64 }}>
+        <div className="r-cols-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, marginTop: 64 }}>
           {qa.map((it, i) => (
             <div
               key={i}
@@ -314,14 +317,14 @@ export function FinalCTA() {
         overflow: 'hidden',
         borderTop: '1px solid var(--line-soft)',
         background:
-          'radial-gradient(900px 600px at 80% 50%, oklch(0.40 0.13 200 / 0.28), transparent 65%),' +
-          'radial-gradient(700px 500px at 0% 50%, oklch(0.30 0.10 240 / 0.20), transparent 65%),' +
-          'linear-gradient(180deg, var(--bg), oklch(0.11 0.018 240))',
+          'radial-gradient(900px 600px at 80% 45%, var(--accent-bg), transparent 60%),' +
+          'radial-gradient(700px 500px at 0% 50%, var(--accent-bg), transparent 60%),' +
+          'linear-gradient(180deg, var(--bg-2), var(--bg))',
       }}
     >
       <div aria-hidden className="dotgrid" style={{ position: 'absolute', inset: 0, opacity: 0.5 }} />
       <div className="container" style={{ position: 'relative' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 80, alignItems: 'center' }}>
+        <div className="r-split" style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 80, alignItems: 'center' }}>
           <div className="reveal">
             <span className="eyebrow">{t('finalCta.eyebrow')}</span>
             <h2 className="h-display" style={{ margin: '16px 0 24px', fontSize: 'clamp(38px, 5.4vw, 72px)' }}>
@@ -354,19 +357,19 @@ export function FinalCTA() {
               ))}
             </ul>
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
-              <a className="btn btn-primary" href="#" style={{ fontSize: 16, padding: '15px 22px' }}>
+              <a className="btn btn-primary" href="#agendar" style={{ fontSize: 16, padding: '15px 22px' }}>
                 {t('finalCta.cta')}
                 <svg width="16" height="16" viewBox="0 0 14 14">
                   <path d="M3 7h8M7.5 3.5 11 7l-3.5 3.5" stroke="currentColor" strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </a>
             </div>
-            <p className="mono" style={{ marginTop: 18, fontSize: 12, color: 'var(--muted)', letterSpacing: '0.04em' }}>
+            <p className="mono" style={{ marginTop: 18, fontSize: 12, color: 'var(--fg-2)', letterSpacing: '0.04em' }}>
               {t('finalCta.note')}
             </p>
           </div>
 
-          <div className="reveal" style={{ ['--reveal-delay' as string]: '120ms' }}>
+          <div id="agendar" className="reveal" style={{ ['--reveal-delay' as string]: '120ms', scrollMarginTop: 90 }}>
             <DemoCalendar />
           </div>
         </div>
@@ -376,91 +379,19 @@ export function FinalCTA() {
 }
 
 function DemoCalendar() {
-  const t = useT();
-  const [picked, setPicked] = useState(15);
-  const [time, setTime] = useState('11:00');
-  const days = [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
-  const times = ['09:30', '11:00', '14:00', '16:30'];
-
   return (
-    <div
-      className="card"
-      style={{
-        padding: 26,
-        borderRadius: 18,
-        background: 'linear-gradient(180deg, oklch(0.20 0.024 240), oklch(0.16 0.022 240))',
-        border: '1px solid var(--line)',
-        boxShadow: '0 30px 80px -30px oklch(0 0 0 / 0.7)',
-      }}
-    >
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 18 }}>
-        <div className="mono" style={{ fontSize: 11, color: 'var(--muted)', letterSpacing: '0.08em' }}>{t('finalCta.calendar.label').toUpperCase()}</div>
-        <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
-          <span className="live-dot" />
-          <span className="mono" style={{ fontSize: 10.5, color: 'var(--muted)' }}>{t('finalCta.calendar.available')}</span>
-        </div>
-      </div>
-      <h3 className="h-3" style={{ fontSize: 21, marginBottom: 18, letterSpacing: '-0.016em' }}>
-        {t('finalCta.calendar.title')}
-      </h3>
-
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
-        <span className="mono" style={{ fontSize: 11, color: 'var(--muted)', letterSpacing: '0.06em' }}>{t('finalCta.calendar.month').toUpperCase()}</span>
-        <div style={{ display: 'flex', gap: 4 }}>
-          <button style={{ width: 22, height: 22, borderRadius: 6, border: '1px solid var(--line)', color: 'var(--muted)' }}>‹</button>
-          <button style={{ width: 22, height: 22, borderRadius: 6, border: '1px solid var(--line)', color: 'var(--muted)' }}>›</button>
-        </div>
-      </div>
-
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: 6, marginBottom: 18 }}>
-        {days.map((d) => (
-          <button
-            key={d}
-            onClick={() => setPicked(d)}
-            style={{
-              padding: '10px 0',
-              borderRadius: 8,
-              background: picked === d ? 'var(--accent)' : 'oklch(1 0 0 / 0.02)',
-              border: '1px solid ' + (picked === d ? 'var(--accent)' : 'var(--line-soft)'),
-              color: picked === d ? 'oklch(0.12 0.02 240)' : 'var(--fg-2)',
-              fontSize: 13,
-              fontWeight: 500,
-              letterSpacing: '-0.01em',
-              cursor: 'pointer',
-            }}
-          >
-            {d}
-          </button>
-        ))}
-      </div>
-
-      <div className="mono" style={{ fontSize: 11, color: 'var(--muted)', letterSpacing: '0.06em', marginBottom: 8 }}>{t('finalCta.calendar.timeLabel').toUpperCase()}</div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 6, marginBottom: 20 }}>
-        {times.map((slot) => (
-          <button
-            key={slot}
-            onClick={() => setTime(slot)}
-            style={{
-              padding: '10px 0',
-              borderRadius: 8,
-              background: time === slot ? 'oklch(1 0 0 / 0.06)' : 'oklch(1 0 0 / 0.02)',
-              border: '1px solid ' + (time === slot ? 'var(--accent-dim)' : 'var(--line-soft)'),
-              color: time === slot ? 'var(--accent)' : 'var(--fg-2)',
-              fontSize: 13,
-              letterSpacing: '-0.01em',
-              fontFamily: 'var(--font-mono)',
-              cursor: 'pointer',
-            }}
-          >
-            {slot}
-          </button>
-        ))}
-      </div>
-
-      <button className="btn btn-primary" style={{ width: '100%', justifyContent: 'center', padding: '14px 18px', fontSize: 15 }}>
-        {t('finalCta.calendar.confirm', { time })}
-      </button>
-    </div>
+    <>
+      <div
+        className="meetings-iframe-container"
+        data-src="https://meetings-eu1.hubspot.com/lucas-tomic/demo-solnow?embed=true"
+        style={{ minHeight: 660 }}
+      />
+      <Script
+        id="hubspot-meetings-embed"
+        src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"
+        strategy="afterInteractive"
+      />
+    </>
   );
 }
 
@@ -474,7 +405,7 @@ export function Footer() {
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
-  const cols = t<{ h: string; items: string[] }[]>('footer.columns');
+  const legalCol = t<{ h: string; privacy: string; terms: string }>('footer.legalLinks');
 
   const switchLocale = (next: string) => {
     if (next === locale) return;
@@ -485,7 +416,7 @@ export function Footer() {
   return (
     <footer style={{ borderTop: '1px solid var(--line-soft)', paddingTop: 80, paddingBottom: 36, background: 'oklch(0.11 0.018 240)' }}>
       <div className="container">
-        <div style={{ display: 'grid', gridTemplateColumns: '1.4fr repeat(4, 1fr)', gap: 40, marginBottom: 56 }}>
+        <div className="r-split" style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 40, marginBottom: 56 }}>
           <div>
             <div style={{ display: 'inline-flex', alignItems: 'center', marginBottom: 16 }}>
               <Image src="/assets/solnow-wordmark-white.png" alt={t('metadata.siteName')} width={104} height={26} style={{ height: 26, width: 'auto' }} />
@@ -517,27 +448,28 @@ export function Footer() {
               </select>
             </div>
           </div>
-          {cols.map((c) => (
-            <div key={c.h}>
-              <div className="mono" style={{ fontSize: 11, letterSpacing: '0.1em', color: 'var(--muted-2)', marginBottom: 14 }}>
-                {c.h.toUpperCase()}
-              </div>
-              <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
-                {c.items.map((l) => (
-                  <li key={l}>
-                    <a
-                      href="#"
-                      style={{ fontSize: 13.5, color: 'var(--fg-2)' }}
-                      onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
-                      onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--fg-2)')}
-                    >
-                      {l}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+          <div>
+            <div className="mono" style={{ fontSize: 11, letterSpacing: '0.1em', color: 'var(--muted-2)', marginBottom: 14 }}>
+              {legalCol.h.toUpperCase()}
             </div>
-          ))}
+            <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {[
+                { label: legalCol.privacy, href: `/${locale}/privacy` },
+                { label: legalCol.terms, href: `/${locale}/terms` },
+              ].map((l) => (
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    style={{ fontSize: 13.5, color: 'var(--fg-2)' }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--fg-2)')}
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         <div

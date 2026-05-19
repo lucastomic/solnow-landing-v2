@@ -1,15 +1,15 @@
 {
   "metadata": {
-    "title": "Solnow — El sistema operativo para flotas de motos de agua",
+    "title": "Solnow — El sistema operativo para flotas de alquiler acuático",
     "description": "Digitalizamos venta, papeleo, operación en tiempo real y postventa. Para operadores con flotas que ya no escalan con sistemas genéricos.",
     "siteName": "Solnow",
-    "ogImageAlt": "Solnow — el sistema operativo para flotas de motos de agua de alto volumen"
+    "ogImageAlt": "Solnow — el sistema operativo para flotas de alquiler acuático de alto volumen"
   },
   "jsonLd": {
     "orgName": "Solnow",
-    "orgDescription": "El sistema operativo para empresas de motos de agua con alto volumen. Digitaliza venta, papeleo, operación en tiempo real y postventa.",
+    "orgDescription": "El sistema operativo para empresas de alquiler acuático con alto volumen. Digitaliza venta, papeleo, operación en tiempo real y postventa.",
     "appName": "Solnow",
-    "appDescription": "Plataforma que digitaliza las cuatro áreas de un operador de motos de agua: venta con agente de IA en WhatsApp, papeleo automático, operación en vivo multi-base y postventa.",
+    "appDescription": "Plataforma que digitaliza las cuatro áreas de un operador de alquiler acuático: venta con agente de IA en WhatsApp, papeleo automático, operación en vivo multi-base y postventa.",
     "appCategory": "BusinessApplication"
   },
   "nav": {
@@ -22,7 +22,7 @@
   },
   "hero": {
     "a": {
-      "pre": "El sistema operativo de las empresas de motos de agua con ",
+      "pre": "El sistema operativo de las empresas de alquiler acuático con ",
       "em": "alto volumen",
       "sub": "Digitalizamos venta, papeleo, operación en tiempo real y postventa. Para operadores con flotas que ya no escalan con sistemas genéricos."
     },
@@ -123,7 +123,7 @@
     ],
     "rowLabels": [
       "Motor de reservas",
-      "Vertical jet ski",
+      "Vertical acuático",
       "Operación en tiempo real (QR + dashboard)",
       "IA conversacional que cierra ventas",
       "Integraciones OTAs náuticas",
@@ -149,7 +149,7 @@
       {
         "pull": "95% del trabajo",
         "h": "Delegación total de lo digital",
-        "s": "Web, sistema, IA, configuración, optimización. Tú operás motos, nosotros operamos tu negocio digital."
+        "s": "Web, sistema, IA, configuración, optimización. Tú operás activos, nosotros operamos tu negocio digital."
       },
       {
         "pull": "Sin tickets",
@@ -190,7 +190,7 @@
         "name": "Pro",
         "pitch": "El plan para operadores serios con varias bases.",
         "feeSuffix": "/ mes · por base",
-        "annualNote": "2 meses gratis · 16,7%",
+        "annualNote": "4 meses gratis · 33%",
         "badge": "Más elegido",
         "cta": "Pedir demo del plan Pro",
         "features": [
@@ -204,7 +204,7 @@
         "name": "Scale",
         "pitch": "Para grupos multi-base con operación crítica.",
         "feeSuffix": "/ mes · por base",
-        "annualNote": "Ahorro 20%",
+        "annualNote": "4 meses gratis · 33%",
         "cta": "Hablar con el equipo",
         "features": [
           { "l": "TPV (Staff Mode + Kiosk)" },
@@ -383,27 +383,133 @@
     }
   },
   "footer": {
-    "tagline": "El sistema operativo para empresas de motos de agua con alto volumen. Hecho en Valencia, operado en el Mediterráneo.",
+    "tagline": "El sistema operativo para empresas de alquiler acuático con alto volumen. Hecho en Valencia, operado en el Mediterráneo.",
     "langLabel": "Idioma",
     "legal": "© 2026 Solnow S.L. · CIF B-12345678 · Valencia, ES",
     "status": "Todos los sistemas operativos",
-    "columns": [
-      {
-        "h": "Producto",
-        "items": ["Agente IA WhatsApp", "Motor de reservas", "Operación tiempo real", "Contratos digitales", "Libro de registros"]
-      },
-      {
-        "h": "Recursos",
-        "items": ["Casos de éxito", "Blog", "Integraciones", "Cambios de versión", "Estado del sistema"]
-      },
-      {
-        "h": "Empresa",
-        "items": ["Sobre Solnow", "Modelo de partner", "Carreras", "Contacto"]
-      },
-      {
-        "h": "Legal",
-        "items": ["Privacidad", "Términos", "GDPR", "Cookies"]
-      }
-    ]
+    "legalLinks": {
+      "h": "Legal",
+      "privacy": "Privacidad",
+      "terms": "Términos"
+    }
+  },
+  "legal": {
+    "backHome": "Volver al inicio",
+    "terms": {
+      "title": "Términos y Condiciones",
+      "updated": "Última actualización: 3 de mayo de 2026",
+      "sections": [
+        {
+          "h": "1. Introducción",
+          "p": [
+            "SolNow, operado por Sailing Paradise LLC, es una plataforma para la gestión centralizada de empresas de alquiler de embarcaciones. Al acceder o utilizar el Servicio, aceptas quedar vinculado por estos Términos y Condiciones. Si no estás de acuerdo con alguno de ellos, no debes utilizar la plataforma."
+          ]
+        },
+        {
+          "h": "2. Definiciones",
+          "list": [
+            "Usuario: cualquier persona que accede o utiliza la plataforma.",
+            "Servicio: todos los servicios, funcionalidades y herramientas proporcionados por SolNow.",
+            "Contenido: la información, datos y materiales mostrados o gestionados a través de la plataforma."
+          ]
+        },
+        {
+          "h": "3. Obligaciones del usuario",
+          "list": [
+            "Proporcionar información precisa y completa durante el registro.",
+            "Mantener la confidencialidad de sus credenciales de acceso.",
+            "No utilizar el Servicio para fines ilegales o no autorizados."
+          ]
+        },
+        {
+          "h": "4. Planes y pagos",
+          "p": [
+            "SolNow ofrece distintos planes de suscripción con renovación automática. Nos reservamos el derecho de ajustar los precios, notificándolo con un previo aviso de al menos 30 días."
+          ]
+        },
+        {
+          "h": "5. Limitación de responsabilidad",
+          "p": [
+            "No garantizamos que el servicio esté disponible de forma ininterrumpida. SolNow no será responsable de ningún daño directo, indirecto, incidental, especial o consecuente derivado del uso o de la imposibilidad de uso del Servicio."
+          ]
+        },
+        {
+          "h": "6. Contacto",
+          "p": [
+            "Para cualquier consulta sobre estos Términos, puedes escribirnos a lucastomic@solnow.io. SolNow es operado por Sailing Paradise LLC."
+          ]
+        }
+      ]
+    },
+    "privacy": {
+      "title": "Política de Privacidad",
+      "updated": "Última actualización: 19 de mayo de 2026",
+      "sections": [
+        {
+          "h": "",
+          "p": [
+            "En SolNow, operado por Sailing Paradise LLC (\"nosotros\", \"nuestro\", \"nos\"), tu privacidad es una prioridad. Esta Política describe qué información recopilamos y cómo la utilizamos."
+          ]
+        },
+        {
+          "h": "1. Información que recopilamos",
+          "p": ["1.1. Información proporcionada por el usuario:"],
+          "list": [
+            "Datos de cuenta: nombre, correo electrónico, contraseña y número de teléfono.",
+            "Información de facturación: datos de pago y suscripción.",
+            "Datos de embarcaciones y reservas: información sobre barcos, calendarios, tarifas y reservas.",
+            "Leads y contactos: información de clientes potenciales ingresada manualmente o importada automáticamente."
+          ]
+        },
+        {
+          "h": "2. Uso de la información",
+          "p": ["Usamos tus datos para:"],
+          "list": [
+            "Sincronizar reservas y disponibilidad entre marketplaces.",
+            "Centralizar y gestionar leads y conversaciones.",
+            "Enviar notificaciones, alertas y correos automáticos.",
+            "Analizar el uso de la plataforma para mejorar la experiencia.",
+            "Cumplir con obligaciones legales y de seguridad."
+          ]
+        },
+        {
+          "h": "3. Cómo compartimos y divulgamos tus datos",
+          "p": [
+            "No vendemos ni alquilamos tus datos personales. Solo compartimos datos con las siguientes categorías de proveedores de servicios (subencargados del tratamiento), y únicamente en la medida necesaria para operar el Servicio:"
+          ],
+          "list": [
+            "Proveedores de alojamiento e infraestructura en la nube que almacenan y procesan datos en nuestro nombre.",
+            "Procesadores de pagos y suscripciones que gestionan las transacciones de facturación.",
+            "Proveedores de correo y notificaciones utilizados para enviar mensajes transaccionales, alertas y correos automáticos.",
+            "OpenAI, nuestro proveedor de IA externo, que procesa el contenido que envías para generar funciones asistidas por IA. SolNow no opera un modelo de IA propio.",
+            "Autoridades o terceros cuando lo exija la ley, para cumplir una obligación legal o para proteger nuestros derechos, seguridad o propiedad."
+          ]
+        },
+        {
+          "h": "4. Datos de usuario de Google y Uso Limitado",
+          "p": [
+            "Cuando conectas una cuenta de Google, podemos acceder a datos de usuario de Google mediante ámbitos restringidos como Gmail y Google Calendar, únicamente para sincronizar reservas, disponibilidad y conversaciones de leads dentro de la plataforma.",
+            "No vendemos los datos de usuario de Google, y no los transferimos ni divulgamos a terceros salvo: (a) a los proveedores de servicios indicados anteriormente estrictamente para proporcionar y mejorar funciones del Servicio orientadas al usuario; (b) para cumplir con la legislación aplicable; o (c) como parte de una fusión o adquisición, manteniendo la protección de los datos.",
+            "El uso y la transferencia por parte de SolNow a cualquier otra aplicación de la información recibida de las API de Google se ajustarán a la Política de Datos de Usuario de los Servicios de API de Google, incluidos los requisitos de Uso Limitado. Los datos de usuario de Google no se utilizan con fines publicitarios ni para entrenar modelos de IA generalizados."
+          ]
+        },
+        {
+          "h": "5. Seguridad",
+          "p": [
+            "Aplicamos medidas técnicas y organizativas para proteger tu información. El acceso está limitado y cifrado cuando corresponde."
+          ]
+        },
+        {
+          "h": "6. Tus derechos",
+          "p": [
+            "Puedes ejercer tus derechos de acceso, rectificación, eliminación, oposición y portabilidad escribiendo a lucastomic@solnow.io."
+          ]
+        },
+        {
+          "h": "7. Contacto",
+          "p": ["Sailing Paradise LLC · Email: lucastomic@solnow.io"]
+        }
+      ]
+    }
   }
 }

@@ -142,7 +142,7 @@ export function Pricing() {
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, alignItems: 'stretch' }}>
+        <div className="r-cols-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, alignItems: 'stretch' }}>
           {tiers.map((t, i) => (
             <PricingCard key={t.key} t={t} i={i} isAnnual={isAnnual} />
           ))}
@@ -151,7 +151,7 @@ export function Pricing() {
         <PriceCalculator />
 
         <div
-          className="reveal"
+          className="reveal r-cols-4"
           style={{
             marginTop: 28,
             display: 'grid',
@@ -651,7 +651,7 @@ function PriceCalculator() {
         <BillingToggle value={billing} onChange={setBilling} />
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.1fr', minHeight: 480 }}>
+      <div className="r-split r-calc" style={{ display: 'grid', gridTemplateColumns: '1fr 1.1fr', minHeight: 480 }}>
         <div
           style={{
             padding: '28px 32px',
@@ -748,6 +748,7 @@ function RevenueBlock({
 
   return (
     <div
+      className="r-split"
       style={{
         marginTop: 6,
         padding: '18px 20px',
@@ -882,6 +883,7 @@ function PlanResult({
 
   return (
     <div
+      className="r-planrow"
       style={{
         padding: '14px 16px',
         borderRadius: 12,

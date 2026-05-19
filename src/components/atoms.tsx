@@ -20,7 +20,7 @@ export function SectionHead({ eyebrow, title, lede, align = 'left', accent }: Se
         alignItems: align === 'center' ? 'center' : 'flex-start',
         textAlign: align === 'center' ? 'center' : 'left',
         marginBottom: 56,
-        maxWidth: align === 'center' ? 780 : 820,
+        maxWidth: align === 'center' ? 'min(780px, 100%)' : 'min(820px, 100%)',
         marginInline: align === 'center' ? 'auto' : undefined,
       }}
     >

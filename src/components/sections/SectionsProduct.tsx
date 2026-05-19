@@ -16,6 +16,7 @@ export function PainBar() {
           </h2>
         </div>
         <div
+          className="r-cols-3"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
@@ -108,7 +109,7 @@ export function ProductAreas() {
           lede={t('productAreas.lede')}
         />
         <div
-          className="mono"
+          className="mono r-cols-4"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(4, 1fr)',
@@ -184,7 +185,7 @@ export function ProductAreas() {
 function Area1() {
   const t = useT();
   return (
-    <div id="area-1" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
+    <div id="area-1" className="r-split" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
       <div className="reveal">
         <NumLabel n={1} of={4} />
         <h3 className="h-2" style={{ margin: '16px 0 18px' }}>
@@ -250,6 +251,7 @@ function WhatsAppMock() {
 
   return (
     <div
+      className="r-fluid"
       style={{
         borderRadius: 28,
         background: '#062a3e',
@@ -464,7 +466,7 @@ function TypingBubble() {
 function Area2() {
   const t = useT();
   return (
-    <div id="area-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
+    <div id="area-2" className="r-split" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
       <div className="reveal" style={{ order: 2 }}>
         <NumLabel n={2} of={4} />
         <h3 className="h-2" style={{ margin: '16px 0 18px' }}>
@@ -484,7 +486,7 @@ function Area2() {
 
 function ContractMock() {
   return (
-    <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: 16 }}>
+    <div className="r-contract" style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: 16 }}>
       <div
         style={{
           background: 'oklch(0.96 0.005 80)',
@@ -645,8 +647,8 @@ function Area3() {
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 28 }}>
-          <div className="reveal">
+        <div className="r-split" style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 28 }}>
+          <div className="reveal r-hide">
             <LiveOpsMock />
           </div>
           <div className="reveal" style={{ ['--reveal-delay' as string]: '120ms', display: 'flex', flexDirection: 'column', gap: 14 }}>
@@ -876,7 +878,7 @@ function DelayToast() {
 function Area4() {
   const t = useT();
   return (
-    <div id="area-4" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
+    <div id="area-4" className="r-split" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
       <div className="reveal">
         <NumLabel n={4} of={4} />
         <h3 className="h-2" style={{ margin: '16px 0 18px' }}>

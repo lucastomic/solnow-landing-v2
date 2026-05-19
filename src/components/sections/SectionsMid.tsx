@@ -56,7 +56,7 @@ export function Comparison() {
           title={<>{t('comparison.title')}</>}
         />
         <div
-          className="reveal"
+          className="reveal r-cmp-wrap"
           style={{
             border: '1px solid var(--line)',
             borderRadius: 18,
@@ -65,6 +65,7 @@ export function Comparison() {
           }}
         >
           <div
+            className="r-cmp-row"
             style={{
               display: 'grid',
               gridTemplateColumns: '2fr repeat(4, 1fr)',
@@ -123,6 +124,7 @@ export function Comparison() {
           {rows.map((r, i) => (
             <div
               key={i}
+              className="r-cmp-row"
               style={{
                 display: 'grid',
                 gridTemplateColumns: '2fr repeat(4, 1fr)',
@@ -183,7 +185,7 @@ export function Partner() {
           eyebrow={t('partner.eyebrow')}
           title={<>{t('partner.title')}</>}
         />
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
+        <div className="r-cols-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
           {items.map((it, i) => (
             <div
               key={i}

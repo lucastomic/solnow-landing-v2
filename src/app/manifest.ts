@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Solnow",
     short_name: "Solnow",
     description:
-      "El sistema operativo para flotas de motos de agua con alto volumen.",
+      "El sistema operativo para flotas de alquiler acuático con alto volumen.",
     start_url: "/es",
     display: "standalone",
     background_color: "#f7f7f7",

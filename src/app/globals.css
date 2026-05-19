@@ -218,3 +218,90 @@ section[id] { scroll-margin-top: 72px; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 
 @keyframes qrscan { 0%{top:-2px} 50%{top:calc(100% - 2px)} 100%{top:-2px} }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Responsive — tablet ≤768px, móvil ≤480px
+   Solo añade clases-hook; los estilos inline desktop quedan intactos porque
+   estas reglas solo aplican dentro de las media queries.
+   ─────────────────────────────────────────────────────────────────────── */
+
+/* Drawer del nav (controlado por estado React) */
+.r-nav-toggle { display: none; }
+.r-nav-drawer {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  z-index: 49;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 24px 48px -24px rgba(8, 57, 84, 0.25);
+  padding: 18px var(--gutter) 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  animation: navdrawer 0.22s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+@keyframes navdrawer { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } }
+.r-nav-drawer a,
+.r-nav-drawer button { padding: 14px 4px; font-size: 16px; }
+
+@media (max-width: 768px) {
+  :root { --section-y: 76px; --gutter: 18px; }
+  section[id] { scroll-margin-top: 60px; }
+
+  .r-split  { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .r-cols-3 { grid-template-columns: repeat(2, 1fr) !important; }
+  .r-cols-4 { grid-template-columns: repeat(2, 1fr) !important; }
+  .r-cols-5 { grid-template-columns: repeat(2, 1fr) !important; gap: 28px 32px !important; }
+
+  .r-nav-desktop { display: none !important; }
+  .r-nav-toggle  { display: inline-flex !important; }
+
+  .r-hide { display: none !important; }
+
+  /* Tabla Comparativa: scroll horizontal con tamaños legibles */
+  .r-cmp-wrap { overflow-x: auto !important; -webkit-overflow-scrolling: touch; }
+  .r-cmp-row  { min-width: 600px; }
+
+  /* ContractMock: aplanar tarjetas rotadas/desplazadas que se salían */
+  .r-contract > div {
+    transform: none !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-top: 0 !important;
+  }
+
+  /* Calculadora: quitar el divisor vertical al apilar las columnas */
+  .r-calc > * { border-right: 0 !important; }
+}
+
+@media (max-width: 480px) {
+  :root { --section-y: 56px; --gutter: 14px; }
+
+  .r-cols-3,
+  .r-cols-4,
+  .r-cols-5 { grid-template-columns: 1fr !important; }
+  .r-split { gap: 28px !important; }
+
+  /* Mockups de ancho fijo → fluido */
+  .r-fluid { max-width: 100% !important; width: 100% !important; }
+
+  /* Hero fleet dashboard: reflujo de la tabla densa */
+  .r-fleet-stats { grid-template-columns: repeat(2, 1fr) !important; }
+  .r-fleet-row {
+    grid-template-columns: 52px 1fr 70px !important;
+    gap: 6px !important;
+    font-size: 11px !important;
+  }
+  .r-fleet-row > :nth-child(4),
+  .r-fleet-row > :nth-child(5) { display: none !important; }
+
+  /* Calculadora: padding compacto y filas de plan en 2 columnas */
+  .r-calc > * { padding: 22px 16px !important; }
+  .r-planrow {
+    grid-template-columns: 1fr auto !important;
+    gap: 6px 10px !important;
+  }
+  .r-planrow > :nth-child(2) { display: none !important; }
+}

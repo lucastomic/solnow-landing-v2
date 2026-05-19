@@ -60,6 +60,7 @@ export default function Hero({ variant = 'a' }: HeroProps) {
 
       <div className="container" style={{ position: 'relative' }}>
         <div
+          className="r-split"
           style={{
             display: 'grid',
             gridTemplateColumns: 'minmax(0, 1.05fr) minmax(0, 1fr)',
@@ -88,7 +89,7 @@ export default function Hero({ variant = 'a' }: HeroProps) {
       
           </div>
 
-          <div className="reveal" style={{ ['--reveal-delay' as string]: '120ms', position: 'relative' }}>
+          <div className="reveal r-fluid" style={{ ['--reveal-delay' as string]: '120ms', position: 'relative' }}>
             <FleetDashboard />
           </div>
         </div>
@@ -128,7 +129,7 @@ function FleetDashboard() {
   return (
     <WindowChrome title="solnow.app  /  ops · multi-base" status="EN VIVO">
       <div style={{ padding: 12, display: 'flex', flexDirection: 'column', gap: 10 }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 8 }}>
+        <div className="r-fleet-stats" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 8 }}>
           {(
             [
               ['EN AGUA', '11', 'de 18'],
@@ -244,7 +245,7 @@ function FleetDashboard() {
 
         <div style={{ borderRadius: 10, border: '1px solid var(--ink-line)', overflow: 'hidden' }}>
           <div
-            className="mono"
+            className="mono r-fleet-row"
             style={{
               display: 'grid',
               gridTemplateColumns: '74px 1fr 80px 96px 24px',
@@ -269,6 +270,7 @@ function FleetDashboard() {
             return (
               <div
                 key={f.id}
+                className="r-fleet-row"
                 style={{
                   display: 'grid',
                   gridTemplateColumns: '74px 1fr 80px 96px 24px',
