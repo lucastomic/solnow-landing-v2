@@ -1,8 +1,10 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { useT } from '@/i18n/I18nProvider';
 
 export default function Nav() {
+  const t = useT();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -13,10 +15,10 @@ export default function Nav() {
   }, []);
 
   const items: [string, string][] = [
-    ['Producto', '#producto'],
-    ['Comparativa', '#comparativa'],
-    ['Implementación', '#implementacion'],
-    ['FAQ', '#faq'],
+    [t('nav.producto'), '#producto'],
+    [t('nav.comparativa'), '#comparativa'],
+    [t('nav.implementacion'), '#implementacion'],
+    [t('nav.faq'), '#faq'],
   ];
 
   return (
@@ -59,9 +61,9 @@ export default function Nav() {
           ))}
         </nav>
         <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-          <button style={{ fontSize: 13.5, color: 'var(--fg-2)' }}>Entrar</button>
+          <button style={{ fontSize: 13.5, color: 'var(--fg-2)' }}>{t('nav.signIn')}</button>
           <a className="btn btn-primary" style={{ padding: '9px 16px', fontSize: 13.5 }} href="#cta">
-            Pedir demo
+            {t('nav.cta')}
           </a>
         </div>
       </div>

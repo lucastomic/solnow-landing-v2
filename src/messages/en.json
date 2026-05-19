@@ -1,0 +1,409 @@
+{
+  "metadata": {
+    "title": "Solnow — The operating system for jet ski rental fleets",
+    "description": "We digitize sales, paperwork, real-time operations and after-sales. For operators whose fleets no longer scale on generic software.",
+    "siteName": "Solnow",
+    "ogImageAlt": "Solnow — the operating system for high-volume jet ski rental fleets"
+  },
+  "jsonLd": {
+    "orgName": "Solnow",
+    "orgDescription": "The operating system for high-volume jet ski rental businesses. Digitizes sales, paperwork, real-time operations and after-sales.",
+    "appName": "Solnow",
+    "appDescription": "Platform that digitizes the four areas of a jet ski rental operator: sales with an AI agent on WhatsApp, automated paperwork, live multi-base operations and after-sales.",
+    "appCategory": "BusinessApplication"
+  },
+  "nav": {
+    "producto": "Product",
+    "comparativa": "Comparison",
+    "implementacion": "Onboarding",
+    "faq": "FAQ",
+    "signIn": "Sign in",
+    "cta": "Book a demo"
+  },
+  "hero": {
+    "a": {
+      "pre": "The operating system for jet ski rental companies running ",
+      "em": "high volume",
+      "sub": "We digitize sales, paperwork, real-time operations and after-sales. For operators whose fleets no longer scale on generic software."
+    },
+    "b": {
+      "pre": "Your fleet is growing. Your software is ",
+      "em": "holding you back",
+      "post": ".",
+      "sub": "Solnow is the operating system that replaces Excel, calendars and four disconnected tools with a single platform built for high-volume, multi-base operations."
+    },
+    "ctaPrimary": "Book a personalized demo",
+    "ctaSecondary": "See how it works"
+  },
+  "painBar": {
+    "headPre": "If you handle 30+ bookings a day, you already know that adding volume means ",
+    "headEm": "adding chaos. Or adding staff.",
+    "items": [
+      { "k": "50", "u": "inquiries/day unanswered", "d": "15-25 bookings lost every week" },
+      { "k": "2-3h", "u": "burned every day", "d": "signing contracts by hand" },
+      { "k": "0", "u": "multi-base visibility", "d": "you find out once it already blew up" }
+    ]
+  },
+  "nuclear": {
+    "eyebrow": "Differentiation",
+    "p1": "Others help you ",
+    "reservar": "take bookings.",
+    "p2": "We help you ",
+    "vender": "sell",
+    "ya": "and",
+    "operar": "operate.",
+    "lede": "We are the only ones digitizing all four areas of your business: the AI agent closes bookings on WhatsApp 24/7, and the system runs live operations during the activity itself."
+  },
+  "productAreas": {
+    "eyebrow": "04 · The product",
+    "title": "Four areas. One single platform.",
+    "lede": "Full coverage of the cycle: before, during and after every activity. Each block connects to the next within the same data model.",
+    "tabs": [
+      { "n": "4.1", "t": "Sales", "s": "WhatsApp AI" },
+      { "n": "4.2", "t": "Paperwork", "s": "Contracts · invoicing" },
+      { "n": "4.3", "t": "Operations", "s": "Real-time · multi-base" },
+      { "n": "4.4", "t": "After-sales", "s": "Reviews · logbook · CRM" }
+    ],
+    "area1": {
+      "h": "Close bookings on WhatsApp without anyone answering them",
+      "lede": "It's not a chatbot. It's an agent connected live to your availability, prices, fleet and extras. It advises, recommends and charges. In any language, in under 1 minute.",
+      "bullets": [
+        "Connected live to your availability, prices and fleet (no canned scripts)",
+        "Closes the sale and takes payment inside WhatsApp",
+        "Works in any language",
+        "If it can't resolve it, hands off to a human without losing context"
+      ]
+    },
+    "area2": {
+      "h": "Contracts, invoices and calendar automatically when the booking is confirmed",
+      "lede": "Every booking triggers the full paperwork. Built-in e-signature, instant invoicing, no overbookings.",
+      "bullets": [
+        "Built-in e-signature (includes contracts for minors)",
+        "Automatic invoicing and payment tracking",
+        "Calendar and fleet with no overbookings",
+        "Partner commissions calculated automatically"
+      ]
+    },
+    "area3": {
+      "eyebrow": "This is what no horizontal software will ever give you",
+      "hPre": "Watch your fleet ",
+      "hEm": "live",
+      "hPost": ", even when you're not there",
+      "ledePre": "The only module on the market that digitizes what happens ",
+      "ledeStrong": "during the activity",
+      "ledePost": ", not just before and after.",
+      "bullets": [
+        "Real-time multi-base dashboard",
+        "QR boarding scan",
+        "Automatic delay alerts",
+        "Decentralized visibility without being there physically"
+      ]
+    },
+    "area4": {
+      "h": "Logbook, reviews and loyalty on autopilot",
+      "lede": "The activity ends and the system handles the wrap-up: legal compliance, review capture, customer profile and metrics.",
+      "bullets": [
+        "Logbook compliant with maritime regulation",
+        "Automatic review requests",
+        "Centralized record for repeat customers",
+        "Business metrics dashboard"
+      ]
+    }
+  },
+  "comparison": {
+    "eyebrow": "05 · Comparison",
+    "title": "How we compare to the other options you're evaluating",
+    "capability": "Capability",
+    "us": "Us",
+    "cols": [
+      { "name": "Generic engines", "sub": "FareHarbor · Bookeo" },
+      { "name": "Watersports software", "sub": "near-water verticals" },
+      { "name": "Build it yourself with AI", "sub": "build-it-yourself" },
+      { "name": "Solnow", "sub": "complete operating system" }
+    ],
+    "rowLabels": [
+      "Booking engine",
+      "Jet ski vertical",
+      "Real-time operations (QR + dashboard)",
+      "Conversational AI that closes sales",
+      "Nautical OTA integrations",
+      "Industry legal compliance",
+      "High-season support",
+      "Time to production"
+    ],
+    "timeToProd": ["Weeks", "Weeks", "6–12 months", "Days"],
+    "legendIncluded": "included",
+    "legendPartial": "partial",
+    "legendNo": "no",
+    "closing": "Building from scratch makes sense if your product is your edge. If your edge is operating jet skis on the water, every month spent coding is a month you don't scale."
+  },
+  "partner": {
+    "eyebrow": "06 · Partner model",
+    "title": "We're not a vendor. We're a partner that gets paid when you do.",
+    "items": [
+      {
+        "pull": "0% fixed fee",
+        "h": "Aligned incentives",
+        "s": "We charge a % on the bookings we generate + a cost per AI conversation. No fixed fee. If you don't bill, we don't charge."
+      },
+      {
+        "pull": "95% of the work",
+        "h": "Full delegation of everything digital",
+        "s": "Website, system, AI, configuration, optimization. You run jet skis, we run your digital business."
+      },
+      {
+        "pull": "No tickets",
+        "h": "Support as a partner, not a vendor",
+        "s": "Full training, asset onboarding, help with pricing and photos, real availability in high season."
+      }
+    ]
+  },
+  "pricing": {
+    "eyebrow": "07 · Pricing",
+    "title": "Three plans. One aligned model.",
+    "lede": "You pay for real usage: commission on what we generate, AI conversations and a per-base fee once you're at volume. No surprises.",
+    "billingMonthly": "Monthly",
+    "billingAnnual": "Annual",
+    "billingSave": "SAVE",
+    "outOf": "/ 03",
+    "commission": "Commission",
+    "aiConv": "AI Conv.",
+    "aiAdv": "AI Adv.",
+    "perConv": "/ conv",
+    "billedAnnual": "BILLED ANNUALLY",
+    "feeOnly": "FEE ONLY",
+    "included": "included",
+    "tiers": {
+      "starter": {
+        "name": "Starter",
+        "pitch": "To get started with a single base and no fixed fee.",
+        "feeSuffix": "/ mo",
+        "cta": "Start with Starter",
+        "features": [
+          { "l": "POS (Staff Mode + Kiosk)" },
+          { "l": "All other product features" },
+          { "l": "Account manager" },
+          { "l": "Support", "v": "Email · 48 business hours" }
+        ]
+      },
+      "pro": {
+        "name": "Pro",
+        "pitch": "The plan for serious operators with several bases.",
+        "feeSuffix": "/ mo · per base",
+        "annualNote": "2 months free · 16.7%",
+        "badge": "Most chosen",
+        "cta": "Book a Pro plan demo",
+        "features": [
+          { "l": "POS (Staff Mode + Kiosk)" },
+          { "l": "All other product features" },
+          { "l": "Account manager" },
+          { "l": "Support", "v": "WhatsApp · 24 business hours" }
+        ]
+      },
+      "scale": {
+        "name": "Scale",
+        "pitch": "For multi-base groups with mission-critical operations.",
+        "feeSuffix": "/ mo · per base",
+        "annualNote": "Save 20%",
+        "cta": "Talk to the team",
+        "features": [
+          { "l": "POS (Staff Mode + Kiosk)" },
+          { "l": "All other product features" },
+          { "l": "Account manager", "v": "Shared" },
+          { "l": "Support", "v": "Priority WhatsApp · 8 business hours" }
+        ]
+      }
+    },
+    "facts": [
+      { "k": "Payment", "v": "Monthly · Stripe Connect" },
+      { "k": "Commitment", "v": "No lock-in · cancel anytime" },
+      { "k": "Migration", "v": "Included in every plan" },
+      { "k": "Data", "v": "Yours. Export to CSV/JSON anytime" }
+    ],
+    "calc": {
+      "label": "Calculator",
+      "title": "How much would you pay each month?",
+      "bases": "Active bases",
+      "basesUnit": " base/s",
+      "reservas": "Bookings / month",
+      "ticket": "Average ticket",
+      "ticketUnit": " €",
+      "convs": "AI conversations / month",
+      "convsHint": "Estimated at the Conversational AI rate",
+      "throughSolnow": "% of bookings via Solnow",
+      "throughSolnowUnit": " %",
+      "throughSolnowHint": "{billable} bookings billed commission · GMV {gmv}",
+      "monthlyCost": "Monthly cost",
+      "annualBilling": " · Annual billing",
+      "bestOption": "Best option",
+      "perMonth": "/ mo",
+      "recommended": "RECOMMENDED",
+      "feeOff": "−{pct}% fee",
+      "onlyOneBase": "1 base only",
+      "maxFiveBases": "max. 5 bases",
+      "breakdown": "fee {fee} · commission {commission} · AI {ai}",
+      "revenueTitle": "Against your company's total revenue",
+      "revenueBody": "Solnow represents {pct}% of your monthly revenue ({total}/mo · all channels).",
+      "revenueCta": "Book a demo"
+    }
+  },
+  "onboarding": {
+    "eyebrow": "08 · Onboarding",
+    "title": "In 7 days your digital operation runs on Solnow",
+    "lede": "We do 95% of the implementation work. You keep operating.",
+    "yourWork": "Your work ·",
+    "objective": "Obj.",
+    "steps": [
+      {
+        "day": "Day 1",
+        "label": "Kickoff",
+        "h": "We map your current operation",
+        "points": ["90-minute session", "We identify bottlenecks and critical flows", "The specifics of your business"],
+        "you": "Be on a 90-min call"
+      },
+      {
+        "day": "Days 2–4",
+        "label": "Configuration",
+        "h": "We load fleet, bases, prices and extras",
+        "points": ["We configure contracts and templates", "We train the AI agent on your real data", "No downtime in your current operation"],
+        "you": "Send us photos and review prices"
+      },
+      {
+        "day": "Days 5–6",
+        "label": "Website & integrations",
+        "h": "We connect website, OTAs and payments",
+        "points": ["Booking engine integrated into your website", "Viator · GetYourGuide · Stripe", "Historical data migration"],
+        "you": "Give us access to your accounts"
+      },
+      {
+        "day": "Day 7",
+        "label": "Go-live",
+        "h": "Training and activation",
+        "points": ["Session with your team", "System in production", "First real booking through Solnow"],
+        "you": "Tell the team today is the day"
+      }
+    ],
+    "qa": [
+      {
+        "q": "What happens to my current website?",
+        "a": "Three options: we keep it and integrate the booking engine, we redesign it if it needs a refresh, or we start from scratch. We decide at the kickoff."
+      },
+      {
+        "q": "And my historical data?",
+        "a": "We migrate customers, historical bookings and configuration from Excel, Google Calendar or other software. No data loss."
+      },
+      {
+        "q": "What if something breaks in the middle of the season?",
+        "a": "Direct support with the team, not a generic ticket. In high season we're available outside business hours. It's part of the partner model."
+      }
+    ],
+    "ctaText": "Want to see what your specific implementation would look like? We'll set up a demo with your real fleet.",
+    "ctaButton": "Book a demo"
+  },
+  "socialProof": {
+    "eyebrow": "09 · Operators running Solnow in production",
+    "title": "Operators already working with Solnow",
+    "testimonials": [
+      {
+        "quote": "We went from 8 to 22 bookings/day without hiring anyone. The AI closes 70% of WhatsApp inquiries before we even open.",
+        "kpiLabel": "bookings/day"
+      },
+      {
+        "quote": "For the first time in five years I see the operation across all three bases on a single screen. And I see it from my phone.",
+        "kpiLabel": "dashboards → 1"
+      },
+      {
+        "quote": "I cut three tools, two spreadsheets and one back-office person. Solnow pays its % with that alone.",
+        "kpiLabel": "admin cost"
+      }
+    ],
+    "partners": [
+      { "n": "LANZADERA", "s": "Accelerated company" },
+      { "n": "VIATOR", "s": "OTA partner" },
+      { "n": "GETYOURGUIDE", "s": "Native integration" },
+      { "n": "STRIPE", "s": "Verified partner" }
+    ]
+  },
+  "faq": {
+    "eyebrow": "10 · FAQ",
+    "title": "Frequently asked questions",
+    "items": [
+      {
+        "q": "How much does Solnow cost?",
+        "a": "We charge a % on the bookings we generate through our platform + a cost per AI conversation. No fixed fee and no setup fee. Aligned model: if you don't bill, we don't charge."
+      },
+      {
+        "q": "How does the commission model work?",
+        "a": "We apply a commission on the GMV of bookings processed by Solnow (engine + WhatsApp AI + OTAs). The exact detail is agreed based on your volume and channel mix at the kickoff."
+      },
+      {
+        "q": "Does it work if I don't have stable internet at the base?",
+        "a": "Yes. The boarding app is offline-first: it records QR scans, signatures and check-in without connection and syncs when the signal returns. Critical for docks and areas with intermittent coverage."
+      },
+      {
+        "q": "What happens to my data if I leave Solnow?",
+        "a": "Your data is yours. We give you a full export (customers, bookings, contracts, invoices) in CSV + JSON, with no friction and no retention periods."
+      },
+      {
+        "q": "Do you handle contracts for minors?",
+        "a": "Yes. Specific templates with fields for legal guardian, parent signature and document validation. Compliant with Spanish regulation and compatible with harbor-master rules."
+      },
+      {
+        "q": "Does it integrate with Viator / GetYourGuide?",
+        "a": "Native integrations with both. Inventory synced in real time, no overbookings across channels. Stripe for payments. Other OTAs on request."
+      },
+      {
+        "q": "Can I set different prices per season?",
+        "a": "Yes. Prices by season, weekday, time of day, duration and jet ski model. Combinable rules, editable without touching code."
+      },
+      {
+        "q": "How is it billed: per booking or monthly?",
+        "a": "Monthly invoice with a breakdown per booking, commission and AI conversations. Automatic settlement via Stripe Connect to your account the following month."
+      }
+    ]
+  },
+  "finalCta": {
+    "eyebrow": "11 · Demo",
+    "headPre": "Do any of ",
+    "headEm": "these problems sound familiar?",
+    "problems": [
+      "Your operation hit a ceiling and adding bookings means adding chaos.",
+      "You lost control of what happens at each base when you're not there physically.",
+      "Every peak weekend is a race against the clock and a legal risk."
+    ],
+    "cta": "Book a personalized demo with your real fleet",
+    "note": "We set up the demo with your jet skis, your bases and your real volume · 30 minutes · no commitment",
+    "calendar": {
+      "label": "Schedule demo",
+      "available": "available this week",
+      "title": "30 minutes with a partner. Your fleet, your volume.",
+      "month": "May · 2026",
+      "timeLabel": "Time · CET",
+      "confirm": "Confirm · May 15 · {time}"
+    }
+  },
+  "footer": {
+    "tagline": "The operating system for high-volume jet ski rental companies. Built in Valencia, operated across the Mediterranean.",
+    "langLabel": "Language",
+    "legal": "© 2026 Solnow S.L. · CIF B-12345678 · Valencia, ES",
+    "status": "All systems operational",
+    "columns": [
+      {
+        "h": "Product",
+        "items": ["WhatsApp AI agent", "Booking engine", "Real-time operations", "Digital contracts", "Logbook"]
+      },
+      {
+        "h": "Resources",
+        "items": ["Case studies", "Blog", "Integrations", "Changelog", "System status"]
+      },
+      {
+        "h": "Company",
+        "items": ["About Solnow", "Partner model", "Careers", "Contact"]
+      },
+      {
+        "h": "Legal",
+        "items": ["Privacy", "Terms", "GDPR", "Cookies"]
+      }
+    ]
+  }
+}

@@ -1,12 +1,72 @@
 'use client';
 import { useState, useMemo } from 'react';
 import { SectionHead } from '../atoms';
+import { useT, useLocale } from '@/i18n/I18nProvider';
+
+const numLocale: Record<string, string> = { es: 'es-ES', en: 'en-US' };
 
 interface Feature {
   l: string;
   v: boolean | string;
   tag?: string;
 }
+
+interface MsgTier {
+  name: string;
+  pitch: string;
+  feeSuffix: string;
+  annualNote?: string;
+  badge?: string;
+  cta: string;
+  features: { l: string; v?: string }[];
+}
+
+/**
+ * Numeric / structural plan config stays in code (pricing logic, never
+ * translated). `featureV` decides each feature row's icon+value:
+ *   false → not included (X) · true → included (✓) · 'msg' → use the
+ *   localized string from messages.
+ */
+const TIER_CONFIG: Record<
+  string,
+  {
+    feeNum: number;
+    commissionPct: number;
+    aiConv: number;
+    aiAdv: number;
+    annualDiscount: number;
+    highlight?: boolean;
+    featureV: (boolean | 'msg')[];
+  }
+> = {
+  starter: {
+    feeNum: 0,
+    commissionPct: 0.035,
+    aiConv: 0.49,
+    aiAdv: 0.79,
+    annualDiscount: 0,
+    featureV: [false, true, false, 'msg'],
+  },
+  pro: {
+    feeNum: 99,
+    commissionPct: 0.02,
+    aiConv: 0.35,
+    aiAdv: 0.65,
+    annualDiscount: 1 / 3,
+    highlight: true,
+    featureV: [true, true, false, 'msg'],
+  },
+  scale: {
+    feeNum: 199,
+    commissionPct: 0.0075,
+    aiConv: 0.29,
+    aiAdv: 0.59,
+    annualDiscount: 1 / 3,
+    featureV: [true, true, 'msg', 'msg'],
+  },
+};
+
+const TIER_KEYS = ['starter', 'pro', 'scale'] as const;
 
 interface Tier {
   key: string;
@@ -28,67 +88,34 @@ interface Tier {
 export function Pricing() {
   const [billing, setBilling] = useState<'monthly' | 'annual'>('monthly');
   const isAnnual = billing === 'annual';
+  const tr = useT();
 
-  const tiers: Tier[] = [
-    {
-      key: 'starter',
-      name: 'Starter',
-      pitch: 'Para arrancar con una sola base sin fee fijo.',
-      feeNum: 0,
-      commissionPct: 0.035,
-      aiConv: 0.49,
-      aiAdv: 0.79,
-      feeSuffix: '/ mes',
-      annualDiscount: 0,
-      features: [
-        { l: 'TPV (Staff Mode + Kiosk)', v: false },
-        { l: 'Resto de features del producto', v: true },
-        { l: 'Account manager', v: false },
-        { l: 'Soporte', v: 'Email · 48h hábiles' },
-      ],
-      cta: 'Empezar con Starter',
-    },
-    {
-      key: 'pro',
-      name: 'Pro',
-      pitch: 'El plan para operadores serios con varias bases.',
-      feeNum: 99,
-      commissionPct: 0.020,
-      aiConv: 0.35,
-      aiAdv: 0.65,
-      feeSuffix: '/ mes · por base',
-      annualDiscount: 1 / 6,
-      annualNote: '2 meses gratis · 16,7%',
-      highlight: true,
-      badge: 'Más elegido',
-      features: [
-        { l: 'TPV (Staff Mode + Kiosk)', v: true },
-        { l: 'Resto de features del producto', v: true },
-        { l: 'Account manager', v: false },
-        { l: 'Soporte', v: 'WhatsApp · 24h hábiles' },
-      ],
-      cta: 'Pedir demo del plan Pro',
-    },
-    {
-      key: 'scale',
-      name: 'Scale',
-      pitch: 'Para grupos multi-base con operación crítica.',
-      feeNum: 199,
-      commissionPct: 0.010,
-      aiConv: 0.29,
-      aiAdv: 0.59,
-      feeSuffix: '/ mes · por base',
-      annualDiscount: 0.20,
-      annualNote: 'Ahorro 20%',
-      features: [
-        { l: 'TPV (Staff Mode + Kiosk)', v: true },
-        { l: 'Resto de features del producto', v: true },
-        { l: 'Account manager', v: 'Compartido' },
-        { l: 'Soporte', v: 'WhatsApp prioritario · 8h hábiles' },
-      ],
-      cta: 'Hablar con el equipo',
-    },
-  ];
+  const tiers: Tier[] = TIER_KEYS.map((key) => {
+    const cfg = TIER_CONFIG[key];
+    const msg = tr<MsgTier>(`pricing.tiers.${key}`);
+    const features: Feature[] = cfg.featureV.map((flag, idx) => ({
+      l: msg.features[idx].l,
+      v: flag === 'msg' ? msg.features[idx].v ?? '' : flag,
+    }));
+    return {
+      key,
+      name: msg.name,
+      pitch: msg.pitch,
+      feeNum: cfg.feeNum,
+      commissionPct: cfg.commissionPct,
+      aiConv: cfg.aiConv,
+      aiAdv: cfg.aiAdv,
+      feeSuffix: msg.feeSuffix,
+      annualDiscount: cfg.annualDiscount,
+      annualNote: msg.annualNote,
+      highlight: cfg.highlight,
+      badge: msg.badge,
+      features,
+      cta: msg.cta,
+    };
+  });
+
+  const facts = tr<{ k: string; v: string }[]>('pricing.facts');
 
   return (
     <section id="pricing" className="section" style={{ paddingBlock: 120 }}>
@@ -105,9 +132,9 @@ export function Pricing() {
         >
           <div style={{ maxWidth: 820, flex: 1 }}>
             <SectionHead
-              eyebrow="07 · Pricing"
-              title={<>Tres planes. Un modelo alineado.</>}
-              lede="Pagás por uso real: comisión sobre lo que generamos, conversaciones de IA y un fee por base cuando ya estás en volumen. Sin sorpresas."
+              eyebrow={tr('pricing.eyebrow')}
+              title={<>{tr('pricing.title')}</>}
+              lede={tr('pricing.lede')}
             />
           </div>
           <div style={{ marginBottom: 8 }}>
@@ -136,12 +163,7 @@ export function Pricing() {
             border: '1px solid var(--line-soft)',
           }}
         >
-          {[
-            ['Pago', 'Mensual · Stripe Connect'],
-            ['Compromiso', 'Sin permanencia · cancelás cuando quieras'],
-            ['Migración', 'Incluida en todos los planes'],
-            ['Datos', 'Tuyos. Export en CSV/JSON cuando quieras'],
-          ].map(([k, v]) => (
+          {facts.map(({ k, v }) => (
             <div key={k} style={{ background: 'var(--surface)', padding: '18px 20px' }}>
               <div className="mono" style={{ fontSize: 10.5, color: 'var(--muted)', letterSpacing: '0.1em' }}>
                 {k.toUpperCase()}
@@ -158,6 +180,7 @@ export function Pricing() {
 }
 
 function PricingCard({ t, i, isAnnual = false }: { t: Tier; i: number; isAnnual: boolean }) {
+  const tr = useT();
   const hi = t.highlight;
   const fmtEur = (n: number) => '€' + (n % 1 === 0 ? n : n.toFixed(0));
   const feeFactor = isAnnual ? 1 - t.annualDiscount : 1;
@@ -278,22 +301,22 @@ function PricingCard({ t, i, isAnnual = false }: { t: Tier; i: number; isAnnual:
               className="mono"
               style={{ fontSize: 10.5, letterSpacing: '0.06em', color: hi ? 'var(--accent-2)' : 'var(--accent)', marginTop: 6 }}
             >
-              FACTURADO ANUAL · {t.annualNote.toUpperCase()} · SOLO FEE
+              {tr('pricing.billedAnnual')} · {t.annualNote.toUpperCase()} · {tr('pricing.feeOnly')}
             </div>
           )}
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, marginTop: 16 }}>
             {(
               [
-                ['Comisión', fmtPct(comm), null],
-                ['IA Conv.', fmtConv(aiConv) + ' / conv', null],
-                ['IA Avanz.', fmtConv(aiAdv) + ' / conv', null],
-              ] as [string, string, string | null][]
-            ).map(([k, v, vOrig]) => (
+                [tr('pricing.commission'), fmtPct(comm), null, true],
+                [tr('pricing.aiConv'), fmtConv(aiConv) + ' ' + tr('pricing.perConv'), null, false],
+                [tr('pricing.aiAdv'), fmtConv(aiAdv) + ' ' + tr('pricing.perConv'), null, false],
+              ] as [string, string, string | null, boolean][]
+            ).map(([k, v, vOrig, wide]) => (
               <div
                 key={k}
                 style={{
-                  gridColumn: k === 'Comisión' ? '1 / -1' : 'auto',
+                  gridColumn: wide ? '1 / -1' : 'auto',
                   padding: '8px 12px',
                   borderRadius: 8,
                   background: hi ? 'rgba(255,255,255,0.05)' : 'var(--surface-2)',
@@ -377,7 +400,7 @@ function PricingCard({ t, i, isAnnual = false }: { t: Tier; i: number; isAnnual:
                   textAlign: 'right',
                 }}
               >
-                {typeof feat.v === 'string' ? feat.v : feat.v ? feat.tag || 'incluido' : '—'}
+                {typeof feat.v === 'string' ? feat.v : feat.v ? feat.tag || tr('pricing.included') : '—'}
               </span>
             </li>
           ))}
@@ -468,6 +491,7 @@ function BillingToggle({
   value: string;
   onChange: (v: 'monthly' | 'annual') => void;
 }) {
+  const tr = useT();
   return (
     <div
       style={{
@@ -483,8 +507,8 @@ function BillingToggle({
     >
       {(
         [
-          { v: 'monthly', l: 'Mensual' },
-          { v: 'annual', l: 'Anual' },
+          { v: 'monthly', l: tr('pricing.billingMonthly') },
+          { v: 'annual', l: tr('pricing.billingAnnual') },
         ] as { v: 'monthly' | 'annual'; l: string }[]
       ).map((opt) => {
         const active = value === opt.v;
@@ -517,7 +541,7 @@ function BillingToggle({
                   borderRadius: 4,
                 }}
               >
-                AHORRA
+                {tr('pricing.billingSave')}
               </span>
             )}
           </button>
@@ -538,6 +562,9 @@ interface PlanCalc {
 }
 
 function PriceCalculator() {
+  const tr = useT();
+  const locale = useLocale();
+  const nLoc = numLocale[locale] ?? 'es-ES';
   const [bases, setBases] = useState(2);
   const [reservas, setReservas] = useState(450);
   const [ticket, setTicket] = useState(130);
@@ -553,8 +580,8 @@ function PriceCalculator() {
   const plans = useMemo<PlanCalc[]>(() => {
     const cfgs: Record<string, { fee: number; commission: number; ai: number; maxBases: number; minBases: number; annual: number }> = {
       starter: { fee: 0,   commission: 0.035, ai: 0.49, maxBases: 1,  minBases: 1, annual: 0 },
-      pro:     { fee: 99,  commission: 0.020, ai: 0.35, maxBases: 5,  minBases: 1, annual: 1 / 6 },
-      scale:   { fee: 199, commission: 0.010, ai: 0.29, maxBases: 10, minBases: 1, annual: 0.20 },
+      pro:     { fee: 99,  commission: 0.020, ai: 0.35, maxBases: 5,  minBases: 1, annual: 1 / 3 },
+      scale:   { fee: 199, commission: 0.0075, ai: 0.29, maxBases: 10, minBases: 1, annual: 1 / 3 },
     };
     return ['starter', 'pro', 'scale'].map((key) => {
       const cfg = cfgs[key];
@@ -571,7 +598,7 @@ function PriceCalculator() {
   const eligiblePlans = plans.filter((p) => p.eligible);
   const best = eligiblePlans.reduce<PlanCalc | null>((a, b) => (a && a.total <= b.total ? a : b), null);
 
-  const fmt = (n: number) => '€ ' + Math.round(n).toLocaleString('es-ES');
+  const fmt = (n: number) => '€ ' + Math.round(n).toLocaleString(nLoc);
 
   return (
     <div
@@ -617,8 +644,8 @@ function PriceCalculator() {
             </svg>
           </span>
           <div>
-            <div className="mono" style={{ fontSize: 11, letterSpacing: '0.08em', color: 'var(--muted)' }}>CALCULADORA</div>
-            <div style={{ fontSize: 16, fontWeight: 500, letterSpacing: '-0.014em' }}>¿Cuánto pagarías cada mes?</div>
+            <div className="mono" style={{ fontSize: 11, letterSpacing: '0.08em', color: 'var(--muted)' }}>{tr('pricing.calc.label').toUpperCase()}</div>
+            <div style={{ fontSize: 16, fontWeight: 500, letterSpacing: '-0.014em' }}>{tr('pricing.calc.title')}</div>
           </div>
         </div>
         <BillingToggle value={billing} onChange={setBilling} />
@@ -634,28 +661,33 @@ function PriceCalculator() {
             gap: 24,
           }}
         >
-          <Slider label="Bases activas" unit=" base/s" value={bases} min={1} max={10} step={1} onChange={setBases} />
-          <Slider label="Reservas / mes" unit="" value={reservas} min={30} max={3000} step={10} onChange={setReservas} />
-          <Slider label="Ticket medio" unit=" €" value={ticket} min={60} max={400} step={5} onChange={setTicket} />
+          <Slider label={tr('pricing.calc.bases')} unit={tr('pricing.calc.basesUnit')} value={bases} min={1} max={10} step={1} onChange={setBases} nLoc={nLoc} />
+          <Slider label={tr('pricing.calc.reservas')} unit="" value={reservas} min={30} max={3000} step={10} onChange={setReservas} nLoc={nLoc} />
+          <Slider label={tr('pricing.calc.ticket')} unit={tr('pricing.calc.ticketUnit')} value={ticket} min={60} max={400} step={5} onChange={setTicket} nLoc={nLoc} />
           <Slider
-            label="Conversaciones IA / mes"
+            label={tr('pricing.calc.convs')}
             unit=""
             value={convs}
             min={100}
             max={6000}
             step={50}
             onChange={setConvs}
-            hint="Estimado con tarifa IA Conversacional"
+            nLoc={nLoc}
+            hint={tr('pricing.calc.convsHint')}
           />
           <Slider
-            label="% de reservas vía Solnow"
-            unit=" %"
+            label={tr('pricing.calc.throughSolnow')}
+            unit={tr('pricing.calc.throughSolnowUnit')}
             value={throughSolnow}
             min={20}
             max={100}
             step={5}
             onChange={setThroughSolnow}
-            hint={`${billable.toLocaleString('es-ES')} reservas facturan comisión · GMV ${fmt(gmv)}`}
+            nLoc={nLoc}
+            hint={tr('pricing.calc.throughSolnowHint', {
+              billable: billable.toLocaleString(nLoc),
+              gmv: fmt(gmv),
+            })}
           />
         </div>
 
@@ -670,7 +702,7 @@ function PriceCalculator() {
         >
           <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 4 }}>
             <span className="mono" style={{ fontSize: 11, letterSpacing: '0.08em', color: 'var(--muted)' }}>
-              COSTE MENSUAL{isAnnual ? ' · FACTURACIÓN ANUAL' : ''}
+              {tr('pricing.calc.monthlyCost').toUpperCase()}{isAnnual ? tr('pricing.calc.annualBilling').toUpperCase() : ''}
             </span>
             {best && (
               <span
@@ -685,7 +717,7 @@ function PriceCalculator() {
                 }}
               >
                 <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent)' }} />
-                MEJOR OPCIÓN · {best.key.toUpperCase()}
+                {tr('pricing.calc.bestOption').toUpperCase()} · {best.key.toUpperCase()}
               </span>
             )}
           </div>
@@ -710,6 +742,7 @@ function RevenueBlock({
   totalRevenue: number;
   fmt: (n: number) => string;
 }) {
+  const tr = useT();
   if (!best || totalRevenue === 0) return null;
   const pct = ((best.total / totalRevenue) * 100).toFixed(1);
 
@@ -729,16 +762,14 @@ function RevenueBlock({
     >
       <div>
         <div className="mono" style={{ fontSize: 10.5, color: 'var(--accent)', letterSpacing: '0.08em' }}>
-          SOBRE LA FACTURACIÓN TOTAL DE TU EMPRESA
+          {tr('pricing.calc.revenueTitle').toUpperCase()}
         </div>
         <div style={{ fontSize: 14, color: 'var(--fg-2)', marginTop: 4, lineHeight: 1.5 }}>
-          Solnow representa{' '}
-          <strong style={{ color: 'var(--accent)', fontSize: 16 }}>{pct}%</strong> de tu facturación mensual (
-          {fmt(totalRevenue)}/mes · todos los canales).
+          {tr('pricing.calc.revenueBody', { pct, total: fmt(totalRevenue) })}
         </div>
       </div>
       <a className="btn btn-primary" href="#cta" style={{ padding: '11px 16px', fontSize: 13.5 }}>
-        Pedir demo
+        {tr('pricing.calc.revenueCta')}
         <svg width="14" height="14" viewBox="0 0 14 14">
           <path
             d="M3 7h8M7.5 3.5 11 7l-3.5 3.5"
@@ -763,6 +794,7 @@ function Slider({
   onChange,
   unit = '',
   hint,
+  nLoc,
 }: {
   label: string;
   value: number;
@@ -772,6 +804,7 @@ function Slider({
   onChange: (v: number) => void;
   unit?: string;
   hint?: string;
+  nLoc: string;
 }) {
   const pct = ((value - min) / (max - min)) * 100;
   return (
@@ -782,7 +815,7 @@ function Slider({
           className="mono"
           style={{ fontSize: 14, fontWeight: 500, color: 'var(--accent)', fontVariantNumeric: 'tabular-nums', letterSpacing: '-0.005em' }}
         >
-          {value.toLocaleString('es-ES')}
+          {value.toLocaleString(nLoc)}
           {unit}
         </span>
       </div>
@@ -842,6 +875,7 @@ function PlanResult({
   fmt: (n: number) => string;
   isAnnual: boolean;
 }) {
+  const tr = useT();
   const labels: Record<string, string> = { starter: 'Starter', pro: 'Pro', scale: 'Scale' };
   const isBest = best && p.key === best.key && p.eligible;
   const disabled = !p.eligible;
@@ -869,7 +903,7 @@ function PlanResult({
               className="mono"
               style={{ fontSize: 9.5, letterSpacing: '0.08em', background: 'var(--accent)', color: 'var(--accent-fg)', padding: '2px 6px', borderRadius: 4 }}
             >
-              RECOMENDADO
+              {tr('pricing.calc.recommended')}
             </span>
           )}
           {isAnnual && !disabled && p.cfg.annual > 0 && (
@@ -885,7 +919,7 @@ function PlanResult({
                 borderRadius: 4,
               }}
             >
-              −{Math.round(p.cfg.annual * 100)}% fee
+              {tr('pricing.calc.feeOff', { pct: Math.round(p.cfg.annual * 100) })}
             </span>
           )}
           {disabled && (
@@ -893,17 +927,21 @@ function PlanResult({
               className="mono"
               style={{ fontSize: 9.5, letterSpacing: '0.06em', color: 'var(--muted-2)', padding: '2px 6px', borderRadius: 4, border: '1px solid var(--line-soft)' }}
             >
-              {p.key === 'starter' && 'solo 1 base'}
-              {p.key === 'pro' && 'máx. 5 bases'}
+              {p.key === 'starter' && tr('pricing.calc.onlyOneBase')}
+              {p.key === 'pro' && tr('pricing.calc.maxFiveBases')}
             </span>
           )}
         </div>
         <div className="mono" style={{ fontSize: 11, color: 'var(--muted)', marginTop: 4, letterSpacing: '0.02em' }}>
-          fee {fmt(p.fee)} · comisión {fmt(p.commission)} · IA {fmt(p.ai)}
+          {tr('pricing.calc.breakdown', {
+            fee: fmt(p.fee),
+            commission: fmt(p.commission),
+            ai: fmt(p.ai),
+          })}
         </div>
       </div>
       <div style={{ textAlign: 'right', fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--muted-2)', letterSpacing: '0.04em' }}>
-        / mes
+        {tr('pricing.calc.perMonth')}
       </div>
       <div
         style={{

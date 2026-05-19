@@ -1,31 +1,35 @@
 'use client';
 import { useState, useEffect, useMemo } from 'react';
 import { WindowChrome } from './atoms';
+import { useT } from '@/i18n/I18nProvider';
 
 interface HeroProps {
   variant?: 'a' | 'b';
 }
 
 export default function Hero({ variant = 'a' }: HeroProps) {
+  const t = useT();
   const headlines = {
     a: {
       h1: (
         <>
-          El sistema operativo de las empresas de motos de agua con{' '}
+          {t('hero.a.pre')}
           <em className="serif" style={{ color: 'var(--accent)' }}>
-            alto volumen
+            {t('hero.a.em')}
           </em>
         </>
       ),
-      sub: 'Digitalizamos venta, papeleo, operación en tiempo real y postventa. Para operadores con flotas que ya no escalan con sistemas genéricos.',
+      sub: t('hero.a.sub'),
     },
     b: {
       h1: (
         <>
-          Tu flota crece. Tu software te <em className="serif">frena</em>.
+          {t('hero.b.pre')}
+          <em className="serif">{t('hero.b.em')}</em>
+          {t('hero.b.post')}
         </>
       ),
-      sub: 'Solnow es el sistema operativo que reemplaza Excel, calendarios y cuatro herramientas inconexas con una única plataforma diseñada para alto volumen multi-base.',
+      sub: t('hero.b.sub'),
     },
   };
   const c = headlines[variant] || headlines.a;
@@ -68,7 +72,7 @@ export default function Hero({ variant = 'a' }: HeroProps) {
             <p className="lede" style={{ maxWidth: '56ch', marginBottom: 36 }}>{c.sub}</p>
             <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap', marginBottom: 36 }}>
               <a className="btn btn-primary" href="#cta">
-                Pedir demo personalizada
+                {t('hero.ctaPrimary')}
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                   <path d="M3 7h8M7.5 3.5 11 7l-3.5 3.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -77,7 +81,7 @@ export default function Hero({ variant = 'a' }: HeroProps) {
                 <svg width="12" height="12" viewBox="0 0 12 12">
                   <path d="M3 2v8l7-4z" fill="currentColor" />
                 </svg>
-                Ver cómo funciona
+                {t('hero.ctaSecondary')}
               </a>
             </div>
 

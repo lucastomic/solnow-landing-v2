@@ -1,20 +1,18 @@
 'use client';
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { SectionHead, BulletList, WindowChrome, NumLabel } from '../atoms';
+import { useT } from '@/i18n/I18nProvider';
 
 export function PainBar() {
-  const bullets = [
-    { k: '50', u: 'consultas/día sin respuesta', d: '15-25 reservas perdidas a la semana' },
-    { k: '2-3h', u: 'diarias quemadas', d: 'firmando contratos a mano' },
-    { k: '0', u: 'visibilidad multi-base', d: 'te enterás cuando ya escaló' },
-  ];
+  const t = useT();
+  const bullets = t<{ k: string; u: string; d: string }[]>('painBar.items');
   return (
     <section className="section" style={{ paddingBlock: 100 }}>
       <div className="container">
         <div className="reveal" style={{ maxWidth: 980, marginBottom: 56 }}>
           <h2 className="h-1" style={{ marginBottom: 0 }}>
-            Si gestionás 30+ reservas al día, ya sabés que sumar volumen significa{' '}
-            <span style={{ color: 'var(--muted)' }}>sumar caos. O sumar personal.</span>
+            {t('painBar.headPre')}
+            <span style={{ color: 'var(--muted)' }}>{t('painBar.headEm')}</span>
           </h2>
         </div>
         <div
@@ -66,11 +64,12 @@ export function PainBar() {
 }
 
 export function Nuclear() {
+  const t = useT();
   return (
     <section className="section" style={{ paddingBlock: 140 }}>
       <div className="container" style={{ maxWidth: 1000 }}>
         <div className="reveal" style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
-          <span className="eyebrow">Diferenciación</span>
+          <span className="eyebrow">{t('nuclear.eyebrow')}</span>
           <p
             className="h-display"
             style={{
@@ -82,15 +81,14 @@ export function Nuclear() {
               color: 'var(--fg-2)',
             }}
           >
-            Los demás te ayudan a <span className="serif" style={{ color: 'var(--muted)' }}>reservar.</span>{' '}
+            {t('nuclear.p1')}<span className="serif" style={{ color: 'var(--muted)' }}>{t('nuclear.reservar')}</span>{' '}
             <br />
-            Nosotros te ayudamos a <span style={{ color: 'var(--fg)' }}>vender</span>{' '}
-            <span style={{ color: 'var(--muted)' }}>y a</span>{' '}
-            <span style={{ color: 'var(--accent)' }}>operar.</span>
+            {t('nuclear.p2')}<span style={{ color: 'var(--fg)' }}>{t('nuclear.vender')}</span>{' '}
+            <span style={{ color: 'var(--muted)' }}>{t('nuclear.ya')}</span>{' '}
+            <span style={{ color: 'var(--accent)' }}>{t('nuclear.operar')}</span>
           </p>
           <p className="lede" style={{ maxWidth: '68ch', color: 'var(--muted)', fontSize: 18 }}>
-            Somos los únicos que digitalizamos las cuatro áreas de tu negocio: el agente de IA cierra reservas en WhatsApp 24/7,
-            y el sistema controla la operación en vivo durante la actividad.
+            {t('nuclear.lede')}
           </p>
         </div>
       </div>
@@ -99,13 +97,15 @@ export function Nuclear() {
 }
 
 export function ProductAreas() {
+  const t = useT();
+  const tabs = t<{ n: string; t: string; s: string }[]>('productAreas.tabs');
   return (
     <section id="producto" className="section" style={{ paddingTop: 60 }}>
       <div className="container">
         <SectionHead
-          eyebrow="04 · El producto"
-          title={<>Cuatro áreas. Una sola plataforma.</>}
-          lede="Cobertura completa del ciclo: antes, durante y después de cada actividad. Cada bloque se conecta con el siguiente en el mismo modelo de datos."
+          eyebrow={t('productAreas.eyebrow')}
+          title={<>{t('productAreas.title')}</>}
+          lede={t('productAreas.lede')}
         />
         <div
           className="mono"
@@ -122,14 +122,7 @@ export function ProductAreas() {
             marginBottom: 80,
           }}
         >
-          {(
-            [
-              ['4.1', 'Venta', 'WhatsApp IA'],
-              ['4.2', 'Papeleo', 'Contratos · facturación'],
-              ['4.3', 'Operación', 'Tiempo real · multi-base'],
-              ['4.4', 'Postventa', 'Reseñas · libro · CRM'],
-            ] as [string, string, string][]
-          ).map(([n, t, s], i) => (
+          {tabs.map(({ n, t: label, s }, i) => (
             <a
               key={n}
               href={`#area-${i + 1}`}
@@ -155,7 +148,7 @@ export function ProductAreas() {
                   fontWeight: 500,
                 }}
               >
-                {t}
+                {label}
               </span>
               <span
                 style={{
@@ -189,25 +182,18 @@ export function ProductAreas() {
 }
 
 function Area1() {
+  const t = useT();
   return (
     <div id="area-1" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
       <div className="reveal">
         <NumLabel n={1} of={4} />
         <h3 className="h-2" style={{ margin: '16px 0 18px' }}>
-          Cerrá reservas en WhatsApp sin que nadie las atienda
+          {t('productAreas.area1.h')}
         </h3>
         <p className="lede" style={{ marginBottom: 28 }}>
-          No es un chatbot. Es un agente conectado en vivo a tu disponibilidad, precios, flota y extras. Asesora, recomienda y cobra.
-          En cualquier idioma, en menos de 1 minuto.
+          {t('productAreas.area1.lede')}
         </p>
-        <BulletList
-          items={[
-            'Conectado en vivo a tu disponibilidad, precios y flota (no responde con guiones predefinidos)',
-            'Cierra la venta y cobra dentro de WhatsApp',
-            'Funciona en cualquier idioma',
-            'Si no puede resolver, deriva a un humano sin perder el contexto',
-          ]}
-        />
+        <BulletList items={t<string[]>('productAreas.area1.bullets')} />
       </div>
       <div className="reveal" style={{ ['--reveal-delay' as string]: '140ms' }}>
         <WhatsAppMock />
@@ -476,24 +462,18 @@ function TypingBubble() {
 }
 
 function Area2() {
+  const t = useT();
   return (
     <div id="area-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
       <div className="reveal" style={{ order: 2 }}>
         <NumLabel n={2} of={4} />
         <h3 className="h-2" style={{ margin: '16px 0 18px' }}>
-          Contratos, facturas y calendario en automático al confirmarse la reserva
+          {t('productAreas.area2.h')}
         </h3>
         <p className="lede" style={{ marginBottom: 28 }}>
-          Cada reserva dispara el papeleo completo. Firma electrónica integrada, facturación al instante, sin overbookings.
+          {t('productAreas.area2.lede')}
         </p>
-        <BulletList
-          items={[
-            'Firma electrónica integrada (incluye contratos para menores)',
-            'Facturación automática y control de pagos',
-            'Calendario y flota sin overbookings',
-            'Comisiones de colaboradores en automático',
-          ]}
-        />
+        <BulletList items={t<string[]>('productAreas.area2.bullets')} />
       </div>
       <div className="reveal" style={{ ['--reveal-delay' as string]: '120ms', order: 1 }}>
         <ContractMock />
@@ -627,6 +607,7 @@ function ContractMock() {
 }
 
 function Area3() {
+  const t = useT();
   return (
     <div
       id="area-3"
@@ -648,18 +629,19 @@ function Area3() {
       <div className="container" style={{ position: 'relative' }}>
         <div className="reveal" style={{ maxWidth: 880, marginBottom: 56 }}>
           <span className="eyebrow chip-accent" style={{ padding: '5px 11px' }}>
-            Esto es lo que ningún software horizontal te va a dar nunca
+            {t('productAreas.area3.eyebrow')}
           </span>
           <h3 className="h-1" style={{ margin: '20px 0 18px', color: '#ffffff' }}>
-            Mirá tu flota{' '}
+            {t('productAreas.area3.hPre')}
             <em className="serif" style={{ color: '#7ec3e8' }}>
-              en vivo
+              {t('productAreas.area3.hEm')}
             </em>
-            , aunque no estés ahí
+            {t('productAreas.area3.hPost')}
           </h3>
           <p className="lede" style={{ color: '#c4d6e3' }}>
-            El único módulo del mercado que digitaliza lo que pasa{' '}
-            <strong style={{ color: '#ffffff' }}>durante la actividad</strong>, no solo antes y después.
+            {t('productAreas.area3.ledePre')}
+            <strong style={{ color: '#ffffff' }}>{t('productAreas.area3.ledeStrong')}</strong>
+            {t('productAreas.area3.ledePost')}
           </p>
         </div>
 
@@ -670,15 +652,7 @@ function Area3() {
           <div className="reveal" style={{ ['--reveal-delay' as string]: '120ms', display: 'flex', flexDirection: 'column', gap: 14 }}>
             <QRMock />
             <DelayToast />
-            <BulletList
-              color="#ffffff"
-              items={[
-                'Dashboard en tiempo real multi-base',
-                'Escaneo QR de embarque',
-                'Alertas automáticas de retrasos',
-                'Visibilidad descentralizada sin estar físicamente',
-              ]}
-            />
+            <BulletList color="#ffffff" items={t<string[]>('productAreas.area3.bullets')} />
           </div>
         </div>
       </div>
@@ -900,24 +874,18 @@ function DelayToast() {
 }
 
 function Area4() {
+  const t = useT();
   return (
     <div id="area-4" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
       <div className="reveal">
         <NumLabel n={4} of={4} />
         <h3 className="h-2" style={{ margin: '16px 0 18px' }}>
-          Libro de registros, reseñas y fidelización en piloto automático
+          {t('productAreas.area4.h')}
         </h3>
         <p className="lede" style={{ marginBottom: 28 }}>
-          Termina la actividad y el sistema se encarga del cierre: cumplimiento legal, captura de reseña, perfil de cliente y métricas.
+          {t('productAreas.area4.lede')}
         </p>
-        <BulletList
-          items={[
-            'Libro de registros conforme a regulación marítima',
-            'Solicitud automática de reseñas',
-            'Ficha centralizada de cliente recurrente',
-            'Dashboard de métricas del negocio',
-          ]}
-        />
+        <BulletList items={t<string[]>('productAreas.area4.bullets')} />
       </div>
       <div className="reveal" style={{ ['--reveal-delay' as string]: '120ms' }}>
         <MetricsMock />

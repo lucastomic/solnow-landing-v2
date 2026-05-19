@@ -1,23 +1,39 @@
 'use client';
 import { SectionHead } from '../atoms';
+import { useT } from '@/i18n/I18nProvider';
 
 export function Comparison() {
-  const cols = [
-    { k: 'gen', name: 'Motores genéricos', sub: 'FareHarbor · Bookeo' },
-    { k: 'h2o', name: 'Software watersports', sub: 'verticales near-water' },
-    { k: 'own', name: 'Solución propia con IA', sub: 'build-it-yourself' },
-    { k: 'sol', name: 'Solnow', sub: 'sistema operativo completo', highlight: true },
+  const t = useT();
+  const colKeys = ['gen', 'h2o', 'own', 'sol'] as const;
+  const colDefs = t<{ name: string; sub: string }[]>('comparison.cols');
+  const cols = colKeys.map((k, i) => ({
+    k,
+    name: colDefs[i].name,
+    sub: colDefs[i].sub,
+    highlight: k === 'sol',
+  }));
+  const rowLabels = t<string[]>('comparison.rowLabels');
+  const ttp = t<string[]>('comparison.timeToProd');
+  const rowValues: (number | string)[][] = [
+    [1, 1, 0.5, 1],
+    [0, 0.5, 0, 1],
+    [0, 0, 0, 1],
+    [0, 0, 0.5, 1],
+    [0.5, 0.5, 0, 1],
+    [0.5, 0, 0, 1],
+    [0, 0.5, 0, 1],
+    [ttp[0], ttp[1], ttp[2], ttp[3]],
   ];
-  const rows: [string, number | string, number | string, number | string, number | string][] = [
-    ['Motor de reservas', 1, 1, 0.5, 1],
-    ['Vertical jet ski', 0, 0.5, 0, 1],
-    ['Operación en tiempo real (QR + dashboard)', 0, 0, 0, 1],
-    ['IA conversacional que cierra ventas', 0, 0, 0.5, 1],
-    ['Integraciones OTAs náuticas', 0.5, 0.5, 0, 1],
-    ['Cumplimiento legal del sector', 0.5, 0, 0, 1],
-    ['Soporte en temporada alta', 0, 0.5, 0, 1],
-    ['Tiempo a producción', 'Semanas', 'Semanas', '6–12 meses', 'Días'],
-  ];
+  const rows = rowLabels.map(
+    (label, i) =>
+      [label, ...rowValues[i]] as [
+        string,
+        number | string,
+        number | string,
+        number | string,
+        number | string
+      ]
+  );
 
   const cell = (v: number | string, isLast: boolean) => {
     if (typeof v === 'string') {
@@ -36,8 +52,8 @@ export function Comparison() {
     <section id="comparativa" className="section" style={{ paddingBlock: 120 }}>
       <div className="container">
         <SectionHead
-          eyebrow="05 · Comparativa"
-          title={<>Cómo nos comparamos con las otras opciones que estás evaluando</>}
+          eyebrow={t('comparison.eyebrow')}
+          title={<>{t('comparison.title')}</>}
         />
         <div
           className="reveal"
@@ -57,7 +73,7 @@ export function Comparison() {
             }}
           >
             <div style={{ padding: '20px 24px' }}>
-              <div className="mono" style={{ fontSize: 10, letterSpacing: '0.1em', color: 'var(--muted-2)' }}>CAPACIDAD</div>
+              <div className="mono" style={{ fontSize: 10, letterSpacing: '0.1em', color: 'var(--muted-2)' }}>{t('comparison.capability').toUpperCase()}</div>
             </div>
             {cols.map((c) => (
               <div
@@ -85,7 +101,7 @@ export function Comparison() {
                       borderRadius: 4,
                     }}
                   >
-                    NOSOTROS
+                    {t('comparison.us').toUpperCase()}
                   </span>
                 )}
                 <div
@@ -138,19 +154,18 @@ export function Comparison() {
         <div className="reveal" style={{ marginTop: 32, display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
           <div style={{ display: 'flex', gap: 14, fontSize: 12, color: 'var(--muted)' }}>
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-              <span style={{ color: 'var(--ok)', fontSize: 14 }}>●</span> incluido
+              <span style={{ color: 'var(--ok)', fontSize: 14 }}>●</span> {t('comparison.legendIncluded')}
             </span>
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-              <span style={{ color: 'var(--warn)' }}>◐</span> parcial
+              <span style={{ color: 'var(--warn)' }}>◐</span> {t('comparison.legendPartial')}
             </span>
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-              <span style={{ color: 'var(--muted-2)' }}>○</span> no
+              <span style={{ color: 'var(--muted-2)' }}>○</span> {t('comparison.legendNo')}
             </span>
           </div>
           <span style={{ flex: 1 }} />
           <p className="serif" style={{ margin: 0, fontSize: 19, color: 'var(--fg-2)', maxWidth: '54ch' }}>
-            Construir desde cero tiene sentido si tu producto es tu diferencial. Si tu diferencial es operar motos en el agua,
-            cada mes que dedicás a programar es un mes que no escalás.
+            {t('comparison.closing')}
           </p>
         </div>
       </div>
@@ -159,29 +174,14 @@ export function Comparison() {
 }
 
 export function Partner() {
-  const items = [
-    {
-      h: 'Incentivos alineados',
-      s: 'Cobramos un % sobre las reservas que generamos + coste por conversación de IA. Sin cuota fija. Si no facturás, no cobramos.',
-      pull: '0% cuota fija',
-    },
-    {
-      h: 'Delegación total de lo digital',
-      s: 'Web, sistema, IA, configuración, optimización. Tú operás motos, nosotros operamos tu negocio digital.',
-      pull: '95% del trabajo',
-    },
-    {
-      h: 'Soporte como partner, no como proveedor',
-      s: 'Capacitación completa, carga de activos, ayuda con precios y fotos, disponibilidad real en temporada alta.',
-      pull: 'Sin tickets',
-    },
-  ];
+  const t = useT();
+  const items = t<{ pull: string; h: string; s: string }[]>('partner.items');
   return (
     <section className="section" style={{ paddingBlock: 120 }}>
       <div className="container">
         <SectionHead
-          eyebrow="06 · Modelo de partner"
-          title={<>No somos un proveedor. Somos un partner que cobra cuando vos facturás.</>}
+          eyebrow={t('partner.eyebrow')}
+          title={<>{t('partner.title')}</>}
         />
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
           {items.map((it, i) => (

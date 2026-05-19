@@ -1,62 +1,25 @@
 'use client';
 import { useState } from 'react';
 import Image from 'next/image';
+import { useRouter, usePathname } from 'next/navigation';
 import { SectionHead } from '../atoms';
+import { useT, useLocale } from '@/i18n/I18nProvider';
+import { locales } from '@/i18n/config';
 
 export function Onboarding() {
-  const steps = [
-    {
-      day: 'Día 1',
-      label: 'Kickoff',
-      h: 'Mapeamos tu operación actual',
-      points: ['Sesión de 90 minutos', 'Identificamos cuellos de botella y flujos críticos', 'Particularidades de tu negocio'],
-      you: 'Estar 90 min en una llamada',
-    },
-    {
-      day: 'Días 2–4',
-      label: 'Configuración',
-      h: 'Cargamos flota, bases, precios y extras',
-      points: ['Configuramos contratos y plantillas', 'Entrenamos al agente de IA con tu información real', 'Sin downtime en tu operación actual'],
-      you: 'Mandarnos fotos y revisar precios',
-    },
-    {
-      day: 'Días 5–6',
-      label: 'Web e integraciones',
-      h: 'Conectamos web, OTAs y pagos',
-      points: ['Motor de reservas integrado a tu web', 'Viator · GetYourGuide · Stripe', 'Migración de datos históricos'],
-      you: 'Darnos acceso a tus cuentas',
-    },
-    {
-      day: 'Día 7',
-      label: 'Go-live',
-      h: 'Capacitación y activación',
-      points: ['Sesión con tu equipo', 'Sistema en producción', 'Primera reserva real a través de Solnow'],
-      you: 'Avisar al equipo que hoy es el día',
-    },
-  ];
-
-  const qa = [
-    {
-      q: '¿Qué pasa con mi web actual?',
-      a: 'Tres opciones: la conservamos y le integramos el motor de reservas, la rediseñamos si necesita refresh, o partimos de cero. Lo decidimos en el kickoff.',
-    },
-    {
-      q: '¿Y mis datos históricos?',
-      a: 'Migramos clientes, reservas históricas y configuración desde Excel, Google Calendar u otro software. Sin pérdida de datos.',
-    },
-    {
-      q: '¿Qué pasa si en plena temporada algo se rompe?',
-      a: 'Soporte directo con el equipo, no ticket genérico. En temporada alta estamos disponibles fuera de horario. Es parte del modelo de partner.',
-    },
-  ];
+  const t = useT();
+  const steps = t<
+    { day: string; label: string; h: string; points: string[]; you: string }[]
+  >('onboarding.steps');
+  const qa = t<{ q: string; a: string }[]>('onboarding.qa');
 
   return (
     <section id="implementacion" className="section" style={{ paddingBlock: 120 }}>
       <div className="container">
         <SectionHead
-          eyebrow="08 · Implementación"
-          title={<>En 7 días tu operación digital corre sobre Solnow</>}
-          lede="Nosotros hacemos el 95% del trabajo de implementación. Vos seguís operando."
+          eyebrow={t('onboarding.eyebrow')}
+          title={<>{t('onboarding.title')}</>}
+          lede={t('onboarding.lede')}
         />
 
         <div style={{ position: 'relative', marginBottom: 56 }}>
@@ -125,7 +88,7 @@ export function Onboarding() {
                       color: 'var(--fg-2)',
                     }}
                   >
-                    <span className="mono" style={{ color: 'var(--muted)', letterSpacing: '0.06em', fontSize: 10 }}>TU TRABAJO ·</span>
+                    <span className="mono" style={{ color: 'var(--muted)', letterSpacing: '0.06em', fontSize: 10 }}>{t('onboarding.yourWork').toUpperCase()}</span>
                     <br />
                     {s.you}
                   </div>
@@ -150,7 +113,7 @@ export function Onboarding() {
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
                 <span className="mono" style={{ fontSize: 11, color: 'var(--accent)', letterSpacing: '0.08em' }}>
-                  OBJ.{String(i + 1).padStart(2, '0')}
+                  {t('onboarding.objective').toUpperCase()}{String(i + 1).padStart(2, '0')}
                 </span>
               </div>
               <h3 className="h-3" style={{ fontSize: 17, marginBottom: 10 }}>{it.q}</h3>
@@ -174,10 +137,10 @@ export function Onboarding() {
           }}
         >
           <span className="serif" style={{ fontSize: 19, flex: 1, color: 'var(--fg)' }}>
-            ¿Querés ver cómo sería tu implementación específica? Te montamos una demo con tu flota real.
+            {t('onboarding.ctaText')}
           </span>
           <a className="btn btn-primary" href="#cta" style={{ padding: '11px 18px' }}>
-            Pedir demo
+            {t('onboarding.ctaButton')}
             <svg width="14" height="14" viewBox="0 0 14 14">
               <path d="M3 7h8M7.5 3.5 11 7l-3.5 3.5" stroke="currentColor" strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
@@ -189,29 +152,8 @@ export function Onboarding() {
 }
 
 export function SocialProof() {
-  const testimonials = [
-    {
-      quote: 'Pasamos de 8 a 22 reservas/día sin contratar a nadie. La IA cierra el 70% de las consultas de WhatsApp antes de que abramos.',
-      who: 'Marc Aznar',
-      role: 'CEO · MarinaJets',
-      kpi: '+175%',
-      kpiLabel: 'reservas/día',
-    },
-    {
-      quote: 'Por primera vez en cinco años veo la operación de las tres bases en una sola pantalla. Y lo veo desde el móvil.',
-      who: 'Helena Costa',
-      role: 'Operations · BaleariJet',
-      kpi: '3 → 1',
-      kpiLabel: 'paneles → 1',
-    },
-    {
-      quote: 'Quité tres herramientas, dos hojas de cálculo y una persona en backoffice. Solnow paga su % solo con eso.',
-      who: 'Daniel Ríos',
-      role: 'Fundador · CostaSports',
-      kpi: '−40%',
-      kpiLabel: 'coste admin.',
-    },
-  ];
+  const t = useT();
+  const partners = t<{ n: string; s: string }[]>('socialProof.partners');
 
   const logos: { src: string; alt: string; w: number; h: number }[] = [
     { src: '/logos/marina-jets.png', alt: 'MarinaJets', w: 151, h: 149 },
@@ -229,7 +171,7 @@ export function SocialProof() {
   return (
     <section className="section" style={{ paddingBlock: 120 }}>
       <div className="container">
-        <SectionHead eyebrow="09 · OPERADORES CON SOLNOW EN PRODUCCIÓN" title={<>Operadores que ya trabajan con Solnow</>} />
+        <SectionHead eyebrow={t('socialProof.eyebrow')} title={<>{t('socialProof.title')}</>} />
 
 
 
@@ -262,12 +204,7 @@ export function SocialProof() {
         </div>
 
         <div className="reveal" style={{ display: 'flex', justifyContent: 'space-between', gap: 24, marginTop: 40, flexWrap: 'wrap' }}>
-          {[
-            ['LANZADERA', 'Empresa acelerada'],
-            ['VIATOR', 'Partner OTAs'],
-            ['GETYOURGUIDE', 'Integración nativa'],
-            ['STRIPE', 'Verified partner'],
-          ].map(([n, s]) => (
+          {partners.map(({ n, s }) => (
             <div key={n} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
               {n === 'LANZADERA' ? (
                 <Image
@@ -291,47 +228,15 @@ export function SocialProof() {
 }
 
 export function FAQ() {
-  const faqs = [
-    {
-      q: '¿Cuánto cuesta Solnow?',
-      a: 'Cobramos % sobre las reservas que generamos a través de nuestra plataforma + coste por conversación de IA. No hay cuota fija ni setup fee. Modelo alineado: si no facturás, no cobramos.',
-    },
-    {
-      q: '¿Cómo funciona el modelo de comisión?',
-      a: 'Aplicamos una comisión sobre el GMV de las reservas procesadas por Solnow (motor + WhatsApp IA + OTAs). El detalle exacto se acuerda según tu volumen y mix de canales en el kickoff.',
-    },
-    {
-      q: '¿Funciona si no tengo internet estable en la base?',
-      a: 'Sí. La app de embarque funciona offline-first: registra escaneos QR, firma y check-in sin conexión y sincroniza cuando vuelve la señal. Crítico para muelles y zonas con cobertura intermitente.',
-    },
-    {
-      q: '¿Qué pasa con mis datos si dejo Solnow?',
-      a: 'Tus datos son tuyos. Te entregamos un export completo (clientes, reservas, contratos, facturas) en CSV + JSON, sin trabas ni periodos de retención.',
-    },
-    {
-      q: '¿Manejan contratos para menores?',
-      a: 'Sí. Plantillas específicas con campos para tutor legal, firma del padre/madre, validación de documentación. Conforme a normativa española y compatible con regulaciones de capitanía.',
-    },
-    {
-      q: '¿Se integra con Viator / GetYourGuide?',
-      a: 'Integraciones nativas con ambas. Inventario sincronizado en tiempo real, sin overbookings entre canales. Stripe para pagos. Otras OTAs bajo demanda.',
-    },
-    {
-      q: '¿Puedo configurar precios distintos por temporada?',
-      a: 'Sí. Precios por temporada, día de semana, hora del día, duración y modelo de moto. Reglas combinables y revisables sin tocar código.',
-    },
-    {
-      q: '¿Cómo se factura: por reserva o mensual?',
-      a: 'Factura mensual con detalle por reserva, comisión y conversaciones de IA. Liquidación automática vía Stripe Connect a tu cuenta el mes siguiente.',
-    },
-  ];
+  const t = useT();
+  const faqs = t<{ q: string; a: string }[]>('faq.items');
 
   const [open, setOpen] = useState(0);
 
   return (
     <section id="faq" className="section" style={{ paddingBlock: 120 }}>
       <div className="container" style={{ maxWidth: 1000 }}>
-        <SectionHead eyebrow="10 · FAQ" title={<>Preguntas frecuentes</>} />
+        <SectionHead eyebrow={t('faq.eyebrow')} title={<>{t('faq.title')}</>} />
         <div style={{ borderTop: '1px solid var(--line-soft)' }}>
           {faqs.map((f, i) => {
             const isOpen = open === i;
@@ -398,6 +303,8 @@ export function FAQ() {
 }
 
 export function FinalCTA() {
+  const t = useT();
+  const problems = t<string[]>('finalCta.problems');
   return (
     <section
       id="cta"
@@ -416,19 +323,15 @@ export function FinalCTA() {
       <div className="container" style={{ position: 'relative' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 80, alignItems: 'center' }}>
           <div className="reveal">
-            <span className="eyebrow">11 · Demo</span>
+            <span className="eyebrow">{t('finalCta.eyebrow')}</span>
             <h2 className="h-display" style={{ margin: '16px 0 24px', fontSize: 'clamp(38px, 5.4vw, 72px)' }}>
-              ¿Te suena alguno de{' '}
+              {t('finalCta.headPre')}
               <em className="serif" style={{ color: 'var(--accent)' }}>
-                estos problemas?
+                {t('finalCta.headEm')}
               </em>
             </h2>
             <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 36px', display: 'flex', flexDirection: 'column', gap: 14 }}>
-              {[
-                'Tu operación tocó techo y sumar reservas significa sumar caos.',
-                'Perdiste el control de lo que pasa en cada base cuando no estás físicamente.',
-                'Cada finde de pico es una carrera contra el reloj y un riesgo legal.',
-              ].map((t, i) => (
+              {problems.map((p, i) => (
                 <li key={i} style={{ display: 'grid', gridTemplateColumns: '28px 1fr', gap: 14, alignItems: 'start', fontSize: 17, color: 'var(--fg-2)' }}>
                   <span
                     style={{
@@ -446,20 +349,20 @@ export function FinalCTA() {
                   >
                     ↳
                   </span>
-                  <span>{t}</span>
+                  <span>{p}</span>
                 </li>
               ))}
             </ul>
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
               <a className="btn btn-primary" href="#" style={{ fontSize: 16, padding: '15px 22px' }}>
-                Pedir demo personalizada con tu flota real
+                {t('finalCta.cta')}
                 <svg width="16" height="16" viewBox="0 0 14 14">
                   <path d="M3 7h8M7.5 3.5 11 7l-3.5 3.5" stroke="currentColor" strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </a>
             </div>
             <p className="mono" style={{ marginTop: 18, fontSize: 12, color: 'var(--muted)', letterSpacing: '0.04em' }}>
-              Te montamos la demo con tus motos, tus bases y tu volumen real · 30 minutos · sin compromiso
+              {t('finalCta.note')}
             </p>
           </div>
 
@@ -473,6 +376,7 @@ export function FinalCTA() {
 }
 
 function DemoCalendar() {
+  const t = useT();
   const [picked, setPicked] = useState(15);
   const [time, setTime] = useState('11:00');
   const days = [12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
@@ -490,18 +394,18 @@ function DemoCalendar() {
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 18 }}>
-        <div className="mono" style={{ fontSize: 11, color: 'var(--muted)', letterSpacing: '0.08em' }}>AGENDAR DEMO</div>
+        <div className="mono" style={{ fontSize: 11, color: 'var(--muted)', letterSpacing: '0.08em' }}>{t('finalCta.calendar.label').toUpperCase()}</div>
         <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
           <span className="live-dot" />
-          <span className="mono" style={{ fontSize: 10.5, color: 'var(--muted)' }}>disponible esta semana</span>
+          <span className="mono" style={{ fontSize: 10.5, color: 'var(--muted)' }}>{t('finalCta.calendar.available')}</span>
         </div>
       </div>
       <h3 className="h-3" style={{ fontSize: 21, marginBottom: 18, letterSpacing: '-0.016em' }}>
-        30 minutos con un partner. Tu flota, tu volumen.
+        {t('finalCta.calendar.title')}
       </h3>
 
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
-        <span className="mono" style={{ fontSize: 11, color: 'var(--muted)', letterSpacing: '0.06em' }}>MAY · 2026</span>
+        <span className="mono" style={{ fontSize: 11, color: 'var(--muted)', letterSpacing: '0.06em' }}>{t('finalCta.calendar.month').toUpperCase()}</span>
         <div style={{ display: 'flex', gap: 4 }}>
           <button style={{ width: 22, height: 22, borderRadius: 6, border: '1px solid var(--line)', color: 'var(--muted)' }}>‹</button>
           <button style={{ width: 22, height: 22, borderRadius: 6, border: '1px solid var(--line)', color: 'var(--muted)' }}>›</button>
@@ -530,77 +434,53 @@ function DemoCalendar() {
         ))}
       </div>
 
-      <div className="mono" style={{ fontSize: 11, color: 'var(--muted)', letterSpacing: '0.06em', marginBottom: 8 }}>HORA · CET</div>
+      <div className="mono" style={{ fontSize: 11, color: 'var(--muted)', letterSpacing: '0.06em', marginBottom: 8 }}>{t('finalCta.calendar.timeLabel').toUpperCase()}</div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 6, marginBottom: 20 }}>
-        {times.map((t) => (
+        {times.map((slot) => (
           <button
-            key={t}
-            onClick={() => setTime(t)}
+            key={slot}
+            onClick={() => setTime(slot)}
             style={{
               padding: '10px 0',
               borderRadius: 8,
-              background: time === t ? 'oklch(1 0 0 / 0.06)' : 'oklch(1 0 0 / 0.02)',
-              border: '1px solid ' + (time === t ? 'var(--accent-dim)' : 'var(--line-soft)'),
-              color: time === t ? 'var(--accent)' : 'var(--fg-2)',
+              background: time === slot ? 'oklch(1 0 0 / 0.06)' : 'oklch(1 0 0 / 0.02)',
+              border: '1px solid ' + (time === slot ? 'var(--accent-dim)' : 'var(--line-soft)'),
+              color: time === slot ? 'var(--accent)' : 'var(--fg-2)',
               fontSize: 13,
               letterSpacing: '-0.01em',
               fontFamily: 'var(--font-mono)',
               cursor: 'pointer',
             }}
           >
-            {t}
+            {slot}
           </button>
         ))}
       </div>
 
       <button className="btn btn-primary" style={{ width: '100%', justifyContent: 'center', padding: '14px 18px', fontSize: 15 }}>
-        Confirmar · 15 may · {time}
+        {t('finalCta.calendar.confirm', { time })}
       </button>
     </div>
   );
 }
 
+const LANG_OPTIONS: { value: 'es' | 'en'; label: string }[] = [
+  { value: 'es', label: '🇪🇸 Español' },
+  { value: 'en', label: '🇬🇧 English' },
+];
+
 export function Footer() {
-  const cols = [
-    {
-      h: 'Producto',
-      items: [
-        ['Agente IA WhatsApp', '#'],
-        ['Motor de reservas', '#'],
-        ['Operación tiempo real', '#'],
-        ['Contratos digitales', '#'],
-        ['Libro de registros', '#'],
-      ],
-    },
-    {
-      h: 'Recursos',
-      items: [
-        ['Casos de éxito', '#'],
-        ['Blog', '#'],
-        ['Integraciones', '#'],
-        ['Cambios de versión', '#'],
-        ['Estado del sistema', '#'],
-      ],
-    },
-    {
-      h: 'Empresa',
-      items: [
-        ['Sobre Solnow', '#'],
-        ['Modelo de partner', '#'],
-        ['Carreras', '#'],
-        ['Contacto', '#'],
-      ],
-    },
-    {
-      h: 'Legal',
-      items: [
-        ['Privacidad', '#'],
-        ['Términos', '#'],
-        ['GDPR', '#'],
-        ['Cookies', '#'],
-      ],
-    },
-  ];
+  const t = useT();
+  const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
+  const cols = t<{ h: string; items: string[] }[]>('footer.columns');
+
+  const switchLocale = (next: string) => {
+    if (next === locale) return;
+    const rest = pathname.replace(new RegExp(`^/(${locales.join('|')})`), '');
+    router.push(`/${next}${rest}`);
+  };
 
   return (
     <footer style={{ borderTop: '1px solid var(--line-soft)', paddingTop: 80, paddingBottom: 36, background: 'oklch(0.11 0.018 240)' }}>
@@ -608,14 +488,15 @@ export function Footer() {
         <div style={{ display: 'grid', gridTemplateColumns: '1.4fr repeat(4, 1fr)', gap: 40, marginBottom: 56 }}>
           <div>
             <div style={{ display: 'inline-flex', alignItems: 'center', marginBottom: 16 }}>
-              <Image src="/assets/solnow-wordmark-white.png" alt="Solnow" width={104} height={26} style={{ height: 26, width: 'auto' }} />
+              <Image src="/assets/solnow-wordmark-white.png" alt={t('metadata.siteName')} width={104} height={26} style={{ height: 26, width: 'auto' }} />
             </div>
             <p style={{ color: 'var(--muted)', fontSize: 14, maxWidth: '36ch', margin: 0 }}>
-              El sistema operativo para empresas de motos de agua con alto volumen. Hecho en Valencia, operado en el Mediterráneo.
+              {t('footer.tagline')}
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 22 }}>
               <select
                 className="mono"
+                aria-label={t('footer.langLabel')}
                 style={{
                   background: 'oklch(1 0 0 / 0.02)',
                   border: '1px solid var(--line)',
@@ -625,12 +506,14 @@ export function Footer() {
                   fontSize: 12,
                   letterSpacing: '0.04em',
                 }}
-                defaultValue="es"
+                value={locale}
+                onChange={(e) => switchLocale(e.target.value)}
               >
-                <option value="es">🇪🇸 Español</option>
-                <option value="en">🇬🇧 English</option>
-                <option value="it">🇮🇹 Italiano</option>
-                <option value="fr">🇫🇷 Français</option>
+                {LANG_OPTIONS.map((o) => (
+                  <option key={o.value} value={o.value}>
+                    {o.label}
+                  </option>
+                ))}
               </select>
             </div>
           </div>
@@ -640,10 +523,10 @@ export function Footer() {
                 {c.h.toUpperCase()}
               </div>
               <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
-                {c.items.map(([l, h]) => (
+                {c.items.map((l) => (
                   <li key={l}>
                     <a
-                      href={h}
+                      href="#"
                       style={{ fontSize: 13.5, color: 'var(--fg-2)' }}
                       onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
                       onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--fg-2)')}
@@ -669,11 +552,11 @@ export function Footer() {
           }}
         >
           <div className="mono" style={{ fontSize: 11.5, color: 'var(--muted-2)', letterSpacing: '0.04em' }}>
-            © 2026 Solnow S.L. · CIF B-12345678 · Valencia, ES
+            {t('footer.legal')}
           </div>
           <div className="mono" style={{ fontSize: 11.5, color: 'var(--muted-2)', letterSpacing: '0.04em', display: 'flex', alignItems: 'center', gap: 10 }}>
             <span className="live-dot" />
-            Todos los sistemas operativos
+            {t('footer.status')}
           </div>
         </div>
       </div>

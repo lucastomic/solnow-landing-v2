@@ -1,0 +1,409 @@
+{
+  "metadata": {
+    "title": "Solnow — El sistema operativo para flotas de motos de agua",
+    "description": "Digitalizamos venta, papeleo, operación en tiempo real y postventa. Para operadores con flotas que ya no escalan con sistemas genéricos.",
+    "siteName": "Solnow",
+    "ogImageAlt": "Solnow — el sistema operativo para flotas de motos de agua de alto volumen"
+  },
+  "jsonLd": {
+    "orgName": "Solnow",
+    "orgDescription": "El sistema operativo para empresas de motos de agua con alto volumen. Digitaliza venta, papeleo, operación en tiempo real y postventa.",
+    "appName": "Solnow",
+    "appDescription": "Plataforma que digitaliza las cuatro áreas de un operador de motos de agua: venta con agente de IA en WhatsApp, papeleo automático, operación en vivo multi-base y postventa.",
+    "appCategory": "BusinessApplication"
+  },
+  "nav": {
+    "producto": "Producto",
+    "comparativa": "Comparativa",
+    "implementacion": "Implementación",
+    "faq": "FAQ",
+    "signIn": "Entrar",
+    "cta": "Pedir demo"
+  },
+  "hero": {
+    "a": {
+      "pre": "El sistema operativo de las empresas de motos de agua con ",
+      "em": "alto volumen",
+      "sub": "Digitalizamos venta, papeleo, operación en tiempo real y postventa. Para operadores con flotas que ya no escalan con sistemas genéricos."
+    },
+    "b": {
+      "pre": "Tu flota crece. Tu software te ",
+      "em": "frena",
+      "post": ".",
+      "sub": "Solnow es el sistema operativo que reemplaza Excel, calendarios y cuatro herramientas inconexas con una única plataforma diseñada para alto volumen multi-base."
+    },
+    "ctaPrimary": "Pedir demo personalizada",
+    "ctaSecondary": "Ver cómo funciona"
+  },
+  "painBar": {
+    "headPre": "Si gestionás 30+ reservas al día, ya sabés que sumar volumen significa ",
+    "headEm": "sumar caos. O sumar personal.",
+    "items": [
+      { "k": "50", "u": "consultas/día sin respuesta", "d": "15-25 reservas perdidas a la semana" },
+      { "k": "2-3h", "u": "diarias quemadas", "d": "firmando contratos a mano" },
+      { "k": "0", "u": "visibilidad multi-base", "d": "te enterás cuando ya escaló" }
+    ]
+  },
+  "nuclear": {
+    "eyebrow": "Diferenciación",
+    "p1": "Los demás te ayudan a ",
+    "reservar": "reservar.",
+    "p2": "Nosotros te ayudamos a ",
+    "vender": "vender",
+    "ya": "y a",
+    "operar": "operar.",
+    "lede": "Somos los únicos que digitalizamos las cuatro áreas de tu negocio: el agente de IA cierra reservas en WhatsApp 24/7, y el sistema controla la operación en vivo durante la actividad."
+  },
+  "productAreas": {
+    "eyebrow": "04 · El producto",
+    "title": "Cuatro áreas. Una sola plataforma.",
+    "lede": "Cobertura completa del ciclo: antes, durante y después de cada actividad. Cada bloque se conecta con el siguiente en el mismo modelo de datos.",
+    "tabs": [
+      { "n": "4.1", "t": "Venta", "s": "WhatsApp IA" },
+      { "n": "4.2", "t": "Papeleo", "s": "Contratos · facturación" },
+      { "n": "4.3", "t": "Operación", "s": "Tiempo real · multi-base" },
+      { "n": "4.4", "t": "Postventa", "s": "Reseñas · libro · CRM" }
+    ],
+    "area1": {
+      "h": "Cerrá reservas en WhatsApp sin que nadie las atienda",
+      "lede": "No es un chatbot. Es un agente conectado en vivo a tu disponibilidad, precios, flota y extras. Asesora, recomienda y cobra. En cualquier idioma, en menos de 1 minuto.",
+      "bullets": [
+        "Conectado en vivo a tu disponibilidad, precios y flota (no responde con guiones predefinidos)",
+        "Cierra la venta y cobra dentro de WhatsApp",
+        "Funciona en cualquier idioma",
+        "Si no puede resolver, deriva a un humano sin perder el contexto"
+      ]
+    },
+    "area2": {
+      "h": "Contratos, facturas y calendario en automático al confirmarse la reserva",
+      "lede": "Cada reserva dispara el papeleo completo. Firma electrónica integrada, facturación al instante, sin overbookings.",
+      "bullets": [
+        "Firma electrónica integrada (incluye contratos para menores)",
+        "Facturación automática y control de pagos",
+        "Calendario y flota sin overbookings",
+        "Comisiones de colaboradores en automático"
+      ]
+    },
+    "area3": {
+      "eyebrow": "Esto es lo que ningún software horizontal te va a dar nunca",
+      "hPre": "Mirá tu flota ",
+      "hEm": "en vivo",
+      "hPost": ", aunque no estés ahí",
+      "ledePre": "El único módulo del mercado que digitaliza lo que pasa ",
+      "ledeStrong": "durante la actividad",
+      "ledePost": ", no solo antes y después.",
+      "bullets": [
+        "Dashboard en tiempo real multi-base",
+        "Escaneo QR de embarque",
+        "Alertas automáticas de retrasos",
+        "Visibilidad descentralizada sin estar físicamente"
+      ]
+    },
+    "area4": {
+      "h": "Libro de registros, reseñas y fidelización en piloto automático",
+      "lede": "Termina la actividad y el sistema se encarga del cierre: cumplimiento legal, captura de reseña, perfil de cliente y métricas.",
+      "bullets": [
+        "Libro de registros conforme a regulación marítima",
+        "Solicitud automática de reseñas",
+        "Ficha centralizada de cliente recurrente",
+        "Dashboard de métricas del negocio"
+      ]
+    }
+  },
+  "comparison": {
+    "eyebrow": "05 · Comparativa",
+    "title": "Cómo nos comparamos con las otras opciones que estás evaluando",
+    "capability": "Capacidad",
+    "us": "Nosotros",
+    "cols": [
+      { "name": "Motores genéricos", "sub": "FareHarbor · Bookeo" },
+      { "name": "Software watersports", "sub": "verticales near-water" },
+      { "name": "Solución propia con IA", "sub": "build-it-yourself" },
+      { "name": "Solnow", "sub": "sistema operativo completo" }
+    ],
+    "rowLabels": [
+      "Motor de reservas",
+      "Vertical jet ski",
+      "Operación en tiempo real (QR + dashboard)",
+      "IA conversacional que cierra ventas",
+      "Integraciones OTAs náuticas",
+      "Cumplimiento legal del sector",
+      "Soporte en temporada alta",
+      "Tiempo a producción"
+    ],
+    "timeToProd": ["Semanas", "Semanas", "6–12 meses", "Días"],
+    "legendIncluded": "incluido",
+    "legendPartial": "parcial",
+    "legendNo": "no",
+    "closing": "Construir desde cero tiene sentido si tu producto es tu diferencial. Si tu diferencial es operar motos en el agua, cada mes que dedicás a programar es un mes que no escalás."
+  },
+  "partner": {
+    "eyebrow": "06 · Modelo de partner",
+    "title": "No somos un proveedor. Somos un partner que cobra cuando vos facturás.",
+    "items": [
+      {
+        "pull": "0% cuota fija",
+        "h": "Incentivos alineados",
+        "s": "Cobramos un % sobre las reservas que generamos + coste por conversación de IA. Sin cuota fija. Si no facturás, no cobramos."
+      },
+      {
+        "pull": "95% del trabajo",
+        "h": "Delegación total de lo digital",
+        "s": "Web, sistema, IA, configuración, optimización. Tú operás motos, nosotros operamos tu negocio digital."
+      },
+      {
+        "pull": "Sin tickets",
+        "h": "Soporte como partner, no como proveedor",
+        "s": "Capacitación completa, carga de activos, ayuda con precios y fotos, disponibilidad real en temporada alta."
+      }
+    ]
+  },
+  "pricing": {
+    "eyebrow": "07 · Pricing",
+    "title": "Tres planes. Un modelo alineado.",
+    "lede": "Pagás por uso real: comisión sobre lo que generamos, conversaciones de IA y un fee por base cuando ya estás en volumen. Sin sorpresas.",
+    "billingMonthly": "Mensual",
+    "billingAnnual": "Anual",
+    "billingSave": "AHORRA",
+    "outOf": "/ 03",
+    "commission": "Comisión",
+    "aiConv": "IA Conv.",
+    "aiAdv": "IA Avanz.",
+    "perConv": "/ conv",
+    "billedAnnual": "FACTURADO ANUAL",
+    "feeOnly": "SOLO FEE",
+    "included": "incluido",
+    "tiers": {
+      "starter": {
+        "name": "Starter",
+        "pitch": "Para arrancar con una sola base sin fee fijo.",
+        "feeSuffix": "/ mes",
+        "cta": "Empezar con Starter",
+        "features": [
+          { "l": "TPV (Staff Mode + Kiosk)" },
+          { "l": "Resto de features del producto" },
+          { "l": "Account manager" },
+          { "l": "Soporte", "v": "Email · 48h hábiles" }
+        ]
+      },
+      "pro": {
+        "name": "Pro",
+        "pitch": "El plan para operadores serios con varias bases.",
+        "feeSuffix": "/ mes · por base",
+        "annualNote": "2 meses gratis · 16,7%",
+        "badge": "Más elegido",
+        "cta": "Pedir demo del plan Pro",
+        "features": [
+          { "l": "TPV (Staff Mode + Kiosk)" },
+          { "l": "Resto de features del producto" },
+          { "l": "Account manager" },
+          { "l": "Soporte", "v": "WhatsApp · 24h hábiles" }
+        ]
+      },
+      "scale": {
+        "name": "Scale",
+        "pitch": "Para grupos multi-base con operación crítica.",
+        "feeSuffix": "/ mes · por base",
+        "annualNote": "Ahorro 20%",
+        "cta": "Hablar con el equipo",
+        "features": [
+          { "l": "TPV (Staff Mode + Kiosk)" },
+          { "l": "Resto de features del producto" },
+          { "l": "Account manager", "v": "Compartido" },
+          { "l": "Soporte", "v": "WhatsApp prioritario · 8h hábiles" }
+        ]
+      }
+    },
+    "facts": [
+      { "k": "Pago", "v": "Mensual · Stripe Connect" },
+      { "k": "Compromiso", "v": "Sin permanencia · cancelás cuando quieras" },
+      { "k": "Migración", "v": "Incluida en todos los planes" },
+      { "k": "Datos", "v": "Tuyos. Export en CSV/JSON cuando quieras" }
+    ],
+    "calc": {
+      "label": "Calculadora",
+      "title": "¿Cuánto pagarías cada mes?",
+      "bases": "Bases activas",
+      "basesUnit": " base/s",
+      "reservas": "Reservas / mes",
+      "ticket": "Ticket medio",
+      "ticketUnit": " €",
+      "convs": "Conversaciones IA / mes",
+      "convsHint": "Estimado con tarifa IA Conversacional",
+      "throughSolnow": "% de reservas vía Solnow",
+      "throughSolnowUnit": " %",
+      "throughSolnowHint": "{billable} reservas facturan comisión · GMV {gmv}",
+      "monthlyCost": "Coste mensual",
+      "annualBilling": " · Facturación anual",
+      "bestOption": "Mejor opción",
+      "perMonth": "/ mes",
+      "recommended": "RECOMENDADO",
+      "feeOff": "−{pct}% fee",
+      "onlyOneBase": "solo 1 base",
+      "maxFiveBases": "máx. 5 bases",
+      "breakdown": "fee {fee} · comisión {commission} · IA {ai}",
+      "revenueTitle": "Sobre la facturación total de tu empresa",
+      "revenueBody": "Solnow representa {pct}% de tu facturación mensual ({total}/mes · todos los canales).",
+      "revenueCta": "Pedir demo"
+    }
+  },
+  "onboarding": {
+    "eyebrow": "08 · Implementación",
+    "title": "En 7 días tu operación digital corre sobre Solnow",
+    "lede": "Nosotros hacemos el 95% del trabajo de implementación. Vos seguís operando.",
+    "yourWork": "Tu trabajo ·",
+    "objective": "Obj.",
+    "steps": [
+      {
+        "day": "Día 1",
+        "label": "Kickoff",
+        "h": "Mapeamos tu operación actual",
+        "points": ["Sesión de 90 minutos", "Identificamos cuellos de botella y flujos críticos", "Particularidades de tu negocio"],
+        "you": "Estar 90 min en una llamada"
+      },
+      {
+        "day": "Días 2–4",
+        "label": "Configuración",
+        "h": "Cargamos flota, bases, precios y extras",
+        "points": ["Configuramos contratos y plantillas", "Entrenamos al agente de IA con tu información real", "Sin downtime en tu operación actual"],
+        "you": "Mandarnos fotos y revisar precios"
+      },
+      {
+        "day": "Días 5–6",
+        "label": "Web e integraciones",
+        "h": "Conectamos web, OTAs y pagos",
+        "points": ["Motor de reservas integrado a tu web", "Viator · GetYourGuide · Stripe", "Migración de datos históricos"],
+        "you": "Darnos acceso a tus cuentas"
+      },
+      {
+        "day": "Día 7",
+        "label": "Go-live",
+        "h": "Capacitación y activación",
+        "points": ["Sesión con tu equipo", "Sistema en producción", "Primera reserva real a través de Solnow"],
+        "you": "Avisar al equipo que hoy es el día"
+      }
+    ],
+    "qa": [
+      {
+        "q": "¿Qué pasa con mi web actual?",
+        "a": "Tres opciones: la conservamos y le integramos el motor de reservas, la rediseñamos si necesita refresh, o partimos de cero. Lo decidimos en el kickoff."
+      },
+      {
+        "q": "¿Y mis datos históricos?",
+        "a": "Migramos clientes, reservas históricas y configuración desde Excel, Google Calendar u otro software. Sin pérdida de datos."
+      },
+      {
+        "q": "¿Qué pasa si en plena temporada algo se rompe?",
+        "a": "Soporte directo con el equipo, no ticket genérico. En temporada alta estamos disponibles fuera de horario. Es parte del modelo de partner."
+      }
+    ],
+    "ctaText": "¿Querés ver cómo sería tu implementación específica? Te montamos una demo con tu flota real.",
+    "ctaButton": "Pedir demo"
+  },
+  "socialProof": {
+    "eyebrow": "09 · Operadores con Solnow en producción",
+    "title": "Operadores que ya trabajan con Solnow",
+    "testimonials": [
+      {
+        "quote": "Pasamos de 8 a 22 reservas/día sin contratar a nadie. La IA cierra el 70% de las consultas de WhatsApp antes de que abramos.",
+        "kpiLabel": "reservas/día"
+      },
+      {
+        "quote": "Por primera vez en cinco años veo la operación de las tres bases en una sola pantalla. Y lo veo desde el móvil.",
+        "kpiLabel": "paneles → 1"
+      },
+      {
+        "quote": "Quité tres herramientas, dos hojas de cálculo y una persona en backoffice. Solnow paga su % solo con eso.",
+        "kpiLabel": "coste admin."
+      }
+    ],
+    "partners": [
+      { "n": "LANZADERA", "s": "Empresa acelerada" },
+      { "n": "VIATOR", "s": "Partner OTAs" },
+      { "n": "GETYOURGUIDE", "s": "Integración nativa" },
+      { "n": "STRIPE", "s": "Verified partner" }
+    ]
+  },
+  "faq": {
+    "eyebrow": "10 · FAQ",
+    "title": "Preguntas frecuentes",
+    "items": [
+      {
+        "q": "¿Cuánto cuesta Solnow?",
+        "a": "Cobramos % sobre las reservas que generamos a través de nuestra plataforma + coste por conversación de IA. No hay cuota fija ni setup fee. Modelo alineado: si no facturás, no cobramos."
+      },
+      {
+        "q": "¿Cómo funciona el modelo de comisión?",
+        "a": "Aplicamos una comisión sobre el GMV de las reservas procesadas por Solnow (motor + WhatsApp IA + OTAs). El detalle exacto se acuerda según tu volumen y mix de canales en el kickoff."
+      },
+      {
+        "q": "¿Funciona si no tengo internet estable en la base?",
+        "a": "Sí. La app de embarque funciona offline-first: registra escaneos QR, firma y check-in sin conexión y sincroniza cuando vuelve la señal. Crítico para muelles y zonas con cobertura intermitente."
+      },
+      {
+        "q": "¿Qué pasa con mis datos si dejo Solnow?",
+        "a": "Tus datos son tuyos. Te entregamos un export completo (clientes, reservas, contratos, facturas) en CSV + JSON, sin trabas ni periodos de retención."
+      },
+      {
+        "q": "¿Manejan contratos para menores?",
+        "a": "Sí. Plantillas específicas con campos para tutor legal, firma del padre/madre, validación de documentación. Conforme a normativa española y compatible con regulaciones de capitanía."
+      },
+      {
+        "q": "¿Se integra con Viator / GetYourGuide?",
+        "a": "Integraciones nativas con ambas. Inventario sincronizado en tiempo real, sin overbookings entre canales. Stripe para pagos. Otras OTAs bajo demanda."
+      },
+      {
+        "q": "¿Puedo configurar precios distintos por temporada?",
+        "a": "Sí. Precios por temporada, día de semana, hora del día, duración y modelo de moto. Reglas combinables y revisables sin tocar código."
+      },
+      {
+        "q": "¿Cómo se factura: por reserva o mensual?",
+        "a": "Factura mensual con detalle por reserva, comisión y conversaciones de IA. Liquidación automática vía Stripe Connect a tu cuenta el mes siguiente."
+      }
+    ]
+  },
+  "finalCta": {
+    "eyebrow": "11 · Demo",
+    "headPre": "¿Te suena alguno de ",
+    "headEm": "estos problemas?",
+    "problems": [
+      "Tu operación tocó techo y sumar reservas significa sumar caos.",
+      "Perdiste el control de lo que pasa en cada base cuando no estás físicamente.",
+      "Cada finde de pico es una carrera contra el reloj y un riesgo legal."
+    ],
+    "cta": "Pedir demo personalizada con tu flota real",
+    "note": "Te montamos la demo con tus motos, tus bases y tu volumen real · 30 minutos · sin compromiso",
+    "calendar": {
+      "label": "Agendar demo",
+      "available": "disponible esta semana",
+      "title": "30 minutos con un partner. Tu flota, tu volumen.",
+      "month": "May · 2026",
+      "timeLabel": "Hora · CET",
+      "confirm": "Confirmar · 15 may · {time}"
+    }
+  },
+  "footer": {
+    "tagline": "El sistema operativo para empresas de motos de agua con alto volumen. Hecho en Valencia, operado en el Mediterráneo.",
+    "langLabel": "Idioma",
+    "legal": "© 2026 Solnow S.L. · CIF B-12345678 · Valencia, ES",
+    "status": "Todos los sistemas operativos",
+    "columns": [
+      {
+        "h": "Producto",
+        "items": ["Agente IA WhatsApp", "Motor de reservas", "Operación tiempo real", "Contratos digitales", "Libro de registros"]
+      },
+      {
+        "h": "Recursos",
+        "items": ["Casos de éxito", "Blog", "Integraciones", "Cambios de versión", "Estado del sistema"]
+      },
+      {
+        "h": "Empresa",
+        "items": ["Sobre Solnow", "Modelo de partner", "Carreras", "Contacto"]
+      },
+      {
+        "h": "Legal",
+        "items": ["Privacidad", "Términos", "GDPR", "Cookies"]
+      }
+    ]
+  }
+}
