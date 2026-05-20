@@ -22,9 +22,10 @@
   },
   "hero": {
     "a": {
-      "pre": "El sistema operativo de las empresas de alquiler acuático con ",
-      "em": "alto volumen",
-      "sub": "Digitalizamos venta, papeleo, operación en tiempo real y postventa. Para operadores con flotas que ya no escalan con sistemas genéricos."
+      "pre": "Atiende el doble de reservas ",
+      "em": "sin contratar",
+      "post": " a más personal.",
+      "sub": "El sistema operativo de las empresas de alquiler acuático con alto volumen. Digitalizamos venta, papeleo, operación en tiempo real y postventa."
     },
     "b": {
       "pre": "Tu flota crece. Tu software te ",

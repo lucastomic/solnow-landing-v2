@@ -1,6 +1,5 @@
 'use client';
-import { useState, useEffect, useMemo } from 'react';
-import { WindowChrome } from './atoms';
+import { useState, CSSProperties } from 'react';
 import { useT } from '@/i18n/I18nProvider';
 
 interface HeroProps {
@@ -17,6 +16,7 @@ export default function Hero({ variant = 'a' }: HeroProps) {
           <em className="serif" style={{ color: 'var(--accent)' }}>
             {t('hero.a.em')}
           </em>
+          {t('hero.a.post')}
         </>
       ),
       sub: t('hero.a.sub'),
@@ -63,14 +63,14 @@ export default function Hero({ variant = 'a' }: HeroProps) {
           className="r-split"
           style={{
             display: 'grid',
-            gridTemplateColumns: 'minmax(0, 1.05fr) minmax(0, 1fr)',
+            gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1.05fr)',
             gap: 64,
             alignItems: 'center',
           }}
         >
           <div className="reveal">
             <h1 className="h-display" style={{ marginTop: 0, marginBottom: 24 }}>{c.h1}</h1>
-            <p className="lede" style={{ maxWidth: '56ch', marginBottom: 36 }}>{c.sub}</p>
+            <p className="lede" style={{ maxWidth: '52ch', marginBottom: 36 }}>{c.sub}</p>
             <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap', marginBottom: 36 }}>
               <a className="btn btn-primary" href="#cta">
                 {t('hero.ctaPrimary')}
@@ -85,12 +85,10 @@ export default function Hero({ variant = 'a' }: HeroProps) {
                 {t('hero.ctaSecondary')}
               </a>
             </div>
-
-      
           </div>
 
           <div className="reveal r-fluid" style={{ ['--reveal-delay' as string]: '120ms', position: 'relative' }}>
-            <FleetDashboard />
+            <HeroMockup />
           </div>
         </div>
       </div>
@@ -98,246 +96,298 @@ export default function Hero({ variant = 'a' }: HeroProps) {
   );
 }
 
-function FleetDashboard() {
-  const [tick, setTick] = useState(0);
-  useEffect(() => {
-    const t = setInterval(() => setTick((x) => x + 1), 1800);
-    return () => clearInterval(t);
-  }, []);
-
-  const fleet = useMemo(
-    () => [
-      { id: 'JET-01', base: 'Denia', status: 'on-water', timer: '+0:42:18', rider: 'M. Torres' },
-      { id: 'JET-02', base: 'Denia', status: 'on-water', timer: '+1:08:55', rider: 'L. Pérez' },
-      { id: 'JET-03', base: 'Jávea', status: 'returning', timer: '+0:56:02', rider: 'A. Klein' },
-      { id: 'JET-04', base: 'Denia', status: 'late', timer: '+12 min', rider: 'R. Smith' },
-      { id: 'JET-05', base: 'Calpe', status: 'ready', timer: 'Próx. 15:30', rider: 'B. Foster' },
-      { id: 'JET-06', base: 'Jávea', status: 'maint', timer: '—', rider: '—' },
-    ],
-    []
-  );
-
-  type StatusKey = 'on-water' | 'returning' | 'late' | 'ready' | 'maint';
-  const tones: Record<StatusKey, { c: string; label: string }> = {
-    'on-water': { c: 'var(--accent)', label: 'en agua' },
-    returning: { c: 'var(--info)', label: 'regresando' },
-    late: { c: 'var(--danger)', label: 'retraso' },
-    ready: { c: 'var(--ok)', label: 'lista' },
-    maint: { c: 'var(--muted)', label: 'mantto' },
-  };
+function HeroMockup() {
+  const [date, setDate] = useState(17);
+  const [time, setTime] = useState('13:00');
 
   return (
-    <WindowChrome title="solnow.app  /  ops · multi-base" status="EN VIVO">
-      <div style={{ padding: 12, display: 'flex', flexDirection: 'column', gap: 10 }}>
-        <div className="r-fleet-stats" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 8 }}>
-          {(
-            [
-              ['EN AGUA', '11', 'de 18'],
-              ['HOY', '42', 'reservas'],
-              ['INGRESOS', '€ 6.840', 'D −2'],
-              ['ALERTAS', '1', 'activa'],
-            ] as [string, string, string][]
-          ).map(([k, v, s], i) => (
-            <div
-              key={k}
-              style={{
-                padding: '7px 10px',
-                borderRadius: 10,
-                background: i === 3 ? 'rgba(200,74,58,0.18)' : 'rgba(255,255,255,0.04)',
-                border: '1px solid ' + (i === 3 ? 'rgba(220,110,90,0.45)' : 'var(--ink-line)'),
-              }}
-            >
-              <div className="mono" style={{ fontSize: 9.5, letterSpacing: '0.1em', color: 'var(--ink-muted)' }}>{k}</div>
-              <div
-                style={{
-                  fontSize: 18,
-                  fontWeight: 600,
-                  letterSpacing: '-0.02em',
-                  lineHeight: 1.1,
-                  marginTop: 2,
-                  color: i === 3 ? '#ffb4a3' : 'var(--ink-fg)',
-                }}
-              >
-                {v}
-              </div>
-              <div className="mono" style={{ fontSize: 10, color: 'var(--ink-muted-2)', marginTop: 1 }}>{s}</div>
-            </div>
-          ))}
-        </div>
-
-        <div
-          style={{
-            height: 78,
-            borderRadius: 10,
-            position: 'relative',
-            overflow: 'hidden',
-            border: '1px solid var(--ink-line)',
-            background: 'radial-gradient(120% 100% at 50% 100%, #0e527a 0%, #0a3f5d 60%, #062a3e 100%)',
-          }}
-        >
-          <div
-            aria-hidden
-            style={{
-              position: 'absolute',
-              inset: 0,
-              backgroundImage:
-                'linear-gradient(transparent 49%, rgba(255,255,255,0.06) 50%, transparent 51%),' +
-                'linear-gradient(90deg, transparent 49%, rgba(255,255,255,0.06) 50%, transparent 51%)',
-              backgroundSize: '36px 36px',
-              maskImage: 'linear-gradient(180deg, transparent, black 40%, black 90%, transparent)',
-            }}
-          />
-          {['Denia 24%', 'Jávea 38%', 'Calpe 18%', 'Altea 20%'].map((b, i) => (
-            <div
-              key={b}
-              style={{
-                position: 'absolute',
-                top: 6 + (i % 2) * 12,
-                left: 24 + i * 22 + '%',
-                fontFamily: 'var(--font-mono)',
-                fontSize: 10,
-                letterSpacing: '0.04em',
-                color: 'var(--ink-fg-2)',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 6,
-              }}
-            >
-              <span
-                style={{
-                  width: 8,
-                  height: 8,
-                  borderRadius: '50%',
-                  background: i === 0 ? 'var(--accent-2)' : 'rgba(255,255,255,0.35)',
-                  boxShadow: i === 0 ? '0 0 10px var(--accent)' : 'none',
-                }}
-              />
-              {b}
-            </div>
-          ))}
-          {(
-            [
-              [18, 70],
-              [32, 78],
-              [46, 64],
-              [58, 84],
-              [70, 70],
-              [82, 78],
-            ] as [number, number][]
-          ).map(([x, y], i) => (
-            <div
-              key={i}
-              style={{
-                position: 'absolute',
-                left: x + '%',
-                top: y + '%',
-                width: 6,
-                height: 6,
-                borderRadius: '50%',
-                background: i === 3 ? 'var(--danger)' : 'var(--accent)',
-                boxShadow: i === 3 ? '0 0 8px var(--danger)' : '0 0 6px var(--accent)',
-                transform: 'translate(-50%, -50%)',
-                animation: i === 3 ? 'pulse-dot 1.4s infinite' : 'none',
-              }}
-            />
-          ))}
-        </div>
-
-        <div style={{ borderRadius: 10, border: '1px solid var(--ink-line)', overflow: 'hidden' }}>
-          <div
-            className="mono r-fleet-row"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '74px 1fr 80px 96px 24px',
-              gap: 10,
-              padding: '6px 12px',
-              fontSize: 10,
-              letterSpacing: '0.08em',
-              color: 'var(--ink-muted-2)',
-              background: 'rgba(255,255,255,0.03)',
-              borderBottom: '1px solid var(--ink-line)',
-            }}
-          >
-            <span>ID</span>
-            <span>BASE / PILOTO</span>
-            <span>ESTADO</span>
-            <span>TIEMPO</span>
-            <span></span>
-          </div>
-          {fleet.map((f, i) => {
-            const isLate = f.status === 'late';
-            const tone = tones[f.status as StatusKey];
-            return (
-              <div
-                key={f.id}
-                className="r-fleet-row"
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: '74px 1fr 80px 96px 24px',
-                  gap: 10,
-                  padding: '7px 12px',
-                  alignItems: 'center',
-                  borderBottom: i < fleet.length - 1 ? '1px solid var(--ink-line-2)' : 0,
-                  background: isLate ? 'rgba(200,74,58,0.10)' : 'transparent',
-                  fontSize: 12.5,
-                }}
-              >
-                <span className="mono" style={{ color: 'var(--ink-fg-2)' }}>{f.id}</span>
-                <span style={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-                  <span style={{ color: 'var(--ink-fg)' }}>{f.base}</span>
-                  <span style={{ color: 'var(--ink-muted-2)', fontSize: 11 }}>{f.rider}</span>
-                </span>
-                <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: tone.c }}>
-                  <span
-                    style={{
-                      width: 6,
-                      height: 6,
-                      borderRadius: '50%',
-                      background: tone.c,
-                      boxShadow: isLate ? '0 0 6px ' + tone.c : 'none',
-                    }}
-                  />
-                  <span style={{ fontSize: 11.5 }}>{tone.label}</span>
-                </span>
-                <span className="mono" style={{ color: 'var(--ink-fg-2)', fontSize: 11.5 }}>{f.timer}</span>
-                <span style={{ color: 'var(--ink-muted)', fontSize: 14, justifySelf: 'end' }}>›</span>
-              </div>
-            );
-          })}
-        </div>
-
-        <div
-          style={{
-            padding: '8px 12px',
-            borderRadius: 10,
-            background: 'rgba(200,74,58,0.20)',
-            border: '1px solid rgba(220,110,90,0.55)',
-            display: 'flex',
-            alignItems: 'center',
-            gap: 12,
-            animation: 'pulse-dot 2.5s infinite',
-          }}
-        >
-          <span style={{ fontSize: 16 }}>⚠</span>
-          <div style={{ flex: 1, fontSize: 12.5, color: 'var(--ink-fg)' }}>
-            <strong style={{ fontWeight: 600 }}>JET-04</strong> con 12 min de retraso · Base Denia
-            <span className="mono" style={{ color: 'var(--ink-muted)', marginLeft: 8, fontSize: 11 }}>hace 1m</span>
-          </div>
-          <button
-            style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: 10.5,
-              letterSpacing: '0.06em',
-              color: 'var(--ink-fg-2)',
-              padding: '4px 8px',
-              border: '1px solid var(--ink-line)',
-              borderRadius: 6,
-            }}
-          >
-            VER
-          </button>
-        </div>
+    <div
+      style={{
+        position: 'relative',
+        paddingTop: 32,
+        paddingRight: 22,
+        paddingBottom: 36,
+        paddingLeft: 38,
+      }}
+    >
+      <div
+        className="mono"
+        style={{
+          position: 'absolute',
+          top: 6,
+          right: 24,
+          fontSize: 11,
+          color: 'var(--muted)',
+          letterSpacing: '0.06em',
+        }}
+      >
+        9:41 · solnow.app
       </div>
-    </WindowChrome>
+
+      <div
+        style={{
+          position: 'relative',
+          aspectRatio: '4 / 3.1',
+          borderRadius: 18,
+          overflow: 'hidden',
+          boxShadow: '0 30px 80px -20px rgba(8,57,84,0.4), 0 0 0 1px var(--line)',
+        }}
+      >
+        <SunsetScene />
+      </div>
+
+      <NotificationCard />
+      <BookingCard date={date} setDate={setDate} time={time} setTime={setTime} />
+    </div>
   );
 }
+
+function SunsetScene() {
+  return (
+    <div style={{ position: 'absolute', inset: 0 }}>
+      <img
+        src="/assets/hero-jetski.png"
+        alt=""
+        aria-hidden
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          objectPosition: 'center',
+          display: 'block',
+        }}
+      />
+      <div
+        aria-hidden
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background:
+            'radial-gradient(70% 70% at 50% 50%, transparent 55%, rgba(6,30,52,0.35) 100%),' +
+            'linear-gradient(180deg, transparent 60%, rgba(6,30,52,0.25) 100%)',
+          pointerEvents: 'none',
+        }}
+      />
+    </div>
+  );
+}
+
+function NotificationCard() {
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        top: 56,
+        right: -8,
+        width: 312,
+        padding: 14,
+        borderRadius: 16,
+        background: 'linear-gradient(180deg, rgba(8,42,68,0.62), rgba(8,42,68,0.48))',
+        backdropFilter: 'blur(18px) saturate(140%)',
+        WebkitBackdropFilter: 'blur(18px) saturate(140%)',
+        border: '1px solid rgba(255,255,255,0.16)',
+        boxShadow: '0 20px 50px -16px rgba(8,57,84,0.4), 0 0 0 1px rgba(0,0,0,0.04) inset',
+        display: 'grid',
+        gridTemplateColumns: '36px 1fr',
+        gap: 12,
+        color: '#fff',
+      }}
+    >
+      <div
+        style={{
+          width: 36,
+          height: 36,
+          borderRadius: '50%',
+          background: 'linear-gradient(135deg, var(--accent-2), var(--accent))',
+          border: '1.5px solid rgba(255,255,255,0.4)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontSize: 13,
+          fontWeight: 700,
+          color: '#fff',
+          boxShadow: '0 4px 12px rgba(0,0,0,0.25)',
+        }}
+      >
+        S
+      </div>
+      <div style={{ minWidth: 0 }}>
+        <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 8 }}>
+          <div className="mono" style={{ fontSize: 11, color: 'rgba(255,255,255,0.75)', letterSpacing: '0.04em' }}>
+            MarinaJets · Reservas
+          </div>
+          <div className="mono" style={{ fontSize: 10, color: 'rgba(255,255,255,0.55)' }}>9:41</div>
+        </div>
+        <div
+          style={{
+            fontSize: 13,
+            color: '#fff',
+            marginTop: 4,
+            lineHeight: 1.45,
+            letterSpacing: '-0.005em',
+          }}
+        >
+          ¡Hola Sara! Tu reserva del 17 está confirmada. Completá tu check-in{' '}
+          <a
+            href="#"
+            style={{
+              color: 'var(--accent-2)',
+              textDecoration: 'underline',
+              textDecorationColor: 'rgba(74,144,192,0.5)',
+              textUnderlineOffset: 3,
+            }}
+          >
+            aquí ›
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+interface BookingCardProps {
+  date: number;
+  setDate: (d: number) => void;
+  time: string;
+  setTime: (t: string) => void;
+}
+
+function BookingCard({ date, setDate, time, setTime }: BookingCardProps) {
+  const days = ['L', 'M', 'X', 'J', 'V', 'S', 'D'];
+  const cells: { d: number; off?: boolean }[] = [
+    { d: 28, off: true }, { d: 29, off: true }, { d: 30, off: true },
+    { d: 1 }, { d: 2 }, { d: 3 }, { d: 4 },
+    { d: 5 }, { d: 6 }, { d: 7 }, { d: 8 }, { d: 9 }, { d: 10 }, { d: 11 },
+    { d: 12 }, { d: 13 }, { d: 14 }, { d: 15 }, { d: 16 }, { d: 17 }, { d: 18 },
+    { d: 19 }, { d: 20 }, { d: 21 }, { d: 22 }, { d: 23 }, { d: 24 }, { d: 25 },
+    { d: 26 }, { d: 27 }, { d: 28 }, { d: 29 }, { d: 30 }, { d: 31 }, { d: 1, off: true },
+  ];
+  const times = ['10:00', '13:00', '15:00', '16:30', '18:00'];
+
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        bottom: -24,
+        left: -22,
+        width: 304,
+        padding: '18px 18px 18px',
+        borderRadius: 18,
+        background: 'linear-gradient(180deg, rgba(8,42,68,0.66), rgba(8,42,68,0.52))',
+        backdropFilter: 'blur(20px) saturate(150%)',
+        WebkitBackdropFilter: 'blur(20px) saturate(150%)',
+        border: '1px solid rgba(255,255,255,0.16)',
+        boxShadow: '0 30px 70px -20px rgba(8,57,84,0.5), 0 0 0 1px rgba(0,0,0,0.04) inset',
+        color: '#fff',
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
+        <div>
+          <div className="mono" style={{ fontSize: 9.5, color: 'rgba(255,255,255,0.55)', letterSpacing: '0.1em' }}>
+            EXPERIENCIA
+          </div>
+          <div style={{ fontSize: 14, fontWeight: 500, marginTop: 2, letterSpacing: '-0.01em' }}>VIP Mediterránea</div>
+        </div>
+        <div style={{ display: 'flex', gap: 4 }}>
+          <button style={chevBtn}>‹</button>
+          <button style={chevBtn}>›</button>
+        </div>
+      </div>
+
+      <div
+        className="mono"
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(7, 1fr)',
+          gap: 2,
+          marginBottom: 6,
+          fontSize: 10,
+          letterSpacing: '0.08em',
+          color: 'rgba(255,255,255,0.55)',
+          textAlign: 'center',
+        }}
+      >
+        {days.map((d) => (
+          <div key={d}>{d}</div>
+        ))}
+      </div>
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: 2, marginBottom: 16 }}>
+        {cells.map((cell, i) => {
+          const isSelected = !cell.off && cell.d === date;
+          return (
+            <button
+              key={i}
+              onClick={() => !cell.off && setDate(cell.d)}
+              style={{
+                fontFamily: 'var(--font-mono)',
+                aspectRatio: '1 / 1',
+                fontSize: 11.5,
+                borderRadius: '50%',
+                background: isSelected ? 'var(--accent)' : 'transparent',
+                color: cell.off ? 'rgba(255,255,255,0.25)' : isSelected ? '#fff' : 'rgba(255,255,255,0.85)',
+                fontWeight: isSelected ? 500 : 400,
+                cursor: cell.off ? 'default' : 'pointer',
+                border: 'none',
+                boxShadow: isSelected ? '0 4px 12px rgba(16,102,149,0.5)' : 'none',
+                transition: 'background .15s ease',
+              }}
+            >
+              {cell.d}
+            </button>
+          );
+        })}
+      </div>
+
+      <div
+        className="mono"
+        style={{ fontSize: 9.5, color: 'rgba(255,255,255,0.55)', letterSpacing: '0.1em', marginBottom: 8 }}
+      >
+        SELECCIONÁ HORA
+      </div>
+      <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+        {times.map((tm) => {
+          const active = tm === time;
+          return (
+            <button
+              key={tm}
+              onClick={() => setTime(tm)}
+              style={{
+                padding: '6px 10px',
+                borderRadius: 999,
+                fontFamily: 'var(--font-mono)',
+                fontSize: 11,
+                letterSpacing: '0.02em',
+                background: active ? 'var(--accent)' : 'rgba(255,255,255,0.08)',
+                color: active ? '#fff' : 'rgba(255,255,255,0.85)',
+                border: '1px solid ' + (active ? 'var(--accent)' : 'rgba(255,255,255,0.18)'),
+                boxShadow: active ? '0 4px 10px rgba(16,102,149,0.4)' : 'none',
+                cursor: 'pointer',
+                transition: 'background .15s ease',
+              }}
+            >
+              {tm}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+const chevBtn: CSSProperties = {
+  width: 26,
+  height: 26,
+  borderRadius: 8,
+  background: 'rgba(255,255,255,0.08)',
+  border: '1px solid rgba(255,255,255,0.12)',
+  color: 'rgba(255,255,255,0.85)',
+  fontSize: 14,
+  lineHeight: 1,
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  cursor: 'pointer',
+};

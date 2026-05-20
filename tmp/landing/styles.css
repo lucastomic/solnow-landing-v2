@@ -1,0 +1,544 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   SOLNOW — Light brand theme
+   Seed: #106695 cerulean, #083954 deep navy, #4A90C0 mid blue, #f7f7f7 paper
+   ─────────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* Surfaces — off-white with very subtle cool tint */
+  --bg:        #f7f7f7;
+  --bg-2:      #ffffff;
+  --surface:   #ffffff;
+  --surface-2: #f1f4f8;
+  --line:      #d8e0e8;
+  --line-soft: #e6ebf1;
+
+  /* Foreground — deep navy */
+  --fg:        #083954;
+  --fg-2:      #1f4d6b;
+  --muted:     #5a7a91;
+  --muted-2:   #8aa1b3;
+
+  /* Accent: Solnow cerulean */
+  --accent:    #106695;
+  --accent-2:  #4A90C0;
+  --accent-dim: #083954;
+  --accent-bg: rgba(16, 102, 149, 0.10);
+  --accent-fg: #ffffff; /* text on accent */
+
+  /* Signal colors (used sparingly) */
+  --warn:      #d98a1a;
+  --danger:    #c84a3a;
+  --ok:        #1f9d6b;
+  --info:      #4A90C0;
+
+  /* Dark surfaces (for embedded mockups + full-bleed accent sections) */
+  --ink:        #083954;
+  --ink-2:      #0a4566;
+  --ink-3:      #105477;
+  --ink-line:   rgba(255, 255, 255, 0.10);
+  --ink-line-2: rgba(255, 255, 255, 0.06);
+  --ink-fg:     #f7f9fc;
+  --ink-fg-2:   #c4d6e3;
+  --ink-muted:  #8aa9bf;
+  --ink-muted-2: #5d7e94;
+
+  /* Type */
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SF Mono", monospace;
+  --font-serif: "Instrument Serif", "Times New Roman", serif;
+
+  /* Spacing */
+  --section-y: 120px;
+  --container: 1240px;
+  --gutter: 24px;
+
+  --radius-sm: 6px;
+  --radius:    12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+}
+
+[data-density="compact"] { --section-y: 80px;  --gutter: 20px; }
+[data-density="comfy"]   { --section-y: 160px; --gutter: 28px; }
+
+/* Palette variants */
+[data-palette="brand"]  { --accent: #106695; --accent-2: #4A90C0; --accent-dim: #083954; --accent-bg: rgba(16,102,149,0.10); --accent-fg: #ffffff; }
+[data-palette="navy"]   { --accent: #083954; --accent-2: #106695; --accent-dim: #062a3e; --accent-bg: rgba(8,57,84,0.10);    --accent-fg: #ffffff; }
+[data-palette="sky"]    { --accent: #4A90C0; --accent-2: #106695; --accent-dim: #1f4d6b; --accent-bg: rgba(74,144,192,0.12); --accent-fg: #ffffff; }
+[data-palette="teal"]   { --accent: #0e8a8a; --accent-2: #14b4b4; --accent-dim: #064d4d; --accent-bg: rgba(14,138,138,0.10); --accent-fg: #ffffff; }
+[data-palette="amber"]  { --accent: #c46a14; --accent-2: #e08a2c; --accent-dim: #6b3a0a; --accent-bg: rgba(196,106,20,0.10); --accent-fg: #ffffff; }
+
+/* ─── reset / base ─────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.55;
+  font-feature-settings: "ss01", "cv11";
+  letter-spacing: -0.005em;
+  overflow-x: hidden;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: default; padding: 0; }
+
+::selection { background: var(--accent); color: #ffffff; }
+
+.container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); }
+.section { padding: var(--section-y) 0; position: relative; }
+
+/* Eyebrow */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.eyebrow::before {
+  content: "";
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-bg);
+}
+.eyebrow.no-dot::before { display: none; }
+
+/* Type scale */
+.h-display {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: clamp(40px, 6.2vw, 84px);
+  line-height: 0.98;
+  letter-spacing: -0.034em;
+  text-wrap: balance;
+  color: var(--fg);
+}
+.h-1 { font-weight: 500; font-size: clamp(34px, 4.4vw, 60px); line-height: 1.02; letter-spacing: -0.028em; text-wrap: balance; color: var(--fg); }
+.h-2 { font-weight: 500; font-size: clamp(26px, 2.8vw, 38px); line-height: 1.08; letter-spacing: -0.022em; text-wrap: balance; color: var(--fg); }
+.h-3 { font-weight: 500; font-size: 19px; line-height: 1.25; letter-spacing: -0.012em; color: var(--fg); }
+.lede {
+  font-size: clamp(17px, 1.4vw, 20px);
+  line-height: 1.5;
+  color: var(--fg-2);
+  text-wrap: pretty;
+  max-width: 60ch;
+}
+.muted { color: var(--muted); }
+.mono { font-family: var(--font-mono); }
+.serif { font-family: var(--font-serif); font-weight: 400; font-style: italic; letter-spacing: -0.01em; color: var(--accent); }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 13px 20px;
+  border-radius: 999px;
+  font-weight: 500;
+  font-size: 14.5px;
+  letter-spacing: -0.005em;
+  transition: transform .15s ease, background .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.btn-primary {
+  background: var(--accent);
+  color: var(--accent-fg);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.25) inset,
+    0 10px 24px -10px var(--accent);
+}
+.btn-primary:hover { transform: translateY(-1px); background: var(--accent-dim); box-shadow: 0 14px 30px -10px var(--accent); }
+.btn-secondary {
+  background: var(--surface);
+  color: var(--fg);
+  border: 1px solid var(--line);
+}
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+.btn-ghost {
+  color: var(--fg-2);
+  padding: 8px 0;
+}
+.btn-ghost:hover { color: var(--accent); }
+
+/* Pills / chips */
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 5px 9px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+}
+.chip-accent { color: var(--accent); border-color: rgba(16,102,149,0.30); background: var(--accent-bg); }
+
+/* Dot grid (used on light + dark surfaces) */
+.dotgrid {
+  background-image: radial-gradient(circle at 1px 1px, rgba(8,57,84,0.10) 1px, transparent 0);
+  background-size: 22px 22px;
+}
+.dotgrid-ink {
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 0);
+  background-size: 22px 22px;
+}
+
+/* Cards (light) */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 1px 0 rgba(8,57,84,0.04), 0 4px 12px -6px rgba(8,57,84,0.06);
+}
+
+/* Dark cards (for embedded mockups) */
+.card-ink {
+  background: linear-gradient(180deg, var(--ink-2), var(--ink));
+  border: 1px solid var(--ink-line);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  color: var(--ink-fg);
+  box-shadow: 0 30px 80px -30px rgba(8,57,84,0.45);
+}
+
+/* Dividers */
+.rule { height: 1px; background: var(--line); }
+.rule-faint { height: 1px; background: var(--line-soft); }
+
+/* Reveal on scroll */
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); transition-delay: var(--reveal-delay, 0ms); }
+.reveal.in { opacity: 1; transform: none; }
+
+section[id] { scroll-margin-top: 72px; }
+
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(31,157,107,0.45); }
+  50%      { box-shadow: 0 0 0 8px rgba(31,157,107,0); }
+}
+.live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ok); animation: pulse-dot 1.8s ease-out infinite; }
+
+@keyframes blink { 50% { opacity: 0; } }
+.caret { display: inline-block; width: 2px; height: 1em; background: currentColor; margin-left: 2px; vertical-align: -0.15em; animation: blink 1s steps(1) infinite; }
+
+.marquee { overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.marquee-track { display: flex; gap: 56px; width: max-content; animation: marquee 36s linear infinite; }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+/* ─── Mobile / tablet (≤880px) ─────────────────────────────────────────── */
+@media (max-width: 880px) {
+  :root {
+    --section-y: 64px;
+    --gutter: 16px;
+    --container: 100%;
+  }
+  body { font-size: 15px; }
+
+  /* Section padding — neutralize inline paddingBlock + paddingTop overrides */
+  section[class*="section"],
+  section[id],
+  main > section {
+    padding-top: 56px !important;
+    padding-bottom: 56px !important;
+  }
+
+  /* Hero overrides — uses paddingTop:140 inline */
+  #top { padding-top: 96px !important; padding-bottom: 40px !important; }
+
+  /* ── Flatten ALL inline multi-col grids defined on top-level containers ── */
+  /* React renders camelCase as kebab-case in the DOM, so target kebab. */
+  main [style*="grid-template-columns: minmax"],
+  main [style*="grid-template-columns: 1fr 1fr"],
+  main [style*="grid-template-columns: 1.05fr"],
+  main [style*="grid-template-columns: 1.1fr"],
+  main [style*="grid-template-columns: 1.2fr"],
+  main [style*="grid-template-columns: 1.4fr"],
+  main [style*="grid-template-columns: 1.6fr"],
+  main [style*="grid-template-columns: 2fr"],
+  main [style*="grid-template-columns: repeat(3"],
+  main [style*="grid-template-columns: repeat(4"],
+  main [style*="grid-template-columns: repeat(5"],
+  main [style*="grid-template-columns: repeat(6"],
+  footer [style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* Big section gaps shrink */
+  main .container > div[style*="gap: 64px"],
+  main .container > div[style*="gap: 80px"],
+  main [style*="gap: 56px"],
+  main [style*="gap: 48px"] {
+    gap: 28px !important;
+  }
+
+  /* Two-column flips: reset hardcoded `order` so reverse layouts stack naturally */
+  main [style*="order: 2"] { order: 0 !important; }
+  main [style*="order: 1"]:not(header *) { order: 0 !important; }
+
+  /* ── Nav: keep brand + primary CTA, drop menu and "Entrar" ── */
+  header nav { display: none !important; }
+  header > div > div:last-child > button { display: none !important; }
+  header > div { height: 56px !important; }
+  header .btn-primary { padding: 8px 14px !important; font-size: 13px !important; }
+  header img[alt="Solnow"] { height: 20px !important; }
+
+  /* ── Hero ── */
+  #top .h-display { font-size: 38px !important; }
+  #top .lede { font-size: 16px !important; }
+
+  /* ── Hero mockup: glass cards shouldn't overflow the column ── */
+  .hero-mock {
+    padding: 24px 12px 28px !important;
+  }
+  .hero-mock-photo {
+    aspect-ratio: 4 / 3.4 !important;
+  }
+  /* Pull cards inside the bounding box on mobile */
+  .hero-mock .glass-card[style*="top: 56px"] {
+    top: 8px !important;
+    right: 0 !important;
+    width: calc(100% - 24px) !important;
+    max-width: 320px !important;
+  }
+  .hero-mock .glass-card[style*="bottom: -24px"] {
+    left: 0 !important;
+    bottom: -12px !important;
+    width: calc(100% - 16px) !important;
+    max-width: 320px !important;
+  }
+  .hero-mock [style*="top: 6px"][style*="right: 24px"] { display: none !important; }
+
+  /* WhatsApp / dashboard mockup containers: don't right-align, center */
+  main [style*="max-width: 380px"],
+  main [style*="maxWidth: 380"] {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
+    max-width: 360px !important;
+  }
+  /* Phone screen height — looks too tall on phone screens */
+  main [style*="height: 600px"] { height: 520px !important; }
+
+  /* ── Comparison table: keep 5-col layout, scroll horizontally ── */
+  #comparativa .reveal[style*="border-radius: 18px"] {
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 14px !important;
+    /* hint of scrollability */
+    box-shadow: inset -16px 0 12px -12px rgba(8,57,84,0.18) !important;
+  }
+  #comparativa .reveal[style*="border-radius: 18px"] > div {
+    grid-template-columns: 180px 110px 110px 110px 134px !important;
+    min-width: 644px !important;
+  }
+  #comparativa .reveal[style*="border-radius: 18px"] > div > div {
+    padding: 14px 12px !important;
+  }
+  /* Compress the comparison header copy */
+  #comparativa .reveal[style*="border-radius: 18px"] > div:first-child > div > div[style*="font-size: 14px"] {
+    font-size: 12.5px !important;
+  }
+  /* "NOSOTROS" pill needs to stay readable */
+  #comparativa .reveal[style*="border-radius: 18px"] [style*="position: absolute"][style*="font-size: 9.5px"] {
+    right: 8px !important;
+  }
+  /* Helper line under table */
+  #comparativa .reveal:last-child {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  #comparativa .reveal:last-child p {
+    font-size: 16px !important;
+  }
+
+  /* ── Hero dashboard mockup: kill decorative map strip, tighten table ── */
+  /* The 110px-tall map strip with absolutely-positioned base labels & pins */
+  #top [style*="height: 110px"][style*="position: relative"][style*="overflow: hidden"] {
+    display: none !important;
+  }
+  /* Fleet table grid is 74px 1fr 80px 96px 24px — too wide for 360px screens */
+  #top [style*="grid-template-columns: 74px 1fr 80px 96px 24px"] {
+    grid-template-columns: 58px 1fr 64px 70px !important;
+    gap: 8px !important;
+    padding: 10px 10px !important;
+  }
+  /* Drop the trailing "›" chevron column */
+  #top [style*="grid-template-columns: 74px 1fr 80px 96px 24px"] > *:nth-child(5) {
+    display: none !important;
+  }
+  /* Stats row in hero dashboard: 4 cols → 2 cols at this breakpoint */
+  #top [style*="grid-template-columns: repeat(4, 1fr)"][style*="gap: 8px"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  /* Hero dashboard outer padding */
+  #top .card-ink > div[style*="padding: 16px"] {
+    padding: 12px !important;
+    gap: 10px !important;
+  }
+  /* Alert toast text wrap */
+  #top [style*="grid-template-columns: 74px 1fr 80px 96px 24px"] ~ div[style*="background: rgba(200,74,58,0.20)"] {
+    flex-wrap: wrap !important;
+  }
+
+  /* Pricing fine-print row stays as accordion of single cells */
+  #pricing [style*="grid-template-columns: repeat(4, 1fr)"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* Calculator: stack inputs over outputs */
+  #pricing [style*="min-height: 480px"] {
+    grid-template-columns: 1fr !important;
+  }
+  #pricing [style*="min-height: 480px"] > div:first-child {
+    border-right: 0 !important;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  #pricing [style*="border-right: 1px solid"] {
+    padding: 22px 20px !important;
+  }
+
+  /* Plan result rows (calculator output): collapse 3-col layout */
+  #pricing [style*="grid-template-columns: 1fr auto auto"] {
+    grid-template-columns: 1fr auto !important;
+    row-gap: 4px !important;
+  }
+  #pricing [style*="grid-template-columns: 1fr auto auto"] > div:nth-child(2) {
+    display: none !important;
+  }
+
+  /* Pricing card padding */
+  #pricing [style*="padding: 32px 28px 28px"] {
+    padding: 24px 20px 20px !important;
+  }
+  #pricing .h-2 { font-size: 22px !important; }
+
+  /* Pricing toggle row */
+  #pricing .container > div[style*="justify-content: space-between"] {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  /* ── Onboarding timeline: vertical stack with rail on the left ── */
+  #implementacion [style*="grid-template-columns: repeat(4, 1fr)"] {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+  /* Hide the horizontal connector */
+  #implementacion [style*="background: linear-gradient(90deg"] {
+    display: none !important;
+  }
+
+  /* ── Section heads: full-width title, tighten ── */
+  .h-1 { font-size: 30px !important; }
+  .h-2 { font-size: 24px !important; }
+  .h-3 { font-size: 17px !important; }
+
+  /* Pain bar numerals shrink */
+  main [style*="font-size: 56px"] { font-size: 40px !important; }
+  main [style*="font-size: 44px"] { font-size: 34px !important; }
+
+  /* FAQ buttons: drop the leading number column */
+  #faq button[style*="grid-template-columns: 36px 1fr 32px"] {
+    grid-template-columns: 1fr 28px !important;
+    padding: 18px 4px !important;
+  }
+  #faq button[style*="grid-template-columns: 36px 1fr 32px"] > span:first-child { display: none !important; }
+  #faq div[style*="padding: 0px 56px 22px"],
+  #faq div[style*="padding: 0 56px 22px"] {
+    padding: 0 0 18px !important;
+  }
+
+  /* CTA final: tighten copy block */
+  #cta .h-display { font-size: 36px !important; }
+
+  /* Demo calendar: full width */
+  #cta [style*="padding: 26px"] { padding: 20px !important; }
+
+  /* Footer: tighten + ditch the trailing border lines */
+  footer .container > div[style*="grid-template-columns"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  footer .container > div:first-child > div:first-child {
+    grid-column: 1 / -1;
+  }
+
+  /* Marquee speeds up because the track is shorter */
+  .marquee-track { animation-duration: 22s; }
+
+  /* Reduce all section heads' bottom margin */
+  main .reveal[style*="margin-bottom: 56px"] { margin-bottom: 32px !important; }
+
+  /* Buttons: full-width primary CTAs on mobile */
+  main .btn-primary[style*="padding: 15px 22px"] {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Tweaks panel scale down */
+  .twk-panel { transform: scale(0.92) !important; transform-origin: bottom right !important; }
+
+  /* Stop large rotations/translations from causing horizontal scroll */
+  main [style*="transform: translateX(20%)"] { transform: none !important; margin-left: 0 !important; }
+  main [style*="transform: rotate(-1.2deg)"],
+  main [style*="transform: rotate(1.5deg)"] { transform: none !important; }
+}
+
+/* ─── Small phones (≤480px) ────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  :root { --gutter: 14px; }
+  body { font-size: 14.5px; }
+  .h-1 { font-size: 26px !important; }
+  #top .h-display { font-size: 32px !important; }
+  #cta .h-display { font-size: 28px !important; }
+  .lede { font-size: 15px !important; }
+
+  /* Hero dashboard table: also drop one of the right cols */
+  #top [style*="grid-template-columns: 74px 1fr 80px 96px 24px"] {
+    grid-template-columns: 52px 1fr 58px !important;
+  }
+  #top [style*="grid-template-columns: 74px 1fr 80px 96px 24px"] > *:nth-child(4) {
+    display: none !important;
+  }
+  /* Stats row → 2 cols on small phones too */
+  #top [style*="grid-template-columns: repeat(4, 1fr)"][style*="gap: 8px"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  #top [style*="grid-template-columns: repeat(4, 1fr)"][style*="gap: 8px"] > div {
+    padding: 8px 10px !important;
+  }
+  #top [style*="grid-template-columns: repeat(4, 1fr)"][style*="gap: 8px"] [style*="font-size: 22px"] {
+    font-size: 19px !important;
+  }
+
+  /* Footer to single column */
+  footer .container > div[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+  }
+  footer .container > div:first-child > div:first-child { grid-column: auto; }
+
+  /* Pricing fine-print to single column */
+  #pricing [style*="grid-template-columns: repeat(4, 1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Comparison table: even tighter cols */
+  #comparativa .reveal[style*="border-radius: 18px"] > div {
+    grid-template-columns: 160px 96px 96px 96px 120px !important;
+    min-width: 568px !important;
+  }
+}
