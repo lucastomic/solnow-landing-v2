@@ -216,7 +216,7 @@ function NotificationCard() {
       <div style={{ minWidth: 0 }}>
         <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 8 }}>
           <div className="mono" style={{ fontSize: 11, color: 'rgba(255,255,255,0.75)', letterSpacing: '0.04em' }}>
-            MarinaJets · Reservas
+            Banana Jetski · Reservas
           </div>
           <div className="mono" style={{ fontSize: 10, color: 'rgba(255,255,255,0.55)' }}>9:41</div>
         </div>
