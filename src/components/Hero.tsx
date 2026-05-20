@@ -229,7 +229,7 @@ function NotificationCard() {
             letterSpacing: '-0.005em',
           }}
         >
-          ¡Hola Sara! Tu reserva del 17 está confirmada. Completá tu check-in{' '}
+          ¡Hola Sara! Tu reserva del 17 está confirmada. Completa tu check-in{' '}
           <a
             href="#"
             style={{
@@ -239,7 +239,7 @@ function NotificationCard() {
               textUnderlineOffset: 3,
             }}
           >
-            aquí ›
+            aquí 
           </a>
         </div>
       </div>
