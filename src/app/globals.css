@@ -264,6 +264,9 @@ section[id] { scroll-margin-top: 72px; }
   .r-cmp-wrap { overflow-x: auto !important; -webkit-overflow-scrolling: touch; }
   .r-cmp-row  { min-width: 600px; }
 
+  /* Hero mock: ocultar en móvil/tablet */
+  .r-hero-mock { display: none !important; }
+
   /* ContractMock: aplanar tarjetas rotadas/desplazadas que se salían */
   .r-contract > div {
     transform: none !important;
@@ -287,7 +290,7 @@ section[id] { scroll-margin-top: 72px; }
   /* Mockups de ancho fijo → fluido */
   .r-fluid { max-width: 100% !important; width: 100% !important; }
 
-  /* Hero fleet dashboard: reflujo de la tabla densa */
+/* Hero fleet dashboard: reflujo de la tabla densa */
   .r-fleet-stats { grid-template-columns: repeat(2, 1fr) !important; }
   .r-fleet-row {
     grid-template-columns: 52px 1fr 70px !important;

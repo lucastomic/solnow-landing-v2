@@ -102,6 +102,7 @@ function HeroMockup() {
 
   return (
     <div
+      className="r-hero-mock"
       style={{
         position: 'relative',
         paddingTop: 32,
@@ -177,6 +178,7 @@ function SunsetScene() {
 function NotificationCard() {
   return (
     <div
+      className="r-hero-notif"
       style={{
         position: 'absolute',
         top: 56,
@@ -268,6 +270,7 @@ function BookingCard({ date, setDate, time, setTime }: BookingCardProps) {
 
   return (
     <div
+      className="r-hero-booking"
       style={{
         position: 'absolute',
         bottom: -24,
