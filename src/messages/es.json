@@ -37,12 +37,12 @@
     "ctaSecondary": "Ver cómo funciona"
   },
   "painBar": {
-    "headPre": "Si gestionás 30+ reservas al día, ya sabés que sumar volumen significa ",
+    "headPre": "Si gestionas 30+ reservas al día, ya sabes que sumar volumen significa ",
     "headEm": "sumar caos. O sumar personal.",
     "items": [
       { "k": "50", "u": "consultas/día sin respuesta", "d": "15-25 reservas perdidas a la semana" },
       { "k": "2-3h", "u": "diarias quemadas", "d": "firmando contratos a mano" },
-      { "k": "0", "u": "visibilidad multi-base", "d": "te enterás cuando ya escaló" }
+      { "k": "0", "u": "visibilidad multi-base", "d": "te enteras cuando ya escaló" }
     ]
   },
   "nuclear": {
@@ -66,7 +66,7 @@
       { "n": "4.4", "t": "Postventa", "s": "Reseñas · libro · CRM" }
     ],
     "area1": {
-      "h": "Cerrá reservas en WhatsApp sin que nadie las atienda",
+      "h": "Cierra reservas en WhatsApp sin que nadie las atienda",
       "lede": "No es un chatbot. Es un agente conectado en vivo a tu disponibilidad, precios, flota y extras. Asesora, recomienda y cobra. En cualquier idioma, en menos de 1 minuto.",
       "bullets": [
         "Conectado en vivo a tu disponibilidad, precios y flota (no responde con guiones predefinidos)",
@@ -87,7 +87,7 @@
     },
     "area3": {
       "eyebrow": "Esto es lo que ningún software horizontal te va a dar nunca",
-      "hPre": "Mirá tu flota ",
+      "hPre": "Mira tu flota ",
       "hEm": "en vivo",
       "hPost": ", aunque no estés ahí",
       "ledePre": "El único módulo del mercado que digitaliza lo que pasa ",
@@ -136,21 +136,21 @@
     "legendIncluded": "incluido",
     "legendPartial": "parcial",
     "legendNo": "no",
-    "closing": "Construir desde cero tiene sentido si tu producto es tu diferencial. Si tu diferencial es operar motos en el agua, cada mes que dedicás a programar es un mes que no escalás."
+    "closing": "Construir desde cero tiene sentido si tu producto es tu diferencial. Si tu diferencial es operar motos en el agua, cada mes que dedicas a programar es un mes que no escalas."
   },
   "partner": {
     "eyebrow": "06 · Modelo de partner",
-    "title": "No somos un proveedor. Somos un partner que cobra cuando vos facturás.",
+    "title": "No somos un proveedor. Somos un partner que cobra cuando tú facturas.",
     "items": [
       {
         "pull": "0% cuota fija",
         "h": "Incentivos alineados",
-        "s": "Cobramos un % sobre las reservas que generamos + coste por conversación de IA. Sin cuota fija. Si no facturás, no cobramos."
+        "s": "Cobramos un % sobre las reservas que generamos + coste por conversación de IA. Sin cuota fija. Si no facturas, no cobramos."
       },
       {
         "pull": "95% del trabajo",
         "h": "Delegación total de lo digital",
-        "s": "Web, sistema, IA, configuración, optimización. Tú operás activos, nosotros operamos tu negocio digital."
+        "s": "Web, sistema, IA, configuración, optimización. Tú operas activos, nosotros operamos tu negocio digital."
       },
       {
         "pull": "Sin tickets",
@@ -162,7 +162,7 @@
   "pricing": {
     "eyebrow": "07 · Pricing",
     "title": "Tres planes. Un modelo alineado.",
-    "lede": "Pagás por uso real: comisión sobre lo que generamos, conversaciones de IA y un fee por base cuando ya estás en volumen. Sin sorpresas.",
+    "lede": "Pagas por uso real: comisión sobre lo que generamos, conversaciones de IA y un fee por base cuando ya estás en volumen. Sin sorpresas.",
     "billingMonthly": "Mensual",
     "billingAnnual": "Anual",
     "billingSave": "AHORRA",
@@ -217,7 +217,7 @@
     },
     "facts": [
       { "k": "Pago", "v": "Mensual · Stripe Connect" },
-      { "k": "Compromiso", "v": "Sin permanencia · cancelás cuando quieras" },
+      { "k": "Compromiso", "v": "Sin permanencia · cancelas cuando quieras" },
       { "k": "Migración", "v": "Incluida en todos los planes" },
       { "k": "Datos", "v": "Tuyos. Export en CSV/JSON cuando quieras" }
     ],
@@ -251,7 +251,7 @@
   "onboarding": {
     "eyebrow": "08 · Implementación",
     "title": "En 7 días tu operación digital corre sobre Solnow",
-    "lede": "Nosotros hacemos el 95% del trabajo de implementación. Vos seguís operando.",
+    "lede": "Nosotros hacemos el 95% del trabajo de implementación. Tú sigues operando.",
     "yourWork": "Tu trabajo ·",
     "objective": "Obj.",
     "steps": [
@@ -298,7 +298,7 @@
         "a": "Soporte directo con el equipo, no ticket genérico. En temporada alta estamos disponibles fuera de horario. Es parte del modelo de partner."
       }
     ],
-    "ctaText": "¿Querés ver cómo sería tu implementación específica? Te montamos una demo con tu flota real.",
+    "ctaText": "¿Quieres ver cómo sería tu implementación específica? Te montamos una demo con tu flota real.",
     "ctaButton": "Pedir demo"
   },
   "socialProof": {
@@ -331,7 +331,7 @@
     "items": [
       {
         "q": "¿Cuánto cuesta Solnow?",
-        "a": "Cobramos % sobre las reservas que generamos a través de nuestra plataforma + coste por conversación de IA. No hay cuota fija ni setup fee. Modelo alineado: si no facturás, no cobramos."
+        "a": "Cobramos % sobre las reservas que generamos a través de nuestra plataforma + coste por conversación de IA. No hay cuota fija ni setup fee. Modelo alineado: si no facturas, no cobramos."
       },
       {
         "q": "¿Cómo funciona el modelo de comisión?",
