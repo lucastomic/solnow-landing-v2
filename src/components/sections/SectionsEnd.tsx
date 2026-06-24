@@ -7,6 +7,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import { SectionHead } from '../atoms';
 import { useT, useLocale } from '@/i18n/I18nProvider';
 import { locales } from '@/i18n/config';
+import { GUIDES } from '@/content/guides';
 
 export function Onboarding() {
   const t = useT();
@@ -406,6 +407,21 @@ export function Footer() {
   const router = useRouter();
   const pathname = usePathname();
   const legalCol = t<{ h: string; privacy: string; terms: string }>('footer.legalLinks');
+  const resourcesCol = t<{ h: string } & Record<string, string>>('footer.resources');
+  const comparativasCol = t<{ h: string } & Record<string, string>>('footer.comparativas');
+  const recursoLinks = GUIDES.filter((g) => g.group === 'recurso').map((g) => ({
+    label: resourcesCol[g.key],
+    href: `/${locale}/${g.slug}`,
+  }));
+  const comparativaLinks = GUIDES.filter((g) => g.group === 'comparativa').map((g) => ({
+    label: comparativasCol[g.key],
+    href: `/${locale}/${g.slug}`,
+  }));
+  const zonasCol = t<{ h: string } & Record<string, string>>('footer.zonas');
+  const zonaLinks = GUIDES.filter((g) => g.group === 'geo').map((g) => ({
+    label: zonasCol[g.key],
+    href: `/${locale}/${g.slug}`,
+  }));
 
   const switchLocale = (next: string) => {
     if (next === locale) return;
@@ -416,7 +432,7 @@ export function Footer() {
   return (
     <footer style={{ borderTop: '1px solid var(--line-soft)', paddingTop: 80, paddingBottom: 36, background: 'oklch(0.11 0.018 240)' }}>
       <div className="container">
-        <div className="r-split" style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 40, marginBottom: 56 }}>
+        <div className="r-split" style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr 1fr 1fr', gap: 40, marginBottom: 56 }}>
           <div>
             <div style={{ display: 'inline-flex', alignItems: 'center', marginBottom: 16 }}>
               <Image src="/assets/solnow-wordmark-white.png" alt={t('metadata.siteName')} width={104} height={26} style={{ height: 26, width: 'auto' }} />
@@ -447,6 +463,63 @@ export function Footer() {
                 ))}
               </select>
             </div>
+          </div>
+          <div>
+            <div className="mono" style={{ fontSize: 11, letterSpacing: '0.1em', color: 'var(--muted-2)', marginBottom: 14 }}>
+              {resourcesCol.h.toUpperCase()}
+            </div>
+            <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {recursoLinks.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    style={{ fontSize: 13.5, color: 'var(--fg-2)' }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--fg-2)')}
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <div className="mono" style={{ fontSize: 11, letterSpacing: '0.1em', color: 'var(--muted-2)', marginBottom: 14 }}>
+              {comparativasCol.h.toUpperCase()}
+            </div>
+            <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {comparativaLinks.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    style={{ fontSize: 13.5, color: 'var(--fg-2)' }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--fg-2)')}
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <div className="mono" style={{ fontSize: 11, letterSpacing: '0.1em', color: 'var(--muted-2)', marginBottom: 14 }}>
+              {zonasCol.h.toUpperCase()}
+            </div>
+            <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {zonaLinks.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    style={{ fontSize: 13.5, color: 'var(--fg-2)' }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--fg-2)')}
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
           <div>
             <div className="mono" style={{ fontSize: 11, letterSpacing: '0.1em', color: 'var(--muted-2)', marginBottom: 14 }}>

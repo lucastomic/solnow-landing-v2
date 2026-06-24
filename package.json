@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "generate:contract": "node scripts/generate-contract-pdf.mjs"
   },
   "dependencies": {
     "next": "16.2.6",
@@ -15,10 +16,12 @@
   },
   "devDependencies": {
     "@types/node": "^20",
+    "@types/pdfkit": "^0.17.6",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
+    "pdfkit": "^0.19.1",
     "typescript": "^5"
   }
 }

@@ -386,12 +386,39 @@
   "footer": {
     "tagline": "El sistema operativo para empresas de alquiler acuático con alto volumen. Hecho en Valencia, operado en el Mediterráneo.",
     "langLabel": "Idioma",
-    "legal": "© 2026 Solnow S.L. · CIF B-12345678 · Valencia, ES",
+    "legal": "© 2026 Solnow",
     "status": "Todos los sistemas operativos",
     "legalLinks": {
       "h": "Legal",
       "privacy": "Privacidad",
       "terms": "Términos"
+    },
+    "resources": {
+      "h": "Recursos",
+      "software": "Software de reservas",
+      "mostrador": "Digitalizar el mostrador",
+      "multibase": "Gestión multi-base",
+      "whatsapp": "WhatsApp con IA 24/7",
+      "papeleo": "Eliminar el papeleo",
+      "contrato": "Modelo de contrato",
+      "normativa": "Normativa en España",
+      "libro": "Libro de registro"
+    },
+    "comparativas": {
+      "h": "Comparativas",
+      "fareharborAlt": "Alternativa a FareHarbor",
+      "turitopAlt": "Alternativa a TuriTop",
+      "fareharborVs": "FareHarbor vs Solnow",
+      "turitopVs": "TuriTop vs Solnow",
+      "mejoresSoftware": "Mejores software de reservas"
+    },
+    "zonas": {
+      "h": "Zonas",
+      "tenerife": "Tenerife",
+      "granCanaria": "Gran Canaria",
+      "canarias": "Canarias",
+      "argentina": "Argentina",
+      "mexico": "México"
     }
   },
   "legal": {
@@ -511,6 +538,1479 @@
           "p": ["Sailing Paradise LLC · Email: lucastomic@solnow.io"]
         }
       ]
+    }
+  },
+  "guides": {
+    "backHome": "Volver al inicio",
+    "tocLabel": "En esta guía",
+    "faqTitle": "Preguntas frecuentes",
+    "relatedTitle": "Sigue leyendo",
+    "disclaimerLabel": "Aviso",
+    "tenerife": {
+      "meta": {
+        "title": "Software de reservas para motos de agua en Tenerife — Solnow",
+        "description": "Software de reservas y operación para alquiler de motos de agua en Tenerife: walk-in en Costa Adeje y Los Cristianos, IA en WhatsApp multi-idioma, multi-base en la costa sur y contratos digitales.",
+        "ogTitle": "Software de reservas para motos de agua en Tenerife"
+      },
+      "hero": {
+        "eyebrow": "ZONAS · TENERIFE",
+        "h1": "Software de reservas para motos de agua en Tenerife",
+        "lede": "Tenerife es uno de los mercados de alquiler acuático más fuertes de España, con temporada casi todo el año. Para operar con ese volumen de turista internacional necesitas más que un calendario: venta, mostrador, operación y papeleo en un solo sistema.",
+        "updated": "Actualizado · junio de 2026",
+        "readingTime": "6 min de lectura"
+      },
+      "sections": [
+        {
+          "h": "El alquiler de motos de agua en Tenerife",
+          "blocks": [
+            { "type": "p", "text": "La costa sur de Tenerife concentra la mayor parte de la actividad: Costa Adeje, Los Cristianos, Playa de las Américas y Puerto Colón. El clima canario hace que la temporada no baje casi nunca, así que el volumen es alto y constante, con un turista mayoritariamente internacional (Reino Unido, Alemania, países nórdicos)." },
+            { "type": "p", "text": "Eso significa tres cosas: muchas consultas en varios idiomas, mucho cliente que llega a pie al mostrador y, a menudo, varias bases a lo largo de la costa." }
+          ]
+        },
+        {
+          "h": "Lo que necesita un operador en Tenerife",
+          "blocks": [
+            { "type": "list", "items": [
+              "Atención multilingüe: el turista pregunta en inglés, alemán o español a cualquier hora.",
+              "Walk-in alto: gran parte de las reservas se cierran en el mostrador, no online.",
+              "Multi-base en la costa sur, con una sola visión de la operación.",
+              "Papeleo que no se atasque en los picos de Las Américas o Los Cristianos.",
+              "Cumplimiento con la Capitanía Marítima de Santa Cruz de Tenerife."
+            ] }
+          ]
+        },
+        {
+          "h": "Por qué Solnow encaja en Tenerife",
+          "blocks": [
+            { "type": "table", "columns": ["Reto en Tenerife", "Con Solnow"], "highlightCol": 1, "rows": [
+              { "label": "Turista internacional", "cells": ["Consultas en varios idiomas", "Agente de IA en WhatsApp multi-idioma 24/7"] },
+              { "label": "Cola de walk-in", "cells": ["Mostrador a mano en hora punta", "TPV + kiosko: alta, cobro y firma en minutos"] },
+              { "label": "Varias bases en la costa sur", "cells": ["Cada base por su lado", "Operación multi-base en una pantalla"] },
+              { "label": "Papeleo en pico", "cells": ["Contratos a mano", "Contratos, firma y libro automáticos"] },
+              { "label": "Turismo vía OTAs", "cells": ["Canales sin sincronizar", "Integraciones con Viator y GetYourGuide"] }
+            ] }
+          ]
+        },
+        {
+          "h": "Listo para tu base en Tenerife",
+          "blocks": [
+            { "type": "p", "text": "Montamos Solnow con tu flota, tus precios y tus bases de la costa sur, migramos tus datos y te dejamos operando en días, sin downtime en plena temporada." },
+            { "type": "callout", "tone": "accent", "text": "Mismo equipo, el doble de reservas: la IA cierra el grueso de las consultas y el mostrador deja de ser tu cuello de botella." }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "¿Hay un software específico para alquiler de motos de agua en Tenerife?", "a": "Sí. Solnow es un sistema vertical para alquiler acuático que encaja con la operación de Tenerife: turista internacional, mucho walk-in y varias bases en la costa sur." },
+        { "q": "¿Gestiona varios idiomas para el turista de Tenerife?", "a": "Sí. El agente de IA en WhatsApp atiende y cierra reservas en el idioma del cliente (inglés, alemán, español…), clave para el perfil de turista de la isla." },
+        { "q": "¿Sirve para varias bases en la costa sur?", "a": "Sí. Solnow gestiona Costa Adeje, Los Cristianos, Puerto Colón y el resto de tus bases desde una sola pantalla, en tiempo real." },
+        { "q": "¿Ayuda con el cumplimiento en Canarias?", "a": "Genera contratos digitales y mantiene el libro de registro conforme a la normativa. Verifica los requisitos concretos con la Capitanía de Santa Cruz de Tenerife." },
+        { "q": "¿Cuánto tarda la puesta en marcha?", "a": "En días. Cargamos flota, precios y bases, migramos tus datos y te dejamos operando sin parar tu temporada." }
+      ],
+      "related": [
+        { "label": "Software de reservas en Gran Canaria", "slug": "software-reservas-motos-de-agua-gran-canaria" },
+        { "label": "Software de reservas en Canarias", "slug": "software-reservas-motos-de-agua-canarias" },
+        { "label": "Software para alquiler de motos de agua", "slug": "software-alquiler-motos-de-agua" }
+      ],
+      "cta": {
+        "title": "Pon Solnow en tu base de Tenerife",
+        "desc": "Te montamos una demo con tu flota y tus bases de la costa sur. 30 minutos, sin compromiso.",
+        "button": "Pedir demo"
+      }
+    },
+    "granCanaria": {
+      "meta": {
+        "title": "Software de reservas para motos de agua en Gran Canaria — Solnow",
+        "description": "Software de reservas y operación para alquiler de motos de agua en Gran Canaria: walk-in en Puerto Rico y Mogán, IA en WhatsApp multi-idioma, multi-base en el sur y contratos digitales.",
+        "ogTitle": "Software de reservas para motos de agua en Gran Canaria"
+      },
+      "hero": {
+        "eyebrow": "ZONAS · GRAN CANARIA",
+        "h1": "Software de reservas para motos de agua en Gran Canaria",
+        "lede": "Gran Canaria mueve un volumen enorme de actividad acuática durante todo el año, concentrado en el sur. Para no perder reservas ni ahogarte en papeleo necesitas un sistema que cubra venta, mostrador, operación y postventa.",
+        "updated": "Actualizado · junio de 2026",
+        "readingTime": "6 min de lectura"
+      },
+      "sections": [
+        {
+          "h": "El alquiler de motos de agua en Gran Canaria",
+          "blocks": [
+            { "type": "p", "text": "El sur de Gran Canaria es el corazón de la actividad: Puerto Rico, Puerto de Mogán, Anfi del Mar, Maspalomas y Arguineguín. Es un destino con turismo internacional durante todo el año, mucha reserva de última hora y un cliente que muchas veces aparece directamente en el muelle." },
+            { "type": "p", "text": "Operar ahí con Excel y un calendario significa colas, overbookings y horas de papeleo justo cuando más reservas entran." }
+          ]
+        },
+        {
+          "h": "Lo que necesita un operador en Gran Canaria",
+          "blocks": [
+            { "type": "list", "items": [
+              "Atención multilingüe para el turista internacional del sur.",
+              "Mostrador ágil en Puerto Rico y Mogán, donde el walk-in es alto.",
+              "Visión multi-base si operas en varios puntos de la isla.",
+              "Papeleo y libro de registro que no se atasquen en temporada.",
+              "Cumplimiento con la Capitanía Marítima de Las Palmas."
+            ] }
+          ]
+        },
+        {
+          "h": "Por qué Solnow encaja en Gran Canaria",
+          "blocks": [
+            { "type": "table", "columns": ["Reto en Gran Canaria", "Con Solnow"], "highlightCol": 1, "rows": [
+              { "label": "Turista internacional", "cells": ["Consultas en varios idiomas", "Agente de IA en WhatsApp multi-idioma 24/7"] },
+              { "label": "Walk-in en Puerto Rico / Mogán", "cells": ["Mostrador a mano", "TPV + kiosko: alta, cobro y firma en minutos"] },
+              { "label": "Varias bases en el sur", "cells": ["Sin visión conjunta", "Operación multi-base en una pantalla"] },
+              { "label": "Papeleo en pico", "cells": ["Contratos a mano", "Contratos, firma y libro automáticos"] },
+              { "label": "Turismo vía OTAs", "cells": ["Canales sin sincronizar", "Integraciones con Viator y GetYourGuide"] }
+            ] }
+          ]
+        },
+        {
+          "h": "Listo para tu base en Gran Canaria",
+          "blocks": [
+            { "type": "p", "text": "Configuramos Solnow con tu flota, tus precios y tus bases del sur de la isla, migramos tus datos históricos y te dejamos operando en días." },
+            { "type": "callout", "tone": "accent", "text": "Menos papeleo y cero colas en el muelle: la IA cierra reservas 24/7 y el mostrador se digitaliza por completo." }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "¿Hay un software específico para motos de agua en Gran Canaria?", "a": "Sí. Solnow es un sistema vertical para alquiler acuático pensado para operaciones como las del sur de Gran Canaria: turista internacional, walk-in alto y varias bases." },
+        { "q": "¿Gestiona varios idiomas?", "a": "Sí. El agente de IA atiende y cierra reservas por WhatsApp en el idioma del cliente, clave en Puerto Rico y Mogán." },
+        { "q": "¿Sirve para varias bases en la isla?", "a": "Sí. Gestionas Puerto Rico, Mogán, Anfi y el resto de tus bases en una sola pantalla, en tiempo real." },
+        { "q": "¿Ayuda con el cumplimiento en Canarias?", "a": "Genera contratos digitales y libro de registro conforme a la normativa. Verifica los requisitos concretos con la Capitanía de Las Palmas." },
+        { "q": "¿Cuánto tarda la puesta en marcha?", "a": "En días, sin parar tu operación: cargamos flota, precios y bases y migramos tus datos." }
+      ],
+      "related": [
+        { "label": "Software de reservas en Tenerife", "slug": "software-reservas-motos-de-agua-tenerife" },
+        { "label": "Software de reservas en Canarias", "slug": "software-reservas-motos-de-agua-canarias" },
+        { "label": "Software para alquiler de motos de agua", "slug": "software-alquiler-motos-de-agua" }
+      ],
+      "cta": {
+        "title": "Pon Solnow en tu base de Gran Canaria",
+        "desc": "Te montamos una demo con tu flota y tus bases del sur. 30 minutos, sin compromiso.",
+        "button": "Pedir demo"
+      }
+    },
+    "canarias": {
+      "meta": {
+        "title": "Software de reservas para motos de agua en Canarias — Solnow",
+        "description": "Software de reservas y operación para alquiler de motos de agua en Canarias: opera Tenerife, Gran Canaria, Lanzarote y Fuerteventura con IA en WhatsApp, mostrador digital y multi-base.",
+        "ogTitle": "Software de reservas para motos de agua en Canarias"
+      },
+      "hero": {
+        "eyebrow": "ZONAS · CANARIAS",
+        "h1": "Software de reservas para motos de agua en Canarias",
+        "lede": "Canarias es uno de los grandes mercados de alquiler acuático de Europa, con temporada durante todo el año. Si operas en una o varias islas, necesitas un sistema que unifique venta, mostrador, operación y postventa de toda tu flota.",
+        "updated": "Actualizado · junio de 2026",
+        "readingTime": "6 min de lectura"
+      },
+      "sections": [
+        {
+          "h": "El alquiler de motos de agua en Canarias",
+          "blocks": [
+            { "type": "p", "text": "Tenerife, Gran Canaria, Lanzarote y Fuerteventura concentran una actividad acuática enorme y sostenida todo el año gracias al clima. El turista es mayoritariamente internacional y la reserva de última hora y el walk-in pesan mucho en el mix." },
+            { "type": "p", "text": "Muchos operadores crecen a varias bases, e incluso a varias islas. Ahí es donde un sistema operativo multi-base marca la diferencia frente a un simple calendario." }
+          ]
+        },
+        {
+          "h": "Operar en varias islas y bases",
+          "blocks": [
+            { "type": "list", "items": [
+              "Una sola visión de la operación de todas tus bases, estés en la isla que estés.",
+              "Disponibilidad y caja consolidadas, sin overbookings entre canales.",
+              "Atención multilingüe para el turista internacional.",
+              "Mostrador digital (walk-in) en cada base.",
+              "Papeleo y libro de registro automáticos, conformes a la normativa."
+            ] }
+          ]
+        },
+        {
+          "h": "Por qué Solnow encaja en Canarias",
+          "blocks": [
+            { "type": "table", "columns": ["Reto en Canarias", "Con Solnow"], "highlightCol": 1, "rows": [
+              { "label": "Operación multi-isla", "cells": ["Cada base/isla por su lado", "Toda la flota en una pantalla"] },
+              { "label": "Turista internacional", "cells": ["Consultas en varios idiomas", "IA en WhatsApp multi-idioma 24/7"] },
+              { "label": "Walk-in en cada base", "cells": ["Mostrador a mano", "TPV + kiosko"] },
+              { "label": "Papeleo y libro", "cells": ["Manual", "Automático y conforme"] },
+              { "label": "Temporada todo el año", "cells": ["Picos sin respiro", "Sistema listo para alto volumen"] }
+            ] }
+          ]
+        },
+        {
+          "h": "Listo para tu operación en Canarias",
+          "blocks": [
+            { "type": "p", "text": "Tanto si tienes una base como si operas en varias islas, montamos Solnow con tu flota y tus precios, migramos tus datos y te dejamos operando en días." },
+            { "type": "callout", "tone": "accent", "text": "El sistema operativo para escalar tu alquiler acuático en Canarias sin sumar personal por cada base nueva." }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "¿Hay un software para motos de agua que funcione en toda Canarias?", "a": "Sí. Solnow gestiona operaciones en una o varias islas (Tenerife, Gran Canaria, Lanzarote, Fuerteventura) desde una sola plataforma multi-base." },
+        { "q": "¿Puedo gestionar bases en varias islas a la vez?", "a": "Sí, con disponibilidad, caja y operación consolidadas en una pantalla, en tiempo real, estés donde estés." },
+        { "q": "¿Atiende al turista internacional en su idioma?", "a": "Sí. El agente de IA cierra reservas por WhatsApp en el idioma del cliente, clave para el perfil de turista canario." },
+        { "q": "¿Cumple con la normativa náutica de Canarias?", "a": "Genera contratos digitales y libro de registro conforme a la normativa. Confirma los requisitos con la Capitanía Marítima correspondiente a tu isla." },
+        { "q": "¿Y si solo tengo una base?", "a": "También encaja: empiezas con una base y escalas a más islas cuando crezcas, sin cambiar de sistema." }
+      ],
+      "related": [
+        { "label": "Software de reservas en Tenerife", "slug": "software-reservas-motos-de-agua-tenerife" },
+        { "label": "Software de reservas en Gran Canaria", "slug": "software-reservas-motos-de-agua-gran-canaria" },
+        { "label": "Gestionar varias bases sin perder el control", "slug": "gestion-multi-base-alquiler-motos-de-agua" }
+      ],
+      "cta": {
+        "title": "Escala tu alquiler acuático en Canarias",
+        "desc": "Te montamos una demo con tu flota y tus bases, en una o varias islas. Sin compromiso.",
+        "button": "Pedir demo"
+      }
+    },
+    "argentina": {
+      "meta": {
+        "title": "Software para alquiler de motos de agua en Argentina — Solnow",
+        "description": "Software de reservas y operación para alquiler de motos de agua en Argentina: temporada de verano intensa en la costa atlántica y los lagos, mostrador digital, IA en WhatsApp y multi-base.",
+        "ogTitle": "Software para alquiler de motos de agua en Argentina"
+      },
+      "hero": {
+        "eyebrow": "ZONAS · ARGENTINA",
+        "h1": "Software para alquiler de motos de agua en Argentina",
+        "lede": "En Argentina la temporada se concentra en pocos meses de verano y se juega en picos intensos. Para aprovecharlos sin perder reservas ni vivir entre planillas necesitas un sistema que digitalice venta, mostrador y operación.",
+        "updated": "Actualizado · junio de 2026",
+        "readingTime": "6 min de lectura"
+      },
+      "sections": [
+        {
+          "h": "El alquiler de motos de agua en Argentina",
+          "blocks": [
+            { "type": "p", "text": "La actividad se concentra en el verano austral (diciembre a marzo) y en zonas muy marcadas: la costa atlántica (Mar del Plata, Pinamar, Villa Gesell, Cariló), los lagos de Córdoba (Villa Carlos Paz) y los lagos del sur (Bariloche, Neuquén). Es una temporada corta e intensa donde cada finde de pico cuenta." },
+            { "type": "p", "text": "Con una ventana tan concentrada, perder reservas por no contestar a tiempo o por colas en el mostrador se nota directo en la facturación del año." }
+          ]
+        },
+        {
+          "h": "Lo que necesita un operador en Argentina",
+          "blocks": [
+            { "type": "list", "items": [
+              "Estar listo para el pico de verano desde el día uno, sin curva de aprendizaje.",
+              "Cerrar reservas por WhatsApp, el canal principal en el país, también fuera de horario.",
+              "Mostrador ágil en la playa o el lago, donde manda el walk-in.",
+              "Operación multi-base si trabajas en varios puntos.",
+              "Pagos online integrados y contratos digitales."
+            ] }
+          ]
+        },
+        {
+          "h": "Por qué Solnow encaja en Argentina",
+          "blocks": [
+            { "type": "table", "columns": ["Reto en Argentina", "Con Solnow"], "highlightCol": 1, "rows": [
+              { "label": "Temporada corta e intensa", "cells": ["Caos en cada pico de verano", "Sistema listo para alto volumen desde el día uno"] },
+              { "label": "WhatsApp como canal principal", "cells": ["Consultas sin responder", "Agente de IA que cierra 24/7"] },
+              { "label": "Walk-in en playa o lago", "cells": ["Mostrador a mano", "TPV + kiosko: alta, cobro y firma"] },
+              { "label": "Varias bases", "cells": ["Cada punto por su lado", "Operación multi-base en una pantalla"] },
+              { "label": "Cobros y papeleo", "cells": ["Manual", "Pagos integrados y contratos digitales"] }
+            ] }
+          ]
+        },
+        {
+          "h": "Listo para tu temporada en Argentina",
+          "blocks": [
+            { "type": "p", "text": "Montamos Solnow con tu flota, tus precios y tus puntos de operación antes de que arranque la temporada, para que llegues al verano con todo digitalizado." },
+            { "type": "callout", "tone": "accent", "text": "Aprovechá cada finde de pico: la IA cierra reservas 24/7 y el mostrador deja de frenarte." }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "¿Hay un software para alquiler de motos de agua pensado para Argentina?", "a": "Sí. Solnow es un sistema vertical para alquiler acuático que encaja con la operación argentina: temporada corta e intensa, WhatsApp como canal principal y mucho walk-in." },
+        { "q": "¿Cierra reservas por WhatsApp?", "a": "Sí. El agente de IA atiende y cierra reservas por WhatsApp 24/7, el canal más usado en el país, también fuera de horario." },
+        { "q": "¿Sirve para la costa atlántica y los lagos?", "a": "Sí. Funciona igual en Mar del Plata, Pinamar, Carlos Paz o Bariloche, y gestiona varias bases desde una sola pantalla." },
+        { "q": "¿Cómo gestiona los cobros?", "a": "Con pagos online integrados y contratos digitales, para cobrar y firmar sin papel ni efectivo descontrolado en el mostrador." },
+        { "q": "¿Llego con todo listo para el verano?", "a": "Sí. Montamos el sistema antes de la temporada: cargamos flota, precios y bases y migramos tus datos, para que arranques el pico digitalizado." }
+      ],
+      "related": [
+        { "label": "Software para alquiler de motos de agua en México", "slug": "software-alquiler-motos-de-agua-mexico" },
+        { "label": "Software para alquiler de motos de agua", "slug": "software-alquiler-motos-de-agua" },
+        { "label": "Digitalizar el mostrador (walk-in)", "slug": "digitalizar-mostrador-alquiler-motos-de-agua" }
+      ],
+      "cta": {
+        "title": "Llegá al verano con Solnow",
+        "desc": "Te montamos una demo con tu flota y tus puntos de operación antes de la temporada. Sin compromiso.",
+        "button": "Pedir demo"
+      }
+    },
+    "mexico": {
+      "meta": {
+        "title": "Software para alquiler de motos de agua en México — Solnow",
+        "description": "Software de reservas y operación para alquiler de motos de agua en México: Cancún, Riviera Maya y Los Cabos, IA en WhatsApp multi-idioma, mostrador digital, multi-base y pagos integrados.",
+        "ogTitle": "Software para alquiler de motos de agua en México"
+      },
+      "hero": {
+        "eyebrow": "ZONAS · MÉXICO",
+        "h1": "Software para alquiler de motos de agua en México",
+        "lede": "México combina temporada prácticamente todo el año en el Caribe con un turismo internacional enorme. Para operar con ese volumen necesitas un sistema que cubra venta multi-idioma, mostrador, operación y postventa.",
+        "updated": "Actualizado · junio de 2026",
+        "readingTime": "6 min de lectura"
+      },
+      "sections": [
+        {
+          "h": "El alquiler de motos de agua en México",
+          "blocks": [
+            { "type": "p", "text": "La actividad se concentra en destinos de altísimo volumen turístico: Cancún, la Riviera Maya (Playa del Carmen, Cozumel), Los Cabos, Puerto Vallarta y Acapulco. En el Caribe la temporada apenas baja y el turista es mayoritariamente internacional, sobre todo de Estados Unidos y Canadá." },
+            { "type": "p", "text": "Eso implica muchísima consulta en inglés y español, un walk-in altísimo en la playa y, con frecuencia, varias bases o puntos de operación." }
+          ]
+        },
+        {
+          "h": "Lo que necesita un operador en México",
+          "blocks": [
+            { "type": "list", "items": [
+              "Atención multilingüe (inglés y español) para el turista de EE. UU. y Canadá.",
+              "Mostrador ágil en la playa, donde el walk-in domina.",
+              "Operación multi-base en zonas como la Riviera Maya.",
+              "Pagos online integrados y contratos digitales.",
+              "Sistema listo para alto volumen durante todo el año."
+            ] }
+          ]
+        },
+        {
+          "h": "Por qué Solnow encaja en México",
+          "blocks": [
+            { "type": "table", "columns": ["Reto en México", "Con Solnow"], "highlightCol": 1, "rows": [
+              { "label": "Turista de EE. UU. y Canadá", "cells": ["Consultas en inglés y español", "IA en WhatsApp multi-idioma 24/7"] },
+              { "label": "Walk-in altísimo en la playa", "cells": ["Mostrador a mano", "TPV + kiosko: alta, cobro y firma"] },
+              { "label": "Varias bases (Riviera Maya)", "cells": ["Cada punto por su lado", "Operación multi-base en una pantalla"] },
+              { "label": "Cobros y papeleo", "cells": ["Manual", "Pagos integrados y contratos digitales"] },
+              { "label": "Turismo vía OTAs", "cells": ["Canales sin sincronizar", "Integraciones con Viator y GetYourGuide"] }
+            ] }
+          ]
+        },
+        {
+          "h": "Listo para tu base en México",
+          "blocks": [
+            { "type": "p", "text": "Configuramos Solnow con tu flota, tus precios y tus puntos de operación, migramos tus datos y te dejamos operando en días, sin frenar tu temporada." },
+            { "type": "callout", "tone": "accent", "text": "Aprovecha el volumen del Caribe: la IA cierra reservas 24/7 en inglés y español y el mostrador se digitaliza por completo." }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "¿Hay un software para alquiler de motos de agua pensado para México?", "a": "Sí. Solnow es un sistema vertical para alquiler acuático que encaja con destinos como Cancún, la Riviera Maya o Los Cabos: turista internacional, walk-in altísimo y varias bases." },
+        { "q": "¿Atiende en inglés y español?", "a": "Sí. El agente de IA cierra reservas por WhatsApp en el idioma del cliente, clave para el turista de EE. UU. y Canadá." },
+        { "q": "¿Sirve para varias bases en la Riviera Maya?", "a": "Sí. Gestionas Playa del Carmen, Cozumel y el resto de tus puntos desde una sola pantalla, en tiempo real." },
+        { "q": "¿Cómo gestiona los cobros?", "a": "Con pagos online integrados y contratos digitales, para cobrar y firmar sin papel en el mostrador de la playa." },
+        { "q": "¿Cuánto tarda la puesta en marcha?", "a": "En días: cargamos flota, precios y bases y migramos tus datos, sin frenar tu operación." }
+      ],
+      "related": [
+        { "label": "Software para alquiler de motos de agua en Argentina", "slug": "software-alquiler-motos-de-agua-argentina" },
+        { "label": "Software para alquiler de motos de agua", "slug": "software-alquiler-motos-de-agua" },
+        { "label": "Responder WhatsApp 24/7 con IA", "slug": "whatsapp-reservas-motos-de-agua" }
+      ],
+      "cta": {
+        "title": "Pon Solnow en tu base de México",
+        "desc": "Te montamos una demo con tu flota y tus puntos de operación. 30 minutos, sin compromiso.",
+        "button": "Pedir demo"
+      }
+    },
+    "fareharborAlt": {
+      "meta": {
+        "title": "FareHarbor: alternativa para alquiler de motos de agua — Solnow",
+        "description": "¿Buscas una alternativa a FareHarbor para tu alquiler de motos de agua? Por qué un sistema vertical que resuelve el walk-in, la operación en vivo y el papeleo del sector encaja mejor que un motor de reservas de tours.",
+        "ogTitle": "FareHarbor: alternativa para alquiler de motos de agua"
+      },
+      "hero": {
+        "eyebrow": "COMPARATIVA",
+        "h1": "FareHarbor: alternativa para alquiler de motos de agua",
+        "lede": "FareHarbor es un motor de reservas sólido, pero está pensado para vender tours online, no para operar una flota de motos de agua con walk-in, multi-base y papeleo del sector. Esto es lo que cambia con una alternativa vertical.",
+        "updated": "Actualizado · junio de 2026",
+        "readingTime": "7 min de lectura"
+      },
+      "disclaimer": "Comparativa orientativa basada en información pública a junio de 2026. Las características y los precios de terceros pueden cambiar; verifica los detalles actuales en la web de cada herramienta.",
+      "sections": [
+        {
+          "h": "Qué hace bien FareHarbor",
+          "blocks": [
+            { "type": "p", "text": "Es justo reconocerlo: FareHarbor es un motor de reservas maduro, con buena distribución, red de afiliados y pagos integrados. Si vendes muchos tours de terceros y vives de esa distribución, es una herramienta potente." },
+            { "type": "list", "items": [
+              "Motor de reservas robusto y probado.",
+              "Red de distribución y afiliados.",
+              "Pagos integrados.",
+              "Soporte consolidado."
+            ] }
+          ]
+        },
+        {
+          "h": "Dónde se queda corto para motos de agua",
+          "blocks": [
+            { "type": "p", "text": "El problema no es FareHarbor, es el encaje: cubre la reserva online, pero no la operación de una flota acuática." },
+            { "type": "list", "items": [
+              "El walk-in (cliente sin reserva) se sigue gestionando a mano.",
+              "No digitaliza la operación durante la actividad: embarque, QR, retrasos.",
+              "No es vertical náutico: libro de registro y contratos de menores del sector.",
+              "Multi-base limitado para flotas distribuidas.",
+              "Su modelo de coste no siempre encaja con el alto volumen."
+            ] }
+          ]
+        },
+        {
+          "h": "FareHarbor vs Solnow de un vistazo",
+          "blocks": [
+            { "type": "table", "columns": ["FareHarbor", "Solnow"], "highlightCol": 1, "rows": [
+              { "label": "Enfoque", "cells": ["Motor de reservas de tours", "Sistema operativo de alquiler acuático"] },
+              { "label": "Walk-in en mostrador", "cells": ["Manual", "TPV + kiosko"] },
+              { "label": "Operación en vivo", "cells": ["No", "Dashboard + QR de embarque"] },
+              { "label": "Papeleo del sector", "cells": ["Básico", "Contratos, firma y menores"] },
+              { "label": "Libro de registro", "cells": ["No", "Automático"] },
+              { "label": "Multi-base", "cells": ["Parcial", "Real, en una pantalla"] },
+              { "label": "IA en WhatsApp", "cells": ["No", "Agente que cierra 24/7"] },
+              { "label": "Modelo de precio", "cells": ["Comisión por reserva", "% sobre lo generado, sin cuota fija"] }
+            ] }
+          ]
+        },
+        {
+          "h": "Cómo migrar desde FareHarbor",
+          "blocks": [
+            { "type": "p", "text": "La migración está incluida: traemos clientes, reservas históricas y configuración desde FareHarbor o Excel, sin downtime." },
+            { "type": "callout", "tone": "accent", "text": "Si tu diferencial es operar motos en el agua, no un catálogo de tours, una alternativa vertical te digitaliza lo que FareHarbor deja fuera." }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "¿Sirve FareHarbor para alquilar motos de agua?", "a": "Funciona como motor de reservas, pero no cubre el walk-in del mostrador, la operación en vivo ni el papeleo náutico (libro de registro, menores). Para una flota acuática se queda en la mitad del trabajo." },
+        { "q": "¿Cuál es la mejor alternativa a FareHarbor para motos de agua?", "a": "Un sistema vertical del sector como Solnow, que además de reservas digitaliza la venta por WhatsApp, el mostrador, la operación multi-base y la postventa." },
+        { "q": "¿Puedo migrar mis datos desde FareHarbor?", "a": "Sí, la migración de clientes, reservas y configuración está incluida, sin pérdida de datos." },
+        { "q": "¿En qué se diferencia el precio?", "a": "FareHarbor suele cobrar comisión por reserva. Solnow cobra un % sobre las reservas que genera, sin cuota fija: si no facturas, no cobramos." }
+      ],
+      "related": [
+        { "label": "FareHarbor vs Solnow", "slug": "fareharbor-vs-solnow" },
+        { "label": "Software para alquiler de motos de agua", "slug": "software-alquiler-motos-de-agua" },
+        { "label": "Mejores software de reservas acuáticas", "slug": "mejores-software-reservas-actividades-acuaticas" }
+      ],
+      "cta": {
+        "title": "Mira la alternativa con tu flota real",
+        "desc": "Te montamos una demo con tus motos, tus bases y tu volumen. Sin compromiso.",
+        "button": "Pedir demo"
+      }
+    },
+    "turitopAlt": {
+      "meta": {
+        "title": "TuriTop: alternativa para operadores de motos de agua — Solnow",
+        "description": "¿Buscas una alternativa a TuriTop para tu alquiler de motos de agua? Por qué pasar de un sistema de reservas online a un sistema operativo que cubre mostrador, operación en vivo y postventa.",
+        "ogTitle": "TuriTop: alternativa para operadores de motos de agua"
+      },
+      "hero": {
+        "eyebrow": "COMPARATIVA",
+        "h1": "TuriTop: alternativa para operadores de motos de agua",
+        "lede": "TuriTop es un buen sistema de reservas online, muy extendido en España. Pero si operas una flota de motos de agua con volumen, walk-in y varias bases, necesitas más que un sistema de reservas en tu web.",
+        "updated": "Actualizado · junio de 2026",
+        "readingTime": "7 min de lectura"
+      },
+      "disclaimer": "Comparativa orientativa basada en información pública a junio de 2026. Las características y los precios de terceros pueden cambiar; verifica los detalles actuales en la web de cada herramienta.",
+      "sections": [
+        {
+          "h": "Qué hace bien TuriTop",
+          "blocks": [
+            { "type": "p", "text": "TuriTop está muy implantado en España y resuelve bien la reserva online: se integra fácil en tu web, gestiona cupos y horarios y cobra. Como punto de entrada para vender por internet, cumple." },
+            { "type": "list", "items": [
+              "Sistema de reservas fácil de integrar en tu web.",
+              "Popular y conocido en el mercado español.",
+              "Gestión de cupos, horarios y pagos.",
+              "Buen punto de partida para empezar a vender online."
+            ] }
+          ]
+        },
+        {
+          "h": "Dónde se queda corto para motos de agua",
+          "blocks": [
+            { "type": "p", "text": "TuriTop se centra en la reserva, no en la operación. Para una flota acuática con volumen, eso deja fuera buena parte del día a día." },
+            { "type": "list", "items": [
+              "El walk-in del mostrador se sigue gestionando a mano.",
+              "No hay operación en vivo: ni QR de embarque ni dashboard multi-base.",
+              "Sin agente de IA que cierre reservas por WhatsApp.",
+              "Papeleo del sector limitado (libro de registro, menores).",
+              "Gestión multi-base limitada."
+            ] }
+          ]
+        },
+        {
+          "h": "TuriTop vs Solnow de un vistazo",
+          "blocks": [
+            { "type": "table", "columns": ["TuriTop", "Solnow"], "highlightCol": 1, "rows": [
+              { "label": "Enfoque", "cells": ["Sistema de reservas online", "Sistema operativo de alquiler acuático"] },
+              { "label": "Walk-in en mostrador", "cells": ["Manual", "TPV + kiosko"] },
+              { "label": "Operación en vivo", "cells": ["No", "Dashboard + QR"] },
+              { "label": "IA en WhatsApp", "cells": ["No", "Agente que cierra 24/7"] },
+              { "label": "Papeleo del sector", "cells": ["Básico", "Contratos, firma y menores"] },
+              { "label": "Libro de registro", "cells": ["No", "Automático"] },
+              { "label": "Multi-base", "cells": ["Limitado", "Real, en una pantalla"] },
+              { "label": "Modelo de precio", "cells": ["Cuota / plan", "% sobre lo generado, sin cuota fija"] }
+            ] }
+          ]
+        },
+        {
+          "h": "Cómo migrar desde TuriTop",
+          "blocks": [
+            { "type": "p", "text": "Migramos clientes, reservas históricas y configuración desde TuriTop o Excel, sin downtime y sin perder datos." },
+            { "type": "callout", "tone": "accent", "text": "Pasar de un sistema de reservas a un sistema operativo es la diferencia entre vender online y operar todo tu negocio acuático en un solo sitio." }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "¿Sirve TuriTop para alquilar motos de agua?", "a": "Funciona bien como sistema de reservas online, pero no cubre el mostrador (walk-in), la operación en vivo ni el papeleo náutico. Para una flota con volumen se queda corto." },
+        { "q": "¿Cuál es la mejor alternativa a TuriTop para motos de agua?", "a": "Un sistema vertical como Solnow, que digitaliza venta por WhatsApp, mostrador, operación multi-base y postventa, además de las reservas." },
+        { "q": "¿Puedo migrar desde TuriTop?", "a": "Sí, la migración de clientes, reservas y configuración está incluida y sin pérdida de datos." },
+        { "q": "¿En qué se diferencia el precio?", "a": "TuriTop trabaja con cuota o plan. Solnow cobra un % sobre las reservas que genera, sin cuota fija." }
+      ],
+      "related": [
+        { "label": "TuriTop vs Solnow", "slug": "turitop-vs-solnow" },
+        { "label": "Software para alquiler de motos de agua", "slug": "software-alquiler-motos-de-agua" },
+        { "label": "Mejores software de reservas acuáticas", "slug": "mejores-software-reservas-actividades-acuaticas" }
+      ],
+      "cta": {
+        "title": "Mira la alternativa con tu flota real",
+        "desc": "Te montamos una demo con tus motos, tus bases y tu volumen. Sin compromiso.",
+        "button": "Pedir demo"
+      }
+    },
+    "fareharborVs": {
+      "meta": {
+        "title": "FareHarbor vs Solnow: comparativa para alquiler de motos de agua — Solnow",
+        "description": "FareHarbor vs Solnow comparados para operadores de motos de agua: reservas, walk-in, operación en vivo, papeleo del sector, multi-base y precio. Tabla head-to-head.",
+        "ogTitle": "FareHarbor vs Solnow"
+      },
+      "hero": {
+        "eyebrow": "COMPARATIVA",
+        "h1": "FareHarbor vs Solnow",
+        "lede": "Comparativa directa para operadores de alquiler de motos de agua. Dónde gana cada uno y cuál encaja según cómo es tu negocio.",
+        "updated": "Actualizado · junio de 2026",
+        "readingTime": "8 min de lectura"
+      },
+      "disclaimer": "Comparativa orientativa basada en información pública a junio de 2026. Las características y los precios de terceros pueden cambiar; verifica los detalles actuales en la web de cada herramienta.",
+      "sections": [
+        {
+          "h": "Dos productos para dos problemas distintos",
+          "blocks": [
+            { "type": "p", "text": "FareHarbor resuelve la distribución y la reserva de tours y actividades. Solnow resuelve la operación completa de una flota de alquiler acuático. No compiten exactamente en lo mismo, y por eso la elección depende de cuál es tu negocio de verdad." }
+          ]
+        },
+        {
+          "h": "Comparativa head-to-head",
+          "blocks": [
+            { "type": "table", "columns": ["FareHarbor", "Solnow"], "highlightCol": 1, "rows": [
+              { "label": "Categoría", "cells": ["Motor de reservas de tours", "Sistema operativo de alquiler acuático"] },
+              { "label": "Reservas online", "cells": ["Sí, muy maduro", "Sí, motor integrado"] },
+              { "label": "Walk-in / mostrador", "cells": ["Manual", "TPV (Staff + Kiosk)"] },
+              { "label": "Cobro en el mostrador", "cells": ["Manual / externo", "Integrado"] },
+              { "label": "Contratos y firma", "cells": ["Básico", "Integrado, incluye menores"] },
+              { "label": "Libro de registro", "cells": ["No", "Automático"] },
+              { "label": "Operación en vivo (QR, dashboard)", "cells": ["No", "Sí, multi-base"] },
+              { "label": "IA en WhatsApp", "cells": ["No", "Agente que cierra 24/7"] },
+              { "label": "Multi-base", "cells": ["Parcial", "Real"] },
+              { "label": "Precio", "cells": ["Comisión por reserva", "% sobre lo generado, sin cuota fija"] },
+              { "label": "Tiempo a producción", "cells": ["Semanas", "Días"] }
+            ] }
+          ]
+        },
+        {
+          "h": "Cuándo elegir FareHarbor",
+          "blocks": [
+            { "type": "p", "text": "Si tu negocio principal es vender y distribuir tours de terceros y te apoyas en su red de afiliados y distribución, FareHarbor tiene sentido. Es un motor maduro y probado para ese caso." }
+          ]
+        },
+        {
+          "h": "Cuándo elegir Solnow",
+          "blocks": [
+            { "type": "p", "text": "Si tu core es operar tu propia flota de motos de agua con volumen, walk-in, varias bases y papeleo del sector, Solnow digitaliza todo el ciclo (venta, papeleo, operación y postventa), no solo la reserva." },
+            { "type": "callout", "tone": "accent", "text": "Las demás te ayudan a reservar. Solnow te ayuda a vender y a operar." }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "¿Qué es mejor para alquilar motos de agua, FareHarbor o Solnow?", "a": "Depende de tu negocio. Para distribuir tours de terceros, FareHarbor. Para operar tu propia flota acuática con walk-in, multi-base y papeleo del sector, Solnow cubre todo el ciclo." },
+        { "q": "¿FareHarbor gestiona el walk-in del mostrador?", "a": "No de forma digitalizada: el cliente sin reserva se gestiona a mano. Solnow incluye TPV (Staff Mode + Kiosk) para resolver el walk-in en minutos." },
+        { "q": "¿En qué se diferencia el precio?", "a": "FareHarbor suele cobrar comisión por reserva. Solnow cobra un % sobre lo que genera, sin cuota fija ni setup." },
+        { "q": "¿Puedo migrar de FareHarbor a Solnow?", "a": "Sí, la migración de clientes, reservas y configuración está incluida, sin downtime." }
+      ],
+      "related": [
+        { "label": "Alternativa a FareHarbor para motos de agua", "slug": "fareharbor-alternativa-motos-de-agua" },
+        { "label": "TuriTop vs Solnow", "slug": "turitop-vs-solnow" },
+        { "label": "Software para alquiler de motos de agua", "slug": "software-alquiler-motos-de-agua" }
+      ],
+      "cta": {
+        "title": "Compáralo con tu operación real",
+        "desc": "Te montamos una demo con tu flota y tu volumen para que veas la diferencia en vivo.",
+        "button": "Pedir demo"
+      }
+    },
+    "turitopVs": {
+      "meta": {
+        "title": "TuriTop vs Solnow: comparativa para alquiler de motos de agua — Solnow",
+        "description": "TuriTop vs Solnow comparados para operadores de motos de agua: reservas, walk-in, operación en vivo, papeleo del sector, multi-base y precio. Tabla head-to-head.",
+        "ogTitle": "TuriTop vs Solnow"
+      },
+      "hero": {
+        "eyebrow": "COMPARATIVA",
+        "h1": "TuriTop vs Solnow",
+        "lede": "Comparativa directa para operadores de alquiler de motos de agua. Dónde gana cada uno y cuál encaja según cómo es tu negocio.",
+        "updated": "Actualizado · junio de 2026",
+        "readingTime": "8 min de lectura"
+      },
+      "disclaimer": "Comparativa orientativa basada en información pública a junio de 2026. Las características y los precios de terceros pueden cambiar; verifica los detalles actuales en la web de cada herramienta.",
+      "sections": [
+        {
+          "h": "Dos productos para dos momentos distintos",
+          "blocks": [
+            { "type": "p", "text": "TuriTop es un sistema de reservas online: te ayuda a vender en tu web. Solnow es un sistema operativo: te ayuda a operar toda tu flota acuática. La elección depende de si tu prioridad es vender online o gestionar la operación completa." }
+          ]
+        },
+        {
+          "h": "Comparativa head-to-head",
+          "blocks": [
+            { "type": "table", "columns": ["TuriTop", "Solnow"], "highlightCol": 1, "rows": [
+              { "label": "Categoría", "cells": ["Sistema de reservas online", "Sistema operativo de alquiler acuático"] },
+              { "label": "Reservas online", "cells": ["Sí", "Sí, motor integrado"] },
+              { "label": "Reservas en tu web", "cells": ["Sí, su punto fuerte", "Sí, motor integrado"] },
+              { "label": "Walk-in / mostrador", "cells": ["Manual", "TPV (Staff + Kiosk)"] },
+              { "label": "Contratos y firma", "cells": ["Básico", "Integrado, incluye menores"] },
+              { "label": "Libro de registro", "cells": ["No", "Automático"] },
+              { "label": "Operación en vivo (QR, dashboard)", "cells": ["No", "Sí, multi-base"] },
+              { "label": "IA en WhatsApp", "cells": ["No", "Agente que cierra 24/7"] },
+              { "label": "Multi-base", "cells": ["Limitado", "Real"] },
+              { "label": "Precio", "cells": ["Cuota / plan", "% sobre lo generado, sin cuota fija"] }
+            ] }
+          ]
+        },
+        {
+          "h": "Cuándo elegir TuriTop",
+          "blocks": [
+            { "type": "p", "text": "Si lo que buscas sobre todo es un sistema de reservas sencillo para vender en tu web y estás empezando, TuriTop es una buena entrada y está muy probado en España." }
+          ]
+        },
+        {
+          "h": "Cuándo elegir Solnow",
+          "blocks": [
+            { "type": "p", "text": "Si operas con volumen, tienes walk-in, varias bases y papeleo del sector, Solnow va más allá de la reserva y digitaliza venta, papeleo, operación en vivo y postventa en una sola plataforma." },
+            { "type": "callout", "tone": "accent", "text": "Vender online es el principio. Operar la flota completa es donde Solnow marca la diferencia." }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "¿Qué es mejor para motos de agua, TuriTop o Solnow?", "a": "Si tu prioridad es vender online de forma sencilla, TuriTop. Si necesitas operar una flota con walk-in, multi-base y papeleo del sector, Solnow cubre todo el ciclo." },
+        { "q": "¿TuriTop tiene operación en tiempo real?", "a": "No: se centra en la reserva. La operación en vivo (QR de embarque, dashboard multi-base) es propia de un sistema operativo como Solnow." },
+        { "q": "¿En qué se diferencia el precio?", "a": "TuriTop trabaja con cuota o plan. Solnow cobra un % sobre lo que genera, sin cuota fija." },
+        { "q": "¿Puedo migrar de TuriTop a Solnow?", "a": "Sí, migramos clientes, reservas y configuración sin downtime ni pérdida de datos." }
+      ],
+      "related": [
+        { "label": "Alternativa a TuriTop para motos de agua", "slug": "turitop-alternativa-motos-de-agua" },
+        { "label": "FareHarbor vs Solnow", "slug": "fareharbor-vs-solnow" },
+        { "label": "Software para alquiler de motos de agua", "slug": "software-alquiler-motos-de-agua" }
+      ],
+      "cta": {
+        "title": "Compáralo con tu operación real",
+        "desc": "Te montamos una demo con tu flota y tu volumen para que veas la diferencia en vivo.",
+        "button": "Pedir demo"
+      }
+    },
+    "mejoresSoftware": {
+      "meta": {
+        "title": "Mejores software de reservas para actividades acuáticas (2026) — Solnow",
+        "description": "Comparativa honesta de los mejores software de reservas para actividades náuticas y acuáticas: FareHarbor, TuriTop, Bookeo, Regiondo y Solnow. Cuál encaja según tu operación.",
+        "ogTitle": "Mejores software de reservas para actividades acuáticas"
+      },
+      "hero": {
+        "eyebrow": "COMPARATIVA",
+        "h1": "Mejores software de reservas para actividades acuáticas",
+        "lede": "Una comparativa honesta de las opciones reales del mercado para operadores náuticos, con sus puntos fuertes y para quién encaja cada una. Sin humo.",
+        "updated": "Actualizado · junio de 2026",
+        "readingTime": "9 min de lectura"
+      },
+      "disclaimer": "Comparativa orientativa basada en información pública a junio de 2026. Las características y los precios de terceros pueden cambiar; verifica los detalles actuales en la web de cada herramienta.",
+      "sections": [
+        {
+          "h": "Cómo elegimos",
+          "blocks": [
+            { "type": "p", "text": "No hay un 'mejor' absoluto: hay un mejor para tu operación. Estos son los criterios que de verdad marcan la diferencia en un negocio de alquiler acuático con volumen:" },
+            { "type": "list", "items": [
+              "Cobertura: ¿solo reservas o toda la operación (venta, papeleo, operación, postventa)?",
+              "Walk-in: ¿digitaliza al cliente que llega sin reserva?",
+              "Operación en vivo: ¿QR de embarque y dashboard multi-base?",
+              "Vertical náutico: ¿libro de registro y contratos del sector?",
+              "IA: ¿cierra reservas por WhatsApp 24/7?",
+              "Modelo de precio: ¿cuota fija o pago por uso?"
+            ] }
+          ]
+        },
+        {
+          "h": "FareHarbor",
+          "blocks": [
+            { "type": "p", "text": "Motor de reservas maduro, fuerte en distribución y red de afiliados. Es una buena opción si tu negocio vive de vender y distribuir tours de terceros. Para una flota acuática se queda corto en walk-in, operación en vivo y papeleo del sector." }
+          ]
+        },
+        {
+          "h": "TuriTop",
+          "blocks": [
+            { "type": "p", "text": "Sistema de reservas online popular en España, fácil de integrar en tu web. Ideal para empezar a vender por internet. Limitado en operación multi-base, walk-in e IA conversacional." }
+          ]
+        },
+        {
+          "h": "Bookeo y Regiondo",
+          "blocks": [
+            { "type": "p", "text": "Motores de reservas genéricos para actividades y experiencias, con buena gestión de cupos y distribución multicanal. Cumplen como sistema de reservas, pero no son verticales náuticos ni digitalizan la operación durante la actividad." }
+          ]
+        },
+        {
+          "h": "Solnow",
+          "blocks": [
+            { "type": "p", "text": "Sistema operativo para alquiler acuático de alto volumen: venta por WhatsApp con IA, mostrador (TPV + kiosko), operación en vivo multi-base y postventa (libro de registro, reseñas, CRM). Pensado para operadores de motos de agua con volumen, con modelo sin cuota fija." }
+          ]
+        },
+        {
+          "h": "Resumen comparativo",
+          "blocks": [
+            { "type": "table", "columns": ["FareHarbor", "TuriTop", "Bookeo/Regiondo", "Solnow"], "highlightCol": 3, "rows": [
+              { "label": "Tipo", "cells": ["Motor de tours", "Reservas online", "Motor genérico", "Sistema operativo acuático"] },
+              { "label": "Walk-in / mostrador", "cells": ["Manual", "Manual", "Manual", "TPV + kiosko"] },
+              { "label": "Operación en vivo", "cells": ["No", "No", "No", "Sí (QR + dashboard)"] },
+              { "label": "IA en WhatsApp", "cells": ["No", "No", "No", "Sí"] },
+              { "label": "Vertical náutico", "cells": ["No", "No", "No", "Sí"] },
+              { "label": "Multi-base", "cells": ["Parcial", "Limitado", "Parcial", "Real"] },
+              { "label": "Mejor para", "cells": ["Distribuir tours", "Vender en tu web", "Cupos multicanal", "Operar tu flota acuática"] }
+            ] }
+          ]
+        },
+        {
+          "h": "Cómo elegir el tuyo",
+          "blocks": [
+            { "type": "p", "text": "Si tu negocio es distribuir tours, mira FareHarbor. Si empiezas a vender online, TuriTop o un motor genérico. Si tu core es operar motos de agua con volumen, walk-in y varias bases, Solnow digitaliza todo el ciclo, no solo la reserva." },
+            { "type": "callout", "tone": "accent", "text": "El mejor software no es el que más reservas coge, es el que más de tu operación digitaliza." }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "¿Cuál es el mejor software de reservas para actividades acuáticas?", "a": "Depende de tu operación. Para distribuir tours, FareHarbor; para vender online, TuriTop o un motor genérico; para operar una flota de motos de agua con volumen, Solnow cubre venta, papeleo, operación y postventa." },
+        { "q": "¿Hay algún software específico para alquiler de motos de agua?", "a": "Sí. Solnow es un sistema vertical para alquiler acuático: además de reservas, digitaliza el mostrador, la operación en vivo multi-base y el papeleo del sector." },
+        { "q": "¿FareHarbor o TuriTop para motos de agua?", "a": "FareHarbor destaca en distribución de tours; TuriTop en reservas online en tu web. Ninguno está pensado para la operación de una flota acuática, donde encaja mejor un sistema vertical como Solnow." },
+        { "q": "¿Cuánto cuestan estos software?", "a": "Varía según el modelo: comisión por reserva, cuota o plan. Solnow no cobra cuota fija: aplica un % sobre las reservas que genera más un coste por conversación de IA." }
+      ],
+      "related": [
+        { "label": "FareHarbor vs Solnow", "slug": "fareharbor-vs-solnow" },
+        { "label": "TuriTop vs Solnow", "slug": "turitop-vs-solnow" },
+        { "label": "Software para alquiler de motos de agua", "slug": "software-alquiler-motos-de-agua" }
+      ],
+      "cta": {
+        "title": "Mira por qué Solnow encaja con tu flota",
+        "desc": "Te montamos una demo con tus motos, tus bases y tu volumen real. 30 minutos, sin compromiso.",
+        "button": "Pedir demo"
+      }
+    },
+    "software": {
+      "meta": {
+        "title": "Software para alquiler de motos de agua: cómo elegir el tuyo — Solnow",
+        "description": "Qué debe tener un software de reservas para alquiler de motos de agua: motor de reservas, WhatsApp con IA, contratos y firma, operación en tiempo real y multi-base. Guía para elegir bien.",
+        "ogTitle": "Software para alquiler de motos de agua"
+      },
+      "hero": {
+        "eyebrow": "PRODUCTO · SOFTWARE",
+        "h1": "Software para alquiler de motos de agua",
+        "lede": "El programa de reservas con el que gestionas venta, papeleo, operación y postventa de tu flota, sin Excel ni cuatro herramientas sueltas. Qué debe incluir y cómo elegir el que escala contigo.",
+        "updated": "Actualizado · junio de 2026",
+        "readingTime": "8 min de lectura"
+      },
+      "sections": [
+        {
+          "h": "Qué es un software para alquiler de motos de agua",
+          "blocks": [
+            { "type": "p", "text": "Es la plataforma que centraliza todo lo que hoy tienes repartido entre Excel, el calendario, WhatsApp, la impresora de contratos y la caja. Un buen software no solo 'coge reservas': vende, firma el papeleo, controla la operación en el agua y te da los números del negocio." },
+            { "type": "p", "text": "La diferencia entre un motor de reservas genérico y un sistema operativo del sector está justo ahí: en cuánto de tu día a día digitaliza de verdad." }
+          ]
+        },
+        {
+          "h": "Qué debe incluir (checklist)",
+          "blocks": [
+            { "type": "list", "items": [
+              "Motor de reservas con disponibilidad en vivo y precios por temporada, día y hora.",
+              "Agente de IA en WhatsApp que cierra reservas 24/7.",
+              "Contratos y firma electrónica integrada, incluidos contratos para menores.",
+              "Facturación automática y control de pagos.",
+              "Operación en tiempo real: dashboard y escaneo QR de embarque.",
+              "Gestión multi-base real desde una sola pantalla.",
+              "Integraciones con OTAs náuticas (Viator, GetYourGuide) y pagos (Stripe).",
+              "Libro de registro y postventa: reseñas y ficha de cliente."
+            ] }
+          ]
+        },
+        {
+          "h": "Genérico vs. vertical: por qué importa",
+          "blocks": [
+            { "type": "p", "text": "Un FareHarbor o un Bookeo te dan motor de reservas, pero no entienden lo que pasa entre que el cliente paga y devuelve la moto. Un software vertical para motos de agua cubre embarque, contratos del sector, libro de registro y operación multi-base." },
+            { "type": "callout", "tone": "info", "text": "Construir tu propia solución tiene sentido si el software es tu diferencial. Si tu diferencial es operar motos en el agua, cada mes programando es un mes que no escalas." }
+          ]
+        },
+        {
+          "h": "Cómo elegir el tuyo",
+          "blocks": [
+            { "type": "list", "items": [
+              "¿Cubre las cuatro áreas (venta, papeleo, operación, postventa) o solo reservas?",
+              "¿Funciona offline en el muelle y sincroniza cuando vuelve la señal?",
+              "¿Es multi-base de verdad, con caja y disponibilidad consolidadas?",
+              "¿La IA está conectada a tu disponibilidad real o responde con guiones?",
+              "¿El papeleo cumple la normativa del sector (incluidos menores)?",
+              "¿Qué modelo de precio: cuota fija o comisión sobre lo que genera?",
+              "¿Migran tus datos desde Excel u otro sistema sin pérdida?"
+            ] }
+          ]
+        },
+        {
+          "h": "Por qué Solnow",
+          "blocks": [
+            { "type": "p", "text": "Solnow es el sistema operativo para empresas de alquiler acuático de alto volumen: digitaliza venta, papeleo, operación en tiempo real y postventa en una sola plataforma multi-base. Sin cuota fija: cobramos un % de las reservas que generamos." },
+            { "type": "callout", "tone": "accent", "text": "Las demás te ayudan a reservar. Solnow te ayuda a vender y a operar." }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "¿Qué es un software de reservas para motos de agua?", "a": "Es la plataforma que centraliza la venta, el papeleo, la operación y la postventa de tu flota. Va más allá de coger reservas: gestiona contratos, caja, embarque y los números del negocio en un solo sitio." },
+        { "q": "¿Me sirve un software genérico como FareHarbor o Bookeo?", "a": "Te dan motor de reservas, pero no cubren lo que pasa durante la actividad (embarque, operación multi-base) ni el papeleo del sector náutico. Un software vertical para motos de agua sí." },
+        { "q": "¿Funciona con varias bases?", "a": "Un buen software del sector gestiona varias bases desde una sola pantalla, con disponibilidad y caja consolidadas y visibilidad en tiempo real. Es justo donde fallan las herramientas genéricas." },
+        { "q": "¿Cuánto cuesta un software para alquiler de motos de agua?", "a": "Depende del modelo. Solnow no cobra cuota fija: aplica un % sobre las reservas que genera más un coste por conversación de IA. Si no facturas, no cobramos." },
+        { "q": "¿Puedo migrar desde Excel?", "a": "Sí. Con Solnow migramos clientes, reservas históricas y configuración desde Excel, Google Calendar u otro software, sin pérdida de datos y sin downtime." }
+      ],
+      "related": [
+        { "label": "Digitalizar el mostrador (walk-in)", "slug": "digitalizar-mostrador-alquiler-motos-de-agua" },
+        { "label": "Responder WhatsApp 24/7 con IA", "slug": "whatsapp-reservas-motos-de-agua" },
+        { "label": "Eliminar el papeleo en temporada alta", "slug": "eliminar-papeleo-alquiler-nautico" }
+      ],
+      "cta": {
+        "title": "Mira Solnow con tu flota real",
+        "desc": "Te montamos una demo con tus motos, tus bases y tu volumen real. 30 minutos, sin compromiso.",
+        "button": "Pedir demo"
+      }
+    },
+    "mostrador": {
+      "meta": {
+        "title": "Cómo digitalizar el mostrador (walk-in) en alquiler de motos de agua — Solnow",
+        "description": "El cliente que llega sin reserva es tu margen más alto y tu mayor caos. Cómo digitalizar el mostrador (walk-in): alta, cobro, contrato y firma en minutos, sin papel ni colas.",
+        "ogTitle": "Cómo digitalizar el mostrador (walk-in) en alquiler de motos de agua"
+      },
+      "hero": {
+        "eyebrow": "GUÍA · OPERACIÓN",
+        "h1": "Cómo digitalizar el mostrador (walk-in) en alquiler de motos de agua",
+        "lede": "El walk-in es tu reserva más rentable y la que más te colapsa el mostrador en hora punta. Así se digitaliza el cliente que llega sin reserva: alta, cobro, contrato y firma en minutos.",
+        "updated": "Actualizado · junio de 2026",
+        "readingTime": "7 min de lectura"
+      },
+      "sections": [
+        {
+          "h": "Por qué el walk-in es tu punto ciego",
+          "blocks": [
+            { "type": "p", "text": "Casi todo el software del sector gestiona bien la reserva online, pero deja huérfano al cliente que llega a pie. Y ese cliente, el walk-in, suele ser tu margen más alto: paga el precio de mostrador y se sigue gestionando a mano con papel, caja y contrato impreso." },
+            { "type": "p", "text": "Es el momento de la verdad de tu operación, y casi nadie lo ha digitalizado. Ahí está tu mayor diferenciador." }
+          ]
+        },
+        {
+          "h": "El coste oculto del mostrador en papel",
+          "blocks": [
+            { "type": "list", "items": [
+              "Colas en hora punta mientras rellenas contratos a mano.",
+              "Errores y descuadres de caja.",
+              "Cero trazabilidad de quién alquiló qué y cuándo.",
+              "Personal saturado justo cuando más reservas entran.",
+              "Contratos en papel que se pierden o quedan incompletos."
+            ] }
+          ]
+        },
+        {
+          "h": "Cómo digitalizar el walk-in, paso a paso",
+          "blocks": [
+            { "type": "steps", "items": [
+              "Da de alta al cliente en una tablet o en un kiosko de autoservicio.",
+              "Selecciona moto y franja con la disponibilidad en vivo (sin overbookings con las reservas online).",
+              "Cobra dentro del mismo flujo, con pago integrado por tarjeta.",
+              "Genera el contrato ya relleno y recoge la firma electrónica en pantalla.",
+              "Haz el check-in con escaneo QR de embarque.",
+              "Todo queda archivado y registrado en el libro automáticamente."
+            ] }
+          ]
+        },
+        {
+          "h": "Modo mostrador (Staff) y kiosko",
+          "blocks": [
+            { "type": "p", "text": "Puedes resolverlo de dos formas: en modo TPV, donde tu equipo gestiona el alquiler en segundos, o en kiosko, donde el propio cliente se autogestiona mientras tu staff atiende a otro. Es el mismo sistema que las reservas online, así que la disponibilidad es única y no hay overbookings." }
+          ]
+        },
+        {
+          "h": "Qué ganas al digitalizar el mostrador",
+          "blocks": [
+            { "type": "list", "items": [
+              "Cero papel y colas mucho más cortas.",
+              "Caja siempre cuadrada.",
+              "Contrato, factura y libro de registro automáticos.",
+              "Trazabilidad total de cada walk-in."
+            ] },
+            { "type": "callout", "tone": "accent", "text": "Solnow incluye el TPV (Staff Mode + Kiosk) en todos los planes: el walk-in deja de ser tu cuello de botella." }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "¿Qué es un walk-in en el alquiler de motos de agua?", "a": "Es el cliente que llega al mostrador sin reserva previa. Suele ser tu reserva de mayor margen, pero también la que más se gestiona a mano y la que más colapsa el mostrador en hora punta." },
+        { "q": "¿Por qué cuesta tanto digitalizar el mostrador?", "a": "Porque la mayoría del software solo cubre la reserva online y deja el walk-in fuera. Hace falta un sistema con modo mostrador (TPV) y kiosko conectado a la misma disponibilidad." },
+        { "q": "¿Puede el cliente autogestionarse?", "a": "Sí. Con un kiosko de autoservicio el cliente se da de alta, paga y firma solo, mientras tu equipo atiende a otros. En modo Staff lo hace tu personal en segundos." },
+        { "q": "¿Se evita el overbooking entre walk-in y reservas online?", "a": "Sí, si el mostrador usa la misma disponibilidad en vivo que el motor de reservas. En Solnow es un único inventario, así que no hay doble reserva." },
+        { "q": "¿Cómo lo hace Solnow?", "a": "Con el TPV integrado (Staff Mode + Kiosk): alta, cobro, contrato, firma y check-in QR en minutos, todo archivado y en el libro de registro. Te lo enseñamos en una demo." }
+      ],
+      "related": [
+        { "label": "Software para alquiler de motos de agua", "slug": "software-alquiler-motos-de-agua" },
+        { "label": "Gestionar varias bases sin perder el control", "slug": "gestion-multi-base-alquiler-motos-de-agua" }
+      ],
+      "cta": {
+        "title": "Digitaliza tu mostrador con Solnow",
+        "desc": "Te enseñamos el TPV en acción con tu flota real: alta, cobro, contrato y firma en minutos.",
+        "button": "Pedir demo"
+      }
+    },
+    "multibase": {
+      "meta": {
+        "title": "Cómo gestionar varias bases de motos de agua sin perder el control — Solnow",
+        "description": "Gestión multi-base de alquiler de motos de agua: disponibilidad, caja, contratos y operación de todas tus bases en una sola pantalla, en tiempo real y también desde el móvil.",
+        "ogTitle": "Cómo gestionar varias bases de motos de agua sin perder el control"
+      },
+      "hero": {
+        "eyebrow": "GUÍA · MULTI-BASE",
+        "h1": "Cómo gestionar varias bases de motos de agua sin perder el control",
+        "lede": "Cuando creces a dos, tres o más bases, el caos se multiplica: cada punto con su Excel, su caja y su criterio. Así se gestiona una flota distribuida sin vivir pegado al teléfono.",
+        "updated": "Actualizado · junio de 2026",
+        "readingTime": "7 min de lectura"
+      },
+      "sections": [
+        {
+          "h": "El problema de crecer a varias bases",
+          "blocks": [
+            { "type": "p", "text": "Una base la controlas con la cabeza. Dos ya cuesta. Tres y dejas de ver lo que pasa cuando no estás físicamente delante. La visibilidad cae a cero y te enteras de los problemas cuando ya han escalado: el overbooking, la moto que no volvió, la caja que no cuadra." },
+            { "type": "p", "text": "El error no es tuyo: es que estás gestionando una operación distribuida con herramientas pensadas para un solo punto." }
+          ]
+        },
+        {
+          "h": "Síntomas de que perdiste el control",
+          "blocks": [
+            { "type": "list", "items": [
+              "Cada base con su propia hoja de cálculo y su criterio.",
+              "Overbookings entre canales y entre bases.",
+              "Caja descuadrada y difícil de consolidar.",
+              "No sabes la ocupación real de cada base en vivo.",
+              "Dependes de llamadas y mensajes para saber qué pasa."
+            ] }
+          ]
+        },
+        {
+          "h": "Cómo recuperar el control, paso a paso",
+          "blocks": [
+            { "type": "steps", "items": [
+              "Unifica disponibilidad, precios y flota de todas las bases en un solo sistema.",
+              "Mira un dashboard en tiempo real con la operación de cada base.",
+              "Consolida caja y contratos por base, sin perder el detalle.",
+              "Activa alertas automáticas de retrasos e incidencias.",
+              "Da permisos por rol y por base a tu equipo.",
+              "Compara el rendimiento entre bases con reporting unificado."
+            ] }
+          ]
+        },
+        {
+          "h": "Operar desde el móvil",
+          "blocks": [
+            { "type": "p", "text": "El objetivo no es tener más pantallas, es tener una sola: ver tus tres bases en vivo, también desde el móvil, sin tener que estar físicamente en ninguna. Lo que pasa en el agua deja de ser un punto ciego." },
+            { "type": "callout", "tone": "accent", "text": "Es el único módulo que digitaliza lo que pasa durante la actividad, no solo antes y después de la reserva." }
+          ]
+        },
+        {
+          "h": "Multi-base sin sumar personal",
+          "blocks": [
+            { "type": "p", "text": "Con la operación unificada, crecer de base no significa duplicar backoffice. La misma persona supervisa más puntos porque el sistema centraliza la información y avisa solo cuando algo se sale de lo normal." }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "¿Cómo gestiono varias bases de motos de agua a la vez?", "a": "Con un sistema que unifique disponibilidad, caja y operación de todas las bases en una sola pantalla, en tiempo real. Así dejas de depender de un Excel por base y de las llamadas." },
+        { "q": "¿Puedo ver la ocupación de cada base en tiempo real?", "a": "Sí, con un dashboard multi-base en vivo. En Solnow ves la operación de cada base, también desde el móvil, sin estar físicamente allí." },
+        { "q": "¿Cómo evito overbookings entre bases y canales?", "a": "Manteniendo un único inventario sincronizado en tiempo real entre bases, motor de reservas y OTAs. Es la base de una operación multi-base sin doble reserva." },
+        { "q": "¿Necesito más personal para gestionar más bases?", "a": "No necesariamente. Al centralizar la información y automatizar las alertas, la misma persona supervisa más bases. Crecer deja de significar duplicar backoffice." },
+        { "q": "¿Cómo lo resuelve Solnow?", "a": "Con un sistema multi-base real: disponibilidad, caja, contratos y operación en vivo de todas tus bases en una pantalla. Te lo enseñamos con tu operación real." }
+      ],
+      "related": [
+        { "label": "Software para alquiler de motos de agua", "slug": "software-alquiler-motos-de-agua" },
+        { "label": "Digitalizar el mostrador (walk-in)", "slug": "digitalizar-mostrador-alquiler-motos-de-agua" }
+      ],
+      "cta": {
+        "title": "Controla todas tus bases en una pantalla",
+        "desc": "Te enseñamos el dashboard multi-base de Solnow con tus bases y tu volumen real.",
+        "button": "Pedir demo"
+      }
+    },
+    "whatsapp": {
+      "meta": {
+        "title": "Cómo responder reservas por WhatsApp 24/7 sin contratar más personal — Solnow",
+        "description": "Un agente de IA que cierra reservas por WhatsApp 24/7, conectado a tu disponibilidad, precios y flota. Cómo automatizar las consultas sin perder ventas ni contratar.",
+        "ogTitle": "Cómo responder reservas por WhatsApp 24/7 sin contratar más personal"
+      },
+      "hero": {
+        "eyebrow": "GUÍA · IA",
+        "h1": "Cómo responder reservas por WhatsApp 24/7 sin contratar más personal",
+        "lede": "La mayoría de las consultas llegan por WhatsApp y muchas fuera de horario. Así se automatiza la respuesta y el cierre de reservas sin sumar personal, y sin que parezca un bot.",
+        "updated": "Actualizado · junio de 2026",
+        "readingTime": "7 min de lectura"
+      },
+      "sections": [
+        {
+          "h": "Por qué pierdes reservas en WhatsApp",
+          "blocks": [
+            { "type": "p", "text": "Las consultas llegan a todas horas y en temporada alta se acumulan: 50 mensajes al día preguntando precio, disponibilidad y horarios. Respondes tarde, ya estabas en el agua, era domingo por la noche… y el cliente reserva en el de al lado." },
+            { "type": "p", "text": "Cada consulta sin responder a tiempo es una reserva perdida. Y contratar a alguien para estar pegado al móvil 24/7 no sale a cuenta." }
+          ]
+        },
+        {
+          "h": "Chatbot vs. agente de IA conectado",
+          "blocks": [
+            { "type": "p", "text": "Un chatbot con respuestas predefinidas frustra al cliente y no cierra: no sabe si te queda hueco el sábado a las 17:00 ni a qué precio. Un agente de IA conectado en vivo a tu disponibilidad, precios y flota sí: asesora, recomienda la mejor opción y cobra." }
+          ]
+        },
+        {
+          "h": "Cómo automatizar WhatsApp, paso a paso",
+          "blocks": [
+            { "type": "steps", "items": [
+              "Conecta tu número de WhatsApp al sistema.",
+              "Entrena al agente con tu flota, precios, extras y horarios reales.",
+              "El agente responde, recomienda y cierra reservas 24/7.",
+              "Cobra dentro de la propia conversación de WhatsApp.",
+              "Si no puede resolver algo, deriva a un humano sin perder el contexto.",
+              "Cada cierre entra al sistema: contrato, factura y calendario en automático."
+            ] }
+          ]
+        },
+        {
+          "h": "En cualquier idioma, en menos de 1 minuto",
+          "blocks": [
+            { "type": "p", "text": "El agente atiende en el idioma del cliente y cierra en menos de un minuto, sin esperas. Para un negocio turístico con clientes de medio mundo, eso es dejar de perder reservas por barrera idiomática o por horario." },
+            { "type": "callout", "tone": "accent", "text": "No es un chatbot: es un agente que cierra hasta el 70% de las consultas de WhatsApp antes de que abras la base." }
+          ]
+        },
+        {
+          "h": "Qué ganas",
+          "blocks": [
+            { "type": "list", "items": [
+              "Cero consultas sin responder.",
+              "Reservas que entran 24/7, también de madrugada y fuera de temporada.",
+              "Más volumen sin contratar más personal.",
+              "Tu equipo liberado de responder lo mismo cien veces."
+            ] }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "¿Se pueden automatizar las reservas por WhatsApp?", "a": "Sí, con un agente de IA conectado a tu disponibilidad, precios y flota. Responde, recomienda y cierra reservas 24/7, y cobra dentro de la misma conversación." },
+        { "q": "¿No es lo mismo que un chatbot?", "a": "No. Un chatbot sigue guiones y no conoce tu disponibilidad real. Un agente de IA conectado al sistema sabe qué hueco te queda y a qué precio, y cierra la venta de verdad." },
+        { "q": "¿Necesito contratar personal para responder WhatsApp?", "a": "No es el objetivo. El agente atiende el grueso de las consultas 24/7 y solo deriva a un humano lo que lo necesita, con el contexto. Manejas más volumen sin sumar personal." },
+        { "q": "¿Funciona en varios idiomas?", "a": "Sí. El agente atiende en el idioma del cliente y cierra en menos de un minuto, algo clave para un negocio turístico con clientes internacionales." },
+        { "q": "¿Qué pasa cuando el agente cierra una reserva?", "a": "Entra directa al sistema: genera contrato, factura y bloqueo de calendario en automático, sin overbookings. En Solnow todo queda conectado al mismo modelo de datos." }
+      ],
+      "related": [
+        { "label": "Software para alquiler de motos de agua", "slug": "software-alquiler-motos-de-agua" },
+        { "label": "Eliminar el papeleo en temporada alta", "slug": "eliminar-papeleo-alquiler-nautico" }
+      ],
+      "cta": {
+        "title": "Pon la IA a cerrar tus reservas",
+        "desc": "Te enseñamos el agente de WhatsApp de Solnow entrenado con tu flota y tus precios reales.",
+        "button": "Pedir demo"
+      }
+    },
+    "papeleo": {
+      "meta": {
+        "title": "Cómo eliminar el papeleo en temporada alta de alquiler náutico — Solnow",
+        "description": "Contratos, firmas y facturas a mano son el cuello de botella del pico de temporada. Cómo eliminar el papeleo con contratos digitales y firma electrónica que salen solos.",
+        "ogTitle": "Cómo eliminar el papeleo en temporada alta de alquiler náutico"
+      },
+      "hero": {
+        "eyebrow": "GUÍA · PAPELEO",
+        "h1": "Cómo eliminar el papeleo en temporada alta de alquiler náutico",
+        "lede": "En agosto cada minuto cuenta y se te van dos o tres horas al día firmando contratos a mano. Así se elimina el papeleo del alquiler náutico sin perder el cumplimiento legal.",
+        "updated": "Actualizado · junio de 2026",
+        "readingTime": "6 min de lectura"
+      },
+      "sections": [
+        {
+          "h": "El papeleo no escala con tu temporada",
+          "blocks": [
+            { "type": "p", "text": "En verano el volumen se multiplica, pero el papeleo sigue siendo el mismo proceso manual de siempre: imprimir, rellenar a mano, firmar, escanear y archivar. Cuanto más vendes, más se atasca el mostrador. El cuello de botella deja de ser la demanda y pasa a ser el bolígrafo." }
+          ]
+        },
+        {
+          "h": "Lo que te cuesta el papel en pico",
+          "blocks": [
+            { "type": "list", "items": [
+              "Dos o tres horas diarias firmando y archivando contratos.",
+              "Colas en el mostrador justo en hora punta.",
+              "Errores y campos que faltan en los contratos.",
+              "Contratos en papel que se pierden o se mojan.",
+              "Riesgo legal si falta una firma o el anexo de un menor."
+            ] }
+          ]
+        },
+        {
+          "h": "Cómo eliminar el papeleo, paso a paso",
+          "blocks": [
+            { "type": "steps", "items": [
+              "Pasa tus contratos a plantillas digitales, incluido el anexo para menores.",
+              "Haz que el contrato se genere ya relleno al confirmarse la reserva.",
+              "Recoge la firma electrónica en tablet o desde el móvil del cliente.",
+              "Emite la factura en automático tras el pago.",
+              "Archiva todo vinculado a la reserva, sin carpetas.",
+              "Mantén el libro de registro al día sin escribir nada a mano."
+            ] }
+          ]
+        },
+        {
+          "h": "Cumplimiento sin carpetas",
+          "blocks": [
+            { "type": "p", "text": "Eliminar el papel no significa perder el cumplimiento, al revés. Los contratos digitales son conformes a la normativa, no se pierden y son localizables al instante ante una reclamación o una inspección. Para profundizar en qué debe incluir el contrato, mira nuestra plantilla de contrato de alquiler." },
+            { "type": "callout", "tone": "accent", "text": "Contrato, firma electrónica y factura salen solos al confirmarse la reserva. El papeleo deja de ser tu trabajo." }
+          ]
+        },
+        {
+          "h": "Antes y después",
+          "blocks": [
+            { "type": "list", "items": [
+              "Antes: 2-3 h/día, colas, papel y contratos perdidos.",
+              "Después: 0 papel, firma en segundos y todo archivado solo.",
+              "Mismo equipo, el doble de reservas sin colapsar el mostrador."
+            ] }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "¿Cómo elimino el papeleo en el alquiler náutico?", "a": "Pasando a contratos digitales y firma electrónica que se generan solos al confirmarse la reserva, con facturación automática y archivo vinculado. Así el papeleo deja de ser un proceso manual." },
+        { "q": "¿La firma electrónica es válida para el alquiler de motos de agua?", "a": "Sí, la firma electrónica es válida y, bien integrada, deja constancia conforme a la normativa. Además incluye casos específicos como el contrato para menores con firma del tutor." },
+        { "q": "¿Pierdo cumplimiento legal al quitar el papel?", "a": "No, al contrario. Los contratos digitales son conformes, no se pierden y se localizan al instante ante una reclamación o inspección, algo difícil con el papel." },
+        { "q": "¿Cuánto tiempo ahorra digitalizar el papeleo?", "a": "Los operadores reportan dos o tres horas diarias menos en temporada alta, además de colas más cortas en el mostrador y menos errores." },
+        { "q": "¿Cómo lo hace Solnow?", "a": "Cada reserva confirmada genera el contrato relleno, recoge la firma electrónica, emite la factura y lo archiva todo, además de mantener el libro de registro al día. Te lo enseñamos en una demo." }
+      ],
+      "related": [
+        { "label": "Software para alquiler de motos de agua", "slug": "software-alquiler-motos-de-agua" },
+        { "label": "Modelo de contrato de alquiler (plantilla gratis)", "slug": "contrato-alquiler-motos-de-agua" }
+      ],
+      "cta": {
+        "title": "Elimina el papeleo antes del próximo pico",
+        "desc": "Te enseñamos cómo Solnow genera, firma y archiva cada contrato solo, con tu flota real.",
+        "button": "Pedir demo"
+      }
+    },
+    "contrato": {
+      "meta": {
+        "title": "Modelo de contrato de alquiler de motos de agua (plantilla gratis) — Solnow",
+        "description": "Descarga gratis una plantilla de contrato de alquiler de motos de agua y descubre qué cláusulas debe incluir para protegerte: fianza, seguro, menores y datos. Más cómo firmarlo en el mostrador en menos de 1 minuto.",
+        "ogTitle": "Modelo de contrato de alquiler de motos de agua (plantilla gratis)"
+      },
+      "hero": {
+        "eyebrow": "RECURSOS · CONTRATOS",
+        "h1": "Modelo de contrato de alquiler de motos de agua (plantilla gratis)",
+        "lede": "Una plantilla lista para usar y todo lo que tu contrato debe incluir para cubrirte ante un accidente, un daño o un impago. Y cómo dejar de imprimir y firmar a mano en plena temporada.",
+        "updated": "Actualizado · junio de 2026",
+        "readingTime": "7 min de lectura"
+      },
+      "download": {
+        "title": "Plantilla de contrato de alquiler (PDF gratis)",
+        "desc": "Modelo con todas las cláusulas esenciales: partes, embarcación, fianza, seguro, responsabilidad, menores y protección de datos. Descárgalo, adáptalo a tu empresa y úsalo hoy mismo.",
+        "fileLabel": "Descargar plantilla PDF",
+        "href": "/assets/modelo-contrato-alquiler-motos-de-agua.pdf"
+      },
+      "disclaimer": "Esta plantilla y esta guía son material orientativo, no asesoramiento legal. Antes de usar el contrato con clientes, revísalo con un asesor jurídico y verifica los requisitos de tu Capitanía Marítima y de tu comunidad autónoma.",
+      "sections": [
+        {
+          "h": "¿Para qué sirve el contrato de alquiler?",
+          "blocks": [
+            { "type": "p", "text": "El contrato de alquiler de motos de agua es la prueba escrita de las condiciones que aceptó el cliente: qué moto se llevó, en qué estado, durante cuánto tiempo, qué pasa si la daña y quién responde ante un accidente. Sin él, cualquier incidente se convierte en tu palabra contra la suya." },
+            { "type": "p", "text": "No es burocracia: es lo que te separa de pagar tú una avería, una multa o una reclamación. Y en la práctica, un buen contrato firmado evita el 90% de las discusiones en el mostrador cuando devuelven la moto." },
+            { "type": "list", "items": [
+              "Deja por escrito la fianza y en qué casos se retiene",
+              "Traslada la responsabilidad por daños y sanciones al arrendatario",
+              "Documenta el estado de la moto a la entrega y a la devolución",
+              "Cumple con la obligación de informar sobre el uso de datos personales"
+            ] }
+          ]
+        },
+        {
+          "h": "Qué debe incluir un contrato de alquiler de motos de agua",
+          "blocks": [
+            { "type": "p", "text": "Estos son los bloques que no pueden faltar. La plantilla descargable ya los trae todos; aquí tienes el porqué de cada uno." },
+            { "type": "list", "items": [
+              "Datos de las partes: empresa arrendadora (razón social, CIF, domicilio) y arrendatario (nombre, DNI o pasaporte, teléfono).",
+              "Identificación de la moto: marca, modelo, matrícula o número de casco y potencia.",
+              "Periodo de alquiler: fecha, hora de entrega y hora de devolución pactada.",
+              "Precio, forma de pago y fianza: importe, método y condiciones de devolución del depósito.",
+              "Estado de la embarcación: descripción de daños previos y nivel de combustible a la entrega.",
+              "Seguro y coberturas: qué cubre la póliza y qué franquicia o daños asume el cliente.",
+              "Condiciones de uso: zona de navegación permitida, distancia mínima a la costa y prohibiciones (alcohol, número de ocupantes, etc.).",
+              "Responsabilidad: el arrendatario responde de daños, sanciones administrativas y de terceros durante el alquiler.",
+              "Protección de datos: base legal y finalidad del tratamiento, con referencia al RGPD.",
+              "Firma de ambas partes y fecha."
+            ] }
+          ]
+        },
+        {
+          "h": "Las cláusulas que más se olvidan (y te cuestan caro)",
+          "blocks": [
+            { "type": "p", "text": "La mayoría de los modelos gratuitos de internet cubren lo básico, pero dejan fuera lo que de verdad te protege cuando hay un problema." },
+            { "type": "callout", "tone": "warn", "text": "Sin una cláusula de responsabilidad por sanciones, las multas de Capitanía por navegar fuera de zona o sin chaleco pueden acabar a tu nombre, porque la moto está matriculada a tu empresa." },
+            { "type": "list", "items": [
+              "Franquicia y límite de daños asumidos por el cliente, con importe concreto.",
+              "Penalización por retraso en la devolución, por hora o fracción.",
+              "Declaración del cliente de saber nadar y de haber recibido las instrucciones de seguridad.",
+              "Autorización expresa para cargar en la tarjeta los daños o multas posteriores.",
+              "Inventario fotográfico de la moto antes y después, anexado al contrato."
+            ] }
+          ]
+        },
+        {
+          "h": "Alquiler a menores: el contrato necesita campos extra",
+          "blocks": [
+            { "type": "p", "text": "Si alquilas o subes a menores como acompañantes, necesitas el consentimiento del padre, madre o tutor legal por escrito. No basta con que el adulto que paga lo diga de palabra." },
+            { "type": "list", "items": [
+              "Datos del tutor legal y vínculo con el menor.",
+              "Firma del tutor autorizando la actividad.",
+              "Validación de un documento de identidad del tutor.",
+              "Declaración de responsabilidad sobre el menor durante la actividad."
+            ] },
+            { "type": "callout", "tone": "info", "text": "La plantilla incluye un anexo específico para menores que puedes adjuntar solo cuando haga falta." }
+          ]
+        },
+        {
+          "h": "Cómo rellenar la plantilla, paso a paso",
+          "blocks": [
+            { "type": "list", "items": [
+              "Descarga el PDF y sustituye los datos de la empresa por los tuyos (razón social, CIF, domicilio).",
+              "Adapta las condiciones de uso a tu zona: distancia a la costa, áreas permitidas y potencia de tus motos.",
+              "Fija tu fianza, tu franquicia y tu penalización por retraso.",
+              "Revisa el texto con un asesor legal una sola vez; luego reutilízalo en cada alquiler.",
+              "Imprime una copia por cliente… o salta directo al siguiente apartado y olvídate del papel."
+            ] }
+          ]
+        },
+        {
+          "h": "Del papel a la firma digital en el mostrador",
+          "blocks": [
+            { "type": "p", "text": "Una plantilla en PDF resuelve el contenido, pero no el cuello de botella real: imprimir, rellenar a mano, escanear y archivar cada contrato mientras tienes cola en temporada alta. Ahí es donde se queman dos o tres horas al día." },
+            { "type": "p", "text": "Con Solnow, cada reserva confirmada genera el contrato ya relleno con los datos del cliente y la moto. El cliente lo firma en una tablet en el mostrador (o desde su móvil antes de llegar), incluido el anexo de menores, y queda archivado y vinculado a la reserva. Sin impresora, sin carpetas, sin buscar el contrato cuando hay una reclamación." },
+            { "type": "callout", "tone": "accent", "text": "El papeleo deja de ser tu trabajo: contrato, firma electrónica y factura salen solos al confirmarse la reserva." }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "¿Es obligatorio firmar un contrato para alquilar una moto de agua?", "a": "No existe un modelo oficial único, pero el contrato es la prueba de las condiciones aceptadas y de la cesión de responsabilidad. Sin él, ante un daño, una multa o un accidente es muy difícil que el cliente responda. En la práctica es imprescindible para protegerte." },
+        { "q": "¿Puedo usar esta plantilla tal cual con mis clientes?", "a": "Es un buen punto de partida que cubre las cláusulas esenciales, pero cada empresa tiene su zona de navegación, su fianza y sus condiciones. Adáptala a tu caso y revísala una vez con un asesor legal antes de usarla." },
+        { "q": "¿Qué pasa si alquilo a un menor de edad?", "a": "Necesitas el consentimiento por escrito del padre, madre o tutor legal, con su firma y la validación de su documento. La plantilla incluye un anexo específico para estos casos." },
+        { "q": "¿Tengo que guardar los contratos firmados y durante cuánto tiempo?", "a": "Sí, conviene conservarlos por si hay una reclamación o una inspección, y por las obligaciones fiscales y de protección de datos. Guardarlos en papel es frágil; digitalizados quedan archivados y localizables al instante." },
+        { "q": "¿Cómo paso de firmar en papel a firma digital?", "a": "Con Solnow el contrato se genera relleno al confirmarse la reserva y el cliente lo firma en tablet o desde su móvil. Queda vinculado a la reserva y archivado automáticamente, sin impresora ni carpetas." }
+      ],
+      "related": [
+        { "label": "Normativa del alquiler de motos de agua en España", "slug": "normativa-alquiler-motos-de-agua-espana" },
+        { "label": "Libro de registro: qué es y cómo llevarlo", "slug": "libro-registro-motos-de-agua" }
+      ],
+      "cta": {
+        "title": "Deja de firmar contratos a mano",
+        "desc": "Te enseñamos cómo Solnow genera, firma y archiva cada contrato solo, con tu flota y tu volumen real.",
+        "button": "Pedir demo"
+      }
+    },
+    "normativa": {
+      "meta": {
+        "title": "Normativa para el alquiler de motos de agua en España (guía 2026) — Solnow",
+        "description": "Requisitos legales para alquilar motos de agua en España: licencias, seguro obligatorio, autorizaciones de Capitanía, zonas de navegación y libro de registro. Guía práctica para operadores.",
+        "ogTitle": "Normativa para el alquiler de motos de agua en España"
+      },
+      "hero": {
+        "eyebrow": "RECURSOS · NORMATIVA",
+        "h1": "Normativa para el alquiler de motos de agua en España",
+        "lede": "Lo que necesitas para alquilar motos de agua de forma legal en España: titulación, seguros, autorizaciones de Capitanía, zonas de navegación y la documentación obligatoria. En una guía clara para operadores que arrancan o se están regularizando.",
+        "updated": "Actualizado · junio de 2026",
+        "readingTime": "9 min de lectura"
+      },
+      "disclaimer": "Esta guía es orientativa y no constituye asesoramiento legal. La normativa náutica depende de normas estatales, autonómicas y locales, y de la Capitanía Marítima de cada zona. Confirma siempre los requisitos vigentes con tu Capitanía y con un asesor antes de operar.",
+      "sections": [
+        {
+          "h": "Qué se necesita para alquilar motos de agua legalmente",
+          "blocks": [
+            { "type": "p", "text": "En España, la actividad de alquiler de motos de agua (consideradas embarcaciones de recreo) está regulada por la Dirección General de la Marina Mercante y supervisada por las Capitanías Marítimas, además de la normativa de costas y de cada comunidad autónoma. Como operador, debes cumplir requisitos en cuatro frentes: la titulación de quien pilota, los seguros, las autorizaciones de la actividad y la documentación." },
+            { "type": "list", "items": [
+              "Embarcaciones (motos) correctamente matriculadas y con sus revisiones al día.",
+              "Seguro de responsabilidad civil obligatorio para cada moto.",
+              "Autorización para desarrollar la actividad y, según la zona, ocupación de dominio público.",
+              "Titulación o autorización válida para quien maneja la moto.",
+              "Libro de registro y documentación de cada alquiler."
+            ] }
+          ]
+        },
+        {
+          "h": "Titulación: ¿hace falta licencia para el cliente?",
+          "blocks": [
+            { "type": "p", "text": "Depende de la potencia de la moto y de la modalidad de alquiler. A grandes rasgos hay tres caminos:" },
+            { "type": "list", "items": [
+              "Licencia de navegación: habilita para manejar motos de agua de potencia limitada tras un curso teórico-práctico corto. Es la vía habitual para clientes que quieren pilotar solos.",
+              "Título náutico superior (PNB, PER…): para motos de mayor potencia se exige una titulación superior según la categoría de la moto.",
+              "Modalidad guiada o 'bautismo': el cliente circula sin título dentro de un circuito acotado y bajo la supervisión directa de un monitor titulado. Es la fórmula más usada por los alquileres turísticos."
+            ] },
+            { "type": "callout", "tone": "info", "text": "La clasificación de las motos por potencia y la titulación exigida puede cambiar; confirma con tu Capitanía qué categoría corresponde a cada modelo de tu flota." }
+          ]
+        },
+        {
+          "h": "Requisitos de la empresa y de la actividad",
+          "blocks": [
+            { "type": "p", "text": "Más allá del cliente, la empresa arrendadora debe estar en regla para poder ofrecer el servicio." },
+            { "type": "list", "items": [
+              "Alta de la actividad económica y cumplimiento fiscal correspondiente.",
+              "Autorización de la actividad de alquiler y, si operas desde playa o dominio público marítimo-terrestre, la concesión o autorización de ocupación.",
+              "Motos matriculadas a nombre de la empresa, con la inspección técnica vigente cuando proceda.",
+              "Medios de seguridad y salvamento exigidos para la actividad.",
+              "Monitores con la titulación adecuada en la modalidad guiada."
+            ] }
+          ]
+        },
+        {
+          "h": "Seguro obligatorio",
+          "blocks": [
+            { "type": "p", "text": "Cada moto de agua debe tener contratado un seguro de responsabilidad civil de suscripción obligatoria, que cubre los daños a terceros. Para tu negocio conviene además una cobertura más amplia." },
+            { "type": "list", "items": [
+              "Responsabilidad civil obligatoria por embarcación (daños a terceros).",
+              "Cobertura de daños propios de la moto, con su franquicia.",
+              "Cobertura de la actividad y de los monitores en la modalidad guiada."
+            ] },
+            { "type": "callout", "tone": "warn", "text": "Alquilar una moto sin el seguro obligatorio en vigor es una infracción grave y, ante un accidente, puede dejarte expuesto a responder con tu patrimonio." }
+          ]
+        },
+        {
+          "h": "Zonas de navegación y distancias a la costa",
+          "blocks": [
+            { "type": "p", "text": "Las motos de agua no pueden navegar en cualquier sitio. Su uso está limitado para proteger a los bañistas y el litoral." },
+            { "type": "list", "items": [
+              "Salida y entrada únicamente por los canales o zonas balizadas habilitados para ello.",
+              "Prohibición de navegar dentro de las zonas de baño y a menos de la distancia mínima de la costa marcada por la normativa local.",
+              "Respeto de la velocidad y de las distancias de seguridad a bañistas, buceadores y otras embarcaciones.",
+              "Navegación diurna y dentro de los límites de la autorización."
+            ] }
+          ]
+        },
+        {
+          "h": "Documentación obligatoria de cada alquiler",
+          "blocks": [
+            { "type": "p", "text": "Cada alquiler genera papeleo que debes poder mostrar ante una inspección: el contrato con el cliente, la declaración de instrucciones de seguridad y el libro de registro de la actividad." },
+            { "type": "p", "text": "Llevar esto al día en plena temporada es donde más operadores fallan, y donde más fácil es que falte un dato en una inspección." },
+            { "type": "callout", "tone": "accent", "text": "Solnow genera el contrato y la factura al confirmarse la reserva y mantiene el libro de registro conforme a la normativa, sin que tengas que rellenar nada a mano." }
+          ]
+        },
+        {
+          "h": "Sanciones por incumplimiento",
+          "blocks": [
+            { "type": "p", "text": "Las infracciones en materia de navegación y seguridad marítima pueden suponer multas relevantes y, en los casos graves, la inmovilización de la moto o la pérdida de la autorización. Navegar fuera de zona, sin seguro o sin la titulación adecuada está entre las más sancionadas." },
+            { "type": "callout", "tone": "warn", "text": "Como las motos están matriculadas a tu empresa, muchas sanciones llegan a tu nombre aunque el infractor sea el cliente. Por eso el contrato debe trasladarle expresamente esa responsabilidad." }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "¿Necesita el cliente una licencia para alquilar una moto de agua?", "a": "Depende de la potencia de la moto y de la modalidad. Para pilotar solo suele hacer falta al menos una licencia de navegación; para motos potentes, un título superior. En la modalidad guiada o 'bautismo', el cliente puede circular sin título dentro de un circuito acotado y supervisado por un monitor." },
+        { "q": "¿Qué seguro es obligatorio para alquilar motos de agua?", "a": "Cada moto debe tener el seguro de responsabilidad civil de suscripción obligatoria que cubre daños a terceros. Para el negocio se recomienda añadir cobertura de daños propios y de la actividad." },
+        { "q": "¿Dónde pueden navegar las motos de agua?", "a": "Solo pueden entrar y salir por los canales o zonas balizadas habilitados, no pueden navegar dentro de las zonas de baño y deben respetar la distancia mínima a la costa y a los bañistas que marque la normativa local. Confirma los límites concretos con tu Capitanía." },
+        { "q": "¿Qué pasa si un cliente comete una infracción con mi moto?", "a": "Como la moto está matriculada a tu empresa, muchas sanciones pueden llegar a tu nombre. Un contrato que traslade expresamente la responsabilidad por daños y multas al arrendatario es clave para poder repercutírselas." },
+        { "q": "¿Tengo que llevar un libro de registro?", "a": "Sí, la actividad exige documentar los alquileres. Puedes ver cómo hacerlo en nuestra guía del libro de registro de motos náuticas." }
+      ],
+      "related": [
+        { "label": "Modelo de contrato de alquiler (plantilla gratis)", "slug": "contrato-alquiler-motos-de-agua" },
+        { "label": "Libro de registro: qué es y cómo llevarlo", "slug": "libro-registro-motos-de-agua" }
+      ],
+      "cta": {
+        "title": "Cumple con la normativa sin papeleo manual",
+        "desc": "Solnow automatiza contratos, seguros, libro de registro y documentación de cada alquiler. Te lo enseñamos con tu flota real.",
+        "button": "Pedir demo"
+      }
+    },
+    "libro": {
+      "meta": {
+        "title": "Libro de registro de motos náuticas: qué es y cómo llevarlo — Solnow",
+        "description": "Qué es el libro de registro de motos de agua, si es obligatorio, qué datos debe contener y cómo llevarlo paso a paso. Más cómo digitalizarlo para que se rellene solo.",
+        "ogTitle": "Libro de registro de motos náuticas: qué es y cómo llevarlo"
+      },
+      "hero": {
+        "eyebrow": "RECURSOS · DOCUMENTACIÓN",
+        "h1": "Libro de registro de motos náuticas: qué es y cómo llevarlo",
+        "lede": "Qué es el libro de registro, por qué te lo pueden pedir en una inspección, qué datos debe contener cada alquiler y cómo llevarlo al día sin que se te coma la temporada.",
+        "updated": "Actualizado · junio de 2026",
+        "readingTime": "6 min de lectura"
+      },
+      "disclaimer": "Esta guía es orientativa y no constituye asesoramiento legal. Los requisitos del libro de registro pueden variar según la Capitanía Marítima y la normativa autonómica. Confirma el formato y los datos exigidos con tu Capitanía.",
+      "sections": [
+        {
+          "h": "Qué es el libro de registro",
+          "blocks": [
+            { "type": "p", "text": "El libro de registro es el documento donde el operador anota cada uso de sus motos de agua: quién la alquiló, cuándo salió y volvió, con qué moto y bajo qué condiciones. Funciona como el historial de actividad de tu flota y es lo que demuestra, ante una inspección, que operas de forma ordenada y trazable." },
+            { "type": "p", "text": "Puede llevarse en papel (un cuaderno por base) o de forma digital. Lo importante es que esté completo, al día y disponible cuando te lo pidan." }
+          ]
+        },
+        {
+          "h": "¿Es obligatorio?",
+          "blocks": [
+            { "type": "p", "text": "La actividad de alquiler exige mantener documentación y trazabilidad de cada operación, y las Capitanías pueden requerir el registro de la actividad en una inspección. Aunque el formato exacto puede variar por zona, llevar un libro de registro ordenado es una práctica esperada y te protege ante reclamaciones o incidentes." },
+            { "type": "callout", "tone": "info", "text": "Confirma con tu Capitanía Marítima si exige un formato concreto o un libro sellado; en algunas zonas el requisito es más estricto que en otras." }
+          ]
+        },
+        {
+          "h": "Qué datos debe contener cada registro",
+          "blocks": [
+            { "type": "p", "text": "Cada línea del libro debería permitir reconstruir un alquiler completo. Como mínimo:" },
+            { "type": "list", "items": [
+              "Fecha y hora de salida y de regreso.",
+              "Identificación de la moto (matrícula o número de casco).",
+              "Datos del cliente que la alquiló (nombre y documento).",
+              "Titulación o modalidad (licencia propia, guiada o bautismo).",
+              "Monitor responsable, si aplica.",
+              "Incidencias: averías, retrasos, daños o sanciones.",
+              "Confirmación de entrega del equipo de seguridad (chaleco, etc.)."
+            ] }
+          ]
+        },
+        {
+          "h": "Cómo llevar el libro de registro, paso a paso",
+          "blocks": [
+            { "type": "steps", "items": [
+              "Antes de cada salida, anota la moto, el cliente y la hora de salida.",
+              "Registra la titulación del cliente o la modalidad (guiada o bautismo) y el monitor asignado.",
+              "Confirma y apunta la entrega del chaleco y del material de seguridad.",
+              "A la vuelta, anota la hora de regreso y cualquier incidencia (daño, retraso, sanción).",
+              "Cierra el registro y archívalo de forma que puedas recuperarlo por fecha, moto o cliente.",
+              "Revisa periódicamente que no falten datos: un registro incompleto es como no tenerlo."
+            ] }
+          ]
+        },
+        {
+          "h": "Errores frecuentes que te juegan en contra",
+          "blocks": [
+            { "type": "callout", "tone": "warn", "text": "El error más común es rellenarlo 'luego': al final del día, de memoria. En temporada alta se acumulan huecos y, cuando llega la inspección o la reclamación, faltan justo los datos del alquiler problemático." },
+            { "type": "list", "items": [
+              "Registros incompletos o con letra ilegible.",
+              "Un único cuaderno que se moja, se pierde o se queda en otra base.",
+              "No anotar la modalidad ni el monitor en los bautismos.",
+              "No dejar constancia de la entrega del equipo de seguridad."
+            ] }
+          ]
+        },
+        {
+          "h": "Del cuaderno al libro automático",
+          "blocks": [
+            { "type": "p", "text": "El libro de registro es el ejemplo perfecto de tarea administrativa que nadie quiere hacer y que, sin embargo, te protege. La solución no es 'apuntar mejor': es que se rellene solo." },
+            { "type": "p", "text": "Con Solnow, cada alquiler que pasa por el sistema queda registrado automáticamente: moto, cliente, horas, modalidad, monitor, firma del contrato y check-in con escaneo QR de embarque. El libro se genera conforme a la normativa, multi-base y consultable por fecha, moto o cliente, sin que nadie escriba nada a mano." },
+            { "type": "callout", "tone": "accent", "text": "Es parte de la postventa automática de Solnow: libro de registro, reseñas y ficha de cliente, en piloto automático al cerrar cada actividad." }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "¿Qué es exactamente el libro de registro de motos náuticas?", "a": "Es el documento donde se anota cada uso de las motos de agua de tu flota (moto, cliente, horas, condiciones e incidencias). Sirve para acreditar una operación ordenada y trazable ante una inspección o una reclamación." },
+        { "q": "¿Es obligatorio llevar el libro de registro?", "a": "La actividad exige mantener documentación y trazabilidad de cada alquiler, y las Capitanías pueden requerirla. El formato concreto puede variar por zona, así que confirma con tu Capitanía si exige un libro con un formato específico." },
+        { "q": "¿Puedo llevarlo en digital en lugar de en papel?", "a": "Sí. Un registro digital suele ser más fiable: no se pierde, es legible, se consulta al instante y permite mantener un libro por base sin cuadernos sueltos. Confirma con tu Capitanía si acepta el formato digital en tu zona." },
+        { "q": "¿Qué datos no pueden faltar en cada registro?", "a": "Como mínimo: fecha y horas de salida y regreso, identificación de la moto, datos del cliente, titulación o modalidad, monitor si aplica, entrega del equipo de seguridad e incidencias." },
+        { "q": "¿Cómo automatizo el libro de registro?", "a": "Con Solnow cada alquiler queda registrado solo (moto, cliente, horas, modalidad, monitor, firma y check-in QR) y el libro se genera conforme a la normativa, multi-base y consultable. Te lo enseñamos en una demo." }
+      ],
+      "related": [
+        { "label": "Normativa del alquiler de motos de agua en España", "slug": "normativa-alquiler-motos-de-agua-espana" },
+        { "label": "Modelo de contrato de alquiler (plantilla gratis)", "slug": "contrato-alquiler-motos-de-agua" }
+      ],
+      "cta": {
+        "title": "Que el libro de registro se rellene solo",
+        "desc": "Solnow registra cada alquiler automáticamente y genera el libro conforme a la normativa. Te lo enseñamos con tu operación real.",
+        "button": "Pedir demo"
+      }
     }
   }
 }

@@ -386,12 +386,39 @@
   "footer": {
     "tagline": "The operating system for high-volume watercraft rental companies. Built in Valencia, operated across the Mediterranean.",
     "langLabel": "Language",
-    "legal": "© 2026 Solnow S.L. · CIF B-12345678 · Valencia, ES",
+    "legal": "© 2026 Solnow",
     "status": "All systems operational",
     "legalLinks": {
       "h": "Legal",
       "privacy": "Privacy",
       "terms": "Terms"
+    },
+    "resources": {
+      "h": "Resources",
+      "software": "Booking software",
+      "mostrador": "Digitize the front desk",
+      "multibase": "Multi-base management",
+      "whatsapp": "WhatsApp AI 24/7",
+      "papeleo": "Eliminate paperwork",
+      "contrato": "Contract template",
+      "normativa": "Regulations in Spain",
+      "libro": "Logbook guide"
+    },
+    "comparativas": {
+      "h": "Comparisons",
+      "fareharborAlt": "FareHarbor alternative",
+      "turitopAlt": "TuriTop alternative",
+      "fareharborVs": "FareHarbor vs Solnow",
+      "turitopVs": "TuriTop vs Solnow",
+      "mejoresSoftware": "Best booking software"
+    },
+    "zonas": {
+      "h": "Regions",
+      "tenerife": "Tenerife",
+      "granCanaria": "Gran Canaria",
+      "canarias": "Canary Islands",
+      "argentina": "Argentina",
+      "mexico": "Mexico"
     }
   },
   "legal": {
@@ -511,6 +538,1479 @@
           "p": ["Sailing Paradise LLC · Email: lucastomic@solnow.io"]
         }
       ]
+    }
+  },
+  "guides": {
+    "backHome": "Back to home",
+    "tocLabel": "In this guide",
+    "faqTitle": "Frequently asked questions",
+    "relatedTitle": "Keep reading",
+    "disclaimerLabel": "Disclaimer",
+    "tenerife": {
+      "meta": {
+        "title": "Jet ski booking software in Tenerife — Solnow",
+        "description": "Booking and operations software for jet ski rental in Tenerife: walk-in in Costa Adeje and Los Cristianos, multilingual WhatsApp AI, multi-base across the south coast and digital contracts.",
+        "ogTitle": "Jet ski booking software in Tenerife"
+      },
+      "hero": {
+        "eyebrow": "REGIONS · TENERIFE",
+        "h1": "Jet ski booking software in Tenerife",
+        "lede": "Tenerife is one of Spain's strongest watercraft rental markets, with a season that runs almost all year. To operate at that volume of international tourism you need more than a calendar: sales, front desk, operation and paperwork in a single system.",
+        "updated": "Updated · June 2026",
+        "readingTime": "6 min read"
+      },
+      "sections": [
+        {
+          "h": "Jet ski rental in Tenerife",
+          "blocks": [
+            { "type": "p", "text": "The south coast of Tenerife concentrates most of the activity: Costa Adeje, Los Cristianos, Playa de las Américas and Puerto Colón. The Canary climate keeps the season going almost year-round, so volume is high and constant, with a mostly international tourist base (UK, Germany, Nordic countries)." },
+            { "type": "p", "text": "That means three things: lots of inquiries in several languages, lots of customers arriving on foot at the desk and, often, several bases along the coast." }
+          ]
+        },
+        {
+          "h": "What an operator in Tenerife needs",
+          "blocks": [
+            { "type": "list", "items": [
+              "Multilingual service: tourists ask in English, German or Spanish at any hour.",
+              "High walk-in: much of the booking is closed at the desk, not online.",
+              "Multi-base across the south coast, with a single view of the operation.",
+              "Paperwork that doesn't jam during the peaks in Las Américas or Los Cristianos.",
+              "Compliance with the Santa Cruz de Tenerife Harbour Master."
+            ] }
+          ]
+        },
+        {
+          "h": "Why Solnow fits in Tenerife",
+          "blocks": [
+            { "type": "table", "columns": ["Challenge in Tenerife", "With Solnow"], "highlightCol": 1, "rows": [
+              { "label": "International tourist", "cells": ["Inquiries in several languages", "Multilingual WhatsApp AI agent 24/7"] },
+              { "label": "Walk-in queues", "cells": ["Manual desk at peak time", "POS + kiosk: registration, payment and signature in minutes"] },
+              { "label": "Several bases on the south coast", "cells": ["Each base on its own", "Multi-base operation on one screen"] },
+              { "label": "Paperwork at peak", "cells": ["Contracts by hand", "Automatic contracts, signature and logbook"] },
+              { "label": "Tourism via OTAs", "cells": ["Unsynced channels", "Integrations with Viator and GetYourGuide"] }
+            ] }
+          ]
+        },
+        {
+          "h": "Ready for your base in Tenerife",
+          "blocks": [
+            { "type": "p", "text": "We set up Solnow with your fleet, your pricing and your south-coast bases, migrate your data and have you operating in days, with no downtime in peak season." },
+            { "type": "callout", "tone": "accent", "text": "Same team, twice the bookings: the AI closes the bulk of inquiries and the front desk stops being your bottleneck." }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "Is there software specifically for jet ski rental in Tenerife?", "a": "Yes. Solnow is a vertical system for watercraft rental that fits the Tenerife operation: international tourism, lots of walk-in and several bases on the south coast." },
+        { "q": "Does it handle several languages for Tenerife tourists?", "a": "Yes. The WhatsApp AI agent serves and closes bookings in the customer's language (English, German, Spanish…), key for the island's tourist profile." },
+        { "q": "Does it work for several bases on the south coast?", "a": "Yes. Solnow manages Costa Adeje, Los Cristianos, Puerto Colón and the rest of your bases from a single screen, in real time." },
+        { "q": "Does it help with compliance in the Canary Islands?", "a": "It generates digital contracts and keeps the logbook compliant. Verify the specific requirements with the Santa Cruz de Tenerife Harbour Master." },
+        { "q": "How long does setup take?", "a": "Days. We load fleet, pricing and bases, migrate your data and have you operating without stopping your season." }
+      ],
+      "related": [
+        { "label": "Jet ski booking software in Gran Canaria", "slug": "software-reservas-motos-de-agua-gran-canaria" },
+        { "label": "Jet ski booking software in the Canary Islands", "slug": "software-reservas-motos-de-agua-canarias" },
+        { "label": "Jet ski rental software", "slug": "software-alquiler-motos-de-agua" }
+      ],
+      "cta": {
+        "title": "Put Solnow in your Tenerife base",
+        "desc": "We'll set up a demo with your fleet and your south-coast bases. 30 minutes, no commitment.",
+        "button": "Book a demo"
+      }
+    },
+    "granCanaria": {
+      "meta": {
+        "title": "Jet ski booking software in Gran Canaria — Solnow",
+        "description": "Booking and operations software for jet ski rental in Gran Canaria: walk-in in Puerto Rico and Mogán, multilingual WhatsApp AI, multi-base in the south and digital contracts.",
+        "ogTitle": "Jet ski booking software in Gran Canaria"
+      },
+      "hero": {
+        "eyebrow": "REGIONS · GRAN CANARIA",
+        "h1": "Jet ski booking software in Gran Canaria",
+        "lede": "Gran Canaria moves a huge volume of water activity all year round, concentrated in the south. To avoid losing bookings or drowning in paperwork you need a system that covers sales, front desk, operation and after-sales.",
+        "updated": "Updated · June 2026",
+        "readingTime": "6 min read"
+      },
+      "sections": [
+        {
+          "h": "Jet ski rental in Gran Canaria",
+          "blocks": [
+            { "type": "p", "text": "The south of Gran Canaria is the heart of the activity: Puerto Rico, Puerto de Mogán, Anfi del Mar, Maspalomas and Arguineguín. It's a destination with year-round international tourism, lots of last-minute bookings and a customer who often shows up directly at the dock." },
+            { "type": "p", "text": "Operating there with Excel and a calendar means queues, overbookings and hours of paperwork exactly when most bookings come in." }
+          ]
+        },
+        {
+          "h": "What an operator in Gran Canaria needs",
+          "blocks": [
+            { "type": "list", "items": [
+              "Multilingual service for the international tourist in the south.",
+              "A fast desk in Puerto Rico and Mogán, where walk-in is high.",
+              "Multi-base visibility if you operate in several spots on the island.",
+              "Paperwork and logbook that don't jam in season.",
+              "Compliance with the Las Palmas Harbour Master."
+            ] }
+          ]
+        },
+        {
+          "h": "Why Solnow fits in Gran Canaria",
+          "blocks": [
+            { "type": "table", "columns": ["Challenge in Gran Canaria", "With Solnow"], "highlightCol": 1, "rows": [
+              { "label": "International tourist", "cells": ["Inquiries in several languages", "Multilingual WhatsApp AI agent 24/7"] },
+              { "label": "Walk-in in Puerto Rico / Mogán", "cells": ["Manual desk", "POS + kiosk: registration, payment and signature in minutes"] },
+              { "label": "Several bases in the south", "cells": ["No joint view", "Multi-base operation on one screen"] },
+              { "label": "Paperwork at peak", "cells": ["Contracts by hand", "Automatic contracts, signature and logbook"] },
+              { "label": "Tourism via OTAs", "cells": ["Unsynced channels", "Integrations with Viator and GetYourGuide"] }
+            ] }
+          ]
+        },
+        {
+          "h": "Ready for your base in Gran Canaria",
+          "blocks": [
+            { "type": "p", "text": "We configure Solnow with your fleet, your pricing and your bases in the south of the island, migrate your historical data and have you operating in days." },
+            { "type": "callout", "tone": "accent", "text": "Less paperwork and zero queues at the dock: the AI closes bookings 24/7 and the front desk goes fully digital." }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "Is there software specifically for jet skis in Gran Canaria?", "a": "Yes. Solnow is a vertical system for watercraft rental built for operations like those in the south of Gran Canaria: international tourism, high walk-in and several bases." },
+        { "q": "Does it handle several languages?", "a": "Yes. The AI agent serves and closes bookings on WhatsApp in the customer's language, key in Puerto Rico and Mogán." },
+        { "q": "Does it work for several bases on the island?", "a": "Yes. You manage Puerto Rico, Mogán, Anfi and the rest of your bases on a single screen, in real time." },
+        { "q": "Does it help with compliance in the Canary Islands?", "a": "It generates digital contracts and logbook compliant with the rules. Verify the specific requirements with the Las Palmas Harbour Master." },
+        { "q": "How long does setup take?", "a": "Days, without stopping your operation: we load fleet, pricing and bases and migrate your data." }
+      ],
+      "related": [
+        { "label": "Jet ski booking software in Tenerife", "slug": "software-reservas-motos-de-agua-tenerife" },
+        { "label": "Jet ski booking software in the Canary Islands", "slug": "software-reservas-motos-de-agua-canarias" },
+        { "label": "Jet ski rental software", "slug": "software-alquiler-motos-de-agua" }
+      ],
+      "cta": {
+        "title": "Put Solnow in your Gran Canaria base",
+        "desc": "We'll set up a demo with your fleet and your bases in the south. 30 minutes, no commitment.",
+        "button": "Book a demo"
+      }
+    },
+    "canarias": {
+      "meta": {
+        "title": "Jet ski booking software in the Canary Islands — Solnow",
+        "description": "Booking and operations software for jet ski rental in the Canary Islands: run Tenerife, Gran Canaria, Lanzarote and Fuerteventura with WhatsApp AI, a digital front desk and multi-base.",
+        "ogTitle": "Jet ski booking software in the Canary Islands"
+      },
+      "hero": {
+        "eyebrow": "REGIONS · CANARY ISLANDS",
+        "h1": "Jet ski booking software in the Canary Islands",
+        "lede": "The Canary Islands are one of Europe's biggest watercraft rental markets, with a year-round season. Whether you operate on one island or several, you need a system that unifies sales, front desk, operation and after-sales across your whole fleet.",
+        "updated": "Updated · June 2026",
+        "readingTime": "6 min read"
+      },
+      "sections": [
+        {
+          "h": "Jet ski rental in the Canary Islands",
+          "blocks": [
+            { "type": "p", "text": "Tenerife, Gran Canaria, Lanzarote and Fuerteventura concentrate a huge, year-round water activity thanks to the climate. The tourist base is mostly international, and last-minute bookings and walk-in weigh heavily in the mix." },
+            { "type": "p", "text": "Many operators grow to several bases, and even several islands. That's where a multi-base operating system makes the difference versus a simple calendar." }
+          ]
+        },
+        {
+          "h": "Operating across islands and bases",
+          "blocks": [
+            { "type": "list", "items": [
+              "A single view of every base's operation, whichever island you're on.",
+              "Consolidated availability and till, with no overbookings between channels.",
+              "Multilingual service for the international tourist.",
+              "A digital front desk (walk-in) at each base.",
+              "Automatic, compliant paperwork and logbook."
+            ] }
+          ]
+        },
+        {
+          "h": "Why Solnow fits in the Canary Islands",
+          "blocks": [
+            { "type": "table", "columns": ["Challenge in the Canaries", "With Solnow"], "highlightCol": 1, "rows": [
+              { "label": "Multi-island operation", "cells": ["Each base/island on its own", "Whole fleet on one screen"] },
+              { "label": "International tourist", "cells": ["Inquiries in several languages", "Multilingual WhatsApp AI 24/7"] },
+              { "label": "Walk-in at each base", "cells": ["Manual desk", "POS + kiosk"] },
+              { "label": "Paperwork and logbook", "cells": ["Manual", "Automatic and compliant"] },
+              { "label": "Year-round season", "cells": ["Non-stop peaks", "System ready for high volume"] }
+            ] }
+          ]
+        },
+        {
+          "h": "Ready for your operation in the Canaries",
+          "blocks": [
+            { "type": "p", "text": "Whether you have one base or operate across several islands, we set up Solnow with your fleet and pricing, migrate your data and have you operating in days." },
+            { "type": "callout", "tone": "accent", "text": "The operating system to scale your watercraft rental across the Canaries without adding staff for every new base." }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "Is there jet ski software that works across the Canary Islands?", "a": "Yes. Solnow manages operations on one or several islands (Tenerife, Gran Canaria, Lanzarote, Fuerteventura) from a single multi-base platform." },
+        { "q": "Can I manage bases on several islands at once?", "a": "Yes, with consolidated availability, till and operation on one screen, in real time, wherever you are." },
+        { "q": "Does it serve international tourists in their language?", "a": "Yes. The AI agent closes bookings on WhatsApp in the customer's language, key for the Canary tourist profile." },
+        { "q": "Does it comply with Canary nautical regulations?", "a": "It generates digital contracts and logbook compliant with the rules. Confirm the requirements with the Harbour Master for your island." },
+        { "q": "What if I only have one base?", "a": "It still fits: start with one base and scale to more islands as you grow, without changing systems." }
+      ],
+      "related": [
+        { "label": "Jet ski booking software in Tenerife", "slug": "software-reservas-motos-de-agua-tenerife" },
+        { "label": "Jet ski booking software in Gran Canaria", "slug": "software-reservas-motos-de-agua-gran-canaria" },
+        { "label": "Manage several bases without losing control", "slug": "gestion-multi-base-alquiler-motos-de-agua" }
+      ],
+      "cta": {
+        "title": "Scale your watercraft rental in the Canaries",
+        "desc": "We'll set up a demo with your fleet and bases, on one or several islands. No commitment.",
+        "button": "Book a demo"
+      }
+    },
+    "argentina": {
+      "meta": {
+        "title": "Jet ski rental software in Argentina — Solnow",
+        "description": "Booking and operations software for jet ski rental in Argentina: an intense summer season on the Atlantic coast and the lakes, a digital front desk, WhatsApp AI and multi-base.",
+        "ogTitle": "Jet ski rental software in Argentina"
+      },
+      "hero": {
+        "eyebrow": "REGIONS · ARGENTINA",
+        "h1": "Jet ski rental software in Argentina",
+        "lede": "In Argentina the season is concentrated in a few summer months and is won in intense peaks. To make the most of them without losing bookings or living among spreadsheets, you need a system that digitizes sales, front desk and operation.",
+        "updated": "Updated · June 2026",
+        "readingTime": "6 min read"
+      },
+      "sections": [
+        {
+          "h": "Jet ski rental in Argentina",
+          "blocks": [
+            { "type": "p", "text": "The activity is concentrated in the southern-hemisphere summer (December to March) and in very defined areas: the Atlantic coast (Mar del Plata, Pinamar, Villa Gesell, Cariló), the Córdoba lakes (Villa Carlos Paz) and the southern lakes (Bariloche, Neuquén). It's a short, intense season where every peak weekend counts." },
+            { "type": "p", "text": "With such a concentrated window, losing bookings by not replying in time or to queues at the desk hits the year's revenue directly." }
+          ]
+        },
+        {
+          "h": "What an operator in Argentina needs",
+          "blocks": [
+            { "type": "list", "items": [
+              "To be ready for the summer peak from day one, with no learning curve.",
+              "To close bookings on WhatsApp, the main channel in the country, including after hours.",
+              "A fast desk on the beach or lake, where walk-in rules.",
+              "Multi-base operation if you work in several spots.",
+              "Integrated online payments and digital contracts."
+            ] }
+          ]
+        },
+        {
+          "h": "Why Solnow fits in Argentina",
+          "blocks": [
+            { "type": "table", "columns": ["Challenge in Argentina", "With Solnow"], "highlightCol": 1, "rows": [
+              { "label": "Short, intense season", "cells": ["Chaos at every summer peak", "System ready for high volume from day one"] },
+              { "label": "WhatsApp as the main channel", "cells": ["Unanswered inquiries", "AI agent that closes 24/7"] },
+              { "label": "Walk-in on beach or lake", "cells": ["Manual desk", "POS + kiosk: registration, payment and signature"] },
+              { "label": "Several bases", "cells": ["Each spot on its own", "Multi-base operation on one screen"] },
+              { "label": "Payments and paperwork", "cells": ["Manual", "Integrated payments and digital contracts"] }
+            ] }
+          ]
+        },
+        {
+          "h": "Ready for your season in Argentina",
+          "blocks": [
+            { "type": "p", "text": "We set up Solnow with your fleet, your pricing and your operating spots before the season starts, so you reach summer with everything digitized." },
+            { "type": "callout", "tone": "accent", "text": "Make the most of every peak weekend: the AI closes bookings 24/7 and the front desk stops slowing you down." }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "Is there jet ski rental software built for Argentina?", "a": "Yes. Solnow is a vertical system for watercraft rental that fits the Argentine operation: a short, intense season, WhatsApp as the main channel and lots of walk-in." },
+        { "q": "Does it close bookings on WhatsApp?", "a": "Yes. The AI agent serves and closes bookings on WhatsApp 24/7, the most used channel in the country, including after hours." },
+        { "q": "Does it work for the Atlantic coast and the lakes?", "a": "Yes. It works the same in Mar del Plata, Pinamar, Carlos Paz or Bariloche, and manages several bases from a single screen." },
+        { "q": "How does it handle payments?", "a": "With integrated online payments and digital contracts, to charge and sign without paper or uncontrolled cash at the desk." },
+        { "q": "Will I be ready for summer?", "a": "Yes. We set up the system before the season: we load fleet, pricing and bases and migrate your data, so you start the peak digitized." }
+      ],
+      "related": [
+        { "label": "Jet ski rental software in Mexico", "slug": "software-alquiler-motos-de-agua-mexico" },
+        { "label": "Jet ski rental software", "slug": "software-alquiler-motos-de-agua" },
+        { "label": "Digitize the front desk (walk-in)", "slug": "digitalizar-mostrador-alquiler-motos-de-agua" }
+      ],
+      "cta": {
+        "title": "Reach summer with Solnow",
+        "desc": "We'll set up a demo with your fleet and operating spots before the season. No commitment.",
+        "button": "Book a demo"
+      }
+    },
+    "mexico": {
+      "meta": {
+        "title": "Jet ski rental software in Mexico — Solnow",
+        "description": "Booking and operations software for jet ski rental in Mexico: Cancún, Riviera Maya and Los Cabos, multilingual WhatsApp AI, a digital front desk, multi-base and integrated payments.",
+        "ogTitle": "Jet ski rental software in Mexico"
+      },
+      "hero": {
+        "eyebrow": "REGIONS · MEXICO",
+        "h1": "Jet ski rental software in Mexico",
+        "lede": "Mexico combines a virtually year-round Caribbean season with huge international tourism. To operate at that volume you need a system that covers multilingual sales, front desk, operation and after-sales.",
+        "updated": "Updated · June 2026",
+        "readingTime": "6 min read"
+      },
+      "sections": [
+        {
+          "h": "Jet ski rental in Mexico",
+          "blocks": [
+            { "type": "p", "text": "The activity is concentrated in extremely high-volume tourist destinations: Cancún, the Riviera Maya (Playa del Carmen, Cozumel), Los Cabos, Puerto Vallarta and Acapulco. In the Caribbean the season barely dips and the tourist base is mostly international, especially from the United States and Canada." },
+            { "type": "p", "text": "That means a huge amount of inquiries in English and Spanish, very high walk-in on the beach and, frequently, several bases or operating spots." }
+          ]
+        },
+        {
+          "h": "What an operator in Mexico needs",
+          "blocks": [
+            { "type": "list", "items": [
+              "Multilingual service (English and Spanish) for US and Canadian tourists.",
+              "A fast desk on the beach, where walk-in dominates.",
+              "Multi-base operation in areas like the Riviera Maya.",
+              "Integrated online payments and digital contracts.",
+              "A system ready for high volume all year round."
+            ] }
+          ]
+        },
+        {
+          "h": "Why Solnow fits in Mexico",
+          "blocks": [
+            { "type": "table", "columns": ["Challenge in Mexico", "With Solnow"], "highlightCol": 1, "rows": [
+              { "label": "US and Canadian tourists", "cells": ["Inquiries in English and Spanish", "Multilingual WhatsApp AI 24/7"] },
+              { "label": "Very high walk-in on the beach", "cells": ["Manual desk", "POS + kiosk: registration, payment and signature"] },
+              { "label": "Several bases (Riviera Maya)", "cells": ["Each spot on its own", "Multi-base operation on one screen"] },
+              { "label": "Payments and paperwork", "cells": ["Manual", "Integrated payments and digital contracts"] },
+              { "label": "Tourism via OTAs", "cells": ["Unsynced channels", "Integrations with Viator and GetYourGuide"] }
+            ] }
+          ]
+        },
+        {
+          "h": "Ready for your base in Mexico",
+          "blocks": [
+            { "type": "p", "text": "We configure Solnow with your fleet, your pricing and your operating spots, migrate your data and have you operating in days, without stopping your season." },
+            { "type": "callout", "tone": "accent", "text": "Make the most of the Caribbean volume: the AI closes bookings 24/7 in English and Spanish and the front desk goes fully digital." }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "Is there jet ski rental software built for Mexico?", "a": "Yes. Solnow is a vertical system for watercraft rental that fits destinations like Cancún, the Riviera Maya or Los Cabos: international tourism, very high walk-in and several bases." },
+        { "q": "Does it serve in English and Spanish?", "a": "Yes. The AI agent closes bookings on WhatsApp in the customer's language, key for US and Canadian tourists." },
+        { "q": "Does it work for several bases in the Riviera Maya?", "a": "Yes. You manage Playa del Carmen, Cozumel and the rest of your spots from a single screen, in real time." },
+        { "q": "How does it handle payments?", "a": "With integrated online payments and digital contracts, to charge and sign without paper at the beach desk." },
+        { "q": "How long does setup take?", "a": "Days: we load fleet, pricing and bases and migrate your data, without stopping your operation." }
+      ],
+      "related": [
+        { "label": "Jet ski rental software in Argentina", "slug": "software-alquiler-motos-de-agua-argentina" },
+        { "label": "Jet ski rental software", "slug": "software-alquiler-motos-de-agua" },
+        { "label": "Answer WhatsApp 24/7 with AI", "slug": "whatsapp-reservas-motos-de-agua" }
+      ],
+      "cta": {
+        "title": "Put Solnow in your Mexico base",
+        "desc": "We'll set up a demo with your fleet and operating spots. 30 minutes, no commitment.",
+        "button": "Book a demo"
+      }
+    },
+    "fareharborAlt": {
+      "meta": {
+        "title": "FareHarbor: an alternative for jet ski rental — Solnow",
+        "description": "Looking for a FareHarbor alternative for your jet ski rental? Why a vertical system that solves the walk-in, live operation and sector paperwork fits better than a tours booking engine.",
+        "ogTitle": "FareHarbor: an alternative for jet ski rental"
+      },
+      "hero": {
+        "eyebrow": "COMPARISON",
+        "h1": "FareHarbor: an alternative for jet ski rental",
+        "lede": "FareHarbor is a solid booking engine, but it's built to sell tours online, not to run a jet ski fleet with walk-in, multi-base and sector paperwork. Here's what changes with a vertical alternative.",
+        "updated": "Updated · June 2026",
+        "readingTime": "7 min read"
+      },
+      "disclaimer": "Comparison for guidance only, based on public information as of June 2026. Third-party features and pricing may change; verify the current details on each tool's website.",
+      "sections": [
+        {
+          "h": "What FareHarbor does well",
+          "blocks": [
+            { "type": "p", "text": "Credit where it's due: FareHarbor is a mature booking engine, with good distribution, an affiliate network and integrated payments. If you sell a lot of third-party tours and live off that distribution, it's a powerful tool." },
+            { "type": "list", "items": [
+              "Robust, proven booking engine.",
+              "Distribution and affiliate network.",
+              "Integrated payments.",
+              "Established support."
+            ] }
+          ]
+        },
+        {
+          "h": "Where it falls short for jet skis",
+          "blocks": [
+            { "type": "p", "text": "The problem isn't FareHarbor, it's the fit: it covers the online booking but not the operation of a watercraft fleet." },
+            { "type": "list", "items": [
+              "The walk-in (customer with no booking) is still handled by hand.",
+              "It doesn't digitize the operation during the activity: boarding, QR, delays.",
+              "It's not a nautical vertical: logbook and sector contracts for minors.",
+              "Limited multi-base for distributed fleets.",
+              "Its cost model doesn't always fit high volume."
+            ] }
+          ]
+        },
+        {
+          "h": "FareHarbor vs Solnow at a glance",
+          "blocks": [
+            { "type": "table", "columns": ["FareHarbor", "Solnow"], "highlightCol": 1, "rows": [
+              { "label": "Focus", "cells": ["Tours booking engine", "Watercraft rental operating system"] },
+              { "label": "Walk-in at the desk", "cells": ["Manual", "POS + kiosk"] },
+              { "label": "Live operation", "cells": ["No", "Dashboard + boarding QR"] },
+              { "label": "Sector paperwork", "cells": ["Basic", "Contracts, signature and minors"] },
+              { "label": "Logbook", "cells": ["No", "Automatic"] },
+              { "label": "Multi-base", "cells": ["Partial", "Real, on one screen"] },
+              { "label": "AI on WhatsApp", "cells": ["No", "Agent that closes 24/7"] },
+              { "label": "Pricing model", "cells": ["Commission per booking", "% of what it generates, no fixed fee"] }
+            ] }
+          ]
+        },
+        {
+          "h": "How to migrate from FareHarbor",
+          "blocks": [
+            { "type": "p", "text": "Migration is included: we bring customers, historical bookings and configuration from FareHarbor or Excel, with no downtime." },
+            { "type": "callout", "tone": "accent", "text": "If your edge is operating jet skis on the water, not a tour catalogue, a vertical alternative digitizes what FareHarbor leaves out." }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "Is FareHarbor good for jet ski rental?", "a": "It works as a booking engine, but doesn't cover the front-desk walk-in, live operation or nautical paperwork (logbook, minors). For a watercraft fleet it only does half the job." },
+        { "q": "What's the best FareHarbor alternative for jet skis?", "a": "A vertical sector system like Solnow, which beyond bookings digitizes WhatsApp sales, the front desk, multi-base operation and after-sales." },
+        { "q": "Can I migrate my data from FareHarbor?", "a": "Yes, migration of customers, bookings and configuration is included, with no data loss." },
+        { "q": "How does the pricing differ?", "a": "FareHarbor usually charges commission per booking. Solnow charges a % of the bookings it generates, with no fixed fee: if you don't bill, we don't charge." }
+      ],
+      "related": [
+        { "label": "FareHarbor vs Solnow", "slug": "fareharbor-vs-solnow" },
+        { "label": "Jet ski rental software", "slug": "software-alquiler-motos-de-agua" },
+        { "label": "Best booking software for water activities", "slug": "mejores-software-reservas-actividades-acuaticas" }
+      ],
+      "cta": {
+        "title": "See the alternative with your real fleet",
+        "desc": "We'll set up a demo with your craft, your bases and your volume. No commitment.",
+        "button": "Book a demo"
+      }
+    },
+    "turitopAlt": {
+      "meta": {
+        "title": "TuriTop: an alternative for jet ski operators — Solnow",
+        "description": "Looking for a TuriTop alternative for your jet ski rental? Why moving from an online booking system to an operating system that covers the front desk, live operation and after-sales.",
+        "ogTitle": "TuriTop: an alternative for jet ski operators"
+      },
+      "hero": {
+        "eyebrow": "COMPARISON",
+        "h1": "TuriTop: an alternative for jet ski operators",
+        "lede": "TuriTop is a good online booking system, widely used in Spain. But if you run a jet ski fleet with volume, walk-in and several bases, you need more than a booking system on your website.",
+        "updated": "Updated · June 2026",
+        "readingTime": "7 min read"
+      },
+      "disclaimer": "Comparison for guidance only, based on public information as of June 2026. Third-party features and pricing may change; verify the current details on each tool's website.",
+      "sections": [
+        {
+          "h": "What TuriTop does well",
+          "blocks": [
+            { "type": "p", "text": "TuriTop is well established in Spain and handles online booking well: it integrates easily into your website, manages slots and schedules and takes payments. As an entry point to sell online, it does the job." },
+            { "type": "list", "items": [
+              "Booking system that's easy to embed in your website.",
+              "Popular and well known in the Spanish market.",
+              "Slot, schedule and payment management.",
+              "A good starting point to begin selling online."
+            ] }
+          ]
+        },
+        {
+          "h": "Where it falls short for jet skis",
+          "blocks": [
+            { "type": "p", "text": "TuriTop focuses on the booking, not the operation. For a watercraft fleet with volume, that leaves much of the day-to-day out." },
+            { "type": "list", "items": [
+              "The front-desk walk-in is still handled by hand.",
+              "No live operation: no boarding QR or multi-base dashboard.",
+              "No AI agent closing bookings on WhatsApp.",
+              "Limited sector paperwork (logbook, minors).",
+              "Limited multi-base management."
+            ] }
+          ]
+        },
+        {
+          "h": "TuriTop vs Solnow at a glance",
+          "blocks": [
+            { "type": "table", "columns": ["TuriTop", "Solnow"], "highlightCol": 1, "rows": [
+              { "label": "Focus", "cells": ["Online booking system", "Watercraft rental operating system"] },
+              { "label": "Walk-in at the desk", "cells": ["Manual", "POS + kiosk"] },
+              { "label": "Live operation", "cells": ["No", "Dashboard + QR"] },
+              { "label": "AI on WhatsApp", "cells": ["No", "Agent that closes 24/7"] },
+              { "label": "Sector paperwork", "cells": ["Basic", "Contracts, signature and minors"] },
+              { "label": "Logbook", "cells": ["No", "Automatic"] },
+              { "label": "Multi-base", "cells": ["Limited", "Real, on one screen"] },
+              { "label": "Pricing model", "cells": ["Fee / plan", "% of what it generates, no fixed fee"] }
+            ] }
+          ]
+        },
+        {
+          "h": "How to migrate from TuriTop",
+          "blocks": [
+            { "type": "p", "text": "We migrate customers, historical bookings and configuration from TuriTop or Excel, with no downtime and no data loss." },
+            { "type": "callout", "tone": "accent", "text": "Moving from a booking system to an operating system is the difference between selling online and running your whole watercraft business in one place." }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "Is TuriTop good for jet ski rental?", "a": "It works well as an online booking system, but doesn't cover the front desk (walk-in), live operation or nautical paperwork. For a fleet with volume it falls short." },
+        { "q": "What's the best TuriTop alternative for jet skis?", "a": "A vertical system like Solnow, which digitizes WhatsApp sales, the front desk, multi-base operation and after-sales, on top of bookings." },
+        { "q": "Can I migrate from TuriTop?", "a": "Yes, migration of customers, bookings and configuration is included and with no data loss." },
+        { "q": "How does the pricing differ?", "a": "TuriTop works on a fee or plan. Solnow charges a % of the bookings it generates, with no fixed fee." }
+      ],
+      "related": [
+        { "label": "TuriTop vs Solnow", "slug": "turitop-vs-solnow" },
+        { "label": "Jet ski rental software", "slug": "software-alquiler-motos-de-agua" },
+        { "label": "Best booking software for water activities", "slug": "mejores-software-reservas-actividades-acuaticas" }
+      ],
+      "cta": {
+        "title": "See the alternative with your real fleet",
+        "desc": "We'll set up a demo with your craft, your bases and your volume. No commitment.",
+        "button": "Book a demo"
+      }
+    },
+    "fareharborVs": {
+      "meta": {
+        "title": "FareHarbor vs Solnow: comparison for jet ski rental — Solnow",
+        "description": "FareHarbor vs Solnow compared for jet ski operators: bookings, walk-in, live operation, sector paperwork, multi-base and pricing. Head-to-head table.",
+        "ogTitle": "FareHarbor vs Solnow"
+      },
+      "hero": {
+        "eyebrow": "COMPARISON",
+        "h1": "FareHarbor vs Solnow",
+        "lede": "A direct comparison for jet ski rental operators. Where each one wins and which fits depending on what your business is.",
+        "updated": "Updated · June 2026",
+        "readingTime": "8 min read"
+      },
+      "disclaimer": "Comparison for guidance only, based on public information as of June 2026. Third-party features and pricing may change; verify the current details on each tool's website.",
+      "sections": [
+        {
+          "h": "Two products for two different problems",
+          "blocks": [
+            { "type": "p", "text": "FareHarbor solves the distribution and booking of tours and activities. Solnow solves the full operation of a watercraft rental fleet. They don't compete on exactly the same thing, which is why the choice depends on what your business really is." }
+          ]
+        },
+        {
+          "h": "Head-to-head comparison",
+          "blocks": [
+            { "type": "table", "columns": ["FareHarbor", "Solnow"], "highlightCol": 1, "rows": [
+              { "label": "Category", "cells": ["Tours booking engine", "Watercraft rental operating system"] },
+              { "label": "Online bookings", "cells": ["Yes, very mature", "Yes, integrated engine"] },
+              { "label": "Walk-in / front desk", "cells": ["Manual", "POS (Staff + Kiosk)"] },
+              { "label": "Payment at the desk", "cells": ["Manual / external", "Integrated"] },
+              { "label": "Contracts and signature", "cells": ["Basic", "Integrated, includes minors"] },
+              { "label": "Logbook", "cells": ["No", "Automatic"] },
+              { "label": "Live operation (QR, dashboard)", "cells": ["No", "Yes, multi-base"] },
+              { "label": "AI on WhatsApp", "cells": ["No", "Agent that closes 24/7"] },
+              { "label": "Multi-base", "cells": ["Partial", "Real"] },
+              { "label": "Pricing", "cells": ["Commission per booking", "% of what it generates, no fixed fee"] },
+              { "label": "Time to production", "cells": ["Weeks", "Days"] }
+            ] }
+          ]
+        },
+        {
+          "h": "When to choose FareHarbor",
+          "blocks": [
+            { "type": "p", "text": "If your main business is selling and distributing third-party tours and you rely on its affiliate and distribution network, FareHarbor makes sense. It's a mature, proven engine for that case." }
+          ]
+        },
+        {
+          "h": "When to choose Solnow",
+          "blocks": [
+            { "type": "p", "text": "If your core is operating your own jet ski fleet with volume, walk-in, several bases and sector paperwork, Solnow digitizes the whole cycle (sales, paperwork, operation and after-sales), not just the booking." },
+            { "type": "callout", "tone": "accent", "text": "Others help you take bookings. Solnow helps you sell and operate." }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "Which is better for jet ski rental, FareHarbor or Solnow?", "a": "It depends on your business. For distributing third-party tours, FareHarbor. For operating your own watercraft fleet with walk-in, multi-base and sector paperwork, Solnow covers the whole cycle." },
+        { "q": "Does FareHarbor handle the front-desk walk-in?", "a": "Not in a digitized way: the customer with no booking is handled by hand. Solnow includes POS (Staff Mode + Kiosk) to solve the walk-in in minutes." },
+        { "q": "How does the pricing differ?", "a": "FareHarbor usually charges commission per booking. Solnow charges a % of what it generates, with no fixed fee or setup." },
+        { "q": "Can I migrate from FareHarbor to Solnow?", "a": "Yes, migration of customers, bookings and configuration is included, with no downtime." }
+      ],
+      "related": [
+        { "label": "FareHarbor alternative for jet skis", "slug": "fareharbor-alternativa-motos-de-agua" },
+        { "label": "TuriTop vs Solnow", "slug": "turitop-vs-solnow" },
+        { "label": "Jet ski rental software", "slug": "software-alquiler-motos-de-agua" }
+      ],
+      "cta": {
+        "title": "Compare it with your real operation",
+        "desc": "We'll set up a demo with your fleet and volume so you see the difference live.",
+        "button": "Book a demo"
+      }
+    },
+    "turitopVs": {
+      "meta": {
+        "title": "TuriTop vs Solnow: comparison for jet ski rental — Solnow",
+        "description": "TuriTop vs Solnow compared for jet ski operators: bookings, walk-in, live operation, sector paperwork, multi-base and pricing. Head-to-head table.",
+        "ogTitle": "TuriTop vs Solnow"
+      },
+      "hero": {
+        "eyebrow": "COMPARISON",
+        "h1": "TuriTop vs Solnow",
+        "lede": "A direct comparison for jet ski rental operators. Where each one wins and which fits depending on what your business is.",
+        "updated": "Updated · June 2026",
+        "readingTime": "8 min read"
+      },
+      "disclaimer": "Comparison for guidance only, based on public information as of June 2026. Third-party features and pricing may change; verify the current details on each tool's website.",
+      "sections": [
+        {
+          "h": "Two products for two different moments",
+          "blocks": [
+            { "type": "p", "text": "TuriTop is an online booking system: it helps you sell on your website. Solnow is an operating system: it helps you run your whole watercraft fleet. The choice depends on whether your priority is selling online or managing the full operation." }
+          ]
+        },
+        {
+          "h": "Head-to-head comparison",
+          "blocks": [
+            { "type": "table", "columns": ["TuriTop", "Solnow"], "highlightCol": 1, "rows": [
+              { "label": "Category", "cells": ["Online booking system", "Watercraft rental operating system"] },
+              { "label": "Online bookings", "cells": ["Yes", "Yes, integrated engine"] },
+              { "label": "Bookings on your website", "cells": ["Yes, its strong point", "Yes, integrated engine"] },
+              { "label": "Walk-in / front desk", "cells": ["Manual", "POS (Staff + Kiosk)"] },
+              { "label": "Contracts and signature", "cells": ["Basic", "Integrated, includes minors"] },
+              { "label": "Logbook", "cells": ["No", "Automatic"] },
+              { "label": "Live operation (QR, dashboard)", "cells": ["No", "Yes, multi-base"] },
+              { "label": "AI on WhatsApp", "cells": ["No", "Agent that closes 24/7"] },
+              { "label": "Multi-base", "cells": ["Limited", "Real"] },
+              { "label": "Pricing", "cells": ["Fee / plan", "% of what it generates, no fixed fee"] }
+            ] }
+          ]
+        },
+        {
+          "h": "When to choose TuriTop",
+          "blocks": [
+            { "type": "p", "text": "If what you mainly want is a simple booking system to sell on your website and you're starting out, TuriTop is a good entry point and is well proven in Spain." }
+          ]
+        },
+        {
+          "h": "When to choose Solnow",
+          "blocks": [
+            { "type": "p", "text": "If you operate with volume, have walk-in, several bases and sector paperwork, Solnow goes beyond the booking and digitizes sales, paperwork, live operation and after-sales in a single platform." },
+            { "type": "callout", "tone": "accent", "text": "Selling online is the start. Operating the whole fleet is where Solnow makes the difference." }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "Which is better for jet skis, TuriTop or Solnow?", "a": "If your priority is selling online simply, TuriTop. If you need to operate a fleet with walk-in, multi-base and sector paperwork, Solnow covers the whole cycle." },
+        { "q": "Does TuriTop have real-time operation?", "a": "No: it focuses on the booking. Live operation (boarding QR, multi-base dashboard) belongs to an operating system like Solnow." },
+        { "q": "How does the pricing differ?", "a": "TuriTop works on a fee or plan. Solnow charges a % of what it generates, with no fixed fee." },
+        { "q": "Can I migrate from TuriTop to Solnow?", "a": "Yes, we migrate customers, bookings and configuration with no downtime or data loss." }
+      ],
+      "related": [
+        { "label": "TuriTop alternative for jet skis", "slug": "turitop-alternativa-motos-de-agua" },
+        { "label": "FareHarbor vs Solnow", "slug": "fareharbor-vs-solnow" },
+        { "label": "Jet ski rental software", "slug": "software-alquiler-motos-de-agua" }
+      ],
+      "cta": {
+        "title": "Compare it with your real operation",
+        "desc": "We'll set up a demo with your fleet and volume so you see the difference live.",
+        "button": "Book a demo"
+      }
+    },
+    "mejoresSoftware": {
+      "meta": {
+        "title": "Best booking software for water activities (2026) — Solnow",
+        "description": "An honest comparison of the best booking software for nautical and water activities: FareHarbor, TuriTop, Bookeo, Regiondo and Solnow. Which fits depending on your operation.",
+        "ogTitle": "Best booking software for water activities"
+      },
+      "hero": {
+        "eyebrow": "COMPARISON",
+        "h1": "Best booking software for water activities",
+        "lede": "An honest comparison of the real options on the market for nautical operators, with their strengths and who each one fits. No fluff.",
+        "updated": "Updated · June 2026",
+        "readingTime": "9 min read"
+      },
+      "disclaimer": "Comparison for guidance only, based on public information as of June 2026. Third-party features and pricing may change; verify the current details on each tool's website.",
+      "sections": [
+        {
+          "h": "How we chose",
+          "blocks": [
+            { "type": "p", "text": "There's no absolute 'best': there's a best for your operation. These are the criteria that really make a difference in a high-volume watercraft rental business:" },
+            { "type": "list", "items": [
+              "Coverage: bookings only or the whole operation (sales, paperwork, operation, after-sales)?",
+              "Walk-in: does it digitize the customer who arrives without a booking?",
+              "Live operation: boarding QR and multi-base dashboard?",
+              "Nautical vertical: logbook and sector contracts?",
+              "AI: does it close bookings on WhatsApp 24/7?",
+              "Pricing model: fixed fee or pay-as-you-go?"
+            ] }
+          ]
+        },
+        {
+          "h": "FareHarbor",
+          "blocks": [
+            { "type": "p", "text": "A mature booking engine, strong in distribution and affiliate network. A good option if your business lives off selling and distributing third-party tours. For a watercraft fleet it falls short on walk-in, live operation and sector paperwork." }
+          ]
+        },
+        {
+          "h": "TuriTop",
+          "blocks": [
+            { "type": "p", "text": "An online booking system popular in Spain, easy to embed in your website. Ideal to start selling online. Limited in multi-base operation, walk-in and conversational AI." }
+          ]
+        },
+        {
+          "h": "Bookeo and Regiondo",
+          "blocks": [
+            { "type": "p", "text": "Generic booking engines for activities and experiences, with good slot management and multichannel distribution. They work as a booking system, but they aren't nautical verticals and don't digitize the operation during the activity." }
+          ]
+        },
+        {
+          "h": "Solnow",
+          "blocks": [
+            { "type": "p", "text": "An operating system for high-volume watercraft rental: WhatsApp sales with AI, front desk (POS + kiosk), live multi-base operation and after-sales (logbook, reviews, CRM). Built for jet ski operators with volume, with a no-fixed-fee model." }
+          ]
+        },
+        {
+          "h": "Comparison summary",
+          "blocks": [
+            { "type": "table", "columns": ["FareHarbor", "TuriTop", "Bookeo/Regiondo", "Solnow"], "highlightCol": 3, "rows": [
+              { "label": "Type", "cells": ["Tours engine", "Online bookings", "Generic engine", "Watercraft operating system"] },
+              { "label": "Walk-in / front desk", "cells": ["Manual", "Manual", "Manual", "POS + kiosk"] },
+              { "label": "Live operation", "cells": ["No", "No", "No", "Yes (QR + dashboard)"] },
+              { "label": "AI on WhatsApp", "cells": ["No", "No", "No", "Yes"] },
+              { "label": "Nautical vertical", "cells": ["No", "No", "No", "Yes"] },
+              { "label": "Multi-base", "cells": ["Partial", "Limited", "Partial", "Real"] },
+              { "label": "Best for", "cells": ["Distributing tours", "Selling on your site", "Multichannel slots", "Operating your watercraft fleet"] }
+            ] }
+          ]
+        },
+        {
+          "h": "How to choose yours",
+          "blocks": [
+            { "type": "p", "text": "If your business is distributing tours, look at FareHarbor. If you're starting to sell online, TuriTop or a generic engine. If your core is operating jet skis with volume, walk-in and several bases, Solnow digitizes the whole cycle, not just the booking." },
+            { "type": "callout", "tone": "accent", "text": "The best software isn't the one that takes the most bookings, it's the one that digitizes the most of your operation." }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "What is the best booking software for water activities?", "a": "It depends on your operation. For distributing tours, FareHarbor; for selling online, TuriTop or a generic engine; for operating a jet ski fleet with volume, Solnow covers sales, paperwork, operation and after-sales." },
+        { "q": "Is there software specifically for jet ski rental?", "a": "Yes. Solnow is a vertical system for watercraft rental: beyond bookings, it digitizes the front desk, live multi-base operation and sector paperwork." },
+        { "q": "FareHarbor or TuriTop for jet skis?", "a": "FareHarbor stands out in tour distribution; TuriTop in online bookings on your website. Neither is built for operating a watercraft fleet, where a vertical system like Solnow fits better." },
+        { "q": "How much do these software cost?", "a": "It varies by model: commission per booking, fee or plan. Solnow charges no fixed fee: it applies a % on the bookings it generates plus a cost per AI conversation." }
+      ],
+      "related": [
+        { "label": "FareHarbor vs Solnow", "slug": "fareharbor-vs-solnow" },
+        { "label": "TuriTop vs Solnow", "slug": "turitop-vs-solnow" },
+        { "label": "Jet ski rental software", "slug": "software-alquiler-motos-de-agua" }
+      ],
+      "cta": {
+        "title": "See why Solnow fits your fleet",
+        "desc": "We'll set up a demo with your craft, your bases and your real volume. 30 minutes, no commitment.",
+        "button": "Book a demo"
+      }
+    },
+    "software": {
+      "meta": {
+        "title": "Jet ski rental software: how to choose yours — Solnow",
+        "description": "What a booking software for jet ski rental must have: booking engine, WhatsApp AI, contracts and signature, real-time operation and multi-base. A guide to choose well.",
+        "ogTitle": "Jet ski rental software"
+      },
+      "hero": {
+        "eyebrow": "PRODUCT · SOFTWARE",
+        "h1": "Jet ski rental software",
+        "lede": "The booking software that runs your fleet's sales, paperwork, operation and after-sales — without Excel or four disconnected tools. What it must include and how to choose the one that scales with you.",
+        "updated": "Updated · June 2026",
+        "readingTime": "8 min read"
+      },
+      "sections": [
+        {
+          "h": "What jet ski rental software is",
+          "blocks": [
+            { "type": "p", "text": "It's the platform that centralizes everything you now have spread across Excel, the calendar, WhatsApp, the contract printer and the till. Good software doesn't just 'take bookings': it sells, signs the paperwork, controls the operation on the water and gives you the business numbers." },
+            { "type": "p", "text": "The difference between a generic booking engine and a sector operating system is exactly there: in how much of your day-to-day it actually digitizes." }
+          ]
+        },
+        {
+          "h": "What it must include (checklist)",
+          "blocks": [
+            { "type": "list", "items": [
+              "Booking engine with live availability and pricing by season, day and time.",
+              "AI agent on WhatsApp that closes bookings 24/7.",
+              "Contracts and integrated e-signature, including contracts for minors.",
+              "Automatic invoicing and payment control.",
+              "Real-time operation: dashboard and QR boarding scan.",
+              "Real multi-base management from a single screen.",
+              "Integrations with nautical OTAs (Viator, GetYourGuide) and payments (Stripe).",
+              "Logbook and after-sales: reviews and customer profile."
+            ] }
+          ]
+        },
+        {
+          "h": "Generic vs. vertical: why it matters",
+          "blocks": [
+            { "type": "p", "text": "A FareHarbor or a Bookeo give you a booking engine, but don't understand what happens between the customer paying and returning the craft. A vertical jet ski software covers boarding, sector contracts, logbook and multi-base operation." },
+            { "type": "callout", "tone": "info", "text": "Building your own makes sense if software is your edge. If your edge is operating jet skis on the water, every month spent coding is a month you don't scale." }
+          ]
+        },
+        {
+          "h": "How to choose yours",
+          "blocks": [
+            { "type": "list", "items": [
+              "Does it cover the four areas (sales, paperwork, operation, after-sales) or just bookings?",
+              "Does it work offline at the dock and sync when the signal returns?",
+              "Is it truly multi-base, with consolidated till and availability?",
+              "Is the AI connected to your real availability or does it answer with scripts?",
+              "Does the paperwork meet sector regulations (including minors)?",
+              "What pricing model: fixed fee or commission on what it generates?",
+              "Do they migrate your data from Excel or another system without loss?"
+            ] }
+          ]
+        },
+        {
+          "h": "Why Solnow",
+          "blocks": [
+            { "type": "p", "text": "Solnow is the operating system for high-volume watercraft rental companies: it digitizes sales, paperwork, real-time operation and after-sales in a single multi-base platform. No fixed fee: we charge a % of the bookings we generate." },
+            { "type": "callout", "tone": "accent", "text": "Others help you take bookings. Solnow helps you sell and operate." }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "What is booking software for jet skis?", "a": "It's the platform that centralizes your fleet's sales, paperwork, operation and after-sales. It goes beyond taking bookings: it manages contracts, till, boarding and the business numbers in one place." },
+        { "q": "Will a generic software like FareHarbor or Bookeo work for me?", "a": "They give you a booking engine, but don't cover what happens during the activity (boarding, multi-base operation) or the nautical sector's paperwork. A vertical jet ski software does." },
+        { "q": "Does it work with several bases?", "a": "Good sector software manages several bases from a single screen, with consolidated availability and till and real-time visibility. That's exactly where generic tools fall short." },
+        { "q": "How much does jet ski rental software cost?", "a": "It depends on the model. Solnow charges no fixed fee: it applies a % on the bookings it generates plus a cost per AI conversation. If you don't bill, we don't charge." },
+        { "q": "Can I migrate from Excel?", "a": "Yes. With Solnow we migrate customers, historical bookings and configuration from Excel, Google Calendar or other software, with no data loss and no downtime." }
+      ],
+      "related": [
+        { "label": "Digitize the front desk (walk-in)", "slug": "digitalizar-mostrador-alquiler-motos-de-agua" },
+        { "label": "Answer WhatsApp 24/7 with AI", "slug": "whatsapp-reservas-motos-de-agua" },
+        { "label": "Eliminate paperwork in peak season", "slug": "eliminar-papeleo-alquiler-nautico" }
+      ],
+      "cta": {
+        "title": "See Solnow with your real fleet",
+        "desc": "We'll set up a demo with your craft, your bases and your real volume. 30 minutes, no commitment.",
+        "button": "Book a demo"
+      }
+    },
+    "mostrador": {
+      "meta": {
+        "title": "How to digitize the front desk (walk-in) in jet ski rental — Solnow",
+        "description": "The customer who shows up without a booking is your highest margin and your biggest chaos. How to digitize the front desk (walk-in): registration, payment, contract and signature in minutes, no paper or queues.",
+        "ogTitle": "How to digitize the front desk (walk-in) in jet ski rental"
+      },
+      "hero": {
+        "eyebrow": "GUIDE · OPERATION",
+        "h1": "How to digitize the front desk (walk-in) in jet ski rental",
+        "lede": "The walk-in is your most profitable booking and the one that clogs the desk most at peak times. Here's how to digitize the customer who arrives without a booking: registration, payment, contract and signature in minutes.",
+        "updated": "Updated · June 2026",
+        "readingTime": "7 min read"
+      },
+      "sections": [
+        {
+          "h": "Why the walk-in is your blind spot",
+          "blocks": [
+            { "type": "p", "text": "Almost all sector software handles the online booking well, but leaves the customer who shows up on foot orphaned. And that customer, the walk-in, is usually your highest margin: they pay the desk price and are still handled by hand with paper, till and a printed contract." },
+            { "type": "p", "text": "It's your operation's moment of truth, and almost no one has digitized it. That's your biggest differentiator." }
+          ]
+        },
+        {
+          "h": "The hidden cost of a paper front desk",
+          "blocks": [
+            { "type": "list", "items": [
+              "Queues at peak times while you fill in contracts by hand.",
+              "Errors and till discrepancies.",
+              "Zero traceability of who rented what and when.",
+              "Staff overwhelmed exactly when most bookings come in.",
+              "Paper contracts that get lost or stay incomplete."
+            ] }
+          ]
+        },
+        {
+          "h": "How to digitize the walk-in, step by step",
+          "blocks": [
+            { "type": "steps", "items": [
+              "Register the customer on a tablet or a self-service kiosk.",
+              "Select craft and slot with live availability (no overbookings with online bookings).",
+              "Charge within the same flow, with integrated card payment.",
+              "Generate the pre-filled contract and collect the e-signature on screen.",
+              "Do the check-in with QR boarding scan.",
+              "Everything is archived and recorded in the logbook automatically."
+            ] }
+          ]
+        },
+        {
+          "h": "Staff mode and kiosk",
+          "blocks": [
+            { "type": "p", "text": "You can solve it two ways: in POS mode, where your team handles the rental in seconds, or in kiosk mode, where the customer self-serves while your staff attends to someone else. It's the same system as online bookings, so availability is unified and there are no overbookings." }
+          ]
+        },
+        {
+          "h": "What you gain by digitizing the front desk",
+          "blocks": [
+            { "type": "list", "items": [
+              "Zero paper and much shorter queues.",
+              "A till that always balances.",
+              "Automatic contract, invoice and logbook.",
+              "Full traceability of every walk-in."
+            ] },
+            { "type": "callout", "tone": "accent", "text": "Solnow includes the POS (Staff Mode + Kiosk) in every plan: the walk-in stops being your bottleneck." }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "What is a walk-in in jet ski rental?", "a": "It's the customer who arrives at the desk without a prior booking. It's usually your highest-margin booking, but also the one most handled by hand and the one that clogs the desk most at peak times." },
+        { "q": "Why is it so hard to digitize the front desk?", "a": "Because most software only covers the online booking and leaves the walk-in out. You need a system with a front-desk mode (POS) and kiosk connected to the same availability." },
+        { "q": "Can the customer self-serve?", "a": "Yes. With a self-service kiosk the customer registers, pays and signs on their own while your team helps others. In Staff mode your staff does it in seconds." },
+        { "q": "Does it avoid overbooking between walk-in and online bookings?", "a": "Yes, if the front desk uses the same live availability as the booking engine. In Solnow it's a single inventory, so there's no double booking." },
+        { "q": "How does Solnow do it?", "a": "With the integrated POS (Staff Mode + Kiosk): registration, payment, contract, signature and QR check-in in minutes, all archived and in the logbook. We'll show you in a demo." }
+      ],
+      "related": [
+        { "label": "Jet ski rental software", "slug": "software-alquiler-motos-de-agua" },
+        { "label": "Manage several bases without losing control", "slug": "gestion-multi-base-alquiler-motos-de-agua" }
+      ],
+      "cta": {
+        "title": "Digitize your front desk with Solnow",
+        "desc": "We'll show you the POS in action with your real fleet: registration, payment, contract and signature in minutes.",
+        "button": "Book a demo"
+      }
+    },
+    "multibase": {
+      "meta": {
+        "title": "How to manage several jet ski bases without losing control — Solnow",
+        "description": "Multi-base management for jet ski rental: availability, till, contracts and operation of all your bases on a single screen, in real time and from your phone too.",
+        "ogTitle": "How to manage several jet ski bases without losing control"
+      },
+      "hero": {
+        "eyebrow": "GUIDE · MULTI-BASE",
+        "h1": "How to manage several jet ski bases without losing control",
+        "lede": "When you grow to two, three or more bases, the chaos multiplies: each point with its own Excel, its own till and its own criteria. Here's how to run a distributed fleet without living on the phone.",
+        "updated": "Updated · June 2026",
+        "readingTime": "7 min read"
+      },
+      "sections": [
+        {
+          "h": "The problem with growing to several bases",
+          "blocks": [
+            { "type": "p", "text": "One base you control in your head. Two is already hard. Three and you stop seeing what's happening when you're not physically there. Visibility drops to zero and you find out about problems once they've already escalated: the overbooking, the craft that didn't come back, the till that doesn't balance." },
+            { "type": "p", "text": "The mistake isn't yours: it's that you're running a distributed operation with tools designed for a single point." }
+          ]
+        },
+        {
+          "h": "Signs you've lost control",
+          "blocks": [
+            { "type": "list", "items": [
+              "Each base with its own spreadsheet and criteria.",
+              "Overbookings between channels and between bases.",
+              "An unbalanced till that's hard to consolidate.",
+              "You don't know each base's real occupancy live.",
+              "You depend on calls and messages to know what's going on."
+            ] }
+          ]
+        },
+        {
+          "h": "How to regain control, step by step",
+          "blocks": [
+            { "type": "steps", "items": [
+              "Unify availability, pricing and fleet across all bases in a single system.",
+              "Watch a real-time dashboard with each base's operation.",
+              "Consolidate till and contracts per base without losing the detail.",
+              "Turn on automatic alerts for delays and incidents.",
+              "Give role- and base-based permissions to your team.",
+              "Compare performance across bases with unified reporting."
+            ] }
+          ]
+        },
+        {
+          "h": "Operate from your phone",
+          "blocks": [
+            { "type": "p", "text": "The goal isn't more screens, it's a single one: see your three bases live, from your phone too, without having to be physically at any of them. What happens on the water stops being a blind spot." },
+            { "type": "callout", "tone": "accent", "text": "It's the only module that digitizes what happens during the activity, not just before and after the booking." }
+          ]
+        },
+        {
+          "h": "Multi-base without adding staff",
+          "blocks": [
+            { "type": "p", "text": "With a unified operation, growing a base doesn't mean doubling your back office. The same person supervises more points because the system centralizes the information and only alerts you when something is off." }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "How do I manage several jet ski bases at once?", "a": "With a system that unifies availability, till and operation of all bases on a single screen, in real time. That way you stop depending on one Excel per base and on phone calls." },
+        { "q": "Can I see each base's occupancy in real time?", "a": "Yes, with a live multi-base dashboard. In Solnow you see each base's operation, from your phone too, without being physically there." },
+        { "q": "How do I avoid overbookings between bases and channels?", "a": "By keeping a single inventory synced in real time across bases, booking engine and OTAs. It's the foundation of a multi-base operation with no double booking." },
+        { "q": "Do I need more staff to run more bases?", "a": "Not necessarily. By centralizing the information and automating alerts, the same person supervises more bases. Growing stops meaning doubling the back office." },
+        { "q": "How does Solnow solve it?", "a": "With real multi-base management: availability, till, contracts and live operation of all your bases on one screen. We'll show you with your real operation." }
+      ],
+      "related": [
+        { "label": "Jet ski rental software", "slug": "software-alquiler-motos-de-agua" },
+        { "label": "Digitize the front desk (walk-in)", "slug": "digitalizar-mostrador-alquiler-motos-de-agua" }
+      ],
+      "cta": {
+        "title": "Control all your bases on one screen",
+        "desc": "We'll show you Solnow's multi-base dashboard with your bases and your real volume.",
+        "button": "Book a demo"
+      }
+    },
+    "whatsapp": {
+      "meta": {
+        "title": "How to answer bookings on WhatsApp 24/7 without hiring more staff — Solnow",
+        "description": "An AI agent that closes bookings on WhatsApp 24/7, connected to your availability, pricing and fleet. How to automate inquiries without losing sales or hiring.",
+        "ogTitle": "How to answer bookings on WhatsApp 24/7 without hiring more staff"
+      },
+      "hero": {
+        "eyebrow": "GUIDE · AI",
+        "h1": "How to answer bookings on WhatsApp 24/7 without hiring more staff",
+        "lede": "Most inquiries arrive on WhatsApp and many outside business hours. Here's how to automate answering and closing bookings without adding staff, and without it feeling like a bot.",
+        "updated": "Updated · June 2026",
+        "readingTime": "7 min read"
+      },
+      "sections": [
+        {
+          "h": "Why you lose bookings on WhatsApp",
+          "blocks": [
+            { "type": "p", "text": "Inquiries come in at all hours and pile up in peak season: 50 messages a day asking about price, availability and times. You answer late, you were already on the water, it was Sunday night… and the customer books next door." },
+            { "type": "p", "text": "Every inquiry not answered in time is a lost booking. And hiring someone to be glued to the phone 24/7 doesn't pay off." }
+          ]
+        },
+        {
+          "h": "Chatbot vs. connected AI agent",
+          "blocks": [
+            { "type": "p", "text": "A chatbot with canned answers frustrates the customer and doesn't close: it doesn't know whether you have a slot on Saturday at 5pm or at what price. An AI agent connected live to your availability, pricing and fleet does: it advises, recommends the best option and charges." }
+          ]
+        },
+        {
+          "h": "How to automate WhatsApp, step by step",
+          "blocks": [
+            { "type": "steps", "items": [
+              "Connect your WhatsApp number to the system.",
+              "Train the agent with your real fleet, pricing, extras and schedules.",
+              "The agent answers, recommends and closes bookings 24/7.",
+              "It charges within the WhatsApp conversation itself.",
+              "If it can't resolve something, it hands over to a human without losing context.",
+              "Every close enters the system: contract, invoice and calendar automatically."
+            ] }
+          ]
+        },
+        {
+          "h": "In any language, in under a minute",
+          "blocks": [
+            { "type": "p", "text": "The agent serves customers in their own language and closes in under a minute, with no waiting. For a tourism business with customers from all over, that means you stop losing bookings to a language barrier or to opening hours." },
+            { "type": "callout", "tone": "accent", "text": "It's not a chatbot: it's an agent that closes up to 70% of WhatsApp inquiries before you even open the base." }
+          ]
+        },
+        {
+          "h": "What you gain",
+          "blocks": [
+            { "type": "list", "items": [
+              "Zero unanswered inquiries.",
+              "Bookings that come in 24/7, including overnight and off-season.",
+              "More volume without hiring more staff.",
+              "Your team freed from answering the same thing a hundred times."
+            ] }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "Can WhatsApp bookings be automated?", "a": "Yes, with an AI agent connected to your availability, pricing and fleet. It answers, recommends and closes bookings 24/7, and charges within the same conversation." },
+        { "q": "Isn't that the same as a chatbot?", "a": "No. A chatbot follows scripts and doesn't know your real availability. An AI agent connected to the system knows which slot you have left and at what price, and actually closes the sale." },
+        { "q": "Do I need to hire staff to answer WhatsApp?", "a": "That's not the goal. The agent handles the bulk of inquiries 24/7 and only hands over to a human what needs it, with context. You handle more volume without adding staff." },
+        { "q": "Does it work in several languages?", "a": "Yes. The agent serves customers in their own language and closes in under a minute, which is key for a tourism business with international customers." },
+        { "q": "What happens when the agent closes a booking?", "a": "It goes straight into the system: it generates the contract, invoice and calendar block automatically, with no overbookings. In Solnow everything is connected to the same data model." }
+      ],
+      "related": [
+        { "label": "Jet ski rental software", "slug": "software-alquiler-motos-de-agua" },
+        { "label": "Eliminate paperwork in peak season", "slug": "eliminar-papeleo-alquiler-nautico" }
+      ],
+      "cta": {
+        "title": "Put AI to work closing your bookings",
+        "desc": "We'll show you Solnow's WhatsApp agent trained with your real fleet and pricing.",
+        "button": "Book a demo"
+      }
+    },
+    "papeleo": {
+      "meta": {
+        "title": "How to eliminate paperwork in peak season of nautical rental — Solnow",
+        "description": "Contracts, signatures and invoices by hand are the bottleneck of peak season. How to eliminate paperwork with digital contracts and e-signature that come out on their own.",
+        "ogTitle": "How to eliminate paperwork in peak season of nautical rental"
+      },
+      "hero": {
+        "eyebrow": "GUIDE · PAPERWORK",
+        "h1": "How to eliminate paperwork in peak season of nautical rental",
+        "lede": "In August every minute counts and you lose two or three hours a day signing contracts by hand. Here's how to eliminate nautical rental paperwork without losing legal compliance.",
+        "updated": "Updated · June 2026",
+        "readingTime": "6 min read"
+      },
+      "sections": [
+        {
+          "h": "Paperwork doesn't scale with your season",
+          "blocks": [
+            { "type": "p", "text": "In summer the volume multiplies, but the paperwork is still the same old manual process: print, fill in by hand, sign, scan and file. The more you sell, the more the desk jams. The bottleneck stops being demand and becomes the pen." }
+          ]
+        },
+        {
+          "h": "What paper costs you at peak",
+          "blocks": [
+            { "type": "list", "items": [
+              "Two or three hours a day signing and filing contracts.",
+              "Queues at the desk right at peak time.",
+              "Errors and missing fields in contracts.",
+              "Paper contracts that get lost or wet.",
+              "Legal risk if a signature or a minor's annex is missing."
+            ] }
+          ]
+        },
+        {
+          "h": "How to eliminate paperwork, step by step",
+          "blocks": [
+            { "type": "steps", "items": [
+              "Turn your contracts into digital templates, including the minors annex.",
+              "Have the contract generated pre-filled when the booking is confirmed.",
+              "Collect the e-signature on a tablet or from the customer's phone.",
+              "Issue the invoice automatically after payment.",
+              "Archive everything linked to the booking, with no folders.",
+              "Keep the logbook up to date without writing anything by hand."
+            ] }
+          ]
+        },
+        {
+          "h": "Compliance without folders",
+          "blocks": [
+            { "type": "p", "text": "Eliminating paper doesn't mean losing compliance, quite the opposite. Digital contracts are compliant, don't get lost and are findable instantly in a claim or inspection. To go deeper on what the contract must include, see our rental contract template." },
+            { "type": "callout", "tone": "accent", "text": "Contract, e-signature and invoice come out on their own when the booking is confirmed. Paperwork stops being your job." }
+          ]
+        },
+        {
+          "h": "Before and after",
+          "blocks": [
+            { "type": "list", "items": [
+              "Before: 2-3 hrs/day, queues, paper and lost contracts.",
+              "After: zero paper, signature in seconds and everything archived on its own.",
+              "Same team, twice the bookings without clogging the desk."
+            ] }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "How do I eliminate paperwork in nautical rental?", "a": "By moving to digital contracts and e-signature that generate themselves when the booking is confirmed, with automatic invoicing and linked archiving. That way paperwork stops being a manual process." },
+        { "q": "Is the e-signature valid for jet ski rental?", "a": "Yes, the e-signature is valid and, well integrated, leaves a record compliant with the rules. It also covers specific cases like the contract for minors with the guardian's signature." },
+        { "q": "Do I lose legal compliance by dropping paper?", "a": "No, on the contrary. Digital contracts are compliant, don't get lost and are found instantly in a claim or inspection, which is hard with paper." },
+        { "q": "How much time does digitizing paperwork save?", "a": "Operators report two or three hours less a day in peak season, plus shorter queues at the desk and fewer errors." },
+        { "q": "How does Solnow do it?", "a": "Every confirmed booking generates the pre-filled contract, collects the e-signature, issues the invoice and archives it all, while keeping the logbook up to date. We'll show you in a demo." }
+      ],
+      "related": [
+        { "label": "Jet ski rental software", "slug": "software-alquiler-motos-de-agua" },
+        { "label": "Rental contract template (free)", "slug": "contrato-alquiler-motos-de-agua" }
+      ],
+      "cta": {
+        "title": "Eliminate paperwork before the next peak",
+        "desc": "We'll show you how Solnow generates, signs and archives every contract on its own, with your real fleet.",
+        "button": "Book a demo"
+      }
+    },
+    "contrato": {
+      "meta": {
+        "title": "Jet ski rental contract template (free download) — Solnow",
+        "description": "Download a free jet ski rental contract template and learn which clauses it must include to protect you: deposit, insurance, minors and data. Plus how to sign it at the front desk in under a minute.",
+        "ogTitle": "Jet ski rental contract template (free download)"
+      },
+      "hero": {
+        "eyebrow": "RESOURCES · CONTRACTS",
+        "h1": "Jet ski rental contract template (free download)",
+        "lede": "A ready-to-use template and everything your contract must include to cover you in case of an accident, damage or non-payment. Plus how to stop printing and signing by hand in peak season.",
+        "updated": "Updated · June 2026",
+        "readingTime": "7 min read"
+      },
+      "download": {
+        "title": "Rental contract template (free PDF)",
+        "desc": "A model with every essential clause: parties, craft, deposit, insurance, liability, minors and data protection. Download it, adapt it to your company and use it today.",
+        "fileLabel": "Download PDF template",
+        "href": "/assets/modelo-contrato-alquiler-motos-de-agua-en.pdf"
+      },
+      "disclaimer": "This template and guide are for guidance only and do not constitute legal advice. Before using the contract with customers, review it with a legal advisor and verify the requirements of your Harbour Master (Capitanía Marítima) and region.",
+      "sections": [
+        {
+          "h": "What is the rental contract for?",
+          "blocks": [
+            { "type": "p", "text": "The jet ski rental contract is the written proof of the conditions the customer accepted: which craft they took, in what condition, for how long, what happens if they damage it and who is liable in an accident. Without it, any incident becomes your word against theirs." },
+            { "type": "p", "text": "It's not red tape: it's what keeps you from paying for a breakdown, a fine or a claim yourself. In practice, a signed contract prevents 90% of the arguments at the desk when the craft comes back." },
+            { "type": "list", "items": [
+              "Puts the deposit and the cases where it's withheld in writing",
+              "Transfers liability for damage and penalties to the renter",
+              "Documents the craft's condition at handover and return",
+              "Meets the obligation to inform about the use of personal data"
+            ] }
+          ]
+        },
+        {
+          "h": "What a jet ski rental contract must include",
+          "blocks": [
+            { "type": "p", "text": "These are the blocks that can't be missing. The downloadable template already has them all; here's why each one matters." },
+            { "type": "list", "items": [
+              "Party details: rental company (legal name, tax ID, address) and renter (name, ID or passport, phone).",
+              "Craft identification: make, model, registration or hull number and power.",
+              "Rental period: date, handover time and agreed return time.",
+              "Price, payment method and deposit: amount, method and refund conditions.",
+              "Craft condition: description of prior damage and fuel level at handover.",
+              "Insurance and coverage: what the policy covers and what excess or damage the customer assumes.",
+              "Conditions of use: permitted navigation area, minimum distance from shore and prohibitions (alcohol, number of occupants, etc.).",
+              "Liability: the renter is responsible for damage, administrative penalties and third parties during the rental.",
+              "Data protection: legal basis and purpose of processing, with reference to the GDPR.",
+              "Signature of both parties and date."
+            ] }
+          ]
+        },
+        {
+          "h": "The most forgotten clauses (and the ones that cost you)",
+          "blocks": [
+            { "type": "p", "text": "Most free templates online cover the basics but leave out what really protects you when something goes wrong." },
+            { "type": "callout", "tone": "warn", "text": "Without a liability clause for penalties, Harbour Master fines for navigating out of zone or without a life jacket can end up in your name, because the craft is registered to your company." },
+            { "type": "list", "items": [
+              "Excess and cap on damage assumed by the customer, with a specific amount.",
+              "Late-return penalty, per hour or fraction.",
+              "Customer's statement that they can swim and have received the safety briefing.",
+              "Explicit authorization to charge later damage or fines to the card.",
+              "Photographic inventory of the craft before and after, attached to the contract."
+            ] }
+          ]
+        },
+        {
+          "h": "Renting to minors: the contract needs extra fields",
+          "blocks": [
+            { "type": "p", "text": "If you rent to or carry minors as passengers, you need written consent from the parent or legal guardian. It's not enough for the paying adult to say so verbally." },
+            { "type": "list", "items": [
+              "Legal guardian's details and relationship to the minor.",
+              "Guardian's signature authorizing the activity.",
+              "Validation of the guardian's ID document.",
+              "Statement of responsibility for the minor during the activity."
+            ] },
+            { "type": "callout", "tone": "info", "text": "The template includes a specific annex for minors that you can attach only when needed." }
+          ]
+        },
+        {
+          "h": "How to fill in the template, step by step",
+          "blocks": [
+            { "type": "list", "items": [
+              "Download the PDF and replace the company details with yours (legal name, tax ID, address).",
+              "Adapt the conditions of use to your area: distance from shore, permitted zones and your craft's power.",
+              "Set your deposit, your excess and your late-return penalty.",
+              "Review the text with a legal advisor once; then reuse it for every rental.",
+              "Print a copy per customer… or skip to the next section and forget about paper."
+            ] }
+          ]
+        },
+        {
+          "h": "From paper to digital signature at the desk",
+          "blocks": [
+            { "type": "p", "text": "A PDF template solves the content, but not the real bottleneck: printing, filling in by hand, scanning and filing each contract while there's a queue in peak season. That's where two or three hours a day go up in smoke." },
+            { "type": "p", "text": "With Solnow, every confirmed booking generates the contract already filled in with the customer's and craft's details. The customer signs it on a tablet at the desk (or from their phone before arriving), including the minors annex, and it's archived and linked to the booking. No printer, no folders, no hunting for the contract when there's a claim." },
+            { "type": "callout", "tone": "accent", "text": "Paperwork stops being your job: contract, e-signature and invoice come out on their own when the booking is confirmed." }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "Is a signed contract mandatory to rent a jet ski?", "a": "There's no single official model, but the contract is the proof of the accepted conditions and the transfer of liability. Without it, after damage, a fine or an accident it's very hard to make the customer respond. In practice it's essential to protect yourself." },
+        { "q": "Can I use this template as-is with my customers?", "a": "It's a solid starting point covering the essential clauses, but every company has its own navigation area, deposit and conditions. Adapt it to your case and review it once with a legal advisor before using it." },
+        { "q": "What if I rent to a minor?", "a": "You need written consent from the parent or legal guardian, with their signature and ID validation. The template includes a specific annex for these cases." },
+        { "q": "Do I have to keep signed contracts, and for how long?", "a": "Yes, it's wise to keep them in case of a claim or inspection, and for tax and data-protection obligations. Keeping them on paper is fragile; digitized, they're archived and findable instantly." },
+        { "q": "How do I move from paper to digital signature?", "a": "With Solnow the contract is generated pre-filled when the booking is confirmed and the customer signs it on a tablet or from their phone. It's linked to the booking and archived automatically, with no printer or folders." }
+      ],
+      "related": [
+        { "label": "Jet ski rental regulations in Spain", "slug": "normativa-alquiler-motos-de-agua-espana" },
+        { "label": "The logbook: what it is and how to keep it", "slug": "libro-registro-motos-de-agua" }
+      ],
+      "cta": {
+        "title": "Stop signing contracts by hand",
+        "desc": "We'll show you how Solnow generates, signs and archives every contract on its own, with your real fleet and volume.",
+        "button": "Book a demo"
+      }
+    },
+    "normativa": {
+      "meta": {
+        "title": "Jet ski rental regulations in Spain (2026 guide) — Solnow",
+        "description": "Legal requirements to rent jet skis in Spain: licenses, mandatory insurance, Harbour Master authorizations, navigation zones and logbook. A practical guide for operators.",
+        "ogTitle": "Jet ski rental regulations in Spain"
+      },
+      "hero": {
+        "eyebrow": "RESOURCES · REGULATIONS",
+        "h1": "Jet ski rental regulations in Spain",
+        "lede": "What you need to rent jet skis legally in Spain: licensing, insurance, Harbour Master authorizations, navigation zones and mandatory documentation. In a clear guide for operators starting out or getting compliant.",
+        "updated": "Updated · June 2026",
+        "readingTime": "9 min read"
+      },
+      "disclaimer": "This guide is for guidance only and does not constitute legal advice. Nautical regulations depend on national, regional and local rules, and on each area's Harbour Master (Capitanía Marítima). Always confirm the current requirements with your Harbour Master and an advisor before operating.",
+      "sections": [
+        {
+          "h": "What you need to rent jet skis legally",
+          "blocks": [
+            { "type": "p", "text": "In Spain, jet ski rental (jet skis are considered recreational craft) is regulated by the Directorate-General of the Merchant Marine and supervised by the Harbour Masters, on top of coastal regulations and each region's rules. As an operator you must meet requirements on four fronts: the rider's license, insurance, activity authorizations and documentation." },
+            { "type": "list", "items": [
+              "Craft (jet skis) properly registered and with their inspections up to date.",
+              "Mandatory civil-liability insurance for each craft.",
+              "Authorization to run the activity and, depending on the area, occupation of public domain.",
+              "Valid license or authorization for whoever operates the craft.",
+              "Logbook and documentation for each rental."
+            ] }
+          ]
+        },
+        {
+          "h": "Licensing: does the customer need one?",
+          "blocks": [
+            { "type": "p", "text": "It depends on the craft's power and the rental format. Broadly there are three paths:" },
+            { "type": "list", "items": [
+              "Navigation license: allows operating limited-power jet skis after a short theory-and-practice course. The usual route for customers who want to ride on their own.",
+              "Higher nautical qualification (PNB, PER…): for more powerful craft a higher qualification is required depending on the craft's category.",
+              "Guided or 'baptism' format: the customer rides without a license inside a marked circuit under the direct supervision of a qualified instructor. The most common format for tourist rentals."
+            ] },
+            { "type": "callout", "tone": "info", "text": "The classification of craft by power and the qualification required can change; confirm with your Harbour Master which category applies to each model in your fleet." }
+          ]
+        },
+        {
+          "h": "Company and activity requirements",
+          "blocks": [
+            { "type": "p", "text": "Beyond the customer, the rental company must be compliant to offer the service." },
+            { "type": "list", "items": [
+              "Registration of the economic activity and the corresponding tax compliance.",
+              "Authorization for the rental activity and, if you operate from a beach or maritime-terrestrial public domain, the concession or occupation authorization.",
+              "Craft registered in the company's name, with technical inspection in force where applicable.",
+              "Safety and rescue means required for the activity.",
+              "Instructors with the appropriate qualification for the guided format."
+            ] }
+          ]
+        },
+        {
+          "h": "Mandatory insurance",
+          "blocks": [
+            { "type": "p", "text": "Each jet ski must have mandatory civil-liability insurance covering damage to third parties. For your business it's also wise to have broader coverage." },
+            { "type": "list", "items": [
+              "Mandatory civil liability per craft (damage to third parties).",
+              "Own-damage coverage for the craft, with its excess.",
+              "Coverage for the activity and instructors in the guided format."
+            ] },
+            { "type": "callout", "tone": "warn", "text": "Renting a craft without mandatory insurance in force is a serious offense and, after an accident, can leave you exposed to respond with your own assets." }
+          ]
+        },
+        {
+          "h": "Navigation zones and distance from shore",
+          "blocks": [
+            { "type": "p", "text": "Jet skis can't navigate just anywhere. Their use is restricted to protect bathers and the coastline." },
+            { "type": "list", "items": [
+              "Departure and return only through the channels or marked zones set up for it.",
+              "No navigating inside bathing areas or closer than the minimum distance from shore set by local rules.",
+              "Respect for speed and safety distances to bathers, divers and other vessels.",
+              "Daytime navigation and within the limits of the authorization."
+            ] }
+          ]
+        },
+        {
+          "h": "Mandatory documentation for each rental",
+          "blocks": [
+            { "type": "p", "text": "Each rental generates paperwork you must be able to show in an inspection: the customer contract, the safety-briefing statement and the activity logbook." },
+            { "type": "p", "text": "Keeping this up to date in peak season is where most operators slip, and where it's easiest for a detail to be missing in an inspection." },
+            { "type": "callout", "tone": "accent", "text": "Solnow generates the contract and invoice when the booking is confirmed and keeps the logbook compliant with the rules, with nothing to fill in by hand." }
+          ]
+        },
+        {
+          "h": "Penalties for non-compliance",
+          "blocks": [
+            { "type": "p", "text": "Breaches of navigation and maritime-safety rules can mean significant fines and, in serious cases, immobilization of the craft or loss of the authorization. Navigating out of zone, without insurance or without the proper license are among the most penalized." },
+            { "type": "callout", "tone": "warn", "text": "Because the craft are registered to your company, many penalties arrive in your name even when the offender is the customer. That's why the contract must explicitly transfer that liability." }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "Does the customer need a license to rent a jet ski?", "a": "It depends on the craft's power and the format. To ride solo you usually need at least a navigation license; for powerful craft, a higher qualification. In the guided or 'baptism' format, the customer can ride without a license inside a marked, supervised circuit." },
+        { "q": "What insurance is mandatory to rent jet skis?", "a": "Each craft must have mandatory civil-liability insurance covering damage to third parties. For the business, adding own-damage and activity coverage is recommended." },
+        { "q": "Where can jet skis navigate?", "a": "They can only enter and exit through the authorized channels or marked zones, can't navigate inside bathing areas and must respect the minimum distance from shore and bathers set by local rules. Confirm the exact limits with your Harbour Master." },
+        { "q": "What if a customer commits an offense with my craft?", "a": "Because the craft is registered to your company, many penalties can arrive in your name. A contract that explicitly transfers liability for damage and fines to the renter is key to passing them on." },
+        { "q": "Do I have to keep a logbook?", "a": "Yes, the activity requires documenting rentals. See how in our guide on the jet ski logbook." }
+      ],
+      "related": [
+        { "label": "Jet ski rental contract template (free)", "slug": "contrato-alquiler-motos-de-agua" },
+        { "label": "The logbook: what it is and how to keep it", "slug": "libro-registro-motos-de-agua" }
+      ],
+      "cta": {
+        "title": "Stay compliant without manual paperwork",
+        "desc": "Solnow automates contracts, insurance, logbook and documentation for every rental. We'll show you with your real fleet.",
+        "button": "Book a demo"
+      }
+    },
+    "libro": {
+      "meta": {
+        "title": "Jet ski logbook: what it is and how to keep it — Solnow",
+        "description": "What the jet ski logbook is, whether it's mandatory, what data each entry must contain and how to keep it step by step. Plus how to digitize it so it fills itself in.",
+        "ogTitle": "Jet ski logbook: what it is and how to keep it"
+      },
+      "hero": {
+        "eyebrow": "RESOURCES · DOCUMENTATION",
+        "h1": "Jet ski logbook: what it is and how to keep it",
+        "lede": "What the logbook is, why it can be requested in an inspection, what data each rental must contain and how to keep it up to date without it eating your season.",
+        "updated": "Updated · June 2026",
+        "readingTime": "6 min read"
+      },
+      "disclaimer": "This guide is for guidance only and does not constitute legal advice. Logbook requirements may vary by Harbour Master and regional rules. Confirm the format and required data with your Harbour Master.",
+      "sections": [
+        {
+          "h": "What the logbook is",
+          "blocks": [
+            { "type": "p", "text": "The logbook is the document where the operator records every use of its jet skis: who rented it, when it left and returned, with which craft and under what conditions. It works as your fleet's activity history and is what shows, in an inspection, that you operate in an orderly and traceable way." },
+            { "type": "p", "text": "It can be kept on paper (one notebook per base) or digitally. What matters is that it's complete, up to date and available when requested." }
+          ]
+        },
+        {
+          "h": "Is it mandatory?",
+          "blocks": [
+            { "type": "p", "text": "The rental activity requires keeping documentation and traceability of each operation, and Harbour Masters can require the activity record in an inspection. Although the exact format can vary by area, keeping an orderly logbook is an expected practice and protects you against claims or incidents." },
+            { "type": "callout", "tone": "info", "text": "Check with your Harbour Master whether a specific format or a stamped book is required; in some areas the requirement is stricter than in others." }
+          ]
+        },
+        {
+          "h": "What data each entry must contain",
+          "blocks": [
+            { "type": "p", "text": "Each line of the logbook should let you reconstruct a complete rental. At a minimum:" },
+            { "type": "list", "items": [
+              "Date and time of departure and return.",
+              "Craft identification (registration or hull number).",
+              "Details of the customer who rented it (name and ID).",
+              "License or format (own license, guided or baptism).",
+              "Responsible instructor, if applicable.",
+              "Incidents: breakdowns, delays, damage or penalties.",
+              "Confirmation that safety equipment was handed over (life jacket, etc.)."
+            ] }
+          ]
+        },
+        {
+          "h": "How to keep the logbook, step by step",
+          "blocks": [
+            { "type": "steps", "items": [
+              "Before each departure, record the craft, the customer and the departure time.",
+              "Record the customer's license or the format (guided or baptism) and the assigned instructor.",
+              "Confirm and note the handover of the life jacket and safety gear.",
+              "On return, record the return time and any incident (damage, delay, penalty).",
+              "Close the entry and file it so you can retrieve it by date, craft or customer.",
+              "Periodically check that no data is missing: an incomplete entry is as good as none."
+            ] }
+          ]
+        },
+        {
+          "h": "Common mistakes that work against you",
+          "blocks": [
+            { "type": "callout", "tone": "warn", "text": "The most common mistake is filling it in 'later': at the end of the day, from memory. In peak season gaps pile up and, when the inspection or claim arrives, exactly the data for the problem rental is missing." },
+            { "type": "list", "items": [
+              "Incomplete or illegible entries.",
+              "A single notebook that gets wet, lost or left at another base.",
+              "Not recording the format or instructor for baptisms.",
+              "No record that safety equipment was handed over."
+            ] }
+          ]
+        },
+        {
+          "h": "From notebook to automatic logbook",
+          "blocks": [
+            { "type": "p", "text": "The logbook is the perfect example of an admin task nobody wants to do and that, nonetheless, protects you. The solution isn't 'write it down better': it's to have it fill itself in." },
+            { "type": "p", "text": "With Solnow, every rental that goes through the system is recorded automatically: craft, customer, times, format, instructor, contract signature and check-in with QR boarding scan. The logbook is generated compliant with the rules, multi-base and searchable by date, craft or customer, with no one writing anything by hand." },
+            { "type": "callout", "tone": "accent", "text": "It's part of Solnow's automatic after-sales: logbook, reviews and customer profile, on autopilot when each activity closes." }
+          ]
+        }
+      ],
+      "faq": [
+        { "q": "What exactly is the jet ski logbook?", "a": "It's the document where every use of your fleet's jet skis is recorded (craft, customer, times, conditions and incidents). It serves to prove an orderly, traceable operation in an inspection or a claim." },
+        { "q": "Is keeping a logbook mandatory?", "a": "The activity requires keeping documentation and traceability of each rental, and Harbour Masters can require it. The exact format can vary by area, so check with your Harbour Master whether a specific format is required." },
+        { "q": "Can I keep it digitally instead of on paper?", "a": "Yes. A digital record is usually more reliable: it isn't lost, it's legible, it's consulted instantly and it lets you keep one logbook per base without loose notebooks. Check with your Harbour Master whether the digital format is accepted in your area." },
+        { "q": "What data can't be missing from each entry?", "a": "At a minimum: date and times of departure and return, craft identification, customer details, license or format, instructor if applicable, handover of safety equipment and incidents." },
+        { "q": "How do I automate the logbook?", "a": "With Solnow each rental is recorded on its own (craft, customer, times, format, instructor, signature and QR check-in) and the logbook is generated compliant, multi-base and searchable. We'll show you in a demo." }
+      ],
+      "related": [
+        { "label": "Jet ski rental regulations in Spain", "slug": "normativa-alquiler-motos-de-agua-espana" },
+        { "label": "Jet ski rental contract template (free)", "slug": "contrato-alquiler-motos-de-agua" }
+      ],
+      "cta": {
+        "title": "Let the logbook fill itself in",
+        "desc": "Solnow records every rental automatically and generates the logbook compliant with the rules. We'll show you with your real operation.",
+        "button": "Book a demo"
+      }
     }
   }
 }
