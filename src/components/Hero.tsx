@@ -348,7 +348,7 @@ function BookingCard({ date, setDate, time, setTime }: BookingCardProps) {
         className="mono"
         style={{ fontSize: 9.5, color: 'rgba(255,255,255,0.55)', letterSpacing: '0.1em', marginBottom: 8 }}
       >
-        SELECCIONÁ HORA
+        SELECCIONA HORA
       </div>
       <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
         {times.map((tm) => {
