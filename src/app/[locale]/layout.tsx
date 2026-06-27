@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { GoogleTagManager } from "@next/third-parties/google";
+import { GoogleTagManager, GoogleAnalytics } from "@next/third-parties/google";
 import { notFound } from "next/navigation";
 import "../globals.css";
 import { locales, isLocale, localeMeta, SITE_URL } from "@/i18n/config";
@@ -123,6 +123,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} data-palette="brand" data-density="regular">
       <GoogleTagManager gtmId="GTM-W7TQ38LJ" />
+      <GoogleAnalytics gaId="G-C48R6MLF4L" />
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <script
           type="application/ld+json"
