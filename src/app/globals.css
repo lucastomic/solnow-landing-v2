@@ -36,8 +36,8 @@
   --ink-muted:  #8aa9bf;
   --ink-muted-2: #5d7e94;
 
-  --font-sans: var(--font-geist-sans), "Geist", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), "Geist Mono", ui-monospace, "SF Mono", monospace;
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SF Mono", monospace;
   --font-serif: var(--font-instrument-serif), "Instrument Serif", "Times New Roman", serif;
 
   --section-y: 120px;
