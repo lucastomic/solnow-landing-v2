@@ -1,13 +1,19 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Footer } from '@/components/sections/SectionsEnd';
+import { BulletList } from '@/components/atoms';
+import { GuideToc } from '@/components/GuideToc';
 import type { GuideBlock, GuideContent } from '@/content/guides';
 
 export interface GuideLabels {
   backHome: string;
+  tocLabel: string;
   faqTitle: string;
   relatedTitle: string;
   disclaimerLabel: string;
+  breadcrumbHome: string;
+  viewProduct: string;
+  groupLabel: string;
 }
 
 const CALLOUT: Record<'warn' | 'info' | 'accent', { bg: string; border: string }> = {
@@ -22,12 +28,6 @@ const ARROW = (
   </svg>
 );
 
-function Dash() {
-  return (
-    <span style={{ color: 'var(--accent)', fontFamily: 'var(--font-mono)', fontSize: 12, transform: 'translateY(3px)' }}>—</span>
-  );
-}
-
 function Block({ block }: { block: GuideBlock }) {
   if (block.type === 'p') {
     return <p style={{ fontSize: 16, lineHeight: 1.7, color: 'var(--fg-2)', margin: '0 0 16px' }}>{block.text}</p>;
@@ -35,14 +35,9 @@ function Block({ block }: { block: GuideBlock }) {
 
   if (block.type === 'list') {
     return (
-      <ul style={{ listStyle: 'none', padding: 0, margin: '4px 0 18px', display: 'flex', flexDirection: 'column', gap: 11 }}>
-        {block.items.map((item, j) => (
-          <li key={j} style={{ fontSize: 15.5, lineHeight: 1.6, color: 'var(--fg-2)', display: 'grid', gridTemplateColumns: '16px 1fr', gap: 12 }}>
-            <Dash />
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
+      <div style={{ margin: '4px 0 22px' }}>
+        <BulletList items={block.items} />
+      </div>
     );
   }
 
@@ -164,6 +159,9 @@ export function GuidePage({
 }) {
   const { hero, download, sections, faq, related, cta, disclaimer } = content;
   const ctaHref = `/${locale}#cta`;
+  const productHref = `/${locale}#producto`;
+  const sectionId = (i: number) => `sec-${i + 1}`;
+  const tocItems = sections.map((s, i) => ({ id: sectionId(i), label: s.h }));
 
   return (
     <>
@@ -180,7 +178,7 @@ export function GuidePage({
       >
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 64, gap: 16 }}>
           <Link href={`/${locale}`} style={{ display: 'inline-flex', alignItems: 'center' }}>
-            <Image src="/logo_color.png" alt="Solnow" width={104} height={26} style={{ height: 26, width: 'auto' }} />
+            <Image src="/hollow_logo_name_color.png" alt="Solnow" width={162} height={28} priority style={{ height: 28, width: 'auto' }} />
           </Link>
           <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
             <Link
@@ -201,145 +199,210 @@ export function GuidePage({
         </div>
       </header>
 
-      <main className="container" style={{ maxWidth: 820, paddingBlock: '64px 80px' }}>
-        <article>
-          <span className="eyebrow">{hero.eyebrow}</span>
-          <h1 className="h-display" style={{ fontSize: 'clamp(30px, 4.4vw, 50px)', margin: '18px 0 18px' }}>
-            {hero.h1}
-          </h1>
-          <p className="lede" style={{ maxWidth: '60ch' }}>{hero.lede}</p>
-          <p className="mono" style={{ fontSize: 12, color: 'var(--muted-2)', letterSpacing: '0.06em', marginTop: 18 }}>
-            {hero.updated} · {hero.readingTime}
-          </p>
+      {/* Hero — left-aligned band with a subtle wash, matching the new docs design */}
+      <section
+        style={{
+          position: 'relative',
+          overflow: 'hidden',
+          borderBottom: '1px solid var(--line-soft)',
+          background: 'linear-gradient(180deg, var(--surface-2), var(--bg))',
+        }}
+      >
+        <div
+          aria-hidden
+          className="dotgrid"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            opacity: 0.4,
+            maskImage: 'linear-gradient(180deg, #000, transparent 85%)',
+            WebkitMaskImage: 'linear-gradient(180deg, #000, transparent 85%)',
+          }}
+        />
+        <div className="container" style={{ position: 'relative', paddingBlock: '40px 56px' }}>
+          <div style={{ maxWidth: 1080, marginInline: 'auto' }}>
+            {/* Breadcrumb */}
+            <nav aria-label="Breadcrumb" className="mono" style={{ fontSize: 12, letterSpacing: '0.03em', color: 'var(--muted-2)', display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 28 }}>
+              <Link href={`/${locale}`} style={{ color: 'var(--muted)' }}>{labels.breadcrumbHome}</Link>
+              {labels.groupLabel && (
+                <>
+                  <span aria-hidden>/</span>
+                  <span style={{ color: 'var(--muted)' }}>{labels.groupLabel}</span>
+                </>
+              )}
+              <span aria-hidden>/</span>
+              <span style={{ color: 'var(--accent)' }}>{hero.eyebrow}</span>
+            </nav>
 
-          {download && (
-            <div
-              className="card"
-              style={{
-                marginTop: 36,
-                padding: 24,
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: 20,
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                borderColor: 'var(--accent)',
-                background: 'var(--accent-bg)',
-              }}
-            >
-              <div style={{ maxWidth: '46ch' }}>
-                <div className="h-3" style={{ marginBottom: 6 }}>{download.title}</div>
-                <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: 'var(--fg-2)' }}>{download.desc}</p>
+            <div style={{ maxWidth: 760 }}>
+              <span className="chip">{hero.eyebrow}</span>
+              <h1 className="h-display" style={{ fontSize: 'clamp(32px, 4.6vw, 54px)', margin: '20px 0 20px' }}>
+                {hero.h1}
+              </h1>
+              <p className="lede" style={{ maxWidth: '60ch' }}>{hero.lede}</p>
+              <p className="mono" style={{ fontSize: 12.5, color: 'var(--muted-2)', letterSpacing: '0.04em', marginTop: 18 }}>
+                {hero.updated} · {hero.readingTime}
+              </p>
+              <div style={{ display: 'flex', gap: 12, marginTop: 26, flexWrap: 'wrap' }}>
+                <a className="btn btn-primary" href={ctaHref}>
+                  {cta.button}
+                  {ARROW}
+                </a>
+                <a className="btn btn-secondary" href={productHref}>
+                  {labels.viewProduct}
+                </a>
               </div>
-              <a className="btn btn-primary" href={download.href} download style={{ whiteSpace: 'nowrap' }}>
-                <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden>
-                  <path d="M7 2v7M3.5 6 7 9.5 10.5 6M2.5 12h9" stroke="currentColor" strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                {download.fileLabel}
-              </a>
             </div>
-          )}
-
-          <div style={{ marginTop: 56 }}>
-            {sections.map((s, i) => (
-              <section key={i} style={{ marginBottom: 40 }}>
-                <h2 className="h-2" style={{ fontSize: 'clamp(22px, 2.6vw, 28px)', marginBottom: 16 }}>{s.h}</h2>
-                {s.blocks.map((b, j) => (
-                  <Block key={j} block={b} />
-                ))}
-              </section>
-            ))}
           </div>
+        </div>
+      </section>
 
-          {disclaimer && (
-            <div
-              style={{
-                marginTop: 8,
-                padding: '16px 18px',
-                borderRadius: 10,
-                border: '1px solid var(--line)',
-                background: 'var(--surface-2)',
-                fontSize: 13.5,
-                lineHeight: 1.6,
-                color: 'var(--muted)',
-              }}
-            >
-              <span className="mono" style={{ fontSize: 11, letterSpacing: '0.1em', color: 'var(--muted-2)', display: 'block', marginBottom: 6 }}>
-                {labels.disclaimerLabel.toUpperCase()}
-              </span>
-              {disclaimer}
-            </div>
-          )}
-        </article>
-
-        {/* FAQ */}
-        <section style={{ marginTop: 72 }}>
-          <h2 className="h-2" style={{ fontSize: 'clamp(22px, 2.6vw, 28px)', marginBottom: 20 }}>{labels.faqTitle}</h2>
-          <div style={{ borderTop: '1px solid var(--line-soft)' }}>
-            {faq.map((item, i) => (
-              <details key={i} style={{ borderBottom: '1px solid var(--line-soft)', padding: '4px 0' }}>
-                <summary
+      <div className="container" style={{ paddingBlock: '52px 80px' }}>
+        <div className="guide-grid">
+          <div style={{ minWidth: 0, maxWidth: 760 }}>
+            <article>
+              {download && (
+                <div
+                  className="card card-lift"
                   style={{
-                    cursor: 'pointer',
-                    listStyle: 'none',
-                    padding: '16px 0',
-                    fontSize: 16.5,
-                    fontWeight: 500,
-                    color: 'var(--fg)',
+                    marginBottom: 48,
+                    padding: 24,
                     display: 'flex',
-                    justifyContent: 'space-between',
-                    gap: 16,
+                    flexWrap: 'wrap',
+                    gap: 20,
                     alignItems: 'center',
+                    justifyContent: 'space-between',
+                    borderColor: 'var(--accent)',
+                    background: 'var(--accent-bg)',
                   }}
                 >
-                  {item.q}
-                  <span className="mono" style={{ color: 'var(--accent)', fontSize: 18, flexShrink: 0 }}>+</span>
-                </summary>
-                <p style={{ margin: '0 0 18px', fontSize: 15.5, lineHeight: 1.7, color: 'var(--fg-2)', maxWidth: '64ch' }}>{item.a}</p>
-              </details>
-            ))}
-          </div>
-        </section>
+                  <div style={{ maxWidth: '46ch' }}>
+                    <div className="h-3" style={{ marginBottom: 6 }}>{download.title}</div>
+                    <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: 'var(--fg-2)' }}>{download.desc}</p>
+                  </div>
+                  <a className="btn btn-primary" href={download.href} download style={{ whiteSpace: 'nowrap' }}>
+                    <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden>
+                      <path d="M7 2v7M3.5 6 7 9.5 10.5 6M2.5 12h9" stroke="currentColor" strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    {download.fileLabel}
+                  </a>
+                </div>
+              )}
 
-        {/* Related */}
-        {related.length > 0 && (
-          <section style={{ marginTop: 64 }}>
-            <h2 className="h-3" style={{ marginBottom: 18 }}>{labels.relatedTitle}</h2>
-            <div className="r-split" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
-              {related.map((r) => (
-                <Link
-                  key={r.slug}
-                  href={`/${locale}/${r.slug}`}
-                  className="card"
-                  style={{ padding: 20, display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 14, color: 'var(--fg)' }}
-                >
-                  <span style={{ fontSize: 15.5, lineHeight: 1.4, fontWeight: 500 }}>{r.label}</span>
-                  <span style={{ color: 'var(--accent)', flexShrink: 0 }}>{ARROW}</span>
-                </Link>
+              {sections.map((s, i) => (
+                <section key={i} id={sectionId(i)} style={{ marginBottom: 44 }}>
+                  <div className="mono" style={{ fontSize: 11, letterSpacing: '0.1em', color: 'var(--accent)', marginBottom: 12 }}>
+                    {String(i + 1).padStart(2, '0')}
+                    <span style={{ color: 'var(--muted-2)' }}> / {String(sections.length).padStart(2, '0')}</span>
+                  </div>
+                  <h2 className="h-2" style={{ fontSize: 'clamp(22px, 2.6vw, 28px)', marginBottom: 16 }}>{s.h}</h2>
+                  {s.blocks.map((b, j) => (
+                    <Block key={j} block={b} />
+                  ))}
+                </section>
               ))}
-            </div>
-          </section>
-        )}
-      </main>
+
+              {disclaimer && (
+                <div
+                  style={{
+                    marginTop: 8,
+                    padding: '16px 18px',
+                    borderRadius: 10,
+                    border: '1px solid var(--line)',
+                    background: 'var(--surface-2)',
+                    fontSize: 13.5,
+                    lineHeight: 1.6,
+                    color: 'var(--muted)',
+                  }}
+                >
+                  <span className="mono" style={{ fontSize: 11, letterSpacing: '0.1em', color: 'var(--muted-2)', display: 'block', marginBottom: 6 }}>
+                    {labels.disclaimerLabel.toUpperCase()}
+                  </span>
+                  {disclaimer}
+                </div>
+              )}
+            </article>
+
+            {/* FAQ */}
+            <section style={{ marginTop: 72 }}>
+              <h2 className="h-2" style={{ fontSize: 'clamp(22px, 2.6vw, 28px)', marginBottom: 20 }}>{labels.faqTitle}</h2>
+              <div style={{ borderTop: '1px solid var(--line-soft)' }}>
+                {faq.map((item, i) => (
+                  <details key={i} style={{ borderBottom: '1px solid var(--line-soft)', padding: '4px 0' }}>
+                    <summary
+                      style={{
+                        cursor: 'pointer',
+                        listStyle: 'none',
+                        padding: '16px 0',
+                        fontSize: 16.5,
+                        fontWeight: 500,
+                        color: 'var(--fg)',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        gap: 16,
+                        alignItems: 'center',
+                      }}
+                    >
+                      {item.q}
+                      <span className="mono" style={{ color: 'var(--accent)', fontSize: 18, flexShrink: 0 }}>+</span>
+                    </summary>
+                    <p style={{ margin: '0 0 18px', fontSize: 15.5, lineHeight: 1.7, color: 'var(--fg-2)', maxWidth: '64ch' }}>{item.a}</p>
+                  </details>
+                ))}
+              </div>
+            </section>
+
+            {/* Related */}
+            {related.length > 0 && (
+              <section style={{ marginTop: 64 }}>
+                <h2 className="h-3" style={{ marginBottom: 18 }}>{labels.relatedTitle}</h2>
+                <div className="r-split" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
+                  {related.map((r) => (
+                    <Link
+                      key={r.slug}
+                      href={`/${locale}/${r.slug}`}
+                      className="card card-lift"
+                      style={{ padding: 20, display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 14, color: 'var(--fg)' }}
+                    >
+                      <span style={{ fontSize: 15.5, lineHeight: 1.4, fontWeight: 500 }}>{r.label}</span>
+                      <span style={{ color: 'var(--accent)', flexShrink: 0 }}>{ARROW}</span>
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            )}
+          </div>
+
+          {/* Sticky table of contents */}
+          <aside className="guide-toc">
+            <GuideToc title={labels.tocLabel} items={tocItems} />
+          </aside>
+        </div>
+      </div>
 
       {/* Final CTA */}
       <section className="container" style={{ paddingBottom: 96 }}>
         <div
           className="card-ink"
           style={{
-            padding: 'clamp(28px, 5vw, 52px)',
+            padding: 'clamp(32px, 5vw, 56px)',
             display: 'flex',
             flexWrap: 'wrap',
             gap: 24,
             alignItems: 'center',
             justifyContent: 'space-between',
+            position: 'relative',
+            background:
+              'radial-gradient(700px 380px at 85% 15%, rgba(74,144,192,0.22), transparent 70%),' +
+              'linear-gradient(180deg, #0a3f5d, #062a3e)',
           }}
         >
-          <div style={{ maxWidth: '40ch' }}>
+          <div aria-hidden className="dotgrid-ink" style={{ position: 'absolute', inset: 0, opacity: 0.5 }} />
+          <div style={{ position: 'relative', maxWidth: '40ch' }}>
             <h2 className="h-2" style={{ color: 'var(--ink-fg)', fontSize: 'clamp(24px, 3vw, 34px)', marginBottom: 12 }}>{cta.title}</h2>
             <p style={{ margin: 0, fontSize: 16, lineHeight: 1.6, color: 'var(--ink-muted)' }}>{cta.desc}</p>
           </div>
-          <a className="btn btn-primary" href={ctaHref} style={{ whiteSpace: 'nowrap' }}>
+          <a className="btn btn-primary" href={ctaHref} style={{ whiteSpace: 'nowrap', position: 'relative' }}>
             {cta.button}
             {ARROW}
           </a>

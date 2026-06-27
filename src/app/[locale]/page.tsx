@@ -1,11 +1,10 @@
 'use client';
-import { useEffect } from 'react';
 import Nav from '@/components/Nav';
 import Hero from '@/components/Hero';
-import { PainBar, Nuclear, ProductAreas } from '@/components/sections/SectionsProduct';
-import { Comparison, Partner } from '@/components/sections/SectionsMid';
+import { PainBar, ProductAreas } from '@/components/sections/SectionsProduct';
+import { Pillars, Comparison, Partner } from '@/components/sections/SectionsMid';
+import { WhyNow } from '@/components/sections/SectionsThesis';
 import { Onboarding, SocialProof, FAQ, FinalCTA, Footer } from '@/components/sections/SectionsEnd';
-import { Pricing } from '@/components/sections/SectionsPricing';
 import { useReveal } from '@/hooks/useReveal';
 
 function RevealProvider() {
@@ -21,11 +20,11 @@ export default function Home() {
       <main>
         <Hero variant="a" />
         <PainBar />
-        <Nuclear />
+        <Pillars />
         <ProductAreas />
+        <WhyNow />
         <Comparison />
-        <Partner />
-        <Pricing />
+        {/* <Partner /> */}
         <Onboarding />
         <SocialProof />
         <FAQ />

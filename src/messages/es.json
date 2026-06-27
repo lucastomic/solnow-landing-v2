@@ -25,7 +25,7 @@
       "pre": "Atiende el doble de reservas ",
       "em": "sin contratar",
       "post": " a más personal.",
-      "sub": "El sistema operativo de las empresas de alquiler acuático con alto volumen. Digitalizamos venta, papeleo, operación en tiempo real y postventa."
+      "sub": "Convierte tu empresa de actividades acuáticas en autoservicio: mostrador, web, WhatsApp y colaboradores en un único flujo de reserva, contrato y cobro."
     },
     "b": {
       "pre": "Tu flota crece. Tu software te ",
@@ -55,64 +55,94 @@
     "operar": "operar.",
     "lede": "Somos los únicos que digitalizamos las cuatro áreas de tu negocio: el agente de IA cierra reservas en WhatsApp 24/7, y el sistema controla la operación en vivo durante la actividad."
   },
+  "pillars": {
+    "eyebrow": "04 · Por qué somos distintos",
+    "titlePre": "Los demás te ayudan a reservar. Nosotros te ayudamos a vender, operar y ",
+    "titleEm": "cobrar.",
+    "pilarLabel": "PILAR",
+    "items": [
+      {
+        "n": "01",
+        "h": "Tus clientes se gestionan solos, llegues por donde llegues",
+        "s": "Mostrador, web, WhatsApp y colaboradores en un único flujo. El cliente carga sus datos, firma el contrato legal del sector y paga, sin que tu equipo persiga papeles."
+      },
+      {
+        "n": "02",
+        "h": "No te damos un software: te dejamos la operación andando",
+        "s": "Llegamos, instalamos, cargamos la flota, capacitamos y optimizamos. Y solo cobramos cuando tú facturas. Socio de crecimiento, no proveedor."
+      },
+      {
+        "n": "03",
+        "h": "Vertical de actividades acuáticas: tiempo real + IA que cierra",
+        "s": "Dashboard de flota en vivo, QR de embarque y multi-base. Y un agente de IA en WhatsApp que asesora y cierra reservas 24/7, conectado a tu disponibilidad real."
+      }
+    ]
+  },
   "productAreas": {
-    "eyebrow": "04 · El producto",
+    "eyebrow": "05 · El producto",
     "title": "Cuatro áreas. Una sola plataforma.",
-    "lede": "Cobertura completa del ciclo: antes, durante y después de cada actividad. Cada bloque se conecta con el siguiente en el mismo modelo de datos.",
+    "coreTag": "núcleo",
     "tabs": [
-      { "n": "4.1", "t": "Venta", "s": "WhatsApp IA" },
-      { "n": "4.2", "t": "Papeleo", "s": "Contratos · facturación" },
-      { "n": "4.3", "t": "Operación", "s": "Tiempo real · multi-base" },
-      { "n": "4.4", "t": "Postventa", "s": "Reseñas · libro · CRM" }
+      { "n": "5.1", "t": "Mostrador", "s": "TPV → QR → contrato", "core": true },
+      { "n": "5.2", "t": "Venta online + IA", "s": "Motor web · WhatsApp" },
+      { "n": "5.3", "t": "Operación", "s": "Tiempo real · multi-base" },
+      { "n": "5.4", "t": "Datos unificados", "s": "Dashboard · cierre" }
     ],
-    "area1": {
-      "h": "Cierra reservas en WhatsApp sin que nadie las atienda",
-      "lede": "No es un chatbot. Es un agente conectado en vivo a tu disponibilidad, precios, flota y extras. Asesora, recomienda y cobra. En cualquier idioma, en menos de 1 minuto.",
+    "walkin": {
+      "h": "El mostrador, por fin en autoservicio",
       "bullets": [
-        "Conectado en vivo a tu disponibilidad, precios y flota (no responde con guiones predefinidos)",
-        "Cierra la venta y cobra dentro de WhatsApp",
-        "Funciona en cualquier idioma",
-        "Si no puede resolver, deriva a un humano sin perder el contexto"
+        "Contrato legal del sector firmado en < 15 s (incluye contratos para menores)",
+        "QR → el cliente se autogestiona datos, firma y pago",
+        "El canal de mayor volumen, digitalizado y monetizado"
       ]
     },
-    "area2": {
-      "h": "Contratos, facturas y calendario en automático al confirmarse la reserva",
-      "lede": "Cada reserva dispara el papeleo completo. Firma electrónica integrada, facturación al instante, sin overbookings.",
+    "online": {
+      "h": "Venta online: motor de reservas en tu web + IA que cierra en WhatsApp",
+      "lede": "El cliente reserva solo desde tu web. Y a quien pregunta en vez de reservar, un agente de IA le asesora, recomienda y cobra en WhatsApp en menos de 1 minuto.",
       "bullets": [
-        "Firma electrónica integrada (incluye contratos para menores)",
-        "Facturación automática y control de pagos",
-        "Calendario y flota sin overbookings",
-        "Comisiones de colaboradores en automático"
+        "Motor de reservas integrado en tu web: disponibilidad real, checkout y pago automático",
+        "Agente de IA que asesora y cobra dentro de WhatsApp (en cualquier idioma)"
       ]
     },
-    "area3": {
-      "eyebrow": "Esto es lo que ningún software horizontal te va a dar nunca",
+    "ops": {
+      "eyebrow": "5.3 · lo que ningún software horizontal te va a dar",
       "hPre": "Mira tu flota ",
       "hEm": "en vivo",
       "hPost": ", aunque no estés ahí",
       "ledePre": "El único módulo del mercado que digitaliza lo que pasa ",
       "ledeStrong": "durante la actividad",
-      "ledePost": ", no solo antes y después.",
+      "ledePost": ".",
       "bullets": [
         "Dashboard en tiempo real multi-base",
-        "Escaneo QR de embarque",
+        "Escaneo QR de embarque (offline-first)",
         "Alertas automáticas de retrasos",
-        "Visibilidad descentralizada sin estar físicamente"
+        "Visibilidad sin estar físicamente en cada oficina"
       ]
     },
-    "area4": {
-      "h": "Libro de registros, reseñas y fidelización en piloto automático",
-      "lede": "Termina la actividad y el sistema se encarga del cierre: cumplimiento legal, captura de reseña, perfil de cliente y métricas.",
+    "data": {
+      "label": "5.4 · el valor que más pesa",
+      "h": "Todos tus canales y todos tus datos en un solo dashboard que dice la verdad",
       "bullets": [
-        "Libro de registros conforme a regulación marítima",
-        "Solicitud automática de reseñas",
-        "Ficha centralizada de cliente recurrente",
-        "Dashboard de métricas del negocio"
+        "Estadísticas de todas tus bases: agrupadas o por separado",
+        "Ingresos por fuente (web, WhatsApp, walk-in, OTA), por actividad/producto y por colaborador",
+        "Saldo pendiente con cada colaborador, calculado solo",
+        "Y el cierre en automático: libro de registros conforme a regulación, reseñas y fidelización de recurrentes"
       ]
     }
   },
+  "whyNow": {
+    "eyebrow": "06 · Por qué ahora",
+    "title": "El self-service que transformó la banca y el retail llega al turismo de experiencias.",
+    "youAreHere": "← ESTÁS AQUÍ",
+    "ladder": [
+      { "sector": "Banca", "from": "Caja", "to": "Cajero → app" },
+      { "sector": "Retail", "from": "Cajero", "to": "Autopago" },
+      { "sector": "Restauración", "from": "Camarero", "to": "Quiosco de autopedido" },
+      { "sector": "Turismo de experiencias", "from": "Mostrador manual", "to": "Solnow" }
+    ]
+  },
   "comparison": {
-    "eyebrow": "05 · Comparativa",
+    "eyebrow": "07 · Comparativa",
     "title": "Cómo nos comparamos con las otras opciones que estás evaluando",
     "capability": "Capacidad",
     "us": "Nosotros",
@@ -139,7 +169,7 @@
     "closing": "Construir desde cero tiene sentido si tu producto es tu diferencial. Si tu diferencial es operar motos en el agua, cada mes que dedicas a programar es un mes que no escalas."
   },
   "partner": {
-    "eyebrow": "06 · Modelo de partner",
+    "eyebrow": "08 · Modelo de partner",
     "title": "No somos un proveedor. Somos un partner que cobra cuando tú facturas.",
     "items": [
       {
@@ -249,7 +279,7 @@
     }
   },
   "onboarding": {
-    "eyebrow": "08 · Implementación",
+    "eyebrow": "09 · Implementación",
     "title": "En 7 días tu operación digital corre sobre Solnow",
     "lede": "Nosotros hacemos el 95% del trabajo de implementación. Tú sigues operando.",
     "yourWork": "Tu trabajo ·",
@@ -271,9 +301,9 @@
       },
       {
         "day": "Días 5–6",
-        "label": "Web e integraciones",
-        "h": "Conectamos web, OTAs y pagos",
-        "points": ["Motor de reservas integrado a tu web", "Viator · GetYourGuide · Stripe", "Migración de datos históricos"],
+        "label": "Mostrador, web e integraciones",
+        "h": "Montamos el flujo de mostrador, la web y los pagos",
+        "points": ["TPV → QR → contrato listo en cada base", "Motor de reservas integrado a tu web · Stripe", "Distribución (OTAs) y migración de datos históricos"],
         "you": "Darnos acceso a tus cuentas"
       },
       {
@@ -302,7 +332,7 @@
     "ctaButton": "Pedir demo"
   },
   "socialProof": {
-    "eyebrow": "09 · Operadores con Solnow en producción",
+    "eyebrow": "10 · Operadores con Solnow en producción",
     "title": "Operadores que ya trabajan con Solnow",
     "testimonials": [
       {
@@ -326,7 +356,7 @@
     ]
   },
   "faq": {
-    "eyebrow": "10 · FAQ",
+    "eyebrow": "11 · FAQ",
     "title": "Preguntas frecuentes",
     "items": [
       {
@@ -351,7 +381,7 @@
       },
       {
         "q": "¿Se integra con Viator / GetYourGuide?",
-        "a": "Integraciones nativas con ambas. Inventario sincronizado en tiempo real, sin overbookings entre canales. Stripe para pagos. Otras OTAs bajo demanda."
+        "a": "Sí, con inventario sincronizado en tiempo real y sin overbookings entre canales. Pero para nuestro ICP las OTAs son el canal de menor volumen: la prioridad es consolidar el mostrador, WhatsApp y la web en un único flujo. Las OTAs son un complemento, no el centro."
       },
       {
         "q": "¿Puedo configurar precios distintos por temporada?",
@@ -364,7 +394,7 @@
     ]
   },
   "finalCta": {
-    "eyebrow": "11 · Demo",
+    "eyebrow": "12 · Demo",
     "headPre": "¿Te suena alguno de ",
     "headEm": "estos problemas?",
     "problems": [
@@ -546,6 +576,9 @@
     "faqTitle": "Preguntas frecuentes",
     "relatedTitle": "Sigue leyendo",
     "disclaimerLabel": "Aviso",
+    "breadcrumbHome": "Inicio",
+    "viewProduct": "Ver el producto",
+    "groups": { "recurso": "Recursos", "comparativa": "Comparativas", "geo": "Zonas" },
     "tenerife": {
       "meta": {
         "title": "Software de reservas para motos de agua en Tenerife — Solnow",

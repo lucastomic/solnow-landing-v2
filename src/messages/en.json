@@ -25,7 +25,7 @@
       "pre": "Handle twice the bookings ",
       "em": "without hiring",
       "post": " more staff.",
-      "sub": "The operating system for high-volume watercraft rental companies. We digitize sales, paperwork, real-time operations and after-sales."
+      "sub": "Turn your water sports business into a self-service operation: counter, website, WhatsApp and collaborators in a single flow of booking, contract and payment."
     },
     "b": {
       "pre": "Your fleet is growing. Your software is ",
@@ -55,64 +55,94 @@
     "operar": "operate.",
     "lede": "We are the only ones digitizing all four areas of your business: the AI agent closes bookings on WhatsApp 24/7, and the system runs live operations during the activity itself."
   },
+  "pillars": {
+    "eyebrow": "04 · Why we're different",
+    "titlePre": "Others help you take bookings. We help you sell, operate and ",
+    "titleEm": "get paid.",
+    "pilarLabel": "PILLAR",
+    "items": [
+      {
+        "n": "01",
+        "h": "Your customers handle themselves, however they reach you",
+        "s": "Counter, web, WhatsApp and partners in a single flow. The customer enters their details, signs the sector's legal contract and pays — without your team chasing paperwork."
+      },
+      {
+        "n": "02",
+        "h": "We don't hand you software: we leave your operation running",
+        "s": "We arrive, install, load your fleet, train your team and optimize. And we only charge when you bill. A growth partner, not a vendor."
+      },
+      {
+        "n": "03",
+        "h": "Built for watersports: real-time + AI that closes",
+        "s": "Live fleet dashboard, boarding QR and multi-base. Plus a WhatsApp AI agent that advises and closes bookings 24/7, connected to your real availability."
+      }
+    ]
+  },
   "productAreas": {
-    "eyebrow": "04 · The product",
+    "eyebrow": "05 · The product",
     "title": "Four areas. One single platform.",
-    "lede": "Full coverage of the cycle: before, during and after every activity. Each block connects to the next within the same data model.",
+    "coreTag": "core",
     "tabs": [
-      { "n": "4.1", "t": "Sales", "s": "WhatsApp AI" },
-      { "n": "4.2", "t": "Paperwork", "s": "Contracts · invoicing" },
-      { "n": "4.3", "t": "Operations", "s": "Real-time · multi-base" },
-      { "n": "4.4", "t": "After-sales", "s": "Reviews · logbook · CRM" }
+      { "n": "5.1", "t": "Front desk", "s": "POS → QR → contract", "core": true },
+      { "n": "5.2", "t": "Online sales + AI", "s": "Web engine · WhatsApp" },
+      { "n": "5.3", "t": "Operations", "s": "Real-time · multi-base" },
+      { "n": "5.4", "t": "Unified data", "s": "Dashboard · close" }
     ],
-    "area1": {
-      "h": "Close bookings on WhatsApp without anyone answering them",
-      "lede": "It's not a chatbot. It's an agent connected live to your availability, prices, fleet and extras. It advises, recommends and charges. In any language, in under 1 minute.",
+    "walkin": {
+      "h": "The front desk, finally self-service",
       "bullets": [
-        "Connected live to your availability, prices and fleet (no canned scripts)",
-        "Closes the sale and takes payment inside WhatsApp",
-        "Works in any language",
-        "If it can't resolve it, hands off to a human without losing context"
+        "Sector legal contract signed in < 15 s (includes contracts for minors)",
+        "QR → the customer self-manages data, signature and payment",
+        "Your highest-volume channel, digitized and monetized"
       ]
     },
-    "area2": {
-      "h": "Contracts, invoices and calendar automatically when the booking is confirmed",
-      "lede": "Every booking triggers the full paperwork. Built-in e-signature, instant invoicing, no overbookings.",
+    "online": {
+      "h": "Online sales: a booking engine on your site + AI that closes on WhatsApp",
+      "lede": "Customers book on their own from your website. And whoever asks instead of booking gets an AI agent that advises, recommends and charges on WhatsApp in under 1 minute.",
       "bullets": [
-        "Built-in e-signature (includes contracts for minors)",
-        "Automatic invoicing and payment tracking",
-        "Calendar and fleet with no overbookings",
-        "Partner commissions calculated automatically"
+        "Booking engine embedded in your site: real availability, checkout and automatic payment",
+        "AI agent that advises and charges inside WhatsApp (in any language)"
       ]
     },
-    "area3": {
-      "eyebrow": "This is what no horizontal software will ever give you",
+    "ops": {
+      "eyebrow": "5.3 · what no horizontal software will give you",
       "hPre": "Watch your fleet ",
       "hEm": "live",
       "hPost": ", even when you're not there",
       "ledePre": "The only module on the market that digitizes what happens ",
       "ledeStrong": "during the activity",
-      "ledePost": ", not just before and after.",
+      "ledePost": ".",
       "bullets": [
         "Real-time multi-base dashboard",
-        "QR boarding scan",
+        "QR boarding scan (offline-first)",
         "Automatic delay alerts",
-        "Decentralized visibility without being there physically"
+        "Visibility without being physically in each office"
       ]
     },
-    "area4": {
-      "h": "Logbook, reviews and loyalty on autopilot",
-      "lede": "The activity ends and the system handles the wrap-up: legal compliance, review capture, customer profile and metrics.",
+    "data": {
+      "label": "5.4 · the value that weighs most",
+      "h": "All your channels and all your data in one dashboard that tells the truth",
       "bullets": [
-        "Logbook compliant with maritime regulation",
-        "Automatic review requests",
-        "Centralized record for repeat customers",
-        "Business metrics dashboard"
+        "Stats for all your bases: grouped or separately",
+        "Revenue by source (web, WhatsApp, walk-in, OTA), by activity/product and by partner",
+        "Outstanding balance with each partner, auto-calculated",
+        "And automatic closeout: regulation-compliant logbook, reviews and repeat-customer loyalty"
       ]
     }
   },
+  "whyNow": {
+    "eyebrow": "06 · Why now",
+    "title": "The self-service that transformed banking and retail is coming to experience tourism.",
+    "youAreHere": "← YOU ARE HERE",
+    "ladder": [
+      { "sector": "Banking", "from": "Teller desk", "to": "ATM → app" },
+      { "sector": "Retail", "from": "Cashier", "to": "Self-checkout" },
+      { "sector": "Dining", "from": "Waiter", "to": "Self-order kiosk" },
+      { "sector": "Experience tourism", "from": "Manual counter", "to": "Solnow" }
+    ]
+  },
   "comparison": {
-    "eyebrow": "05 · Comparison",
+    "eyebrow": "07 · Comparison",
     "title": "How we compare to the other options you're evaluating",
     "capability": "Capability",
     "us": "Us",
@@ -139,7 +169,7 @@
     "closing": "Building from scratch makes sense if your product is your edge. If your edge is operating jet skis on the water, every month spent coding is a month you don't scale."
   },
   "partner": {
-    "eyebrow": "06 · Partner model",
+    "eyebrow": "08 · Partner model",
     "title": "We're not a vendor. We're a partner that gets paid when you do.",
     "items": [
       {
@@ -249,7 +279,7 @@
     }
   },
   "onboarding": {
-    "eyebrow": "08 · Onboarding",
+    "eyebrow": "09 · Onboarding",
     "title": "In 7 days your digital operation runs on Solnow",
     "lede": "We do 95% of the implementation work. You keep operating.",
     "yourWork": "Your work ·",
@@ -271,9 +301,9 @@
       },
       {
         "day": "Days 5–6",
-        "label": "Website & integrations",
-        "h": "We connect website, OTAs and payments",
-        "points": ["Booking engine integrated into your website", "Viator · GetYourGuide · Stripe", "Historical data migration"],
+        "label": "Front desk, web & integrations",
+        "h": "We set up the front-desk flow, the website and payments",
+        "points": ["POS → QR → contract ready at each base", "Booking engine integrated into your website · Stripe", "Distribution (OTAs) and historical data migration"],
         "you": "Give us access to your accounts"
       },
       {
@@ -302,7 +332,7 @@
     "ctaButton": "Book a demo"
   },
   "socialProof": {
-    "eyebrow": "09 · Operators running Solnow in production",
+    "eyebrow": "10 · Operators running Solnow in production",
     "title": "Operators already working with Solnow",
     "testimonials": [
       {
@@ -326,7 +356,7 @@
     ]
   },
   "faq": {
-    "eyebrow": "10 · FAQ",
+    "eyebrow": "11 · FAQ",
     "title": "Frequently asked questions",
     "items": [
       {
@@ -351,7 +381,7 @@
       },
       {
         "q": "Does it integrate with Viator / GetYourGuide?",
-        "a": "Native integrations with both. Inventory synced in real time, no overbookings across channels. Stripe for payments. Other OTAs on request."
+        "a": "Yes, with inventory synced in real time and no overbookings across channels. But for our ICP, OTAs are the lowest-volume channel: the priority is consolidating the front desk, WhatsApp and the web into a single flow. OTAs are a complement, not the center."
       },
       {
         "q": "Can I set different prices per season?",
@@ -364,7 +394,7 @@
     ]
   },
   "finalCta": {
-    "eyebrow": "11 · Demo",
+    "eyebrow": "12 · Demo",
     "headPre": "Do any of ",
     "headEm": "these problems sound familiar?",
     "problems": [
@@ -546,6 +576,9 @@
     "faqTitle": "Frequently asked questions",
     "relatedTitle": "Keep reading",
     "disclaimerLabel": "Disclaimer",
+    "breadcrumbHome": "Home",
+    "viewProduct": "See the product",
+    "groups": { "recurso": "Resources", "comparativa": "Comparisons", "geo": "Regions" },
     "tenerife": {
       "meta": {
         "title": "Jet ski booking software in Tenerife — Solnow",

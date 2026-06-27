@@ -2,6 +2,83 @@
 import { SectionHead } from '../atoms';
 import { useT } from '@/i18n/I18nProvider';
 
+export function Pillars() {
+  const t = useT();
+  const pillars = t<{ n: string; h: string; s: string }[]>('pillars.items');
+  const icons = [
+    <svg key="0" width="44" height="44" viewBox="0 0 44 44" fill="none" stroke="currentColor" strokeWidth="1.4">
+      <rect x="6" y="4" width="32" height="36" rx="4" />
+      <path d="M14 13h16 M14 21h16 M14 29h10" />
+      <path d="M27 33 L30 36 L36 28" stroke="currentColor" strokeWidth="1.8" />
+    </svg>,
+    <svg key="1" width="44" height="44" viewBox="0 0 44 44" fill="none" stroke="currentColor" strokeWidth="1.4">
+      <path d="M22 6 L34 12 V24 C34 32 28 37 22 39 C16 37 10 32 10 24 V12 Z" />
+      <path d="M16 22 L20 26 L29 16" strokeWidth="1.8" />
+    </svg>,
+    <svg key="2" width="44" height="44" viewBox="0 0 44 44" fill="none" stroke="currentColor" strokeWidth="1.4">
+      <path d="M2 28 C 9 20, 15 20, 22 28 S 35 36, 42 28" />
+      <path d="M2 18 C 9 10, 15 10, 22 18 S 35 26, 42 18" opacity="0.5" />
+      <circle cx="22" cy="23" r="2.4" fill="currentColor" stroke="none" />
+    </svg>,
+  ];
+  const pilarLabel = t('pillars.pilarLabel');
+
+  return (
+    <section id="pilares" className="section" style={{ paddingBlock: 120 }}>
+      <div className="container">
+        <SectionHead
+          eyebrow={t('pillars.eyebrow')}
+          title={
+            <>
+              {t('pillars.titlePre')}
+              <em className="serif" style={{ color: 'var(--accent)' }}>{t('pillars.titleEm')}</em>
+            </>
+          }
+        />
+        <div
+          className="r-cols-3"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: 1,
+            background: 'var(--line-soft)',
+            borderRadius: 18,
+            overflow: 'hidden',
+            border: '1px solid var(--line-soft)',
+          }}
+        >
+          {pillars.map((p, i) => (
+            <div
+              key={p.n}
+              className="reveal"
+              style={{
+                ['--reveal-delay' as string]: `${i * 80}ms`,
+                background: 'var(--bg)',
+                padding: '40px 32px',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 18,
+                minHeight: 220,
+              }}
+            >
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start' }}>
+                <span style={{ color: 'var(--accent)' }}>{icons[i]}</span>
+                <span className="mono" style={{ fontSize: 11, color: 'var(--muted-2)', letterSpacing: '0.1em' }}>
+                  {pilarLabel} {p.n}
+                </span>
+              </div>
+              <h3 className="h-3" style={{ marginTop: 12, fontSize: 21, letterSpacing: '-0.018em', lineHeight: 1.2 }}>
+                {p.h}
+              </h3>
+              {/* <p style={{ color: 'var(--muted)', fontSize: 14.5, margin: 0, lineHeight: 1.55 }}>{p.s}</p> */}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function Comparison() {
   const t = useT();
   const colKeys = ['gen', 'h2o', 'own', 'sol'] as const;
