@@ -69,7 +69,7 @@ export default function Hero({ variant = 'a' }: HeroProps) {
             alignItems: 'center',
           }}
         >
-          <div className="reveal">
+          <div className="hero-rise">
             <h1 className="h-display" style={{ marginTop: 0, marginBottom: 24 }}>{c.h1}</h1>
             <p className="lede" style={{ maxWidth: '52ch', marginBottom: 36 }}>{c.sub}</p>
             <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap', marginBottom: 36 }}>
@@ -88,7 +88,7 @@ export default function Hero({ variant = 'a' }: HeroProps) {
             </div>
           </div>
 
-          <div className="reveal r-fluid" style={{ ['--reveal-delay' as string]: '120ms', position: 'relative' }}>
+          <div className="hero-rise r-fluid" style={{ ['--reveal-delay' as string]: '120ms', position: 'relative' }}>
             <HeroMockup />
           </div>
         </div>
