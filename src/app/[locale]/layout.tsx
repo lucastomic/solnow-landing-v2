@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import { GoogleTagManager, GoogleAnalytics } from "@next/third-parties/google";
 import { notFound } from "next/navigation";
 import "../globals.css";
@@ -10,11 +10,23 @@ import { I18nProvider } from "@/i18n/I18nProvider";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
+});
+
+// Self-hosted via next/font (replaces the render-blocking Google Fonts @import
+// that used to live in globals.css).
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  display: "swap",
 });
 
 export function generateStaticParams() {
@@ -124,7 +136,7 @@ export default async function LocaleLayout({
     <html lang={locale} data-palette="brand" data-density="regular">
       <GoogleTagManager gtmId="GTM-W7TQ38LJ" />
       <GoogleAnalytics gaId="G-C48R6MLF4L" />
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable}`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
