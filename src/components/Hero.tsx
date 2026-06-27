@@ -1,5 +1,6 @@
 'use client';
 import { useState, CSSProperties } from 'react';
+import Image from 'next/image';
 import { useT } from '@/i18n/I18nProvider';
 
 interface HeroProps {
@@ -146,15 +147,14 @@ function HeroMockup() {
 function SunsetScene() {
   return (
     <div style={{ position: 'absolute', inset: 0 }}>
-      <img
+      <Image
         src="/assets/hero-jetski.png"
         alt=""
         aria-hidden
+        fill
+        priority
+        sizes="(max-width: 900px) 100vw, 600px"
         style={{
-          position: 'absolute',
-          inset: 0,
-          width: '100%',
-          height: '100%',
           objectFit: 'cover',
           objectPosition: 'center',
           display: 'block',

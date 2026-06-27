@@ -80,7 +80,7 @@ export default async function OpengraphImage({
             letterSpacing: "0.04em",
           }}
         >
-          app.solnow.io
+          www.solnow.io
         </div>
       </div>
     ),

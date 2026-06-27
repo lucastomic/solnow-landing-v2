@@ -1,36 +1,38 @@
-'use client';
-import Nav from '@/components/Nav';
-import Hero from '@/components/Hero';
-import { PainBar, ProductAreas } from '@/components/sections/SectionsProduct';
-import { Pillars, Comparison, Partner } from '@/components/sections/SectionsMid';
-import { WhyNow } from '@/components/sections/SectionsThesis';
-import { Onboarding, SocialProof, FAQ, FinalCTA, Footer } from '@/components/sections/SectionsEnd';
-import { useReveal } from '@/hooks/useReveal';
+import { isLocale } from '@/i18n/config';
+import { getDictionary } from '@/i18n/dictionaries';
+import HomeClient from './HomeClient';
 
-function RevealProvider() {
-  useReveal();
-  return null;
+/** FAQ rich-result schema for the home page (mirrors the on-page FAQ section). */
+async function HomeFaqJsonLd({ locale }: { locale: string }) {
+  if (!isLocale(locale)) return null;
+  const faq = (await getDictionary(locale)).faq;
+  const items = (faq?.items ?? []) as { q: string; a: string }[];
+  if (items.length === 0) return null;
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
+    />
+  );
 }
 
-export default function Home() {
+export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   return (
     <>
-      <RevealProvider />
-      <Nav />
-      <main>
-        <Hero variant="a" />
-        <PainBar />
-        <Pillars />
-        <ProductAreas />
-        <WhyNow />
-        <Comparison />
-        {/* <Partner /> */}
-        <Onboarding />
-        <SocialProof />
-        <FAQ />
-        <FinalCTA />
-      </main>
-      <Footer />
+      <HomeFaqJsonLd locale={locale} />
+      <HomeClient />
     </>
   );
 }

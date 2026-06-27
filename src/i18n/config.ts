@@ -4,7 +4,7 @@ export type Locale = (typeof locales)[number];
 
 export const defaultLocale: Locale = 'es';
 
-export const SITE_URL = 'https://app.solnow.io';
+export const SITE_URL = 'https://www.solnow.io';
 
 export function isLocale(value: string): value is Locale {
   return (locales as readonly string[]).includes(value);

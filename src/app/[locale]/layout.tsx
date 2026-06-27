@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { GoogleTagManager } from "@next/third-parties/google";
 import { notFound } from "next/navigation";
 import "../globals.css";
 import { locales, isLocale, localeMeta, SITE_URL } from "@/i18n/config";
@@ -93,9 +94,19 @@ export default async function LocaleLayout({
         name: j.orgName,
         url: SITE_URL,
         logo: `${SITE_URL}/assets/solnow-mark.png`,
+        image: `${SITE_URL}/assets/solnow-mark.png`,
         description: j.orgDescription,
         areaServed: "Mediterranean",
         foundingLocation: "Valencia, ES",
+        sameAs: ["https://www.instagram.com/solnow.io"],
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${SITE_URL}/#website`,
+        name: j.orgName,
+        url: SITE_URL,
+        inLanguage: localeMeta[locale].hreflang,
+        publisher: { "@id": `${SITE_URL}/#organization` },
       },
       {
         "@type": "SoftwareApplication",
@@ -111,6 +122,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} data-palette="brand" data-density="regular">
+      <GoogleTagManager gtmId="GTM-W7TQ38LJ" />
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <script
           type="application/ld+json"
