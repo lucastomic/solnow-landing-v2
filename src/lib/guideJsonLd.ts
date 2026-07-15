@@ -1,5 +1,5 @@
 import { SITE_URL, localeMeta, type Locale } from '@/i18n/config';
-import type { GuideContent } from '@/content/guides';
+import { localizedSlugFromSlug, type GuideContent } from '@/content/guides';
 
 /**
  * Builds the per-page JSON-LD @graph for a resource guide:
@@ -7,7 +7,7 @@ import type { GuideContent } from '@/content/guides';
  * Injected in the page via a <script type="application/ld+json"> tag.
  */
 export function buildGuideJsonLd(content: GuideContent, locale: Locale, slug: string) {
-  const url = `${SITE_URL}/${locale}/${slug}`;
+  const url = `${SITE_URL}/${locale}/${localizedSlugFromSlug(slug, locale)}`;
   const inLanguage = localeMeta[locale].hreflang;
 
   const graph: Record<string, unknown>[] = [
@@ -20,7 +20,7 @@ export function buildGuideJsonLd(content: GuideContent, locale: Locale, slug: st
       inLanguage,
       mainEntityOfPage: url,
       datePublished: '2026-06-24',
-      dateModified: '2026-06-24',
+      dateModified: '2026-07-14',
       author: { '@id': `${SITE_URL}/#organization` },
       publisher: { '@id': `${SITE_URL}/#organization` },
     },

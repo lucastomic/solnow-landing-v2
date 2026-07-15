@@ -3,7 +3,8 @@ import Link from 'next/link';
 import { Footer } from '@/components/sections/SectionsEnd';
 import { BulletList } from '@/components/atoms';
 import { GuideToc } from '@/components/GuideToc';
-import type { GuideBlock, GuideContent } from '@/content/guides';
+import { localizedSlugFromSlug, type GuideBlock, type GuideContent } from '@/content/guides';
+import type { Locale } from '@/i18n/config';
 
 export interface GuideLabels {
   backHome: string;
@@ -360,7 +361,7 @@ export function GuidePage({
                   {related.map((r) => (
                     <Link
                       key={r.slug}
-                      href={`/${locale}/${r.slug}`}
+                      href={`/${locale}/${localizedSlugFromSlug(r.slug, locale as Locale)}`}
                       className="card card-lift"
                       style={{ padding: 20, display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 14, color: 'var(--fg)' }}
                     >

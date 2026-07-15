@@ -6,8 +6,8 @@ import Script from 'next/script';
 import { useRouter, usePathname } from 'next/navigation';
 import { SectionHead } from '../atoms';
 import { useT, useLocale } from '@/i18n/I18nProvider';
-import { locales } from '@/i18n/config';
-import { GUIDES } from '@/content/guides';
+import { locales, type Locale } from '@/i18n/config';
+import { GUIDES, localizedSlug, hasEnPage, guideByAnySlug } from '@/content/guides';
 
 export function Onboarding() {
   const t = useT();
@@ -409,23 +409,35 @@ export function Footer() {
   const legalCol = t<{ h: string; privacy: string; terms: string }>('footer.legalLinks');
   const resourcesCol = t<{ h: string } & Record<string, string>>('footer.resources');
   const comparativasCol = t<{ h: string } & Record<string, string>>('footer.comparativas');
+  const loc = locale as Locale;
   const recursoLinks = GUIDES.filter((g) => g.group === 'recurso').map((g) => ({
     label: resourcesCol[g.key],
-    href: `/${locale}/${g.slug}`,
+    href: `/${locale}/${localizedSlug(g.key, loc)}`,
   }));
   const comparativaLinks = GUIDES.filter((g) => g.group === 'comparativa').map((g) => ({
     label: comparativasCol[g.key],
-    href: `/${locale}/${g.slug}`,
+    href: `/${locale}/${localizedSlug(g.key, loc)}`,
   }));
   const zonasCol = t<{ h: string } & Record<string, string>>('footer.zonas');
-  const zonaLinks = GUIDES.filter((g) => g.group === 'geo').map((g) => ({
+  // Under /en/ the consolidated geo pages (Tenerife, Gran Canaria) fold into
+  // Canarias, so we don't surface them as separate links.
+  const zonaLinks = GUIDES.filter((g) => g.group === 'geo' && (loc === 'es' || hasEnPage(g.key))).map((g) => ({
     label: zonasCol[g.key],
-    href: `/${locale}/${g.slug}`,
+    href: `/${locale}/${localizedSlug(g.key, loc)}`,
   }));
 
   const switchLocale = (next: string) => {
     if (next === locale) return;
     const rest = pathname.replace(new RegExp(`^/(${locales.join('|')})`), '');
+    const parts = rest.split('/').filter(Boolean);
+    // Translate the guide slug to the target locale so we don't 404 / bounce
+    // through a 301 when switching languages on a guide page.
+    const g = parts.length ? guideByAnySlug(parts[0]) : undefined;
+    if (g) {
+      const tail = parts.slice(1).join('/');
+      router.push(`/${next}/${localizedSlug(g.key, next as Locale)}${tail ? `/${tail}` : ''}`);
+      return;
+    }
     router.push(`/${next}${rest}`);
   };
 

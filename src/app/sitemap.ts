@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { locales, SITE_URL } from "@/i18n/config";
-import { GUIDES } from "@/content/guides";
+import { GUIDES, localizedSlug, hasEnPage } from "@/content/guides";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
@@ -30,19 +30,34 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  const guides = locales.flatMap((locale) =>
-    GUIDES.map((guide) => ({
-      url: `${SITE_URL}/${locale}/${guide.slug}`,
-      lastModified,
-      changeFrequency: "monthly" as const,
-      priority: guide.priority,
-      alternates: {
-        languages: Object.fromEntries(
-          locales.map((l) => [l, `${SITE_URL}/${l}/${guide.slug}`])
-        ),
+  const guides = GUIDES.flatMap((guide) => {
+    const esUrl = `${SITE_URL}/es/${localizedSlug(guide.key, "es")}`;
+    // Per-locale hreflang alternates: EN only when the guide has its own EN page.
+    const guideLanguages: Record<string, string> = { es: esUrl };
+    if (hasEnPage(guide.key)) {
+      guideLanguages.en = `${SITE_URL}/en/${localizedSlug(guide.key, "en")}`;
+    }
+
+    const entries: MetadataRoute.Sitemap = [
+      {
+        url: esUrl,
+        lastModified,
+        changeFrequency: "monthly" as const,
+        priority: guide.priority,
+        alternates: { languages: guideLanguages },
       },
-    }))
-  );
+    ];
+    if (hasEnPage(guide.key)) {
+      entries.push({
+        url: guideLanguages.en,
+        lastModified,
+        changeFrequency: "monthly" as const,
+        priority: guide.priority,
+        alternates: { languages: guideLanguages },
+      });
+    }
+    return entries;
+  });
 
   return [...home, ...guides, ...legal];
 }

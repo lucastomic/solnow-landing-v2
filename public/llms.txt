@@ -1,0 +1,26 @@
+# Solnow
+
+> Solnow is the operating system for high-volume watercraft rental businesses (jet ski rentals, boat tours, parasailing). It digitizes sales with a WhatsApp AI agent, automated paperwork, real-time multi-base operations and after-sales — with POS, QR self-check-in and digital contracts.
+
+Solnow is a vertical booking and operations platform built for watersports operators, not a generic tours booking engine. It is used by operators running large fleets across Spain and the Mediterranean.
+
+## Key pages
+
+- [Home](https://www.solnow.io/en): What Solnow is and who it's for.
+- [Best watersports booking software (2026)](https://www.solnow.io/en/best-watersports-booking-software): Comparison of FareHarbor, Peek Pro, Bokun, TuriTop, Regiondo, Xola and Solnow.
+- [FareHarbor alternative for watersports](https://www.solnow.io/en/fareharbor-alternative-watersports): Why high-volume jet ski and watersports operators switch from FareHarbor to Solnow.
+- [FareHarbor vs Solnow](https://www.solnow.io/en/fareharbor-vs-solnow): Head-to-head on fees, POS, walk-in check-in, WhatsApp AI agent and OTA integrations.
+- [TuriTop vs Solnow](https://www.solnow.io/en/turitop-vs-solnow): Fees, POS and bookings compared for watersports operators.
+- [Jet ski rental software](https://www.solnow.io/en/jet-ski-rental-software): Booking engine, POS with QR check-in, digital contracts and fleet management.
+- [Digitize the jet ski rental front desk](https://www.solnow.io/en/digitize-jet-ski-rental-front-desk): How to move the walk-in counter to a digital, QR-based flow.
+- [Jet ski booking software in the Canary Islands](https://www.solnow.io/en/jet-ski-booking-software-canary-islands): Multi-base operations for Tenerife, Gran Canaria, Lanzarote and Fuerteventura.
+- [Jet ski rental contract template](https://www.solnow.io/en/jet-ski-rental-contract-template): Digital rental contracts and signatures.
+- [Jet ski rental regulations in Spain](https://www.solnow.io/en/jet-ski-rental-regulations-spain): Regulatory reference for jet ski rental operators in Spain.
+
+## Pricing
+
+Three plans on a model aligned with the operator (Solnow grows when your revenue does). See current tiers on the pricing section of the home page: https://www.solnow.io/en#pricing
+
+## Contact
+
+Book a demo: https://www.solnow.io/en#agendar

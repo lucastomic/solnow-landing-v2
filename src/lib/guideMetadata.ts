@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { localeMeta, type Locale } from '@/i18n/config';
 import { getGuide } from '@/lib/getGuide';
-import type { GuideKey } from '@/content/guides';
+import { localizedSlug, hasEnPage, type GuideKey } from '@/content/guides';
 
 /**
  * Builds the full Metadata for a resource-guide page (canonical + hreflang,
@@ -12,17 +12,31 @@ import type { GuideKey } from '@/content/guides';
 export async function buildGuideMetadata(
   locale: Locale,
   key: GuideKey,
-  slug: string,
+  // `slug` (the physical folder slug) is accepted for call-site compatibility;
+  // the canonical/hreflang URLs are derived per-locale from the key instead.
+  _slug?: string,
 ): Promise<Metadata> {
   const { content } = await getGuide(locale, key);
-  const url = `/${locale}/${slug}`;
+  const url = `/${locale}/${localizedSlug(key, locale)}`;
+  const esUrl = `/es/${localizedSlug(key, 'es')}`;
+
+  const languages: Record<string, string> = { 'es-ES': esUrl };
+  if (hasEnPage(key)) {
+    const enUrl = `/en/${localizedSlug(key, 'en')}`;
+    languages['en-US'] = enUrl;
+    // x-default → English: international EN traffic outweighs ES (mostly brand).
+    languages['x-default'] = enUrl;
+  } else {
+    // Consolidated pages exist only in ES.
+    languages['x-default'] = esUrl;
+  }
 
   return {
     title: content.meta.title,
     description: content.meta.description,
     alternates: {
       canonical: url,
-      languages: { 'es-ES': `/es/${slug}`, 'en-US': `/en/${slug}`, 'x-default': `/es/${slug}` },
+      languages,
     },
     openGraph: {
       title: content.meta.ogTitle,

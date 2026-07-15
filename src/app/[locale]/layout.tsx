@@ -6,6 +6,7 @@ import "../globals.css";
 import { locales, isLocale, localeMeta, SITE_URL } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { I18nProvider } from "@/i18n/I18nProvider";
+import { MetaPixel } from "@/components/MetaPixel";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -98,6 +99,8 @@ export default async function LocaleLayout({
         description: j.orgDescription,
         areaServed: "Mediterranean",
         foundingLocation: "Valencia, ES",
+        // TODO(SEO §5.1): add LinkedIn, Capterra and GetApp profile URLs here
+        // once available — they reinforce the entity for search engines/LLMs.
         sameAs: ["https://www.instagram.com/solnow.io"],
       },
       {
@@ -116,6 +119,9 @@ export default async function LocaleLayout({
         description: j.appDescription,
         url: SITE_URL,
         publisher: { "@id": `${SITE_URL}/#organization` },
+        // TODO(SEO §5.2): add real pricing tiers as an AggregateOffer, e.g.
+        // offers: { "@type": "AggregateOffer", priceCurrency: "EUR",
+        //   lowPrice: "0", highPrice: "199", offerCount: "3" }
       },
     ],
   };
@@ -124,6 +130,7 @@ export default async function LocaleLayout({
     <html lang={locale} data-palette="brand" data-density="regular">
       <GoogleTagManager gtmId="GTM-W7TQ38LJ" />
       <GoogleAnalytics gaId="G-C48R6MLF4L" />
+      <MetaPixel />
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <script
           type="application/ld+json"
