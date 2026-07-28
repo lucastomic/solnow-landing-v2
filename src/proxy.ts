@@ -23,6 +23,10 @@ function pickLocale(request: NextRequest): string {
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  // Blog (BabyLoveGrowth) lives outside the [locale] tree and is not
+  // localized, so it must skip the locale-prefix redirect entirely.
+  if (pathname === "/blog" || pathname.startsWith("/blog/")) return;
+
   // English slug canonicalization (SEO). Only guide roots directly under /en/
   // are affected: `/en/<segment>` with no deeper path.
   const parts = pathname.split("/").filter(Boolean);
