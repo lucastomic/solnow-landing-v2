@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Script from 'next/script';
@@ -160,17 +160,21 @@ export function SocialProof() {
   const t = useT();
   const partners = t<{ n: string; s: string }[]>('socialProof.partners');
 
+  // `w`/`h` son las dimensiones intrínsecas reales del fichero: `unoptimized`
+  // sirve el original, y si el ratio declarado no cuadra con el del archivo la
+  // imagen salta al terminar de cargar. Los `.webp` los genera
+  // `scripts/optimize-images.mjs` a 3× la altura de render (64 px).
   const logos: { src: string; alt: string; w: number; h: number }[] = [
-    { src: '/logos/marina-jets.png', alt: 'MarinaJets', w: 151, h: 149 },
+    { src: '/logos/marina-jets.webp', alt: 'MarinaJets', w: 151, h: 149 },
     { src: '/logos/cocoon.webp', alt: 'Cocoon', w: 671, h: 320 },
     { src: '/logos/elysium.webp', alt: 'Elysium', w: 1576, h: 432 },
     { src: '/logos/jaloque.svg', alt: 'Jaloque', w: 172, h: 82 },
-    { src: '/logos/jetskilloret.png', alt: 'Jet Ski Lloret', w: 400, h: 127 },
+    { src: '/logos/jetskilloret.webp', alt: 'Jet Ski Lloret', w: 400, h: 127 },
     { src: '/logos/ibizarentaboat.png', alt: 'Ibiza Rent a Boat', w: 186, h: 60 },
-    { src: '/logos/morairaboatsadventures.png', alt: 'Moraira Boats Adventures', w: 1080, h: 1080 },
-    { src: '/logos/primeyachtmallorca.png', alt: 'Prime Yacht Mallorca', w: 920, h: 856 },
-    { src: '/logos/rentboatinalicante.png', alt: 'Rent Boat in Alicante', w: 1201, h: 900 },
-    { src: '/logos/trulovesailing.png', alt: 'Trulove Sailing', w: 923, h: 254 },
+    { src: '/logos/morairaboatsadventures.webp', alt: 'Moraira Boats Adventures', w: 338, h: 192 },
+    { src: '/logos/primeyachtmallorca.webp', alt: 'Prime Yacht Mallorca', w: 206, h: 192 },
+    { src: '/logos/rentboatinalicante.webp', alt: 'Rent Boat in Alicante', w: 256, h: 192 },
+    { src: '/logos/trulovesailing.webp', alt: 'Trulove Sailing', w: 698, h: 192 },
   ];
 
   return (
@@ -213,10 +217,10 @@ export function SocialProof() {
             <div key={n} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
               {n === 'LANZADERA' ? (
                 <Image
-                  src="/logos/lanzadera.png"
+                  src="/logos/lanzadera.webp"
                   alt="Lanzadera"
-                  width={500}
-                  height={500}
+                  width={369}
+                  height={96}
                   unoptimized
                   style={{ height: 28, width: 'auto', objectFit: 'contain' }}
                 />
@@ -380,20 +384,80 @@ export function FinalCTA() {
   );
 }
 
+/** Alto reservado para el iframe de HubSpot; evita el salto al montarlo. */
+const CALENDAR_MIN_HEIGHT = 660;
+
+/**
+ * Calendario de HubSpot, cargado bajo demanda.
+ *
+ * `MeetingsEmbedCode.js` arrastra ~870 KiB (script, iframe cross-origin y tres
+ * WOFF2 de LexendDeca) — más que todo el JS propio del sitio junto. Vive al
+ * fondo de la home, así que cargarlo en cada visita era regalar el hilo
+ * principal. Se arma con lo que ocurra primero:
+ *
+ *  - el bloque entra en el viewport ampliado 400px, o
+ *  - alguien pulsa un CTA que ancla aquí (`#cta` / `#agendar`), porque el salto
+ *    es instantáneo y no da tiempo a que el observer reaccione.
+ */
 function DemoCalendar() {
+  const [armed, setArmed] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (armed) return;
+    const arm = () => setArmed(true);
+
+    // En captura: así se arma aunque el handler del ancla detenga la
+    // propagación o el navegador procese el salto antes del burbujeo.
+    const onClick = (event: MouseEvent) => {
+      const target = event.target;
+      if (target instanceof Element && target.closest('a[href="#cta"], a[href="#agendar"]')) {
+        arm();
+      }
+    };
+    document.addEventListener('click', onClick, true);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) arm();
+      },
+      { rootMargin: '400px' }
+    );
+    if (ref.current) observer.observe(ref.current);
+
+    return () => {
+      document.removeEventListener('click', onClick, true);
+      observer.disconnect();
+    };
+  }, [armed]);
+
   return (
-    <>
+    <div ref={ref} style={{ position: 'relative', minHeight: CALENDAR_MIN_HEIGHT }}>
       <div
         className="meetings-iframe-container"
         data-src="https://meetings-eu1.hubspot.com/lucas-tomic/demo-solnow?embed=true"
-        style={{ minHeight: 660 }}
+        style={{ minHeight: CALENDAR_MIN_HEIGHT }}
       />
-      <Script
-        id="hubspot-meetings-embed"
-        src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"
-        strategy="afterInteractive"
-      />
-    </>
+      {!armed && (
+        <div
+          aria-hidden
+          style={{
+            position: 'absolute',
+            inset: 0,
+            borderRadius: 'var(--radius-lg)',
+            border: '1px solid var(--line-soft)',
+            background: 'var(--surface)',
+          }}
+        />
+      )}
+      {armed && (
+        <Script
+          id="hubspot-meetings-embed"
+          src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"
+          strategy="afterInteractive"
+        />
+      )}
+    </div>
   );
 }
 
@@ -468,7 +532,7 @@ export function Footer() {
         <div className="r-split" style={{ display: 'grid', gridTemplateColumns: '1.4fr repeat(5, 1fr)', gap: 32, marginBottom: 56 }}>
           <div>
             <div style={{ display: 'inline-flex', alignItems: 'center', marginBottom: 16 }}>
-              <Image src="/assets/solnow-wordmark-white.png" alt={t('metadata.siteName')} width={104} height={26} style={{ height: 26, width: 'auto' }} />
+              <Image src="/assets/solnow-wordmark-white.webp" alt={t('metadata.siteName')} width={104} height={26} style={{ height: 26, width: 'auto' }} />
             </div>
             <p style={{ color: 'var(--muted)', fontSize: 14, maxWidth: '36ch', margin: 0 }}>
               {t('footer.tagline')}

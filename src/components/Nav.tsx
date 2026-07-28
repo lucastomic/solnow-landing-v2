@@ -48,7 +48,7 @@ export default function Nav() {
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 64 }}>
         <a href="#top" style={{ display: 'inline-flex', alignItems: 'center' }} onClick={() => setOpen(false)}>
           <Image
-            src="/hollow_logo_name_color.png"
+            src="/hollow_logo_name_color.webp"
             alt="Solnow"
             width={162}
             height={28}

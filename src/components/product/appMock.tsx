@@ -67,9 +67,17 @@ export function AppFrame({ children }: { children: ReactNode }) {
           }}
         >
           {/* <img> y no next/image: dentro del marco el tamaño se define en
-              `em`, así que no hay dimensiones intrínsecas que optimizar. */}
+              `em`, así que no hay dimensiones intrínsecas que optimizar.
+              `width`/`height` van igualmente para dar el ratio al navegador
+              antes de que llegue el fichero. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/assets/solnow-wordmark-white.png" alt="" style={{ height: '0.22em', width: 'auto', display: 'block' }} />
+          <img
+            src="/assets/solnow-wordmark-white.webp"
+            alt=""
+            width={626}
+            height={168}
+            style={{ height: '0.22em', width: 'auto', display: 'block' }}
+          />
           <span style={{ fontSize: '0.14em', color: '#d7e7f0' }}>Laura M.</span>
         </div>
         {children}
@@ -140,7 +148,13 @@ export function PhoneFrame({ header, children }: { header?: 'brand' | 'none'; ch
             }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/assets/solnow-wordmark-white.png" alt="" style={{ height: '0.18em', width: 'auto', display: 'block' }} />
+            <img
+              src="/assets/solnow-wordmark-white.webp"
+              alt=""
+              width={626}
+              height={168}
+              style={{ height: '0.18em', width: 'auto', display: 'block' }}
+            />
           </div>
         )}
         {children}

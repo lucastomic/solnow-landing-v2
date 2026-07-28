@@ -1,12 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { GoogleTagManager, GoogleAnalytics } from "@next/third-parties/google";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import { notFound } from "next/navigation";
 import "../globals.css";
 import { locales, isLocale, localeMeta, SITE_URL } from "@/i18n/config";
 import { getDictionary, getClientDictionary } from "@/i18n/dictionaries";
 import { I18nProvider } from "@/i18n/I18nProvider";
-import { MetaPixel } from "@/components/MetaPixel";
+import { MetaPixelNoScript } from "@/components/MetaPixel";
+import { DeferredAnalytics } from "@/components/DeferredAnalytics";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,6 +15,17 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+// Solo la cursiva: la clase `.serif` fuerza `font-style: italic` y el único uso
+// suelto de `--font-serif` (SectionsMid) también. El `@import` que había antes
+// pedía `ital@0;1` y descargaba la redonda para nada.
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
+  weight: "400",
+  style: "italic",
+  display: "swap",
   subsets: ["latin"],
 });
 
@@ -130,12 +141,13 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} data-palette="brand" data-density="regular">
-      <GoogleTagManager gtmId="GTM-W7TQ38LJ" />
-      <GoogleAnalytics gaId="G-C48R6MLF4L" />
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {/* Dentro de <body>: el pixel incluye un <noscript>, que como hijo
-            directo de <html> es HTML inválido y rompe la hidratación. */}
-        <MetaPixel />
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable}`}
+      >
+        {/* El <noscript> del pixel va dentro de <body>: como hijo directo de
+            <html> es HTML inválido y rompe la hidratación. */}
+        <MetaPixelNoScript />
+        <DeferredAnalytics />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

@@ -41,7 +41,7 @@ export function ProductHeader({
     >
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 64, gap: 16 }}>
         <Link href={`/${locale}`} style={{ display: 'inline-flex', alignItems: 'center' }}>
-          <Image src="/hollow_logo_name_color.png" alt="Solnow" width={162} height={28} priority style={{ width: 162, height: 'auto' }} />
+          <Image src="/hollow_logo_name_color.webp" alt="Solnow" width={162} height={28} priority style={{ width: 162, height: 'auto' }} />
         </Link>
         <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
           <Link

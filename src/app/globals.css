@@ -2,7 +2,10 @@
    SOLNOW — Light brand theme
    ─────────────────────────────────────────────────────────────────────── */
 
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+/* Las tres familias (Geist, Geist Mono e Instrument Serif) las carga
+   `next/font/google` desde el layout y las expone como variables CSS. Un
+   `@import` a fonts.googleapis.com encadenaba dos peticiones cross-origin
+   detrás de esta misma hoja, bloqueando el render ~925 ms. */
 
 :root {
   --bg:        #f7f7f7;
@@ -40,7 +43,7 @@
 
   --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Geist Mono", ui-monospace, "SF Mono", monospace;
-  --font-serif: "Instrument Serif", "Times New Roman", serif;
+  --font-serif: var(--font-instrument-serif), "Times New Roman", serif;
 
   --section-y: 120px;
   --container: 1240px;
