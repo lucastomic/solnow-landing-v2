@@ -113,7 +113,7 @@ function HeroMockup() {
       }}
     >
       <div
-        className="mono"
+        className="mono r-hero-stamp"
         style={{
           position: 'absolute',
           top: 6,
