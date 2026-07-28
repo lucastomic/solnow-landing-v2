@@ -2,13 +2,13 @@
 
 import { createContext, useCallback, useContext, useMemo } from 'react';
 import type { Locale } from './config';
-import type { Messages } from './dictionaries';
+import type { ClientMessages } from './dictionaries';
 
 type Vars = Record<string, string | number>;
 
 interface I18nContextValue {
   locale: Locale;
-  messages: Messages;
+  messages: ClientMessages;
 }
 
 const I18nContext = createContext<I18nContextValue | null>(null);
@@ -35,7 +35,7 @@ export function I18nProvider({
   children,
 }: {
   locale: Locale;
-  messages: Messages;
+  messages: ClientMessages;
   children: React.ReactNode;
 }) {
   const value = useMemo(() => ({ locale, messages }), [locale, messages]);

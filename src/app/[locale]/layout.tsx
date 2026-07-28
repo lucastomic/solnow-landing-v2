@@ -4,7 +4,7 @@ import { GoogleTagManager, GoogleAnalytics } from "@next/third-parties/google";
 import { notFound } from "next/navigation";
 import "../globals.css";
 import { locales, isLocale, localeMeta, SITE_URL } from "@/i18n/config";
-import { getDictionary } from "@/i18n/dictionaries";
+import { getDictionary, getClientDictionary } from "@/i18n/dictionaries";
 import { I18nProvider } from "@/i18n/I18nProvider";
 import { MetaPixel } from "@/components/MetaPixel";
 
@@ -83,8 +83,10 @@ export default async function LocaleLayout({
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
 
-  const messages = await getDictionary(locale);
-  const j = messages.jsonLd;
+  // El JSON-LD se arma en servidor con el diccionario completo; al cliente solo
+  // viaja el subconjunto que los componentes cliente leen de verdad.
+  const j = (await getDictionary(locale)).jsonLd;
+  const messages = await getClientDictionary(locale);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -130,8 +132,10 @@ export default async function LocaleLayout({
     <html lang={locale} data-palette="brand" data-density="regular">
       <GoogleTagManager gtmId="GTM-W7TQ38LJ" />
       <GoogleAnalytics gaId="G-C48R6MLF4L" />
-      <MetaPixel />
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        {/* Dentro de <body>: el pixel incluye un <noscript>, que como hijo
+            directo de <html> es HTML inválido y rompe la hidratación. */}
+        <MetaPixel />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

@@ -1,7 +1,14 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { locales, defaultLocale } from "@/i18n/config";
+import { locales, defaultLocale, isLocale } from "@/i18n/config";
 import { EN_REDIRECTS, EN_REWRITES } from "@/content/guides";
+import {
+  LEGACY_SLUGS,
+  PRODUCT_BASE,
+  productBySlug,
+  productHubPath,
+  productPath,
+} from "@/content/products";
 
 function pickLocale(request: NextRequest): string {
   const header = request.headers.get("accept-language")?.toLowerCase() ?? "";
@@ -32,6 +39,41 @@ export function proxy(request: NextRequest) {
     if (rewriteTo) {
       request.nextUrl.pathname = `/en/${rewriteTo}`;
       return NextResponse.rewrite(request.nextUrl);
+    }
+  }
+
+  // Producto: cada idioma tiene su propia carpeta (`/es/producto`,
+  // `/en/product`) y sus propios slugs, así que la carpeta del otro idioma
+  // no existe bajo este locale. En vez de un 404, se redirige 301 a la URL
+  // equivalente en el idioma correcto — sin crear contenido duplicado.
+  if ((parts.length === 2 || parts.length === 3) && isLocale(parts[0])) {
+    const locale = parts[0];
+
+    // Carpeta del otro idioma bajo este locale.
+    const foreign = locales.find(
+      (l) => l !== locale && PRODUCT_BASE[l] === parts[1]
+    );
+    if (foreign) {
+      const slug = parts[2];
+      const area = slug
+        ? (productBySlug(slug, foreign) ?? productBySlug(slug, locale))
+        : undefined;
+      const legacy = slug && !area ? LEGACY_SLUGS[slug] : undefined;
+      request.nextUrl.pathname = area
+        ? productPath(area.key, locale)
+        : legacy
+          ? productPath(legacy, locale)
+          : productHubPath(locale);
+      return NextResponse.redirect(request.nextUrl, 301);
+    }
+
+    // Carpeta correcta pero slug de la estructura anterior.
+    if (parts[1] === PRODUCT_BASE[locale] && parts[2]) {
+      const legacy = LEGACY_SLUGS[parts[2]];
+      if (legacy && !productBySlug(parts[2], locale)) {
+        request.nextUrl.pathname = productPath(legacy, locale);
+        return NextResponse.redirect(request.nextUrl, 301);
+      }
     }
   }
 

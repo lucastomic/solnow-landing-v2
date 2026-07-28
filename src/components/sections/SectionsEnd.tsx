@@ -8,6 +8,7 @@ import { SectionHead } from '../atoms';
 import { useT, useLocale } from '@/i18n/I18nProvider';
 import { locales, type Locale } from '@/i18n/config';
 import { GUIDES, localizedSlug, hasEnPage, guideByAnySlug } from '@/content/guides';
+import { PRODUCTS, PRODUCT_BASE, productBySlug, productHubPath, productPath, type ProductSummary } from '@/content/products';
 
 export function Onboarding() {
   const t = useT();
@@ -418,6 +419,19 @@ export function Footer() {
     label: comparativasCol[g.key],
     href: `/${locale}/${localizedSlug(g.key, loc)}`,
   }));
+  // Columna de producto: el hub más las cuatro áreas. Reutiliza el contenido de
+  // `product` en vez de duplicar etiquetas en `footer`.
+  const productCol = t<ProductSummary>('product');
+  // Solo el hub y las áreas de mayor prioridad: con las ocho, la columna del
+  // footer sería más larga que el resto y se comería la rejilla.
+  const FOOTER_AREAS = PRODUCTS.filter((p) => p.priority >= 0.9);
+  const productLinks = [
+    { label: productCol.labels.areasTitle, href: productHubPath(loc) },
+    ...FOOTER_AREAS.map((p) => ({
+      label: productCol.areas[p.key].card.title,
+      href: productPath(p.key, loc),
+    })),
+  ];
   const zonasCol = t<{ h: string } & Record<string, string>>('footer.zonas');
   // Under /en/ the consolidated geo pages (Tenerife, Gran Canaria) fold into
   // Canarias, so we don't surface them as separate links.
@@ -432,6 +446,13 @@ export function Footer() {
     const parts = rest.split('/').filter(Boolean);
     // Translate the guide slug to the target locale so we don't 404 / bounce
     // through a 301 when switching languages on a guide page.
+    // Producto: la carpeta y el slug cambian con el idioma, así que se traduce
+    // aquí en vez de dejar que el 301 del proxy haga el salto.
+    if (parts.length && parts[0] === PRODUCT_BASE[loc]) {
+      const area = parts[1] ? productBySlug(parts[1], loc) : undefined;
+      router.push(area ? productPath(area.key, next as Locale) : productHubPath(next as Locale));
+      return;
+    }
     const g = parts.length ? guideByAnySlug(parts[0]) : undefined;
     if (g) {
       const tail = parts.slice(1).join('/');
@@ -444,7 +465,7 @@ export function Footer() {
   return (
     <footer style={{ borderTop: '1px solid var(--line-soft)', paddingTop: 80, paddingBottom: 36, background: 'oklch(0.11 0.018 240)' }}>
       <div className="container">
-        <div className="r-split" style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr 1fr 1fr', gap: 40, marginBottom: 56 }}>
+        <div className="r-split" style={{ display: 'grid', gridTemplateColumns: '1.4fr repeat(5, 1fr)', gap: 32, marginBottom: 56 }}>
           <div>
             <div style={{ display: 'inline-flex', alignItems: 'center', marginBottom: 16 }}>
               <Image src="/assets/solnow-wordmark-white.png" alt={t('metadata.siteName')} width={104} height={26} style={{ height: 26, width: 'auto' }} />
@@ -475,6 +496,25 @@ export function Footer() {
                 ))}
               </select>
             </div>
+          </div>
+          <div>
+            <div className="mono" style={{ fontSize: 11, letterSpacing: '0.1em', color: 'var(--muted-2)', marginBottom: 14 }}>
+              {productCol.labels.breadcrumbProduct.toUpperCase()}
+            </div>
+            <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {productLinks.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    style={{ fontSize: 13.5, color: 'var(--fg-2)' }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--fg-2)')}
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
           <div>
             <div className="mono" style={{ fontSize: 11, letterSpacing: '0.1em', color: 'var(--muted-2)', marginBottom: 14 }}>

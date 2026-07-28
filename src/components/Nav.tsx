@@ -53,7 +53,10 @@ export default function Nav() {
             width={162}
             height={28}
             priority
-            style={{ height: 28, width: 'auto' }}
+            // Dimensionado por ancho: `globals.css` aplica `max-width:100%` a
+            // todas las imágenes, así que fijar el alto dejaba las dos
+            // dimensiones en conflicto. El alto sale del ratio (162/5.78 ≈ 28).
+            style={{ width: 162, height: 'auto' }}
           />
         </a>
 

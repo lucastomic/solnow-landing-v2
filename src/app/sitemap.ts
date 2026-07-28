@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { locales, SITE_URL } from "@/i18n/config";
 import { GUIDES, localizedSlug, hasEnPage } from "@/content/guides";
+import { PRODUCTS, productHubPath, productPath } from "@/content/products";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
@@ -29,6 +30,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     }))
   );
+
+  // Hub de producto + las cuatro landings de área, ambas en los dos idiomas.
+  // Cada URL declara sus alternates para que el hreflang del sitemap coincida
+  // con el que emite `generateMetadata`.
+  const productHubLanguages = Object.fromEntries(
+    locales.map((locale) => [locale, `${SITE_URL}${productHubPath(locale)}`])
+  );
+  const productHub = locales.map((locale) => ({
+    url: `${SITE_URL}${productHubPath(locale)}`,
+    lastModified,
+    changeFrequency: "monthly" as const,
+    priority: 0.9,
+    alternates: { languages: productHubLanguages },
+  }));
+
+  const productAreas = PRODUCTS.flatMap((area) => {
+    const languages = Object.fromEntries(
+      locales.map((locale) => [locale, `${SITE_URL}${productPath(area.key, locale)}`])
+    );
+    return locales.map((locale) => ({
+      url: `${SITE_URL}${productPath(area.key, locale)}`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: area.priority,
+      alternates: { languages },
+    }));
+  });
 
   const guides = GUIDES.flatMap((guide) => {
     const esUrl = `${SITE_URL}/es/${localizedSlug(guide.key, "es")}`;
@@ -59,5 +87,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     return entries;
   });
 
-  return [...home, ...guides, ...legal];
+  return [...home, ...productHub, ...productAreas, ...guides, ...legal];
 }

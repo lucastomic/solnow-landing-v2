@@ -15,6 +15,8 @@ export interface GuideLabels {
   breadcrumbHome: string;
   viewProduct: string;
   groupLabel: string;
+  /** Landing de producto del tema de esta guía; la resuelve `getGuide`. */
+  productHref: string;
 }
 
 const CALLOUT: Record<'warn' | 'info' | 'accent', { bg: string; border: string }> = {
@@ -160,7 +162,7 @@ export function GuidePage({
 }) {
   const { hero, download, sections, faq, related, cta, disclaimer } = content;
   const ctaHref = `/${locale}#cta`;
-  const productHref = `/${locale}#producto`;
+  const productHref = labels.productHref;
   const sectionId = (i: number) => `sec-${i + 1}`;
   const tocItems = sections.map((s, i) => ({ id: sectionId(i), label: s.h }));
 
@@ -179,7 +181,7 @@ export function GuidePage({
       >
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 64, gap: 16 }}>
           <Link href={`/${locale}`} style={{ display: 'inline-flex', alignItems: 'center' }}>
-            <Image src="/hollow_logo_name_color.png" alt="Solnow" width={162} height={28} priority style={{ height: 28, width: 'auto' }} />
+            <Image src="/hollow_logo_name_color.png" alt="Solnow" width={162} height={28} priority style={{ width: 162, height: 'auto' }} />
           </Link>
           <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
             <Link

@@ -204,6 +204,54 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: def
   .guide-toc { display: none; }
 }
 
+/* Índice de áreas de producto (rejilla bento). Va en CSS y no en `style`
+   inline porque necesita :hover, spans de grid y breakpoints. */
+/* Filas independientes en vez de `grid-row: span`: con un span, las tarjetas
+   pequeñas se estiran hasta la altura de la destacada y quedan medio vacías. */
+.feature-rows { display: flex; flex-direction: column; gap: 12px; }
+.feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; align-items: start; }
+.feature-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+/* La pila reparte sus tarjetas a lo alto de la destacada que tiene al lado;
+   el hueco sobrante queda fuera de las tarjetas, no dentro. */
+.feature-stack { display: flex; flex-direction: column; gap: 12px; justify-content: space-between; }
+.feature-card { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--bg); transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease; }
+.feature-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 18px 34px -22px var(--accent); }
+.feature-big[data-tone="core"] { background: var(--accent-bg); border-color: var(--accent-dim); }
+.feature-shot { position: relative; background: var(--ink); border-bottom: 1px solid var(--line-soft); overflow: hidden; }
+/* Portada fotográfica: a sangre y con la proporción del original, para que la
+   tarjeta no crezca con la altura de la foto. */
+.feature-shot-photo { aspect-ratio: 1680 / 916; }
+/* Sin `zoom`: las miniaturas ya están escritas al ancho de la tarjeta, así que
+   se renderizan a tamaño natural y se leen. */
+.feature-thumb { padding: 14px 14px 12px; pointer-events: none; }
+.feature-thumb-in > * { width: 100%; }
+.feature-shot::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 62%, rgba(4,20,33,.3)); transition: opacity .2s ease; pointer-events: none; }
+.feature-card:hover .feature-shot::after { opacity: 0; }
+.feature-body { display: flex; flex-direction: column; gap: 5px; padding: 13px 14px 14px; }
+.feature-small .feature-body { flex: 1; justify-content: flex-start; padding: 14px; }
+.feature-area { font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); }
+.feature-big[data-tone="core"] .feature-area { color: var(--accent); }
+.feature-card:hover .feature-area { color: var(--accent); }
+.feature-title { font-size: 14px; font-weight: 500; letter-spacing: -0.016em; color: var(--fg); line-height: 1.25; }
+.feature-big .feature-title { font-size: 16.5px; letter-spacing: -0.02em; }
+.feature-sub { font-size: 12px; color: var(--muted); line-height: 1.45; text-wrap: pretty; }
+.feature-big .feature-sub { font-size: 12.5px; }
+.feature-cta { margin-top: auto; padding-top: 9px; font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); opacity: .65; transition: opacity .2s ease; }
+.feature-card:hover .feature-cta { opacity: 1; }
+@media (max-width: 1000px) {
+  .feature-grid { grid-template-columns: 1fr; }
+  .feature-grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .feature-grid-4 { grid-template-columns: 1fr; }
+}
+
+/* Mockup a la izquierda y texto a la derecha, sin alterar el orden del HTML:
+   al colapsar a una columna vuelve a mandar el orden de lectura. */
+@media (min-width: 769px) {
+  .r-media-first > :first-child { order: 2; }
+}
+
 .rule { height: 1px; background: var(--line); }
 .rule-faint { height: 1px; background: var(--line-soft); }
 
@@ -227,6 +275,7 @@ section[id] { scroll-margin-top: 72px; }
 .live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ok); animation: pulse-dot 1.8s ease-out infinite; display: inline-block; }
 
 @keyframes blink { 50% { opacity: 0; } }
+
 .caret { display: inline-block; width: 2px; height: 1em; background: currentColor; margin-left: 2px; vertical-align: -0.15em; animation: blink 1s steps(1) infinite; }
 
 .marquee { overflow: hidden; mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
@@ -235,6 +284,99 @@ section[id] { scroll-margin-top: 72px; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 
 @keyframes qrscan { 0%{top:-2px} 50%{top:calc(100% - 2px)} 100%{top:-2px} }
+
+/* Mapa de flujo del producto: guiones que recorren cada arista. Las aristas de
+   realimentación (bucle de recuperación) van en sentido inverso. */
+@keyframes flowdash { to { stroke-dashoffset: -38; } }
+.flow-dash { animation: flowdash 1.1s linear infinite; }
+.flow-dash-rev { animation: flowdash 1.5s linear infinite reverse; }
+@media (prefers-reduced-motion: reduce) {
+  .flow-dash,
+  .flow-dash-rev { animation: none; }
+}
+/* El grafo se dibuja sobre un lienzo de 1040px con los nodos posicionados en
+   absoluto. Entre 769 y 1080px se desplaza en horizontal, con un degradado que
+   insinúa el scroll. */
+.flow-graph-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.flow-graph-stage { position: relative; min-width: 1040px; aspect-ratio: var(--flow-ratio); }
+.flow-node { position: absolute; left: var(--x); top: var(--y); width: var(--w); height: var(--h); }
+
+@media (max-width: 1080px) and (min-width: 769px) {
+  .flow-graph-scroll {
+    mask-image: linear-gradient(90deg, #000 92%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, #000 92%, transparent);
+  }
+}
+
+/* En escritorio la banda no genera caja: los nodos siguen colocándose en
+   absoluto contra el lienzo, y su rótulo solo existe en móvil. */
+.flow-band { display: contents; }
+.flow-band-label { display: none; }
+.flow-node[data-dim] { opacity: 0.32; }
+.flow-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  margin-top: 18px;
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+
+/* En móvil el lienzo no cabe de ninguna manera, así que deja de ser un mapa y
+   pasa a ser una secuencia de tres bandas rotuladas. Las aristas, que solo
+   significan algo en dos dimensiones, se ocultan. */
+@media (max-width: 768px) {
+  .flow-graph-scroll { overflow-x: visible; }
+  .flow-graph-stage {
+    min-width: 0;
+    aspect-ratio: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+  }
+  .flow-graph-stage > svg { display: none; }
+
+  .flow-band { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; position: relative; }
+  /* La cadena de venta es secuencial: una sola columna, en orden. */
+  .flow-band[data-band="chain"] { grid-template-columns: 1fr; }
+  .flow-band-label {
+    display: block;
+    grid-column: 1 / -1;
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted-2);
+  }
+  /* Flecha entre bandas, en el hueco que deja el `gap`. */
+  .flow-band + .flow-band::before {
+    content: "";
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    width: 7px;
+    height: 7px;
+    border-right: 1.4px solid var(--line);
+    border-bottom: 1.4px solid var(--line);
+    transform: translateX(-50%) rotate(45deg);
+  }
+
+  .flow-node {
+    position: relative;
+    left: auto;
+    top: auto;
+    width: auto;
+    height: auto;
+    min-height: 58px;
+  }
+  /* Sin puntero no hay `mouseleave`: al tocar un nodo el resto se quedaría
+     apagado para siempre. */
+  .flow-node[data-dim] { opacity: 1; }
+
+  /* El grafo ya rotula sus bandas, así que la leyenda sobra. */
+  .flow-legend { display: none; }
+}
 
 /* ─────────────────────────────────────────────────────────────────────────
    Responsive — tablet ≤768px, móvil ≤480px
