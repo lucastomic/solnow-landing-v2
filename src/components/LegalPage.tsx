@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import type { Locale } from '@/i18n/config';
 import { Footer } from '@/components/sections/SectionsEnd';
 
 export interface LegalSection {
@@ -21,7 +22,7 @@ export function LegalPage({
 }: {
   doc: LegalDoc;
   backLabel: string;
-  locale: string;
+  locale: Locale;
 }) {
   return (
     <>
@@ -93,7 +94,7 @@ export function LegalPage({
         ))}
       </main>
 
-      <Footer />
+      <Footer locale={locale} />
     </>
   );
 }

@@ -1,10 +1,9 @@
 'use client';
 
-import { createContext, useCallback, useContext, useMemo } from 'react';
+import { createContext, useContext, useMemo } from 'react';
 import type { Locale } from './config';
 import type { ClientMessages } from './dictionaries';
-
-type Vars = Record<string, string | number>;
+import { createTranslator, type Translate } from './resolve';
 
 interface I18nContextValue {
   locale: Locale;
@@ -12,22 +11,6 @@ interface I18nContextValue {
 }
 
 const I18nContext = createContext<I18nContextValue | null>(null);
-
-function resolve(messages: unknown, path: string): unknown {
-  return path.split('.').reduce<unknown>((acc, key) => {
-    if (acc && typeof acc === 'object' && key in (acc as Record<string, unknown>)) {
-      return (acc as Record<string, unknown>)[key];
-    }
-    return undefined;
-  }, messages);
-}
-
-function interpolate(value: string, vars?: Vars): string {
-  if (!vars) return value;
-  return value.replace(/\{(\w+)\}/g, (match, name: string) =>
-    name in vars ? String(vars[name]) : match
-  );
-}
 
 export function I18nProvider({
   locale,
@@ -49,23 +32,17 @@ function useI18n(): I18nContextValue {
 }
 
 /**
- * Translation accessor. Resolves a dot-path against the active dictionary.
- * - String leaves are returned with optional `{var}` interpolation.
- * - Array / object leaves are returned as-is (typed via the generic) for
- *   lists like bullet points or FAQ entries.
- * - A missing key returns the path itself, making gaps visible in dev.
+ * Traductor para componentes cliente. La contraparte de servidor es `getT`, en
+ * `dictionaries.ts`; ambas comparten la resolución y tienen la misma firma, de
+ * modo que mover un componente entre servidor y cliente solo cambia esta línea.
+ *
+ * Ojo: aquí solo está el subconjunto del diccionario que `getClientDictionary`
+ * envía al navegador. Si un componente cliente estrena un namespace, hay que
+ * añadirlo allí o `t` devolverá la ruta en crudo.
  */
-export function useT() {
+export function useT(): Translate {
   const { messages } = useI18n();
-  return useCallback(
-    <T = string,>(path: string, vars?: Vars): T => {
-      const found = resolve(messages, path);
-      if (found === undefined) return path as unknown as T;
-      if (typeof found === 'string') return interpolate(found, vars) as unknown as T;
-      return found as T;
-    },
-    [messages]
-  );
+  return useMemo(() => createTranslator(messages), [messages]);
 }
 
 export function useLocale(): Locale {

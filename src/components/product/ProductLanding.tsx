@@ -240,7 +240,7 @@ export default async function ProductLanding({
         <ProductCta locale={locale} cta={cta} />
       </main>
 
-      <Footer />
+      <Footer locale={locale} />
     </>
   );
 }

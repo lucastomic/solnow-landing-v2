@@ -1,13 +1,13 @@
-'use client';
 import Link from 'next/link';
 import { SectionHead, NumLabel } from '../atoms';
-import { useT, useLocale } from '@/i18n/I18nProvider';
+import { getT } from '@/i18n/dictionaries';
+import type { Locale } from '@/i18n/config';
 import FlowGraph from '@/components/product/FlowGraph';
 import { AreaCards } from '@/components/product/ProductChrome';
 import { productHubPath, type ProductSummary } from '@/content/products';
 
-export function PainBar() {
-  const t = useT();
+export async function PainBar({ locale }: { locale: Locale }) {
+  const t = await getT(locale);
   const bullets = t<{ k: string; u: string; d: string }[]>('painBar.items');
   return (
     <section className="section" style={{ paddingBlock: 100 }}>
@@ -75,9 +75,8 @@ export function PainBar() {
  * interna (`/es/producto/…`, `/en/product/…`), donde vive el contenido en
  * detalle y donde se indexa cada área por separado.
  */
-export function ProductAreas() {
-  const t = useT();
-  const locale = useLocale();
+export async function ProductAreas({ locale }: { locale: Locale }) {
+  const t = await getT(locale);
   const product = t<ProductSummary>('product');
 
   return (

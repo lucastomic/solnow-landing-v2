@@ -1,9 +1,9 @@
-'use client';
-import { useT } from '@/i18n/I18nProvider';
+import { getT } from '@/i18n/dictionaries';
+import type { Locale } from '@/i18n/config';
 
 // ─── Why now: the self-service megatrend ──────────────────────────────
-export function WhyNow() {
-  const t = useT();
+export async function WhyNow({ locale }: { locale: Locale }) {
+  const t = await getT(locale);
   const steps = t<{ sector: string; from: string; to: string }[]>('whyNow.ladder');
 
   const icons = [

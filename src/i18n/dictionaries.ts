@@ -1,5 +1,6 @@
 import 'server-only';
 import type { Locale } from './config';
+import { createTranslator, type Translate } from './resolve';
 
 const dictionaries = {
   es: () => import('@/messages/es.json').then((m) => m.default),
@@ -12,30 +13,41 @@ export type Messages = Awaited<ReturnType<(typeof dictionaries)['es']>>;
 export const getDictionary = async (locale: Locale): Promise<Messages> =>
   dictionaries[locale]();
 
-/** El `tag` es opcional y solo lo trae alguna área, así que se une a mano. */
-type AreaCard = Messages['product']['areas']['tpv']['card'] & { tag?: string };
+/**
+ * Traductor de servidor, contraparte de `useT`.
+ *
+ * Misma firma que el hook cliente a propósito: una sección pasa de cliente a
+ * servidor cambiando `const t = useT()` por `const t = await getT(locale)`, sin
+ * tocar una línea de su JSX. Y al resolver aquí, los textos se quedan en el
+ * HTML en vez de viajar también serializados para la hidratación.
+ */
+export const getT = async (locale: Locale): Promise<Translate> =>
+  createTranslator(await getDictionary(locale));
 
 /**
- * Subconjunto del diccionario que se envía al cliente a través de `I18nProvider`.
+ * Namespaces que necesitan los componentes cliente, y solo esos.
  *
- * El proveedor serializa en el HTML de *todas* las páginas lo que reciba, así
- * que mandarlo entero significaba arrastrar las 18 guías y el cuerpo de las
- * ocho landings de producto a cada carga, incluida la home, que no muestra nada
- * de eso. Ningún componente cliente lee `guides`, y de `product.areas` solo
- * necesita `card` (la rejilla de tarjetas y la columna del footer); el resto se
- * renderiza en servidor.
+ * `I18nProvider` serializa en el HTML de *todas* las páginas lo que reciba, así
+ * que cada clave de más se paga en cada carga. Tras pasar las secciones
+ * estáticas a servidor, los únicos que llaman a `useT` son:
+ *
+ *   - `Nav`  → `nav`
+ *   - `FAQ`  → `faq`
+ *
+ * Todo lo demás (guías, producto, onboarding, footer, hero…) lo resuelve `getT`
+ * en servidor y viaja ya renderizado dentro del HTML.
+ *
+ * Si un componente cliente estrena un namespace, hay que añadirlo aquí: `useT`
+ * devuelve la ruta en crudo cuando falta una clave, así que el síntoma sería
+ * ver `faq.items` escrito en pantalla, no un error.
  */
-export type ClientMessages = Omit<Messages, 'guides' | 'product'> & {
-  product: Omit<Messages['product'], 'areas'> & {
-    areas: Record<string, { card: AreaCard }>;
-  };
-};
+const CLIENT_NAMESPACES = ['nav', 'faq'] as const;
+
+export type ClientMessages = Pick<Messages, (typeof CLIENT_NAMESPACES)[number]>;
 
 export const getClientDictionary = async (locale: Locale): Promise<ClientMessages> => {
-  const { guides: _guides, product, ...rest } = await getDictionary(locale);
-  void _guides;
-  const areas = Object.fromEntries(
-    Object.entries(product.areas).map(([key, area]) => [key, { card: area.card }]),
-  );
-  return { ...rest, product: { ...product, areas } };
+  const messages = await getDictionary(locale);
+  return Object.fromEntries(
+    CLIENT_NAMESPACES.map((ns) => [ns, messages[ns]]),
+  ) as ClientMessages;
 };

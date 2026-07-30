@@ -1,17 +1,15 @@
-'use client';
-import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Script from 'next/script';
-import { useRouter, usePathname } from 'next/navigation';
 import { SectionHead } from '../atoms';
-import { useT, useLocale } from '@/i18n/I18nProvider';
-import { locales, type Locale } from '@/i18n/config';
-import { GUIDES, localizedSlug, hasEnPage, guideByAnySlug } from '@/content/guides';
-import { PRODUCTS, PRODUCT_BASE, productBySlug, productHubPath, productPath, type ProductSummary } from '@/content/products';
+import { getT } from '@/i18n/dictionaries';
+import type { Locale } from '@/i18n/config';
+import { GUIDES, localizedSlug, hasEnPage } from '@/content/guides';
+import { PRODUCTS, productHubPath, productPath, type ProductSummary } from '@/content/products';
+import { DemoCalendar } from './DemoCalendar';
+import { LocaleSelect } from './LocaleSelect';
 
-export function Onboarding() {
-  const t = useT();
+export async function Onboarding({ locale }: { locale: Locale }) {
+  const t = await getT(locale);
   const steps = t<
     { day: string; label: string; h: string; points: string[]; you: string }[]
   >('onboarding.steps');
@@ -156,8 +154,8 @@ export function Onboarding() {
   );
 }
 
-export function SocialProof() {
-  const t = useT();
+export async function SocialProof({ locale }: { locale: Locale }) {
+  const t = await getT(locale);
   const partners = t<{ n: string; s: string }[]>('socialProof.partners');
 
   // `w`/`h` son las dimensiones intrínsecas reales del fichero: `unoptimized`
@@ -236,83 +234,9 @@ export function SocialProof() {
   );
 }
 
-export function FAQ() {
-  const t = useT();
-  const faqs = t<{ q: string; a: string }[]>('faq.items');
 
-  const [open, setOpen] = useState(0);
-
-  return (
-    <section id="faq" className="section" style={{ paddingBlock: 120 }}>
-      <div className="container" style={{ maxWidth: 1000 }}>
-        <SectionHead eyebrow={t('faq.eyebrow')} title={<>{t('faq.title')}</>} />
-        <div style={{ borderTop: '1px solid var(--line-soft)' }}>
-          {faqs.map((f, i) => {
-            const isOpen = open === i;
-            return (
-              <div key={i} style={{ borderBottom: '1px solid var(--line-soft)' }}>
-                <button
-                  onClick={() => setOpen(isOpen ? -1 : i)}
-                  style={{
-                    width: '100%',
-                    textAlign: 'left',
-                    display: 'grid',
-                    gridTemplateColumns: '36px 1fr 32px',
-                    gap: 20,
-                    alignItems: 'center',
-                    padding: '22px 4px',
-                    transition: 'color .15s',
-                  }}
-                >
-                  <span className="mono" style={{ fontSize: 11, color: 'var(--muted-2)', letterSpacing: '0.08em' }}>
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <span style={{ fontSize: 17, fontWeight: 500, letterSpacing: '-0.014em', color: isOpen ? 'var(--accent)' : 'var(--fg)' }}>
-                    {f.q}
-                  </span>
-                  <span
-                    style={{
-                      justifySelf: 'end',
-                      width: 28,
-                      height: 28,
-                      borderRadius: '50%',
-                      border: '1px solid ' + (isOpen ? 'var(--accent-dim)' : 'var(--line)'),
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: isOpen ? 'var(--accent)' : 'var(--muted)',
-                      transition: 'transform .25s ease',
-                      transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)',
-                      fontSize: 16,
-                    }}
-                  >
-                    +
-                  </span>
-                </button>
-                <div
-                  style={{
-                    display: 'grid',
-                    gridTemplateRows: isOpen ? '1fr' : '0fr',
-                    transition: 'grid-template-rows .35s cubic-bezier(.2,.7,.2,1)',
-                  }}
-                >
-                  <div style={{ overflow: 'hidden' }}>
-                    <div style={{ padding: '0 56px 22px', maxWidth: '64ch', color: 'var(--muted)', fontSize: 15, lineHeight: 1.55 }}>
-                      {f.a}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-export function FinalCTA() {
-  const t = useT();
+export async function FinalCTA({ locale }: { locale: Locale }) {
+  const t = await getT(locale);
   const problems = t<string[]>('finalCta.problems');
   return (
     <section
@@ -384,93 +308,8 @@ export function FinalCTA() {
   );
 }
 
-/** Alto reservado para el iframe de HubSpot; evita el salto al montarlo. */
-const CALENDAR_MIN_HEIGHT = 660;
-
-/**
- * Calendario de HubSpot, cargado bajo demanda.
- *
- * `MeetingsEmbedCode.js` arrastra ~870 KiB (script, iframe cross-origin y tres
- * WOFF2 de LexendDeca) — más que todo el JS propio del sitio junto. Vive al
- * fondo de la home, así que cargarlo en cada visita era regalar el hilo
- * principal. Se arma con lo que ocurra primero:
- *
- *  - el bloque entra en el viewport ampliado 400px, o
- *  - alguien pulsa un CTA que ancla aquí (`#cta` / `#agendar`), porque el salto
- *    es instantáneo y no da tiempo a que el observer reaccione.
- */
-function DemoCalendar() {
-  const [armed, setArmed] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (armed) return;
-    const arm = () => setArmed(true);
-
-    // En captura: así se arma aunque el handler del ancla detenga la
-    // propagación o el navegador procese el salto antes del burbujeo.
-    const onClick = (event: MouseEvent) => {
-      const target = event.target;
-      if (target instanceof Element && target.closest('a[href="#cta"], a[href="#agendar"]')) {
-        arm();
-      }
-    };
-    document.addEventListener('click', onClick, true);
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((entry) => entry.isIntersecting)) arm();
-      },
-      { rootMargin: '400px' }
-    );
-    if (ref.current) observer.observe(ref.current);
-
-    return () => {
-      document.removeEventListener('click', onClick, true);
-      observer.disconnect();
-    };
-  }, [armed]);
-
-  return (
-    <div ref={ref} style={{ position: 'relative', minHeight: CALENDAR_MIN_HEIGHT }}>
-      <div
-        className="meetings-iframe-container"
-        data-src="https://meetings-eu1.hubspot.com/lucas-tomic/demo-solnow?embed=true"
-        style={{ minHeight: CALENDAR_MIN_HEIGHT }}
-      />
-      {!armed && (
-        <div
-          aria-hidden
-          style={{
-            position: 'absolute',
-            inset: 0,
-            borderRadius: 'var(--radius-lg)',
-            border: '1px solid var(--line-soft)',
-            background: 'var(--surface)',
-          }}
-        />
-      )}
-      {armed && (
-        <Script
-          id="hubspot-meetings-embed"
-          src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"
-          strategy="afterInteractive"
-        />
-      )}
-    </div>
-  );
-}
-
-const LANG_OPTIONS: { value: 'es' | 'en'; label: string }[] = [
-  { value: 'es', label: '🇪🇸 Español' },
-  { value: 'en', label: '🇬🇧 English' },
-];
-
-export function Footer() {
-  const t = useT();
-  const locale = useLocale();
-  const router = useRouter();
-  const pathname = usePathname();
+export async function Footer({ locale }: { locale: Locale }) {
+  const t = await getT(locale);
   const legalCol = t<{ h: string; privacy: string; terms: string }>('footer.legalLinks');
   const resourcesCol = t<{ h: string } & Record<string, string>>('footer.resources');
   const comparativasCol = t<{ h: string } & Record<string, string>>('footer.comparativas');
@@ -504,28 +343,6 @@ export function Footer() {
     href: `/${locale}/${localizedSlug(g.key, loc)}`,
   }));
 
-  const switchLocale = (next: string) => {
-    if (next === locale) return;
-    const rest = pathname.replace(new RegExp(`^/(${locales.join('|')})`), '');
-    const parts = rest.split('/').filter(Boolean);
-    // Translate the guide slug to the target locale so we don't 404 / bounce
-    // through a 301 when switching languages on a guide page.
-    // Producto: la carpeta y el slug cambian con el idioma, así que se traduce
-    // aquí en vez de dejar que el 301 del proxy haga el salto.
-    if (parts.length && parts[0] === PRODUCT_BASE[loc]) {
-      const area = parts[1] ? productBySlug(parts[1], loc) : undefined;
-      router.push(area ? productPath(area.key, next as Locale) : productHubPath(next as Locale));
-      return;
-    }
-    const g = parts.length ? guideByAnySlug(parts[0]) : undefined;
-    if (g) {
-      const tail = parts.slice(1).join('/');
-      router.push(`/${next}/${localizedSlug(g.key, next as Locale)}${tail ? `/${tail}` : ''}`);
-      return;
-    }
-    router.push(`/${next}${rest}`);
-  };
-
   return (
     <footer style={{ borderTop: '1px solid var(--line-soft)', paddingTop: 80, paddingBottom: 36, background: 'oklch(0.11 0.018 240)' }}>
       <div className="container">
@@ -538,27 +355,7 @@ export function Footer() {
               {t('footer.tagline')}
             </p>
             <div style={{ display: 'flex', gap: 8, marginTop: 22 }}>
-              <select
-                className="mono"
-                aria-label={t('footer.langLabel')}
-                style={{
-                  background: 'oklch(1 0 0 / 0.02)',
-                  border: '1px solid var(--line)',
-                  color: 'var(--fg-2)',
-                  padding: '7px 10px',
-                  borderRadius: 6,
-                  fontSize: 12,
-                  letterSpacing: '0.04em',
-                }}
-                value={locale}
-                onChange={(e) => switchLocale(e.target.value)}
-              >
-                {LANG_OPTIONS.map((o) => (
-                  <option key={o.value} value={o.value}>
-                    {o.label}
-                  </option>
-                ))}
-              </select>
+              <LocaleSelect locale={locale} label={t('footer.langLabel')} />
             </div>
           </div>
           <div>
@@ -570,9 +367,7 @@ export function Footer() {
                 <li key={l.href}>
                   <Link
                     href={l.href}
-                    style={{ fontSize: 13.5, color: 'var(--fg-2)' }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--fg-2)')}
+                    className="footer-link"
                   >
                     {l.label}
                   </Link>
@@ -589,9 +384,7 @@ export function Footer() {
                 <li key={l.href}>
                   <Link
                     href={l.href}
-                    style={{ fontSize: 13.5, color: 'var(--fg-2)' }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--fg-2)')}
+                    className="footer-link"
                   >
                     {l.label}
                   </Link>
@@ -608,9 +401,7 @@ export function Footer() {
                 <li key={l.href}>
                   <Link
                     href={l.href}
-                    style={{ fontSize: 13.5, color: 'var(--fg-2)' }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--fg-2)')}
+                    className="footer-link"
                   >
                     {l.label}
                   </Link>
@@ -627,9 +418,7 @@ export function Footer() {
                 <li key={l.href}>
                   <Link
                     href={l.href}
-                    style={{ fontSize: 13.5, color: 'var(--fg-2)' }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--fg-2)')}
+                    className="footer-link"
                   >
                     {l.label}
                   </Link>
@@ -649,9 +438,7 @@ export function Footer() {
                 <li key={l.href}>
                   <Link
                     href={l.href}
-                    style={{ fontSize: 13.5, color: 'var(--fg-2)' }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--accent)')}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--fg-2)')}
+                    className="footer-link"
                   >
                     {l.label}
                   </Link>

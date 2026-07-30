@@ -1,4 +1,6 @@
-'use client';
+// Sin 'use client': no hay estado ni handlers, así que renderiza en servidor
+// cuando lo usa una sección servidor, y se empaqueta con el cliente cuando lo
+// importa una isla (FAQ).
 import React, { CSSProperties } from 'react';
 
 interface SectionHeadProps {

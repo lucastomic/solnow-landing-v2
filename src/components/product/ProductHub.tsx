@@ -73,7 +73,7 @@ export default async function ProductHub({ locale }: { locale: Locale }) {
         <ProductCta locale={locale} cta={cta} />
       </main>
 
-      <Footer />
+      <Footer locale={locale} />
     </>
   );
 }

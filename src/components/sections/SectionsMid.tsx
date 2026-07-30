@@ -1,9 +1,9 @@
-'use client';
 import { SectionHead } from '../atoms';
-import { useT } from '@/i18n/I18nProvider';
+import { getT } from '@/i18n/dictionaries';
+import type { Locale } from '@/i18n/config';
 
-export function Pillars() {
-  const t = useT();
+export async function Pillars({ locale }: { locale: Locale }) {
+  const t = await getT(locale);
   const pillars = t<{ n: string; h: string; s: string }[]>('pillars.items');
   const icons = [
     <svg key="0" width="44" height="44" viewBox="0 0 44 44" fill="none" stroke="currentColor" strokeWidth="1.4">
@@ -79,8 +79,8 @@ export function Pillars() {
   );
 }
 
-export function Comparison() {
-  const t = useT();
+export async function Comparison({ locale }: { locale: Locale }) {
+  const t = await getT(locale);
   const colKeys = ['gen', 'h2o', 'own', 'sol'] as const;
   const colDefs = t<{ name: string; sub: string }[]>('comparison.cols');
   const cols = colKeys.map((k, i) => ({
@@ -208,8 +208,6 @@ export function Comparison() {
                 borderBottom: i < rows.length - 1 ? '1px solid var(--line-soft)' : 0,
                 transition: 'background .2s ease',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--line-soft)')}
-              onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
             >
               <div style={{ padding: '18px 24px', fontSize: 14.5, color: 'var(--fg-2)' }}>{r[0]}</div>
               {(r.slice(1) as (number | string)[]).map((v, j) => (
@@ -252,8 +250,8 @@ export function Comparison() {
   );
 }
 
-export function Partner() {
-  const t = useT();
+export async function Partner({ locale }: { locale: Locale }) {
+  const t = await getT(locale);
   const items = t<{ pull: string; h: string; s: string }[]>('partner.items');
   return (
     <section className="section" style={{ paddingBlock: 120 }}>

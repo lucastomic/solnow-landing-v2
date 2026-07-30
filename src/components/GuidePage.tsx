@@ -157,7 +157,7 @@ export function GuidePage({
   labels,
 }: {
   content: GuideContent;
-  locale: string;
+  locale: Locale;
   labels: GuideLabels;
 }) {
   const { hero, download, sections, faq, related, cta, disclaimer } = content;
@@ -412,7 +412,7 @@ export function GuidePage({
         </div>
       </section>
 
-      <Footer />
+      <Footer locale={locale} />
     </>
   );
 }
