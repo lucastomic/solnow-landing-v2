@@ -1,11 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { GoogleTagManager, GoogleAnalytics } from '@next/third-parties/google';
+import { GoogleTagManager } from '@next/third-parties/google';
 import { MetaPixelScript } from '@/components/MetaPixel';
 
 const GTM_ID = 'GTM-W7TQ38LJ';
-const GA_ID = 'G-C48R6MLF4L';
 
 /**
  * Margen tras el evento `load` antes de cargar por nuestra cuenta si nadie ha
@@ -16,10 +15,15 @@ const IDLE_TIMEOUT_MS = 3000;
 const INTERACTION_EVENTS = ['pointerdown', 'keydown', 'touchstart', 'scroll'] as const;
 
 /**
- * Etiquetado (GTM, GA4, Meta Pixel y, en cascada desde GTM, HubSpot) cargado
+ * Etiquetado (GTM, Meta Pixel y, en cascada desde GTM, GA4 y HubSpot) cargado
  * fuera del arranque.
  *
- * Entre los cuatro suman ~570 KiB y buena parte del trabajo de hilo principal,
+ * GA4 (`G-C48R6MLF4L`) no se monta aquí a propósito: lo dispara GTM con la
+ * etiqueta de Google en `Initialization - All Pages`. Cargarlo además desde el
+ * código duplicaba los `page_view` y, peor, se saltaba el CMP (Sirdata), que
+ * solo controla lo que pasa por GTM.
+ *
+ * Entre todos suman ~570 KiB y buena parte del trabajo de hilo principal,
  * y ninguno pinta nada. Montarlos con `afterInteractive` los metía en la ruta
  * crítica de una landing que se sirve prerenderizada desde CDN. Se cargan con
  * lo que ocurra primero: una interacción real, o el primer hueco de
@@ -80,7 +84,6 @@ export function DeferredAnalytics() {
   return (
     <>
       <GoogleTagManager gtmId={GTM_ID} />
-      <GoogleAnalytics gaId={GA_ID} />
       <MetaPixelScript />
     </>
   );
