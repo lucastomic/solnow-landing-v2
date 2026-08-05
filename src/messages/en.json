@@ -1453,7 +1453,8 @@
       "papeleo": "Eliminate paperwork",
       "contrato": "Contract template",
       "normativa": "Regulations in Spain",
-      "libro": "Logbook guide"
+      "libro": "Logbook guide",
+      "parasailing": "Parasailing software"
     },
     "comparativas": {
       "h": "Comparisons",
@@ -3259,6 +3260,10 @@
         {
           "label": "Jet ski rental software",
           "slug": "software-alquiler-motos-de-agua"
+        },
+        {
+          "label": "Parasailing booking software",
+          "slug": "software-reservas-parasailing"
         }
       ],
       "cta": {
@@ -4408,6 +4413,175 @@
       "cta": {
         "title": "Let the logbook fill itself in",
         "desc": "Solnow records every rental automatically and generates the logbook compliant with the rules. We'll show you with your real operation.",
+        "button": "Book a demo"
+      }
+    },
+    "parasailing": {
+      "meta": {
+        "title": "Parasailing Booking Software: Flights, Waivers & Weather | Solnow",
+        "description": "Schedule flights by boat capacity, collect signed waivers before boarding, rebook weather cancellations in one tap and sell walk-ups at the dock. Built for high-volume parasail operators.",
+        "ogTitle": "Parasailing Booking Software"
+      },
+      "hero": {
+        "eyebrow": "GUIDE · PARASAILING",
+        "h1": "Parasailing booking software",
+        "lede": "Parasailing doesn't sell tickets — it sells seats on a rotation. Every flight is a puzzle of boat capacity, single-double-triple harness combinations, weight limits, and a schedule the wind can shred at 2pm without asking.",
+        "updated": "Last updated · August 2026",
+        "readingTime": "7 min read"
+      },
+      "sections": [
+        {
+          "h": "Flights scheduled the way your boats actually work",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Generic booking tools treat a parasail operation like a walking tour with a start time. Then the sea breeze picks up, fourteen bookings need to move, and someone spends the evening on the phone. Solnow was built for high-volume water activity operators — the kind running back-to-back flights all day from a busy dock, with a line of walk-ups watching the chutes come down."
+            },
+            {
+              "type": "p",
+              "text": "Set up each boat with its real capacity and rotation time, and Solnow builds your day as flight slots — every 15, 20 or 30 minutes, per boat, per base. Bookings fill seats within a flight, not abstract \"tickets\", so you always know if the 12:30 has room for a triple or only a single left. Observers ride along at their own price without eating a flyer's seat."
+            },
+            {
+              "type": "callout",
+              "tone": "info",
+              "text": "When a boat goes down for maintenance, its flights pause everywhere at once — website, WhatsApp and the dock POS — before anyone oversells it."
+            }
+          ]
+        },
+        {
+          "h": "Waivers signed before the dock, not on it",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Every flyer signs your liability waiver digitally — from home when booking online, or on their own phone at the dock via QR for walk-ups. Multi-passenger bookings collect one signature per flyer, minors included with guardian consent."
+            },
+            {
+              "type": "p",
+              "text": "By the time a group reaches the boat, your crew sees green checks next to every name. No clipboard, no pen that doesn't work, no \"we'll sign after\"."
+            }
+          ]
+        },
+        {
+          "h": "Weather day? Rebook everyone before they even call",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "This is the one that pays for the software. Wind picks up, you cancel the afternoon block: Solnow notifies every affected booking by WhatsApp automatically and offers the open slots for tomorrow. Most guests rebook themselves in two taps. The ones who want a refund get it processed in one."
+            },
+            {
+              "type": "callout",
+              "tone": "accent",
+              "text": "What used to be an evening of apologetic phone calls becomes ten minutes of supervision — and most of that revenue stays rebooked instead of refunded."
+            }
+          ]
+        },
+        {
+          "h": "The dock line becomes your best sales channel",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Walk-ups are half of a parasail operation's revenue. Your dock staff sells the next available flight from the POS, charges card or cash, fires the QR waiver to the guest's phone, and boards them — while the boat is still out on the previous rotation. No one walks away because the line wasn't moving."
+            }
+          ]
+        },
+        {
+          "h": "One WhatsApp agent answering \"how much is it?\" all day",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Price, weight limits, what to bring, can kids fly, do you fly in this wind — the same ten questions, four hundred times a season. Solnow's AI agent answers on WhatsApp instantly, 24/7, checks live flight availability, and closes the booking with payment."
+            },
+            {
+              "type": "p",
+              "text": "Evening inquiries stop dying in an unread inbox, and your dock phone stops interrupting boardings."
+            }
+          ]
+        },
+        {
+          "h": "Built for parasail math",
+          "blocks": [
+            {
+              "type": "table",
+              "columns": ["Generic booking tools", "Solnow"],
+              "highlightCol": 1,
+              "rows": [
+                {
+                  "label": "Flights by boat capacity & rotation",
+                  "cells": ["Fixed \"tour times\"", "Capacity-based flight slots per boat"]
+                },
+                {
+                  "label": "Singles, doubles, triples, observers",
+                  "cells": ["One ticket type", "Seat combinations within each flight"]
+                },
+                {
+                  "label": "Waivers before boarding",
+                  "cells": ["Paper or third-party app", "QR digital waivers, per flyer, tracked"]
+                },
+                {
+                  "label": "Weather cancellations",
+                  "cells": ["Manual phone marathon", "Bulk WhatsApp rebooking in minutes"]
+                },
+                {
+                  "label": "Dock walk-ups",
+                  "cells": ["Not handled", "Full POS with live flight availability"]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "h": "Done-for-you setup, commission-based pricing",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "We configure your boats, flight rotations, pricing and waiver, train your dock crew, and monitor the first weeks of peak season with you."
+            },
+            {
+              "type": "p",
+              "text": "Pricing is commission-based with no upfront cost — you pay a small percentage on what you bill, so a rained-out week costs you nothing in software."
+            }
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "What is the best booking software for parasailing?",
+          "a": "Software built around flights rather than tickets: boat-capacity scheduling, per-flyer digital waivers, bulk weather rebooking, and a dock POS for walk-ups. Solnow combines all of these with a WhatsApp AI agent that books guests 24/7."
+        },
+        {
+          "q": "Can it handle weather cancellations?",
+          "a": "Yes. Cancel a flight block and every affected guest is notified by WhatsApp automatically with available slots to rebook themselves. Refunds, when requested, are processed from the same screen."
+        },
+        {
+          "q": "How do digital waivers work for parasailing?",
+          "a": "Each flyer signs on their own phone — during online booking or via QR at the dock. Group bookings collect one signature per participant, with guardian consent for minors, and your crew sees signature status per flight before boarding."
+        },
+        {
+          "q": "Does it support walk-up sales at the dock?",
+          "a": "Yes. The POS shows live availability for upcoming flights so dock staff can sell, charge, collect the waiver and board a walk-up in under two minutes."
+        },
+        {
+          "q": "How much does parasailing booking software cost?",
+          "a": "Solnow has no upfront cost and works on commission — a small percentage of what you bill through the platform, with setup, configuration and crew training included."
+        }
+      ],
+      "related": [
+        {
+          "label": "Best watersports booking software compared",
+          "slug": "mejores-software-reservas-actividades-acuaticas"
+        },
+        {
+          "label": "FareHarbor alternative for watersports",
+          "slug": "fareharbor-alternativa-motos-de-agua"
+        },
+        {
+          "label": "Digital rental contracts and e-signature",
+          "slug": "contrato-alquiler-motos-de-agua"
+        }
+      ],
+      "cta": {
+        "title": "See your dock running on Solnow",
+        "desc": "20-minute demo configured with your boats and rotation times.",
         "button": "Book a demo"
       }
     }

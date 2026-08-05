@@ -156,6 +156,9 @@ export const AREA_FOR_GUIDE: Record<GuideKey, ProductKey> = {
   contrato: 'contratos',
   normativa: 'contratos',
   libro: 'operacion',
+  // Parasailing vende el mostrador del pantalán: el walk-in es la mitad de su
+  // facturación, así que la landing comercial que le corresponde es el TPV.
+  parasailing: 'tpv',
   fareharborAlt: 'motor',
   turitopAlt: 'motor',
   fareharborVs: 'motor',

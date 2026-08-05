@@ -1453,7 +1453,8 @@
       "papeleo": "Eliminar el papeleo",
       "contrato": "Modelo de contrato",
       "normativa": "Normativa en España",
-      "libro": "Libro de registro"
+      "libro": "Libro de registro",
+      "parasailing": "Software de parasailing"
     },
     "comparativas": {
       "h": "Comparativas",
@@ -3259,6 +3260,10 @@
         {
           "label": "Software para alquiler de motos de agua",
           "slug": "software-alquiler-motos-de-agua"
+        },
+        {
+          "label": "Software de reservas para parasailing",
+          "slug": "software-reservas-parasailing"
         }
       ],
       "cta": {
@@ -4408,6 +4413,175 @@
       "cta": {
         "title": "Que el libro de registro se rellene solo",
         "desc": "Solnow registra cada alquiler automáticamente y genera el libro conforme a la normativa. Te lo enseñamos con tu operación real.",
+        "button": "Pedir demo"
+      }
+    },
+    "parasailing": {
+      "meta": {
+        "title": "Software de reservas para parasailing: vuelos, firmas y clima | Solnow",
+        "description": "Programa vuelos por capacidad de barco, recoge la exención firmada antes de embarcar, recoloca las cancelaciones por viento en un toque y vende walk-in en el pantalán. Para operadores de parasailing con volumen.",
+        "ogTitle": "Software de reservas para parasailing"
+      },
+      "hero": {
+        "eyebrow": "GUÍA · PARASAILING",
+        "h1": "Software de reservas para parasailing",
+        "lede": "El parasailing no vende entradas: vende plazas dentro de una rotación. Cada vuelo es un puzle de capacidad de barco, combinaciones de arnés individual, doble o triple, límites de peso y un horario que el viento puede romper a las dos de la tarde sin avisar.",
+        "updated": "Última actualización · Agosto 2026",
+        "readingTime": "7 min de lectura"
+      },
+      "sections": [
+        {
+          "h": "Vuelos programados como funcionan tus barcos de verdad",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Los software de reservas genéricos tratan una operación de parasailing como una visita guiada con hora de salida. Luego entra la brisa, hay que mover catorce reservas y alguien se pasa la tarde al teléfono. Solnow está hecho para operadores de actividades acuáticas con volumen: los que encadenan vuelos todo el día desde un pantalán lleno, con una cola de walk-in mirando cómo bajan los paracaídas."
+            },
+            {
+              "type": "p",
+              "text": "Configuras cada barco con su capacidad real y su tiempo de rotación, y Solnow monta el día en franjas de vuelo: cada 15, 20 o 30 minutos, por barco y por base. Las reservas ocupan plazas dentro de un vuelo, no \"entradas\" abstractas, así que siempre sabes si en el de las 12:30 cabe un triple o solo queda un individual. Los acompañantes suben con su propia tarifa sin comerse la plaza de un volador."
+            },
+            {
+              "type": "callout",
+              "tone": "info",
+              "text": "Cuando un barco entra en mantenimiento, sus vuelos se bloquean a la vez en todas partes —web, WhatsApp y TPV del pantalán— antes de que nadie los sobrevenda."
+            }
+          ]
+        },
+        {
+          "h": "La exención, firmada antes del pantalán y no encima de él",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Cada participante firma tu exención de responsabilidad en digital: desde casa al reservar online, o en su propio móvil con un QR en el pantalán si es walk-in. En reservas de varias personas se recoge una firma por participante, incluidos los menores con el consentimiento de su tutor."
+            },
+            {
+              "type": "p",
+              "text": "Cuando el grupo llega al barco, tu equipo ve un check verde junto a cada nombre. Sin carpeta, sin el bolígrafo que no pinta y sin el \"ya firmamos luego\"."
+            }
+          ]
+        },
+        {
+          "h": "¿Día de viento? Recoloca a todos antes de que te llamen",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Esta es la función que paga el software. Sube el viento, cancelas el bloque de la tarde y Solnow avisa por WhatsApp automáticamente a todas las reservas afectadas ofreciéndoles los huecos libres de mañana. La mayoría se recoloca sola en dos toques. A quien prefiere el reembolso, se lo procesas en uno."
+            },
+            {
+              "type": "callout",
+              "tone": "accent",
+              "text": "Lo que antes era una tarde entera pidiendo disculpas por teléfono son diez minutos de supervisión, y la mayor parte de esa facturación se queda recolocada en vez de devuelta."
+            }
+          ]
+        },
+        {
+          "h": "La cola del pantalán es tu mejor canal de venta",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "El walk-in es la mitad de la facturación de una operación de parasailing. Tu personal de pantalán vende el siguiente vuelo disponible desde el TPV, cobra con tarjeta o efectivo, manda el QR de la exención al móvil del cliente y lo embarca, todo mientras el barco sigue fuera con la rotación anterior. Nadie se va porque la cola no avanzaba."
+            }
+          ]
+        },
+        {
+          "h": "Un agente de WhatsApp que contesta \"¿cuánto cuesta?\" todo el día",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Precio, límites de peso, qué llevar, si pueden volar niños, si se vuela con este viento: las mismas diez preguntas, cuatrocientas veces por temporada. El agente de IA de Solnow contesta en WhatsApp al instante, 24/7, consulta la disponibilidad real de los vuelos y cierra la reserva con el cobro."
+            },
+            {
+              "type": "p",
+              "text": "Las consultas de la noche dejan de morir en un buzón sin leer y el teléfono del pantalán deja de interrumpir los embarques."
+            }
+          ]
+        },
+        {
+          "h": "Pensado para las cuentas del parasailing",
+          "blocks": [
+            {
+              "type": "table",
+              "columns": ["Software genérico", "Solnow"],
+              "highlightCol": 1,
+              "rows": [
+                {
+                  "label": "Vuelos por capacidad y rotación de barco",
+                  "cells": ["\"Horarios de tour\" fijos", "Franjas de vuelo por capacidad y barco"]
+                },
+                {
+                  "label": "Individuales, dobles, triples y acompañantes",
+                  "cells": ["Un solo tipo de entrada", "Combinaciones de plazas dentro de cada vuelo"]
+                },
+                {
+                  "label": "Exención firmada antes de embarcar",
+                  "cells": ["Papel o app de terceros", "Exención digital por QR, por participante y trazada"]
+                },
+                {
+                  "label": "Cancelaciones por meteorología",
+                  "cells": ["Maratón de llamadas a mano", "Recolocación masiva por WhatsApp en minutos"]
+                },
+                {
+                  "label": "Walk-in en el pantalán",
+                  "cells": ["No lo cubre", "TPV completo con disponibilidad de vuelos en vivo"]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "h": "Puesta en marcha hecha por nosotros y precio por comisión",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Configuramos tus barcos, tus rotaciones de vuelo, tus precios y tu exención, formamos a tu equipo de pantalán y acompañamos contigo las primeras semanas de temporada alta."
+            },
+            {
+              "type": "p",
+              "text": "El precio es por comisión y sin coste inicial: pagas un pequeño porcentaje de lo que facturas, así que una semana pasada por agua no te cuesta nada en software."
+            }
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Cuál es el mejor software de reservas para parasailing?",
+          "a": "El que está construido alrededor de vuelos y no de entradas: programación por capacidad de barco, exención digital por participante, recolocación masiva por meteorología y TPV de pantalán para el walk-in. Solnow reúne todo eso con un agente de IA en WhatsApp que reserva 24/7."
+        },
+        {
+          "q": "¿Sirve para las cancelaciones por meteorología?",
+          "a": "Sí. Cancelas un bloque de vuelos y cada cliente afectado recibe un aviso automático por WhatsApp con los huecos disponibles para recolocarse él mismo. Los reembolsos, cuando los piden, se procesan desde la misma pantalla."
+        },
+        {
+          "q": "¿Cómo funciona la exención de responsabilidad digital en parasailing?",
+          "a": "Cada participante firma en su propio móvil, durante la reserva online o con un QR en el pantalán. En reservas de grupo se recoge una firma por persona, con consentimiento del tutor para los menores, y tu equipo ve el estado de firmas de cada vuelo antes de embarcar."
+        },
+        {
+          "q": "¿Permite vender walk-in en el pantalán?",
+          "a": "Sí. El TPV muestra la disponibilidad real de los próximos vuelos, así que tu personal vende, cobra, recoge la exención y embarca a un walk-in en menos de dos minutos."
+        },
+        {
+          "q": "¿Cuánto cuesta un software de reservas para parasailing?",
+          "a": "Solnow no tiene coste inicial y funciona por comisión: un pequeño porcentaje de lo que factures por la plataforma, con la configuración, la puesta en marcha y la formación del equipo incluidas."
+        }
+      ],
+      "related": [
+        {
+          "label": "Mejores software de reservas para actividades acuáticas",
+          "slug": "mejores-software-reservas-actividades-acuaticas"
+        },
+        {
+          "label": "Alternativa a FareHarbor para actividades acuáticas",
+          "slug": "fareharbor-alternativa-motos-de-agua"
+        },
+        {
+          "label": "Contratos digitales y firma electrónica",
+          "slug": "contrato-alquiler-motos-de-agua"
+        }
+      ],
+      "cta": {
+        "title": "Mira tu pantalán funcionando con Solnow",
+        "desc": "Demo de 20 minutos configurada con tus barcos y tus horarios de rotación.",
         "button": "Pedir demo"
       }
     }

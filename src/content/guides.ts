@@ -18,6 +18,7 @@ export const GUIDES = [
   { slug: 'contrato-alquiler-motos-de-agua', key: 'contrato', group: 'recurso', download: true, howTo: false, priority: 0.8 },
   { slug: 'normativa-alquiler-motos-de-agua-espana', key: 'normativa', group: 'recurso', download: false, howTo: false, priority: 0.8 },
   { slug: 'libro-registro-motos-de-agua', key: 'libro', group: 'recurso', download: false, howTo: true, priority: 0.8 },
+  { slug: 'software-reservas-parasailing', key: 'parasailing', group: 'recurso', download: false, howTo: false, priority: 0.8 },
   { slug: 'fareharbor-alternativa-motos-de-agua', key: 'fareharborAlt', group: 'comparativa', download: false, howTo: false, priority: 0.8 },
   { slug: 'turitop-alternativa-motos-de-agua', key: 'turitopAlt', group: 'comparativa', download: false, howTo: false, priority: 0.8 },
   { slug: 'fareharbor-vs-solnow', key: 'fareharborVs', group: 'comparativa', download: false, howTo: false, priority: 0.8 },
@@ -67,6 +68,7 @@ const EN_SLUG: Partial<Record<GuideKey, string>> = {
   papeleo: 'eliminate-paperwork-boat-rental',
   multibase: 'multi-base-jet-ski-management',
   whatsapp: 'whatsapp-booking-jet-ski',
+  parasailing: 'parasailing-booking-software',
 };
 
 /**
