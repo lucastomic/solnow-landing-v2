@@ -7,7 +7,7 @@
   },
   "jsonLd": {
     "orgName": "Solnow",
-    "orgDescription": "The operating system for high-volume watercraft rental businesses. Digitizes sales, paperwork, real-time operations and after-sales.",
+    "orgDescription": "Solnow is a booking and operations platform for high-volume watersports operators (jet ski rentals, boat tours, parasailing) with POS, QR self-check-in, and a WhatsApp AI agent.",
     "appName": "Solnow",
     "appDescription": "Platform that digitizes the whole operation of a watercraft rental business: sales with an AI agent on WhatsApp, automated paperwork, live multi-base operations and after-sales.",
     "appCategory": "BusinessApplication"
@@ -1481,14 +1481,14 @@
         {
           "h": "1. Introduction",
           "p": [
-            "SolNow, operated by Sailing Paradise LLC, is a platform for the centralized management of boat rental companies. By accessing or using the Service, you agree to be bound by these Terms and Conditions. If you do not agree with any of them, you must not use the platform."
+            "Solnow, operated by Sailing Paradise LLC, is a platform for the centralized management of boat rental companies. By accessing or using the Service, you agree to be bound by these Terms and Conditions. If you do not agree with any of them, you must not use the platform."
           ]
         },
         {
           "h": "2. Definitions",
           "list": [
             "User: any person who accesses or uses the platform.",
-            "Service: all services, features and tools provided by SolNow.",
+            "Service: all services, features and tools provided by Solnow.",
             "Content: the information, data and materials displayed or managed through the platform."
           ]
         },
@@ -1503,19 +1503,19 @@
         {
           "h": "4. Plans and payments",
           "p": [
-            "SolNow offers different subscription plans with automatic renewal. We reserve the right to adjust prices, giving at least 30 days' prior notice."
+            "Solnow offers different subscription plans with automatic renewal. We reserve the right to adjust prices, giving at least 30 days' prior notice."
           ]
         },
         {
           "h": "5. Limitation of liability",
           "p": [
-            "We do not guarantee that the service will be available without interruption. SolNow shall not be liable for any direct, indirect, incidental, special or consequential damages arising from the use or inability to use the Service."
+            "We do not guarantee that the service will be available without interruption. Solnow shall not be liable for any direct, indirect, incidental, special or consequential damages arising from the use or inability to use the Service."
           ]
         },
         {
           "h": "6. Contact",
           "p": [
-            "For any questions about these Terms, you can write to us at lucastomic@solnow.io. SolNow is operated by Sailing Paradise LLC."
+            "For any questions about these Terms, you can write to us at lucastomic@solnow.io. Solnow is operated by Sailing Paradise LLC."
           ]
         }
       ]
@@ -1527,7 +1527,7 @@
         {
           "h": "",
           "p": [
-            "At SolNow, operated by Sailing Paradise LLC (\"we\", \"our\", \"us\"), your privacy is a priority. This Policy describes what information we collect and how we use it."
+            "At Solnow, operated by Sailing Paradise LLC (\"we\", \"our\", \"us\"), your privacy is a priority. This Policy describes what information we collect and how we use it."
           ]
         },
         {
@@ -1564,7 +1564,7 @@
             "Cloud hosting and infrastructure providers that store and process data on our behalf.",
             "Payment and subscription processors that handle billing transactions.",
             "Email and notification providers used to deliver transactional messages, alerts and automated emails.",
-            "OpenAI, our third-party AI provider, which processes content you submit in order to generate AI-assisted features. SolNow does not operate its own AI model.",
+            "OpenAI, our third-party AI provider, which processes content you submit in order to generate AI-assisted features. Solnow does not operate its own AI model.",
             "Authorities or third parties when required by law, to comply with a legal obligation, or to protect our rights, safety or property."
           ]
         },
@@ -1573,7 +1573,7 @@
           "p": [
             "When you connect a Google account, we may access Google user data through restricted scopes such as Gmail and Google Calendar, solely to sync bookings, availability and lead conversations within the platform.",
             "We do not sell Google user data, and we do not transfer or disclose it to third parties except: (a) to the service providers listed above strictly to provide and improve user-facing features of the Service; (b) to comply with applicable law; or (c) as part of a merger or acquisition, with continued protection of the data.",
-            "SolNow's use and transfer to any other app of information received from Google APIs will adhere to the Google API Services User Data Policy, including the Limited Use requirements. Google user data is not used for advertising and is not used to train generalized AI models."
+            "Solnow's use and transfer to any other app of information received from Google APIs will adhere to the Google API Services User Data Policy, including the Limited Use requirements. Google user data is not used for advertising and is not used to train generalized AI models."
           ]
         },
         {
@@ -2357,7 +2357,7 @@
     },
     "fareharborAlt": {
       "meta": {
-        "title": "FareHarbor Alternative for Jet Ski & Watersports Rentals (2026) — Solnow",
+        "title": "FareHarbor Alternative for Jet Ski & Watersports Rentals (2026) | Solnow",
         "description": "Is FareHarbor built for jet ski rentals? Compare fees, walk-in check-in, digital waivers and fleet management. See why high-volume watersports operators switch to Solnow.",
         "ogTitle": "FareHarbor Alternative for Jet Ski & Watersports Rentals"
       },
@@ -3058,10 +3058,17 @@
     },
     "mejoresSoftware": {
       "meta": {
-        "title": "7 Best Watersports Booking Software in 2026 (Compared)",
-        "description": "FareHarbor, Peek Pro, Bokun, TuriTop, Regiondo, Xola and Solnow compared: pricing, booking fees, POS, walk-ins and channel management for jet ski, parasailing and boat tour operators.",
+        "title": "7 Best Watersports Booking Software (2026): Fees & Pricing Compared",
+        "description": "FareHarbor, Peek Pro, Bokun, TuriTop, Regiondo, Xola and Solnow compared: real booking fees, POS for walk-ins, and channel management for jet ski, parasailing and boat tour operators.",
         "ogTitle": "7 Best Watersports Booking Software in 2026"
       },
+      "itemList": [
+        { "name": "FareHarbor", "section": 2 },
+        { "name": "TuriTop", "section": 3 },
+        { "name": "Bookeo", "section": 4 },
+        { "name": "Regiondo", "section": 4 },
+        { "name": "Solnow", "section": 5 }
+      ],
       "hero": {
         "eyebrow": "COMPARISON",
         "h1": "Best booking software for water activities",

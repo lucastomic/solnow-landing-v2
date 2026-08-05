@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { locales, defaultLocale, isLocale } from "@/i18n/config";
+import { locales, defaultLocale, isLocale, type Locale } from "@/i18n/config";
 import { EN_REDIRECTS, EN_REWRITES } from "@/content/guides";
 import {
   LEGACY_SLUGS,
@@ -20,12 +20,40 @@ function pickLocale(request: NextRequest): string {
   return defaultLocale;
 }
 
+/**
+ * Rutas públicas del sitio anterior → página que las reemplaza hoy.
+ *
+ * `como-funciona` explicaba el producto de punta a punta; ese contenido vive
+ * ahora en el hub de producto, que es su equivalente real.
+ */
+const LEGACY_ROUTES: Record<string, (locale: Locale) => string> = {
+  "como-funciona": (locale) => productHubPath(locale),
+};
+
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  const parts = pathname.split("/").filter(Boolean);
+
+  // Rutas del sitio anterior que Google sigue indexando y posicionando. El
+  // rediseño las eliminó sin dejar 301 y devolvían 404, tirando el
+  // posicionamiento. No existen en el historial de este repo (venían de la
+  // versión anterior del sitio), así que no hay contenido que restaurar: se
+  // redirigen a la página que de verdad las reemplaza.
+  //
+  // Regla: ninguna ruta pública se elimina sin dejar un 301 a su reemplazo.
+  const legacyLocale = parts.length === 2 && isLocale(parts[0]) ? parts[0] : undefined;
+  const legacySeg = legacyLocale ? parts[1] : parts.length === 1 ? parts[0] : undefined;
+  if (legacySeg && legacySeg in LEGACY_ROUTES) {
+    // Sin locale en la URL se negocia por cabecera, para resolver en un solo
+    // salto en vez de encadenar el 301 de locale con el de la ruta.
+    const locale = (legacyLocale ?? pickLocale(request)) as Locale;
+    request.nextUrl.pathname = LEGACY_ROUTES[legacySeg](locale);
+    return NextResponse.redirect(request.nextUrl, 301);
+  }
+
   // English slug canonicalization (SEO). Only guide roots directly under /en/
   // are affected: `/en/<segment>` with no deeper path.
-  const parts = pathname.split("/").filter(Boolean);
   if (parts.length === 2 && parts[0] === "en") {
     const seg = parts[1];
     // Old Spanish-slug URL (or a consolidated page) → 301 to the English slug.

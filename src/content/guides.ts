@@ -64,6 +64,9 @@ const EN_SLUG: Partial<Record<GuideKey, string>> = {
   mostrador: 'digitize-jet-ski-rental-front-desk',
   canarias: 'jet-ski-booking-software-canary-islands',
   contrato: 'jet-ski-rental-contract-template',
+  papeleo: 'eliminate-paperwork-boat-rental',
+  multibase: 'multi-base-jet-ski-management',
+  whatsapp: 'whatsapp-booking-jet-ski',
 };
 
 /**
@@ -140,8 +143,23 @@ export interface GuideSection {
   blocks: GuideBlock[];
 }
 
+/**
+ * Entrada del `ItemList` de una comparativa tipo listicle.
+ *
+ * `section` es el índice 1-based de la sección que describe la herramienta —
+ * el mismo que `GuidePage` usa para el `id="sec-N"`, así que el ancla del
+ * dato estructurado siempre apunta a contenido que existe de verdad en la
+ * página. Dos herramientas pueden compartir sección (Bookeo y Regiondo).
+ */
+export interface GuideListItem {
+  name: string;
+  section: number;
+}
+
 export interface GuideContent {
   meta: { title: string; description: string; ogTitle: string };
+  /** Solo en listicles: herramientas comparadas, en orden de aparición. */
+  itemList?: GuideListItem[];
   hero: { eyebrow: string; h1: string; lede: string; updated: string; readingTime: string };
   download?: { title: string; desc: string; fileLabel: string; href: string };
   disclaimer?: string;

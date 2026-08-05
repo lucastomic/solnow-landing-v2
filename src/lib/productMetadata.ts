@@ -6,15 +6,15 @@ import { productHubPath, productPath, type ProductKey } from '@/content/products
 /**
  * Hreflang map for a product URL. Every area and the hub exist in both locales
  * under their own localized path, so the alternates are always complete.
- * `x-default` points at Spanish: it is the primary market and matches the
- * home page's own x-default.
+ * `x-default` points at English, igual que la home y las guías: es la versión
+ * que recoge al tráfico internacional que no cae en `es` ni en `en`.
  */
 function languagesFor(path: (locale: Locale) => string): Record<string, string> {
   const languages: Record<string, string> = {};
   for (const locale of locales) {
     languages[localeMeta[locale].hreflang] = path(locale);
   }
-  languages['x-default'] = path('es');
+  languages['x-default'] = path('en');
   return languages;
 }
 

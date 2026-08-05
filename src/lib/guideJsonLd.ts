@@ -43,6 +43,25 @@ export function buildGuideJsonLd(content: GuideContent, locale: Locale, slug: st
     },
   ];
 
+  // Listicle: ItemList con las herramientas comparadas. Cada `url` lleva el
+  // ancla de la sección que habla de esa herramienta, así que solo se emiten
+  // las que están escritas en la página (no las que el meta title promete).
+  if (content.itemList?.length) {
+    graph.push({
+      '@type': 'ItemList',
+      '@id': `${url}#itemlist`,
+      name: content.hero.h1,
+      numberOfItems: content.itemList.length,
+      itemListOrder: 'https://schema.org/ItemListOrderAscending',
+      itemListElement: content.itemList.map((item, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: item.name,
+        url: `${url}#sec-${item.section}`,
+      })),
+    });
+  }
+
   const stepsSection = content.sections.find((s) => s.blocks.some((b) => b.type === 'steps'));
   const stepsBlock = stepsSection?.blocks.find((b) => b.type === 'steps');
   if (stepsBlock && stepsBlock.type === 'steps') {

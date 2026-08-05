@@ -7,7 +7,7 @@
   },
   "jsonLd": {
     "orgName": "Solnow",
-    "orgDescription": "El sistema operativo para empresas de alquiler acuático con alto volumen. Digitaliza venta, papeleo, operación en tiempo real y postventa.",
+    "orgDescription": "Solnow is a booking and operations platform for high-volume watersports operators (jet ski rentals, boat tours, parasailing) with POS, QR self-check-in, and a WhatsApp AI agent.",
     "appName": "Solnow",
     "appDescription": "Plataforma que digitaliza la operación completa de un alquiler acuático: venta con agente de IA en WhatsApp, papeleo automático, operación en vivo multi-base y postventa.",
     "appCategory": "BusinessApplication"
@@ -1481,14 +1481,14 @@
         {
           "h": "1. Introducción",
           "p": [
-            "SolNow, operado por Sailing Paradise LLC, es una plataforma para la gestión centralizada de empresas de alquiler de embarcaciones. Al acceder o utilizar el Servicio, aceptas quedar vinculado por estos Términos y Condiciones. Si no estás de acuerdo con alguno de ellos, no debes utilizar la plataforma."
+            "Solnow, operado por Sailing Paradise LLC, es una plataforma para la gestión centralizada de empresas de alquiler de embarcaciones. Al acceder o utilizar el Servicio, aceptas quedar vinculado por estos Términos y Condiciones. Si no estás de acuerdo con alguno de ellos, no debes utilizar la plataforma."
           ]
         },
         {
           "h": "2. Definiciones",
           "list": [
             "Usuario: cualquier persona que accede o utiliza la plataforma.",
-            "Servicio: todos los servicios, funcionalidades y herramientas proporcionados por SolNow.",
+            "Servicio: todos los servicios, funcionalidades y herramientas proporcionados por Solnow.",
             "Contenido: la información, datos y materiales mostrados o gestionados a través de la plataforma."
           ]
         },
@@ -1503,19 +1503,19 @@
         {
           "h": "4. Planes y pagos",
           "p": [
-            "SolNow ofrece distintos planes de suscripción con renovación automática. Nos reservamos el derecho de ajustar los precios, notificándolo con un previo aviso de al menos 30 días."
+            "Solnow ofrece distintos planes de suscripción con renovación automática. Nos reservamos el derecho de ajustar los precios, notificándolo con un previo aviso de al menos 30 días."
           ]
         },
         {
           "h": "5. Limitación de responsabilidad",
           "p": [
-            "No garantizamos que el servicio esté disponible de forma ininterrumpida. SolNow no será responsable de ningún daño directo, indirecto, incidental, especial o consecuente derivado del uso o de la imposibilidad de uso del Servicio."
+            "No garantizamos que el servicio esté disponible de forma ininterrumpida. Solnow no será responsable de ningún daño directo, indirecto, incidental, especial o consecuente derivado del uso o de la imposibilidad de uso del Servicio."
           ]
         },
         {
           "h": "6. Contacto",
           "p": [
-            "Para cualquier consulta sobre estos Términos, puedes escribirnos a lucastomic@solnow.io. SolNow es operado por Sailing Paradise LLC."
+            "Para cualquier consulta sobre estos Términos, puedes escribirnos a lucastomic@solnow.io. Solnow es operado por Sailing Paradise LLC."
           ]
         }
       ]
@@ -1527,7 +1527,7 @@
         {
           "h": "",
           "p": [
-            "En SolNow, operado por Sailing Paradise LLC (\"nosotros\", \"nuestro\", \"nos\"), tu privacidad es una prioridad. Esta Política describe qué información recopilamos y cómo la utilizamos."
+            "En Solnow, operado por Sailing Paradise LLC (\"nosotros\", \"nuestro\", \"nos\"), tu privacidad es una prioridad. Esta Política describe qué información recopilamos y cómo la utilizamos."
           ]
         },
         {
@@ -1564,7 +1564,7 @@
             "Proveedores de alojamiento e infraestructura en la nube que almacenan y procesan datos en nuestro nombre.",
             "Procesadores de pagos y suscripciones que gestionan las transacciones de facturación.",
             "Proveedores de correo y notificaciones utilizados para enviar mensajes transaccionales, alertas y correos automáticos.",
-            "OpenAI, nuestro proveedor de IA externo, que procesa el contenido que envías para generar funciones asistidas por IA. SolNow no opera un modelo de IA propio.",
+            "OpenAI, nuestro proveedor de IA externo, que procesa el contenido que envías para generar funciones asistidas por IA. Solnow no opera un modelo de IA propio.",
             "Autoridades o terceros cuando lo exija la ley, para cumplir una obligación legal o para proteger nuestros derechos, seguridad o propiedad."
           ]
         },
@@ -1573,7 +1573,7 @@
           "p": [
             "Cuando conectas una cuenta de Google, podemos acceder a datos de usuario de Google mediante ámbitos restringidos como Gmail y Google Calendar, únicamente para sincronizar reservas, disponibilidad y conversaciones de leads dentro de la plataforma.",
             "No vendemos los datos de usuario de Google, y no los transferimos ni divulgamos a terceros salvo: (a) a los proveedores de servicios indicados anteriormente estrictamente para proporcionar y mejorar funciones del Servicio orientadas al usuario; (b) para cumplir con la legislación aplicable; o (c) como parte de una fusión o adquisición, manteniendo la protección de los datos.",
-            "El uso y la transferencia por parte de SolNow a cualquier otra aplicación de la información recibida de las API de Google se ajustarán a la Política de Datos de Usuario de los Servicios de API de Google, incluidos los requisitos de Uso Limitado. Los datos de usuario de Google no se utilizan con fines publicitarios ni para entrenar modelos de IA generalizados."
+            "El uso y la transferencia por parte de Solnow a cualquier otra aplicación de la información recibida de las API de Google se ajustarán a la Política de Datos de Usuario de los Servicios de API de Google, incluidos los requisitos de Uso Limitado. Los datos de usuario de Google no se utilizan con fines publicitarios ni para entrenar modelos de IA generalizados."
           ]
         },
         {
@@ -3062,6 +3062,13 @@
         "description": "Comparativa honesta de los mejores software de reservas para actividades náuticas y acuáticas: FareHarbor, TuriTop, Bookeo, Regiondo y Solnow. Cuál encaja según tu operación.",
         "ogTitle": "Mejores software de reservas para actividades acuáticas"
       },
+      "itemList": [
+        { "name": "FareHarbor", "section": 2 },
+        { "name": "TuriTop", "section": 3 },
+        { "name": "Bookeo", "section": 4 },
+        { "name": "Regiondo", "section": 4 },
+        { "name": "Solnow", "section": 5 }
+      ],
       "hero": {
         "eyebrow": "COMPARATIVA",
         "h1": "Mejores software de reservas para actividades acuáticas",
@@ -3262,7 +3269,7 @@
     },
     "software": {
       "meta": {
-        "title": "Software para alquiler de motos de agua: reservas, operación y datos — Solnow",
+        "title": "Software para Alquiler de Motos de Agua: TPV, Check-in QR y Reservas | Solnow",
         "description": "Gestiona mostrador, contratos digitales, flota en tiempo real y reservas por WhatsApp con IA. Usado por operadores con 100+ motos de agua en España. Demo gratuita.",
         "ogTitle": "Software para alquiler de motos de agua"
       },

@@ -62,9 +62,11 @@ export async function generateMetadata({
     alternates: {
       canonical: path,
       languages: {
-        "es-ES": "/es",
-        "en-US": "/en",
-        "x-default": "/es",
+        es: "/es",
+        en: "/en",
+        // x-default → inglés: es la versión que sirve al tráfico internacional
+        // que no encaja en ninguna de las dos variantes declaradas.
+        "x-default": "/en",
       },
     },
     openGraph: {

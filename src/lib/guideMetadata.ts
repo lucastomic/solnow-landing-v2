@@ -20,10 +20,10 @@ export async function buildGuideMetadata(
   const url = `/${locale}/${localizedSlug(key, locale)}`;
   const esUrl = `/es/${localizedSlug(key, 'es')}`;
 
-  const languages: Record<string, string> = { 'es-ES': esUrl };
+  const languages: Record<string, string> = { es: esUrl };
   if (hasEnPage(key)) {
     const enUrl = `/en/${localizedSlug(key, 'en')}`;
-    languages['en-US'] = enUrl;
+    languages.en = enUrl;
     // x-default → English: international EN traffic outweighs ES (mostly brand).
     languages['x-default'] = enUrl;
   } else {
