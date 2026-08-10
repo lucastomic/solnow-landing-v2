@@ -1,6 +1,6 @@
 import Script from "next/script";
 
-const PIXEL_ID = "1725227561961856";
+const PIXEL_ID = "1570948788037776";
 
 /**
  * Snippet del pixel. Lo monta `DeferredAnalytics` cuando toca, no el layout:

@@ -2,14 +2,13 @@
 import { useEffect, useRef } from 'react';
 
 /**
- * Los dos globales del etiquetado, tipados en local.
+ * El global del etiquetado, tipado en local.
  *
  * Sin `declare global`: `@next/third-parties` ya augmenta `Window` con
  * `dataLayer`, y una segunda declaración con otro tipo no compila.
  */
 type TagGlobals = {
   dataLayer?: { push(entry: Record<string, unknown>): void };
-  fbq?: (...args: unknown[]) => void;
 };
 
 /**
@@ -23,9 +22,15 @@ type TagGlobals = {
  * No pinta nada: es un listener con un guard de una sola ejecución (HubSpot
  * puede repetir el mensaje si el usuario recarga el paso de confirmación).
  *
- * Ambas llamadas van con optional chaining a propósito: si el CMP (Sirdata) ha
- * bloqueado GTM o el pixel, `dataLayer`/`fbq` sencillamente no existen y esto
- * debe quedarse callado, no romper la página.
+ * El `dataLayer.push` va con optional chaining a propósito: si el CMP (Sirdata)
+ * ha bloqueado GTM, `dataLayer` sencillamente no existe y esto debe quedarse
+ * callado, no romper la página.
+ *
+ * El `Schedule` de Meta lo emite SOLO la CAPI (Lambda), disparado por el paso
+ * del deal a "Demo agendada". No lo mandamos también desde el pixel: sin un
+ * `event_id` compartido, Meta contaría la misma demo dos veces (el scheduler de
+ * HubSpot no permite inyectar ese id). La CAPI es la fuente única: a prueba de
+ * ad blockers y del CMP, y cubre también el alta manual por WhatsApp.
  */
 export function MeetingTracker() {
   const fired = useRef(false);
@@ -48,7 +53,6 @@ export function MeetingTracker() {
       fired.current = true;
       const w = window as unknown as TagGlobals;
       w.dataLayer?.push({ event: 'meeting_booked', form_location: 'ads_demo' });
-      w.fbq?.('track', 'Schedule');
     };
 
     window.addEventListener('message', onMessage);
