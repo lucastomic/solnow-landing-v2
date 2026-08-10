@@ -6,9 +6,17 @@ export const guideOgSize = { width: 1200, height: 630 };
 export const guideOgContentType = 'image/png';
 
 export function renderGuideOg(content: GuideContent) {
-  const title = content.meta.ogTitle || content.hero.h1;
-  const eyebrow = content.hero.eyebrow;
+  return renderOgCard({
+    title: content.meta.ogTitle || content.hero.h1,
+    eyebrow: content.hero.eyebrow,
+  });
+}
 
+/**
+ * La tarjeta en crudo, para las páginas que no son guías (la landing de
+ * campaña) y por tanto no tienen un `GuideContent` del que sacar los textos.
+ */
+export function renderOgCard({ title, eyebrow }: { title: string; eyebrow?: string }) {
   return new ImageResponse(
     (
       <div

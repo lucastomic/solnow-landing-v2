@@ -1598,6 +1598,94 @@
       ]
     }
   },
+  "adsDemo": {
+    "meta": {
+      "title": "Book your Solnow demo · 30 minutes with a partner",
+      "description": "Pick a slot in the calendar and we'll show you Solnow with your fleet, your bases and your real volume. 30 minutes, no commitment.",
+      "ogTitle": "A Solnow demo with your real operation"
+    },
+    "hero": {
+      "eyebrow": "Personalized demo",
+      "headPre": "Book 30 minutes and see Solnow running ",
+      "headEm": "your real operation",
+      "headPost": ".",
+      "lede": "No forms, no email threads. Pick a slot in the calendar and on the call you'll see your fleet, your bases and your volume inside the system.",
+      "bullets": [
+        "We build the demo with your units, your bases and your prices — not with sample data.",
+        "You leave the call with an implementation plan and a number: what it costs and what it saves.",
+        "You talk to someone who knows the operation, not a rep reading a script."
+      ],
+      "trustNote": "30 minutes · no commitment · English or Spanish"
+    },
+    "logos": {
+      "title": "Operators already running on Solnow"
+    },
+    "value": {
+      "eyebrow": "The call",
+      "title": "What you'll see in those 30 minutes",
+      "cards": [
+        {
+          "h": "Your operation, not a generic demo",
+          "p": "We load your fleet, your bases and your prices before the call. You see the system doing your work, not some made-up customer's."
+        },
+        {
+          "h": "The whole flow, end to end",
+          "p": "WhatsApp enquiry, booking, signed contract and payment. We walk through all of it so you can see where your time goes today."
+        },
+        {
+          "h": "Numbers on the table",
+          "p": "Which parts of your operation get automated, how much time you get back and what the switch involves. No fine print."
+        }
+      ]
+    },
+    "how": {
+      "eyebrow": "After you book",
+      "title": "What happens once you pick a slot",
+      "steps": [
+        {
+          "h": "Instant confirmation",
+          "p": "You get the video call link by email, with its calendar invite."
+        },
+        {
+          "h": "We set up your environment",
+          "p": "Before the call we load your operation's data so the demo is actually yours."
+        },
+        {
+          "h": "30 minutes and a decision",
+          "p": "You leave with a concrete proposal and real implementation timelines. If it's not a fit, we'll say so."
+        }
+      ]
+    },
+    "faq": {
+      "title": "Before you book",
+      "items": [
+        {
+          "q": "Is this a sales call?",
+          "a": "It's a technical demo. We show the product running with your data and answer whatever you ask. If Solnow isn't a fit for your operation, we'll tell you on the same call."
+        },
+        {
+          "q": "How long does it take?",
+          "a": "30 minutes. If you need more time or want to bring someone from your team, we'll extend it."
+        },
+        {
+          "q": "Do I need to prepare anything?",
+          "a": "Nothing. Knowing how many units you run, how many bases you operate and how you take bookings today is enough."
+        },
+        {
+          "q": "What if I don't rent jet skis?",
+          "a": "We work with boat rental, jet skis, parasailing and water activities in general. If you rent by the hour and sign contracts, it fits."
+        }
+      ]
+    },
+    "final": {
+      "head": "Pick your slot and let's talk",
+      "cta": "Go to the calendar",
+      "note": "30 minutes · no commitment"
+    },
+    "footer": {
+      "rights": "© {year} Solnow · Valencia, Spain"
+    }
+  },
   "guides": {
     "backHome": "Back to home",
     "tocLabel": "In this guide",

@@ -1598,6 +1598,94 @@
       ]
     }
   },
+  "adsDemo": {
+    "meta": {
+      "title": "Pide tu demo de Solnow · 30 minutos con un partner",
+      "description": "Elige hueco en el calendario y te enseñamos Solnow con tu flota, tus bases y tu volumen real. 30 minutos, sin compromiso.",
+      "ogTitle": "Demo de Solnow con tu operación real"
+    },
+    "hero": {
+      "eyebrow": "Demo personalizada",
+      "headPre": "Reserva 30 minutos y te enseñamos Solnow con ",
+      "headEm": "tu operación real",
+      "headPost": ".",
+      "lede": "Sin formularios ni cadenas de correo. Eliges hueco en el calendario y en la llamada ves tu flota, tus bases y tu volumen dentro del sistema.",
+      "bullets": [
+        "Montamos la demo con tus unidades, tus bases y tus precios — no con datos de ejemplo.",
+        "Salimos de la llamada con un plan de implementación y un número: qué cuesta y qué ahorra.",
+        "Hablas con alguien que conoce la operación, no con un comercial de guion."
+      ],
+      "trustNote": "30 minutos · sin compromiso · en español"
+    },
+    "logos": {
+      "title": "Operadores que ya trabajan con Solnow"
+    },
+    "value": {
+      "eyebrow": "La llamada",
+      "title": "Qué vas a ver en esos 30 minutos",
+      "cards": [
+        {
+          "h": "Tu operación, no una demo genérica",
+          "p": "Cargamos tu flota, tus bases y tus precios antes de la llamada. Ves el sistema haciendo tu trabajo, no el de un cliente inventado."
+        },
+        {
+          "h": "El flujo completo, de punta a punta",
+          "p": "Consulta por WhatsApp, reserva, contrato firmado y cobro. Lo recorremos entero para que veas dónde se te va hoy el tiempo."
+        },
+        {
+          "h": "Números sobre la mesa",
+          "p": "Qué partes de tu operación se automatizan, cuánto tiempo recuperas y qué implica el cambio. Sin letra pequeña."
+        }
+      ]
+    },
+    "how": {
+      "eyebrow": "Después de reservar",
+      "title": "Qué pasa cuando eliges hueco",
+      "steps": [
+        {
+          "h": "Confirmación inmediata",
+          "p": "Recibes el enlace de la videollamada por correo, con su invitación de calendario."
+        },
+        {
+          "h": "Preparamos tu entorno",
+          "p": "Antes de la llamada cargamos los datos de tu operación para que la demo sea la tuya."
+        },
+        {
+          "h": "30 minutos y una decisión",
+          "p": "Sales con una propuesta concreta y plazos reales de implementación. Si no encaja, te lo decimos."
+        }
+      ]
+    },
+    "faq": {
+      "title": "Antes de reservar",
+      "items": [
+        {
+          "q": "¿Es una llamada de ventas?",
+          "a": "Es una demo técnica. Te enseñamos el producto funcionando con tus datos y respondemos lo que preguntes. Si Solnow no encaja con tu operación, te lo decimos en la misma llamada."
+        },
+        {
+          "q": "¿Cuánto dura?",
+          "a": "30 minutos. Si necesitas más tiempo o quieres sumar a alguien de tu equipo, lo ampliamos sin problema."
+        },
+        {
+          "q": "¿Tengo que preparar algo?",
+          "a": "Nada. Con saber cuántas unidades tienes, en cuántas bases operas y cómo reservas hoy, es suficiente."
+        },
+        {
+          "q": "¿Y si mi operación no es de motos de agua?",
+          "a": "Trabajamos con alquiler de barcos, motos de agua, parasailing y actividades acuáticas en general. Si alquilas por horas y firmas contratos, encaja."
+        }
+      ]
+    },
+    "final": {
+      "head": "Elige tu hueco y hablamos",
+      "cta": "Ir al calendario",
+      "note": "30 minutos · sin compromiso"
+    },
+    "footer": {
+      "rights": "© {year} Solnow · Valencia, España"
+    }
+  },
   "guides": {
     "backHome": "Volver al inicio",
     "tocLabel": "En esta guía",

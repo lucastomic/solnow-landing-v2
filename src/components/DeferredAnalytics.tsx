@@ -1,8 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { GoogleTagManager } from '@next/third-parties/google';
 import { MetaPixelScript } from '@/components/MetaPixel';
+import { isAdsPath } from '@/content/adsLanding';
 
 const GTM_ID = 'GTM-W7TQ38LJ';
 
@@ -30,13 +32,23 @@ const INTERACTION_EVENTS = ['pointerdown', 'keydown', 'touchstart', 'scroll'] as
  * inactividad una vez la página ya ha terminado de cargar.
  *
  * Contrapartida asumida: no se miden las sesiones que rebotan en menos de ~3 s
- * sin tocar la página. No hay eventos propios que dependan de `fbq`/`gtag`
- * antes de tiempo — no existe ninguna llamada a esas globales en el código.
+ * sin tocar la página. Es aceptable en tráfico orgánico, pero no en el de pago:
+ * ahí esas sesiones se pagan una a una, y perderlas falsea el CPA de la
+ * campaña. Por eso las landings de anuncios (`isAdsPath`) cargan el etiquetado
+ * de entrada. El consentimiento no cambia: el CMP (Sirdata) sigue decidiendo
+ * qué dispara GTM de verdad.
+ *
+ * La única llamada propia a estas globales es la conversión de reunión
+ * reservada (`MeetingTracker`), que vive precisamente en esa landing y por
+ * tanto siempre encuentra los tags cargados.
  */
 export function DeferredAnalytics() {
-  const [load, setLoad] = useState(false);
+  const eager = isAdsPath(usePathname());
+  const [load, setLoad] = useState(eager);
 
   useEffect(() => {
+    if (eager) return;
+
     let idleHandle: number | undefined;
     let timeoutHandle: ReturnType<typeof setTimeout> | undefined;
 
@@ -77,7 +89,7 @@ export function DeferredAnalytics() {
       if (idleHandle !== undefined) window.cancelIdleCallback?.(idleHandle);
       if (timeoutHandle !== undefined) clearTimeout(timeoutHandle);
     };
-  }, []);
+  }, [eager]);
 
   if (!load) return null;
 
