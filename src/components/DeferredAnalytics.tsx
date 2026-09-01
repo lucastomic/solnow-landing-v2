@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { GoogleTagManager } from '@next/third-parties/google';
 import { MetaPixelScript } from '@/components/MetaPixel';
+import { OpenAIPixelScript } from '@/components/OpenAIPixel';
 import { isAdsPath } from '@/content/adsLanding';
 
 const GTM_ID = 'GTM-W7TQ38LJ';
@@ -17,8 +18,8 @@ const IDLE_TIMEOUT_MS = 3000;
 const INTERACTION_EVENTS = ['pointerdown', 'keydown', 'touchstart', 'scroll'] as const;
 
 /**
- * Etiquetado (GTM, Meta Pixel y, en cascada desde GTM, GA4 y HubSpot) cargado
- * fuera del arranque.
+ * Etiquetado (GTM, Meta Pixel, pixel de OpenAI y, en cascada desde GTM, GA4 y
+ * HubSpot) cargado fuera del arranque.
  *
  * GA4 (`G-C48R6MLF4L`) no se monta aquí a propósito: lo dispara GTM con la
  * etiqueta de Google en `Initialization - All Pages`. Cargarlo además desde el
@@ -97,6 +98,7 @@ export function DeferredAnalytics() {
     <>
       <GoogleTagManager gtmId={GTM_ID} />
       <MetaPixelScript />
+      <OpenAIPixelScript />
     </>
   );
 }

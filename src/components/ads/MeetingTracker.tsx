@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useRef } from 'react';
+import { measureOpenAI } from '@/components/OpenAIPixel';
 
 /**
  * El global del etiquetado, tipado en local.
@@ -53,6 +54,14 @@ export function MeetingTracker() {
       fired.current = true;
       const w = window as unknown as TagGlobals;
       w.dataLayer?.push({ event: 'meeting_booked', form_location: 'ads_demo' });
+
+      // Misma conversión hacia el pixel de OpenAI. `amount: 0` porque reservar
+      // demo no factura nada: el valor lo pone el deal, no esta página.
+      measureOpenAI('registration_completed', {
+        type: 'customer_action',
+        amount: 0,
+        currency: 'USD',
+      });
     };
 
     window.addEventListener('message', onMessage);
