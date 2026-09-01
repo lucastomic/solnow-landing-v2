@@ -55,13 +55,9 @@ export function MeetingTracker() {
       const w = window as unknown as TagGlobals;
       w.dataLayer?.push({ event: 'meeting_booked', form_location: 'ads_demo' });
 
-      // Misma conversión hacia el pixel de OpenAI. `amount: 0` porque reservar
-      // demo no factura nada: el valor lo pone el deal, no esta página.
-      measureOpenAI('registration_completed', {
-        type: 'customer_action',
-        amount: 0,
-        currency: 'USD',
-      });
+      // Misma conversión hacia el pixel de OpenAI. Sin `amount`: reservar demo
+      // no factura nada, el valor lo pone el deal y no esta página.
+      measureOpenAI('lead_created', { type: 'customer_action' });
     };
 
     window.addEventListener('message', onMessage);

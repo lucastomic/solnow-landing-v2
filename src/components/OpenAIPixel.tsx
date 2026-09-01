@@ -1,6 +1,6 @@
 import Script from "next/script";
 
-const PIXEL_ID = "KcasC5SqsUG7NtSZ8vQ26W";
+const PIXEL_ID = "QKrycnWVhgWywBgVUjbxtY";
 
 /**
  * Cola del pixel de OpenAI, tipada en local (el snippet crea `window.oaiq`
