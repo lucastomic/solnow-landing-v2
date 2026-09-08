@@ -40,8 +40,9 @@ const INTERACTION_EVENTS = ['pointerdown', 'keydown', 'touchstart', 'scroll'] as
  * qué dispara GTM de verdad.
  *
  * La única llamada propia a estas globales es la conversión de reunión
- * reservada (`MeetingTracker`), que vive precisamente en esa landing y por
- * tanto siempre encuentra los tags cargados.
+ * reservada (`MeetingTracker`). En la landing de anuncios los tags están
+ * cargados de entrada; en la home, reservar exige interactuar con el
+ * calendario, así que para entonces el etiquetado también ha arrancado.
  */
 export function DeferredAnalytics() {
   const eager = isAdsPath(usePathname());

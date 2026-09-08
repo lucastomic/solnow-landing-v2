@@ -286,7 +286,7 @@ export async function FinalCTA({ locale }: { locale: Locale }) {
           </div>
 
           <div id="agendar" className="reveal" style={{ ['--reveal-delay' as string]: '120ms', scrollMarginTop: 90 }}>
-            <DemoCalendar />
+            <DemoCalendar trackConversion="home" />
           </div>
         </div>
       </div>

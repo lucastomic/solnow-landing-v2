@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import Script from 'next/script';
-import { MeetingTracker } from '@/components/ads/MeetingTracker';
+import { MeetingTracker, type MeetingFormLocation } from '@/components/ads/MeetingTracker';
 
 /** Alto reservado para el iframe de HubSpot; evita el salto al montarlo. */
 const CALENDAR_MIN_HEIGHT = 660;
@@ -48,8 +48,11 @@ interface DemoCalendarProps {
   eager?: boolean;
   /** Reenvía los parámetros de campaña de la URL al embed (ver `CAMPAIGN_PARAMS`). */
   passThroughParams?: boolean;
-  /** Monta el listener que registra la reunión reservada como conversión. */
-  trackConversion?: boolean;
+  /**
+   * Monta el listener que registra la reunión reservada como conversión
+   * (dataLayer y pixel de OpenAI), etiquetada con la página de origen.
+   */
+  trackConversion?: MeetingFormLocation;
   /** Alto reservado, por si el hueco de la página no es el de la home. */
   minHeight?: number;
 }
@@ -72,7 +75,7 @@ interface DemoCalendarProps {
 export function DemoCalendar({
   eager = false,
   passThroughParams = false,
-  trackConversion = false,
+  trackConversion,
   minHeight = CALENDAR_MIN_HEIGHT,
 }: DemoCalendarProps = {}) {
   // `eager` no pasa por estado: hacerlo obligaría a un `setState` síncrono en el
@@ -146,7 +149,7 @@ export function DemoCalendar({
           strategy="afterInteractive"
         />
       )}
-      {trackConversion && <MeetingTracker />}
+      {trackConversion && <MeetingTracker formLocation={trackConversion} />}
     </div>
   );
 }

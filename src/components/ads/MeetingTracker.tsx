@@ -12,8 +12,11 @@ type TagGlobals = {
   dataLayer?: { push(entry: Record<string, unknown>): void };
 };
 
+/** Desde qué página se ha reservado, para separar campaña y orgánico. */
+export type MeetingFormLocation = 'ads_demo' | 'home';
+
 /**
- * Conversión de la landing de anuncios: reunión reservada.
+ * Conversión de reunión reservada (landing de anuncios y home).
  *
  * El embed de HubSpot Meetings es un iframe cross-origin, así que la única
  * señal de que alguien ha cerrado hueco es el `postMessage` que emite al
@@ -33,7 +36,7 @@ type TagGlobals = {
  * HubSpot no permite inyectar ese id). La CAPI es la fuente única: a prueba de
  * ad blockers y del CMP, y cubre también el alta manual por WhatsApp.
  */
-export function MeetingTracker() {
+export function MeetingTracker({ formLocation }: { formLocation: MeetingFormLocation }) {
   const fired = useRef(false);
 
   useEffect(() => {
@@ -53,7 +56,7 @@ export function MeetingTracker() {
 
       fired.current = true;
       const w = window as unknown as TagGlobals;
-      w.dataLayer?.push({ event: 'meeting_booked', form_location: 'ads_demo' });
+      w.dataLayer?.push({ event: 'meeting_booked', form_location: formLocation });
 
       // Misma conversión hacia el pixel de OpenAI. Sin `amount`: reservar demo
       // no factura nada, el valor lo pone el deal y no esta página.
@@ -62,7 +65,7 @@ export function MeetingTracker() {
 
     window.addEventListener('message', onMessage);
     return () => window.removeEventListener('message', onMessage);
-  }, []);
+  }, [formLocation]);
 
   return null;
 }

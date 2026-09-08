@@ -145,7 +145,7 @@ export async function DemoLanding({ locale }: { locale: Locale }) {
               {/* `r-split` colapsa a una columna por debajo de 1000px, así que en
                   móvil el calendario cae justo bajo el copy sin nada extra. */}
               <div id="agendar" className="hero-rise" style={{ ['--reveal-delay' as string]: '120ms', scrollMarginTop: 24 }}>
-                <DemoCalendar eager passThroughParams trackConversion />
+                <DemoCalendar eager passThroughParams trackConversion="ads_demo" />
               </div>
             </div>
           </div>
