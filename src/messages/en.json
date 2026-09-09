@@ -1600,41 +1600,61 @@
   },
   "adsDemo": {
     "meta": {
-      "title": "Book your Solnow demo · 30 minutes with a partner",
-      "description": "Pick a slot in the calendar and we'll show you Solnow with your fleet, your bases and your real volume. 30 minutes, no commitment.",
-      "ogTitle": "A Solnow demo with your real operation"
+      "title": "Solnow demo · Stop losing bookings without adding staff",
+      "description": "Book 30 minutes and see how Solnow answers WhatsApp 24/7, signs the contract and takes payment in a single flow, with your real fleet and bases. No commitment.",
+      "ogTitle": "Stop losing bookings without adding staff"
     },
     "hero": {
-      "eyebrow": "Personalized demo",
-      "headPre": "Book 30 minutes and see Solnow running ",
-      "headEm": "your real operation",
-      "headPost": ".",
-      "lede": "No forms, no email threads. Pick a slot in the calendar and on the call you'll see your fleet, your bases and your volume inside the system.",
+      "eyebrow": "Personalized demo · 30 minutes",
+      "headPre": "Stop losing bookings ",
+      "headEm": "without adding staff",
+      "headPost": "",
+      "lede": "Counter, website, WhatsApp and partners in a single flow of booking, contract and payment. Pick a slot and in 30 minutes you'll see it running with your fleet, your bases and your real volume.",
       "bullets": [
-        "We build the demo with your units, your bases and your prices — not with sample data.",
-        "You leave the call with an implementation plan and a number: what it costs and what it saves.",
-        "You talk to someone who knows the operation, not a rep reading a script."
+        "The AI agent answers and closes bookings on WhatsApp 24/7, even when the base is closed.",
+        "Booking, signed contract and payment in one step. No more 2-3 hours of paperwork a day.",
+        "All your bases on one screen, in real time and from your phone.",
+        "You leave the call with an implementation plan and a number: what it costs and what it saves."
       ],
       "trustNote": "30 minutes · no commitment · English or Spanish"
     },
     "logos": {
       "title": "Operators already running on Solnow"
     },
+    "stats": {
+      "items": [
+        {
+          "k": "24/7",
+          "u": "WhatsApp handled by AI",
+          "d": "answers and closes bookings before you open the base"
+        },
+        {
+          "k": "1 flow",
+          "u": "booking, contract and payment",
+          "d": "counter, website, WhatsApp and partners, no paperwork"
+        },
+        {
+          "k": "7 days",
+          "u": "from Excel to production",
+          "d": "we do 95% of the implementation work"
+        }
+      ]
+    },
     "value": {
-      "eyebrow": "The call",
-      "title": "What you'll see in those 30 minutes",
+      "eyebrow": "Why Solnow",
+      "title": "What you'll see running on your data",
       "cards": [
         {
-          "h": "Your operation, not a generic demo",
-          "p": "We load your fleet, your bases and your prices before the call. You see the system doing your work, not some made-up customer's."
+          "h": "You sell while the base is closed",
+          "p": "The AI agent handles WhatsApp against your real availability: it advises, closes the booking and takes the deposit. The 11 pm enquiries stop getting lost."
         },
         {
-          "h": "The whole flow, end to end",
-          "p": "WhatsApp enquiry, booking, signed contract and payment. We walk through all of it so you can see where your time goes today."
+          "h": "Zero paperwork at the counter",
+          "p": "POS, QR, signed contract and payment in the same step. We walk through all of it with your prices so you can see where your time goes today."
         },
         {
-          "h": "Numbers on the table",
-          "p": "Which parts of your operation get automated, how much time you get back and what the switch involves. No fine print."
+          "h": "Control over every base",
+          "p": "Fleet, bookings and cash for each base on a single screen, live and from your phone. You find out before it escalates, not after."
         }
       ]
     },
@@ -1648,11 +1668,11 @@
         },
         {
           "h": "We set up your environment",
-          "p": "Before the call we load your operation's data so the demo is actually yours."
+          "p": "Before the call we load your fleet, your bases and your prices so the demo is actually yours, not some made-up customer's."
         },
         {
           "h": "30 minutes and a decision",
-          "p": "You leave with a concrete proposal and real implementation timelines. If it's not a fit, we'll say so."
+          "p": "You leave with a concrete proposal, what it costs, what it saves and real implementation timelines. If it's not a fit, we'll say so."
         }
       ]
     },
@@ -1662,6 +1682,10 @@
         {
           "q": "Is this a sales call?",
           "a": "It's a technical demo. We show the product running with your data and answer whatever you ask. If Solnow isn't a fit for your operation, we'll tell you on the same call."
+        },
+        {
+          "q": "How much does Solnow cost?",
+          "a": "It depends on your volume and your bases. You leave the call with the exact number for your operation and what you save in return. No fine print."
         },
         {
           "q": "How long does it take?",
@@ -1678,9 +1702,9 @@
       ]
     },
     "final": {
-      "head": "Pick your slot and let's talk",
-      "cta": "Go to the calendar",
-      "note": "30 minutes · no commitment"
+      "head": "Stop losing bookings. Pick your slot.",
+      "cta": "Book my demo",
+      "note": "30 minutes · no commitment · we build it with your real fleet"
     },
     "footer": {
       "rights": "© {year} Solnow · Valencia, Spain"
@@ -1697,7 +1721,8 @@
     "groups": {
       "recurso": "Resources",
       "comparativa": "Comparisons",
-      "geo": "Regions"
+      "geo": "Regions",
+      "caso": "Case studies"
     },
     "tenerife": {
       "meta": {

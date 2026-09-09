@@ -21,6 +21,7 @@ import { DemoCalendar } from '@/components/sections/DemoCalendar';
 export async function DemoLanding({ locale }: { locale: Locale }) {
   const t = await getT(locale);
   const bullets = t<string[]>('adsDemo.hero.bullets');
+  const stats = t<{ k: string; u: string; d: string }[]>('adsDemo.stats.items');
   const cards = t<{ h: string; p: string }[]>('adsDemo.value.cards');
   const steps = t<{ h: string; p: string }[]>('adsDemo.how.steps');
   const faq = t<{ q: string; a: string }[]>('adsDemo.faq.items');
@@ -196,8 +197,59 @@ export async function DemoLanding({ locale }: { locale: Locale }) {
           </div>
         </section>
 
+        {/* ── Tres cifras: qué cambia con Solnow ───────────────────────────── */}
+        {/* Mismo tratamiento que el `PainBar` de la home, pero al revés: allí
+            son los números del problema; aquí, los de la solución. Quien llega
+            de un anuncio ya sabe qué le duele, hay que enseñarle qué gana. */}
+        <section className="section" style={{ paddingTop: 72, paddingBottom: 24 }}>
+          <div className="container">
+            <div
+              className="r-cols-3"
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, 1fr)',
+                gap: 1,
+                border: '1px solid var(--line-soft)',
+                borderRadius: 16,
+                overflow: 'hidden',
+                background: 'var(--line-soft)',
+              }}
+            >
+              {stats.map((b, i) => (
+                <div
+                  key={i}
+                  className="reveal"
+                  style={{
+                    ['--reveal-delay' as string]: `${i * 90}ms`,
+                    padding: '32px 28px',
+                    background: 'var(--bg)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: 10,
+                  }}
+                >
+                  <div
+                    style={{
+                      fontSize: 48,
+                      lineHeight: 1,
+                      letterSpacing: '-0.04em',
+                      fontWeight: 500,
+                      color: 'var(--accent)',
+                      fontVariantNumeric: 'tabular-nums',
+                    }}
+                  >
+                    {b.k}
+                  </div>
+                  <div style={{ fontSize: 16, color: 'var(--fg)', marginTop: 6, fontWeight: 500 }}>{b.u}</div>
+                  <div style={{ fontSize: 14, color: 'var(--muted)' }}>{b.d}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ── Qué se ve en la demo ─────────────────────────────────────────── */}
-        <section className="section" style={{ paddingBlock: 96 }}>
+        <section className="section" style={{ paddingTop: 72, paddingBottom: 96 }}>
           <div className="container">
             <SectionHead
               eyebrow={t('adsDemo.value.eyebrow')}
