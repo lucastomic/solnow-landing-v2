@@ -14,14 +14,39 @@ import { useT } from '@/i18n/I18nProvider';
  */
 export function FAQ() {
   const t = useT();
-  const faqs = t<{ q: string; a: string }[]>('faq.items');
+  return (
+    <FaqAccordion
+      items={t<{ q: string; a: string }[]>('faq.items')}
+      eyebrow={t('faq.eyebrow')}
+      title={t('faq.title')}
+    />
+  );
+}
 
+export interface FaqAccordionProps {
+  items: { q: string; a: string }[];
+  eyebrow: string;
+  title: string;
+  /** El ancla `#faq` es de la home; la FAQ de facturación usa la suya. */
+  id?: string;
+  paddingBlock?: number;
+}
+
+/**
+ * El acordeón en sí, con las preguntas por props.
+ *
+ * Separado de `FAQ` para que la página de precios pueda montar su FAQ de
+ * facturación sin arrastrar su namespace al diccionario de cliente: lo que
+ * `I18nProvider` serializa se paga en el HTML de *todas* las páginas, y la
+ * letra pequeña de facturación solo se lee en una.
+ */
+export function FaqAccordion({ items: faqs, eyebrow, title, id = 'faq', paddingBlock = 120 }: FaqAccordionProps) {
   const [open, setOpen] = useState(0);
 
   return (
-    <section id="faq" className="section" style={{ paddingBlock: 120 }}>
+    <section id={id} className="section" style={{ paddingBlock }}>
       <div className="container" style={{ maxWidth: 1000 }}>
-        <SectionHead eyebrow={t('faq.eyebrow')} title={<>{t('faq.title')}</>} />
+        <SectionHead eyebrow={eyebrow} title={<>{title}</>} />
         <div style={{ borderTop: '1px solid var(--line-soft)' }}>
           {faqs.map((f, i) => {
             const isOpen = open === i;

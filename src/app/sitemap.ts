@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { locales, SITE_URL } from "@/i18n/config";
 import { GUIDES, localizedSlug, hasEnPage } from "@/content/guides";
 import { PRODUCTS, productHubPath, productPath } from "@/content/products";
+import { pricingPath } from "@/content/pricingRoute";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
@@ -87,5 +88,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
     return entries;
   });
 
-  return [...home, ...productHub, ...productAreas, ...guides, ...legal];
+  // Precios: en los dos idiomas y con alternates cruzados. Es la página que
+  // captura las búsquedas de «cuánto cuesta», así que va con la misma prioridad
+  // que el hub de producto.
+  const pricing: MetadataRoute.Sitemap = locales.map((locale) => ({
+    url: `${SITE_URL}${pricingPath(locale)}`,
+    lastModified,
+    changeFrequency: 'monthly',
+    priority: 0.9,
+    alternates: { languages: Object.fromEntries(locales.map((l) => [l, `${SITE_URL}${pricingPath(l)}`])) },
+  }));
+
+  // Calculadora: solo `/es`, sin alternates. `proxy.ts` redirige `/en/calculator`
+  // aquí mismo, así que declarar una alternativa inglesa sería anunciar una URL
+  // que responde 301 a esta.
+  const calculator = [
+    {
+      url: `${SITE_URL}/es/calculator`,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+  ];
+
+  return [...home, ...pricing, ...productHub, ...productAreas, ...guides, ...calculator, ...legal];
 }

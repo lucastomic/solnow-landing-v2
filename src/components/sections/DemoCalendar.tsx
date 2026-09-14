@@ -9,7 +9,7 @@ const CALENDAR_MIN_HEIGHT = 660;
 const EMBED_SRC = 'https://meetings-eu1.hubspot.com/lucas-tomic/demo-solnow?embed=true';
 
 /**
- * Parámetros de campaña que se reenvían al embed.
+ * Parámetros que se reenvían al embed.
  *
  * HubSpot los adjunta al contacto y a la reunión, así que la atribución
  * (qué anuncio pagó esta demo) llega al CRM sin tocar nada más. Lista cerrada
@@ -25,6 +25,15 @@ const CAMPAIGN_PARAMS = [
   'gclid',
   'fbclid',
   'msclkid',
+  // Valores que el visitante ya ha introducido en `/es/calculator`. Llegan al
+  // contacto de HubSpot, de modo que el comercial abre la llamada sabiendo la
+  // facturación y las bases en vez de gastar los diez primeros minutos en
+  // preguntarlas. Prefijados con `calc_` para que se lean como lo que son.
+  'calc_facturacion',
+  'calc_bases',
+  'calc_canales',
+  'calc_pago',
+  'calc_total',
 ] as const;
 
 function withCampaignParams(src: string): string {

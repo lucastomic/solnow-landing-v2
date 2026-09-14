@@ -1,10 +1,14 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { useT } from '@/i18n/I18nProvider';
+import { usePathname } from 'next/navigation';
+import { useT, useLocale } from '@/i18n/I18nProvider';
+import { pricingPath } from '@/content/pricingRoute';
 
 export default function Nav() {
   const t = useT();
+  const locale = useLocale();
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -23,11 +27,22 @@ export default function Nav() {
     return () => mq.removeEventListener('change', on);
   }, []);
 
+  /**
+   * Las secciones ancladas viven en la home, así que desde cualquier otra
+   * página el `#producto` a secas no lleva a ninguna parte: hay que cruzar
+   * primero. Antes daba igual porque el nav solo se montaba en la home; desde
+   * que existe `/precios` hay páginas donde esos anclajes están muertos.
+   */
+  const home = `/${locale}`;
+  const onHome = pathname === home;
+  const anchor = (hash: string) => (onHome ? hash : home + hash);
+
   const items: [string, string][] = [
-    [t('nav.producto'), '#producto'],
-    [t('nav.comparativa'), '#comparativa'],
-    [t('nav.implementacion'), '#implementacion'],
-    [t('nav.faq'), '#faq'],
+    [t('nav.producto'), anchor('#producto')],
+    [t('nav.comparativa'), anchor('#comparativa')],
+    [t('nav.pricing'), pricingPath(locale)],
+    [t('nav.implementacion'), anchor('#implementacion')],
+    [t('nav.faq'), anchor('#faq')],
   ];
 
   return (
@@ -46,7 +61,12 @@ export default function Nav() {
       }}
     >
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 64 }}>
-        <a href="#top" style={{ display: 'inline-flex', alignItems: 'center' }} onClick={() => setOpen(false)}>
+        <a
+          href={onHome ? '#top' : home}
+          aria-label={t('nav.homeLabel')}
+          style={{ display: 'inline-flex', alignItems: 'center' }}
+          onClick={() => setOpen(false)}
+        >
           <Image
             src="/hollow_logo_name_color.webp"
             alt="Solnow"

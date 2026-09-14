@@ -9,26 +9,30 @@ interface SectionHeadProps {
   lede?: string;
   align?: 'left' | 'center';
   accent?: boolean;
+  /** Aire reducido, para secciones que deben caber de una vez en pantalla. */
+  compact?: boolean;
 }
 
-export function SectionHead({ eyebrow, title, lede, align = 'left', accent }: SectionHeadProps) {
+export function SectionHead({ eyebrow, title, lede, align = 'left', accent, compact }: SectionHeadProps) {
   return (
     <div
       className="reveal"
       style={{
         display: 'flex',
         flexDirection: 'column',
-        gap: 18,
+        gap: compact ? 10 : 18,
         alignItems: align === 'center' ? 'center' : 'flex-start',
         textAlign: align === 'center' ? 'center' : 'left',
-        marginBottom: 56,
+        marginBottom: compact ? 28 : 56,
         maxWidth: align === 'center' ? 'min(780px, 100%)' : 'min(820px, 100%)',
         marginInline: align === 'center' ? 'auto' : undefined,
       }}
     >
       {eyebrow && <span className={'eyebrow ' + (accent === false ? 'no-dot' : '')}>{eyebrow}</span>}
-      <h2 className="h-1">{title}</h2>
-      {lede && <p className="lede">{lede}</p>}
+      <h2 className="h-1" style={compact ? { margin: 0 } : undefined}>
+        {title}
+      </h2>
+      {lede && <p className="lede" style={compact ? { margin: 0 } : undefined}>{lede}</p>}
     </div>
   );
 }

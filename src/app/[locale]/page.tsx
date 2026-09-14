@@ -6,6 +6,7 @@ import Nav from '@/components/Nav';
 import Hero from '@/components/Hero';
 import { PainBar, ProductAreas } from '@/components/sections/SectionsProduct';
 import { Pillars, Comparison } from '@/components/sections/SectionsMid';
+import { PricingTeaser } from '@/components/sections/SectionsPricing';
 import { WhyNow } from '@/components/sections/SectionsThesis';
 import { Onboarding, SocialProof, FinalCTA, Footer } from '@/components/sections/SectionsEnd';
 import { FAQ } from '@/components/sections/FAQ';
@@ -59,6 +60,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         <ProductAreas locale={locale} />
         <WhyNow locale={locale} />
         <Comparison locale={locale} />
+        <PricingTeaser locale={locale} />
         <Onboarding locale={locale} />
         <SocialProof locale={locale} />
         <FAQ />

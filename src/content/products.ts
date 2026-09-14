@@ -159,6 +159,9 @@ export const AREA_FOR_GUIDE: Record<GuideKey, ProductKey> = {
   // Parasailing vende el mostrador del pantalán: el walk-in es la mitad de su
   // facturación, así que la landing comercial que le corresponde es el TPV.
   parasailing: 'tpv',
+  // El caso de Banana Summer se sostiene sobre el agente de WhatsApp (270
+  // reservas creadas, 620 participadas), así que remite a esa landing.
+  bananaSummer: 'whatsapp',
   fareharborAlt: 'motor',
   turitopAlt: 'motor',
   fareharborVs: 'motor',

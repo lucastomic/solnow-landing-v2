@@ -300,7 +300,9 @@ export async function Footer({ locale }: { locale: Locale }) {
   const resourcesCol = t<{ h: string } & Record<string, string>>('footer.resources');
   const comparativasCol = t<{ h: string } & Record<string, string>>('footer.comparativas');
   const loc = locale as Locale;
-  const recursoLinks = GUIDES.filter((g) => g.group === 'recurso').map((g) => ({
+  // Los casos de éxito van en la columna de recursos: una séptima columna
+  // rompería la rejilla del footer por un solo enlace.
+  const recursoLinks = GUIDES.filter((g) => g.group === 'recurso' || g.group === 'caso').map((g) => ({
     label: resourcesCol[g.key],
     href: `/${locale}/${localizedSlug(g.key, loc)}`,
   }));

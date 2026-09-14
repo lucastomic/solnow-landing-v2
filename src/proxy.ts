@@ -21,6 +21,16 @@ function pickLocale(request: NextRequest): string {
 }
 
 /**
+ * Rutas publicadas solo en castellano.
+ *
+ * La calculadora de precio se dirige al operador náutico mediterráneo y su copy
+ * existe en un solo idioma; publicar media traducción competiría en hreflang
+ * con la buena. Su página tampoco declara `languages`, así que las dos señales
+ * dicen lo mismo.
+ */
+const ES_ONLY_ROUTES = new Set(["calculator"]);
+
+/**
  * Rutas públicas del sitio anterior → página que las reemplaza hoy.
  *
  * `como-funciona` explicaba el producto de punta a punta; ese contenido vive
@@ -56,6 +66,14 @@ export function proxy(request: NextRequest) {
   // are affected: `/en/<segment>` with no deeper path.
   if (parts.length === 2 && parts[0] === "en") {
     const seg = parts[1];
+    // Páginas que solo existen en español. Un 301 al castellano y no un 404:
+    // la ruta es real, lo que no existe es su traducción, y devolver «no
+    // encontrado» por eso tira el enlace que alguien haya compartido.
+    // La query se conserva porque en la calculadora *es* la configuración.
+    if (ES_ONLY_ROUTES.has(seg)) {
+      request.nextUrl.pathname = `/es/${seg}`;
+      return NextResponse.redirect(request.nextUrl, 301);
+    }
     // Old Spanish-slug URL (or a consolidated page) → 301 to the English slug.
     const redirectTo = EN_REDIRECTS[seg];
     if (redirectTo) {

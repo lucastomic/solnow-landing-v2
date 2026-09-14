@@ -29,6 +29,7 @@ export const GUIDES = [
   { slug: 'software-reservas-motos-de-agua-canarias', key: 'canarias', group: 'geo', download: false, howTo: false, priority: 0.8 },
   { slug: 'software-alquiler-motos-de-agua-argentina', key: 'argentina', group: 'geo', download: false, howTo: false, priority: 0.8 },
   { slug: 'software-alquiler-motos-de-agua-mexico', key: 'mexico', group: 'geo', download: false, howTo: false, priority: 0.8 },
+  { slug: 'caso-de-exito-banana-summer', key: 'bananaSummer', group: 'caso', download: false, howTo: false, priority: 0.8 },
 ] as const;
 
 export type GuideGroup = Guide['group'];
@@ -69,6 +70,7 @@ const EN_SLUG: Partial<Record<GuideKey, string>> = {
   multibase: 'multi-base-jet-ski-management',
   whatsapp: 'whatsapp-booking-jet-ski',
   parasailing: 'parasailing-booking-software',
+  bananaSummer: 'banana-summer-case-study',
 };
 
 /**
@@ -138,6 +140,8 @@ export type GuideBlock =
   | { type: 'list'; items: string[] }
   | { type: 'callout'; tone?: 'warn' | 'info' | 'accent'; text: string }
   | { type: 'steps'; items: string[] }
+  /** Cifras grandes en rejilla: el número manda y el texto explica. */
+  | { type: 'stats'; items: { value: string; label: string }[] }
   | { type: 'table'; columns: string[]; highlightCol?: number; rows: { label: string; cells: string[] }[] };
 
 export interface GuideSection {

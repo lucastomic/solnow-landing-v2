@@ -28,6 +28,13 @@
 
   --warn:      #d98a1a;
   --danger:    #c84a3a;
+
+  /* Costes que el operador paga y que no cobra ninguna plataforma de la
+     comparativa. Van en su propia familia —fuera de la escala de marca, que es
+     la de lo que sí se le vende— pero con dos tonos bien separados: juntos en
+     una barra apilada, dos rojos parecidos se leen como un solo tramo. */
+  --cost-bank:  #c0392b;
+  --cost-human: #7d5ba6;
   --ok:        #1f9d6b;
   --info:      #4A90C0;
 
@@ -455,6 +462,10 @@ section[id] { scroll-margin-top: 72px; }
 
   /* Calculadora: quitar el divisor vertical al apilar las columnas */
   .r-calc > * { border-right: 0 !important; }
+
+  /* Calculadora de la sección de pricing: entradas sobre factura. */
+  .r-calc-grid { grid-template-columns: 1fr !important; }
+  .r-calc-left { border-right: 0 !important; border-bottom: 1px solid var(--line-soft); }
 }
 
 @media (max-width: 480px) {
@@ -495,4 +506,223 @@ section[id] { scroll-margin-top: 72px; }
 }
 @media (max-width: 380px) {
   .r-hero-mock { zoom: 0.48; }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Calculadora pública de precio (/es/calculator)
+   Aquí y no en `style` inline porque necesita :hover, ::-webkit-slider-thumb
+   y breakpoints, ninguno de los cuales existe en un atributo style.
+   ─────────────────────────────────────────────────────────────────────── */
+
+.calc-grid { display: grid; grid-template-columns: 372px minmax(0, 1fr); gap: 44px; align-items: start; }
+/* Los controles siguen al visitante mientras recorre los resultados: mover un
+   deslizador y ver cambiar la cifra es el gesto que vende la herramienta, y
+   deja de existir si hay que subir para alcanzarlo. */
+.calc-panel { position: sticky; top: 84px; }
+
+@media (max-width: 1000px) {
+  .calc-grid { grid-template-columns: 1fr; gap: 28px; }
+  .calc-panel { position: static; }
+}
+
+/* Deslizadores. `appearance: none` obliga a redibujar pulgar y raíl en cada
+   motor por separado; sin las tres reglas, uno de los tres navegadores del
+   browserslist se queda con el control del sistema. */
+.calc-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 22px;
+  background: transparent;
+  cursor: pointer;
+  margin: 0;
+  display: block;
+}
+.calc-range::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent) var(--fill, 50%), var(--line) var(--fill, 50%));
+}
+.calc-range::-moz-range-track {
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent) var(--fill, 50%), var(--line) var(--fill, 50%));
+}
+.calc-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px; height: 18px;
+  margin-top: -7px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--accent);
+  box-shadow: 0 2px 6px -1px rgba(8, 57, 84, 0.28);
+  transition: transform .12s ease;
+}
+.calc-range::-moz-range-thumb {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--accent);
+  box-shadow: 0 2px 6px -1px rgba(8, 57, 84, 0.28);
+}
+.calc-range:active::-webkit-slider-thumb { transform: scale(1.12); }
+.calc-range:focus-visible { outline: none; }
+.calc-range:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 4px var(--accent-bg); }
+.calc-range:focus-visible::-moz-range-thumb { box-shadow: 0 0 0 4px var(--accent-bg); }
+
+/* Conmutador mensual / temporada. */
+.calc-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; background: var(--surface-2); border-radius: 999px; border: 1px solid var(--line-soft); }
+.calc-toggle button {
+  padding: 9px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background .18s ease, color .18s ease, box-shadow .18s ease;
+}
+.calc-toggle button[aria-pressed='true'] {
+  background: var(--surface);
+  color: var(--accent);
+  box-shadow: 0 1px 3px rgba(8, 57, 84, 0.10);
+}
+.calc-toggle button:hover[aria-pressed='false'] { color: var(--fg-2); }
+
+/* Calendario de pagos: doce columnas de igual ancho que se estiran a lo alto.
+   `align-items: end` deja las barras creciendo desde la línea de base. */
+.calc-months { display: grid; grid-template-columns: repeat(12, 1fr); gap: 5px; align-items: end; height: 168px; }
+.calc-month-bar { border-radius: 4px 4px 0 0; min-height: 3px; transition: height .25s cubic-bezier(.2,.7,.2,1); }
+.calc-month-labels { display: grid; grid-template-columns: repeat(12, 1fr); gap: 5px; margin-top: 8px; }
+
+@media (max-width: 560px) {
+  .calc-months { height: 130px; gap: 3px; }
+  .calc-month-labels { gap: 3px; }
+}
+
+/* Comparativa. Cada fila lleva su propio desglose dentro de la barra, así que
+   es una rejilla de dos filas: nombre + barra + importe arriba, capacidades
+   debajo alineadas con la barra. */
+.calc-vs-row {
+  display: grid;
+  grid-template-columns: 104px minmax(0, 1fr) 92px;
+  gap: 6px 14px;
+  align-items: center;
+  padding: 10px 0;
+  border-top: 1px solid var(--line-soft);
+}
+.calc-vs-row:first-child { border-top: 0; }
+.calc-vs-caps { grid-column: 2 / 4; }
+
+/* La barra apilada: un tramo por línea de la factura de esa plataforma. */
+.calc-vs-bar { display: flex; height: 34px; border-radius: 7px; overflow: hidden; background: var(--surface-2); }
+.calc-vs-seg {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 7px;
+  font-size: 10.5px;
+  font-weight: 500;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: width .25s cubic-bezier(.2,.7,.2,1);
+}
+/* Franja diagonal para los tramos que el visitante activa a mano: se lee como
+   «esto es opcional» sin necesidad de otra leyenda. */
+.calc-vs-seg[data-optional='true'] {
+  background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.22) 0 5px, transparent 5px 10px);
+}
+
+/* Capacidades: encendidas las que cubre, apagadas las que no. */
+.calc-cap {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10.5px;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+.calc-cap[data-on='true']  { color: var(--fg-2); }
+.calc-cap[data-on='false'] { color: var(--muted-2); text-decoration: line-through; text-decoration-thickness: 1px; opacity: .75; }
+
+.calc-caps-wrap { display: flex; flex-wrap: wrap; gap: 4px 12px; }
+
+@media (max-width: 640px) {
+  .calc-vs-row { grid-template-columns: minmax(0, 1fr) auto; }
+  .calc-vs-row > :nth-child(1) { grid-column: 1; }
+  .calc-vs-row > :nth-child(3) { grid-column: 2; grid-row: 1; text-align: right; }
+  .calc-vs-row > :nth-child(2) { grid-column: 1 / 3; grid-row: 2; }
+  .calc-vs-caps { grid-column: 1 / 3; grid-row: 3; }
+}
+
+/* Leyenda de colores del desglose, compartida por el desglose y la comparativa. */
+.calc-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; }
+.calc-legend-item { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--fg-2); }
+.calc-swatch { width: 10px; height: 10px; border-radius: 2px; flex: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .calc-month-bar { transition: none; }
+}
+
+/* Fila de SolNow en la comparativa. Se distingue por el marco y no por el tono
+   de sus tramos: los colores tienen que ser idénticos entre filas para que
+   «Web y motor» se compare de un vistazo. */
+.calc-vs-row[data-solnow='true'] {
+  background: var(--accent-bg);
+  box-shadow: inset 3px 0 0 var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding-left: 10px;
+  margin-left: -10px;
+}
+
+/* Interruptores del alcance de la comparativa. */
+.calc-scope {
+  padding: 5px 11px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  font-size: 12px;
+  color: var(--fg-2);
+  cursor: pointer;
+  transition: background .16s ease, border-color .16s ease, color .16s ease;
+}
+.calc-scope:hover { border-color: var(--accent); color: var(--accent); }
+.calc-scope[aria-pressed='true'] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-fg);
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+
+/* Tramos que no cobra la plataforma de esa fila (banco, atención humana). El
+   borde claro los separa entre sí cuando van pegados y del tramo de al lado,
+   que es donde el color solo no bastaba. */
+.calc-vs-seg[data-external='true'] {
+  box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.55), inset -1px 0 0 rgba(255, 255, 255, 0.55);
+}
+
+/* El cuadradito de un coste externo lleva el mismo filete que su tramo, para
+   que la leyenda y la barra se reconozcan como lo mismo. */
+.calc-swatch[data-external='true'] {
+  box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.55), inset -1px 0 0 rgba(255, 255, 255, 0.55);
+}
+
+/* La leyenda es el control de la comparativa: cada concepto se apaga y se
+   vuelve a encender pulsándolo. */
+.calc-legend-toggle {
+  cursor: pointer;
+  padding: 4px 9px 4px 7px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: background .15s ease, border-color .15s ease, color .15s ease;
+}
+.calc-legend-toggle:hover { background: var(--surface-2); border-color: var(--line); }
+.calc-legend-toggle[data-off='true'] { color: var(--muted-2); text-decoration: line-through; text-decoration-thickness: 1px; }
+.calc-swatch[data-off='true'] { border: 1px dashed var(--muted-2); box-shadow: none; }
+
+/* Bloque de cifras de las guías: en móvil, una columna. */
+@media (max-width: 640px) {
+  .guide-stats { grid-template-columns: 1fr !important; }
 }

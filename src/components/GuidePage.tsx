@@ -73,6 +73,51 @@ function Block({ block }: { block: GuideBlock }) {
     );
   }
 
+  if (block.type === 'stats') {
+    const cols = Math.min(block.items.length, 3);
+    return (
+      <div
+        className="guide-stats"
+        style={{
+          display: 'grid',
+          gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
+          gap: 12,
+          margin: '8px 0 26px',
+        }}
+      >
+        {block.items.map((item, j) => (
+          <div
+            key={j}
+            style={{
+              background: 'var(--accent-bg)',
+              borderRadius: 12,
+              padding: '22px 20px 18px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 8,
+              minWidth: 0,
+            }}
+          >
+            <span
+              className="h-display"
+              style={{
+                fontSize: cols === 1 ? 'clamp(40px, 6vw, 72px)' : 'clamp(34px, 4.4vw, 52px)',
+                lineHeight: 1,
+                color: 'var(--accent)',
+                letterSpacing: '-0.02em',
+                fontVariantNumeric: 'tabular-nums',
+                overflowWrap: 'anywhere',
+              }}
+            >
+              {item.value}
+            </span>
+            <span style={{ fontSize: 14.5, lineHeight: 1.45, color: 'var(--fg-2)' }}>{item.label}</span>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
   if (block.type === 'table') {
     const hl = block.highlightCol;
     return (

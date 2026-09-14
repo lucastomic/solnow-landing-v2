@@ -15,10 +15,12 @@
   "nav": {
     "producto": "Product",
     "comparativa": "Comparison",
+    "pricing": "Pricing",
     "implementacion": "Onboarding",
     "faq": "FAQ",
     "signIn": "Sign in",
-    "cta": "Book a demo"
+    "cta": "Book a demo",
+    "homeLabel": "Solnow · go to home"
   },
   "hero": {
     "a": {
@@ -1143,133 +1145,136 @@
     ]
   },
   "pricing": {
-    "eyebrow": "07 · Pricing",
-    "title": "Three plans. One aligned model.",
-    "lede": "You pay for real usage: commission on what we generate, AI conversations and a per-base fee once you're at volume. No surprises.",
-    "billingMonthly": "Monthly",
-    "billingAnnual": "Annual",
-    "billingSave": "SAVE",
-    "outOf": "/ 03",
-    "commission": "Commission",
-    "aiConv": "AI Conv.",
-    "aiAdv": "AI Adv.",
-    "perConv": "/ conv",
-    "billedAnnual": "BILLED ANNUALLY",
-    "feeOnly": "FEE ONLY",
-    "included": "included",
-    "tiers": {
-      "starter": {
-        "name": "Starter",
-        "pitch": "To get started with a single base and no fixed fee.",
-        "feeSuffix": "/ mo",
-        "cta": "Start with Starter",
-        "features": [
-          {
-            "l": "POS (Staff Mode + Kiosk)"
-          },
-          {
-            "l": "All other product features"
-          },
-          {
-            "l": "Account manager"
-          },
-          {
-            "l": "Support",
-            "v": "Email · 48 business hours"
-          }
-        ]
+    "eyebrow": "08 · Pricing",
+    "title": "Two plans, all included.",
+    "lede": "One fee per base, commission only on what we sell.",
+    "perMonth": "/ mo",
+    "perSeason": "/ season",
+    "extraBase": "+ {price} / mo per additional base",
+    "extraBaseSeason": "+ {price} per additional base",
+    "rows": {
+      "manual": "Front-desk and manual bookings",
+      "online": "Online bookings",
+      "onlineNote": "Can be passed on to the traveller.",
+      "vendor": "AI agent sales",
+      "vendorNote": "Only the ones it closes end to end.",
+      "onboarding": "Onboarding"
+    },
+    "bothPlans": "On both plans: every module · unlimited conversations.",
+    "plans": {
+      "despegue": {
+        "name": "Despegue",
+        "audience": "To get started: one base and the whole product.",
+        "feeNote": "One base maximum. A second base moves you to Escalar.",
+        "onboarding": "Remote assisted",
+        "cta": "Start with Despegue"
       },
-      "pro": {
-        "name": "Pro",
-        "pitch": "The plan for serious operators with several bases.",
-        "feeSuffix": "/ mo · per base",
-        "annualNote": "4 months free · 33%",
-        "badge": "Most chosen",
-        "cta": "Book a Pro plan demo",
-        "features": [
-          {
-            "l": "POS (Staff Mode + Kiosk)"
-          },
-          {
-            "l": "All other product features"
-          },
-          {
-            "l": "Account manager"
-          },
-          {
-            "l": "Support",
-            "v": "WhatsApp · 24 business hours"
-          }
-        ]
-      },
-      "scale": {
-        "name": "Scale",
-        "pitch": "For multi-base groups with mission-critical operations.",
-        "feeSuffix": "/ mo · per base",
-        "annualNote": "4 months free · 33%",
-        "cta": "Talk to the team",
-        "features": [
-          {
-            "l": "POS (Staff Mode + Kiosk)"
-          },
-          {
-            "l": "All other product features"
-          },
-          {
-            "l": "Account manager",
-            "v": "Shared"
-          },
-          {
-            "l": "Support",
-            "v": "Priority WhatsApp · 8 business hours"
-          }
-        ]
+      "escalar": {
+        "name": "Escalar",
+        "badge": "Recommended",
+        "audience": "For operators with volume and several bases.",
+        "feeNote": "",
+        "onboarding": "Full done-for-you",
+        "cta": "Book an Escalar demo"
       }
     },
-    "facts": [
-      {
-        "k": "Payment",
-        "v": "Monthly · Stripe Connect"
-      },
-      {
-        "k": "Commitment",
-        "v": "No lock-in · cancel anytime"
-      },
-      {
-        "k": "Migration",
-        "v": "Included in every plan"
-      },
-      {
-        "k": "Data",
-        "v": "Yours. Export to CSV/JSON anytime"
-      }
-    ],
     "calc": {
-      "label": "Calculator",
-      "title": "How much would you pay each month?",
-      "bases": "Active bases",
-      "basesUnit": " base/s",
-      "reservas": "Bookings / month",
-      "ticket": "Average ticket",
-      "ticketUnit": " €",
-      "convs": "AI conversations / month",
-      "convsHint": "Estimated at the Conversational AI rate",
-      "throughSolnow": "% of bookings via Solnow",
-      "throughSolnowUnit": " %",
-      "throughSolnowHint": "{billable} bookings billed commission · GMV {gmv}",
-      "monthlyCost": "Monthly cost",
-      "annualBilling": " · Annual billing",
-      "bestOption": "Best option",
-      "perMonth": "/ mo",
-      "recommended": "RECOMMENDED",
-      "feeOff": "−{pct}% fee",
-      "onlyOneBase": "1 base only",
-      "maxFiveBases": "max. 5 bases",
-      "breakdown": "fee {fee} · commission {commission} · AI {ai}",
-      "revenueTitle": "Against your company's total revenue",
-      "revenueBody": "Solnow represents {pct}% of your monthly revenue ({total}/mo · all channels).",
-      "revenueCta": "Book a demo"
-    }
+      "title": "What it would cost you",
+      "lede": "Four figures. We flag the one that costs you least; you choose.",
+      "ledeLocked": "Four figures. With two or more bases, the plan is Escalar.",
+      "gmv": "Season revenue",
+      "online": "Comes in online",
+      "onlineHint": "Booking engine and payment links.",
+      "otaNote": "Selling through OTAs? That share pays 2% and we go through it in the demo.",
+      "whatsapp": "Sales that start on WhatsApp",
+      "bases": "Bases",
+      "basesUnit": "bases",
+      "basesUnitOne": "base",
+      "planLabel": "Your plan",
+      "planPricier": "You can take it, but with your figures the other plan costs you less.",
+      "planUnavailable": "· not available with 2+ bases",
+      "planLockedHint": "Despegue allows a single base.",
+      "cheapest": "· cheaper",
+      "lines": {
+        "manual": {
+          "l": "Front desk and manual",
+          "d": "Whatever your team books, however it is paid."
+        },
+        "channel": {
+          "l": "Online bookings",
+          "d": "Booking engine and payment links."
+        },
+        "agent": {
+          "l": "AI agent sales",
+          "d": "Only the ones it closes end to end."
+        }
+      },
+      "feeToggle": "Pass the booking fee on to the traveller",
+      "feeTeaser": "You can pass the {pct} on your online bookings to the traveller: your cost would drop to",
+      "feeScope": "Applies to the booking engine and payment links, inside the price from the listing.",
+      "fixed": "fee",
+      "totalYear": "Year total",
+      "ofBilling": "of your revenue",
+      "cta": "Book the demo with your number"
+    },
+    "meta": {
+      "title": "Solnow pricing · Work out your bill",
+      "description": "Two plans, everything included, from €99/mo. 0% on what your team books. Work out your bill with your own figures — no email required.",
+      "ogTitle": "Solnow pricing, with a calculator"
+    },
+    "teaser": {
+      "lede": "One fee per base. 0% on what you book yourself. 2% on what we collect online — and you can pass that one to the traveller. The agent is paid like a salesperson: only on what it closes.",
+      "rows": [
+        {
+          "l": "on what your team books: front desk, manual, whiteboard and partners"
+        },
+        {
+          "l": "on what we collect online, passed to the traveller on engine and payment links"
+        },
+        {
+          "l": "only on the bookings the agent closes end to end"
+        }
+      ],
+      "from": "from {price}/mo",
+      "fromNote": "Every module included, on both plans.",
+      "cta": "See full pricing and work out your bill"
+    },
+    "billingFaq": {
+      "eyebrow": "Billing",
+      "title": "The small print, in writing.",
+      "items": [
+        {
+          "q": "Is there a revenue minimum or a season commitment?",
+          "a": "No minimum: the fixed fee is the floor. The contract runs 12 months and does not pause in winter — which is exactly why the fee is low and the commission moves with the season."
+        },
+        {
+          "q": "How is commission charged?",
+          "a": "For the channels we process, it is withheld from each payout with a booking-by-booking breakdown. OTAs and agent sales paid in cash are invoiced on the 1st of the following month."
+        },
+        {
+          "q": "What happens with cancellations and refunds?",
+          "a": "Refund the full amount and 100% of the commission is reversed; a partial refund reverses it proportionally. It is settled with the refund or at the next close, as a credit note or netted off."
+        },
+        {
+          "q": "Do OTAs pay commission?",
+          "a": "Yes, the channel layer, on the gross price that arrives through the integration, invoiced separately. They do not allow booking fees: the OTA sets the price, so that share cannot be passed to the traveller."
+        },
+        {
+          "q": "Can I pass the commission to the traveller?",
+          "a": "The channel layer, yes — on the booking engine and payment links, as a booking fee inside the price from the listing. The agent layer, no: it is a salesperson commission, and nobody passes that to their customer."
+        },
+        {
+          "q": "What if I add a base mid-contract?",
+          "a": "It is prorated from the day it is added; removals apply at renewal. A base is a configured point of sale or operation."
+        },
+        {
+          "q": "Are the agent conversations charged?",
+          "a": "No. They are unlimited inside the fee, with reasonable use. The agent only charges when it sells: answering, following up and after-sales are inside the fixed fee."
+        }
+      ]
+    },
+    "billingMonthly": "Monthly",
+    "billingSeason": "Per season"
   },
   "onboarding": {
     "eyebrow": "09 · Onboarding",
@@ -1454,7 +1459,8 @@
       "contrato": "Contract template",
       "normativa": "Regulations in Spain",
       "libro": "Logbook guide",
-      "parasailing": "Parasailing software"
+      "parasailing": "Parasailing software",
+      "bananaSummer": "Case study: Banana Summer"
     },
     "comparativas": {
       "h": "Comparisons",
@@ -4695,6 +4701,254 @@
       "cta": {
         "title": "See your dock running on Solnow",
         "desc": "20-minute demo configured with your boats and rotation times.",
+        "button": "Book a demo"
+      }
+    },
+    "bananaSummer": {
+      "meta": {
+        "title": "Case Study: Banana Summer, 8 Bases and an 8× Return on Solnow",
+        "description": "August 2026 at Banana Summer (Grupo Marinajets): 270 bookings created by the AI agent, 673 front-desk hours nobody worked, €10,000 to €27,000 a month recovered by automatic follow-up and an 8× return.",
+        "ogTitle": "Banana Summer: 8× return on Solnow"
+      },
+      "hero": {
+        "eyebrow": "CASE STUDY · BANANA SUMMER",
+        "h1": "Banana Summer: 8 bases, a record August and an 8× return",
+        "lede": "Banana Summer (Grupo Marinajets) runs 8 jet ski bases on the Spanish Mediterranean. This is what Solnow did for them in August 2026, with production data.",
+        "updated": "August 2026 data",
+        "readingTime": "3 min read"
+      },
+      "disclaimer": "Solnow production data at Banana Summer, full month of August 2026. Definitions and method available on request.",
+      "sections": [
+        {
+          "h": "The month in three numbers",
+          "blocks": [
+            {
+              "type": "stats",
+              "items": [
+                {
+                  "value": "9 s",
+                  "label": "for the AI to reply, at 3am too. A person takes 1 h 50 on average."
+                },
+                {
+                  "value": "673 h",
+                  "label": "of front desk and WhatsApp nobody worked in August. Four full-time people."
+                },
+                {
+                  "value": "8×",
+                  "label": "return: about €36,000 of value in the month against €4,597 for Solnow."
+                }
+              ]
+            },
+            {
+              "type": "callout",
+              "tone": "accent",
+              "text": "In this business, whoever replies first gets the booking."
+            }
+          ]
+        },
+        {
+          "h": "The system sells on its own",
+          "blocks": [
+            {
+              "type": "stats",
+              "items": [
+                {
+                  "value": "270",
+                  "label": "bookings created by the AI agent in August. €45,000."
+                },
+                {
+                  "value": "620",
+                  "label": "bookings the agent took part in. €114,675."
+                },
+                {
+                  "value": "57%",
+                  "label": "of the agent's bookings were paid without anyone on the team typing a word."
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Sales that didn't exist before: 32 bookings closed between 10pm and 9am, 79 on weekends and 306 conversations in English, French or Italian."
+            },
+            {
+              "type": "stats",
+              "items": [
+                {
+                  "value": "27%",
+                  "label": "close rate when a person interrupts the AI at the first message."
+                },
+                {
+                  "value": "54%",
+                  "label": "close rate when the AI handles five turns or more alone."
+                },
+                {
+                  "value": "11 → 34%",
+                  "label": "conversations the agent closed on its own, June to August."
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "text": "The longer the AI is left to answer, the more it closes."
+            }
+          ]
+        },
+        {
+          "h": "Customers serve themselves",
+          "blocks": [
+            {
+              "type": "stats",
+              "items": [
+                {
+                  "value": "12,935",
+                  "label": "contracts signed on the customer's phone in one month. 410 a day. Not one sheet of paper."
+                },
+                {
+                  "value": "36%",
+                  "label": "arrive with the contract signed from home. It was 25% in June."
+                },
+                {
+                  "value": "7,751",
+                  "label": "passengers boarded with a single scan."
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "text": "The AI handles 60% of WhatsApp turns. That's where the 673 saved hours come from: 311 on WhatsApp, 232 on contracts and 130 on check-in."
+            },
+            {
+              "type": "callout",
+              "tone": "info",
+              "text": "The same season with the same team and twice the volume. Or with four fewer people."
+            }
+          ]
+        },
+        {
+          "h": "The system follows up on its own",
+          "blocks": [
+            {
+              "type": "stats",
+              "items": [
+                {
+                  "value": "€10,000 to €27,000 a month",
+                  "label": "recovered by automatically following up conversations that go cold."
+                }
+              ]
+            },
+            {
+              "type": "stats",
+              "items": [
+                {
+                  "value": "1,157",
+                  "label": "conversations a month where the customer asks, gets the price and stops replying."
+                },
+                {
+                  "value": "78%",
+                  "label": "come back when they get a follow-up with the payment link. Without it, 31%."
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Three out of four conversations go cold. Solnow chases them after three hours of silence, with the price and the payment link, and picks the conversation back up if the customer replies."
+            },
+            {
+              "type": "table",
+              "columns": [
+                "No follow-up: replies / books",
+                "With follow-up: replies / books"
+              ],
+              "highlightCol": 1,
+              "rows": [
+                {
+                  "label": "Went quiet before getting a price",
+                  "cells": [
+                    "9% / 2%",
+                    "28% / 9%"
+                  ]
+                },
+                {
+                  "label": "Went quiet after getting the price",
+                  "cells": [
+                    "15% / 4%",
+                    "28% / 14%"
+                  ]
+                },
+                {
+                  "label": "Went quiet holding the payment link",
+                  "cells": [
+                    "31% / 9%",
+                    "78% / 32%"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "callout",
+              "tone": "warn",
+              "text": "Solnow doesn't wait for the booking: it goes and gets it."
+            }
+          ]
+        },
+        {
+          "h": "What it is worth and what it costs",
+          "blocks": [
+            {
+              "type": "stats",
+              "items": [
+                {
+                  "value": "€36,000",
+                  "label": "of value generated in August, approximately: agent bookings and hours nobody worked."
+                },
+                {
+                  "value": "€4,597",
+                  "label": "is what Solnow cost that month, the busiest of the year."
+                },
+                {
+                  "value": "€199",
+                  "label": "a month is the fixed fee for the first base. The rest is commission: in November the bill drops on its own."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "How many bookings did the AI agent close at Banana Summer?",
+          "a": "In August 2026 it created 270 bookings worth €45,000 and took part in 620 worth €114,675. In 57% of the ones it created, nobody on the team wrote before payment."
+        },
+        {
+          "q": "Does an AI sell worse than a person?",
+          "a": "At Banana Summer, the opposite: the close rate rises from 27% when a person steps in at the first message to 54% when the AI handles five turns or more."
+        },
+        {
+          "q": "Where do the €10,000 to €27,000 a month come from?",
+          "a": "From the 1,157 conversations a month that go cold. With automatic follow-up, between 61 and 123 of them end in a booking, based on 90 days of conversations with and without follow-up."
+        },
+        {
+          "q": "How much does Solnow cost out of season?",
+          "a": "€199 a month for the first base. The rest is commission on what Solnow collects or closes, so with no season the bill drops on its own."
+        }
+      ],
+      "related": [
+        {
+          "label": "WhatsApp bookings for jet ski rentals",
+          "slug": "whatsapp-reservas-motos-de-agua"
+        },
+        {
+          "label": "How to digitize the rental front desk",
+          "slug": "digitalizar-mostrador-alquiler-motos-de-agua"
+        },
+        {
+          "label": "Multi-base jet ski rental management",
+          "slug": "gestion-multi-base-alquiler-motos-de-agua"
+        }
+      ],
+      "cta": {
+        "title": "See these numbers with your bases",
+        "desc": "20-minute demo with your volume and an estimate of what Solnow would do for you next August.",
         "button": "Book a demo"
       }
     }

@@ -15,10 +15,12 @@
   "nav": {
     "producto": "Producto",
     "comparativa": "Comparativa",
+    "pricing": "Pricing",
     "implementacion": "Implementación",
     "faq": "FAQ",
     "signIn": "Entrar",
-    "cta": "Pedir demo"
+    "cta": "Pedir demo",
+    "homeLabel": "Solnow · ir al inicio"
   },
   "hero": {
     "a": {
@@ -1143,133 +1145,136 @@
     ]
   },
   "pricing": {
-    "eyebrow": "07 · Pricing",
-    "title": "Tres planes. Un modelo alineado.",
-    "lede": "Pagas por uso real: comisión sobre lo que generamos, conversaciones de IA y un fee por base cuando ya estás en volumen. Sin sorpresas.",
-    "billingMonthly": "Mensual",
-    "billingAnnual": "Anual",
-    "billingSave": "AHORRA",
-    "outOf": "/ 03",
-    "commission": "Comisión",
-    "aiConv": "IA Conv.",
-    "aiAdv": "IA Avanz.",
-    "perConv": "/ conv",
-    "billedAnnual": "FACTURADO ANUAL",
-    "feeOnly": "SOLO FEE",
-    "included": "incluido",
-    "tiers": {
-      "starter": {
-        "name": "Starter",
-        "pitch": "Para arrancar con una sola base sin fee fijo.",
-        "feeSuffix": "/ mes",
-        "cta": "Empezar con Starter",
-        "features": [
-          {
-            "l": "TPV (Staff Mode + Kiosk)"
-          },
-          {
-            "l": "Resto de features del producto"
-          },
-          {
-            "l": "Account manager"
-          },
-          {
-            "l": "Soporte",
-            "v": "Email · 48h hábiles"
-          }
-        ]
+    "eyebrow": "08 · Pricing",
+    "title": "Dos planes, todo incluido.",
+    "lede": "Una cuota por base y comisión solo sobre lo que vendemos.",
+    "perMonth": "/ mes",
+    "perSeason": "/ temporada",
+    "extraBase": "+ {price} / mes por cada base adicional",
+    "extraBaseSeason": "+ {price} por base adicional",
+    "rows": {
+      "manual": "Reservas de mostrador y manuales",
+      "online": "Reservas online",
+      "onlineNote": "Repercutible al viajero.",
+      "vendor": "Ventas del agente IA",
+      "vendorNote": "Solo las que cierra él de punta a punta.",
+      "onboarding": "Onboarding"
+    },
+    "bothPlans": "En los dos planes: todos los módulos · conversaciones ilimitadas.",
+    "plans": {
+      "despegue": {
+        "name": "Despegue",
+        "audience": "Para empezar: una base y todo el producto.",
+        "feeNote": "1 base máximo. La segunda base pasa a Escalar.",
+        "onboarding": "Asistido remoto",
+        "cta": "Empezar con Despegue"
       },
-      "pro": {
-        "name": "Pro",
-        "pitch": "El plan para operadores serios con varias bases.",
-        "feeSuffix": "/ mes · por base",
-        "annualNote": "4 meses gratis · 33%",
-        "badge": "Más elegido",
-        "cta": "Pedir demo del plan Pro",
-        "features": [
-          {
-            "l": "TPV (Staff Mode + Kiosk)"
-          },
-          {
-            "l": "Resto de features del producto"
-          },
-          {
-            "l": "Account manager"
-          },
-          {
-            "l": "Soporte",
-            "v": "WhatsApp · 24h hábiles"
-          }
-        ]
-      },
-      "scale": {
-        "name": "Scale",
-        "pitch": "Para grupos multi-base con operación crítica.",
-        "feeSuffix": "/ mes · por base",
-        "annualNote": "4 meses gratis · 33%",
-        "cta": "Hablar con el equipo",
-        "features": [
-          {
-            "l": "TPV (Staff Mode + Kiosk)"
-          },
-          {
-            "l": "Resto de features del producto"
-          },
-          {
-            "l": "Account manager",
-            "v": "Compartido"
-          },
-          {
-            "l": "Soporte",
-            "v": "WhatsApp prioritario · 8h hábiles"
-          }
-        ]
+      "escalar": {
+        "name": "Escalar",
+        "badge": "Recomendado",
+        "audience": "Para operadores con volumen y varias bases.",
+        "feeNote": "",
+        "onboarding": "Done-for-you completo",
+        "cta": "Pedir demo de Escalar"
       }
     },
-    "facts": [
-      {
-        "k": "Pago",
-        "v": "Mensual · Stripe Connect"
-      },
-      {
-        "k": "Compromiso",
-        "v": "Sin permanencia · cancelas cuando quieras"
-      },
-      {
-        "k": "Migración",
-        "v": "Incluida en todos los planes"
-      },
-      {
-        "k": "Datos",
-        "v": "Tuyos. Export en CSV/JSON cuando quieras"
-      }
-    ],
     "calc": {
-      "label": "Calculadora",
-      "title": "¿Cuánto pagarías cada mes?",
-      "bases": "Bases activas",
-      "basesUnit": " base/s",
-      "reservas": "Reservas / mes",
-      "ticket": "Ticket medio",
-      "ticketUnit": " €",
-      "convs": "Conversaciones IA / mes",
-      "convsHint": "Estimado con tarifa IA Conversacional",
-      "throughSolnow": "% de reservas vía Solnow",
-      "throughSolnowUnit": " %",
-      "throughSolnowHint": "{billable} reservas facturan comisión · GMV {gmv}",
-      "monthlyCost": "Coste mensual",
-      "annualBilling": " · Facturación anual",
-      "bestOption": "Mejor opción",
-      "perMonth": "/ mes",
-      "recommended": "RECOMENDADO",
-      "feeOff": "−{pct}% fee",
-      "onlyOneBase": "solo 1 base",
-      "maxFiveBases": "máx. 5 bases",
-      "breakdown": "fee {fee} · comisión {commission} · IA {ai}",
-      "revenueTitle": "Sobre la facturación total de tu empresa",
-      "revenueBody": "Solnow representa {pct}% de tu facturación mensual ({total}/mes · todos los canales).",
-      "revenueCta": "Pedir demo"
-    }
+      "title": "Cuánto te costaría",
+      "lede": "Cuatro datos. Te marcamos el que te sale más barato; eliges tú.",
+      "ledeLocked": "Cuatro datos. Con dos o más bases, el plan es Escalar.",
+      "gmv": "Facturación de temporada",
+      "online": "Entra online",
+      "onlineHint": "Motor de reservas y links de pago.",
+      "otaNote": "¿Vendes por OTAs? Esa parte paga el 2% y la vemos en la demo.",
+      "whatsapp": "Ventas que empiezan por WhatsApp",
+      "bases": "Bases",
+      "basesUnit": "bases",
+      "basesUnitOne": "base",
+      "planLabel": "Tu plan",
+      "planPricier": "Puedes contratarlo, pero con tus datos el otro plan te sale más barato.",
+      "planUnavailable": "· no disponible con 2+ bases",
+      "planLockedHint": "Despegue admite una sola base.",
+      "cheapest": "· más barato",
+      "lines": {
+        "manual": {
+          "l": "Mostrador y manual",
+          "d": "Lo que registra tu equipo, se cobre como se cobre."
+        },
+        "channel": {
+          "l": "Reservas online",
+          "d": "Motor de reservas y links de pago."
+        },
+        "agent": {
+          "l": "Ventas del agente IA",
+          "d": "Solo las que cierra él de punta a punta."
+        }
+      },
+      "feeToggle": "Repercutir los gastos de gestión al viajero",
+      "feeTeaser": "El {pct} de tus reservas online lo puedes pasar al viajero: tu coste bajaría a",
+      "feeScope": "Se aplica en motor y links de pago, dentro del precio desde el listado.",
+      "fixed": "fijo",
+      "totalYear": "Total del año",
+      "ofBilling": "de tu facturación",
+      "cta": "Pide la demo con tu número"
+    },
+    "meta": {
+      "title": "Precios de Solnow · Calculadora de tu factura",
+      "description": "Dos planes con todo incluido desde 99 €/mes. 0% de lo que registra tu equipo. Calcula tu factura con tus propios números, sin dejar el email.",
+      "ogTitle": "Precios de Solnow, con calculadora"
+    },
+    "teaser": {
+      "lede": "Una cuota por base. 0% de lo que haces tú. 2% de lo que cobramos online — y ese lo puedes pasar al viajero. El agente cobra como un vendedor: solo de lo que cierra él.",
+      "rows": [
+        {
+          "l": "de lo que registra tu equipo: mostrador, manual, pizarra y colaboradores"
+        },
+        {
+          "l": "de lo que cobramos online, repercutible al viajero en motor y links de pago"
+        },
+        {
+          "l": "solo de las reservas que cierra el agente de punta a punta"
+        }
+      ],
+      "from": "desde {price}/mes",
+      "fromNote": "Todos los módulos incluidos, en los dos planes.",
+      "cta": "Ve los precios completos y calcula tu factura"
+    },
+    "billingFaq": {
+      "eyebrow": "Facturación",
+      "title": "La letra pequeña, por escrito.",
+      "items": [
+        {
+          "q": "¿Hay mínimo de facturación o permanencia de temporada?",
+          "a": "No hay mínimo: la cuota fija es el piso. El contrato es de 12 meses y no se pausa en invierno, que es justamente por lo que el fijo es bajo y la comisión se mueve con la temporada."
+        },
+        {
+          "q": "¿Cómo se cobra la comisión?",
+          "a": "De los canales que procesamos nosotros, por retención en cada liquidación y con el detalle reserva a reserva. Las OTAs y las ventas del agente cobradas en efectivo van por factura el día 1 del mes siguiente."
+        },
+        {
+          "q": "¿Qué pasa con las cancelaciones y los reembolsos?",
+          "a": "Si devuelves el importe entero se revierte el 100% de la comisión; si es parcial, la parte proporcional. Se regulariza con el reembolso o en el cierre siguiente, como nota de crédito o por neteo."
+        },
+        {
+          "q": "¿Las OTAs pagan comisión?",
+          "a": "Sí, la capa canal, sobre el precio bruto que llega por la integración, y se factura aparte. No admiten gastos de gestión: el precio lo fija la OTA, así que esa parte no se puede repercutir al viajero."
+        },
+        {
+          "q": "¿Puedo repercutir la comisión al viajero?",
+          "a": "La capa canal sí, en motor y links de pago, como gastos de gestión dentro del precio desde el listado. La del agente no: es la comisión de un vendedor, y nadie se la pasa a su cliente."
+        },
+        {
+          "q": "¿Qué pasa si doy de alta una base a mitad de contrato?",
+          "a": "Se prorratea desde el alta; las bajas se aplican al renovar. Una base es un punto de venta u operación configurado."
+        },
+        {
+          "q": "¿Se cobran las conversaciones del agente?",
+          "a": "No. Son ilimitadas dentro de la cuota, con uso razonable. El agente solo cobra cuando vende: atender, responder, perseguir y la postventa van dentro del fijo."
+        }
+      ]
+    },
+    "billingMonthly": "Pago mensual",
+    "billingSeason": "Pago por temporada"
   },
   "onboarding": {
     "eyebrow": "09 · Implementación",
@@ -1454,7 +1459,8 @@
       "contrato": "Modelo de contrato",
       "normativa": "Normativa en España",
       "libro": "Libro de registro",
-      "parasailing": "Software de parasailing"
+      "parasailing": "Software de parasailing",
+      "bananaSummer": "Caso de éxito: Banana Summer"
     },
     "comparativas": {
       "h": "Comparativas",
@@ -4695,6 +4701,254 @@
       "cta": {
         "title": "Mira tu pantalán funcionando con Solnow",
         "desc": "Demo de 20 minutos configurada con tus barcos y tus horarios de rotación.",
+        "button": "Pedir demo"
+      }
+    },
+    "bananaSummer": {
+      "meta": {
+        "title": "Caso de éxito: Banana Summer, 8 bases y un retorno de ×8 con Solnow",
+        "description": "Agosto de 2026 en Banana Summer (Grupo Marinajets): 270 reservas creadas por el agente de IA, 673 horas de mostrador que no hizo nadie, entre 10.000 y 27.000 € al mes recuperados con el seguimiento automático y un retorno de ×8.",
+        "ogTitle": "Banana Summer: retorno ×8 con Solnow"
+      },
+      "hero": {
+        "eyebrow": "CASO DE ÉXITO · BANANA SUMMER",
+        "h1": "Banana Summer: 8 bases, un agosto récord y un retorno de ×8",
+        "lede": "Banana Summer (Grupo Marinajets) opera 8 bases de motos de agua en el Mediterráneo. Esto es lo que Solnow hizo por ellos en agosto de 2026, con datos de producción.",
+        "updated": "Datos de agosto de 2026",
+        "readingTime": "3 min de lectura"
+      },
+      "disclaimer": "Datos de producción de Solnow en Banana Summer, agosto de 2026 completo. Definiciones y método disponibles bajo petición.",
+      "sections": [
+        {
+          "h": "El mes en tres cifras",
+          "blocks": [
+            {
+              "type": "stats",
+              "items": [
+                {
+                  "value": "9 s",
+                  "label": "tarda la IA en responder, a las 3 de la mañana también. Una persona, 1 h 50 de media."
+                },
+                {
+                  "value": "673 h",
+                  "label": "de mostrador y WhatsApp que en agosto no hizo nadie. Cuatro personas a jornada completa."
+                },
+                {
+                  "value": "×8",
+                  "label": "retorno: unos 36.000 € de valor en el mes frente a 4.597 € de Solnow."
+                }
+              ]
+            },
+            {
+              "type": "callout",
+              "tone": "accent",
+              "text": "En este negocio, el que responde primero se lleva la reserva."
+            }
+          ]
+        },
+        {
+          "h": "El sistema vende solo",
+          "blocks": [
+            {
+              "type": "stats",
+              "items": [
+                {
+                  "value": "270",
+                  "label": "reservas creadas por el agente de IA en agosto. 45.000 €."
+                },
+                {
+                  "value": "620",
+                  "label": "reservas en las que el agente participó. 114.675 €."
+                },
+                {
+                  "value": "57 %",
+                  "label": "de las reservas del agente se pagaron sin que nadie del equipo escribiera."
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Ventas que antes no existían: 32 reservas cerradas entre las 22 h y las 9 h, 79 en fin de semana y 306 conversaciones en inglés, francés o italiano."
+            },
+            {
+              "type": "stats",
+              "items": [
+                {
+                  "value": "27 %",
+                  "label": "cierre cuando una persona interrumpe a la IA en el primer mensaje."
+                },
+                {
+                  "value": "54 %",
+                  "label": "cierre cuando la IA lleva cinco turnos o más sola."
+                },
+                {
+                  "value": "11 → 34 %",
+                  "label": "conversaciones que el agente cerró solo, de junio a agosto."
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Cuanto más se deja contestar a la IA, más cierra."
+            }
+          ]
+        },
+        {
+          "h": "El cliente se atiende solo",
+          "blocks": [
+            {
+              "type": "stats",
+              "items": [
+                {
+                  "value": "12.935",
+                  "label": "contratos firmados en el móvil del cliente en un mes. 410 al día. Ni un papel."
+                },
+                {
+                  "value": "36 %",
+                  "label": "llega con el contrato firmado desde casa. Era el 25 % en junio."
+                },
+                {
+                  "value": "7.751",
+                  "label": "pasajeros embarcaron con un escaneo."
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "text": "La IA se queda con el 60 % de los turnos de WhatsApp. Las 673 horas ahorradas salen de ahí: 311 de WhatsApp, 232 de contratos y 130 de check-in."
+            },
+            {
+              "type": "callout",
+              "tone": "info",
+              "text": "La misma temporada con el mismo equipo y el doble de volumen. O con cuatro personas menos."
+            }
+          ]
+        },
+        {
+          "h": "El sistema persigue solo",
+          "blocks": [
+            {
+              "type": "stats",
+              "items": [
+                {
+                  "value": "10.000 a 27.000 € al mes",
+                  "label": "recuperados con el seguimiento automático de las conversaciones que se enfrían."
+                }
+              ]
+            },
+            {
+              "type": "stats",
+              "items": [
+                {
+                  "value": "1.157",
+                  "label": "conversaciones al mes en las que el cliente pregunta, recibe el precio y deja de escribir."
+                },
+                {
+                  "value": "78 %",
+                  "label": "vuelve cuando recibe un seguimiento con el enlace de pago. Sin seguimiento, el 31 %."
+                }
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Tres de cada cuatro conversaciones se enfrían. Solnow las persigue a las tres horas de silencio, con el precio y el enlace de pago, y retoma la conversación si el cliente contesta."
+            },
+            {
+              "type": "table",
+              "columns": [
+                "Sin seguimiento: vuelve / reserva",
+                "Con seguimiento: vuelve / reserva"
+              ],
+              "highlightCol": 1,
+              "rows": [
+                {
+                  "label": "Calló sin precio todavía",
+                  "cells": [
+                    "9 % / 2 %",
+                    "28 % / 9 %"
+                  ]
+                },
+                {
+                  "label": "Calló con el precio dado",
+                  "cells": [
+                    "15 % / 4 %",
+                    "28 % / 14 %"
+                  ]
+                },
+                {
+                  "label": "Calló con el enlace de pago en la mano",
+                  "cells": [
+                    "31 % / 9 %",
+                    "78 % / 32 %"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "callout",
+              "tone": "warn",
+              "text": "Solnow no espera la reserva: sale a buscarla."
+            }
+          ]
+        },
+        {
+          "h": "Lo que vale y lo que cuesta",
+          "blocks": [
+            {
+              "type": "stats",
+              "items": [
+                {
+                  "value": "36.000 €",
+                  "label": "de valor generado en agosto, aproximado: reservas del agente y horas que no hizo nadie."
+                },
+                {
+                  "value": "4.597 €",
+                  "label": "costó Solnow ese mes, el más fuerte del año."
+                },
+                {
+                  "value": "199 €",
+                  "label": "al mes es la cuota fija por la primera base. El resto es comisión: en noviembre la factura baja sola."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Cuántas reservas cerró el agente de IA en Banana Summer?",
+          "a": "En agosto de 2026 creó 270 reservas por 45.000 € y participó en 620 por 114.675 €. En el 57 % de las que creó, nadie del equipo escribió antes del cobro."
+        },
+        {
+          "q": "¿Vende peor una IA que una persona?",
+          "a": "En Banana Summer, al revés: el cierre sube del 27 % cuando una persona entra al primer mensaje al 54 % cuando la IA lleva cinco turnos o más."
+        },
+        {
+          "q": "¿De dónde salen los 10.000 a 27.000 € al mes?",
+          "a": "De las 1.157 conversaciones al mes que se enfrían. Con el seguimiento automático, entre 61 y 123 de ellas acaban en reserva, según los datos de 90 días de conversaciones con y sin seguimiento."
+        },
+        {
+          "q": "¿Cuánto cuesta Solnow fuera de temporada?",
+          "a": "199 € al mes por la primera base. El resto es comisión sobre lo que Solnow cobra o cierra, así que sin temporada la factura baja sola."
+        }
+      ],
+      "related": [
+        {
+          "label": "Reservas por WhatsApp para alquiler de motos de agua",
+          "slug": "whatsapp-reservas-motos-de-agua"
+        },
+        {
+          "label": "Cómo digitalizar el mostrador de alquiler",
+          "slug": "digitalizar-mostrador-alquiler-motos-de-agua"
+        },
+        {
+          "label": "Gestión multi-base de alquiler de motos de agua",
+          "slug": "gestion-multi-base-alquiler-motos-de-agua"
+        }
+      ],
+      "cta": {
+        "title": "Mira estos números con tus bases",
+        "desc": "Demo de 20 minutos con tu volumen y una estimación de lo que Solnow haría por ti el próximo agosto.",
         "button": "Pedir demo"
       }
     }
