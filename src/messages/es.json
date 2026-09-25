@@ -1717,6 +1717,147 @@
       "note": "30 minutos con tu flota, tus bases y tus precios."
     }
   },
+  "adsMostrador": {
+    "meta": {
+      "title": "Solnow para el mostrador · Venta, contrato y embarque en segundos",
+      "description": "Cargas la venta en segundos, el cliente firma el contrato en su móvil y embarca con un escaneo. Sin papel y sin cola en el mostrador. Reserva una demo con tu flota.",
+      "ogTitle": "La cola del mostrador se acaba cuando el contrato se firma solo"
+    },
+    "hero": {
+      "eyebrow": "Para bases con cola en el mostrador",
+      "headPre": "La cola del mostrador se acaba cuando el contrato ",
+      "headEm": "se firma solo",
+      "headPost": ".",
+      "lede": "Cargas la venta en segundos, el cliente escanea un QR y firma el contrato en su móvil. Tu equipo solo pone la moto en el agua.",
+      "bullets": [
+        "Venta, contrato y cobro en el mismo paso, sin un papel.",
+        "El contrato del sector, firmado en el móvil del cliente: menores y datos legales incluidos.",
+        "Embarque con un escaneo: el libro de registro se rellena solo."
+      ],
+      "ctaPrimary": "Reservar 30 min con mi flota",
+      "ctaSecondary": "Ver cómo funciona",
+      "trustNote": "30 minutos · con tus unidades y tus bases · sin compromiso",
+      "photoAlt": "Una empleada cobra una venta con el TPV de Solnow en el mostrador de un alquiler de motos de agua"
+    },
+    "logos": {
+      "title": "Operadores que ya trabajan con Solnow"
+    },
+    "pain": {
+      "eyebrow": "Agosto, con el mostrador en papel",
+      "title": "El cuello de botella no es la flota. Es la caseta.",
+      "items": [
+        {
+          "k": "~30",
+          "h": "reservas al día es lo que aguanta un mostrador a mano",
+          "p": "A partir de ahí hay cola mientras alguien rellena un contrato, y el que espera se va a la base de al lado."
+        },
+        {
+          "k": "0,5–1 min",
+          "h": "por pasajero, apuntando en el libro de registro",
+          "p": "Qué moto coge, a qué hora sube y con qué monitor. Lo pide el reglamento, y a mano se come la mañana."
+        },
+        {
+          "k": "3 meses",
+          "h": "de sueldo para absorber el pico",
+          "p": "Cada verano toca elegir: contratar y formar a gente que solo sirve tres meses, o dejar reservas sin atender."
+        }
+      ]
+    },
+    "stats": {
+      "eyebrow": "Grupo Marina Jets · 8 bases · agosto de 2026",
+      "title": "Un mostrador que no tramita es un mostrador que vende",
+      "items": [
+        {
+          "k": "+12.000",
+          "u": "contratos firmados en el móvil del cliente",
+          "d": "en un solo mes, sin un papel"
+        },
+        {
+          "k": "36 %",
+          "u": "llega al pantalán con el contrato firmado",
+          "d": "desde casa, antes de pisar la cola"
+        },
+        {
+          "k": "+7.500",
+          "u": "pasajeros embarcados con un escaneo",
+          "d": "y el libro de registro, relleno solo"
+        },
+        {
+          "k": "≈ 450 h",
+          "u": "de trabajo al mes que no hizo nadie",
+          "d": "estimadas, entre mostrador y WhatsApp: tres personas a jornada completa"
+        }
+      ],
+      "caseSlug": "caso-de-exito-marinajets",
+      "caseLabel": "Ver el caso de Grupo Marina Jets"
+    },
+    "steps": {
+      "eyebrow": "Cómo funciona",
+      "title": "Del mostrador al agua, sin un papel por medio",
+      "items": [
+        {
+          "h": "Cargas la venta y sale un QR",
+          "p": "Actividad, hora, unidades y cobro en una sola pantalla. Al cobrar aparece un QR: el cliente lo escanea con su móvil, sin descargar nada, y el mostrador pasa al siguiente."
+        },
+        {
+          "h": "El cliente firma el contrato en su móvil",
+          "p": "El contrato del sector, con los datos legales obligatorios y los de menores. Lo acepta con un clic o firma con el dedo, y queda archivado con la reserva. Si reservó online, llega con él firmado desde casa."
+        },
+        {
+          "h": "Embarca con un escaneo",
+          "p": "El monitor escanea el QR en el pantalán y el libro de registro se rellena solo: qué moto, a qué hora y con qué monitor. Unos 3 segundos por pasajero en vez de uno o dos minutos a mano."
+        }
+      ],
+      "fleet": {
+        "h": "Y todas tus bases en una pantalla",
+        "p": "Qué unidad está en el agua, cuál vuelve tarde y cómo va cada base, en vivo y desde el móvil. Te enteras antes de que escale, no después.",
+        "photoAlt": "Pantalla de operación en tiempo real de Solnow en la oficina de un alquiler de motos de agua"
+      }
+    },
+    "calendar": {
+      "eyebrow": "Míralo con tu operación",
+      "title": "Reserva 30 minutos y te lo montamos con tu flota",
+      "note": "Antes de la llamada cargamos tus unidades, tus bases y tu contrato, para que veas tu mostrador y no el de un cliente inventado."
+    },
+    "faq": {
+      "title": "Lo que suelen preguntar",
+      "items": [
+        {
+          "q": "¿Tengo que comprar hardware?",
+          "a": "No. Funciona en una tablet o un ordenador con navegador, y puedes seguir cobrando con el datáfono que ya tienes."
+        },
+        {
+          "q": "¿El cliente tiene que instalar algo?",
+          "a": "No. El QR abre una página en el navegador de su móvil: sin descargas ni cuentas. Si no tiene móvil o no se maneja, lo completa en la tablet del mostrador con tu equipo al lado."
+        },
+        {
+          "q": "¿Y si se cae internet en la base?",
+          "a": "El embarque y la lectura de QR siguen funcionando sin conexión y se sincronizan al volver. El cobro con tarjeta sí necesita conexión, como cualquier TPV."
+        },
+        {
+          "q": "¿Cuánto cuesta?",
+          "a": "Una cuota fija por base, desde {price} al mes, y 0 % de lo que vendes en el mostrador. Solo hay comisión en lo que entra online; lo que haces tú no paga nada."
+        },
+        {
+          "q": "Ya uso TuriTop o FareHarbor. ¿Tengo que dejarlo?",
+          "a": "No, lo sigues teniendo y no lo tocamos. Esas herramientas cobran la reserva online; Solnow opera la base: el mostrador, el contrato, el embarque y la caja."
+        },
+        {
+          "q": "¿Tengo que preparar algo para la demo?",
+          "a": "Nada. Con saber cuántas unidades tienes, en cuántas bases operas y cómo firmas hoy los contratos, es suficiente."
+        }
+      ]
+    },
+    "final": {
+      "head": "Que en agosto la cola esté en el agua, no en el mostrador.",
+      "cta": "Reservar 30 min con mi flota",
+      "note": "30 minutos · con tus unidades, tus bases y tu contrato"
+    },
+    "sticky": {
+      "cta": "Reservar mi demo",
+      "note": "30 minutos con tu flota, tus bases y tu contrato."
+    }
+  },
   "guides": {
     "backHome": "Volver al inicio",
     "tocLabel": "En esta guía",

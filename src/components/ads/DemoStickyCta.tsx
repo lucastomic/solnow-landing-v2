@@ -17,6 +17,8 @@ const SILENCERS = ['#agendar', '#cierre'];
 interface DemoStickyCtaProps {
   label: string;
   note: string;
+  /** Qué landing es, para separar los clics en el etiquetado. */
+  formLocation?: 'ads_demo_sticky' | 'ads_mostrador_sticky';
 }
 
 /**
@@ -35,7 +37,7 @@ interface DemoStickyCtaProps {
  * acción. A cambio ocupa una franja baja y se aparta sola en las dos secciones
  * donde estorbaría.
  */
-export function DemoStickyCta({ label, note }: DemoStickyCtaProps) {
+export function DemoStickyCta({ label, note, formLocation = 'ads_demo_sticky' }: DemoStickyCtaProps) {
   const [past, setPast] = useState(false);
   const [silenced, setSilenced] = useState(false);
 
@@ -78,7 +80,7 @@ export function DemoStickyCta({ label, note }: DemoStickyCtaProps) {
 
   const onClick = () => {
     const w = window as unknown as TagGlobals;
-    w.dataLayer?.push({ event: 'demo_cta_click', form_location: 'ads_demo_sticky' });
+    w.dataLayer?.push({ event: 'demo_cta_click', form_location: formLocation });
   };
 
   return (

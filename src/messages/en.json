@@ -1717,6 +1717,147 @@
       "note": "30 minutes with your fleet, your bases and your prices."
     }
   },
+  "adsMostrador": {
+    "meta": {
+      "title": "Solnow for the front desk · Sale, contract and boarding in seconds",
+      "description": "Ring up the sale in seconds, the customer signs the contract on their phone and boards with a scan. No paper, no queue at the desk. Book a demo with your fleet.",
+      "ogTitle": "The front-desk queue ends when the contract signs itself"
+    },
+    "hero": {
+      "eyebrow": "For bases with a queue at the desk",
+      "headPre": "The front-desk queue ends when the contract ",
+      "headEm": "signs itself",
+      "headPost": ".",
+      "lede": "Ring up the sale in seconds, the customer scans a QR code and signs the contract on their phone. Your team just puts the jet ski in the water.",
+      "bullets": [
+        "Sale, contract and payment in a single step, with no paper.",
+        "The industry contract, signed on the customer's phone: minors and legal details included.",
+        "Boarding with a scan: the logbook fills itself in."
+      ],
+      "ctaPrimary": "Book 30 min with my fleet",
+      "ctaSecondary": "See how it works",
+      "trustNote": "30 minutes · with your units and your bases · no commitment",
+      "photoAlt": "A staff member rings up a sale on the Solnow POS at a jet ski rental front desk"
+    },
+    "logos": {
+      "title": "Operators already working with Solnow"
+    },
+    "pain": {
+      "eyebrow": "August, with a paper front desk",
+      "title": "The bottleneck isn't the fleet. It's the booth.",
+      "items": [
+        {
+          "k": "~30",
+          "h": "bookings a day is all a manual front desk can handle",
+          "p": "Past that, there's a queue while someone fills in a contract, and whoever is waiting walks over to the next base."
+        },
+        {
+          "k": "0.5–1 min",
+          "h": "per passenger, writing in the logbook",
+          "p": "Which jet ski they take, what time they go out and with which instructor. Regulations require it, and by hand it eats the morning."
+        },
+        {
+          "k": "3 months",
+          "h": "of wages to absorb the peak",
+          "p": "Every summer it's the same choice: hire and train people who are only useful for three months, or leave bookings unanswered."
+        }
+      ]
+    },
+    "stats": {
+      "eyebrow": "Grupo Marina Jets · 8 bases · August 2026",
+      "title": "A front desk that doesn't do paperwork is a front desk that sells",
+      "items": [
+        {
+          "k": "12,000+",
+          "u": "contracts signed on the customer's phone",
+          "d": "in a single month, without a sheet of paper"
+        },
+        {
+          "k": "36%",
+          "u": "arrive at the dock with the contract signed",
+          "d": "from home, before joining the queue"
+        },
+        {
+          "k": "7,500+",
+          "u": "passengers boarded with a scan",
+          "d": "with the logbook filled in automatically"
+        },
+        {
+          "k": "≈ 450 h",
+          "u": "of work a month nobody had to do",
+          "d": "estimated, across front desk and WhatsApp: three full-time people"
+        }
+      ],
+      "caseSlug": "caso-de-exito-marinajets",
+      "caseLabel": "Read the Grupo Marina Jets case"
+    },
+    "steps": {
+      "eyebrow": "How it works",
+      "title": "From the front desk to the water, with no paper in between",
+      "items": [
+        {
+          "h": "Ring up the sale and a QR code appears",
+          "p": "Activity, time, units and payment on a single screen. On checkout a QR code appears: the customer scans it with their phone, with nothing to download, and the desk moves on to the next one."
+        },
+        {
+          "h": "The customer signs the contract on their phone",
+          "p": "The industry contract, with the mandatory legal details and those for minors. They accept with a click or sign with a finger, and it's filed with the booking. If they booked online, they arrive with it already signed."
+        },
+        {
+          "h": "Board with a scan",
+          "p": "The instructor scans the QR code at the dock and the logbook fills itself in: which jet ski, what time and which instructor. About 3 seconds per passenger instead of a minute or two by hand."
+        }
+      ],
+      "fleet": {
+        "h": "And all your bases on one screen",
+        "p": "Which unit is on the water, which one is running late and how each base is doing, live and from your phone. You find out before it escalates, not after.",
+        "photoAlt": "Solnow real-time operations screen in a jet ski rental office"
+      }
+    },
+    "calendar": {
+      "eyebrow": "See it with your operation",
+      "title": "Book 30 minutes and we'll set it up with your fleet",
+      "note": "Before the call we load your units, your bases and your contract, so you see your own front desk and not a made-up customer's."
+    },
+    "faq": {
+      "title": "What people usually ask",
+      "items": [
+        {
+          "q": "Do I need to buy hardware?",
+          "a": "No. It runs on a tablet or a computer with a browser, and you can keep taking payments with the card terminal you already have."
+        },
+        {
+          "q": "Does the customer have to install anything?",
+          "a": "No. The QR code opens a page in their phone's browser: no downloads, no accounts. If they don't have a phone or aren't comfortable with it, they complete it on the front-desk tablet with your team alongside."
+        },
+        {
+          "q": "What if the internet goes down at the base?",
+          "a": "Boarding and QR scanning keep working offline and sync when the connection is back. Card payments do need a connection, like any POS."
+        },
+        {
+          "q": "How much does it cost?",
+          "a": "A fixed fee per base, from {price} a month, and 0% on what you sell at the front desk. There's only a commission on what comes in online; what you do yourself pays nothing."
+        },
+        {
+          "q": "I already use TuriTop or FareHarbor. Do I have to drop it?",
+          "a": "No, you keep it and we don't touch it. Those tools take the online booking; Solnow runs the base: the front desk, the contract, boarding and the till."
+        },
+        {
+          "q": "Do I need to prepare anything for the demo?",
+          "a": "Nothing. Knowing how many units you have, how many bases you operate and how you sign contracts today is enough."
+        }
+      ]
+    },
+    "final": {
+      "head": "This August, keep the queue on the water, not at the front desk.",
+      "cta": "Book 30 min with my fleet",
+      "note": "30 minutes · with your units, your bases and your contract"
+    },
+    "sticky": {
+      "cta": "Book my demo",
+      "note": "30 minutes with your fleet, your bases and your contract."
+    }
+  },
   "guides": {
     "backHome": "Back to home",
     "tocLabel": "In this guide",

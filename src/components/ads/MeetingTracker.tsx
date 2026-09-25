@@ -13,7 +13,7 @@ type TagGlobals = {
 };
 
 /** Desde qué página se ha reservado, para separar campaña y orgánico. */
-export type MeetingFormLocation = 'ads_demo' | 'home';
+export type MeetingFormLocation = 'ads_demo' | 'ads_mostrador' | 'home';
 
 /**
  * Conversión de reunión reservada (landing de anuncios y home).
