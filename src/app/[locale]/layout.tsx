@@ -54,10 +54,14 @@ export async function generateMetadata({
     metadataBase: new URL(SITE_URL),
     title: m.title,
     description: m.description,
+    // Iconos a medida, no el logo a pantalla completa. Los tres campos apuntaban
+    // a `logo_color.png` (726×720, 55 KB), que el navegador se bajaba dos veces
+    // por página —una por `icon`, otra por `apple`— para pintarlo a 32 px.
+    // Los genera `scripts/optimize-images.mjs`.
     icons: {
-      icon: "/logo_color.png",
-      shortcut: "/logo_color.png",
-      apple: "/logo_color.png",
+      icon: "/icon-32.png",
+      shortcut: "/icon-32.png",
+      apple: "/apple-icon.png",
     },
     alternates: {
       canonical: path,

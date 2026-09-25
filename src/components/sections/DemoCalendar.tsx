@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
+import ReactDOM from 'react-dom';
 import Script from 'next/script';
 import { MeetingTracker, type MeetingFormLocation } from '@/components/ads/MeetingTracker';
 
@@ -7,6 +8,25 @@ import { MeetingTracker, type MeetingFormLocation } from '@/components/ads/Meeti
 const CALENDAR_MIN_HEIGHT = 660;
 
 const EMBED_SRC = 'https://meetings-eu1.hubspot.com/lucas-tomic/demo-solnow?embed=true';
+
+/**
+ * Los tres orígenes que toca la cascada del embed, en el orden en que entran:
+ * el script y sus bundles, el documento del iframe, y la API que resuelve los
+ * huecos libres. Cada uno pagaba DNS + TLS completos en el peor momento, con el
+ * hilo principal ocupado hidratando.
+ *
+ * Sin `crossOrigin`: HubSpot inyecta sus scripts sin el atributo `crossorigin`,
+ * y una conexión precalentada en modo CORS no se reutiliza para una petición
+ * que no lo es (sería un socket de más, no un ahorro).
+ *
+ * Se quedan en tres a propósito: Lighthouse recomienda no pasar de cuatro, y
+ * los `js-eu1.*` del tracking cuelgan de GTM, no del calendario.
+ */
+const EMBED_ORIGINS = [
+  'https://static.hsappstatic.net',
+  'https://meetings-eu1.hubspot.com',
+  'https://app-eu1.hubspot.com',
+] as const;
 
 /**
  * Parámetros que se reenvían al embed.
@@ -93,6 +113,15 @@ export function DemoCalendar({
   const armed = eager || observed;
   const ref = useRef<HTMLDivElement>(null);
   const embedRef = useRef<HTMLDivElement>(null);
+
+  // En render, no en un efecto: así la pista viaja en el HTML servido cuando el
+  // calendario es `eager` (la landing de anuncios) y el handshake se solapa con
+  // la hidratación en vez de esperar a que termine. En la home `armed` solo se
+  // vuelve cierto en cliente, justo antes de montar el `Script`, que es también
+  // cuando hace falta. React deduplica las llamadas repetidas por render.
+  if (armed) {
+    for (const origin of EMBED_ORIGINS) ReactDOM.preconnect(origin);
+  }
 
   // Los parámetros de campaña se escriben directamente en el DOM, no vía estado:
   // el `data-src` renderizado en servidor no puede conocerlos y cualquier
