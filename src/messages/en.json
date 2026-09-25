@@ -1460,7 +1460,8 @@
       "normativa": "Regulations in Spain",
       "libro": "Logbook guide",
       "parasailing": "Parasailing software",
-      "bananaSummer": "Case study: Banana Summer"
+      "marinajets": "Case study: Grupo Marina Jets",
+      "moraira": "Case study: Moraira Boats"
     },
     "comparativas": {
       "h": "Comparisons",
@@ -1606,23 +1607,25 @@
   },
   "adsDemo": {
     "meta": {
-      "title": "Solnow demo · Stop losing bookings without adding staff",
-      "description": "Book 30 minutes and see how Solnow answers WhatsApp 24/7, signs the contract and takes payment in a single flow, with your real fleet and bases. No commitment.",
-      "ogTitle": "Stop losing bookings without adding staff"
+      "title": "Try Solnow's agent on WhatsApp · It replies in 9 seconds",
+      "description": "Message the agent as if you were a customer. It quotes you, answers your questions and closes the booking in 9 seconds. At 3am too.",
+      "ogTitle": "Whoever replies first gets the booking"
     },
     "hero": {
-      "eyebrow": "Personalized demo · 30 minutes",
-      "headPre": "Stop losing bookings ",
-      "headEm": "without adding staff",
-      "headPost": "",
-      "lede": "Counter, website, WhatsApp and partners in a single flow of booking, contract and payment. Pick a slot and in 30 minutes you'll see it running with your fleet, your bases and your real volume.",
+      "eyebrow": "Try it now · it replies in 9 seconds",
+      "headPre": "Whoever replies first gets the booking. Solnow replies in ",
+      "headEm": "9 seconds",
+      "headPost": ", at 3am too.",
+      "lede": "Message it as if you were a customer looking to rent tomorrow. It's the same agent that would handle yours.",
       "bullets": [
-        "The AI agent answers and closes bookings on WhatsApp 24/7, even when the base is closed.",
-        "Booking, signed contract and payment in one step. No more 2-3 hours of paperwork a day.",
-        "All your bases on one screen, in real time and from your phone.",
-        "You leave the call with an implementation plan and a number: what it costs and what it saves."
+        "It replies in 9 seconds, at any hour.",
+        "It quotes from real availability and real prices.",
+        "It closes the booking, signs the contract and takes payment."
       ],
-      "trustNote": "30 minutes · no commitment · English or Spanish"
+      "ctaPrimary": "Message the agent as if you were a customer",
+      "ctaMessage": "Hi, I'd like to rent a jet ski tomorrow afternoon. Do you have availability?",
+      "ctaSecondary": "I'd rather book 30 min with you",
+      "trustNote": "A real WhatsApp · no forms · replies instantly"
     },
     "logos": {
       "title": "Operators already running on Solnow"
@@ -1630,76 +1633,72 @@
     "stats": {
       "items": [
         {
-          "k": "24/7",
-          "u": "WhatsApp handled by AI",
-          "d": "answers and closes bookings before you open the base"
+          "k": "9 s",
+          "u": "for the agent to reply",
+          "d": "a person takes 1h50 on average"
         },
         {
-          "k": "1 flow",
-          "u": "booking, contract and payment",
-          "d": "counter, website, WhatsApp and partners, no paperwork"
+          "k": "90%",
+          "u": "of the agent's bookings get paid on their own",
+          "d": "without anyone on the team typing",
+          "caseSlug": "caso-de-exito-moraira",
+          "caseLabel": "Read the Moraira case"
         },
         {
-          "k": "7 days",
-          "u": "from Excel to production",
-          "d": "we do 95% of the implementation work"
+          "k": "€45,000",
+          "u": "closed by the agent in one month",
+          "d": "270 bookings in a single August",
+          "caseSlug": "caso-de-exito-marinajets",
+          "caseLabel": "Read the Grupo Marina Jets case"
+        },
+        {
+          "k": "×7 and ×8",
+          "u": "return on what they pay",
+          "d": "in the two cases right here"
         }
       ]
     },
     "value": {
       "eyebrow": "Why Solnow",
-      "title": "What you'll see running on your data",
+      "title": "What you just tried, running on your own data",
       "cards": [
         {
           "h": "You sell while the base is closed",
-          "p": "The AI agent handles WhatsApp against your real availability: it advises, closes the booking and takes the deposit. The 11 pm enquiries stop getting lost."
+          "p": "The agent handles WhatsApp with your real availability: it advises, closes the booking and takes the deposit. The 11pm enquiries stop getting lost."
         },
         {
-          "h": "Zero paperwork at the counter",
-          "p": "POS, QR, signed contract and payment in the same step. We walk through all of it with your prices so you can see where your time goes today."
+          "h": "No paperwork at the counter",
+          "p": "Card terminal, QR, signed contract and payment in one step. The 2-3 hours of daily paperwork are gone."
         },
         {
-          "h": "Control over every base",
-          "p": "Fleet, bookings and cash for each base on a single screen, live and from your phone. You find out before it escalates, not after."
+          "h": "Every base under control",
+          "p": "Fleet, bookings and cash for each base on one screen, live and from your phone. You find out before it escalates, not after."
         }
       ]
     },
-    "how": {
-      "eyebrow": "After you book",
-      "title": "What happens once you pick a slot",
-      "steps": [
-        {
-          "h": "Instant confirmation",
-          "p": "You get the video call link by email, with its calendar invite."
-        },
-        {
-          "h": "We set up your environment",
-          "p": "Before the call we load your fleet, your bases and your prices so the demo is actually yours, not some made-up customer's."
-        },
-        {
-          "h": "30 minutes and a decision",
-          "p": "You leave with a concrete proposal, what it costs, what it saves and real implementation timelines. If it's not a fit, we'll say so."
-        }
-      ]
+    "calendar": {
+      "eyebrow": "If you'd rather take your time",
+      "title": "Book 30 minutes and we'll set it up with your fleet",
+      "note": "Before the call we load your units, your bases and your prices, so the demo is yours and not some made-up operator's."
     },
     "faq": {
-      "title": "Before you book",
+      "title": "Before you message it",
       "items": [
         {
-          "q": "Is this a sales call?",
-          "a": "It's a technical demo. We show the product running with your data and answer whatever you ask. If Solnow isn't a fit for your operation, we'll tell you on the same call."
+          "q": "Is it a bot or is someone behind it?",
+          "a": "It's the agent, not a person. The same one that would handle your customers, running on a demo base's availability and prices. That's why it answers just as fast at 4pm as it does at 4am."
         },
         {
-          "q": "How much does Solnow cost?",
-          "a": "It depends on your volume and your bases. You leave the call with the exact number for your operation and what you save in return. No fine print."
+          "q": "What do you do with my number?",
+          "a": "It stays in our WhatsApp, like anyone else's who writes to us, and we use it to carry on the conversation. Tell us you'd rather we didn't write again and that's the end of it."
         },
         {
-          "q": "How long does it take?",
-          "a": "30 minutes. If you need more time or want to bring someone from your team, we'll extend it."
+          "q": "What does Solnow cost?",
+          "a": "It depends on your volume and your bases. Ask the agent or book the call: either way you leave with the number for your operation and what it saves you. No small print."
         },
         {
-          "q": "Do I need to prepare anything?",
-          "a": "Nothing. Knowing how many units you run, how many bases you operate and how you take bookings today is enough."
+          "q": "Do I need to prepare anything for the demo?",
+          "a": "Nothing. Knowing how many units you have, how many bases you run and how you take bookings today is enough."
         },
         {
           "q": "What if I don't rent jet skis?",
@@ -1708,12 +1707,14 @@
       ]
     },
     "final": {
-      "head": "Stop losing bookings. Pick your slot.",
-      "cta": "Book my demo",
-      "note": "30 minutes · no commitment · we build it with your real fleet"
+      "head": "Message it. It takes 9 seconds to reply.",
+      "cta": "Open WhatsApp with the agent",
+      "ctaSecondary": "Or book 30 min with you",
+      "note": "A real WhatsApp · at 3am too"
     },
-    "footer": {
-      "rights": "© {year} Solnow · Valencia, Spain"
+    "sticky": {
+      "cta": "Book my demo",
+      "note": "30 minutes with your fleet, your bases and your prices."
     }
   },
   "guides": {
@@ -3183,11 +3184,26 @@
         "ogTitle": "7 Best Watersports Booking Software in 2026"
       },
       "itemList": [
-        { "name": "FareHarbor", "section": 2 },
-        { "name": "TuriTop", "section": 3 },
-        { "name": "Bookeo", "section": 4 },
-        { "name": "Regiondo", "section": 4 },
-        { "name": "Solnow", "section": 5 }
+        {
+          "name": "FareHarbor",
+          "section": 2
+        },
+        {
+          "name": "TuriTop",
+          "section": 3
+        },
+        {
+          "name": "Bookeo",
+          "section": 4
+        },
+        {
+          "name": "Regiondo",
+          "section": 4
+        },
+        {
+          "name": "Solnow",
+          "section": 5
+        }
       ],
       "hero": {
         "eyebrow": "COMPARISON",
@@ -4621,28 +4637,46 @@
           "blocks": [
             {
               "type": "table",
-              "columns": ["Generic booking tools", "Solnow"],
+              "columns": [
+                "Generic booking tools",
+                "Solnow"
+              ],
               "highlightCol": 1,
               "rows": [
                 {
                   "label": "Flights by boat capacity & rotation",
-                  "cells": ["Fixed \"tour times\"", "Capacity-based flight slots per boat"]
+                  "cells": [
+                    "Fixed \"tour times\"",
+                    "Capacity-based flight slots per boat"
+                  ]
                 },
                 {
                   "label": "Singles, doubles, triples, observers",
-                  "cells": ["One ticket type", "Seat combinations within each flight"]
+                  "cells": [
+                    "One ticket type",
+                    "Seat combinations within each flight"
+                  ]
                 },
                 {
                   "label": "Waivers before boarding",
-                  "cells": ["Paper or third-party app", "QR digital waivers, per flyer, tracked"]
+                  "cells": [
+                    "Paper or third-party app",
+                    "QR digital waivers, per flyer, tracked"
+                  ]
                 },
                 {
                   "label": "Weather cancellations",
-                  "cells": ["Manual phone marathon", "Bulk WhatsApp rebooking in minutes"]
+                  "cells": [
+                    "Manual phone marathon",
+                    "Bulk WhatsApp rebooking in minutes"
+                  ]
                 },
                 {
                   "label": "Dock walk-ups",
-                  "cells": ["Not handled", "Full POS with live flight availability"]
+                  "cells": [
+                    "Not handled",
+                    "Full POS with live flight availability"
+                  ]
                 }
               ]
             }
@@ -4704,40 +4738,52 @@
         "button": "Book a demo"
       }
     },
-    "bananaSummer": {
+    "marinajets": {
       "meta": {
-        "title": "Case Study: Banana Summer, 8 Bases and an 8× Return on Solnow",
-        "description": "August 2026 at Banana Summer (Grupo Marinajets): 270 bookings created by the AI agent, 673 front-desk hours nobody worked, €10,000 to €27,000 a month recovered by automatic follow-up and an 8× return.",
-        "ogTitle": "Banana Summer: 8× return on Solnow"
+        "title": "Case study: Grupo Marina Jets, ≈450 h of work saved in August",
+        "description": "August 2026 at Grupo Marina Jets, 8 bases: the AI replies in 9 seconds, handles 60% of sales turns on WhatsApp and closes 34% of conversations on its own. Around 450 hours a month of counter and WhatsApp work nobody had to do.",
+        "ogTitle": "Grupo Marina Jets: ≈450 h of work saved in August"
       },
       "hero": {
-        "eyebrow": "CASE STUDY · BANANA SUMMER",
-        "h1": "Banana Summer: 8 bases, a record August and an 8× return",
-        "lede": "Banana Summer (Grupo Marinajets) runs 8 jet ski bases on the Spanish Mediterranean. This is what Solnow did for them in August 2026, with production data.",
+        "eyebrow": "CASE STUDY · GRUPO MARINA JETS",
+        "h1": "Grupo Marina Jets: ≈450 h of work saved in August",
+        "lede": "Grupo Marina Jets runs 8 jet ski and water activity bases in the Mediterranean, with a lot of counter work. This is what Solnow took off the team's hands over the 2026 season, with production data.",
         "updated": "August 2026 data",
-        "readingTime": "3 min read"
+        "readingTime": "3 min read",
+        "logo": {
+          "src": "/casos/marinajets-logo.webp",
+          "alt": "Grupo Marina Jets",
+          "w": 202,
+          "h": 168
+        },
+        "website": {
+          "href": "https://marinajets.com",
+          "label": "marinajets.com"
+        }
       },
-      "disclaimer": "Solnow production data at Banana Summer, full month of August 2026. Definitions and method available on request.",
+      "disclaimer": "Solnow production data at Grupo Marina Jets: all of August 2026 and the June-to-August season. Absolute volumes are rounded at the customer's request. Hours are an estimate against the paper process — one minute per message and per passenger, three per contract — not a stopwatch: the range runs from 340 to 560 a month. A conversation «closed on its own» means nobody on the team wrote before the first payment, and the 57% is calculated over the bookings the agent creates, not over every booking coming in through WhatsApp. Full method available on request.",
       "sections": [
         {
-          "h": "The month in three numbers",
+          "h": "Eight bases and a counter at breaking point",
           "blocks": [
             {
-              "type": "stats",
-              "items": [
-                {
-                  "value": "9 s",
-                  "label": "for the AI to reply, at 3am too. A person takes 1 h 50 on average."
-                },
-                {
-                  "value": "673 h",
-                  "label": "of front desk and WhatsApp nobody worked in August. Four full-time people."
-                },
-                {
-                  "value": "8×",
-                  "label": "return: about €36,000 of value in the month against €4,597 for Solnow."
-                }
-              ]
+              "type": "p",
+              "text": "Grupo Marina Jets rents jet skis and sells water activities across eight bases in the Mediterranean. In August the bottleneck isn't the fleet, it's people. Someone has to answer WhatsApp, quote the price, fill in the contract, check the ID and log every passenger in the register. Multiply that by eight bases and by the busiest month of the year."
+            },
+            {
+              "type": "figure",
+              "src": "/casos/marinajets-flota.webp",
+              "alt": "Grupo Marina Jets jet skis moored at the pontoon of one of their bases",
+              "w": 386,
+              "h": 560,
+              "side": "left",
+              "caption": "They ran the 2026 season with the same team as the year before. What changed was how much of that work a person had to do."
+            },
+            {
+              "type": "feature",
+              "value": "≈ 450 h",
+              "label": "a month · estimated",
+              "text": "of counter and WhatsApp work nobody did in August. That's three full-time people they didn't have to hire, train or fit into an August rota."
             },
             {
               "type": "callout",
@@ -4747,117 +4793,80 @@
           ]
         },
         {
-          "h": "The system sells on its own",
+          "h": "It sells with the base closed",
           "blocks": [
             {
-              "type": "stats",
-              "items": [
-                {
-                  "value": "270",
-                  "label": "bookings created by the AI agent in August. €45,000."
-                },
-                {
-                  "value": "620",
-                  "label": "bookings the agent took part in. €114,675."
-                },
-                {
-                  "value": "57%",
-                  "label": "of the agent's bookings were paid without anyone on the team typing a word."
-                }
-              ]
+              "type": "p",
+              "text": "The eleven-at-night enquiry is the one most often lost and the cheapest to win: the customer is planning tomorrow and messaging three places at once. At Grupo Marina Jets, the first reply is theirs."
+            },
+            {
+              "type": "feature",
+              "tone": "ink",
+              "value": "9 s",
+              "label": "day and night",
+              "text": "for the AI to reply. A person takes 1h50 on average. At night the agent takes 70% of sales turns; across the whole day, 60%."
             },
             {
               "type": "p",
-              "text": "Sales that didn't exist before: 32 bookings closed between 10pm and 9am, 79 on weekends and 306 conversations in English, French or Italian."
+              "text": "In August it closed 34% of conversations by itself, and 57% of the bookings it creates get paid without anyone on the team writing a line: the counter finds out once they're already charged. Over the season it multiplied by four the bookings it opens on its own."
             },
             {
-              "type": "stats",
-              "items": [
-                {
-                  "value": "27%",
-                  "label": "close rate when a person interrupts the AI at the first message."
-                },
-                {
-                  "value": "54%",
-                  "label": "close rate when the AI handles five turns or more alone."
-                },
-                {
-                  "value": "11 → 34%",
-                  "label": "conversations the agent closed on its own, June to August."
-                }
-              ]
-            },
-            {
-              "type": "p",
-              "text": "The longer the AI is left to answer, the more it closes."
+              "type": "figure",
+              "src": "/casos/marinajets-banana.webp",
+              "alt": "A group of Grupo Marina Jets customers on an inflatable banana boat at sea",
+              "w": 465,
+              "h": 425,
+              "caption": "The other end of every conversation the agent closes."
             }
           ]
         },
         {
-          "h": "Customers serve themselves",
+          "h": "The customer does the counter work",
           "blocks": [
+            {
+              "type": "p",
+              "text": "The paperwork doesn't disappear, it changes hands. The contract gets signed on the customer's phone, before they arrive or at the pontoon, and boarding is settled with a scan that fills in the register by itself."
+            },
             {
               "type": "stats",
               "items": [
                 {
-                  "value": "12,935",
-                  "label": "contracts signed on the customer's phone in one month. 410 a day. Not one sheet of paper."
+                  "value": "12,000+",
+                  "label": "contracts signed on the customer's phone in one month. Not one sheet of paper."
                 },
                 {
                   "value": "36%",
-                  "label": "arrive with the contract signed from home. It was 25% in June."
+                  "label": "of customers reach the pontoon with the contract already signed from home."
                 },
                 {
-                  "value": "7,751",
-                  "label": "passengers boarded with a single scan."
+                  "value": "7,500+",
+                  "label": "passengers boarded with a scan, with no queue at the counter."
                 }
               ]
             },
             {
-              "type": "p",
-              "text": "The AI handles 60% of WhatsApp turns. That's where the 673 saved hours come from: 311 on WhatsApp, 232 on contracts and 130 on check-in."
-            },
-            {
-              "type": "callout",
-              "tone": "info",
-              "text": "The same season with the same team and twice the volume. Or with four fewer people."
+              "type": "figure",
+              "src": "/casos/marinajets-acuarela.webp",
+              "alt": "A Grupo Marina Jets customer celebrating on a jet ski",
+              "w": 465,
+              "h": 425,
+              "side": "right",
+              "caption": "A counter that isn't processing paperwork is a counter that's serving people. That's the difference between getting a customer out of the way and selling them the activity upstairs."
             }
           ]
         },
         {
-          "h": "The system follows up on its own",
+          "h": "And it chases what goes cold",
           "blocks": [
             {
-              "type": "stats",
-              "items": [
-                {
-                  "value": "€10,000 to €27,000 a month",
-                  "label": "recovered by automatically following up conversations that go cold."
-                }
-              ]
-            },
-            {
-              "type": "stats",
-              "items": [
-                {
-                  "value": "1,157",
-                  "label": "conversations a month where the customer asks, gets the price and stops replying."
-                },
-                {
-                  "value": "78%",
-                  "label": "come back when they get a follow-up with the payment link. Without it, 31%."
-                }
-              ]
-            },
-            {
               "type": "p",
-              "text": "Three out of four conversations go cold. Solnow chases them after three hours of silence, with the price and the payment link, and picks the conversation back up if the customer replies."
+              "text": "Three out of four conversations go cold: the customer asks, gets the price and disappears. Solnow picks them back up after three hours of silence, with the price and the payment link, and carries on if they reply."
             },
             {
               "type": "table",
               "columns": [
-                "No follow-up: replies / books",
-                "With follow-up: replies / books"
+                "No follow-up: returns / books",
+                "With follow-up: returns / books"
               ],
               "highlightCol": 1,
               "rows": [
@@ -4869,14 +4878,14 @@
                   ]
                 },
                 {
-                  "label": "Went quiet after getting the price",
+                  "label": "Went quiet with the price given",
                   "cells": [
                     "15% / 4%",
                     "28% / 14%"
                   ]
                 },
                 {
-                  "label": "Went quiet holding the payment link",
+                  "label": "Went quiet with the payment link in hand",
                   "cells": [
                     "31% / 9%",
                     "78% / 32%"
@@ -4885,60 +4894,31 @@
               ]
             },
             {
-              "type": "callout",
-              "tone": "warn",
-              "text": "Solnow doesn't wait for the booking: it goes and gets it."
-            }
-          ]
-        },
-        {
-          "h": "What it is worth and what it costs",
-          "blocks": [
+              "type": "feature",
+              "value": "€10,000 – 27,000",
+              "label": "a month · recovered",
+              "text": "out of the thousand-plus conversations that go cold every month. It's the gap between the 31% who come back on their own and the 78% who come back when a follow-up arrives with the payment link."
+            },
             {
-              "type": "stats",
-              "items": [
-                {
-                  "value": "€36,000",
-                  "label": "of value generated in August, approximately: agent bookings and hours nobody worked."
-                },
-                {
-                  "value": "€4,597",
-                  "label": "is what Solnow cost that month, the busiest of the year."
-                },
-                {
-                  "value": "€199",
-                  "label": "a month is the fixed fee for the first base. The rest is commission: in November the bill drops on its own."
-                }
-              ]
+              "type": "figure",
+              "src": "/casos/marinajets-parasailing.webp",
+              "alt": "Two Grupo Marina Jets customers parasailing over the sea",
+              "w": 385,
+              "h": 560,
+              "side": "left",
+              "caption": "Jet skis, banana boat, parasailing: the agent quotes the whole catalogue, so the highest-margin activity doesn't depend on someone remembering to offer it."
             }
           ]
         }
       ],
-      "faq": [
-        {
-          "q": "How many bookings did the AI agent close at Banana Summer?",
-          "a": "In August 2026 it created 270 bookings worth €45,000 and took part in 620 worth €114,675. In 57% of the ones it created, nobody on the team wrote before payment."
-        },
-        {
-          "q": "Does an AI sell worse than a person?",
-          "a": "At Banana Summer, the opposite: the close rate rises from 27% when a person steps in at the first message to 54% when the AI handles five turns or more."
-        },
-        {
-          "q": "Where do the €10,000 to €27,000 a month come from?",
-          "a": "From the 1,157 conversations a month that go cold. With automatic follow-up, between 61 and 123 of them end in a booking, based on 90 days of conversations with and without follow-up."
-        },
-        {
-          "q": "How much does Solnow cost out of season?",
-          "a": "€199 a month for the first base. The rest is commission on what Solnow collects or closes, so with no season the bill drops on its own."
-        }
-      ],
+      "faq": [],
       "related": [
         {
-          "label": "WhatsApp bookings for jet ski rentals",
+          "label": "WhatsApp bookings for jet ski rental",
           "slug": "whatsapp-reservas-motos-de-agua"
         },
         {
-          "label": "How to digitize the rental front desk",
+          "label": "How to digitise the rental counter",
           "slug": "digitalizar-mostrador-alquiler-motos-de-agua"
         },
         {
@@ -4947,9 +4927,139 @@
         }
       ],
       "cta": {
-        "title": "See these numbers with your bases",
-        "desc": "20-minute demo with your volume and an estimate of what Solnow would do for you next August.",
-        "button": "Book a demo"
+        "title": "How much of this is already happening in your operation?",
+        "desc": "Message the agent as if you were one of your own customers and see it for yourself in nine seconds. If you'd rather see it set up with your fleet and your bases, book 30 minutes.",
+        "button": "Try the agent",
+        "href": "demo"
+      }
+    },
+    "moraira": {
+      "meta": {
+        "title": "Case study: Moraira Boats, the WhatsApp that sells on its own",
+        "description": "August 2026 at Moraira Boats Adventures: the AI handles 80% of WhatsApp turns, replies in 14 seconds, and 9 out of 10 agent bookings get paid without anyone on the team writing a word.",
+        "ogTitle": "Moraira Boats: the WhatsApp that sells on its own"
+      },
+      "hero": {
+        "eyebrow": "CASE STUDY · MORAIRA BOATS",
+        "h1": "Moraira Boats: the WhatsApp that sells on its own",
+        "lede": "Moraira Boats Adventures rents boats and sells water activities in Moraira. With Solnow, their WhatsApp stopped being an inbox of pending messages and became a channel that sells: the agent replies, quotes, books and takes payment. This is their production data from the 2026 season.",
+        "updated": "August 2026 data",
+        "readingTime": "3 min read",
+        "logo": {
+          "src": "/logos/morairaboatsadventures.webp",
+          "alt": "Moraira Boats Adventures",
+          "w": 338,
+          "h": 192
+        },
+        "website": {
+          "href": "https://morairaboatsadventures.com/",
+          "label": "morairaboatsadventures.com"
+        }
+      },
+      "disclaimer": "Solnow production data at Moraira Boats Adventures: all of August 2026. Moraira Boats uses the WhatsApp agent and the web booking engine. «Without anyone writing» means nobody on the team stepped in before the first payment, and the 9 out of 10 is calculated over the bookings the agent creates, not over every booking coming in through WhatsApp. Full method available on request.",
+      "sections": [
+        {
+          "h": "A WhatsApp that always answers, and fast",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "In boat rental, an enquiry that isn't answered quickly is lost: the customer messages several places and books with whoever replies first. With Solnow, at Moraira Boats that first reply arrives within seconds, at any hour, with real prices and availability."
+            },
+            {
+              "type": "feature",
+              "tone": "ink",
+              "value": "80%",
+              "label": "of WhatsApp turns",
+              "text": "are handled by the AI. It replies in 14 seconds, and 99.9% of the time in under a minute, at any hour of the day."
+            },
+            {
+              "type": "callout",
+              "tone": "accent",
+              "text": "Solnow doesn't help sell: it sells, and the booking reaches Moraira Boats already paid."
+            }
+          ]
+        },
+        {
+          "h": "From enquiry to payment, with nobody involved",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "The agent doesn't stop at answering questions. It quotes with real availability and prices, creates the booking and sends the payment link, all in the same conversation."
+            },
+            {
+              "type": "feature",
+              "value": "9 out of 10",
+              "label": "agent bookings",
+              "text": "get paid without anyone on the team writing a single line before the charge."
+            },
+            {
+              "type": "stats",
+              "items": [
+                {
+                  "value": "71%",
+                  "label": "of conversations close once the agent sends the payment link."
+                },
+                {
+                  "value": "14 s",
+                  "label": "is how long the AI takes to reply, day or night."
+                },
+                {
+                  "value": "1 in 5",
+                  "label": "bookings that go through the chat are completed on the web booking engine."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "h": "Foreign customers, in their own language",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Moraira lives on international tourism, and WhatsApp shows it."
+            },
+            {
+              "type": "feature",
+              "value": "43%",
+              "label": "of conversations",
+              "text": "arrive in another language. The agent replies in the customer's own, without handing the chat to whoever speaks English or switching tools."
+            },
+            {
+              "type": "figure",
+              "src": "/casos/moraira-cueva.webp",
+              "alt": "Two Moraira Boats customers kayaking inside a sea cave on the Moraira coast",
+              "w": 510,
+              "h": 560,
+              "side": "right",
+              "caption": "On the other side of every conversation the agent closes: visitors booking their trip in their own language, without waiting for someone on the team to pick up the phone."
+            },
+            {
+              "type": "p",
+              "text": "And it doesn't sell worse away from home: in August, English conversations closed on par with Spanish ones, even slightly ahead."
+            }
+          ]
+        }
+      ],
+      "faq": [],
+      "related": [
+        {
+          "label": "AI WhatsApp bookings",
+          "slug": "whatsapp-reservas-motos-de-agua"
+        },
+        {
+          "label": "Case study: Grupo Marina Jets",
+          "slug": "caso-de-exito-marinajets"
+        },
+        {
+          "label": "Best booking software for water activities",
+          "slug": "mejores-software-reservas-actividades-acuaticas"
+        }
+      ],
+      "cta": {
+        "title": "How much would your WhatsApp sell if it answered on its own?",
+        "desc": "Message the agent as if you were one of your customers and see for yourself in seconds. If you'd rather see it set up with your boats and your prices, book 30 minutes.",
+        "button": "Try the agent",
+        "href": "demo"
       }
     }
   }

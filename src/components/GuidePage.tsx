@@ -25,6 +25,20 @@ const CALLOUT: Record<'warn' | 'info' | 'accent', { bg: string; border: string }
   accent: { bg: 'var(--accent-bg)', border: 'var(--accent)' },
 };
 
+/**
+ * Rampa secuencial de las columnas, validada contra el fondo claro: banda de
+ * luminosidad correcta y monótona, más oscuro cuanto mayor es el valor del eje.
+ *
+ * El primer paso es gris a propósito. No es un tono más de la escala: marca el
+ * caso de referencia —la conversación que nadie dejó avanzar— frente al que se
+ * lee todo lo demás.
+ *
+ * Los dos tonos claros quedan por debajo de 3:1 contra la superficie. Es
+ * admisible porque cada columna lleva su valor escrito encima; si algún día se
+ * quitan esas etiquetas, hay que oscurecer la rampa.
+ */
+const BAR_RAMP = ['#8aa1b3', '#86b9d6', '#64a3c8', '#438cb8', '#2575a6', '#106695'];
+
 const ARROW = (
   <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden>
     <path d="M3 7h8M7.5 3.5 11 7l-3.5 3.5" stroke="currentColor" strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round" />
@@ -118,6 +132,216 @@ function Block({ block }: { block: GuideBlock }) {
     );
   }
 
+  if (block.type === 'bars') {
+    return (
+      <figure
+        style={{ margin: '10px 0 30px' }}
+        role="img"
+        aria-label={`${block.title}. ${block.items
+          .map((it) => `${it.label}: ${it.display}`)
+          .join('; ')}.`}
+      >
+        <figcaption
+          className="h-3"
+          style={{ fontSize: 17, marginBottom: 24, color: 'var(--fg)', maxWidth: '46ch' }}
+        >
+          {block.title}
+        </figcaption>
+
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: `repeat(${block.items.length}, 1fr)`,
+            // 2px de hueco de superficie entre columnas contiguas.
+            gap: 2,
+            alignItems: 'end',
+            height: 220,
+            borderBottom: '1px solid var(--line)',
+          }}
+        >
+          {block.items.map((item, j) => (
+            <div
+              key={j}
+              style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', height: '100%' }}
+            >
+              <span
+                className="mono"
+                style={{
+                  fontSize: 12.5,
+                  textAlign: 'center',
+                  color: 'var(--fg)',
+                  marginBottom: 6,
+                  fontVariantNumeric: 'tabular-nums',
+                }}
+              >
+                {item.display}
+              </span>
+              <div
+                title={`${item.label}: ${item.display}`}
+                style={{
+                  height: `${(item.value / block.max) * 100}%`,
+                  // Anclada a la línea base y redondeada solo por arriba.
+                  borderRadius: '4px 4px 0 0',
+                  background: BAR_RAMP[Math.min(j, BAR_RAMP.length - 1)],
+                }}
+              />
+            </div>
+          ))}
+        </div>
+
+        <div
+          className="mono"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: `repeat(${block.items.length}, 1fr)`,
+            gap: 2,
+            marginTop: 10,
+            fontSize: 12,
+            textAlign: 'center',
+            color: 'var(--muted)',
+          }}
+        >
+          {block.items.map((item, j) => (
+            <span key={j}>{item.label}</span>
+          ))}
+        </div>
+
+        <p
+          className="mono"
+          style={{
+            margin: '14px 0 0',
+            fontSize: 11,
+            letterSpacing: '0.06em',
+            textTransform: 'uppercase',
+            color: 'var(--muted-2)',
+            textAlign: 'center',
+          }}
+        >
+          {block.xLabel}
+        </p>
+      </figure>
+    );
+  }
+
+  if (block.type === 'feature') {
+    const ink = block.tone === 'ink';
+    return (
+      <div
+        className={ink ? 'card-ink r-feature' : 'r-feature'}
+        style={{
+          display: 'grid',
+          // Proporción fija, no `auto`: con `auto` una cifra larga como
+          // «10.000 – 27.000 €» se quedaba con casi todo el ancho y dejaba el
+          // párrafo a una palabra por línea.
+          gridTemplateColumns: 'minmax(0, 0.9fr) minmax(0, 1.1fr)',
+          gap: ink ? 32 : 28,
+          alignItems: 'center',
+          margin: '10px 0 30px',
+          padding: ink ? '34px 32px' : '4px 0',
+          borderRadius: ink ? 'var(--radius-lg)' : 0,
+          borderLeft: ink ? undefined : '2px solid var(--accent)',
+          paddingLeft: ink ? 32 : 26,
+        }}
+      >
+        <div>
+          <div
+            className="h-display"
+            style={{
+              fontSize: 'clamp(38px, 5.2vw, 64px)',
+              lineHeight: 1,
+              letterSpacing: '-0.035em',
+              color: ink ? 'var(--ink-fg)' : 'var(--accent)',
+              fontVariantNumeric: 'tabular-nums',
+              // Una cifra con rango puede partir en dos líneas antes que
+              // desbordar su columna.
+              overflowWrap: 'anywhere',
+            }}
+          >
+            {block.value}
+          </div>
+          <div
+            className="mono"
+            style={{
+              fontSize: 11,
+              letterSpacing: '0.09em',
+              textTransform: 'uppercase',
+              color: ink ? 'var(--ink-muted)' : 'var(--muted-2)',
+              marginTop: 12,
+            }}
+          >
+            {block.label}
+          </div>
+        </div>
+        <p
+          style={{
+            margin: 0,
+            fontSize: 16.5,
+            lineHeight: 1.65,
+            color: ink ? 'var(--ink-fg-2)' : 'var(--fg-2)',
+          }}
+        >
+          {block.text}
+        </p>
+      </div>
+    );
+  }
+
+  if (block.type === 'figure') {
+    if (block.side) {
+      return (
+        <figure
+          className="r-figure-side"
+          style={{
+            margin: '10px 0 30px',
+            display: 'grid',
+            gridTemplateColumns: block.side === 'left' ? 'minmax(0, 320px) minmax(0, 1fr)' : 'minmax(0, 1fr) minmax(0, 320px)',
+            gap: 28,
+            alignItems: 'center',
+          }}
+        >
+          <Image
+            src={block.src}
+            alt={block.alt}
+            width={block.w}
+            height={block.h}
+            unoptimized
+            style={{ width: '100%', height: 'auto', display: 'block', order: block.side === 'left' ? 0 : 1 }}
+          />
+          {block.caption && (
+            <figcaption
+              style={{ fontSize: 16, lineHeight: 1.65, color: 'var(--fg-2)', order: block.side === 'left' ? 1 : 0 }}
+            >
+              {block.caption}
+            </figcaption>
+          )}
+        </figure>
+      );
+    }
+    return (
+      <figure style={{ margin: '8px 0 28px' }}>
+        {/* `unoptimized`, como los logos de clientes: el fichero ya viene al
+            tamaño de render desde `scripts/optimize-images.mjs` y pasarlo otra
+            vez por `/_next/image` solo gastaría cuota. */}
+        <Image
+          src={block.src}
+          alt={block.alt}
+          width={block.w}
+          height={block.h}
+          unoptimized
+          style={{ width: '100%', height: 'auto', maxWidth: block.w, display: 'block', marginInline: 'auto' }}
+        />
+        {block.caption && (
+          <figcaption
+            className="mono"
+            style={{ fontSize: 12, color: 'var(--muted-2)', letterSpacing: '0.04em', textAlign: 'center', marginTop: 12 }}
+          >
+            {block.caption}
+          </figcaption>
+        )}
+      </figure>
+    );
+  }
+
   if (block.type === 'table') {
     const hl = block.highlightCol;
     return (
@@ -206,7 +430,7 @@ export function GuidePage({
   labels: GuideLabels;
 }) {
   const { hero, download, sections, faq, related, cta, disclaimer } = content;
-  const ctaHref = `/${locale}#cta`;
+  const ctaHref = cta.href ? `/${locale}/${cta.href}` : `/${locale}#cta`;
   const productHref = labels.productHref;
   const sectionId = (i: number) => `sec-${i + 1}`;
   const tocItems = sections.map((s, i) => ({ id: sectionId(i), label: s.h }));
@@ -283,6 +507,27 @@ export function GuidePage({
             </nav>
 
             <div style={{ maxWidth: 760 }}>
+              {/* El logo del cliente por delante del chip: en un caso de éxito
+                  lo primero que hay que reconocer es de quién se habla. */}
+              {hero.logo && (() => {
+                const logo = (
+                  <Image
+                    src={hero.logo.src}
+                    alt={hero.logo.alt}
+                    width={hero.logo.w}
+                    height={hero.logo.h}
+                    unoptimized
+                    style={{ height: 72, width: 'auto', display: 'block', marginBottom: 22 }}
+                  />
+                );
+                return hero.website ? (
+                  <a href={hero.website.href} target="_blank" rel="noopener" style={{ display: 'block', width: 'fit-content' }}>
+                    {logo}
+                  </a>
+                ) : (
+                  logo
+                );
+              })()}
               <span className="chip">{hero.eyebrow}</span>
               <h1 className="h-display" style={{ fontSize: 'clamp(32px, 4.6vw, 54px)', margin: '20px 0 20px' }}>
                 {hero.h1}
@@ -290,6 +535,21 @@ export function GuidePage({
               <p className="lede" style={{ maxWidth: '60ch' }}>{hero.lede}</p>
               <p className="mono" style={{ fontSize: 12.5, color: 'var(--muted-2)', letterSpacing: '0.04em', marginTop: 18 }}>
                 {hero.updated} · {hero.readingTime}
+                {/* Enlace a la web del cliente: el caso habla de un negocio real
+                    y cualquiera tiene que poder comprobarlo. */}
+                {hero.website && (
+                  <>
+                    {' · '}
+                    <a
+                      href={hero.website.href}
+                      target="_blank"
+                      rel="noopener"
+                      style={{ color: 'var(--accent)', textDecoration: 'underline', textUnderlineOffset: 3 }}
+                    >
+                      {hero.website.label} ↗
+                    </a>
+                  </>
+                )}
               </p>
               <div style={{ display: 'flex', gap: 12, marginTop: 26, flexWrap: 'wrap' }}>
                 <a className="btn btn-primary" href={ctaHref}>
@@ -371,7 +631,8 @@ export function GuidePage({
               )}
             </article>
 
-            {/* FAQ */}
+            {/* FAQ. Puede no haberla: los casos de éxito van directos al CTA. */}
+            {faq.length > 0 && (
             <section style={{ marginTop: 72 }}>
               <h2 className="h-2" style={{ fontSize: 'clamp(22px, 2.6vw, 28px)', marginBottom: 20 }}>{labels.faqTitle}</h2>
               <div style={{ borderTop: '1px solid var(--line-soft)' }}>
@@ -399,6 +660,7 @@ export function GuidePage({
                 ))}
               </div>
             </section>
+            )}
 
             {/* Related */}
             {related.length > 0 && (

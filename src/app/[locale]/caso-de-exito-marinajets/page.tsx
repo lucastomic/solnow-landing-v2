@@ -6,8 +6,8 @@ import { GuidePage } from '@/components/GuidePage';
 import { buildGuideJsonLd } from '@/lib/guideJsonLd';
 import { buildGuideMetadata } from '@/lib/guideMetadata';
 
-const SLUG = 'caso-de-exito-banana-summer';
-const KEY = 'bananaSummer' as const;
+const SLUG = 'caso-de-exito-marinajets';
+const KEY = 'marinajets' as const;
 
 export async function generateMetadata({
   params,

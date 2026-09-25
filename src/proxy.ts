@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { locales, defaultLocale, isLocale, type Locale } from "@/i18n/config";
-import { EN_REDIRECTS, EN_REWRITES } from "@/content/guides";
+import { EN_REDIRECTS, EN_REWRITES, localizedSlug } from "@/content/guides";
 import {
   LEGACY_SLUGS,
   PRODUCT_BASE,
@@ -35,9 +35,18 @@ const ES_ONLY_ROUTES = new Set(["calculator"]);
  *
  * `como-funciona` explicaba el producto de punta a punta; ese contenido vive
  * ahora en el hub de producto, que es su equivalente real.
+ *
+ * El caso de éxito se publicó como `banana-summer` —el nombre comercial de una
+ * de sus bases— y pasó a llamarse por el del grupo. Las dos URLs viejas estaban
+ * indexadas y en el sitemap, así que las dos quedan apuntando a la nueva: la
+ * española y la inglesa, cada una en su locale.
  */
+const CASE_MARINAJETS = (locale: Locale) => `/${locale}/${localizedSlug("marinajets", locale)}`;
+
 const LEGACY_ROUTES: Record<string, (locale: Locale) => string> = {
   "como-funciona": (locale) => productHubPath(locale),
+  "caso-de-exito-banana-summer": CASE_MARINAJETS,
+  "banana-summer-case-study": CASE_MARINAJETS,
 };
 
 export function proxy(request: NextRequest) {

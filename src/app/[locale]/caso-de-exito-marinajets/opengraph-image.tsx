@@ -6,7 +6,7 @@ export const size = guideOgSize;
 export const contentType = guideOgContentType;
 export const alt = 'Solnow';
 
-const KEY = 'bananaSummer' as const;
+const KEY = 'marinajets' as const;
 
 export default async function Image({
   params,

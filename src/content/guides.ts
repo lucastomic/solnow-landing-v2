@@ -29,7 +29,8 @@ export const GUIDES = [
   { slug: 'software-reservas-motos-de-agua-canarias', key: 'canarias', group: 'geo', download: false, howTo: false, priority: 0.8 },
   { slug: 'software-alquiler-motos-de-agua-argentina', key: 'argentina', group: 'geo', download: false, howTo: false, priority: 0.8 },
   { slug: 'software-alquiler-motos-de-agua-mexico', key: 'mexico', group: 'geo', download: false, howTo: false, priority: 0.8 },
-  { slug: 'caso-de-exito-banana-summer', key: 'bananaSummer', group: 'caso', download: false, howTo: false, priority: 0.8 },
+  { slug: 'caso-de-exito-marinajets', key: 'marinajets', group: 'caso', download: false, howTo: false, priority: 0.8 },
+  { slug: 'caso-de-exito-moraira', key: 'moraira', group: 'caso', download: false, howTo: false, priority: 0.8 },
 ] as const;
 
 export type GuideGroup = Guide['group'];
@@ -70,7 +71,8 @@ const EN_SLUG: Partial<Record<GuideKey, string>> = {
   multibase: 'multi-base-jet-ski-management',
   whatsapp: 'whatsapp-booking-jet-ski',
   parasailing: 'parasailing-booking-software',
-  bananaSummer: 'banana-summer-case-study',
+  marinajets: 'marinajets-case-study',
+  moraira: 'moraira-boats-case-study',
 };
 
 /**
@@ -142,7 +144,33 @@ export type GuideBlock =
   | { type: 'steps'; items: string[] }
   /** Cifras grandes en rejilla: el número manda y el texto explica. */
   | { type: 'stats'; items: { value: string; label: string }[] }
-  | { type: 'table'; columns: string[]; highlightCol?: number; rows: { label: string; cells: string[] }[] };
+  | { type: 'table'; columns: string[]; highlightCol?: number; rows: { label: string; cells: string[] }[] }
+  /**
+   * Imagen dentro del cuerpo. `w`/`h` son las dimensiones intrínsecas reales
+   * del fichero: se sirve tal cual, sin pasar por el optimizador —los ficheros
+   * los prepara `scripts/optimize-images.mjs`—, así que un ratio declarado que
+   * no cuadre con el del archivo hace saltar la imagen al cargar.
+   */
+  | { type: 'figure'; src: string; alt: string; w: number; h: number; caption?: string; side?: 'left' | 'right' }
+  | { type: 'feature'; value: string; label: string; text: string; tone?: 'plain' | 'ink' }
+  /**
+   * Columnas para una escala ordenada: el eje x va de menos a más y la altura
+   * es la magnitud.
+   *
+   * Rampa secuencial de un solo tono, más oscuro cuanto más a la derecha, con
+   * el primer valor en gris: es el caso de referencia contra el que se compara
+   * el resto, no una categoría más. Cada columna lleva su valor escrito, que es
+   * lo que permite usar los pasos claros de la rampa sin perder legibilidad.
+   */
+  | {
+      type: 'bars';
+      title: string;
+      /** Qué mide el eje x, en una línea bajo las etiquetas. */
+      xLabel: string;
+      /** Tope del eje y, en las mismas unidades que `value`. */
+      max: number;
+      items: { label: string; value: number; display: string }[];
+    };
 
 export interface GuideSection {
   h: string;
@@ -166,11 +194,27 @@ export interface GuideContent {
   meta: { title: string; description: string; ogTitle: string };
   /** Solo en listicles: herramientas comparadas, en orden de aparición. */
   itemList?: GuideListItem[];
-  hero: { eyebrow: string; h1: string; lede: string; updated: string; readingTime: string };
+  hero: {
+    eyebrow: string;
+    h1: string;
+    lede: string;
+    updated: string;
+    readingTime: string;
+    /** Logo del cliente, solo en los casos de éxito. Lo enlaza `website`. */
+    logo?: { src: string; alt: string; w: number; h: number };
+    /** Web del cliente, solo en los casos de éxito. Enlaza el logo y va en la línea de metadatos. */
+    website?: { href: string; label: string };
+  };
   download?: { title: string; desc: string; fileLabel: string; href: string };
   disclaimer?: string;
   sections: GuideSection[];
   faq: { q: string; a: string }[];
   related: { label: string; slug: string }[];
-  cta: { title: string; desc: string; button: string };
+  /**
+   * `href` es opcional y va sin locale (`demo` → `/es/demo`). Sin él, el botón
+   * apunta al ancla de la home, que es lo que quieren las guías informativas.
+   * Los casos de éxito lo sobrescriben: su CTA promete probar el agente, y
+   * mandarlo a la home obligaría a buscarlo.
+   */
+  cta: { title: string; desc: string; button: string; href?: string };
 }

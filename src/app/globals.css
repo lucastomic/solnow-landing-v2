@@ -434,6 +434,12 @@ section[id] { scroll-margin-top: 72px; }
   .r-cols-4 { grid-template-columns: repeat(2, 1fr) !important; }
   .r-cols-5 { grid-template-columns: repeat(2, 1fr) !important; gap: 28px 32px !important; }
 
+  /* Bloques de caso de éxito: se apilan sin más. */
+  .r-feature { grid-template-columns: 1fr !important; gap: 18px !important; }
+  .r-figure-side { grid-template-columns: 1fr !important; gap: 20px !important; }
+  .r-figure-side > * { order: 0 !important; }
+  .r-figure-side img { max-width: 320px; margin-inline: auto; }
+
   .r-nav-desktop { display: none !important; }
   .r-nav-toggle  { display: inline-flex !important; }
 
@@ -725,4 +731,54 @@ section[id] { scroll-margin-top: 72px; }
 /* Bloque de cifras de las guías: en móvil, una columna. */
 @media (max-width: 640px) {
   .guide-stats { grid-template-columns: 1fr !important; }
+}
+
+/* ── CTA flotante de la landing de campaña ──────────────────────────────────
+   Vive en CSS y no en estilos inline porque necesita `:focus-within`, un
+   `@media` de movimiento reducido y otro de móvil; los tres se pierden en un
+   objeto de estilo. */
+.demo-sticky {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 60;
+  padding: 12px var(--gutter) calc(12px + env(safe-area-inset-bottom));
+  background: color-mix(in srgb, var(--bg-2) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--line-soft);
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform .32s cubic-bezier(.2,.7,.2,1), opacity .2s ease;
+}
+.demo-sticky[data-shown='true'] { transform: none; opacity: 1; }
+/* Sin `visibility` no basta `opacity: 0`: la barra oculta seguía capturando
+   clics sobre el pie de página. */
+.demo-sticky[data-shown='false'] { visibility: hidden; }
+
+.demo-sticky-inner {
+  max-width: var(--container);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+}
+.demo-sticky-note {
+  margin: 0;
+  font-size: 14px;
+  color: var(--fg-2);
+}
+.demo-sticky .btn-primary { padding: 12px 20px; font-size: 15px; flex-shrink: 0; }
+
+@media (max-width: 768px) {
+  /* En móvil el texto de apoyo sobra: el botón ocupa el ancho y se lee solo. */
+  .demo-sticky-note { display: none; }
+  .demo-sticky-inner { justify-content: stretch; }
+  .demo-sticky .btn-primary { width: 100%; justify-content: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .demo-sticky { transition: opacity .2s ease; transform: none; }
+  .demo-sticky[data-shown='false'] { opacity: 0; }
 }

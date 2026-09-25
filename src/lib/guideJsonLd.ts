@@ -32,7 +32,13 @@ export function buildGuideJsonLd(content: GuideContent, locale: Locale, slug: st
         { '@type': 'ListItem', position: 2, name: content.hero.h1, item: url },
       ],
     },
-    {
+  ];
+
+  // El `FAQPage` solo si hay preguntas. Una guía puede no llevarlas —los casos
+  // de éxito cierran en CTA, no en FAQ— y emitir el tipo con `mainEntity: []`
+  // es dato estructurado inválido, no dato vacío.
+  if (content.faq.length) {
+    graph.push({
       '@type': 'FAQPage',
       '@id': `${url}#faq`,
       mainEntity: content.faq.map((f) => ({
@@ -40,8 +46,8 @@ export function buildGuideJsonLd(content: GuideContent, locale: Locale, slug: st
         name: f.q,
         acceptedAnswer: { '@type': 'Answer', text: f.a },
       })),
-    },
-  ];
+    });
+  }
 
   // Listicle: ItemList con las herramientas comparadas. Cada `url` lleva el
   // ancla de la sección que habla de esa herramienta, así que solo se emiten

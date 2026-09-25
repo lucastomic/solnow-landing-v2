@@ -1460,7 +1460,8 @@
       "normativa": "Normativa en España",
       "libro": "Libro de registro",
       "parasailing": "Software de parasailing",
-      "bananaSummer": "Caso de éxito: Banana Summer"
+      "marinajets": "Caso de éxito: Grupo Marina Jets",
+      "moraira": "Caso de éxito: Moraira Boats"
     },
     "comparativas": {
       "h": "Comparativas",
@@ -1606,23 +1607,25 @@
   },
   "adsDemo": {
     "meta": {
-      "title": "Demo de Solnow · Deja de perder reservas sin sumar personal",
-      "description": "Reserva 30 minutos y te enseñamos cómo Solnow atiende WhatsApp 24/7, firma el contrato y cobra en un solo flujo, con tu flota y tus bases reales. Sin compromiso.",
-      "ogTitle": "Deja de perder reservas sin sumar personal"
+      "title": "Pruébale el agente a Solnow por WhatsApp · Responde en 9 segundos",
+      "description": "Escríbele al agente como si fueras un cliente. Te cotiza, te resuelve las dudas y te cierra la reserva en 9 segundos. A las 3 de la mañana también.",
+      "ogTitle": "El que responde primero se lleva la reserva"
     },
     "hero": {
-      "eyebrow": "Demo personalizada · 30 minutos",
-      "headPre": "Deja de perder reservas ",
-      "headEm": "sin sumar personal",
-      "headPost": "",
-      "lede": "Mostrador, web, WhatsApp y colaboradores en un único flujo de reserva, contrato y cobro. Elige hueco y en 30 minutos lo ves funcionando con tu flota, tus bases y tu volumen real.",
+      "eyebrow": "Pruébalo ahora · te contesta en 9 segundos",
+      "headPre": "El que responde primero se lleva la reserva. Solnow responde en ",
+      "headEm": "9 segundos",
+      "headPost": ", a las 3 de la mañana también.",
+      "lede": "Escríbele como si fueras un cliente que quiere alquilar mañana. Es el mismo agente que atendería a los tuyos.",
       "bullets": [
-        "El agente de IA responde y cierra reservas en WhatsApp 24/7, también cuando la base está cerrada.",
-        "Reserva, contrato firmado y cobro en un solo paso. Se acaban las 2-3 horas diarias de papeleo.",
-        "Todas tus bases en una pantalla, en tiempo real y desde el móvil.",
-        "Sales de la llamada con un plan de implementación y un número: qué cuesta y qué ahorra."
+        "Te contesta en 9 segundos, a la hora que sea.",
+        "Cotiza con disponibilidad y precios reales.",
+        "Cierra la reserva, firma el contrato y cobra."
       ],
-      "trustNote": "30 minutos · sin compromiso · en español"
+      "ctaPrimary": "Escríbele al agente como si fueras un cliente",
+      "ctaMessage": "Hola, quiero alquilar una moto de agua mañana por la tarde. ¿Tenéis disponibilidad?",
+      "ctaSecondary": "Prefiero reservar 30 min contigo",
+      "trustNote": "Es un WhatsApp real · sin formulario · contesta al instante"
     },
     "logos": {
       "title": "Operadores que ya trabajan con Solnow"
@@ -1630,33 +1633,42 @@
     "stats": {
       "items": [
         {
-          "k": "24/7",
-          "u": "WhatsApp atendido por IA",
-          "d": "responde y cierra reservas antes de que abras la base"
+          "k": "9 s",
+          "u": "tarda el agente en responder",
+          "d": "una persona tarda 1 h 50 de media"
         },
         {
-          "k": "1 flujo",
-          "u": "reserva, contrato y cobro",
-          "d": "mostrador, web, WhatsApp y colaboradores, sin papeleo"
+          "k": "90 %",
+          "u": "de las reservas del agente se pagan solas",
+          "d": "sin que nadie del equipo escriba",
+          "caseSlug": "caso-de-exito-moraira",
+          "caseLabel": "Ver el caso de Moraira"
         },
         {
-          "k": "7 días",
-          "u": "de Excel a producción",
-          "d": "nosotros hacemos el 95% de la implementación"
+          "k": "45.000 €",
+          "u": "cerrados por el agente en un mes",
+          "d": "270 reservas en un solo agosto",
+          "caseSlug": "caso-de-exito-marinajets",
+          "caseLabel": "Ver el caso de Grupo Marina Jets"
+        },
+        {
+          "k": "×7 y ×8",
+          "u": "de retorno sobre lo que pagan",
+          "d": "en los dos casos de aquí al lado"
         }
       ]
     },
     "value": {
       "eyebrow": "Por qué Solnow",
-      "title": "Lo que verás funcionando con tus datos",
+      "title": "Lo que acabas de probar, funcionando con tus datos",
       "cards": [
         {
           "h": "Vendes mientras la base está cerrada",
-          "p": "El agente de IA atiende WhatsApp con tu disponibilidad real: asesora, cierra la reserva y cobra la señal. Las consultas de las 23:00 ya no se pierden."
+          "p": "El agente atiende WhatsApp con tu disponibilidad real: asesora, cierra la reserva y cobra la señal. Las consultas de las 23:00 ya no se pierden."
         },
         {
           "h": "Cero papeleo en mostrador",
-          "p": "TPV, QR, contrato firmado y cobro en el mismo paso. Lo recorremos entero con tus precios para que veas dónde se te va hoy el tiempo."
+          "p": "TPV, QR, contrato firmado y cobro en el mismo paso. Se acaban las 2-3 horas diarias de papeleo."
         },
         {
           "h": "Control de todas tus bases",
@@ -1664,41 +1676,28 @@
         }
       ]
     },
-    "how": {
-      "eyebrow": "Después de reservar",
-      "title": "Qué pasa cuando eliges hueco",
-      "steps": [
-        {
-          "h": "Confirmación inmediata",
-          "p": "Recibes el enlace de la videollamada por correo, con su invitación de calendario."
-        },
-        {
-          "h": "Preparamos tu entorno",
-          "p": "Antes de la llamada cargamos tu flota, tus bases y tus precios para que la demo sea la tuya, no la de un cliente inventado."
-        },
-        {
-          "h": "30 minutos y una decisión",
-          "p": "Sales con una propuesta concreta, qué cuesta, qué ahorra y plazos reales de implementación. Si no encaja, te lo decimos."
-        }
-      ]
+    "calendar": {
+      "eyebrow": "Si prefieres verlo con calma",
+      "title": "Reserva 30 minutos y lo montamos con tu flota",
+      "note": "Antes de la llamada cargamos tus unidades, tus bases y tus precios, para que la demo sea la tuya y no la de un cliente inventado."
     },
     "faq": {
-      "title": "Antes de reservar",
+      "title": "Antes de escribirle",
       "items": [
         {
-          "q": "¿Es una llamada de ventas?",
-          "a": "Es una demo técnica. Te enseñamos el producto funcionando con tus datos y respondemos lo que preguntes. Si Solnow no encaja con tu operación, te lo decimos en la misma llamada."
+          "q": "¿Es un bot o hay alguien detrás?",
+          "a": "Es el agente, no una persona. El mismo que atendería a tus clientes, con la disponibilidad y los precios de una base de demostración. Por eso contesta igual de rápido a las cuatro de la tarde que a las cuatro de la mañana."
+        },
+        {
+          "q": "¿Qué hacéis con mi número?",
+          "a": "Queda en nuestro WhatsApp, como el de cualquiera que nos escribe, y lo usamos para seguir la conversación. Si nos dices que no quieres que te escribamos más, se acabó ahí."
         },
         {
           "q": "¿Cuánto cuesta Solnow?",
-          "a": "Depende de tu volumen y de tus bases. En la llamada sales con el número exacto para tu operación y con lo que ahorras a cambio. Sin letra pequeña."
+          "a": "Depende de tu volumen y de tus bases. Pregúntaselo al agente o reserva la llamada: en las dos sales con el número de tu operación y con lo que ahorras a cambio. Sin letra pequeña."
         },
         {
-          "q": "¿Cuánto dura?",
-          "a": "30 minutos. Si necesitas más tiempo o quieres sumar a alguien de tu equipo, lo ampliamos sin problema."
-        },
-        {
-          "q": "¿Tengo que preparar algo?",
+          "q": "¿Tengo que preparar algo para la demo?",
           "a": "Nada. Con saber cuántas unidades tienes, en cuántas bases operas y cómo reservas hoy, es suficiente."
         },
         {
@@ -1708,12 +1707,14 @@
       ]
     },
     "final": {
-      "head": "Deja de perder reservas. Elige tu hueco.",
-      "cta": "Reservar mi demo",
-      "note": "30 minutos · sin compromiso · te la montamos con tu flota real"
+      "head": "Escríbele. Tarda 9 segundos en contestarte.",
+      "cta": "Abrir WhatsApp con el agente",
+      "ctaSecondary": "O reserva 30 min contigo",
+      "note": "Es un WhatsApp real · también a las 3 de la mañana"
     },
-    "footer": {
-      "rights": "© {year} Solnow · Valencia, España"
+    "sticky": {
+      "cta": "Reservar mi demo",
+      "note": "30 minutos con tu flota, tus bases y tus precios."
     }
   },
   "guides": {
@@ -3183,11 +3184,26 @@
         "ogTitle": "Mejores software de reservas para actividades acuáticas"
       },
       "itemList": [
-        { "name": "FareHarbor", "section": 2 },
-        { "name": "TuriTop", "section": 3 },
-        { "name": "Bookeo", "section": 4 },
-        { "name": "Regiondo", "section": 4 },
-        { "name": "Solnow", "section": 5 }
+        {
+          "name": "FareHarbor",
+          "section": 2
+        },
+        {
+          "name": "TuriTop",
+          "section": 3
+        },
+        {
+          "name": "Bookeo",
+          "section": 4
+        },
+        {
+          "name": "Regiondo",
+          "section": 4
+        },
+        {
+          "name": "Solnow",
+          "section": 5
+        }
       ],
       "hero": {
         "eyebrow": "COMPARATIVA",
@@ -4621,28 +4637,46 @@
           "blocks": [
             {
               "type": "table",
-              "columns": ["Software genérico", "Solnow"],
+              "columns": [
+                "Software genérico",
+                "Solnow"
+              ],
               "highlightCol": 1,
               "rows": [
                 {
                   "label": "Vuelos por capacidad y rotación de barco",
-                  "cells": ["\"Horarios de tour\" fijos", "Franjas de vuelo por capacidad y barco"]
+                  "cells": [
+                    "\"Horarios de tour\" fijos",
+                    "Franjas de vuelo por capacidad y barco"
+                  ]
                 },
                 {
                   "label": "Individuales, dobles, triples y acompañantes",
-                  "cells": ["Un solo tipo de entrada", "Combinaciones de plazas dentro de cada vuelo"]
+                  "cells": [
+                    "Un solo tipo de entrada",
+                    "Combinaciones de plazas dentro de cada vuelo"
+                  ]
                 },
                 {
                   "label": "Exención firmada antes de embarcar",
-                  "cells": ["Papel o app de terceros", "Exención digital por QR, por participante y trazada"]
+                  "cells": [
+                    "Papel o app de terceros",
+                    "Exención digital por QR, por participante y trazada"
+                  ]
                 },
                 {
                   "label": "Cancelaciones por meteorología",
-                  "cells": ["Maratón de llamadas a mano", "Recolocación masiva por WhatsApp en minutos"]
+                  "cells": [
+                    "Maratón de llamadas a mano",
+                    "Recolocación masiva por WhatsApp en minutos"
+                  ]
                 },
                 {
                   "label": "Walk-in en el pantalán",
-                  "cells": ["No lo cubre", "TPV completo con disponibilidad de vuelos en vivo"]
+                  "cells": [
+                    "No lo cubre",
+                    "TPV completo con disponibilidad de vuelos en vivo"
+                  ]
                 }
               ]
             }
@@ -4704,40 +4738,52 @@
         "button": "Pedir demo"
       }
     },
-    "bananaSummer": {
+    "marinajets": {
       "meta": {
-        "title": "Caso de éxito: Banana Summer, 8 bases y un retorno de ×8 con Solnow",
-        "description": "Agosto de 2026 en Banana Summer (Grupo Marinajets): 270 reservas creadas por el agente de IA, 673 horas de mostrador que no hizo nadie, entre 10.000 y 27.000 € al mes recuperados con el seguimiento automático y un retorno de ×8.",
-        "ogTitle": "Banana Summer: retorno ×8 con Solnow"
+        "title": "Caso de éxito: Grupo Marina Jets, ≈450 h de trabajo ahorradas en agosto",
+        "description": "Agosto de 2026 en Grupo Marina Jets, 8 bases: la IA responde en 9 segundos, atiende el 60 % de los turnos de venta por WhatsApp y cierra sola el 34 % de las conversaciones. Unas 450 horas al mes de mostrador y WhatsApp que no hizo nadie.",
+        "ogTitle": "Grupo Marina Jets: ≈450 h de trabajo ahorradas en agosto"
       },
       "hero": {
-        "eyebrow": "CASO DE ÉXITO · BANANA SUMMER",
-        "h1": "Banana Summer: 8 bases, un agosto récord y un retorno de ×8",
-        "lede": "Banana Summer (Grupo Marinajets) opera 8 bases de motos de agua en el Mediterráneo. Esto es lo que Solnow hizo por ellos en agosto de 2026, con datos de producción.",
+        "eyebrow": "CASO DE ÉXITO · GRUPO MARINA JETS",
+        "h1": "Grupo Marina Jets: ≈450 h de trabajo ahorradas en agosto",
+        "lede": "Grupo Marina Jets opera 8 bases de motos de agua y actividades náuticas en el Mediterráneo, con mucho mostrador. Esto es lo que Solnow le quitó de encima al equipo en la temporada de 2026, con datos de producción.",
         "updated": "Datos de agosto de 2026",
-        "readingTime": "3 min de lectura"
+        "readingTime": "3 min de lectura",
+        "logo": {
+          "src": "/casos/marinajets-logo.webp",
+          "alt": "Grupo Marina Jets",
+          "w": 202,
+          "h": 168
+        },
+        "website": {
+          "href": "https://marinajets.com",
+          "label": "marinajets.com"
+        }
       },
-      "disclaimer": "Datos de producción de Solnow en Banana Summer, agosto de 2026 completo. Definiciones y método disponibles bajo petición.",
+      "disclaimer": "Datos de producción de Solnow en Grupo Marina Jets: agosto de 2026 completo y la temporada de junio a agosto. Los volúmenes absolutos van redondeados a petición del cliente. Las horas son una estimación frente al proceso en papel —un minuto por mensaje y por pasajero, tres por contrato—, no un cronómetro: el rango va de 340 a 560 al mes. «Cerrar sola» una conversación significa que nadie del equipo escribió antes del primer pago, y el 57 % está calculado sobre las reservas que crea el agente, no sobre todas las que entran por WhatsApp. Método completo disponible bajo petición.",
       "sections": [
         {
-          "h": "El mes en tres cifras",
+          "h": "Ocho bases y un mostrador que no daba más",
           "blocks": [
             {
-              "type": "stats",
-              "items": [
-                {
-                  "value": "9 s",
-                  "label": "tarda la IA en responder, a las 3 de la mañana también. Una persona, 1 h 50 de media."
-                },
-                {
-                  "value": "673 h",
-                  "label": "de mostrador y WhatsApp que en agosto no hizo nadie. Cuatro personas a jornada completa."
-                },
-                {
-                  "value": "×8",
-                  "label": "retorno: unos 36.000 € de valor en el mes frente a 4.597 € de Solnow."
-                }
-              ]
+              "type": "p",
+              "text": "Grupo Marina Jets alquila motos de agua y vende actividades náuticas en ocho bases del Mediterráneo. En agosto, el cuello de botella no es la flota: es la gente. Alguien tiene que contestar el WhatsApp, pasar el precio, rellenar el contrato, comprobar el DNI y apuntar a cada pasajero en el libro de registro. Multiplicado por ocho bases y por el mes más fuerte del año."
+            },
+            {
+              "type": "figure",
+              "src": "/casos/marinajets-flota.webp",
+              "alt": "Motos de agua de Grupo Marina Jets amarradas en el pantalán de una de sus bases",
+              "w": 386,
+              "h": 560,
+              "side": "left",
+              "caption": "La temporada de 2026 la hicieron con el mismo equipo del año anterior. Lo que cambió fue cuánto de ese trabajo tuvo que hacer una persona."
+            },
+            {
+              "type": "feature",
+              "value": "≈ 450 h",
+              "label": "al mes · estimadas",
+              "text": "de mostrador y WhatsApp que en agosto no hizo nadie. Son tres personas a jornada completa que no hubo que contratar, ni formar, ni encajar en un turno de agosto."
             },
             {
               "type": "callout",
@@ -4747,111 +4793,74 @@
           ]
         },
         {
-          "h": "El sistema vende solo",
+          "h": "Vende con la base cerrada",
           "blocks": [
             {
-              "type": "stats",
-              "items": [
-                {
-                  "value": "270",
-                  "label": "reservas creadas por el agente de IA en agosto. 45.000 €."
-                },
-                {
-                  "value": "620",
-                  "label": "reservas en las que el agente participó. 114.675 €."
-                },
-                {
-                  "value": "57 %",
-                  "label": "de las reservas del agente se pagaron sin que nadie del equipo escribiera."
-                }
-              ]
+              "type": "p",
+              "text": "La consulta de las once de la noche es la que más se pierde y la que menos cuesta ganar: el cliente está mirando planes para mañana y escribe a tres sitios. En Grupo Marina Jets contesta el primero."
+            },
+            {
+              "type": "feature",
+              "tone": "ink",
+              "value": "9 s",
+              "label": "de día y de noche",
+              "text": "tarda la IA en responder. Una persona tarda 1 h 50 de media. De noche el agente se queda con el 70 % de los turnos de venta; en el conjunto del día, con el 60 %."
             },
             {
               "type": "p",
-              "text": "Ventas que antes no existían: 32 reservas cerradas entre las 22 h y las 9 h, 79 en fin de semana y 306 conversaciones en inglés, francés o italiano."
+              "text": "En agosto cerró solo el 34 % de las conversaciones, y el 57 % de las reservas que crea se pagan sin que nadie del equipo escriba una línea: el mostrador se entera cuando ya están cobradas. A lo largo de la temporada multiplicó por cuatro las reservas que abre por su cuenta."
             },
             {
-              "type": "stats",
-              "items": [
-                {
-                  "value": "27 %",
-                  "label": "cierre cuando una persona interrumpe a la IA en el primer mensaje."
-                },
-                {
-                  "value": "54 %",
-                  "label": "cierre cuando la IA lleva cinco turnos o más sola."
-                },
-                {
-                  "value": "11 → 34 %",
-                  "label": "conversaciones que el agente cerró solo, de junio a agosto."
-                }
-              ]
-            },
-            {
-              "type": "p",
-              "text": "Cuanto más se deja contestar a la IA, más cierra."
+              "type": "figure",
+              "src": "/casos/marinajets-banana.webp",
+              "alt": "Un grupo de clientes de Grupo Marina Jets sobre una banana hinchable en el mar",
+              "w": 465,
+              "h": 425,
+              "caption": "Al otro lado de cada conversación que cierra el agente."
             }
           ]
         },
         {
-          "h": "El cliente se atiende solo",
+          "h": "El mostrador se lo hace el cliente",
           "blocks": [
+            {
+              "type": "p",
+              "text": "El papeleo no desaparece: cambia de manos. El contrato se firma en el móvil del cliente, antes de llegar o en el pantalán, y el embarque se resuelve con un escaneo que rellena el libro de registro por su cuenta."
+            },
             {
               "type": "stats",
               "items": [
                 {
-                  "value": "12.935",
-                  "label": "contratos firmados en el móvil del cliente en un mes. 410 al día. Ni un papel."
+                  "value": "+12.000",
+                  "label": "contratos firmados en el móvil del cliente en un mes. Ni un papel."
                 },
                 {
                   "value": "36 %",
-                  "label": "llega con el contrato firmado desde casa. Era el 25 % en junio."
+                  "label": "de los clientes llega al pantalán con el contrato ya firmado desde casa."
                 },
                 {
-                  "value": "7.751",
-                  "label": "pasajeros embarcaron con un escaneo."
+                  "value": "+7.500",
+                  "label": "pasajeros embarcaron con un escaneo, sin cola en el mostrador."
                 }
               ]
             },
             {
-              "type": "p",
-              "text": "La IA se queda con el 60 % de los turnos de WhatsApp. Las 673 horas ahorradas salen de ahí: 311 de WhatsApp, 232 de contratos y 130 de check-in."
-            },
-            {
-              "type": "callout",
-              "tone": "info",
-              "text": "La misma temporada con el mismo equipo y el doble de volumen. O con cuatro personas menos."
+              "type": "figure",
+              "src": "/casos/marinajets-acuarela.webp",
+              "alt": "Cliente de Grupo Marina Jets celebrando sobre una moto de agua",
+              "w": 465,
+              "h": 425,
+              "side": "right",
+              "caption": "Un mostrador que no tramita es un mostrador que atiende. Es la diferencia entre despachar a un cliente y venderle la actividad de arriba."
             }
           ]
         },
         {
-          "h": "El sistema persigue solo",
+          "h": "Y persigue lo que se enfría",
           "blocks": [
             {
-              "type": "stats",
-              "items": [
-                {
-                  "value": "10.000 a 27.000 € al mes",
-                  "label": "recuperados con el seguimiento automático de las conversaciones que se enfrían."
-                }
-              ]
-            },
-            {
-              "type": "stats",
-              "items": [
-                {
-                  "value": "1.157",
-                  "label": "conversaciones al mes en las que el cliente pregunta, recibe el precio y deja de escribir."
-                },
-                {
-                  "value": "78 %",
-                  "label": "vuelve cuando recibe un seguimiento con el enlace de pago. Sin seguimiento, el 31 %."
-                }
-              ]
-            },
-            {
               "type": "p",
-              "text": "Tres de cada cuatro conversaciones se enfrían. Solnow las persigue a las tres horas de silencio, con el precio y el enlace de pago, y retoma la conversación si el cliente contesta."
+              "text": "Tres de cada cuatro conversaciones se enfrían: el cliente pregunta, recibe el precio y desaparece. Solnow las retoma a las tres horas de silencio, con el precio y el enlace de pago, y sigue la conversación si contesta."
             },
             {
               "type": "table",
@@ -4885,53 +4894,24 @@
               ]
             },
             {
-              "type": "callout",
-              "tone": "warn",
-              "text": "Solnow no espera la reserva: sale a buscarla."
-            }
-          ]
-        },
-        {
-          "h": "Lo que vale y lo que cuesta",
-          "blocks": [
+              "type": "feature",
+              "value": "10.000 – 27.000 €",
+              "label": "al mes · recuperados",
+              "text": "de las más de mil conversaciones que se enfrían cada mes. Es la diferencia entre el 31 % que vuelve solo y el 78 % que vuelve cuando le llega un seguimiento con el enlace de pago."
+            },
             {
-              "type": "stats",
-              "items": [
-                {
-                  "value": "36.000 €",
-                  "label": "de valor generado en agosto, aproximado: reservas del agente y horas que no hizo nadie."
-                },
-                {
-                  "value": "4.597 €",
-                  "label": "costó Solnow ese mes, el más fuerte del año."
-                },
-                {
-                  "value": "199 €",
-                  "label": "al mes es la cuota fija por la primera base. El resto es comisión: en noviembre la factura baja sola."
-                }
-              ]
+              "type": "figure",
+              "src": "/casos/marinajets-parasailing.webp",
+              "alt": "Dos clientes de Grupo Marina Jets haciendo parasailing sobre el mar",
+              "w": 385,
+              "h": 560,
+              "side": "left",
+              "caption": "Motos de agua, banana, parasailing: el agente cotiza el catálogo entero, y la actividad que más margen deja no depende de que alguien se acuerde de ofrecerla."
             }
           ]
         }
       ],
-      "faq": [
-        {
-          "q": "¿Cuántas reservas cerró el agente de IA en Banana Summer?",
-          "a": "En agosto de 2026 creó 270 reservas por 45.000 € y participó en 620 por 114.675 €. En el 57 % de las que creó, nadie del equipo escribió antes del cobro."
-        },
-        {
-          "q": "¿Vende peor una IA que una persona?",
-          "a": "En Banana Summer, al revés: el cierre sube del 27 % cuando una persona entra al primer mensaje al 54 % cuando la IA lleva cinco turnos o más."
-        },
-        {
-          "q": "¿De dónde salen los 10.000 a 27.000 € al mes?",
-          "a": "De las 1.157 conversaciones al mes que se enfrían. Con el seguimiento automático, entre 61 y 123 de ellas acaban en reserva, según los datos de 90 días de conversaciones con y sin seguimiento."
-        },
-        {
-          "q": "¿Cuánto cuesta Solnow fuera de temporada?",
-          "a": "199 € al mes por la primera base. El resto es comisión sobre lo que Solnow cobra o cierra, así que sin temporada la factura baja sola."
-        }
-      ],
+      "faq": [],
       "related": [
         {
           "label": "Reservas por WhatsApp para alquiler de motos de agua",
@@ -4947,9 +4927,139 @@
         }
       ],
       "cta": {
-        "title": "Mira estos números con tus bases",
-        "desc": "Demo de 20 minutos con tu volumen y una estimación de lo que Solnow haría por ti el próximo agosto.",
-        "button": "Pedir demo"
+        "title": "¿Cuánto de esto pasa ya en tu operación?",
+        "desc": "Escríbele al agente como si fueras un cliente tuyo y compruébalo en nueve segundos. Si prefieres verlo montado con tu flota y tus bases, reserva 30 minutos.",
+        "button": "Probar el agente",
+        "href": "demo"
+      }
+    },
+    "moraira": {
+      "meta": {
+        "title": "Caso de éxito: Moraira Boats, el WhatsApp que vende solo",
+        "description": "Agosto de 2026 en Moraira Boats Adventures: la IA atiende el 80 % de los turnos de WhatsApp, responde en 14 segundos y 9 de cada 10 reservas del agente se pagan sin que nadie del equipo escriba.",
+        "ogTitle": "Moraira Boats: el WhatsApp que vende solo"
+      },
+      "hero": {
+        "eyebrow": "CASO DE ÉXITO · MORAIRA BOATS",
+        "h1": "Moraira Boats: el WhatsApp que vende solo",
+        "lede": "Moraira Boats Adventures alquila barcos y vende actividades náuticas en Moraira. Con Solnow, su WhatsApp dejó de ser una bandeja de mensajes pendientes y pasó a ser un canal que vende: el agente responde, cotiza, reserva y cobra. Estos son sus datos de producción de la temporada de 2026.",
+        "updated": "Datos de agosto de 2026",
+        "readingTime": "3 min de lectura",
+        "logo": {
+          "src": "/logos/morairaboatsadventures.webp",
+          "alt": "Moraira Boats Adventures",
+          "w": 338,
+          "h": 192
+        },
+        "website": {
+          "href": "https://morairaboatsadventures.com/",
+          "label": "morairaboatsadventures.com"
+        }
+      },
+      "disclaimer": "Datos de producción de Solnow en Moraira Boats Adventures: agosto de 2026 completo. Moraira Boats usa el agente de WhatsApp y el motor de reservas web. «Sin que nadie escriba» significa que ninguna persona del equipo intervino antes del primer pago, y el 9 de cada 10 está calculado sobre las reservas que crea el agente, no sobre todas las que entran por WhatsApp. Método completo disponible bajo petición.",
+      "sections": [
+        {
+          "h": "Un WhatsApp que contesta siempre, y rápido",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "En el alquiler náutico, la consulta que no se contesta rápido se pierde: el cliente escribe a varios sitios y reserva con el primero que responde. Con Solnow, en Moraira Boats esa primera respuesta llega en segundos, a cualquier hora, con precios y disponibilidad reales."
+            },
+            {
+              "type": "feature",
+              "tone": "ink",
+              "value": "80 %",
+              "label": "de los turnos de WhatsApp",
+              "text": "los atiende la IA. Responde en 14 segundos, y el 99,9 % de las veces en menos de un minuto, a cualquier hora del día."
+            },
+            {
+              "type": "callout",
+              "tone": "accent",
+              "text": "Solnow no ayuda a vender: vende, y la reserva llega a Moraira Boats ya pagada."
+            }
+          ]
+        },
+        {
+          "h": "De la consulta al pago, sin nadie",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "El agente no se queda en resolver dudas. Cotiza con la disponibilidad y los precios reales, crea la reserva y manda el enlace de pago, todo en la misma conversación."
+            },
+            {
+              "type": "feature",
+              "value": "9 de cada 10",
+              "label": "reservas del agente",
+              "text": "se pagan sin que nadie del equipo escriba una sola línea antes del cobro."
+            },
+            {
+              "type": "stats",
+              "items": [
+                {
+                  "value": "71 %",
+                  "label": "de las conversaciones cierran cuando el agente manda el enlace de pago."
+                },
+                {
+                  "value": "14 s",
+                  "label": "tarda la IA en responder, de día y de noche."
+                },
+                {
+                  "value": "1 de cada 5",
+                  "label": "reservas que pasan por el chat se rematan en el motor web."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "h": "Clientes de fuera, en su idioma",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Moraira vive del turismo internacional, y el WhatsApp lo refleja."
+            },
+            {
+              "type": "feature",
+              "value": "43 %",
+              "label": "de las conversaciones",
+              "text": "llegan en otro idioma. El agente contesta en el del cliente, sin pasarle el chat a quien hable inglés ni cambiar de herramienta."
+            },
+            {
+              "type": "figure",
+              "src": "/casos/moraira-cueva.webp",
+              "alt": "Dos clientes de Moraira Boats en kayak dentro de una cueva marina de la costa de Moraira",
+              "w": 510,
+              "h": 560,
+              "side": "right",
+              "caption": "Al otro lado de cada conversación que cierra el agente: clientes de fuera que reservan la salida en su idioma, sin esperar a que alguien del equipo coja el móvil."
+            },
+            {
+              "type": "p",
+              "text": "Y fuera de casa no vende peor: en agosto, las conversaciones en inglés cerraron a la par que las de español, incluso un poco por encima."
+            }
+          ]
+        }
+      ],
+      "faq": [],
+      "related": [
+        {
+          "label": "Reservas por WhatsApp con IA",
+          "slug": "whatsapp-reservas-motos-de-agua"
+        },
+        {
+          "label": "Caso de éxito: Grupo Marina Jets",
+          "slug": "caso-de-exito-marinajets"
+        },
+        {
+          "label": "Los mejores software de reservas para actividades acuáticas",
+          "slug": "mejores-software-reservas-actividades-acuaticas"
+        }
+      ],
+      "cta": {
+        "title": "¿Cuánto vendería tu WhatsApp si contestara solo?",
+        "desc": "Escríbele al agente como si fueras un cliente tuyo y compruébalo en segundos. Si prefieres verlo montado con tus barcos y tus precios, reserva 30 minutos.",
+        "button": "Probar el agente",
+        "href": "demo"
       }
     }
   }

@@ -159,9 +159,12 @@ export const AREA_FOR_GUIDE: Record<GuideKey, ProductKey> = {
   // Parasailing vende el mostrador del pantalán: el walk-in es la mitad de su
   // facturación, así que la landing comercial que le corresponde es el TPV.
   parasailing: 'tpv',
-  // El caso de Banana Summer se sostiene sobre el agente de WhatsApp (270
+  // El caso de Grupo Marina Jets se sostiene sobre el agente de WhatsApp (270
   // reservas creadas, 620 participadas), así que remite a esa landing.
-  bananaSummer: 'whatsapp',
+  marinajets: 'whatsapp',
+  // Moraira Boats solo usa el agente de WhatsApp y el motor web; el caso va de
+  // autonomía del agente, así que remite a la misma landing.
+  moraira: 'whatsapp',
   fareharborAlt: 'motor',
   turitopAlt: 'motor',
   fareharborVs: 'motor',

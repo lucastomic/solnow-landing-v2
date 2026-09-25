@@ -4,8 +4,12 @@ import type { Locale } from '@/i18n/config';
 import { getT } from '@/i18n/dictionaries';
 import { SectionHead, NumLabel } from '@/components/atoms';
 import RevealProvider from '@/components/RevealProvider';
+import { localizedSlugFromSlug } from '@/content/guides';
 import { CLIENT_LOGOS } from '@/components/sections/clientLogos';
 import { DemoCalendar } from '@/components/sections/DemoCalendar';
+import { WhatsAppCta } from '@/components/ads/WhatsAppCta';
+import { DemoStickyCta } from '@/components/ads/DemoStickyCta';
+import { WhatsAppMock } from '@/components/product/whatsappMock';
 
 /**
  * Landing de campaña: una sola acción, reservar demo.
@@ -15,20 +19,33 @@ import { DemoCalendar } from '@/components/sections/DemoCalendar';
  * en tráfico de pago son fugas: cada clic que no sea el calendario es un clic
  * que se ha pagado y no convierte. Aquí solo hay salidas legales.
  *
- * El calendario va en el hero, no al final como en la home: quien llega de un
- * anuncio ya ha leído el argumento en el propio anuncio.
+ * La acción principal es escribirle al agente por WhatsApp, no reservar una
+ * videollamada. Pedirle media hora de agenda a un dueño de base que viene de un
+ * anuncio es un salto enorme, y la propia tesis del producto es que la puerta
+ * de entrada es el WhatsApp: que lo viva en vez de leerlo. Además el número del
+ * visitante se queda aunque no llegue a reservar, que es más de lo que deja un
+ * calendario sin rellenar.
+ *
+ * El calendario baja a segundo CTA, con sección propia antes del cierre. Como
+ * ya no se arma en el hero, vuelve a cargarse en diferido (sin `eager`): el
+ * observer y el clic en `#agendar` lo montan cuando de verdad hace falta.
  */
 export async function DemoLanding({ locale }: { locale: Locale }) {
   const t = await getT(locale);
   const bullets = t<string[]>('adsDemo.hero.bullets');
-  const stats = t<{ k: string; u: string; d: string }[]>('adsDemo.stats.items');
+  // `caseSlug`/`caseLabel` solo los traen las cifras que tienen caso de éxito
+  // detrás; las otras dos se quedan sin enlace.
+  const stats =
+    t<{ k: string; u: string; d: string; caseSlug?: string; caseLabel?: string }[]>(
+      'adsDemo.stats.items'
+    );
   const cards = t<{ h: string; p: string }[]>('adsDemo.value.cards');
-  const steps = t<{ h: string; p: string }[]>('adsDemo.how.steps');
   const faq = t<{ q: string; a: string }[]>('adsDemo.faq.items');
 
   return (
     <>
       <RevealProvider />
+      <DemoStickyCta label={t('adsDemo.sticky.cta')} note={t('adsDemo.sticky.note')} />
 
       <header style={{ position: 'relative', zIndex: 10 }}>
         <div
@@ -48,7 +65,7 @@ export async function DemoLanding({ locale }: { locale: Locale }) {
       </header>
 
       <main>
-        {/* ── Hero: copy a la izquierda, calendario a la derecha ───────────── */}
+        {/* ── Hero: copy a la izquierda, el agente contestando a la derecha ── */}
         <section id="top" style={{ position: 'relative', paddingTop: 40, paddingBottom: 72, overflow: 'hidden' }}>
           <div
             aria-hidden
@@ -77,14 +94,20 @@ export async function DemoLanding({ locale }: { locale: Locale }) {
               className="r-split"
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1.05fr)',
+                gridTemplateColumns: 'minmax(0, 1.15fr) minmax(0, 0.85fr)',
                 gap: 64,
                 alignItems: 'start',
               }}
             >
               <div className="hero-rise">
                 <span className="eyebrow">{t('adsDemo.hero.eyebrow')}</span>
-                <h1 className="h-display" style={{ margin: '18px 0 24px' }}>
+                {/* Un punto por debajo del `clamp` de `.h-display` (40-84px): este
+                    titular son dos frases y a tamaño completo se comía el pliegue
+                    entero, dejando el CTA fuera de pantalla en un portátil. */}
+                <h1
+                  className="h-display"
+                  style={{ margin: '18px 0 24px', fontSize: 'clamp(34px, 4.4vw, 58px)', lineHeight: 1.03 }}
+                >
                   {t('adsDemo.hero.headPre')}
                   <em className="serif" style={{ color: 'var(--accent)' }}>
                     {t('adsDemo.hero.headEm')}
@@ -138,15 +161,32 @@ export async function DemoLanding({ locale }: { locale: Locale }) {
                   ))}
                 </ul>
 
-                <p className="mono" style={{ margin: 0, fontSize: 12, color: 'var(--fg-2)', letterSpacing: '0.04em' }}>
+                {/* La acción de la página. El enlace al calendario va debajo y
+                    en `btn-ghost`: sigue estando, pero no compite. */}
+                <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '14px 20px' }}>
+                  <WhatsAppCta
+                    className="btn btn-primary"
+                    label={t('adsDemo.hero.ctaPrimary')}
+                    message={t('adsDemo.hero.ctaMessage')}
+                    placement="hero"
+                    style={{ fontSize: 16, padding: '15px 22px' }}
+                  />
+                  <a className="btn btn-ghost" href="#agendar" style={{ fontSize: 14.5 }}>
+                    {t('adsDemo.hero.ctaSecondary')}
+                  </a>
+                </div>
+
+                <p className="mono" style={{ margin: '22px 0 0', fontSize: 12, color: 'var(--fg-2)', letterSpacing: '0.04em' }}>
                   {t('adsDemo.hero.trustNote')}
                 </p>
               </div>
 
-              {/* `r-split` colapsa a una columna por debajo de 1000px, así que en
-                  móvil el calendario cae justo bajo el copy sin nada extra. */}
-              <div id="agendar" className="hero-rise" style={{ ['--reveal-delay' as string]: '120ms', scrollMarginTop: 24 }}>
-                <DemoCalendar eager passThroughParams trackConversion="ads_demo" />
+              {/* El hilo del agente, animado. Es el mismo mockup de la landing de
+                  producto, y aquí hace de prueba de la promesa del titular: se ve
+                  contestar antes de escribirle. `r-split` colapsa por debajo de
+                  1000px, así que en móvil cae bajo el copy sin nada extra. */}
+              <div className="hero-rise" style={{ ['--reveal-delay' as string]: '120ms' }}>
+                <WhatsAppMock contact="Solnow · Agente demo" status="agente IA · responde en 9 s" />
               </div>
             </div>
           </div>
@@ -197,17 +237,19 @@ export async function DemoLanding({ locale }: { locale: Locale }) {
           </div>
         </section>
 
-        {/* ── Tres cifras: qué cambia con Solnow ───────────────────────────── */}
+        {/* ── Las cifras ───────────────────────────────────────────────────── */}
         {/* Mismo tratamiento que el `PainBar` de la home, pero al revés: allí
             son los números del problema; aquí, los de la solución. Quien llega
-            de un anuncio ya sabe qué le duele, hay que enseñarle qué gana. */}
+            de un anuncio ya sabe qué le duele, hay que enseñarle qué gana.
+            Resultados medidos, no características: «24/7» o «1 flujo» los
+            promete cualquier SaaS, «45.000 € en un mes» no. */}
         <section className="section" style={{ paddingTop: 72, paddingBottom: 24 }}>
           <div className="container">
             <div
-              className="r-cols-3"
+              className="r-cols-4"
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(3, 1fr)',
+                gridTemplateColumns: 'repeat(4, 1fr)',
                 gap: 1,
                 border: '1px solid var(--line-soft)',
                 borderRadius: 16,
@@ -228,9 +270,11 @@ export async function DemoLanding({ locale }: { locale: Locale }) {
                     gap: 10,
                   }}
                 >
+                  {/* `clamp` en vez de 48 fijo: con cuatro columnas la caja es
+                      más estrecha y «45.000 €» se salía. */}
                   <div
                     style={{
-                      fontSize: 48,
+                      fontSize: 'clamp(32px, 3.2vw, 44px)',
                       lineHeight: 1,
                       letterSpacing: '-0.04em',
                       fontWeight: 500,
@@ -242,13 +286,28 @@ export async function DemoLanding({ locale }: { locale: Locale }) {
                   </div>
                   <div style={{ fontSize: 16, color: 'var(--fg)', marginTop: 6, fontWeight: 500 }}>{b.u}</div>
                   <div style={{ fontSize: 14, color: 'var(--muted)' }}>{b.d}</div>
+                  {/* El operador no se queda suelto: quien dude de la cifra tiene
+                      dónde comprobarla. `marginTop: auto` los alinea abajo aunque
+                      los descriptores de al lado ocupen distinto número de líneas. */}
+                  {b.caseSlug && b.caseLabel && (
+                    <Link
+                      className="footer-link"
+                      href={`/${locale}/${localizedSlugFromSlug(b.caseSlug, locale)}`}
+                      style={{ marginTop: 'auto', paddingTop: 10, fontSize: 13.5, display: 'inline-flex', alignItems: 'center', gap: 6 }}
+                    >
+                      {b.caseLabel}
+                      <svg width="12" height="12" viewBox="0 0 14 14" aria-hidden>
+                        <path d="M3 11 11 3M5 3h6v6" stroke="currentColor" strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </Link>
+                  )}
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ── Qué se ve en la demo ─────────────────────────────────────────── */}
+        {/* ── Qué hay detrás de lo que acaba de probar ─────────────────────── */}
         <section className="section" style={{ paddingTop: 72, paddingBottom: 96 }}>
           <div className="container">
             <SectionHead
@@ -272,26 +331,46 @@ export async function DemoLanding({ locale }: { locale: Locale }) {
           </div>
         </section>
 
-        {/* ── Qué pasa después de reservar ─────────────────────────────────── */}
-        <section className="section" style={{ paddingBlock: 96, background: 'var(--bg-2)', borderBlock: '1px solid var(--line-soft)' }}>
+        {/* ── Segundo CTA: el calendario ───────────────────────────────────── */}
+        {/* Ya no está en el hero, así que `DemoCalendar` vuelve a cargarse en
+            diferido: lo arman el observer (400px antes de entrar) o el clic en
+            cualquier ancla `#agendar`, que es lo que apunta aquí desde el hero y
+            desde el cierre. Un millón de bytes de HubSpot que solo se pagan si
+            alguien baja hasta aquí. */}
+        {/* El fondo tintado lo heredó de la sección de pasos que vivía aquí:
+            sin él, las tarjetas de arriba y el calendario se leían como un solo
+            bloque plano. */}
+        <section
+          id="agendar"
+          className="section"
+          style={{
+            paddingBlock: 96,
+            scrollMarginTop: 24,
+            background: 'var(--bg-2)',
+            borderBlock: '1px solid var(--line-soft)',
+          }}
+        >
           <div className="container">
             <SectionHead
-              eyebrow={t('adsDemo.how.eyebrow')}
-              title={<>{t('adsDemo.how.title')}</>}
+              eyebrow={t('adsDemo.calendar.eyebrow')}
+              title={<>{t('adsDemo.calendar.title')}</>}
               align="center"
             />
-            <div className="r-cols-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 32 }}>
-              {steps.map((s, i) => (
-                <div
-                  key={i}
-                  className="reveal"
-                  style={{ ['--reveal-delay' as string]: `${i * 80}ms`, borderTop: '1px solid var(--line)', paddingTop: 20 }}
-                >
-                  <NumLabel n={i + 1} of={steps.length} />
-                  <h3 className="h-3" style={{ margin: '12px 0 10px' }}>{s.h}</h3>
-                  <p style={{ margin: 0, color: 'var(--fg-2)', fontSize: 15.5, lineHeight: 1.6 }}>{s.p}</p>
-                </div>
-              ))}
+            <p
+              className="reveal"
+              style={{
+                maxWidth: '62ch',
+                margin: '0 auto 36px',
+                textAlign: 'center',
+                color: 'var(--fg-2)',
+                fontSize: 15.5,
+                lineHeight: 1.6,
+              }}
+            >
+              {t('adsDemo.calendar.note')}
+            </p>
+            <div className="reveal" style={{ maxWidth: 860, marginInline: 'auto' }}>
+              <DemoCalendar passThroughParams trackConversion="ads_demo" />
             </div>
           </div>
         </section>
@@ -317,8 +396,11 @@ export async function DemoLanding({ locale }: { locale: Locale }) {
           </div>
         </section>
 
-        {/* ── CTA final: de vuelta al calendario del hero ──────────────────── */}
+        {/* ── CTA final: de vuelta al agente ───────────────────────────────── */}
+        {/* El `id` no es un ancla de navegación: lo observa `DemoStickyCta` para
+            esconderse mientras este bloque está a la vista. */}
         <section
+          id="cierre"
           style={{
             position: 'relative',
             paddingBlock: 96,
@@ -334,12 +416,18 @@ export async function DemoLanding({ locale }: { locale: Locale }) {
             <h2 className="h-display" style={{ margin: '0 0 28px', fontSize: 'clamp(34px, 4.6vw, 60px)' }}>
               {t('adsDemo.final.head')}
             </h2>
-            <a className="btn btn-primary" href="#agendar" style={{ fontSize: 16, padding: '15px 22px' }}>
-              {t('adsDemo.final.cta')}
-              <svg width="16" height="16" viewBox="0 0 14 14">
-                <path d="M7 3v8M3.5 7.5 7 11l3.5-3.5" stroke="currentColor" strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </a>
+            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '14px 20px' }}>
+              <WhatsAppCta
+                className="btn btn-primary"
+                label={t('adsDemo.final.cta')}
+                message={t('adsDemo.hero.ctaMessage')}
+                placement="final"
+                style={{ fontSize: 16, padding: '15px 22px' }}
+              />
+              <a className="btn btn-ghost" href="#agendar" style={{ fontSize: 14.5 }}>
+                {t('adsDemo.final.ctaSecondary')}
+              </a>
+            </div>
             <p className="mono" style={{ marginTop: 18, marginBottom: 0, fontSize: 12, color: 'var(--fg-2)', letterSpacing: '0.04em' }}>
               {t('adsDemo.final.note')}
             </p>
@@ -347,7 +435,7 @@ export async function DemoLanding({ locale }: { locale: Locale }) {
         </section>
       </main>
 
-      {/* Footer mínimo: copyright y las dos páginas legales. Nada más. */}
+      {/* Footer mínimo: solo las dos páginas legales. Nada más. */}
       <footer style={{ borderTop: '1px solid var(--line-soft)', paddingBlock: 28 }}>
         <div
           className="container"
@@ -356,12 +444,13 @@ export async function DemoLanding({ locale }: { locale: Locale }) {
             flexWrap: 'wrap',
             gap: 16,
             alignItems: 'center',
-            justifyContent: 'space-between',
+            // Centrado, no `space-between`: al quitar el copyright queda un solo
+            // bloque, y `space-between` lo habría dejado pegado a la izquierda.
+            justifyContent: 'center',
             fontSize: 13,
             color: 'var(--muted)',
           }}
         >
-          <span>{t('adsDemo.footer.rights', { year: new Date().getFullYear() })}</span>
           <span style={{ display: 'flex', gap: 20 }}>
             <Link href={`/${locale}/privacy`} style={{ color: 'inherit' }}>
               {t('footer.legalLinks.privacy')}
