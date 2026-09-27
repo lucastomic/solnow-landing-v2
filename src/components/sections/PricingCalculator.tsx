@@ -59,11 +59,14 @@ export default function PricingCalculator({
   locale,
   input,
   onChange,
+  noCta = false,
 }: {
   copy: CalcCopy;
   locale: string;
   input: Inputs;
   onChange: (next: (prev: Inputs) => Inputs) => void;
+  /** Sin el botón de demo: el tour de narrativa no puede tener enlaces. */
+  noCta?: boolean;
 }) {
   const q = useMemo(() => computeQuote(input), [input]);
   const uid = useId();
@@ -350,6 +353,7 @@ export default function PricingCalculator({
             </p>
           )}
 
+          {!noCta && (
           <div
             style={{ display: 'flex', justifyContent: 'flex-end' }}
           >
@@ -380,6 +384,7 @@ export default function PricingCalculator({
               </svg>
             </a>
           </div>
+          )}
 
         </div>
       </div>

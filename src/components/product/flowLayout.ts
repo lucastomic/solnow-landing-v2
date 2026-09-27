@@ -20,7 +20,7 @@ const PAD_Y = 20;
 const CHANNEL = { x: 0, w: 190, h: 62, minGap: 30 };
 const OUT = { x: 930, w: 230, h: 90, minGap: 32 };
 const CHAIN = { x0: 290, x1: 870, h: 72, gap: 60, minW: 110 };
-const LOOP = { w: 300, h: 64, gapTop: 46 };
+const LOOP = { w: 300, h: 56, gapTop: 72 };
 
 /** Pasillo vertical libre entre la columna de canales y la cadena. */
 const GUTTER = (CHANNEL.x + CHANNEL.w + CHAIN.x0) / 2;
@@ -68,12 +68,14 @@ function stackNeed(n: number, h: number, gap: number): number {
 }
 
 export function computeHeight(graph: ProductGraphContent): number {
-  const chainStack = CHAIN.h + (graph.loop ? LOOP.gapTop + LOOP.h : 0);
+  // La cadena va siempre centrada; el bucle cuelga a un lado y necesita su
+  // sitio a ese lado (y, por simetría, el mismo aire al otro).
+  const side = Math.max(EDGE_ROOM, graph.loop ? LOOP.gapTop + LOOP.h : 0);
   return Math.max(
     H_MIN,
     stackNeed(graph.channels.length, CHANNEL.h, CHANNEL.minGap),
     stackNeed(graph.outputs.length, OUT.h, OUT.minGap),
-    2 * PAD_Y + chainStack + 2 * EDGE_ROOM,
+    2 * PAD_Y + CHAIN.h + 2 * side,
   );
 }
 
@@ -118,9 +120,9 @@ export function layout(graph: ProductGraphContent): { H: number; nodes: PlacedNo
     y: spreadY(i, outNodes.length, OUT.h, H),
   }));
 
-  // Con bucle, lo que se centra es el conjunto cadena + bucle, no la cadena sola.
-  const chainStack = CHAIN.h + (graph.loop ? LOOP.gapTop + LOOP.h : 0);
-  const chainY = (H - chainStack) / 2;
+  // La cadena se centra sola; el bucle cuelga encima o debajo de ella.
+  const above = graph.loopPosition === 'above';
+  const chainY = (H - CHAIN.h) / 2;
   const chain: PlacedNode[] = chainNodes.map((n, i) => ({
     ...n,
     kind: 'chain',
@@ -139,7 +141,7 @@ export function layout(graph: ProductGraphContent): { H: number; nodes: PlacedNo
       ...graph.loop,
       kind: 'loop',
       x,
-      y: chainY + CHAIN.h + LOOP.gapTop,
+      y: above ? chainY - LOOP.gapTop - LOOP.h : chainY + CHAIN.h + LOOP.gapTop,
       w: LOOP.w,
       h: LOOP.h,
     });
@@ -197,8 +199,12 @@ export function buildEdges(nodes: PlacedNode[]): Edge[] {
       continue;
     }
 
+    // Sin bucle (el hub público), cada eslabón alimenta las salidas, como
+    // siempre. Con bucle (el tour), las salidas cuelgan solo del último
+    // eslabón: una curva por salida, que no se cruza con el bucle.
     const up = dy < 0;
-    for (const n of chain) {
+    const sources = loop ? [tail] : chain;
+    for (const n of sources) {
       const cx = n.x + n.w / 2;
       const y0 = up ? n.y : n.y + n.h;
       edges.push({
@@ -209,15 +215,20 @@ export function buildEdges(nodes: PlacedNode[]): Edge[] {
     }
   }
 
-  // Bucle de recuperación: el cobro que se cae baja al nodo "persigue", y de ahí
-  // vuelve al canal principal. Se dibuja discontinuo para leerse como retorno.
+  // Bucle de recuperación: el cobro que se cae va al nodo "persigue" (debajo o
+  // encima de la cadena), y de ahí vuelve al canal principal. Se dibuja
+  // discontinuo para leerse como retorno.
   if (loop) {
     const pay = chain.find((n) => n.role === 'payment') ?? tail;
     const px = pay.x + pay.w / 2;
     const entryX = Math.min(Math.max(px, loop.x + 40), loop.x + loop.w - 40);
+    const above = loop.y < pay.y;
+    const y0 = above ? pay.y : pay.y + pay.h;
+    const y1 = above ? loop.y + loop.h : loop.y;
+    const bend = above ? -26 : 26;
     edges.push({
       kind: 'feedback',
-      d: `M ${px} ${pay.y + pay.h} C ${px} ${pay.y + pay.h + 26}, ${entryX} ${loop.y - 26}, ${entryX} ${loop.y}`,
+      d: `M ${px} ${y0} C ${px} ${y0 + bend}, ${entryX} ${y1 - bend}, ${entryX} ${y1}`,
       on: [pay.id, loop.id],
     });
 

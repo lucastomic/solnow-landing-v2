@@ -782,3 +782,641 @@ section[id] { scroll-margin-top: 72px; }
   .demo-sticky { transition: opacity .2s ease; transform: none; }
   .demo-sticky[data-shown='false'] { opacity: 0; }
 }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Tour de narrativa (/es/narrativa)
+   Vive en CSS y no en `style` inline porque necesita `aria-current`,
+   `:hover`/`:focus-visible`, breakpoints y `prefers-reduced-motion`.
+   ─────────────────────────────────────────────────────────────────────── */
+
+/* El logo se queda en la esquina de cada «diapositiva», como en un deck. */
+.tour-brand { position: sticky; top: 0; z-index: 30; pointer-events: none; }
+.tour-brand header .container { height: 56px; padding-top: 10px; }
+
+/* Cada diapositiva es al menos una pantalla y centra su contenido. Sin
+   `scroll-snap`: en móvil varias superan una pantalla y el snap atraparía al
+   lector a medias. */
+.tour-chapter { position: relative; scroll-margin-top: 0; }
+.tour-slide {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding-block: clamp(64px, 9vh, 120px);
+  scroll-margin-top: 0;
+  overflow: hidden;
+}
+.tour-slide > .container { position: relative; }
+/* El logo fijo ocupa 56px; la primera diapositiva ya nace debajo. */
+.tour-slide[data-first] { min-height: calc(100svh - 56px); }
+.tour-chapter + .tour-chapter { border-top: 1px solid var(--line-soft); }
+/* La portada centra todo. */
+.tour-cover { justify-content: center; }
+
+.tour-rich strong { color: var(--fg); font-weight: 500; }
+
+/* Captura con marco, como las fotos de las landings de campaña. */
+.tour-shot { padding: 18px; background: var(--surface); }
+
+/* ── Índice lateral ────────────────────────────────────────────────────── */
+.tour-rail {
+  position: fixed;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 40;
+}
+.tour-rail ol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; align-items: flex-end; }
+.tour-rail button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 4px;
+  cursor: pointer;
+  color: var(--muted);
+  border-radius: 999px;
+}
+.tour-rail-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--line);
+  flex: none;
+  order: 2;
+  transition: background .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+.tour-rail-label {
+  order: 1;
+  font-size: 12.5px;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(6px);
+  transition: opacity .18s ease, transform .18s ease;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--bg-2) 92%, transparent);
+  border: 1px solid var(--line-soft);
+  color: var(--fg-2);
+}
+.tour-rail-label .mono { color: var(--muted-2); margin-right: 4px; font-size: 11px; }
+.tour-rail button:hover .tour-rail-label,
+.tour-rail button:focus-visible .tour-rail-label,
+.tour-rail:hover .tour-rail-label { opacity: 1; transform: none; }
+.tour-rail button:hover .tour-rail-dot { background: var(--accent-2); }
+.tour-rail button[aria-current='step'] .tour-rail-dot {
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-bg);
+  transform: scale(1.2);
+}
+.tour-rail button[aria-current='step'] .tour-rail-label { color: var(--accent); }
+
+/* Barra de progreso: solo en móvil, donde el índice no cabe. */
+.tour-progress {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  z-index: 45;
+  background: var(--accent);
+  transform-origin: left center;
+  transform: scaleX(var(--tour-progress, 0));
+  transition: transform .35s cubic-bezier(.2,.7,.2,1);
+}
+
+/* ── La cadena (capítulo 1) ────────────────────────────────────────────── */
+.tour-chain {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.tour-chain li {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px 12px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--fg);
+  position: relative;
+}
+.tour-chain-n {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--accent-bg);
+  color: var(--accent);
+  font-size: 12px;
+}
+.tour-chain li + li::before {
+  content: "→";
+  position: absolute;
+  left: -14px;
+  color: var(--muted-2);
+  font-size: 14px;
+}
+
+/* ── La matriz (capítulo 4) ────────────────────────────────────────────── */
+.tour-matrix { display: flex; flex-direction: column; border-top: 1px solid var(--line-soft); }
+.tour-matrix-head,
+.tour-matrix-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) repeat(4, 118px);
+  gap: 12px;
+  align-items: center;
+}
+.tour-matrix-head { padding: 10px 0; font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); }
+.tour-matrix-head span { text-align: center; }
+.tour-matrix-row { padding: 18px 0; border-top: 1px solid var(--line-soft); }
+.tour-matrix-cell {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 500;
+}
+.tour-matrix-cell[data-on='true']  { background: var(--accent-bg); color: var(--accent); }
+.tour-matrix-cell[data-on='false'] { background: var(--surface-2); color: var(--muted-2); }
+/* El rótulo de columna dentro de la celda solo existe en móvil. */
+.tour-matrix-col { display: none; }
+
+/* ── La línea de tiempo (capítulo 5) ───────────────────────────────────── */
+.tour-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 36px;
+  position: relative;
+}
+.tour-timeline::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 7px;
+  height: 1px;
+  background: var(--line);
+}
+.tour-timeline li { position: relative; padding-top: 30px; }
+.tour-timeline-dot {
+  position: absolute;
+  top: 0; left: 0;
+  width: 15px; height: 15px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-bg);
+}
+
+@media (max-width: 768px) {
+  .tour-rail { display: none; }
+  .tour-progress { display: block; }
+  .tour-slide { min-height: 0; padding-block: 56px; }
+  .tour-slide[data-first] { min-height: calc(100svh - 56px); }
+
+  .tour-matrix-head { display: none; }
+  .tour-matrix-row { grid-template-columns: 1fr; gap: 10px; }
+  .tour-matrix-row > div { grid-column: 1 / -1; }
+  .tour-matrix-row { grid-template-columns: repeat(4, 1fr); }
+  .tour-matrix-cell { height: auto; padding: 8px 4px; gap: 2px; font-size: 15px; }
+  .tour-matrix-col { display: block; font-size: 9.5px; letter-spacing: .04em; text-transform: uppercase; }
+
+  .tour-timeline { grid-template-columns: 1fr; gap: 28px; }
+  .tour-timeline::before { top: 0; bottom: 0; left: 7px; right: auto; width: 1px; height: auto; }
+  .tour-timeline li { padding-top: 0; padding-left: 32px; }
+
+  .tour-chain li { font-size: 15px; }
+}
+
+/* ── Cadenas causa → efecto (capítulo «Qué cuesta») ─────────────────────
+   Cada fila es una secuencia de cifras unidas por flechas: la de la izquierda
+   produce la de la derecha. La flecha vive en ::before del nodo siguiente, en
+   el hueco del gap. */
+.tour-flows { display: flex; flex-direction: column; gap: 14px; }
+.tour-flow {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 20px;
+  align-items: center;
+  padding: 18px 0;
+  border-top: 1px solid var(--line-soft);
+}
+.tour-flow-nodes { display: flex; gap: 44px; align-items: stretch; }
+.tour-flow-node {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: 0 1px 0 rgba(8,57,84,0.04), 0 4px 12px -6px rgba(8,57,84,0.06);
+}
+.tour-flow-node + .tour-flow-node::before {
+  content: "";
+  position: absolute;
+  left: -34px;
+  top: 50%;
+  width: 24px;
+  height: 1.5px;
+  background: var(--accent);
+  opacity: .6;
+}
+.tour-flow-node + .tour-flow-node::after {
+  content: "";
+  position: absolute;
+  left: -16px;
+  top: calc(50% - 4px);
+  width: 8px; height: 8px;
+  border-right: 1.5px solid var(--accent);
+  border-bottom: 1.5px solid var(--accent);
+  transform: rotate(-45deg);
+  opacity: .6;
+}
+.tour-flow-k {
+  font-size: clamp(26px, 2.4vw, 36px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-weight: 500;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.tour-flow-h { font-size: 15px; font-weight: 500; color: var(--fg); }
+.tour-flow-p { font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+/* Lo que no se sabe: nodos apagados, sin flechas (no hay causa que seguir). */
+.tour-flow-node[data-unknown] { background: var(--surface-2); border-style: dashed; box-shadow: none; }
+.tour-flow-node[data-unknown] .tour-flow-k { color: var(--muted-2); }
+.tour-flow-node[data-unknown] + .tour-flow-node[data-unknown]::before,
+.tour-flow-node[data-unknown] + .tour-flow-node[data-unknown]::after { display: none; }
+
+@media (max-width: 900px) {
+  .tour-flow { grid-template-columns: 1fr; gap: 12px; }
+  .tour-flow-nodes { flex-direction: column; gap: 26px; }
+  .tour-flow-node + .tour-flow-node::before { left: 50%; top: -20px; width: 1.5px; height: 14px; }
+  .tour-flow-node + .tour-flow-node::after { left: calc(50% - 4px); top: -12px; transform: rotate(45deg); }
+}
+
+/* ── Relato sobre el grafo («Cómo funciona») ────────────────────────────
+   El panel se queda pegado arriba mientras los centinelas (uno por paso, una
+   pantalla cada uno) pasan por debajo. El grafo y el texto van en absoluto
+   dentro del panel: así `left` y `width` se animan y el grafo, que se escala
+   con el ancho de su caja (container query), se comprime solo. */
+.tour-story-slide { position: relative; }
+.tour-story { position: relative; }
+.tour-story-panel {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  display: block;
+}
+.tour-story-graph {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 50%;
+  width: min(1180px, 100% - 2 * var(--gutter));
+  margin-left: calc(-1 * min(1180px, 100% - 2 * var(--gutter)) / 2);
+  transition: left .7s cubic-bezier(.2,.7,.2,1), width .7s cubic-bezier(.2,.7,.2,1), margin-left .7s cubic-bezier(.2,.7,.2,1);
+}
+/* Texto a la derecha: el grafo se encoge y se pega a la izquierda. */
+.tour-story-panel[data-side='right'] .tour-story-graph {
+  left: var(--gutter);
+  margin-left: 0;
+  width: calc(58% - var(--gutter));
+}
+.tour-story-text {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: calc(36% - var(--gutter));
+  max-width: 460px;
+  pointer-events: none;
+}
+.tour-story-text { right: var(--gutter); }
+/* Los pasos se apilan en el mismo sitio; solo el activo se ve. */
+.tour-story-step {
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .45s ease .2s, transform .45s cubic-bezier(.2,.7,.2,1) .2s;
+}
+.tour-story-step[data-on] { opacity: 1; transform: none; position: relative; }
+.tour-story-sentinel { height: 100svh; }
+/* El primer centinela pisa el hueco del panel: la entrada dura una pantalla. */
+.tour-story-panel + .tour-story-sentinel { margin-top: -100svh; }
+/* Titular de la entrada, sobre el grafo entero; se va cuando empiezan los pasos. */
+.tour-story-intro {
+  position: absolute;
+  top: clamp(56px, 9vh, 96px);
+  left: 0; right: 0;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .4s ease, transform .4s cubic-bezier(.2,.7,.2,1);
+  pointer-events: none;
+}
+.tour-story-intro .lede { margin-inline: auto; }
+.tour-story-intro[data-on] { opacity: 1; transform: none; transition-delay: .2s; }
+/* Con titular encima, el grafo baja un poco del centro. */
+.tour-story-panel[data-side='none'] .tour-story-graph { top: 56%; }
+
+/* El lienzo a tamaño natural, escalado a la caja. Solo en escritorio: en
+   móvil el grafo se apila en bandas y no tiene proporción fija. */
+@media (min-width: 769px) {
+  .tour-story-graph { aspect-ratio: var(--graph-ratio); }
+  .tour-story-canvas {
+    transform: scale(var(--story-scale, 1));
+    transform-origin: 0 0;
+  }
+  /* Sin scroll ni degradado lateral: el lienzo ya cabe entero. */
+  .tour-story .flow-graph-scroll { overflow: visible; mask-image: none; -webkit-mask-image: none; }
+  .tour-story .flow-legend { display: none; }
+}
+
+@media (max-width: 900px) {
+  /* Sin lados: grafo apilado arriba (ya se pinta en bandas en móvil) y el
+     texto del paso debajo. Nada en absoluto, nada que animar. */
+  .tour-story-panel { height: auto; display: flex; flex-direction: column; gap: 24px; padding: 24px var(--gutter); }
+  .tour-story-graph,
+  .tour-story-panel[data-side='right'] .tour-story-graph {
+    position: static; transform: none; width: 100%; margin-left: 0; left: auto;
+  }
+  .tour-story-text {
+    position: static; transform: none; width: 100%; max-width: none; left: auto; right: auto; min-height: 220px;
+  }
+  .tour-story-sentinel { height: 70svh; }
+  .tour-story-panel + .tour-story-sentinel { margin-top: 0; }
+  .tour-story-intro { position: static; transform: none; text-align: left; padding: 0; }
+  .tour-story-intro:not([data-on]) { display: none; }
+}
+/* En móvil el lienzo no se escala: el ancho fijo que trae en línea se anula
+   y el grafo se apila en bandas como en el hub. */
+@media (max-width: 768px) {
+  .tour-story-canvas { width: auto !important; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tour-story-graph, .tour-story-step { transition: none; }
+}
+
+/* ── Zoom sobre un nodo del grafo ─────────────────────────────────────── */
+.flow-node-zoom { cursor: zoom-in; text-align: left; font: inherit; }
+.flow-node-plus {
+  position: absolute;
+  top: 6px; right: 8px;
+  font-size: 13px;
+  line-height: 1;
+  color: var(--muted-2);
+  opacity: 0;
+  transition: opacity .15s ease;
+}
+.flow-node-zoom:hover .flow-node-plus,
+.flow-node-zoom:focus-visible .flow-node-plus { opacity: 1; }
+
+.tour-zoom {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--gutter);
+  background: rgba(8, 57, 84, 0.42);
+  backdrop-filter: blur(6px);
+  animation: tourZoomIn .22s ease;
+  cursor: zoom-out;
+}
+@keyframes tourZoomIn { from { opacity: 0; } to { opacity: 1; } }
+.tour-zoom-panel {
+  position: relative;
+  width: min(1180px, 100%);
+  max-height: calc(100svh - 2 * var(--gutter));
+  overflow: auto;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: 0 40px 100px -30px rgba(8, 57, 84, 0.5);
+  padding: clamp(24px, 3vw, 44px);
+  cursor: auto;
+  animation: tourZoomPanel .26s cubic-bezier(.2,.7,.2,1);
+}
+@keyframes tourZoomPanel { from { transform: translateY(10px) scale(.985); opacity: 0; } to { transform: none; opacity: 1; } }
+.tour-zoom-close {
+  position: absolute;
+  top: 14px; right: 14px;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--fg-2);
+  cursor: pointer;
+}
+.tour-zoom-close:hover { color: var(--accent); border-color: var(--accent); }
+.tour-zoom-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(24px, 4vw, 48px);
+  align-items: start;
+}
+.tour-zoom-text { padding-right: 24px; }
+.tour-zoom-media { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+/* Retorno estimado bajo la calculadora de cuota. */
+.tour-roi { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(20px, 3vw, 40px); margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--line-soft); align-items: start; }
+.tour-roi-out { display: flex; flex-direction: column; gap: 0; }
+.tour-roi-line { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 10px 0; border-top: 1px solid var(--line-soft); font-size: 13.5px; color: var(--fg-2); }
+.tour-roi-line:first-child { border-top: 0; }
+.tour-roi-line strong { font-weight: 500; color: var(--fg); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.tour-roi-line[data-total] { color: var(--fg); font-weight: 500; }
+.tour-roi-total { margin-top: 14px; padding: 20px 22px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; color: var(--ink-fg-2); font-size: 14px; }
+.tour-roi-big { font-size: clamp(30px, 3vw, 44px); line-height: 1; letter-spacing: -0.04em; font-weight: 500; color: var(--ink-fg); font-variant-numeric: tabular-nums; }
+@media (max-width: 900px) { .tour-roi { grid-template-columns: 1fr; } }
+
+/* Lo que se monta dentro del modal nace después de que el observer de
+   `.reveal` haya mirado la página: aquí se ve siempre, sin esperar a nadie. */
+.tour-zoom .reveal { opacity: 1; transform: none; transition: none; }
+.tour-zoom-hint { margin: 22px 0 0; font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); }
+
+@media (max-width: 900px) {
+  .tour-zoom-grid { grid-template-columns: 1fr; }
+  .tour-zoom-text { padding-right: 36px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tour-zoom, .tour-zoom-panel { animation: none; }
+}
+
+/* ── Figuras de la prueba ─────────────────────────────────────────────── */
+.tour-figures { display: grid; grid-template-columns: 1fr; gap: 20px; align-items: stretch; }
+.tour-figures[data-cols='2'] { grid-template-columns: 1fr 1fr; }
+.tour-figures[data-cols='3'] { grid-template-columns: 1fr 1fr 1fr; }
+.tour-figures > * { min-width: 0; }
+.tour-fig {
+  margin: 0;
+  height: 100%;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: clamp(18px, 2vw, 26px);
+  box-shadow: 0 1px 0 rgba(8,57,84,0.04), 0 4px 12px -6px rgba(8,57,84,0.06);
+}
+.tour-fig-bars {
+  display: grid;
+  gap: 2px;
+  align-items: end;
+  height: 180px;
+  border-bottom: 1px solid var(--line);
+}
+.tour-fig-bars-trend { height: 150px; }
+.tour-fig-col { display: flex; flex-direction: column; justify-content: flex-end; height: 100%; align-items: stretch; }
+.tour-fig-val { font-size: 12.5px; text-align: center; color: var(--fg); margin-bottom: 6px; font-variant-numeric: tabular-nums; }
+.tour-fig-bar { border-radius: 4px 4px 0 0; min-height: 3px; }
+.tour-fig-labels { display: grid; gap: 2px; margin-top: 8px; font-size: 12px; text-align: center; color: var(--muted); }
+.tour-fig-x { margin: 12px 0 0; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted-2); text-align: center; }
+
+.tour-fig-compare { display: flex; flex-direction: column; gap: 22px; }
+.tour-fig-row { display: flex; flex-direction: column; gap: 8px; }
+.tour-fig-track { height: 10px; border-radius: 999px; background: var(--surface-2); overflow: hidden; }
+.tour-fig-fill { height: 100%; border-radius: 999px; }
+
+.tour-fig-pairs { display: flex; flex-direction: column; gap: 18px; }
+.tour-fig-group { display: flex; flex-direction: column; gap: 6px; }
+.tour-fig-group .tour-fig-row { flex-direction: row; align-items: center; gap: 10px; }
+.tour-fig-group .tour-fig-track { flex: 1; height: 14px; border-radius: 4px; }
+.tour-fig-group .tour-fig-fill { border-radius: 0 4px 4px 0; }
+.tour-fig-group .tour-fig-val { margin: 0; font-size: 12px; }
+.tour-fig-legend { display: flex; gap: 18px; margin-top: 16px; font-size: 11px; letter-spacing: .04em; color: var(--muted); }
+.tour-fig-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+
+.tour-fig-aside { display: flex; flex-direction: column; gap: 12px; }
+.tour-fig-tile { flex: 1; background: var(--accent-bg); border-radius: 12px; padding: 16px 18px; }
+
+/* Caso de cliente: quién es a la izquierda (logo, perfil, foto), sus cifras a la derecha. */
+/* Las dos columnas se centran entre sí y la foto se recorta apaisada, para que
+   el bloque de cifras y el de quién es tengan la misma altura y quepan en
+   una pantalla. */
+.tour-case { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(28px, 4vw, 56px); align-items: center; }
+.tour-case-who { display: flex; flex-direction: column; align-items: flex-start; }
+.tour-case-photo { width: 100%; max-width: 440px; height: auto; aspect-ratio: 16 / 10; object-fit: cover; margin-top: 26px; border-radius: 16px; border: 1px solid var(--line-soft); }
+.tour-case { grid-template-columns: minmax(0, 0.55fr) minmax(0, 1.45fr); }
+.tour-case-stats { min-width: 0; }
+/* Cadenas dentro de un caso: la misma pieza que en el coste, más apretada,
+   porque comparten pantalla con el logo y la foto. */
+.tour-flows-compact { gap: 6px; }
+.tour-flows-compact .tour-flow { grid-template-columns: 96px minmax(0, 1fr); gap: 14px; padding: 12px 0; }
+.tour-flows-compact .tour-flow-nodes { gap: 30px; }
+.tour-flows-compact .tour-flow-node { padding: 12px 14px; gap: 4px; }
+.tour-flows-compact .tour-flow-node + .tour-flow-node::before { left: -24px; width: 16px; }
+.tour-flows-compact .tour-flow-node + .tour-flow-node::after { left: -13px; width: 7px; height: 7px; top: calc(50% - 3.5px); }
+.tour-flows-compact .tour-flow-k { font-size: clamp(20px, 1.7vw, 26px); }
+.tour-flows-compact .tour-flow-h { font-size: 13.5px; }
+.tour-flows-compact .tour-flow-p { font-size: 12px; }
+@media (max-width: 900px) {
+  .tour-flows-compact .tour-flow { grid-template-columns: 1fr; }
+  .tour-flows-compact .tour-flow-nodes { gap: 22px; }
+  .tour-flows-compact .tour-flow-node + .tour-flow-node::before { left: 50%; top: -17px; width: 1.5px; height: 12px; }
+  .tour-flows-compact .tour-flow-node + .tour-flow-node::after { left: calc(50% - 3.5px); top: -10px; }
+}
+@media (max-width: 900px) {
+  .tour-case { grid-template-columns: 1fr; }
+  .tour-case-photo { max-width: 100%; }
+}
+@media (max-width: 480px) {
+  .tour-case-stats { grid-template-columns: 1fr; }
+}
+
+/* Tarjetas de cliente bajo la portada de la prueba. */
+.tour-clients { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; max-width: 760px; }
+.tour-client { display: flex; align-items: center; gap: 18px; padding: 18px 20px; }
+
+/* Apéndice: separador y botón del índice. */
+.tour-appendix-sep { display: flex; align-items: center; gap: 16px; padding-top: 48px; font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted-2); }
+.tour-appendix-sep::before, .tour-appendix-sep::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+.tour-rail-appendix {
+  display: inline-flex; align-items: center; gap: 10px;
+  margin-top: 14px; padding: 5px 4px; cursor: pointer; color: var(--muted);
+  width: 100%; justify-content: flex-end;
+}
+.tour-rail-plus { width: 16px; height: 16px; font-size: 12px; line-height: 1; display: inline-flex; align-items: center; justify-content: center; color: var(--muted-2); background: transparent; border: 1px dashed var(--line); }
+.tour-rail-appendix:hover .tour-rail-label,
+.tour-rail-appendix:focus-visible .tour-rail-label,
+.tour-rail:hover .tour-rail-appendix .tour-rail-label { opacity: 1; transform: none; }
+.tour-rail-appendix[aria-current='step'] .tour-rail-plus { color: var(--accent); border-color: var(--accent); background: var(--accent-bg); }
+.tour-rail-appendix[aria-current='step'] .tour-rail-label { color: var(--accent); }
+
+@media (max-width: 900px) {
+  .tour-figures[data-cols='2'], .tour-figures[data-cols='3'] { grid-template-columns: 1fr; }
+  .tour-fig-aside { flex-direction: row; flex-wrap: wrap; }
+  .tour-fig-tile { flex: 1 1 160px; }
+}
+@media (max-width: 560px) {
+  .tour-clients { grid-template-columns: 1fr; }
+  .tour-fig-bars { height: 150px; }
+}
+
+/* ── Modo presentador (⌥⇧P) ─────────────────────────────────────────────── */
+/* `hidden` tiene que ganar al `display: flex` de la diapositiva. */
+.tour-slide[hidden], .tour-story-slide[hidden], .tour-chapter[hidden] { display: none !important; }
+.tour-presenter {
+  position: fixed;
+  top: 16px; right: 16px; bottom: 16px;
+  width: min(420px, calc(100vw - 32px));
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px 18px 16px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 0 40px 100px -30px rgba(8, 57, 84, 0.5);
+  animation: tourZoomPanel .22s cubic-bezier(.2,.7,.2,1);
+}
+.tour-presenter-head { display: flex; justify-content: space-between; align-items: center; }
+.tour-presenter-hint { margin: 0; font-size: 12.5px; color: var(--muted); line-height: 1.5; }
+.tour-presenter-lang { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.tour-presenter-levels { display: grid; grid-template-columns: 1fr; gap: 6px; }
+.tour-presenter-levels button {
+  display: flex; flex-direction: column; gap: 2px;
+  padding: 10px 12px; border-radius: 10px; text-align: left; cursor: pointer;
+  border: 1px solid var(--line); background: var(--surface); color: var(--fg-2); font-size: 12.5px;
+}
+.tour-presenter-levels button strong { font-weight: 500; color: var(--fg); font-size: 13.5px; }
+.tour-presenter-levels button[aria-checked='true'] { border-color: var(--accent); background: var(--accent-bg); }
+.tour-presenter-levels button[aria-checked='true'] strong { color: var(--accent); }
+.tour-presenter-list { flex: 1; overflow: auto; border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); padding: 6px 0; }
+.tour-presenter-chapter { padding: 6px 0; }
+.tour-presenter-chapter[data-off] .tour-presenter-row:not([data-chapter]) { display: none; }
+.tour-presenter-row { display: flex; align-items: center; gap: 10px; padding: 5px 4px 5px 22px; font-size: 13px; color: var(--fg-2); cursor: pointer; border-radius: 6px; }
+.tour-presenter-row[data-chapter] { padding-left: 4px; font-weight: 500; color: var(--fg); }
+.tour-presenter-row[data-dim] { opacity: .45; }
+.tour-presenter-row:hover { background: var(--surface-2); }
+.tour-presenter-row input { accent-color: var(--accent); margin: 0; }
+.tour-presenter-row > span:first-of-type { flex: 1; }
+.tour-presenter-lvl { font-size: 10.5px; color: var(--muted-2); }
+.tour-presenter-foot { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+
+/* Ilustración «canales → cadena» del capítulo 1. */
+.tour-ill-channels { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+.tour-ill-steps { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; padding: 18px 0 0; border-top: 1px solid var(--line-soft); }
+@media (max-width: 560px) {
+  .tour-ill-channels { grid-template-columns: repeat(3, 1fr); }
+  .tour-ill-steps { grid-template-columns: repeat(3, 1fr); row-gap: 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tour-progress { transition: none; }
+}

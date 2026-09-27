@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
-import { productPath, type ProductGraphContent } from '@/content/products';
+import { productPath, type ProductGraphContent, type ProductKey } from '@/content/products';
 import { W, layout, buildEdges, type PlacedNode } from '@/components/product/flowLayout';
 import type { Locale } from '@/i18n/config';
 
@@ -35,6 +35,8 @@ function nodeStyle(n: PlacedNode, active: boolean, H: number) {
     gap: 4,
     padding: '12px 16px',
     borderRadius: 12,
+    // El bucle es una caja como las demás; el borde discontinuo dice que es
+    // un retorno, no un eslabón.
     background: n.kind === 'chain' ? 'var(--accent-bg)' : 'var(--bg)',
     border: '1px ' + (n.kind === 'loop' ? 'dashed' : 'solid'),
     borderColor: active
@@ -63,11 +65,36 @@ const BANDS = [
 export default function FlowGraph({
   graph,
   locale,
+  plain = false,
+  highlight,
+  onSelect,
+  zoomLabel = 'ver en detalle',
 }: {
   graph: ProductGraphContent;
   locale: Locale;
+  /**
+   * Nodos sin enlace. El tour de narrativa (`/es/narrativa`) no puede tener
+   * ningún `<a>`: es un deck cerrado, cada salida es una fuga. Ahí el grafo
+   * es solo la visualización conceptual, así que los nodos son `<div>`.
+   */
+  plain?: boolean;
+  /**
+   * Nodos encendidos desde fuera (ids). El tour los va cambiando al hacer
+   * scroll. El hover del visitante manda mientras dura; al salir vuelve a
+   * esta selección. Vacío o ausente: nada encendido, nada apagado.
+   */
+  highlight?: string[];
+  /**
+   * Solo en modo `plain`: al pulsar un nodo se avisa con su área. El tour lo
+   * usa para abrir la ficha del área encima del grafo («zoom in»).
+   */
+  onSelect?: (area: ProductKey, nodeId: string) => void;
+  /** Sufijo del `aria-label` de los nodos con zoom («ver en detalle»). */
+  zoomLabel?: string;
 }) {
   const [hot, setHot] = useState<string | null>(null);
+  // Qué manda ahora: el hover, y si no lo hay, la selección externa.
+  const sel: string[] | null = hot ? [hot] : highlight && highlight.length ? highlight : null;
   const { H, nodes } = layout(graph);
   const edges = buildEdges(nodes);
 
@@ -83,10 +110,10 @@ export default function FlowGraph({
             aria-hidden
           >
             {edges.map((e, i) => {
-              const on = hot ? e.on.includes(hot) : false;
+              const on = sel ? e.on.some((id) => sel.includes(id)) : false;
               const feedback = e.kind === 'feedback';
               return (
-                <g key={i} style={{ transition: 'opacity .22s ease' }} opacity={hot ? (on ? 1 : 0.18) : feedback ? 0.45 : 0.55}>
+                <g key={i} style={{ transition: 'opacity .22s ease' }} opacity={sel ? (on ? 1 : 0.18) : feedback ? 0.45 : 0.55}>
                   <path
                     d={e.d}
                     fill="none"
@@ -116,22 +143,25 @@ export default function FlowGraph({
               <div key={kind} className="flow-band" data-band={kind}>
                 <span className="mono flow-band-label">{graph[label]}</span>
                 {band.map((n) => {
-                  const active = hot === n.id;
+                  const active = sel ? sel.includes(n.id) : false;
+                  // Con hover, se ven también los vecinos; con selección externa,
+                  // solo lo seleccionado: es lo que el texto de al lado explica.
                   const linked = hot
                     ? hot === n.id || edges.some((e) => e.on.includes(hot) && e.on.includes(n.id))
-                    : true;
-                  return (
-                    <Link
-                      key={n.id}
-                      href={productPath(n.area, locale)}
-                      onMouseEnter={() => setHot(n.id)}
-                      onMouseLeave={() => setHot(null)}
-                      onFocus={() => setHot(n.id)}
-                      onBlur={() => setHot(null)}
-                      className="flow-node"
-                      data-dim={!linked || undefined}
-                      style={nodeStyle(n, active, H)}
-                    >
+                    : sel
+                      ? active
+                      : true;
+                  const nodeProps = {
+                    onMouseEnter: () => setHot(n.id),
+                    onMouseLeave: () => setHot(null),
+                    onFocus: () => setHot(n.id),
+                    onBlur: () => setHot(null),
+                    className: 'flow-node',
+                    'data-dim': !linked || undefined,
+                    style: nodeStyle(n, active, H),
+                  };
+                  const inner = (
+                    <>
                       <span
                         style={{
                           fontSize: 15,
@@ -146,6 +176,33 @@ export default function FlowGraph({
                       <span className="mono" style={{ fontSize: 10.5, color: 'var(--muted)', letterSpacing: '0.02em' }}>
                         {n.sub}
                       </span>
+                    </>
+                  );
+                  if (plain && onSelect) {
+                    // Botón, no enlace: abre la ficha sin salir de la página.
+                    return (
+                      <button
+                        key={n.id}
+                        type="button"
+                        {...nodeProps}
+                        className="flow-node flow-node-zoom"
+                        onClick={() => onSelect(n.area, n.id)}
+                        aria-label={`${n.label}: ${zoomLabel}`}
+                      >
+                        {inner}
+                        <span className="flow-node-plus" aria-hidden>
+                          +
+                        </span>
+                      </button>
+                    );
+                  }
+                  return plain ? (
+                    <div key={n.id} {...nodeProps}>
+                      {inner}
+                    </div>
+                  ) : (
+                    <Link key={n.id} href={productPath(n.area, locale)} {...nodeProps}>
+                      {inner}
                     </Link>
                   );
                 })}

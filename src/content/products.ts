@@ -231,6 +231,8 @@ export interface ProductGraphContent {
   outputs: ProductGraphNode[];
   /** Recovery loop hanging below the chain. Optional: the graph degrades cleanly. */
   loop?: ProductGraphNode;
+  /** Where the loop sits relative to the chain. Default: below. */
+  loopPosition?: 'above' | 'below';
 }
 
 export interface ProductHubContent {
