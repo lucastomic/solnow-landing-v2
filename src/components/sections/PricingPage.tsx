@@ -36,6 +36,7 @@ export async function PricingPage({ locale }: { locale: Locale }) {
                 escalar: t<MsgPlan>('pricing.plans.escalar'),
               },
               rows: t<PlansCopy['rows']>('pricing.rows'),
+              agent: t<PlansCopy['agent']>('pricing.agent'),
               bothPlans: t('pricing.bothPlans'),
               perMonth: t('pricing.perMonth'),
               perSeason: t('pricing.perSeason'),

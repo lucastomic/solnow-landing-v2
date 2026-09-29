@@ -31,10 +31,10 @@ export interface PlansCopy {
     manual: string;
     online: string;
     onlineNote: string;
-    vendor: string;
-    vendorNote: string;
     onboarding: string;
   };
+  /** El agente va debajo de los planes, no dentro: ver `AgentBand`. */
+  agent: { title: string; body: string; fee: string; feeNote: string };
   /** Lo que es igual en los dos planes, dicho una vez y no dos. */
   bothPlans: string;
   /** Sufijos del precio grande, uno por modalidad. */
@@ -95,6 +95,8 @@ export default function PricingSurface({
         ))}
       </div>
 
+      <AgentBand copy={copy.agent} />
+
       <p
         className="reveal"
         style={{
@@ -110,6 +112,49 @@ export default function PricingSurface({
 
       <PricingCalculator copy={calcCopy} locale={locale} input={input} onChange={setInput} />
     </>
+  );
+}
+
+/**
+ * El agente de IA, debajo de las tarjetas y no como una fila más.
+ *
+ * Como fila, su +2% quedaba a la altura de las reservas online y se leía como
+ * una tercera comisión que se suma. No lo es: el agente ya viene en los dos
+ * planes, no se contrata, y ese 2% solo existe en las reservas que él mismo
+ * cobra. Es igual en los dos planes, así que tampoco informa repetido en cada
+ * columna. El porcentaje sale de `PLANS` como el resto de cifras.
+ */
+function AgentBand({ copy }: { copy: PlansCopy['agent'] }) {
+  const fee = copy.fee.replace('{pct}', Math.round(PLANS.escalar.vendorPct * 100) + '%');
+  return (
+    <div
+      className="reveal r-split"
+      style={{
+        marginTop: 20,
+        display: 'grid',
+        gridTemplateColumns: '1fr minmax(0, 300px)',
+        gap: 24,
+        alignItems: 'center',
+        padding: '16px 24px',
+        borderRadius: 18,
+        border: '1px solid var(--line)',
+        background: 'var(--surface)',
+      }}
+    >
+      <div>
+        <h3 style={{ margin: '0 0 4px', fontSize: 16, fontWeight: 500, letterSpacing: '-0.01em' }}>{copy.title}</h3>
+        <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.5, color: 'var(--fg-2)' }}>{copy.body}</p>
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <span
+          className="mono"
+          style={{ fontSize: 13, fontWeight: 500, color: 'var(--accent)', fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap', flexShrink: 0 }}
+        >
+          {fee}
+        </span>
+        <span style={{ fontSize: 12, lineHeight: 1.4, color: 'var(--muted-2)' }}>{copy.feeNote}</span>
+      </div>
+    </div>
   );
 }
 
@@ -220,7 +265,6 @@ function PlanCard({
   const rows: { l: string; v: string; note: string }[] = [
     { l: copy.rows.manual, v: '0%', note: '' },
     { l: copy.rows.online, v: pct(cfg.channelPct), note: copy.rows.onlineNote },
-    { l: copy.rows.vendor, v: '+' + pct(cfg.vendorPct), note: copy.rows.vendorNote },
     { l: copy.rows.onboarding, v: msg.onboarding, note: '' },
   ];
 

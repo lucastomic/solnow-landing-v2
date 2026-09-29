@@ -1147,26 +1147,71 @@ section[id] { scroll-margin-top: 72px; }
   .tour-story .flow-legend { display: none; }
 }
 
+/* Solo móvil: titular en el flujo y pasos como bloques. */
+.tour-story-intro-flow, .tour-story-steps { display: none; }
+
 @media (max-width: 900px) {
-  /* Sin lados: grafo apilado arriba (ya se pinta en bandas en móvil) y el
-     texto del paso debajo. Nada en absoluto, nada que animar. */
-  .tour-story-panel { height: auto; display: flex; flex-direction: column; gap: 24px; padding: 24px var(--gutter); }
+  /* Sin lados. El titular va primero en el flujo; el grafo se queda pegado
+     bajo el logo (56px) mientras los pasos, bloques normales, pasan por
+     debajo. El activo enciende sus nodos; el resto se atenúa. */
+  .tour-story-intro-flow { display: block; padding: 48px var(--gutter) 20px; }
+  .tour-story-panel {
+    position: sticky;
+    top: 56px;
+    height: auto;
+    z-index: 5;
+    padding: 10px var(--gutter) 14px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line-soft);
+    box-shadow: 0 14px 24px -20px rgba(8, 57, 84, 0.35);
+  }
+  .tour-story-intro, .tour-story-text, .tour-story-sentinel { display: none; }
   .tour-story-graph,
-  .tour-story-panel[data-side='right'] .tour-story-graph {
-    position: static; transform: none; width: 100%; margin-left: 0; left: auto;
+  .tour-story-panel[data-side='right'] .tour-story-graph,
+  .tour-story-panel[data-side='none'] .tour-story-graph {
+    position: static; transform: none; width: 100%; margin-left: 0; left: auto; top: auto; transition: none;
   }
-  .tour-story-text {
-    position: static; transform: none; width: 100%; max-width: none; left: auto; right: auto; min-height: 220px;
-  }
-  .tour-story-sentinel { height: 70svh; }
   .tour-story-panel + .tour-story-sentinel { margin-top: 0; }
-  .tour-story-intro { position: static; transform: none; text-align: left; padding: 0; }
-  .tour-story-intro:not([data-on]) { display: none; }
+  .tour-story-steps { display: block; padding: 8px var(--gutter) 24px; }
+  .tour-story-block {
+    min-height: max(40svh, 300px);
+    padding: 26px 0;
+    border-top: 1px solid var(--line-soft);
+    opacity: .3;
+    transition: opacity .35s ease;
+  }
+  .tour-story-block:first-child { border-top: 0; }
+  .tour-story-block[data-on] { opacity: 1; }
+  .tour-story-block .h-2 { font-size: 22px !important; }
+  .tour-story-block li { font-size: 15px !important; }
+  .tour-story-block .serif { font-size: 18px !important; }
 }
-/* En móvil el lienzo no se escala: el ancho fijo que trae en línea se anula
-   y el grafo se apila en bandas como en el hub. */
+/* En tablet el lienzo se escala (reglas ≥769px); en móvil el grafo se
+   apila en bandas como en el hub, pero compacto: cuatro canales en fila, el
+   persigue como píldora, tres eslabones y dos salidas. Sin rótulos ni
+   flechas entre bandas: el orden visual ya lo cuenta. */
 @media (max-width: 768px) {
   .tour-story-canvas { width: auto !important; transform: none; }
+  .tour-story .flow-graph-stage { gap: 8px; }
+  .tour-story .flow-band { gap: 6px; }
+  .tour-story .flow-band-label, .tour-story .flow-band + .flow-band::before { display: none; }
+  .tour-story .flow-band[data-band='channel'] { grid-template-columns: repeat(4, 1fr); order: 1; }
+  .tour-story .flow-band[data-band='loop'] { order: 2; display: flex; justify-content: center; }
+  .tour-story .flow-band[data-band='chain'] { grid-template-columns: repeat(3, 1fr); order: 3; }
+  .tour-story .flow-band[data-band='out'] { grid-template-columns: 1fr 1fr; order: 4; }
+  .tour-story .flow-node {
+    min-height: 40px;
+    padding: 6px 8px !important;
+    gap: 0 !important;
+    border-radius: 8px !important;
+    justify-content: center;
+    transition: opacity .3s ease, border-color .3s ease, box-shadow .3s ease;
+  }
+  .tour-story .flow-node > span:first-child { font-size: 11.5px !important; line-height: 1.15; }
+  .tour-story .flow-node > .mono { display: none; }
+  .tour-story .flow-band[data-band='loop'] .flow-node { min-width: 150px; }
+  .tour-story .flow-node[data-dim] { opacity: .3; }
+  .tour-story .flow-node-plus { opacity: 1; top: 2px; right: 5px; font-size: 11px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1186,6 +1231,7 @@ section[id] { scroll-margin-top: 72px; }
 }
 .flow-node-zoom:hover .flow-node-plus,
 .flow-node-zoom:focus-visible .flow-node-plus { opacity: 1; }
+@media (hover: none) { .flow-node-plus { opacity: 1; } }
 
 .tour-zoom {
   position: fixed;
@@ -1419,4 +1465,85 @@ section[id] { scroll-margin-top: 72px; }
 
 @media (prefers-reduced-motion: reduce) {
   .tour-progress { transition: none; }
+}
+
+/* ── Móvil: capas a pantalla completa ─────────────────────────────────── */
+.tour-calc-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.tour-calc-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+.tour-calc-grid { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); }
+@media (max-width: 900px) { .tour-calc-grid { grid-template-columns: 1fr; } }
+/* Ilustración de horas: en estrecho, los tramos sin rótulo (solo el color). */
+@media (max-width: 560px) { .tour-ill-hours-seg { color: transparent !important; } }
+@media (max-width: 600px) {
+  .tour-zoom { padding: 0; align-items: stretch; }
+  .tour-zoom-panel {
+    width: 100%;
+    height: 100svh;
+    max-height: 100svh;
+    border: 0;
+    border-radius: 0;
+    padding: 60px var(--gutter) 28px;
+    animation: none;
+  }
+  .tour-zoom .tour-zoom-close { position: fixed; top: 12px; right: 12px; z-index: 2; }
+  .tour-zoom-text { padding-right: 0; }
+  .tour-calc-2, .tour-calc-3 { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .tour-presenter { inset: 0; width: auto; border-radius: 0; border: 0; padding: 16px var(--gutter); }
+}
+/* El logo fijo se puede tocar (tres toques abren el presentador). */
+.tour-brand header .container { pointer-events: auto; }
+/* En móvil el contenido pasa por debajo del logo: la cabecera lleva fondo. */
+@media (max-width: 900px) {
+  .tour-brand { background: color-mix(in srgb, var(--bg) 90%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line-soft); }
+}
+
+/* ── PDF: una diapositiva por página, apaisada (16:9) ───────────────────
+   La versión «para enviar»: Descargar PDF desde el presentador imprime la
+   página. Lo oculto por nivel o a mano (`hidden`) queda fuera. El relato
+   sobre el grafo no se imprime: en su lugar van las diapositivas
+   `.tour-print-only` (grafo entero + una por paso, con sus nodos encendidos). */
+.tour-print-only { display: none; }
+@media print {
+  @page { size: 297mm 167mm; margin: 0; }
+  html, body { background: #fff !important; }
+  .tour-brand, .tour-rail, .tour-progress, .tour-presenter, .tour-appendix-sep,
+  .tour-story, .tour-story-sentinel, .tour-zoom, .tour-calc-launch { display: none !important; }
+  .tour-print-only { display: flex !important; }
+  .tour-chapter + .tour-chapter { border-top: 0; }
+  .tour-slide {
+    height: 167mm;
+    min-height: 0;
+    max-height: 167mm;
+    padding: 12mm 16mm;
+    overflow: hidden;
+    break-after: page;
+    break-inside: avoid;
+    page-break-after: always;
+    page-break-inside: avoid;
+  }
+  .tour-slide:last-child { break-after: auto; page-break-after: auto; }
+  /* Lo que en pantalla ocupa 100svh cabe en 167mm reducido un poco. */
+  .tour-slide > .container { zoom: 0.8; }
+  .tour-slide:has(.tour-matrix) > .container { zoom: 0.68; }
+  .tour-matrix-row { padding: 8px 0; }
+  .tour-matrix-row p, .tour-matrix-cell { font-size: 12.5px; }
+  .tour-slide[data-first] { min-height: 0; }
+  .tour-story-slide { display: contents; }
+  .reveal, .hero-rise { opacity: 1 !important; transform: none !important; animation: none !important; transition: none !important; }
+  * { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  /* El grafo a tamaño natural (1040px de lienzo), escalado a 160mm. */
+  .tour-print-story {
+    display: grid;
+    grid-template-columns: 160mm minmax(0, 1fr);
+    gap: 12mm;
+    align-items: center;
+    width: 100%;
+  }
+  .tour-print-box { width: 160mm; aspect-ratio: var(--graph-ratio); position: relative; }
+  .tour-print-canvas { position: absolute; inset: 0 auto auto 0; transform-origin: 0 0; }
+  .tour-print-story .flow-graph-scroll { overflow: visible; mask-image: none; -webkit-mask-image: none; }
+  .tour-print-story .flow-legend { display: none; }
+  .tour-print-story .flow-node[data-dim] { opacity: .3; }
 }

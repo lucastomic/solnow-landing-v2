@@ -151,10 +151,17 @@ export default function FlowGraph({
                     : sel
                       ? active
                       : true;
+                  // Hover solo con ratón: un toque dispara `mouseenter` emulado y
+                  // nunca `mouseleave`, y dejaría el resto del grafo apagado. El
+                  // foco cuenta solo si viene del teclado.
                   const nodeProps = {
-                    onMouseEnter: () => setHot(n.id),
-                    onMouseLeave: () => setHot(null),
-                    onFocus: () => setHot(n.id),
+                    onPointerEnter: (e: React.PointerEvent) => {
+                      if (e.pointerType === 'mouse') setHot(n.id);
+                    },
+                    onPointerLeave: () => setHot(null),
+                    onFocus: (e: React.FocusEvent<HTMLElement>) => {
+                      if (e.currentTarget.matches(':focus-visible')) setHot(n.id);
+                    },
                     onBlur: () => setHot(null),
                     className: 'flow-node',
                     'data-dim': !linked || undefined,
@@ -186,7 +193,11 @@ export default function FlowGraph({
                         type="button"
                         {...nodeProps}
                         className="flow-node flow-node-zoom"
-                        onClick={() => onSelect(n.area, n.id)}
+                        onClick={(e) => {
+                          setHot(null);
+                          e.currentTarget.blur();
+                          onSelect(n.area, n.id);
+                        }}
                         aria-label={`${n.label}: ${zoomLabel}`}
                       >
                         {inner}

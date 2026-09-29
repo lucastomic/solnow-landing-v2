@@ -174,8 +174,13 @@ export interface SlidePrice {
   /** El fijo, en temporada (lo que se factura a casi todos) y, en pequeño, al mes. */
   fixed: { first: string; extra: string; monthly: string };
   rows: { k: string; h: string; p: string }[];
+  /**
+   * El agente, en una franja aparte debajo de las dos tarjetas. Como tercera
+   * fila del variable se leía como una comisión más sumada a la online; es un
+   * vendedor que ya viene incluido y solo cobra lo que él mismo cobra.
+   */
+  agent: { h: string; p: string; k: string; kp: string };
   note: string;
-  annual: { k: string; h: string };
   /** Despegue, en una línea discreta: casi nadie va ahí, pero existe. */
   alt: string;
   /** Botón que abre la calculadora de precio en un modal. */
@@ -229,6 +234,8 @@ export interface NarrativaUI {
     byLevel: string;
     showAll: string;
     copyLink: string;
+    pdf: string;
+    pdfHint: string;
     language: string;
     labels: { cover: string; logos: string };
   };
@@ -300,7 +307,7 @@ export const UI_ES: NarrativaUI = {
   zoom: { close: 'Cerrar', hint: 'Esc para volver al grafo', nodeAria: 'ver en detalle' },
   presenter: {
     title: 'Modo presentador',
-    hint: 'Abre y cierra con P P (dos veces), ⌥⇧P o ⌘⇧P. Lo que marques se guarda en este navegador y en el enlace.',
+    hint: 'Abre y cierra con P P (dos veces), ⌥⇧P o ⌘⇧P; en el móvil, tres toques en el logo. Lo que marques se guarda en este navegador y en el enlace.',
     levels: [
       { label: 'Resumen', hint: 'Solo la portada y la idea de cada capítulo. Diez minutos.' },
       { label: 'Presentación', hint: 'La narrativa entera, sin el detalle que solo sale si preguntan.' },
@@ -310,6 +317,8 @@ export const UI_ES: NarrativaUI = {
     byLevel: 'Oculta por el nivel de detalle',
     showAll: 'Mostrar todo',
     copyLink: 'Copiar enlace con esta selección',
+    pdf: 'Descargar PDF',
+    pdfHint: 'Una página por diapositiva, apaisada, con esta selección. En el diálogo elige «Guardar como PDF» y sin márgenes.',
     language: 'Idioma',
     labels: { cover: 'Portada', logos: 'Logos' },
   },
@@ -778,19 +787,16 @@ export const CHAPTERS: Chapter[] = [
             h: 'de lo que SolNow cobra online',
             p: 'Trasladable al viajero como gastos de gestión.',
           },
-          {
-            k: `+${pct(PLANS.escalar.vendorPct)}`,
-            h: 'de lo que vende el agente',
-            p: 'Toda reserva que crea o que se paga por su enlace. Cobra como un vendedor, solo por lo que vende; atender, responder, perseguir y postventa van en la cuota.',
-          },
         ],
-        note: 'En noviembre la factura baja sola.',
-        alt: `¿Una sola base y empezando? Despegue: ${eur(PLANS.despegue.season.first)} por temporada (${eur(PLANS.despegue.monthly.first)} al mes), ${pct(PLANS.despegue.channelPct)} de lo que SolNow cobra online y +${pct(PLANS.despegue.vendorPct)} de lo que vende el agente. Mismos módulos.`,
-        calculator: 'Calcula tu cuota',
-        annual: {
-          k: '9.000-11.000 €',
-          h: 'al año para un operador de nuestro perfil: menos que un puesto de temporada, por el trabajo de tres.',
+        agent: {
+          h: 'Agente de IA, incluido',
+          p: 'Activo desde el primer día. Atender, responder, perseguir y postventa van dentro de la cuota.',
+          k: `+${pct(PLANS.escalar.vendorPct)}`,
+          kp: 'Solo en las reservas que cobra por su propio enlace.',
         },
+        note: 'En noviembre la factura baja sola.',
+        alt: `¿Una sola base y empezando? Despegue: ${eur(PLANS.despegue.season.first)} por temporada (${eur(PLANS.despegue.monthly.first)} al mes) y ${pct(PLANS.despegue.channelPct)} de lo que SolNow cobra online. Mismos módulos y mismo agente.`,
+        calculator: 'Calcula tu cuota',
       },
     ],
   },

@@ -616,16 +616,29 @@ export function PriceSlide({ slide, pricing }: { slide: SlidePrice; pricing: Pri
           ))}
         </div>
       </div>
+      {/* El agente, fuera del variable: incluido en la cuota, no una comisión más. */}
       <div
-        className="reveal"
-        style={{ ...delay(2), marginTop: 28, display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '8px 20px' }}
+        className="card reveal r-split"
+        style={{
+          ...delay(2),
+          marginTop: 16,
+          padding: 'clamp(16px, 2vw, 24px) clamp(20px, 2.5vw, 32px)',
+          display: 'grid',
+          gridTemplateColumns: '1fr minmax(0, 340px)',
+          gap: 24,
+          alignItems: 'center',
+        }}
       >
-        <span style={{ ...BIG, fontSize: 'clamp(32px, 3.4vw, 48px)', color: 'var(--fg)' }}>{slide.annual.k}</span>
-        <span className="lede" style={{ maxWidth: '48ch' }}>
-          {slide.annual.h}
-        </span>
+        <div>
+          <div style={{ fontSize: 16.5, fontWeight: 500, color: 'var(--fg)' }}>{slide.agent.h}</div>
+          <div style={{ fontSize: 14.5, color: 'var(--muted)', lineHeight: 1.5, marginTop: 4 }}>{slide.agent.p}</div>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <span className="mono" style={{ fontSize: 15, fontWeight: 500, color: 'var(--accent)', whiteSpace: 'nowrap', flexShrink: 0 }}>{slide.agent.k}</span>
+          <span style={{ fontSize: 13, color: 'var(--muted-2)', lineHeight: 1.45 }}>{slide.agent.kp}</span>
+        </div>
       </div>
-      <p className="mono reveal" style={{ ...delay(3), margin: '18px 0 0', fontSize: 12.5, color: 'var(--muted)', letterSpacing: '0.04em' }}>
+      <p className="mono reveal" style={{ ...delay(3), margin: '28px 0 0', fontSize: 12.5, color: 'var(--muted)', letterSpacing: '0.04em' }}>
         {pricing.labels.allIncluded} {slide.note}
       </p>
       <div className="reveal" style={{ ...delay(4), marginTop: 26, display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '14px 24px' }}>

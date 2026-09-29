@@ -1156,9 +1156,13 @@
       "manual": "Reservas de mostrador y manuales",
       "online": "Reservas online",
       "onlineNote": "Repercutible al viajero.",
-      "vendor": "Ventas del agente IA",
-      "vendorNote": "Solo las que cierra él de punta a punta.",
       "onboarding": "Onboarding"
+    },
+    "agent": {
+      "title": "Agente de IA, incluido en los dos planes",
+      "body": "Activo desde el primer día. Atender, responder, perseguir y postventa van dentro de la cuota.",
+      "fee": "+{pct}",
+      "feeNote": "Solo en las reservas que cobra por su propio enlace."
     },
     "bothPlans": "En los dos planes: todos los módulos · conversaciones ilimitadas.",
     "plans": {

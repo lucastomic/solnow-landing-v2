@@ -81,7 +81,23 @@ export function PresenterMode({
       }
     };
     window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
+    // Sin teclado (móvil): tres toques seguidos en el logo fijo.
+    let taps: number[] = [];
+    const onTap = (e: PointerEvent) => {
+      const t = e.target as HTMLElement | null;
+      if (!t || !t.closest('.tour-brand')) return;
+      const now = Date.now();
+      taps = [...taps.filter((x) => now - x < 700), now];
+      if (taps.length >= 3) {
+        taps = [];
+        setOpen((o) => !o);
+      }
+    };
+    document.addEventListener('pointerup', onTap);
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.removeEventListener('pointerup', onTap);
+    };
   }, []);
 
   // Aplica la selección al DOM.
@@ -91,10 +107,14 @@ export function PresenterMode({
       const chapterHidden = hidden.has(ch.id);
       let visible = 0;
       for (const sl of ch.slides) {
-        const el = document.querySelector<HTMLElement>(`[data-slide-id="${sl.id}"]`);
-        if (!el) continue;
+        // Una diapositiva puede tener varios elementos (el relato sobre el
+        // grafo y sus páginas de impresión comparten id): se ocultan todos.
+        const els = document.querySelectorAll<HTMLElement>(`[data-slide-id="${sl.id}"]`);
+        if (!els.length) continue;
         const hide = chapterHidden || hidden.has(sl.id) || sl.level > st.level;
-        el.hidden = hide;
+        els.forEach((el) => {
+          el.hidden = hide;
+        });
         if (!hide) visible++;
       }
       const sec = document.getElementById(ch.id);
@@ -107,6 +127,12 @@ export function PresenterMode({
   const hidden = new Set(st.hidden);
   const copyLink = () => {
     void navigator.clipboard?.writeText(window.location.href);
+  };
+  // El PDF es la propia página impresa (hoja de estilos `@media print`):
+  // una página por diapositiva visible. Se cierra el panel para que no salga.
+  const printPdf = () => {
+    setOpen(false);
+    window.setTimeout(() => window.print(), 80);
   };
 
   return (
@@ -174,6 +200,10 @@ export function PresenterMode({
         <button type="button" className="btn btn-primary" onClick={copyLink} style={{ fontSize: 13, padding: '9px 14px' }}>
           {ui.copyLink}
         </button>
+        <button type="button" className="btn btn-secondary" onClick={printPdf} title={ui.pdfHint} style={{ fontSize: 13, padding: '9px 14px' }}>
+          {ui.pdf}
+        </button>
+        <p className="tour-presenter-hint" style={{ flexBasis: '100%' }}>{ui.pdfHint}</p>
       </div>
     </aside>
   );

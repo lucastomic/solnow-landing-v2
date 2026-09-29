@@ -139,6 +139,7 @@ export function TeamHours({ ill }: { ill: Ill }) {
             {DAY.slice(row === 2 ? 0 : row, row === 2 ? 9 : 8 + row).map((b, i) => (
               <span
                 key={i}
+                className="tour-ill-hours-seg"
                 style={{
                   width: `${b.w}%`,
                   background: b.t === 'messages' ? 'var(--accent-2)' : 'var(--accent-dim)',

@@ -1156,9 +1156,13 @@
       "manual": "Front-desk and manual bookings",
       "online": "Online bookings",
       "onlineNote": "Can be passed on to the traveller.",
-      "vendor": "AI agent sales",
-      "vendorNote": "Only the ones it closes end to end.",
       "onboarding": "Onboarding"
+    },
+    "agent": {
+      "title": "AI agent, included on both plans",
+      "body": "Live from day one. Answering, replying, following up and after-sales are covered by the fee.",
+      "fee": "+{pct}",
+      "feeNote": "Only on bookings it charges through its own link."
     },
     "bothPlans": "On both plans: every module · unlimited conversations.",
     "plans": {

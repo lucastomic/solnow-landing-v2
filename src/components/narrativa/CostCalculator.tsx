@@ -153,7 +153,7 @@ export function CostCalculator({ ui, onClose }: { ui: CalcUI; onClose: () => voi
             <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
           </svg>
         </button>
-        <div className="tour-zoom-grid" style={{ gridTemplateColumns: 'minmax(0, 0.8fr) minmax(0, 1.2fr)' }}>
+        <div className="tour-zoom-grid tour-calc-grid">
           <div className="tour-zoom-text">
             <span className="eyebrow">{ui.eyebrow}</span>
             <h3 id="tour-calc-title" className="h-2" style={{ margin: '14px 0 10px', fontSize: 'clamp(22px, 2.4vw, 30px)' }}>
@@ -168,12 +168,12 @@ export function CostCalculator({ ui, onClose }: { ui: CalcUI; onClose: () => voi
           </div>
           <div className="tour-zoom-media">
             <span className="eyebrow no-dot">{ui.hours}</span>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+            <div className="tour-calc-2">
               <Result k={`${num(hoursPerDay, 1)} ${ui.hoursPerDay}`} h={ui.hoursPerDayH} p={`${num(hoursPerSeason)} ${fill(ui.hoursPerSeason, { min: String(UNITS.minutesPerBooking) })}`} />
               <Result k={rangeL(hireCost[0], hireCost[1], '€')} h={fill(ui.hires, { n: num(hires, 1) })} p={ui.hiresH} />
             </div>
             <span className="eyebrow no-dot" style={{ marginTop: 8 }}>{ui.conversations}</span>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 12 }}>
+            <div className="tour-calc-3">
               <Result k={`${Math.round(slowPerDay)} ${ui.perDay}`} h={ui.slowH} p={ui.slowP} />
               <Result k={`${num(coolPerMonth)} ${ui.perMonth}`} h={ui.coolH} p={fill(ui.coolP, { range: rangeL(recoveredPerMonth[0], recoveredPerMonth[1], loc === 'en-US' ? 'bookings' : 'reservas') })} />
               <Result k={rangeL(lostPerMonth[0], lostPerMonth[1], '€')} h={ui.lostH} p={fill(ui.lostP, { range: rangeL(lostPerSeason[0], lostPerSeason[1], '€') })} />
@@ -198,7 +198,7 @@ export function CostCalculatorLauncher({ label, ui }: { label: string; ui: CalcU
   const close = useCallback(() => setOpen(false), []);
   return (
     <>
-      <button type="button" className="btn btn-primary" onClick={() => setOpen(true)} style={{ fontSize: 15 }}>
+      <button type="button" className="btn btn-primary tour-calc-launch" onClick={() => setOpen(true)} style={{ fontSize: 15 }}>
         {label}
       </button>
       {open && <CostCalculator ui={ui} onClose={close} />}

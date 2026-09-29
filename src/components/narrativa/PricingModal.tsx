@@ -151,7 +151,7 @@ export function PricingModalLauncher({
   const close = useCallback(() => setOpen(false), []);
   return (
     <>
-      <button type="button" className="btn btn-primary" onClick={() => setOpen(true)} style={{ fontSize: 15 }}>
+      <button type="button" className="btn btn-primary tour-calc-launch" onClick={() => setOpen(true)} style={{ fontSize: 15 }}>
         {label}
       </button>
       {open && <PricingModal copy={copy} locale={locale} billingLabels={billingLabels} ui={ui} calcUi={calcUi} onClose={close} />}

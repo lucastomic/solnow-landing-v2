@@ -10,6 +10,7 @@ import { AdsHeader } from '@/components/ads/AdsChrome';
 import { NarrativaRail } from '@/components/narrativa/NarrativaRail';
 import { CaseSlide, ChainsSlide, FeatureSlide, FigureSlide, LogosSlide, OverviewSlide, PriceSlide, TitleSlide } from '@/components/narrativa/slides';
 import { FlowStory } from '@/components/narrativa/FlowStory';
+import { StoryPrint } from '@/components/narrativa/StoryPrint';
 import type { ZoomArea } from '@/components/narrativa/ZoomOverlay';
 import { PRODUCTS, type ProductKey } from '@/content/products';
 
@@ -142,6 +143,8 @@ export async function NarrativaTour({ locale }: { locale: Locale }) {
             return (
               <article key={si} className="tour-story-slide" data-slide-id={slideId(ch, si)} data-level={slideLevel(s)}>
                 <FlowStory graph={graph} locale={locale} intro={s.intro} steps={s.steps} areas={areas} zoom={ui.zoom} />
+                {/* Solo para el PDF: el relato en páginas. */}
+                <StoryPrint graph={graph} locale={locale} intro={s.intro} steps={s.steps} slideId={slideId(ch, si)} level={slideLevel(s)} />
               </article>
             );
           }
