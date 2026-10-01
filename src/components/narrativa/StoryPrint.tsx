@@ -1,5 +1,5 @@
 import FlowGraph from '@/components/product/FlowGraph';
-import { W as GRAPH_W, computeHeight } from '@/components/product/flowLayout';
+import { canvasSize } from '@/components/product/flowLayout';
 import { NumLabel } from '@/components/atoms';
 import { rich } from '@/components/narrativa/rich';
 import type { ProductGraphContent } from '@/content/products';
@@ -29,7 +29,9 @@ export function StoryPrint({
   slideId: string;
   level: number;
 }) {
-  const graphH = computeHeight(graph);
+  const { W: GRAPH_W, H: graphH } = canvasSize(graph, 'vertical');
+  // Cabe en 160mm de ancho y en el alto útil de la página (167mm − márgenes).
+  const boxMm = Math.min(160, (138 * GRAPH_W) / graphH);
   const pages: { nodes: string[]; body: React.ReactNode }[] = [
     {
       nodes: [],
@@ -69,15 +71,17 @@ export function StoryPrint({
         </>
       ),
     })),
+    // Cierre: el flujo entero, sin nada seleccionado.
+    { nodes: [], body: null },
   ];
   return (
     <>
       {pages.map((pg, i) => (
         <article key={i} className="tour-slide tour-print-only" data-slide-id={slideId} data-level={level} aria-hidden>
           <div className="tour-print-story">
-            <div className="tour-print-box" style={{ ['--graph-ratio' as string]: `${GRAPH_W} / ${graphH}` }}>
-              <div className="tour-print-canvas" style={{ width: GRAPH_W, transform: `scale(${(604.7 / GRAPH_W).toFixed(4)})` }}>
-                <FlowGraph graph={graph} locale={locale} plain highlight={pg.nodes} />
+            <div className="tour-print-box" style={{ ['--graph-ratio' as string]: `${GRAPH_W} / ${graphH}`, width: `${boxMm.toFixed(1)}mm` }}>
+              <div className="tour-print-canvas" style={{ width: GRAPH_W, transform: `scale(${((boxMm * 3.7795) / GRAPH_W).toFixed(4)})` }}>
+                <FlowGraph graph={graph} locale={locale} orientation="vertical" stage={i} plain highlight={pg.nodes} />
               </div>
             </div>
             <div>{pg.body}</div>

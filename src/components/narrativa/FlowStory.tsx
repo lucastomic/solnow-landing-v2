@@ -3,7 +3,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import type { ProductKey } from '@/content/products';
 import { ZoomOverlay, type ZoomArea } from '@/components/narrativa/ZoomOverlay';
 import FlowGraph from '@/components/product/FlowGraph';
-import { W as GRAPH_W, computeHeight } from '@/components/product/flowLayout';
+import { canvasSize } from '@/components/product/flowLayout';
 import type { ProductGraphContent } from '@/content/products';
 import type { StoryStep } from '@/content/narrativa';
 import type { Locale } from '@/i18n/config';
@@ -50,6 +50,8 @@ export function FlowStory({
   const [zoomed, setZoom] = useState<ProductKey | null>(null);
   const closeZoom = useCallback(() => setZoom(null), []);
   const box = useRef<HTMLDivElement>(null);
+  // En vertical: los canales en fila arriba y el flujo cayendo hacia abajo.
+  const { W: GRAPH_W, H: graphH } = canvasSize(graph, 'vertical');
 
   // El lienzo del grafo mide siempre GRAPH_W px y se escala a la caja con
   // `transform`, texto incluido. Así nunca se corta ni reflowa: al comprimir
@@ -63,8 +65,7 @@ export function FlowStory({
     });
     ro.observe(el);
     return () => ro.disconnect();
-  }, []);
-  const graphH = computeHeight(graph);
+  }, [GRAPH_W]);
 
   useEffect(() => {
     const els = Array.from(document.querySelectorAll<HTMLElement>('[data-story-step]'));
@@ -88,7 +89,10 @@ export function FlowStory({
     return () => io.disconnect();
   }, []);
 
-  const step = active >= 0 ? steps[active] : null;
+  // Tras el último paso, una parada más: el flujo entero, centrado y sin nada
+  // seleccionado.
+  const outro = active >= steps.length;
+  const step = active >= 0 && !outro ? steps[active] : null;
   const side = step ? 'right' : 'none';
 
   const stepBody = (st: StoryStep) => (
@@ -125,7 +129,7 @@ export function FlowStory({
           </p>
         )}
       </div>
-      <div className="tour-story-panel" data-side={side}>
+      <div className="tour-story-panel" data-side={side} data-outro={outro || undefined}>
         <div className="tour-story-intro container" data-on={active < 0 || undefined} aria-hidden={active >= 0}>
           <h3 className="h-1" style={{ margin: 0, fontSize: 'clamp(26px, 3.2vw, 42px)' }}>
             {intro.title}
@@ -136,9 +140,21 @@ export function FlowStory({
             </p>
           )}
         </div>
-        <div className="tour-story-graph" ref={box} style={{ ['--graph-ratio' as string]: `${GRAPH_W} / ${graphH}` }}>
+        <div
+          className="tour-story-graph"
+          ref={box}
+          style={{ ['--graph-ratio' as string]: `${GRAPH_W} / ${graphH}`, ['--graph-ar' as string]: GRAPH_W / graphH }}
+        >
           <div className="tour-story-canvas" style={{ width: GRAPH_W }}>
-            <FlowGraph graph={graph} locale={locale} plain highlight={step?.nodes ?? []} onSelect={(area) => setZoom(area)} zoomLabel={zoom.nodeAria} />
+            <FlowGraph
+              graph={graph}
+              locale={locale}
+              orientation="vertical"
+              // El grafo se construye con los pasos: la entrada solo enseña los
+              // canales, y cada paso añade su parte (sello, cadena, salidas, bucle).
+              stage={active + 1}
+              plain
+              highlight={step?.nodes ?? []} onSelect={(area) => setZoom(area)} zoomLabel={zoom.nodeAria} />
           </div>
         </div>
         <div className="tour-story-text" aria-live="polite">
@@ -169,6 +185,7 @@ export function FlowStory({
       {steps.map((_, i) => (
         <div key={i} className="tour-stop tour-story-sentinel" data-story-step={i} aria-hidden />
       ))}
+      <div className="tour-stop tour-story-sentinel" data-story-step={steps.length} aria-hidden />
     </div>
   );
 }

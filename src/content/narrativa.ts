@@ -153,6 +153,18 @@ export const STORY_LOOP = {
   loopLabel: 'Bucle de recuperación',
   loopPosition: 'above' as const,
   loop: { id: 'persigue', label: 'Persigue', sub: 'recupera lo que se enfría', area: 'persigue' as ProductKey },
+  /** Canal que el tour añade a los del hub: las OTAs, aparte de hoteles y agencias. */
+  extraChannels: [{ id: 'ota', label: 'GetYourGuide y Viator', sub: 'OTAs', area: 'colaboradores' as ProductKey }],
+  /**
+   * El tour reordena las salidas del hub: la monitorización entra en la
+   * cadena operativa y el reporting pasa a ser el dato que lo recoge todo,
+   * del que sale Persigue.
+   */
+  toChain: ['mon'],
+  asData: { id: 'rep', sub: 'el dato de todo: canales, cobros, flota y caja' },
+  dataLabel: 'El dato',
+  /** Persigue vuelve a WhatsApp y a la web (los checkouts abandonados). */
+  loopTo: ['wa', 'web'],
 };
 
 /** El grafo del producto fijo en pantalla y los pasos leyéndolo por partes. */
@@ -588,7 +600,7 @@ export const CHAPTERS: Chapter[] = [
               'Una reserva de GetYourGuide o de un hotel recibe **el mismo contrato y el mismo QR** que una del mostrador.',
               'Ningún canal vende lo que otro ya vendió.',
             ],
-            nodes: ['wa', 'web', 'most', 'colab'],
+            nodes: ['wa', 'web', 'most', 'colab', 'ota'],
           },
           {
             title: 'Cada canal hasta el final, con las piezas de este sector',
@@ -596,23 +608,16 @@ export const CHAPTERS: Chapter[] = [
               'No solo la reserva: **el contrato legal del alquiler, el libro de registro, el manifiesto**, el cobro en base (TPV y kiosk), la pizarra en vivo, el QR de embarque y la flota en tiempo real, con varias bases.',
               'El cliente mete sus datos, **firma y paga él mismo**, sea por donde sea que entre.',
             ],
-            nodes: ['cobro', 'contrato', 'qr'],
+            nodes: ['cobro', 'contrato', 'qr', 'mon'],
           },
           {
             title: 'Por eso tenemos el dato completo del negocio',
             bullets: [
-              'Quién escribió, quién pagó, qué hay en caja, qué está en el agua.',
+              'Quién escribió, quién pagó, qué hay en caja, qué está en el agua: **todo en un mismo reporting**, de todos los canales y todas las bases.',
               '**Nadie más puede construirlo**: no se puede tener el dato de un flujo que no pasa por tu sistema.',
+              '**Y el dato trabaja**: Persigue sabe quién recibió precio y no pagó, y vuelve a por él por WhatsApp o en la web.',
             ],
-            nodes: ['mon', 'rep'],
-          },
-          {
-            title: 'Y ese dato paga dos dividendos',
-            bullets: [
-              '**El sistema vende solo.** Un vendedor de IA en WhatsApp conectado a disponibilidad, precios y flota: contesta en segundos a cualquier hora, cotiza, confirma en el chat y manda un enlace solo para pagar y firmar; y persigue las conversaciones que se enfrían y los checkouts abandonados.',
-              '**El dueño lo ve todo sin estar.** Cuántos escribieron, cuántos recibieron precio, cuántos pagaron, qué hay en caja por base y las horas que absorbió el sistema, en el momento.',
-            ],
-            nodes: ['wa', 'persigue', 'rep'],
+            nodes: ['rep', 'persigue'],
           },
         ],
       },

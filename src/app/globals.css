@@ -310,9 +310,13 @@ section[id] { scroll-margin-top: 72px; }
 @keyframes flowdash { to { stroke-dashoffset: -38; } }
 .flow-dash { animation: flowdash 1.1s linear infinite; }
 .flow-dash-rev { animation: flowdash 1.5s linear infinite reverse; }
+/* El bucle: guiones de 7+7, así que el ciclo es múltiplo de 14. */
+@keyframes flowloop { to { stroke-dashoffset: -28; } }
+.flow-loop { animation: flowloop 1.6s linear infinite; }
 @media (prefers-reduced-motion: reduce) {
   .flow-dash,
-  .flow-dash-rev { animation: none; }
+  .flow-dash-rev,
+  .flow-loop { animation: none; }
 }
 /* El grafo se dibuja sobre un lienzo de 1040px con los nodos posicionados en
    absoluto. Entre 769 y 1080px se desplaza en horizontal, con un degradado que
@@ -320,6 +324,18 @@ section[id] { scroll-margin-top: 72px; }
 .flow-graph-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .flow-graph-stage { position: relative; min-width: 1040px; aspect-ratio: var(--flow-ratio); }
 .flow-node { position: absolute; left: var(--x); top: var(--y); width: var(--w); height: var(--h); }
+/* El vertical (el tour) es un lienzo estrecho que siempre se escala a su caja. */
+.flow-graph-stage[data-orient='vertical'] { min-width: 0; }
+.flow-hub {
+  position: absolute;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  box-shadow: 0 0 0 6px var(--bg), 0 10px 24px -12px var(--accent);
+  transition: opacity .22s ease;
+}
+.flow-hub img { display: block; width: 100%; height: 100%; }
+/* El icono no se encoge cuando la etiqueta ocupa dos líneas. */
+.flow-node-icon { flex: none; }
 
 @media (max-width: 1080px) and (min-width: 769px) {
   .flow-graph-scroll {
@@ -356,7 +372,7 @@ section[id] { scroll-margin-top: 72px; }
     flex-direction: column;
     gap: 26px;
   }
-  .flow-graph-stage > svg { display: none; }
+  .flow-graph-stage > svg, .flow-hub { display: none; }
 
   .flow-band { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; position: relative; }
   /* La cadena de venta es secuencial: una sola columna, en orden. */
@@ -1082,19 +1098,22 @@ section[id] { scroll-margin-top: 72px; }
   display: block;
 }
 .tour-story-graph {
+  /* El grafo va en vertical y es casi tan alto como ancho: el ancho lo manda
+     el alto que queda bajo el titular de la entrada. */
+  --story-w: min(1180px, 100% - 2 * var(--gutter), (100svh - 260px) * var(--graph-ar, 2.8));
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   left: 50%;
-  width: min(1180px, 100% - 2 * var(--gutter));
-  margin-left: calc(-1 * min(1180px, 100% - 2 * var(--gutter)) / 2);
+  width: var(--story-w);
+  margin-left: calc(-1 * var(--story-w) / 2);
   transition: left .7s cubic-bezier(.2,.7,.2,1), width .7s cubic-bezier(.2,.7,.2,1), margin-left .7s cubic-bezier(.2,.7,.2,1);
 }
 /* Texto a la derecha: el grafo se encoge y se pega a la izquierda. */
 .tour-story-panel[data-side='right'] .tour-story-graph {
-  left: var(--gutter);
+  --story-w: min(58% - 2 * var(--gutter), (100svh - 96px) * var(--graph-ar, 2.8));
+  left: calc(31% - var(--story-w) / 2);
   margin-left: 0;
-  width: calc(58% - var(--gutter));
 }
 .tour-story-text {
   position: absolute;
@@ -1132,12 +1151,19 @@ section[id] { scroll-margin-top: 72px; }
 .tour-story-intro .lede { margin-inline: auto; }
 .tour-story-intro[data-on] { opacity: 1; transform: none; transition-delay: .2s; }
 /* Con titular encima, el grafo baja un poco del centro. */
-.tour-story-panel[data-side='none'] .tour-story-graph { top: 56%; }
+.tour-story-panel[data-side='none'] .tour-story-graph { top: calc(50% + 115px); }
+/* Cierre: sin titular ni texto, el grafo entero ocupa el centro. */
+.tour-story-panel[data-outro] .tour-story-graph {
+  --story-w: min(1180px, 100% - 2 * var(--gutter), (100svh - 96px) * var(--graph-ar, 2.8));
+  top: 50%;
+}
 
 /* El lienzo a tamaño natural, escalado a la caja. Solo en escritorio: en
    móvil el grafo se apila en bandas y no tiene proporción fija. */
 @media (min-width: 769px) {
-  .tour-story-graph { aspect-ratio: var(--graph-ratio); }
+  /* `min-height: 0`: sin él la caja crece hasta el alto del lienzo sin
+     escalar, y descentra el grafo y alarga el panel fijo en tablet. */
+  .tour-story-graph { aspect-ratio: var(--graph-ratio); min-height: 0; }
   .tour-story-canvas {
     transform: scale(var(--story-scale, 1));
     transform-origin: 0 0;
@@ -1169,7 +1195,10 @@ section[id] { scroll-margin-top: 72px; }
   .tour-story-graph,
   .tour-story-panel[data-side='right'] .tour-story-graph,
   .tour-story-panel[data-side='none'] .tour-story-graph {
-    position: static; transform: none; width: 100%; margin-left: 0; left: auto; top: auto; transition: none;
+    position: static; transform: none; margin-left: 0; left: auto; top: auto; transition: none;
+    /* Pegado arriba no puede comerse la pantalla: el alto manda el ancho. */
+    width: min(100%, 40svh * var(--graph-ar, 2.8));
+    margin-inline: auto;
   }
   .tour-story-panel + .tour-story-sentinel { margin-top: 0; }
   .tour-story-steps { display: block; padding: 8px var(--gutter) 24px; }
@@ -1192,22 +1221,28 @@ section[id] { scroll-margin-top: 72px; }
    flechas entre bandas: el orden visual ya lo cuenta. */
 @media (max-width: 768px) {
   .tour-story-canvas { width: auto !important; transform: none; }
+  .tour-story-panel .tour-story-graph, .tour-story-panel[data-side] .tour-story-graph { width: 100%; }
   .tour-story .flow-graph-stage { gap: 8px; }
   .tour-story .flow-band { gap: 6px; }
   .tour-story .flow-band-label, .tour-story .flow-band + .flow-band::before { display: none; }
-  .tour-story .flow-band[data-band='channel'] { grid-template-columns: repeat(4, 1fr); order: 1; }
-  .tour-story .flow-band[data-band='loop'] { order: 2; display: flex; justify-content: center; }
-  .tour-story .flow-band[data-band='chain'] { grid-template-columns: repeat(3, 1fr); order: 3; }
-  .tour-story .flow-band[data-band='out'] { grid-template-columns: 1fr 1fr; order: 4; }
+  /* Cinco canales: tres arriba y dos centrados debajo. */
+  .tour-story .flow-band[data-band='channel'] { display: flex; flex-wrap: wrap; justify-content: center; order: 1; }
+  .tour-story .flow-band[data-band='channel'] .flow-node { flex: 0 0 calc((100% - 12px) / 3); }
+  .tour-story .flow-band[data-band='chain'] { grid-template-columns: repeat(2, 1fr); order: 2; }
+  .tour-story .flow-band[data-band='data'] { display: flex; justify-content: center; order: 3; }
+  .tour-story .flow-band[data-band='data'] .flow-node { min-width: 190px; }
+  .tour-story .flow-band[data-band='loop'] { order: 4; display: flex; justify-content: center; }
+  .tour-story .flow-band[data-band='out'] { grid-template-columns: 1fr 1fr; order: 5; }
   .tour-story .flow-node {
     min-height: 40px;
     padding: 6px 8px !important;
-    gap: 0 !important;
+    gap: 4px !important;
     border-radius: 8px !important;
     justify-content: center;
     transition: opacity .3s ease, border-color .3s ease, box-shadow .3s ease;
   }
-  .tour-story .flow-node > span:first-child { font-size: 11.5px !important; line-height: 1.15; }
+  .tour-story .flow-node-label { font-size: 11.5px !important; line-height: 1.15; }
+  .tour-story .flow-node-icon { width: 16px; height: 16px; flex: none; }
   .tour-story .flow-node > .mono { display: none; }
   .tour-story .flow-band[data-band='loop'] .flow-node { min-width: 150px; }
   .tour-story .flow-node[data-dim] { opacity: .3; }
@@ -1216,6 +1251,8 @@ section[id] { scroll-margin-top: 72px; }
 
 @media (prefers-reduced-motion: reduce) {
   .tour-story-graph, .tour-story-step { transition: none; }
+  /* El grafo se construye igual, pero sin animar. */
+  .tour-story .flow-graph-stage *, .tour-story .flow-graph-stage path { transition: none !important; }
 }
 
 /* ── Zoom sobre un nodo del grafo ─────────────────────────────────────── */

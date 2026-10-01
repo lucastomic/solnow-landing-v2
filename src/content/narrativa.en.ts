@@ -16,6 +16,11 @@ export const STORY_LOOP_EN = {
   loopLabel: 'Recovery loop',
   loopPosition: 'above' as const,
   loop: { id: 'persigue', label: 'Follow-up', sub: 'recovers what goes cold', area: 'persigue' as ProductKey },
+  extraChannels: [{ id: 'ota', label: 'GetYourGuide & Viator', sub: 'OTAs', area: 'colaboradores' as ProductKey }],
+  toChain: ['mon'],
+  asData: { id: 'rep', sub: 'the data of everything: channels, payments, fleet and till' },
+  dataLabel: 'The data',
+  loopTo: ['wa', 'web'],
 };
 
 export const CHAPTERS_EN: Chapter[] = [
@@ -218,7 +223,7 @@ export const CHAPTERS_EN: Chapter[] = [
               'A booking from GetYourGuide or a hotel gets **the same contract and the same QR** as one from the front desk.',
               'No channel sells what another has already sold.',
             ],
-            nodes: ['wa', 'web', 'most', 'colab'],
+            nodes: ['wa', 'web', 'most', 'colab', 'ota'],
           },
           {
             title: 'Every channel all the way to the end, with this industry’s pieces',
@@ -226,23 +231,16 @@ export const CHAPTERS_EN: Chapter[] = [
               'Not just the booking: **the rental’s legal contract, the logbook, the manifest**, payment at the base (POS and kiosk), the live board, the boarding QR and the fleet in real time, across several bases.',
               'The customer enters their details, **signs and pays themselves**, whichever way they come in.',
             ],
-            nodes: ['cobro', 'contrato', 'qr'],
+            nodes: ['cobro', 'contrato', 'qr', 'mon'],
           },
           {
             title: 'That is why we hold the complete data of the business',
             bullets: [
-              'Who wrote, who paid, what is in the till, what is on the water.',
+              'Who wrote, who paid, what is in the till, what is on the water: **all in one report**, across every channel and every base.',
               '**Nobody else can build it**: you cannot have the data of a flow that does not go through your system.',
+              '**And the data works**: Follow-up knows who got a price and did not pay, and goes back for them on WhatsApp or the website.',
             ],
-            nodes: ['mon', 'rep'],
-          },
-          {
-            title: 'And that data pays two dividends',
-            bullets: [
-              '**The system sells on its own.** An AI salesperson on WhatsApp connected to availability, prices and fleet: replies in seconds at any hour, quotes, confirms in the chat and sends a link just to pay and sign; and chases conversations that go cold and abandoned checkouts.',
-              '**The owner sees everything without being there.** How many wrote, how many got a price, how many paid, what is in the till per base and the hours the system absorbed, right now.',
-            ],
-            nodes: ['wa', 'persigue', 'rep'],
+            nodes: ['rep', 'persigue'],
           },
         ],
       },

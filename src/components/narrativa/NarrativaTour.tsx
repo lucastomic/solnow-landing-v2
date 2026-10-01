@@ -59,8 +59,20 @@ export async function NarrativaTour({ locale }: { locale: Locale }) {
       ];
     }),
   ) as Record<ProductKey, ZoomArea>;
-  // El mismo grafo del hub, con el bucle del persigue que el hub aún no pinta.
-  const graph = { ...hubGraph, ...storyLoop };
+  // El mismo grafo del hub, con el bucle del persigue y el canal de OTAs que
+  // el hub aún no pinta.
+  // Además, la monitorización pasa a la cadena y el reporting es el dato.
+  const { extraChannels, toChain, asData, ...loop } = storyLoop;
+  const out = (id: string) => hubGraph.outputs.find((o) => o.id === id);
+  const dataNode = out(asData.id);
+  const graph = {
+    ...hubGraph,
+    ...loop,
+    channels: [...hubGraph.channels, ...extraChannels],
+    chain: [...hubGraph.chain, ...toChain.map(out).filter((o) => o !== undefined)],
+    outputs: hubGraph.outputs.filter((o) => !toChain.includes(o.id) && o.id !== asData.id),
+    data: dataNode && { ...dataNode, sub: asData.sub },
+  };
   const rail = CHAPTERS.map((c) => ({ id: c.id, label: c.label }));
 
   // Manifiesto para el modo presentador: cada diapositiva con su id, su rótulo

@@ -1,8 +1,10 @@
 'use client';
 import { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { productPath, type ProductGraphContent, type ProductKey } from '@/content/products';
-import { W, layout, buildEdges, type PlacedNode } from '@/components/product/flowLayout';
+import { layout, buildEdges, NODE_STAGE, type Orientation, type PlacedNode } from '@/components/product/flowLayout';
+import { FlowIcon } from '@/components/product/flowIcons';
 import type { Locale } from '@/i18n/config';
 
 /**
@@ -22,7 +24,7 @@ import type { Locale } from '@/i18n/config';
  * de estilos puede ignorarlas y apilar los nodos en vertical en móvil, donde
  * un lienzo de 1040 px solo se podría ver arrastrando de lado.
  */
-function nodeStyle(n: PlacedNode, active: boolean, H: number) {
+function nodeStyle(n: PlacedNode, active: boolean, W: number, H: number, icons: boolean) {
   const pct = (v: number, total: number) => `${(v / total) * 100}%`;
   return {
     ['--x' as string]: pct(n.x, W),
@@ -30,20 +32,21 @@ function nodeStyle(n: PlacedNode, active: boolean, H: number) {
     ['--w' as string]: pct(n.w, W),
     ['--h' as string]: pct(n.h, H),
     display: 'flex',
-    flexDirection: 'column' as const,
-    justifyContent: 'center',
-    gap: 4,
+    // Con icono: los canales, icono encima del nombre; el resto, al lado.
+    flexDirection: icons && n.kind !== 'channel' ? ('row' as const) : ('column' as const),
+    justifyContent: icons && n.kind !== 'channel' ? 'flex-start' : 'center',
+    alignItems: icons ? 'center' : undefined,
+    gap: icons ? (n.kind === 'channel' ? 8 : 12) : 4,
     padding: '12px 16px',
+    color: icons ? 'var(--accent)' : undefined,
     borderRadius: 12,
     // El bucle es una caja como las demás; el borde discontinuo dice que es
     // un retorno, no un eslabón.
-    background: n.kind === 'chain' ? 'var(--accent-bg)' : 'var(--bg)',
+    // En el tour la cadena no se distingue por color: el icono y la posición
+    // ya dicen que es el flujo.
+    background: n.kind === 'chain' && !icons ? 'var(--accent-bg)' : 'var(--bg)',
     border: '1px ' + (n.kind === 'loop' ? 'dashed' : 'solid'),
-    borderColor: active
-      ? 'var(--accent)'
-      : n.kind === 'chain' || n.kind === 'loop'
-        ? 'var(--accent-dim)'
-        : 'var(--line)',
+    borderColor: active ? 'var(--accent)' : (n.kind === 'chain' && !icons) || n.kind === 'loop' ? 'var(--accent-dim)' : 'var(--line)',
     boxShadow: active ? '0 14px 30px -14px var(--accent)' : '0 1px 0 var(--line-soft)',
     transform: active ? 'translateY(-2px)' : 'none',
     transition: 'opacity .22s ease, border-color .2s ease, box-shadow .2s ease, transform .2s ease',
@@ -57,6 +60,8 @@ function nodeStyle(n: PlacedNode, active: boolean, H: number) {
 const BANDS = [
   { kind: 'channel', label: 'channelsLabel' },
   { kind: 'chain', label: 'flowLabel' },
+  // El dato solo existe en el grafo vertical (el tour).
+  { kind: 'data', label: 'dataLabel' },
   { kind: 'out', label: 'outputsLabel' },
   // El bucle de recuperación es opcional: si no hay nodo, la banda no se pinta.
   { kind: 'loop', label: 'loopLabel' },
@@ -69,6 +74,8 @@ export default function FlowGraph({
   highlight,
   onSelect,
   zoomLabel = 'ver en detalle',
+  orientation = 'horizontal',
+  stage,
 }: {
   graph: ProductGraphContent;
   locale: Locale;
@@ -91,50 +98,128 @@ export default function FlowGraph({
   onSelect?: (area: ProductKey, nodeId: string) => void;
   /** Sufijo del `aria-label` de los nodos con zoom («ver en detalle»). */
   zoomLabel?: string;
+  /** El hub lo lee de izquierda a derecha; el tour, de arriba abajo. */
+  orientation?: Orientation;
+  /**
+   * Construcción por partes (el relato del tour): hasta qué etapa se ve.
+   * 0 solo canales, 1 convergen en el sello, 2 cadena, 3 el dato y el bucle.
+   * Ausente: todo a la vista.
+   */
+  stage?: number;
 }) {
   const [hot, setHot] = useState<string | null>(null);
   // Qué manda ahora: el hover, y si no lo hay, la selección externa.
   const sel: string[] | null = hot ? [hot] : highlight && highlight.length ? highlight : null;
-  const { H, nodes } = layout(graph);
-  const edges = buildEdges(nodes);
+  const { W, H, nodes, hub } = layout(graph, orientation);
+  // El vertical (el tour) cuenta cada nodo con un icono en vez de con texto.
+  const icons = orientation === 'vertical';
+  const edges = buildEdges(nodes, orientation, hub);
+  const shown = (s: number | undefined) => stage === undefined || s === undefined || s <= stage;
+  // Lo que aparece en una misma etapa entra en cascada, de arriba abajo.
+  const order = new Map<string, number>();
+  /** Estilo del nodo mientras el grafo se construye: oculto, o entrando en cascada. */
+  const staged = (n: PlacedNode, base: React.CSSProperties): React.CSSProperties => {
+    if (stage === undefined) return base;
+    const visible = shown(NODE_STAGE[n.kind]);
+    const delay = visible && n.kind !== 'channel' ? 0.35 + (order.get(n.id) ?? 0) * 0.14 : 0;
+    return {
+      ...base,
+      ...(!visible && {
+        opacity: 0,
+        transform: 'translateY(-10px) scale(.97)',
+        pointerEvents: 'none' as const,
+      }),
+      transition: `opacity .5s ease ${delay}s, transform .6s cubic-bezier(.2,.7,.2,1) ${delay}s, border-color .2s ease, box-shadow .2s ease`,
+    };
+  };
+  for (const k of ['chain', 'data', 'out', 'loop'] as const) nodes.filter((n) => n.kind === k).forEach((n, i) => order.set(n.id, i));
 
   return (
     <div className="reveal">
       <div className="flow-graph-scroll" style={{ paddingBottom: 4 }}>
-        <div className="flow-graph-stage" style={{ ['--flow-ratio' as string]: `${W} / ${H}` }}>
-          <svg
-            viewBox={`0 0 ${W} ${H}`}
-            width="100%"
-            height="100%"
-            style={{ position: 'absolute', inset: 0, overflow: 'visible' }}
-            aria-hidden
-          >
+        <div className="flow-graph-stage" data-orient={orientation} style={{ ['--flow-ratio' as string]: `${W} / ${H}` }}>
+          <svg viewBox={`0 0 ${W} ${H}`} width="100%" height="100%" style={{ position: 'absolute', inset: 0, overflow: 'visible' }} aria-hidden>
             {edges.map((e, i) => {
               const on = sel ? e.on.some((id) => sel.includes(id)) : false;
               const feedback = e.kind === 'feedback';
+              const staged = stage !== undefined && e.stage !== undefined;
+              const visible = shown(e.stage);
+              // Construyendo: la línea se dibuja de origen a destino (trazo de
+              // longitud 1 que se desplaza) y las hormigas entran cuando acaba.
+              const draw = staged && !feedback;
               return (
                 <g key={i} style={{ transition: 'opacity .22s ease' }} opacity={sel ? (on ? 1 : 0.18) : feedback ? 0.45 : 0.55}>
                   <path
+                    // El bucle es un solo trazo discontinuo que corre en el
+                    // sentido del retorno; encima no van hormigas, que con otro
+                    // ritmo de guiones se verían como dos líneas superpuestas.
+                    className={feedback ? 'flow-loop' : undefined}
                     d={e.d}
                     fill="none"
                     stroke={on ? 'var(--accent)' : feedback ? 'var(--muted-2)' : 'var(--line)'}
                     strokeWidth={on ? 1.8 : 1.2}
-                    strokeDasharray={feedback ? '7 7' : undefined}
+                    strokeDasharray={feedback ? '7 7' : draw ? '1 1' : undefined}
                     strokeLinecap={feedback ? 'round' : undefined}
+                    pathLength={draw ? 1 : undefined}
+                    style={
+                      draw
+                        ? {
+                            strokeDashoffset: visible ? 0 : 1,
+                            transition: 'stroke-dashoffset .9s cubic-bezier(.45,0,.2,1), stroke .2s ease',
+                          }
+                        : staged
+                          ? {
+                              opacity: visible ? 1 : 0,
+                              transition: 'opacity .6s ease .3s',
+                            }
+                          : undefined
+                    }
                   />
-                  <path
-                    className={feedback ? 'flow-dash-rev' : 'flow-dash'}
-                    d={e.d}
-                    fill="none"
-                    stroke="var(--accent)"
-                    strokeWidth="1.8"
-                    strokeDasharray="5 14"
-                    opacity={on ? 0.9 : feedback ? 0.28 : 0.35}
-                  />
+                  {!feedback && (
+                    <path
+                      className="flow-dash"
+                      d={e.d}
+                      fill="none"
+                      stroke="var(--accent)"
+                      strokeWidth="1.8"
+                      strokeDasharray="5 14"
+                      opacity={visible ? (on ? 0.9 : 0.35) : 0}
+                      style={
+                        staged
+                          ? {
+                              transition: `opacity .4s ease ${visible ? '.8s' : '0s'}`,
+                            }
+                          : undefined
+                      }
+                    />
+                  )}
                 </g>
               );
             })}
           </svg>
+
+          {/* El sello donde convergen los canales: decorativo, no es un nodo. */}
+          {hub && (
+            <div
+              className="flow-hub"
+              aria-hidden
+              style={{
+                left: `${(hub.x / W) * 100}%`,
+                top: `${(hub.y / H) * 100}%`,
+                width: `${(hub.size / W) * 100}%`,
+                // Sin selección o con un canal o el cobro encendidos, el sello va
+                // a pleno; si se habla de otra cosa, se apaga con el resto.
+                opacity: !shown(1) ? 0 : !sel || sel.some((id) => graph.channels.some((c) => c.id === id) || id === graph.chain[0]?.id) ? 1 : 0.32,
+                // Construyendo: el sello entra cuando las líneas llegan a él.
+                ...(stage !== undefined && {
+                  transform: shown(1) ? 'scale(1)' : 'scale(.6)',
+                  transition: shown(1) ? 'opacity .5s ease .55s, transform .7s cubic-bezier(.2,1.4,.4,1) .55s' : 'opacity .25s ease, transform .25s ease',
+                }),
+              }}
+            >
+              <Image src="/logo_color.png" alt="" width={120} height={119} />
+            </div>
+          )}
 
           {BANDS.map(({ kind, label }) => {
             const band = nodes.filter((n) => n.kind === kind);
@@ -146,11 +231,7 @@ export default function FlowGraph({
                   const active = sel ? sel.includes(n.id) : false;
                   // Con hover, se ven también los vecinos; con selección externa,
                   // solo lo seleccionado: es lo que el texto de al lado explica.
-                  const linked = hot
-                    ? hot === n.id || edges.some((e) => e.on.includes(hot) && e.on.includes(n.id))
-                    : sel
-                      ? active
-                      : true;
+                  const linked = hot ? hot === n.id || edges.some((e) => e.on.includes(hot) && e.on.includes(n.id)) : sel ? active : true;
                   // Hover solo con ratón: un toque dispara `mouseenter` emulado y
                   // nunca `mouseleave`, y dejaría el resto del grafo apagado. El
                   // foco cuenta solo si viene del teclado.
@@ -165,11 +246,33 @@ export default function FlowGraph({
                     onBlur: () => setHot(null),
                     className: 'flow-node',
                     'data-dim': !linked || undefined,
-                    style: nodeStyle(n, active, H),
+                    style: staged(n, nodeStyle(n, active, W, H, icons)),
+                    'aria-hidden': shown(NODE_STAGE[n.kind]) ? undefined : true,
+                    tabIndex: shown(NODE_STAGE[n.kind]) ? undefined : -1,
+                    // Con iconos la línea secundaria no se pinta: queda de tooltip.
+                    title: icons ? n.sub : undefined,
                   };
-                  const inner = (
+                  const inner = icons ? (
+                    <>
+                      <FlowIcon id={n.id} size={n.kind === 'channel' ? 36 : 30} />
+                      <span
+                        className="flow-node-label"
+                        style={{
+                          fontSize: 16,
+                          fontWeight: 500,
+                          letterSpacing: '-0.014em',
+                          color: 'var(--fg)',
+                          lineHeight: 1.2,
+                          textAlign: n.kind === 'channel' ? 'center' : 'left',
+                        }}
+                      >
+                        {n.label}
+                      </span>
+                    </>
+                  ) : (
                     <>
                       <span
+                        className="flow-node-label"
                         style={{
                           fontSize: 15,
                           fontWeight: 500,
@@ -180,7 +283,14 @@ export default function FlowGraph({
                       >
                         {n.label}
                       </span>
-                      <span className="mono" style={{ fontSize: 10.5, color: 'var(--muted)', letterSpacing: '0.02em' }}>
+                      <span
+                        className="mono"
+                        style={{
+                          fontSize: 10.5,
+                          color: 'var(--muted)',
+                          letterSpacing: '0.02em',
+                        }}
+                      >
                         {n.sub}
                       </span>
                     </>

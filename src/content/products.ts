@@ -233,6 +233,14 @@ export interface ProductGraphContent {
   loop?: ProductGraphNode;
   /** Where the loop sits relative to the chain. Default: below. */
   loopPosition?: 'above' | 'below';
+  /**
+   * Vertical graph only (the tour): the business data the chain leaves
+   * behind. Outputs and the loop then hang from it instead of the chain.
+   */
+  data?: ProductGraphNode;
+  dataLabel?: string;
+  /** Channel ids the loop returns to. Default: the `primary` channel. */
+  loopTo?: string[];
 }
 
 export interface ProductHubContent {
