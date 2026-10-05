@@ -176,6 +176,16 @@ export const AREA_FOR_GUIDE: Record<GuideKey, ProductKey> = {
   canarias: 'tpv',
   argentina: 'tpv',
   mexico: 'tpv',
+  // Categorías por actividad. Kayak e hinchables viven del cliente que llega
+  // a la playa sin reserva, como el parasailing; charter y catamarán venden
+  // por adelantado y con señal, que es el motor.
+  kayak: 'tpv',
+  hinchables: 'tpv',
+  charter: 'motor',
+  catamaran: 'motor',
+  // Las plantillas descargables desembocan en el contrato digital.
+  contratoCharter: 'contratos',
+  exencion: 'contratos',
 };
 
 /* ---- Content shape (mirrors the JSON stored in messages/*.json) ---- */

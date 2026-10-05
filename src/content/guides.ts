@@ -31,6 +31,14 @@ export const GUIDES = [
   { slug: 'software-alquiler-motos-de-agua-mexico', key: 'mexico', group: 'geo', download: false, howTo: false, priority: 0.8 },
   { slug: 'caso-de-exito-marinajets', key: 'marinajets', group: 'caso', download: false, howTo: false, priority: 0.8 },
   { slug: 'caso-de-exito-moraira', key: 'moraira', group: 'caso', download: false, howTo: false, priority: 0.8 },
+  // Categoría por actividad: captan la búsqueda «[actividad] booking software» del operador. Objetivo: demo.
+  { slug: 'software-alquiler-kayak-paddle-surf', key: 'kayak', group: 'actividad', download: false, howTo: true, priority: 0.8 },
+  { slug: 'software-alquiler-barcos-charter', key: 'charter', group: 'actividad', download: false, howTo: true, priority: 0.8 },
+  { slug: 'software-reservas-excursiones-catamaran', key: 'catamaran', group: 'actividad', download: false, howTo: true, priority: 0.8 },
+  { slug: 'software-reservas-parque-acuatico-hinchable', key: 'hinchables', group: 'actividad', download: false, howTo: true, priority: 0.8 },
+  // Recurso de operador: plantillas descargables. Objetivo: público de retargeting, no demo.
+  { slug: 'contrato-alquiler-barco-charter', key: 'contratoCharter', group: 'recurso', download: true, howTo: true, priority: 0.8 },
+  { slug: 'plantilla-exencion-responsabilidad-actividades-acuaticas', key: 'exencion', group: 'recurso', download: true, howTo: true, priority: 0.8 },
 ] as const;
 
 export type GuideGroup = Guide['group'];
@@ -73,16 +81,29 @@ const EN_SLUG: Partial<Record<GuideKey, string>> = {
   parasailing: 'parasailing-booking-software',
   marinajets: 'marinajets-case-study',
   moraira: 'moraira-boats-case-study',
+  libro: 'jet-ski-logbook',
+  kayak: 'kayak-paddle-board-rental-software',
+  charter: 'boat-yacht-charter-software',
+  catamaran: 'catamaran-cruise-booking-software',
+  hinchables: 'inflatable-water-park-booking-software',
+  contratoCharter: 'boat-charter-agreement-template',
+  exencion: 'watersports-liability-waiver-template',
 };
 
 /**
  * EN-only consolidation: these guides keep their own ES page, but under `/en/`
  * they 301 into another guide's English page and get no separate EN
  * page/sitemap entry (the Tenerife + Gran Canaria pages fold into Canarias).
+ *
+ * Argentina y México se dirigen a operadores hispanohablantes: su versión
+ * inglesa vivía en `/en/` con el slug español y competía con la página inglesa
+ * de software para motos de agua, que es la que de verdad responde esa búsqueda.
  */
 const EN_CONSOLIDATE: Partial<Record<GuideKey, GuideKey>> = {
   tenerife: 'canarias',
   granCanaria: 'canarias',
+  argentina: 'software',
+  mexico: 'software',
 };
 
 /** Slug to show in the URL for a guide in a given locale. */
@@ -137,8 +158,22 @@ for (const key of Object.keys(EN_CONSOLIDATE) as GuideKey[]) {
 
 /* ---- Content shape (mirrors the JSON stored in messages/*.json) ---- */
 
-export type GuideBlock =
+/**
+ * `verify` marca un bloque con una afirmación sobre seguros, licencias,
+ * normativa o fiscalidad que tiene que revisar una persona antes de publicar.
+ * `GuidePage` lo pinta a la vista con el motivo; se quita del JSON cuando
+ * alguien lo ha comprobado.
+ */
+export type GuideBlock = GuideBlockBody & { verify?: string };
+
+type GuideBlockBody =
   | { type: 'p'; text: string }
+  /**
+   * Hueco para un dato propio que todavía no tenemos (cifra de cartera,
+   * captura del producto…). Se ve en la página a propósito: un marcador
+   * invisible acaba publicado, una cifra inventada también.
+   */
+  | { type: 'pending'; text: string }
   | { type: 'list'; items: string[] }
   | { type: 'callout'; tone?: 'warn' | 'info' | 'accent'; text: string }
   | { type: 'steps'; items: string[] }
@@ -208,13 +243,17 @@ export interface GuideContent {
   download?: { title: string; desc: string; fileLabel: string; href: string };
   disclaimer?: string;
   sections: GuideSection[];
-  faq: { q: string; a: string }[];
+  /** `verify`: como en los bloques, la respuesta pendiente de revisión humana. */
+  faq: { q: string; a: string; verify?: string }[];
   related: { label: string; slug: string }[];
   /**
    * `href` es opcional y va sin locale (`demo` → `/es/demo`). Sin él, el botón
    * apunta al ancla de la home, que es lo que quieren las guías informativas.
    * Los casos de éxito lo sobrescriben: su CTA promete probar el agente, y
    * mandarlo a la home obligaría a buscarlo.
+   *
+   * Con `download`, la llamada a la acción es la descarga: `href` es la ruta
+   * absoluta del fichero (`/assets/…`) y la página no ofrece la demo.
    */
-  cta: { title: string; desc: string; button: string; href?: string };
+  cta: { title: string; desc: string; button: string; href?: string; download?: boolean };
 }

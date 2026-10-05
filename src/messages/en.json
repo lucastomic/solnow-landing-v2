@@ -1874,7 +1874,8 @@
       "recurso": "Resources",
       "comparativa": "Comparisons",
       "geo": "Regions",
-      "caso": "Case studies"
+      "caso": "Case studies",
+      "actividad": "Activities"
     },
     "tenerife": {
       "meta": {
@@ -2623,15 +2624,15 @@
     },
     "fareharborAlt": {
       "meta": {
-        "title": "FareHarbor Alternative for Jet Ski & Watersports Rentals (2026) | Solnow",
-        "description": "Is FareHarbor built for jet ski rentals? Compare fees, walk-in check-in, digital waivers and fleet management. See why high-volume watersports operators switch to Solnow.",
-        "ogTitle": "FareHarbor Alternative for Jet Ski & Watersports Rentals"
+        "title": "FareHarbor Alternative for Jet Ski & Watersports Rentals (2026)",
+        "description": "FareHarbor sells tours online well. If you rent jet skis or boats with walk-ins, several bases and WhatsApp enquiries, here is what it leaves out and what to use instead.",
+        "ogTitle": "FareHarbor alternative for jet ski & watersports rentals"
       },
       "hero": {
         "eyebrow": "COMPARISON",
         "h1": "FareHarbor: an alternative for jet ski rental",
-        "lede": "FareHarbor is a solid booking engine, but it's built to sell tours online, not to run a jet ski fleet with walk-in, multi-base and sector paperwork. Here's what changes with a vertical alternative.",
-        "updated": "Updated · June 2026",
+        "lede": "If FareHarbor works for selling tours online but your day goes on walk-in customers, paper contracts, several bases and WhatsApp enquiries, the alternative is a rental-specific system like Solnow, which covers the booking and also the front desk, the contract and the fleet on the water. FareHarbor remains the better pick if most of your revenue comes through its affiliate and reseller network.",
+        "updated": "Updated · October 2026",
         "readingTime": "7 min read"
       },
       "disclaimer": "Comparison for guidance only, based on public information as of June 2026. Third-party features and pricing may change; verify the current details on each tool's website.",
@@ -3324,9 +3325,9 @@
     },
     "mejoresSoftware": {
       "meta": {
-        "title": "7 Best Watersports Booking Software (2026): Fees & Pricing Compared",
-        "description": "FareHarbor, Peek Pro, Bokun, TuriTop, Regiondo, Xola and Solnow compared: real booking fees, POS for walk-ins, and channel management for jet ski, parasailing and boat tour operators.",
-        "ogTitle": "7 Best Watersports Booking Software in 2026"
+        "title": "5 Best Watersports Booking Software in 2026 (Compared)",
+        "description": "FareHarbor, TuriTop, Bookeo, Regiondo and Solnow compared for rental operators: walk-in sales, live fleet control, WhatsApp bookings and multi-base. Who each one fits.",
+        "ogTitle": "5 Best Watersports Booking Software in 2026"
       },
       "itemList": [
         {
@@ -3353,8 +3354,8 @@
       "hero": {
         "eyebrow": "COMPARISON",
         "h1": "Best booking software for water activities",
-        "lede": "An honest comparison of the real options on the market for nautical operators, with their strengths and who each one fits. No fluff.",
-        "updated": "Updated · June 2026",
+        "lede": "Short answer: if you sell tours through resellers and affiliates, FareHarbor; if you only need online booking on your website, TuriTop, Bookeo or Regiondo; if you run a rental fleet with walk-in customers, several bases and bookings arriving on WhatsApp, Solnow, because it also runs the front desk and the operation on the water. Below: the criteria, where each tool fits and a side-by-side table.",
+        "updated": "Updated · October 2026",
         "readingTime": "9 min read"
       },
       "disclaimer": "Comparison for guidance only, based on public information as of June 2026. Third-party features and pricing may change; verify the current details on each tool's website.",
@@ -3554,15 +3555,15 @@
     },
     "software": {
       "meta": {
-        "title": "Jet ski rental software: how to choose yours — Solnow",
-        "description": "What a booking software for jet ski rental must have: booking engine, WhatsApp AI, contracts and signature, real-time operation and multi-base. A guide to choose well.",
-        "ogTitle": "Jet ski rental software"
+        "title": "Jet Ski Rental Software: What It Must Do (2026 Checklist)",
+        "description": "Jet ski rental software should sell online and on WhatsApp, get contracts signed on the customer's phone, digitize walk-ins and show every craft and base live. 8-point checklist.",
+        "ogTitle": "Jet ski rental software: the 2026 checklist"
       },
       "hero": {
         "eyebrow": "PRODUCT · SOFTWARE",
         "h1": "Jet ski rental software",
-        "lede": "The booking software that runs your fleet's sales, paperwork, operation and after-sales — without Excel or four disconnected tools. What it must include and how to choose the one that scales with you.",
-        "updated": "Updated · June 2026",
+        "lede": "Jet ski rental software takes the booking, gets the rental contract signed and the payment collected, and then tracks every craft from boarding to return, across all your bases. If yours only does the first part, the walk-in queue, the paperwork and the late returns still run on paper. Below: the 8-point checklist and how to choose.",
+        "updated": "Updated · October 2026",
         "readingTime": "8 min read"
       },
       "sections": [
@@ -4347,6 +4348,14 @@
         {
           "label": "The logbook: what it is and how to keep it",
           "slug": "libro-registro-motos-de-agua"
+        },
+        {
+          "label": "Boat charter agreement template",
+          "slug": "contrato-alquiler-barco-charter"
+        },
+        {
+          "label": "Watersports liability waiver template",
+          "slug": "plantilla-exencion-responsabilidad-actividades-acuaticas"
         }
       ],
       "cta": {
@@ -4698,15 +4707,15 @@
     },
     "parasailing": {
       "meta": {
-        "title": "Parasailing Booking Software: Flights, Waivers & Weather | Solnow",
-        "description": "Schedule flights by boat capacity, collect signed waivers before boarding, rebook weather cancellations in one tap and sell walk-ups at the dock. Built for high-volume parasail operators.",
-        "ogTitle": "Parasailing Booking Software"
+        "title": "Parasailing Booking Software: Sell Seats per Flight, Not Tickets",
+        "description": "Book parasail flights by boat capacity and harness combination, collect waivers before the dock, rebook weather-cancelled flights in one go and sell walk-ups at the dock.",
+        "ogTitle": "Parasailing booking software: seats per flight, not tickets"
       },
       "hero": {
         "eyebrow": "GUIDE · PARASAILING",
         "h1": "Parasailing booking software",
-        "lede": "Parasailing doesn't sell tickets — it sells seats on a rotation. Every flight is a puzzle of boat capacity, single-double-triple harness combinations, weight limits, and a schedule the wind can shred at 2pm without asking.",
-        "updated": "Last updated · August 2026",
+        "lede": "Parasailing booking software sells seats on scheduled flights per boat, not open tickets: it knows each boat's capacity and rotation time, whether the 12:30 still fits a triple, and which flyers have signed the waiver. Solnow does that, and adds the two things a parasail dock lives on: walk-up sales at the dock and rebooking a whole afternoon when the wind picks up.",
+        "updated": "Last updated · October 2026",
         "readingTime": "7 min read"
       },
       "sections": [
@@ -4875,6 +4884,10 @@
         {
           "label": "Digital rental contracts and e-signature",
           "slug": "contrato-alquiler-motos-de-agua"
+        },
+        {
+          "label": "Watersports liability waiver template",
+          "slug": "plantilla-exencion-responsabilidad-actividades-acuaticas"
         }
       ],
       "cta": {
@@ -5205,6 +5218,734 @@
         "desc": "Message the agent as if you were one of your customers and see for yourself in seconds. If you'd rather see it set up with your boats and your prices, book 30 minutes.",
         "button": "Try the agent",
         "href": "demo"
+      }
+    },
+    "kayak": {
+      "meta": {
+        "title": "Kayak & Paddle Board Rental Software: Bookings, Waivers, Walk-ups | Solnow",
+        "description": "What kayak and SUP rental software has to do: hourly stock per board and boat, online payment, waivers signed before the beach, and fast walk-up sales at the stand.",
+        "ogTitle": "Kayak and paddle board rental software"
+      },
+      "hero": {
+        "eyebrow": "ACTIVITIES · KAYAK & SUP",
+        "h1": "Kayak and paddle board rental software",
+        "lede": "Kayak and paddle board rental software rents your units by the hour against real stock (single kayak, double kayak, SUP), takes payment online, gets the waiver signed before the customer reaches the beach and checks in walk-ups in seconds. If today that happens between a notebook, a card reader and a WhatsApp chat, this is the order to digitize it in.",
+        "updated": "Updated · October 2026",
+        "readingTime": "6 min read"
+      },
+      "sections": [
+        {
+          "h": "What it has to handle (checklist)",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Kayak and SUP rental is low ticket and high turnover: the margin is in never losing an hour of board time and in the stand not becoming a bottleneck at 11am."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Stock per unit type and time slot: how many doubles are left at 12:00, not just \"available\".",
+                "Prices by duration and season applied automatically (1 h, 2 h, half day).",
+                "Full payment or deposit online, with the balance taken at the beach.",
+                "Rental agreement and waiver signed on the customer's phone, including minors with their guardian.",
+                "Fast walk-up sales from the stand, or from a QR code the customer fills in themselves.",
+                "WhatsApp answered in the customer's language, with real availability."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "How to set it up, step by step",
+          "blocks": [
+            {
+              "type": "steps",
+              "items": [
+                "Add each product with its stock: single kayak, double kayak, paddle board, guided tour.",
+                "Set durations and seasonal prices; the booking engine applies them on your website, on WhatsApp and at the stand.",
+                "Upload your rental agreement and waiver: customers sign when they book, or through the stand's QR code if they walk up.",
+                "At the beach, staff see on one screen who is out, on which unit and when they are due back.",
+                "At closing, sales by channel and product without reconciling by hand."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "Our data: what the WhatsApp agent does for a kayak operator",
+          "blocks": [
+            {
+              "type": "figure",
+              "src": "/casos/moraira-cueva.webp",
+              "alt": "Two Moraira Boats customers kayaking inside a sea cave on the Moraira coast",
+              "w": 510,
+              "h": 560,
+              "side": "right",
+              "caption": "Moraira Boats Adventures rents boats and sells kayak trips on Spain's Costa Blanca. It uses Solnow's WhatsApp agent and web booking engine."
+            },
+            {
+              "type": "feature",
+              "tone": "ink",
+              "value": "80%",
+              "label": "of WhatsApp turns",
+              "text": "are handled by the AI at Moraira Boats, replying in 14 seconds at any hour. Production data, August 2026."
+            },
+            {
+              "type": "p",
+              "text": "In a low-ticket activity, a late reply is a lost sale: customers message three companies on the same beach and book with whoever answers first. The full numbers are in the Moraira Boats case study."
+            }
+          ]
+        },
+        {
+          "h": "Where it usually breaks",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Double-booked doubles: stock lives in a notebook and the website sells what already went out from the stand.",
+                "Wet paper waivers nobody can find when there is a claim.",
+                "Windy days: cancelling and rebooking everyone one phone call at a time.",
+                "Paddles, life jackets and dry bags rented as extras but never charged because they are not in the system."
+              ]
+            },
+            {
+              "type": "callout",
+              "tone": "warn",
+              "verify": "Kayak/SUP navigation rules (marked zones, distance from shore) and required insurance vary by country and local authority. Confirm with a local advisor before publishing.",
+              "text": "Where your customers may paddle, how far from shore and which insurance you need depend on local rules and on the terms of your beach concession or permit. Put them in writing in the rental agreement and in the pre-launch briefing."
+            }
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Can customers sign the waiver before they reach the beach?",
+          "a": "Yes. When they book on your website or on WhatsApp they get the agreement on their phone and sign it there. Walk-ups scan a QR code at the stand and sign while they wait."
+        },
+        {
+          "q": "Does it work for guided kayak tours as well as rentals?",
+          "a": "Yes. A guided tour is a product with a schedule and seats; free rental is stock per time slot. Both live on the same calendar."
+        },
+        {
+          "q": "What about customers who walk up without a booking?",
+          "a": "You sell from the stand in seconds, or the customer registers with a QR code. The unit leaves stock at that moment, so the website stops selling it."
+        }
+      ],
+      "related": [
+        {
+          "label": "Watersports liability waiver template (jet ski, kayak, parasailing)",
+          "slug": "plantilla-exencion-responsabilidad-actividades-acuaticas"
+        },
+        {
+          "label": "Case study: Moraira Boats",
+          "slug": "caso-de-exito-moraira"
+        },
+        {
+          "label": "Digitize the front desk",
+          "slug": "digitalizar-mostrador-alquiler-motos-de-agua"
+        },
+        {
+          "label": "Best watersports booking software compared",
+          "slug": "mejores-software-reservas-actividades-acuaticas"
+        }
+      ],
+      "cta": {
+        "title": "See it with your real operation",
+        "desc": "We'll set up the demo with your kayaks and boards, your bases and your real volume. 30 minutes, no commitment.",
+        "button": "Book a demo"
+      }
+    },
+    "charter": {
+      "meta": {
+        "title": "Boat & Yacht Charter Software: Bookings, Contracts, Deposits | Solnow",
+        "description": "What boat and yacht charter software needs: availability per boat, seasonal and duration pricing, online deposits, a signed charter agreement with skipper details before departure, and WhatsApp in any language.",
+        "ogTitle": "Boat and yacht charter software"
+      },
+      "hero": {
+        "eyebrow": "ACTIVITIES · CHARTER",
+        "h1": "Boat and yacht charter software",
+        "lede": "Boat charter software sells boats, not seats: it shows each boat's real availability by half day, full day or week, applies the seasonal price, takes the deposit online and gets the charter agreement signed — with the skipper's or the renter's licence details — before anyone steps aboard. If your fleet runs on a shared calendar and quotes over WhatsApp, here is what to ask for and how to set it up.",
+        "updated": "Updated · October 2026",
+        "readingTime": "7 min read"
+      },
+      "sections": [
+        {
+          "h": "What it has to handle (checklist)",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Availability per boat and per duration: half day, full day, multi-day.",
+                "Prices by season, duration and base, applied automatically on your website and in every quote.",
+                "Online deposit and the balance collected before boarding, with the security deposit recorded in the agreement.",
+                "Charter agreement signed on the customer's phone, with the details of whoever is in command.",
+                "Extras that are actually sold and charged: skipper, fuel, paddle boards, catering, berthing.",
+                "Quotes and questions on WhatsApp answered immediately, in the customer's language.",
+                "Hotels, brokers and agencies booking on your availability with their commission calculated."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "Skippered or bareboat: what changes in the system",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "The same boat can go out with your skipper or be chartered to a customer who takes the helm. For the software those are two products on one boat: they share availability but carry different prices, agreements and data."
+            },
+            {
+              "type": "list",
+              "verify": "Licence requirements for bareboat charter and the legal treatment of skippered vs bareboat charter differ by country/flag. Confirm with a maritime advisor.",
+              "items": [
+                "Bareboat: the agreement records the boating licence of whoever is in command and its validity.",
+                "Skippered: the skipper is assigned to the trip, and the agreement states the boat is chartered with crew."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "How to set it up, step by step",
+          "blocks": [
+            {
+              "type": "steps",
+              "items": [
+                "Add each boat with its base, its capacity and how it goes out (skippered, bareboat or both).",
+                "Load the price table by season and duration, plus extras with their prices.",
+                "Connect the booking engine to your website: the customer picks boat and date, pays the deposit and signs.",
+                "The WhatsApp agent answers quotes with the same availability and the same prices.",
+                "On the day, the team sees which boat goes out, with whom, and what is still to be paid."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "Our data: customers who write in another language",
+          "blocks": [
+            {
+              "type": "feature",
+              "value": "43%",
+              "label": "of conversations",
+              "text": "arrive in another language at Moraira Boats Adventures, a boat rental operator on Spain's Costa Blanca. The agent replies in the customer's language without handing the chat to anyone. August 2026 data."
+            },
+            {
+              "type": "p",
+              "text": "Charter customers ask before they book: which boat, how many people, is a licence needed, where do we board. If the answer waits until someone who speaks the language picks up the phone, the booking goes to another company in the marina."
+            },
+            {
+              "type": "pending",
+              "text": "Screenshot of a charter operator's fleet calendar (boats in rows, trips per day). Replace with a real, anonymized product image."
+            }
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Can I take a deposit and collect the rest before departure?",
+          "a": "Yes. The booking engine charges the full amount or a deposit through Stripe, and the balance stays pending to be collected at the base."
+        },
+        {
+          "q": "Does it work across several bases or marinas?",
+          "a": "Yes. Each boat belongs to a base, and availability, prices and sales can be seen together or per base."
+        },
+        {
+          "q": "Can brokers and hotels book?",
+          "a": "Yes, through a partner portal: they see your real availability, book directly and their commission is calculated automatically."
+        }
+      ],
+      "related": [
+        {
+          "label": "Boat charter agreement template",
+          "slug": "contrato-alquiler-barco-charter"
+        },
+        {
+          "label": "Case study: Moraira Boats",
+          "slug": "caso-de-exito-moraira"
+        },
+        {
+          "label": "Eliminate paperwork in boat rental",
+          "slug": "eliminar-papeleo-alquiler-nautico"
+        },
+        {
+          "label": "Catamaran cruise booking software",
+          "slug": "software-reservas-excursiones-catamaran"
+        }
+      ],
+      "cta": {
+        "title": "See it with your real operation",
+        "desc": "We'll set up the demo with your boats, your bases and your real volume. 30 minutes, no commitment.",
+        "button": "Book a demo"
+      }
+    },
+    "catamaran": {
+      "meta": {
+        "title": "Catamaran Cruise Booking Software: Seats, Departures, Agents | Solnow",
+        "description": "Sell catamaran cruises by the seat on each departure, run shared and private charters on the same boat, let hotels and agents book with their commission, and board with QR codes.",
+        "ogTitle": "Catamaran cruise booking software"
+      },
+      "hero": {
+        "eyebrow": "ACTIVITIES · CATAMARAN",
+        "h1": "Catamaran cruise booking software",
+        "lede": "Catamaran cruise booking software sells seats on each departure — not whole boats — and blocks the whole departure when someone books the boat privately. It also lets hotels and agents book on your availability with their commission, and boards passengers with a QR code instead of a paper list. Here are the requirements and how to get it running.",
+        "updated": "Updated · October 2026",
+        "readingTime": "6 min read"
+      },
+      "sections": [
+        {
+          "h": "What it has to handle (checklist)",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Seats per departure, with adult, child and infant prices.",
+                "Shared cruises and private charters on the same boat, without clashing.",
+                "A hotel and agent channel with their commission and balance up to date.",
+                "Sales on OTAs (Viator, GetYourGuide) without selling the same seat twice.",
+                "Boarding list on a phone and QR check-in, even with no signal on the dock.",
+                "Notifying and rebooking every passenger on a departure cancelled for sea or wind."
+              ]
+            },
+            {
+              "type": "callout",
+              "tone": "warn",
+              "verify": "Maximum passenger capacity per the vessel's certificate and passenger-list/clearance obligations vary by flag and port authority. Confirm with a maritime advisor.",
+              "text": "The capacity you configure can never exceed the number of passengers your vessel's certificate allows. Set it as the hard cap on each departure, not as a commercial number."
+            }
+          ]
+        },
+        {
+          "h": "How to set it up, step by step",
+          "blocks": [
+            {
+              "type": "steps",
+              "items": [
+                "Add each catamaran with its capacity and departure times (morning, afternoon, sunset).",
+                "Create the products: shared cruise per seat and private charter per boat, with their prices.",
+                "Give hotels and agents access to the partner portal, each with their commission.",
+                "Connect the booking engine to your website; the WhatsApp agent answers with the seats left.",
+                "On the day, the crew scans each passenger's QR code at boarding."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "Our data",
+          "blocks": [
+            {
+              "type": "pending",
+              "text": "Portfolio figure from a catamaran or boat-trip operator (e.g. % of bookings from partners or OTAs, or boarding time with QR). We have no catamaran client with publishable data: do not reuse figures from other activities."
+            }
+          ]
+        },
+        {
+          "h": "Why a generic tour engine falls short",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "A tour engine sells seats and stops at payment. What happens next — who boarded, which agent owes you how much, who needs a message because the 5pm departure is off — still lives in a spreadsheet. On a catamaran operation, with dozens of passengers per departure and several channels selling at once, that part eats the most hours."
+            }
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Can I sell on my website, through agents and on Viator or GetYourGuide at once?",
+          "a": "Yes. Every channel sells on the same availability, so a seat sold on one channel disappears from the others."
+        },
+        {
+          "q": "Can the catamaran be booked privately?",
+          "a": "Yes. The private charter is another product on the same boat: booking it blocks the shared departure for that slot."
+        },
+        {
+          "q": "How are passengers boarded?",
+          "a": "Every booking carries a QR code. The crew scans it on the dock and the boarding list updates itself."
+        }
+      ],
+      "related": [
+        {
+          "label": "Boat and yacht charter software",
+          "slug": "software-alquiler-barcos-charter"
+        },
+        {
+          "label": "Watersports liability waiver template",
+          "slug": "plantilla-exencion-responsabilidad-actividades-acuaticas"
+        },
+        {
+          "label": "Best watersports booking software compared",
+          "slug": "mejores-software-reservas-actividades-acuaticas"
+        }
+      ],
+      "cta": {
+        "title": "See it with your real operation",
+        "desc": "We'll set up the demo with your catamarans, your bases and your real volume. 30 minutes, no commitment.",
+        "button": "Book a demo"
+      }
+    },
+    "hinchables": {
+      "meta": {
+        "title": "Inflatable Water Park Booking Software: Sessions, Capacity, Waivers | Solnow",
+        "description": "Sell timed sessions with capacity at an inflatable water park, get every participant's waiver (and the guardian's for minors) signed before they enter, and clear the beach queue without paper.",
+        "ogTitle": "Inflatable water park booking software"
+      },
+      "hero": {
+        "eyebrow": "ACTIVITIES · INFLATABLE PARK",
+        "h1": "Inflatable water park booking software",
+        "lede": "An inflatable water park sells timed sessions with a capacity cap — 45 or 60 minutes for a maximum number of people — and needs a signed waiver from every participant, and from the guardian for minors, before anyone gets in the water. The software has to do both while clearing a queue of families on the beach. Here is what it must do and how to set it up.",
+        "updated": "Updated · October 2026",
+        "readingTime": "5 min read"
+      },
+      "sections": [
+        {
+          "h": "What it has to handle (checklist)",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Sessions with a capacity cap, sold per person rather than per group.",
+                "A signature from every participant; for minors, the legal guardian's, linked to the same booking.",
+                "Beach sales without a queue: the customer scans a QR code, fills in their details and signs while they wait.",
+                "Group and birthday packages at a fixed price.",
+                "Who is inside in each session and when their time is up."
+              ]
+            },
+            {
+              "type": "callout",
+              "tone": "warn",
+              "verify": "Safety standards for inflatable water parks, minimum age/height, mandatory lifeguards and beach/water-space permits vary by country and local authority. Confirm with an advisor and the park's permit.",
+              "text": "Minimum age, height, life-jacket use and lifeguards per session come from the safety rules that apply to your installation and from your permit. The session capacity should be the one your permit sets, not what fits commercially."
+            }
+          ]
+        },
+        {
+          "h": "How to set it up, step by step",
+          "blocks": [
+            {
+              "type": "steps",
+              "items": [
+                "Define the day's sessions (duration and capacity) and prices per person and per package.",
+                "Upload the waiver and the guardian consent for minors.",
+                "Put the QR code on the booth: customers buy, sign and enter without going through the till.",
+                "The lifeguard sees on a phone who is in the session and who still has to sign."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "Our data",
+          "blocks": [
+            {
+              "type": "pending",
+              "text": "Figure or screenshot from an inflatable park in production (e.g. % of participants arriving with the waiver already signed, or average QR sale time). We have no inflatable park client with publishable data."
+            }
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Does every child need their own waiver?",
+          "a": "Every participant has their own record. For minors the legal guardian signs, and the signature is linked to the group's booking."
+        },
+        {
+          "q": "Can we sell on the beach without staff at the till?",
+          "a": "Yes. With kiosk mode or the QR code, customers buy the session, fill in their details and sign on their phone."
+        },
+        {
+          "q": "What if the wind picks up and we have to close?",
+          "a": "You see everyone in the affected sessions in one list, so you can message them and move their session."
+        }
+      ],
+      "related": [
+        {
+          "label": "Watersports liability waiver template",
+          "slug": "plantilla-exencion-responsabilidad-actividades-acuaticas"
+        },
+        {
+          "label": "Digitize the front desk",
+          "slug": "digitalizar-mostrador-alquiler-motos-de-agua"
+        },
+        {
+          "label": "Kayak and paddle board rental software",
+          "slug": "software-alquiler-kayak-paddle-surf"
+        }
+      ],
+      "cta": {
+        "title": "See it with your real operation",
+        "desc": "We'll set up the demo with your sessions, your bases and your real volume. 30 minutes, no commitment.",
+        "button": "Book a demo"
+      }
+    },
+    "contratoCharter": {
+      "meta": {
+        "title": "Boat Charter Agreement Template (Free PDF): Skippered & Bareboat | Solnow",
+        "description": "Download a free boat charter agreement template for skippered and bareboat charters: parties, vessel, deposit, insurance, licence, cruising area and return. Plus how to fill it in.",
+        "ogTitle": "Boat charter agreement template (free PDF)"
+      },
+      "hero": {
+        "eyebrow": "RESOURCES · CONTRACTS",
+        "h1": "Boat charter agreement template (free PDF)",
+        "lede": "A boat charter agreement has to identify the parties and the vessel, set the period, price and security deposit, state whether the boat goes out skippered or bareboat (and under whose licence), limit the cruising area and allocate liability for damage. Here is a PDF template with all of those blocks, ready to download and adapt to your company.",
+        "updated": "Updated · October 2026",
+        "readingTime": "6 min read"
+      },
+      "download": {
+        "title": "Boat charter agreement template (free PDF)",
+        "desc": "Skippered and bareboat: parties, vessel, period, price and deposit, insurance, licence, cruising area, return, data protection and a crew and passenger annex.",
+        "fileLabel": "Download PDF template",
+        "href": "/assets/modelo-contrato-alquiler-barco-charter-en.pdf"
+      },
+      "disclaimer": "This template and guide are for guidance only and do not constitute legal advice. Before using the agreement with customers, review it with a legal advisor and check the requirements of your maritime authority and jurisdiction.",
+      "sections": [
+        {
+          "h": "What the agreement contains",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Parties: the charter company (legal name, tax ID, address) and the charterer (name, ID, phone).",
+                "Vessel: name, registration, length, departure base and maximum number of people.",
+                "Type: skippered (skipper's name) or bareboat (licence of whoever is in command).",
+                "Period: boarding and return date and time, and the return port if different.",
+                "Price, deposit and security deposit: amounts, payment method, and when and how the security deposit is returned.",
+                "Condition at handover: inventory, prior damage, fuel and engine hours.",
+                "Cruising area and conditions of use.",
+                "Liability for damage, fines and late return, and data protection."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "The clauses most often forgotten",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Fuel: full-to-full, or charged by consumption or engine hours.",
+                "Weather: who decides to cancel, and whether the charterer gets a refund or a new date.",
+                "Late return: what each hour costs and what happens to the next customer.",
+                "People on board: the cap on the vessel's certificate, not the number the customer asks for."
+              ]
+            },
+            {
+              "type": "p",
+              "verify": "Mandatory third-party liability insurance for chartered vessels and the licence required for bareboat charter vary by country/flag. Confirm with a maritime advisor.",
+              "text": "The template assumes the vessel carries the third-party liability insurance your jurisdiction requires and leaves a field for the excess the charterer bears. For bareboat charters, record the licence of whoever is in command and check that it covers the vessel's length and the cruising area in the agreement."
+            }
+          ]
+        },
+        {
+          "h": "How to fill it in, step by step",
+          "blocks": [
+            {
+              "type": "steps",
+              "items": [
+                "Enter your company and vessel details once; they stay the same for each boat.",
+                "Tick the charter type (skippered or bareboat) and fill in the matching block.",
+                "Record the handover condition with the customer present: inventory, damage, fuel and engine hours.",
+                "Complete the passenger annex with everyone boarding.",
+                "Both parties sign, and you keep a copy with the booking."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "From PDF to signature on the customer's phone",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "The PDF gets you started. In peak season, filling in every agreement by hand is exactly what delays departures: with Solnow the agreement is generated from the booking, the customer signs it on their phone before reaching the marina and it is filed with the booking."
+            }
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Does it cover skippered and bareboat charters?",
+          "a": "Yes. The template has a block for each; fill in the one that applies and strike out the other."
+        },
+        {
+          "q": "Can I use it as is?",
+          "a": "It is a starting point. Adapt it to your company and review it with a legal advisor before using it with customers."
+        },
+        {
+          "q": "Can it be signed digitally?",
+          "a": "Yes. Sign it on paper, or generate the agreement from Solnow so the customer signs it on their phone when they book."
+        }
+      ],
+      "related": [
+        {
+          "label": "Boat and yacht charter software",
+          "slug": "software-alquiler-barcos-charter"
+        },
+        {
+          "label": "Watersports liability waiver template",
+          "slug": "plantilla-exencion-responsabilidad-actividades-acuaticas"
+        },
+        {
+          "label": "Jet ski rental contract template",
+          "slug": "contrato-alquiler-motos-de-agua"
+        }
+      ],
+      "cta": {
+        "title": "Download the boat charter agreement template",
+        "desc": "Free PDF for skippered and bareboat charters, ready to adapt to your company.",
+        "button": "Download PDF template",
+        "href": "/assets/modelo-contrato-alquiler-barco-charter-en.pdf",
+        "download": true
+      }
+    },
+    "exencion": {
+      "meta": {
+        "title": "Watersports Liability Waiver Template: Jet Ski, Kayak, Parasailing (PDF) | Solnow",
+        "description": "Download a free liability waiver and release template for watersports, with annexes for jet ski, kayak/SUP and parasailing and guardian consent for minors. What it covers and what it does not.",
+        "ogTitle": "Watersports liability waiver template: jet ski, kayak, parasailing"
+      },
+      "hero": {
+        "eyebrow": "RESOURCES · WAIVERS",
+        "h1": "Watersports liability waiver template",
+        "lede": "A watersports liability waiver is a signed statement in which the participant acknowledges the risks of the activity, confirms they are fit to take part and agrees to follow the instructions. It is your evidence that you warned them; whether it also releases you from claims depends on where you operate, and in most places it will not cover your own negligence. Download the template with annexes for jet ski, kayak and parasailing.",
+        "updated": "Updated · October 2026",
+        "readingTime": "6 min read"
+      },
+      "download": {
+        "title": "Watersports liability waiver template (free PDF)",
+        "desc": "Risk acknowledgement, fitness declaration, safety rules, annexes per activity (jet ski, kayak/SUP, parasailing), guardian consent and data protection.",
+        "fileLabel": "Download PDF template",
+        "href": "/assets/plantilla-exencion-responsabilidad-actividades-acuaticas-en.pdf"
+      },
+      "disclaimer": "This template and guide are for guidance only and do not constitute legal advice. Whether a waiver is enforceable depends on the law that applies to your activity and your customers; review it with a legal advisor before using it.",
+      "sections": [
+        {
+          "h": "What a waiver does and does not do",
+          "blocks": [
+            {
+              "type": "p",
+              "verify": "Enforceability of liability waivers varies by US state, and EU/UK consumer law generally prevents excluding liability for personal injury caused by negligence. Confirm with a legal advisor for each target market.",
+              "text": "Enforceability varies a lot. Some US states uphold recreational waivers that are clearly written, others read them narrowly, and in the EU and the UK consumer law generally does not let a business exclude liability for personal injury caused by its own negligence. What works everywhere is a clear risk acknowledgement: it shows the customer was informed, declared they were fit and accepted specific rules."
+            },
+            {
+              "type": "list",
+              "items": [
+                "It helps you prove that you explained the risks and the rules, and that the customer declared their health and ability.",
+                "It records the guardian's consent when a minor takes part.",
+                "It does not cover a failure in your own maintenance, equipment or supervision."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "What the template includes",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Participant and activity details (date, time, base).",
+                "Acknowledgement of the general risks of activities at sea.",
+                "Health declaration: can swim, no alcohol or drugs, heart, back or neck conditions, pregnancy where the activity advises against it.",
+                "Commitment to follow the instructor's instructions and wear a life jacket.",
+                "Annex per activity: jet ski, kayak or paddle board, parasailing.",
+                "Legal guardian consent for minors.",
+                "Photo and video consent (optional, separate).",
+                "Data protection."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "What changes by activity",
+          "blocks": [
+            {
+              "type": "table",
+              "columns": [
+                "Jet ski",
+                "Kayak / SUP",
+                "Parasailing"
+              ],
+              "rows": [
+                {
+                  "label": "Main risk",
+                  "cells": [
+                    "Collisions and falls at speed",
+                    "Currents and drifting from shore",
+                    "Take-off, landing and wind shifts"
+                  ]
+                },
+                {
+                  "label": "What the customer declares",
+                  "cells": [
+                    "They received the handling briefing and the permitted area",
+                    "They can swim and will stay in the indicated area",
+                    "Their weight, and no back or neck injuries"
+                  ]
+                },
+                {
+                  "label": "Worth recording",
+                  "cells": [
+                    "Driver and passenger separately",
+                    "Unit and departure time",
+                    "Flight combination (single, tandem, triple)"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "callout",
+              "tone": "warn",
+              "verify": "Minimum age and licence/boater-education requirements to operate a personal watercraft vary by jurisdiction. Confirm for each target market.",
+              "text": "For jet skis, the minimum age to drive and any licence or boater-education card depend on where you operate and on whether the ride is guided or a free rental. Adjust the annex to what you offer."
+            }
+          ]
+        },
+        {
+          "h": "How to use it, step by step",
+          "blocks": [
+            {
+              "type": "steps",
+              "items": [
+                "Adapt the template with your details and your base's specific rules.",
+                "Keep only the annexes for the activities you sell.",
+                "Every participant signs their own; the guardian signs for each minor.",
+                "File the waiver with the booking so you can find it if there is a claim."
+              ]
+            },
+            {
+              "type": "p",
+              "text": "With Solnow the waiver is signed on the customer's phone when they book or through the stand's QR code, and it is filed with the booking: no more folders of wet paper."
+            }
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Does a waiver protect me from any accident?",
+          "a": "No. It helps prove you explained the risks and the customer accepted the rules, but in most places it does not cover damage caused by your own negligence. Insurance is what protects you there.",
+          "verify": "Scope of waivers vs negligence and role of liability insurance by jurisdiction. Confirm with a legal advisor."
+        },
+        {
+          "q": "Does every participant have to sign?",
+          "a": "Yes, each person signs their own. For minors, the legal guardian signs."
+        },
+        {
+          "q": "Is a signature on a phone valid?",
+          "a": "The template can be signed on paper or digitally. With Solnow, the customer signs on their phone and the waiver is stored with the booking."
+        }
+      ],
+      "related": [
+        {
+          "label": "Parasailing booking software",
+          "slug": "software-reservas-parasailing"
+        },
+        {
+          "label": "Kayak and paddle board rental software",
+          "slug": "software-alquiler-kayak-paddle-surf"
+        },
+        {
+          "label": "Jet ski rental contract template",
+          "slug": "contrato-alquiler-motos-de-agua"
+        }
+      ],
+      "cta": {
+        "title": "Download the waiver template",
+        "desc": "Free PDF with annexes for jet ski, kayak and parasailing.",
+        "button": "Download PDF template",
+        "href": "/assets/plantilla-exencion-responsabilidad-actividades-acuaticas-en.pdf",
+        "download": true
       }
     }
   }
