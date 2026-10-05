@@ -2623,15 +2623,15 @@
     },
     "fareharborAlt": {
       "meta": {
-        "title": "FareHarbor Alternative for Jet Ski & Watersports Rentals (2026) | Solnow",
-        "description": "Is FareHarbor built for jet ski rentals? Compare fees, walk-in check-in, digital waivers and fleet management. See why high-volume watersports operators switch to Solnow.",
-        "ogTitle": "FareHarbor Alternative for Jet Ski & Watersports Rentals"
+        "title": "FareHarbor Alternative for Jet Ski & Watersports Rentals (2026)",
+        "description": "FareHarbor sells tours online well. If you rent jet skis or boats with walk-ins, several bases and WhatsApp enquiries, here is what it leaves out and what to use instead.",
+        "ogTitle": "FareHarbor alternative for jet ski & watersports rentals"
       },
       "hero": {
         "eyebrow": "COMPARISON",
         "h1": "FareHarbor: an alternative for jet ski rental",
-        "lede": "FareHarbor is a solid booking engine, but it's built to sell tours online, not to run a jet ski fleet with walk-in, multi-base and sector paperwork. Here's what changes with a vertical alternative.",
-        "updated": "Updated · June 2026",
+        "lede": "If FareHarbor works for selling tours online but your day goes on walk-in customers, paper contracts, several bases and WhatsApp enquiries, the alternative is a rental-specific system like Solnow, which covers the booking and also the front desk, the contract and the fleet on the water. FareHarbor remains the better pick if most of your revenue comes through its affiliate and reseller network.",
+        "updated": "Updated · October 2026",
         "readingTime": "7 min read"
       },
       "disclaimer": "Comparison for guidance only, based on public information as of June 2026. Third-party features and pricing may change; verify the current details on each tool's website.",
@@ -3324,9 +3324,9 @@
     },
     "mejoresSoftware": {
       "meta": {
-        "title": "7 Best Watersports Booking Software (2026): Fees & Pricing Compared",
-        "description": "FareHarbor, Peek Pro, Bokun, TuriTop, Regiondo, Xola and Solnow compared: real booking fees, POS for walk-ins, and channel management for jet ski, parasailing and boat tour operators.",
-        "ogTitle": "7 Best Watersports Booking Software in 2026"
+        "title": "5 Best Watersports Booking Software in 2026 (Compared)",
+        "description": "FareHarbor, TuriTop, Bookeo, Regiondo and Solnow compared for rental operators: walk-in sales, live fleet control, WhatsApp bookings and multi-base. Who each one fits.",
+        "ogTitle": "5 Best Watersports Booking Software in 2026"
       },
       "itemList": [
         {
@@ -3353,8 +3353,8 @@
       "hero": {
         "eyebrow": "COMPARISON",
         "h1": "Best booking software for water activities",
-        "lede": "An honest comparison of the real options on the market for nautical operators, with their strengths and who each one fits. No fluff.",
-        "updated": "Updated · June 2026",
+        "lede": "Short answer: if you sell tours through resellers and affiliates, FareHarbor; if you only need online booking on your website, TuriTop, Bookeo or Regiondo; if you run a rental fleet with walk-in customers, several bases and bookings arriving on WhatsApp, Solnow, because it also runs the front desk and the operation on the water. Below: the criteria, where each tool fits and a side-by-side table.",
+        "updated": "Updated · October 2026",
         "readingTime": "9 min read"
       },
       "disclaimer": "Comparison for guidance only, based on public information as of June 2026. Third-party features and pricing may change; verify the current details on each tool's website.",
@@ -3554,15 +3554,15 @@
     },
     "software": {
       "meta": {
-        "title": "Jet ski rental software: how to choose yours — Solnow",
-        "description": "What a booking software for jet ski rental must have: booking engine, WhatsApp AI, contracts and signature, real-time operation and multi-base. A guide to choose well.",
-        "ogTitle": "Jet ski rental software"
+        "title": "Jet Ski Rental Software: What It Must Do (2026 Checklist)",
+        "description": "Jet ski rental software should sell online and on WhatsApp, get contracts signed on the customer's phone, digitize walk-ins and show every craft and base live. 8-point checklist.",
+        "ogTitle": "Jet ski rental software: the 2026 checklist"
       },
       "hero": {
         "eyebrow": "PRODUCT · SOFTWARE",
         "h1": "Jet ski rental software",
-        "lede": "The booking software that runs your fleet's sales, paperwork, operation and after-sales — without Excel or four disconnected tools. What it must include and how to choose the one that scales with you.",
-        "updated": "Updated · June 2026",
+        "lede": "Jet ski rental software takes the booking, gets the rental contract signed and the payment collected, and then tracks every craft from boarding to return, across all your bases. If yours only does the first part, the walk-in queue, the paperwork and the late returns still run on paper. Below: the 8-point checklist and how to choose.",
+        "updated": "Updated · October 2026",
         "readingTime": "8 min read"
       },
       "sections": [
@@ -4698,15 +4698,15 @@
     },
     "parasailing": {
       "meta": {
-        "title": "Parasailing Booking Software: Flights, Waivers & Weather | Solnow",
-        "description": "Schedule flights by boat capacity, collect signed waivers before boarding, rebook weather cancellations in one tap and sell walk-ups at the dock. Built for high-volume parasail operators.",
-        "ogTitle": "Parasailing Booking Software"
+        "title": "Parasailing Booking Software: Sell Seats per Flight, Not Tickets",
+        "description": "Book parasail flights by boat capacity and harness combination, collect waivers before the dock, rebook weather-cancelled flights in one go and sell walk-ups at the dock.",
+        "ogTitle": "Parasailing booking software: seats per flight, not tickets"
       },
       "hero": {
         "eyebrow": "GUIDE · PARASAILING",
         "h1": "Parasailing booking software",
-        "lede": "Parasailing doesn't sell tickets — it sells seats on a rotation. Every flight is a puzzle of boat capacity, single-double-triple harness combinations, weight limits, and a schedule the wind can shred at 2pm without asking.",
-        "updated": "Last updated · August 2026",
+        "lede": "Parasailing booking software sells seats on scheduled flights per boat, not open tickets: it knows each boat's capacity and rotation time, whether the 12:30 still fits a triple, and which flyers have signed the waiver. Solnow does that, and adds the two things a parasail dock lives on: walk-up sales at the dock and rebooking a whole afternoon when the wind picks up.",
+        "updated": "Last updated · October 2026",
         "readingTime": "7 min read"
       },
       "sections": [

@@ -73,16 +73,23 @@ const EN_SLUG: Partial<Record<GuideKey, string>> = {
   parasailing: 'parasailing-booking-software',
   marinajets: 'marinajets-case-study',
   moraira: 'moraira-boats-case-study',
+  libro: 'jet-ski-logbook',
 };
 
 /**
  * EN-only consolidation: these guides keep their own ES page, but under `/en/`
  * they 301 into another guide's English page and get no separate EN
  * page/sitemap entry (the Tenerife + Gran Canaria pages fold into Canarias).
+ *
+ * Argentina y México se dirigen a operadores hispanohablantes: su versión
+ * inglesa vivía en `/en/` con el slug español y competía con la página inglesa
+ * de software para motos de agua, que es la que de verdad responde esa búsqueda.
  */
 const EN_CONSOLIDATE: Partial<Record<GuideKey, GuideKey>> = {
   tenerife: 'canarias',
   granCanaria: 'canarias',
+  argentina: 'software',
+  mexico: 'software',
 };
 
 /** Slug to show in the URL for a guide in a given locale. */
