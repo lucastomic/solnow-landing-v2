@@ -45,7 +45,66 @@ const ARROW = (
   </svg>
 );
 
+/**
+ * Marcadores editoriales: lo que falta (dato propio) y lo que tiene que revisar
+ * una persona (seguros, licencias, normativa, fiscalidad). Van a la vista y en
+ * castellano en las dos versiones, porque los lee el equipo, no el visitante:
+ * la página no está lista para publicarse mientras quede uno.
+ */
+const MARKER = {
+  pending: 'PENDIENTE · DATO PROPIO',
+  verify: 'VERIFICAR',
+};
+
+function Marker({ label, text }: { label: string; text: string }) {
+  return (
+    <span
+      className="mono"
+      style={{
+        display: 'block',
+        fontSize: 11,
+        letterSpacing: '0.06em',
+        lineHeight: 1.5,
+        color: '#8a4b00',
+        background: 'rgba(217,138,26,0.14)',
+        border: '1px dashed var(--warn)',
+        borderRadius: 6,
+        padding: '6px 10px',
+        marginBottom: 8,
+      }}
+    >
+      {label} — {text}
+    </span>
+  );
+}
+
 function Block({ block }: { block: GuideBlock }) {
+  if (!block.verify) return <BlockBody block={block} />;
+  return (
+    <div style={{ outline: '1px dashed var(--warn)', outlineOffset: 6, borderRadius: 4, margin: '0 0 22px' }}>
+      <Marker label={MARKER.verify} text={block.verify} />
+      <BlockBody block={block} />
+    </div>
+  );
+}
+
+function BlockBody({ block }: { block: GuideBlock }) {
+  if (block.type === 'pending') {
+    return (
+      <div
+        style={{
+          margin: '8px 0 26px',
+          padding: '28px 22px',
+          border: '2px dashed var(--warn)',
+          borderRadius: 12,
+          background: 'rgba(217,138,26,0.07)',
+        }}
+      >
+        <Marker label={MARKER.pending} text={block.text} />
+      </div>
+    );
+  }
+
   if (block.type === 'p') {
     return <p style={{ fontSize: 16, lineHeight: 1.7, color: 'var(--fg-2)', margin: '0 0 16px' }}>{block.text}</p>;
   }
@@ -430,7 +489,9 @@ export function GuidePage({
   labels: GuideLabels;
 }) {
   const { hero, download, sections, faq, related, cta, disclaimer } = content;
-  const ctaHref = cta.href ? `/${locale}/${cta.href}` : `/${locale}#cta`;
+  // Una descarga apunta al fichero tal cual; el resto va a una página del locale.
+  const ctaHref = cta.download && cta.href ? cta.href : cta.href ? `/${locale}/${cta.href}` : `/${locale}#cta`;
+  const ctaDownload = cta.download ? true : undefined;
   const productHref = labels.productHref;
   const sectionId = (i: number) => `sec-${i + 1}`;
   const tocItems = sections.map((s, i) => ({ id: sectionId(i), label: s.h }));
@@ -463,7 +524,7 @@ export function GuidePage({
               </svg>
               {labels.backHome}
             </Link>
-            <a className="btn btn-primary" href={ctaHref} style={{ fontSize: 13 }}>
+            <a className="btn btn-primary" href={ctaHref} download={ctaDownload} style={{ fontSize: 13 }}>
               {cta.button}
               {ARROW}
             </a>
@@ -532,6 +593,11 @@ export function GuidePage({
               <h1 className="h-display" style={{ fontSize: 'clamp(32px, 4.6vw, 54px)', margin: '20px 0 20px' }}>
                 {hero.h1}
               </h1>
+              {hero.verify && (
+                <div style={{ maxWidth: '60ch' }}>
+                  <Marker label={MARKER.verify} text={hero.verify} />
+                </div>
+              )}
               <p className="lede" style={{ maxWidth: '60ch' }}>{hero.lede}</p>
               <p className="mono" style={{ fontSize: 12.5, color: 'var(--muted-2)', letterSpacing: '0.04em', marginTop: 18 }}>
                 {hero.updated} · {hero.readingTime}
@@ -552,13 +618,16 @@ export function GuidePage({
                 )}
               </p>
               <div style={{ display: 'flex', gap: 12, marginTop: 26, flexWrap: 'wrap' }}>
-                <a className="btn btn-primary" href={ctaHref}>
+                <a className="btn btn-primary" href={ctaHref} download={ctaDownload}>
                   {cta.button}
                   {ARROW}
                 </a>
-                <a className="btn btn-secondary" href={productHref}>
-                  {labels.viewProduct}
-                </a>
+                {/* Una sola llamada a la acción: en una plantilla es la descarga. */}
+                {!cta.download && (
+                  <a className="btn btn-secondary" href={productHref}>
+                    {labels.viewProduct}
+                  </a>
+                )}
               </div>
             </div>
           </div>
@@ -655,6 +724,7 @@ export function GuidePage({
                       {item.q}
                       <span className="mono" style={{ color: 'var(--accent)', fontSize: 18, flexShrink: 0 }}>+</span>
                     </summary>
+                    {item.verify && <Marker label={MARKER.verify} text={item.verify} />}
                     <p style={{ margin: '0 0 18px', fontSize: 15.5, lineHeight: 1.7, color: 'var(--fg-2)', maxWidth: '64ch' }}>{item.a}</p>
                   </details>
                 ))}
@@ -712,7 +782,7 @@ export function GuidePage({
             <h2 className="h-2" style={{ color: 'var(--ink-fg)', fontSize: 'clamp(24px, 3vw, 34px)', marginBottom: 12 }}>{cta.title}</h2>
             <p style={{ margin: 0, fontSize: 16, lineHeight: 1.6, color: 'var(--ink-muted)' }}>{cta.desc}</p>
           </div>
-          <a className="btn btn-primary" href={ctaHref} style={{ whiteSpace: 'nowrap', position: 'relative' }}>
+          <a className="btn btn-primary" href={ctaHref} download={ctaDownload} style={{ whiteSpace: 'nowrap', position: 'relative' }}>
             {cta.button}
             {ARROW}
           </a>

@@ -1,0 +1,307 @@
+consulta,idioma,matriz,actividad,modificador,volumen,top10_sector,pagina_existente,puntuacion,estado
+jet ski rental software,en,A,jet-ski,software,10,8 (rentmy.co; recsystems.com; indexic.net; roverd.com; reservety.com; ridesrentalsoftware.com; guideflow.com; rentaltide.com),/en/jet-ski-rental-software,2,candidata
+jet ski booking software,en,A,jet-ski,booking/reservation,0,,/en/jet-ski-rental-software,0,descartada:sin-volumen
+software alquiler motos de agua,es,A,jet-ski,software,0,,/es/software-alquiler-motos-de-agua,0,descartada:sin-volumen
+software reservas motos de agua,es,A,jet-ski,reservas/sistema,0,,/es/software-alquiler-motos-de-agua,0,descartada:sin-volumen
+boat charter rental software,en,A,charter,software,0,,borrador:/en/boat-yacht-charter-software,0,descartada:sin-volumen
+boat charter booking software,en,A,charter,booking/reservation,0,,borrador:/en/boat-yacht-charter-software,0,descartada:sin-volumen
+software alquiler chárter náutico,es,A,charter,software,0,,borrador:/es/software-alquiler-barcos-charter,0,descartada:sin-volumen
+software reservas chárter náutico,es,A,charter,reservas/sistema,0,,borrador:/es/software-alquiler-barcos-charter,0,descartada:sin-volumen
+kayak rental software,en,A,kayak,software,50,8 (checkfront.com; booqable.com; yo-rent.com; bloowatch.com; bokun.io; info.theflybook.com; rentmy.co; reservety.com),borrador:/en/kayak-paddle-board-rental-software,7,candidata
+kayak booking software,en,A,kayak,booking/reservation,10,5 (checkfront.com; booqable.com; bokun.io; anolla.com; peekpro.com),borrador:/en/kayak-paddle-board-rental-software,4,candidata
+software alquiler kayak,es,A,kayak,software,0,,borrador:/es/software-alquiler-kayak-paddle-surf,0,descartada:sin-volumen
+software reservas kayak,es,A,kayak,reservas/sistema,0,,borrador:/es/software-alquiler-kayak-paddle-surf,0,descartada:sin-volumen
+paddle board rental software,en,A,paddle-surf,software,0,,borrador:/en/kayak-paddle-board-rental-software,0,descartada:sin-volumen
+paddle board booking software,en,A,paddle-surf,booking/reservation,0,,borrador:/en/kayak-paddle-board-rental-software,0,descartada:sin-volumen
+software alquiler paddle surf,es,A,paddle-surf,software,0,,borrador:/es/software-alquiler-kayak-paddle-surf,0,descartada:sin-volumen
+software reservas paddle surf,es,A,paddle-surf,reservas/sistema,0,,borrador:/es/software-alquiler-kayak-paddle-surf,0,descartada:sin-volumen
+parasailing booking software,en,A,parasailing,software,10,6 (waverez.com; reservatoo.com; roverd.com; blog.indexic.net; smartrezbooking.com; starboardsuite.com),/en/parasailing-booking-software,4,candidata
+parasailing reservation system,en,A,parasailing,booking/reservation,0,,/en/parasailing-booking-software,0,descartada:sin-volumen
+software reservas parasailing,es,A,parasailing,software,0,,/es/software-reservas-parasailing,0,descartada:sin-volumen
+sistema de reservas parasailing,es,A,parasailing,reservas/sistema,0,,/es/software-reservas-parasailing,0,descartada:sin-volumen
+catamaran cruise booking software,en,A,catamaran,software,0,,borrador:/en/catamaran-cruise-booking-software,0,descartada:sin-volumen
+catamaran cruise reservation system,en,A,catamaran,booking/reservation,0,,borrador:/en/catamaran-cruise-booking-software,0,descartada:sin-volumen
+software reservas excursiones en catamarán,es,A,catamaran,software,0,,borrador:/es/software-reservas-excursiones-catamaran,0,descartada:sin-volumen
+sistema de reservas excursiones en catamarán,es,A,catamaran,reservas/sistema,0,,borrador:/es/software-reservas-excursiones-catamaran,0,descartada:sin-volumen
+inflatable water park booking software,en,A,hinchables,software,0,,borrador:/en/inflatable-water-park-booking-software,0,descartada:sin-volumen
+inflatable water park reservation system,en,A,hinchables,booking/reservation,0,,borrador:/en/inflatable-water-park-booking-software,0,descartada:sin-volumen
+software reservas parque acuático hinchable,es,A,hinchables,software,0,,borrador:/es/software-reservas-parque-acuatico-hinchable,0,descartada:sin-volumen
+sistema de reservas parque acuático hinchable,es,A,hinchables,reservas/sistema,0,,borrador:/es/software-reservas-parque-acuatico-hinchable,0,descartada:sin-volumen
+watersports booking software,en,A,generico,software,10,4 (anolla.com; rentmy.co; go.theflybook.com; captainbook.io),/en/best-watersports-booking-software,5,candidata
+watersports reservation system,en,A,generico,booking/reservation,0,,/en/best-watersports-booking-software,0,descartada:sin-volumen
+software reservas actividades acuáticas,es,A,generico,software,0,,/es/mejores-software-reservas-actividades-acuaticas,0,descartada:sin-volumen
+sistema de reservas actividades acuáticas,es,A,generico,reservas/sistema,0,,/es/mejores-software-reservas-actividades-acuaticas,0,descartada:sin-volumen
+fareharbor alternative jet ski,en,B,jet-ski,FareHarbor,0,,/en/fareharbor-alternative-watersports,0,descartada:sin-volumen
+alternativa a fareharbor motos de agua,es,B,jet-ski,FareHarbor,0,,/es/fareharbor-alternativa-motos-de-agua,0,descartada:sin-volumen
+bókun alternative jet ski,en,B,jet-ski,Bókun,0,,,0,descartada:sin-volumen
+alternativa a bókun motos de agua,es,B,jet-ski,Bókun,0,,,0,descartada:sin-volumen
+turitop alternative jet ski,en,B,jet-ski,TuriTop,0,,/en/turitop-alternative-watersports,0,descartada:sin-volumen
+alternativa a turitop motos de agua,es,B,jet-ski,TuriTop,0,,/es/turitop-alternativa-motos-de-agua,0,descartada:sin-volumen
+peek alternative jet ski,en,B,jet-ski,Peek,0,,,0,descartada:sin-volumen
+alternativa a peek motos de agua,es,B,jet-ski,Peek,0,,,0,descartada:sin-volumen
+regiondo alternative jet ski,en,B,jet-ski,Regiondo,0,,,0,descartada:sin-volumen
+alternativa a regiondo motos de agua,es,B,jet-ski,Regiondo,0,,,0,descartada:sin-volumen
+rezdy alternative jet ski,en,B,jet-ski,Rezdy,0,,,0,descartada:sin-volumen
+alternativa a rezdy motos de agua,es,B,jet-ski,Rezdy,0,,,0,descartada:sin-volumen
+fareharbor alternative boat charter,en,B,charter,FareHarbor,0,,,0,descartada:sin-volumen
+alternativa a fareharbor chárter náutico,es,B,charter,FareHarbor,0,,,0,descartada:sin-volumen
+bókun alternative boat charter,en,B,charter,Bókun,0,,,0,descartada:sin-volumen
+alternativa a bókun chárter náutico,es,B,charter,Bókun,0,,,0,descartada:sin-volumen
+turitop alternative boat charter,en,B,charter,TuriTop,0,,,0,descartada:sin-volumen
+alternativa a turitop chárter náutico,es,B,charter,TuriTop,0,,,0,descartada:sin-volumen
+peek alternative boat charter,en,B,charter,Peek,0,,,0,descartada:sin-volumen
+alternativa a peek chárter náutico,es,B,charter,Peek,0,,,0,descartada:sin-volumen
+regiondo alternative boat charter,en,B,charter,Regiondo,0,,,0,descartada:sin-volumen
+alternativa a regiondo chárter náutico,es,B,charter,Regiondo,0,,,0,descartada:sin-volumen
+rezdy alternative boat charter,en,B,charter,Rezdy,0,,,0,descartada:sin-volumen
+alternativa a rezdy chárter náutico,es,B,charter,Rezdy,0,,,0,descartada:sin-volumen
+fareharbor alternative kayak,en,B,kayak,FareHarbor,0,,,0,descartada:sin-volumen
+alternativa a fareharbor kayak,es,B,kayak,FareHarbor,0,,,0,descartada:sin-volumen
+bókun alternative kayak,en,B,kayak,Bókun,0,,,0,descartada:sin-volumen
+alternativa a bókun kayak,es,B,kayak,Bókun,0,,,0,descartada:sin-volumen
+turitop alternative kayak,en,B,kayak,TuriTop,0,,,0,descartada:sin-volumen
+alternativa a turitop kayak,es,B,kayak,TuriTop,0,,,0,descartada:sin-volumen
+peek alternative kayak,en,B,kayak,Peek,0,,,0,descartada:sin-volumen
+alternativa a peek kayak,es,B,kayak,Peek,0,,,0,descartada:sin-volumen
+regiondo alternative kayak,en,B,kayak,Regiondo,0,,,0,descartada:sin-volumen
+alternativa a regiondo kayak,es,B,kayak,Regiondo,0,,,0,descartada:sin-volumen
+rezdy alternative kayak,en,B,kayak,Rezdy,0,,,0,descartada:sin-volumen
+alternativa a rezdy kayak,es,B,kayak,Rezdy,0,,,0,descartada:sin-volumen
+fareharbor alternative paddle board,en,B,paddle-surf,FareHarbor,0,,,0,descartada:sin-volumen
+alternativa a fareharbor paddle surf,es,B,paddle-surf,FareHarbor,0,,,0,descartada:sin-volumen
+bókun alternative paddle board,en,B,paddle-surf,Bókun,0,,,0,descartada:sin-volumen
+alternativa a bókun paddle surf,es,B,paddle-surf,Bókun,0,,,0,descartada:sin-volumen
+turitop alternative paddle board,en,B,paddle-surf,TuriTop,0,,,0,descartada:sin-volumen
+alternativa a turitop paddle surf,es,B,paddle-surf,TuriTop,0,,,0,descartada:sin-volumen
+peek alternative paddle board,en,B,paddle-surf,Peek,0,,,0,descartada:sin-volumen
+alternativa a peek paddle surf,es,B,paddle-surf,Peek,0,,,0,descartada:sin-volumen
+regiondo alternative paddle board,en,B,paddle-surf,Regiondo,0,,,0,descartada:sin-volumen
+alternativa a regiondo paddle surf,es,B,paddle-surf,Regiondo,0,,,0,descartada:sin-volumen
+rezdy alternative paddle board,en,B,paddle-surf,Rezdy,0,,,0,descartada:sin-volumen
+alternativa a rezdy paddle surf,es,B,paddle-surf,Rezdy,0,,,0,descartada:sin-volumen
+fareharbor alternative parasailing,en,B,parasailing,FareHarbor,0,,,0,descartada:sin-volumen
+alternativa a fareharbor parasailing,es,B,parasailing,FareHarbor,0,,,0,descartada:sin-volumen
+bókun alternative parasailing,en,B,parasailing,Bókun,0,,,0,descartada:sin-volumen
+alternativa a bókun parasailing,es,B,parasailing,Bókun,0,,,0,descartada:sin-volumen
+turitop alternative parasailing,en,B,parasailing,TuriTop,0,,,0,descartada:sin-volumen
+alternativa a turitop parasailing,es,B,parasailing,TuriTop,0,,,0,descartada:sin-volumen
+peek alternative parasailing,en,B,parasailing,Peek,0,,,0,descartada:sin-volumen
+alternativa a peek parasailing,es,B,parasailing,Peek,0,,,0,descartada:sin-volumen
+regiondo alternative parasailing,en,B,parasailing,Regiondo,0,,,0,descartada:sin-volumen
+alternativa a regiondo parasailing,es,B,parasailing,Regiondo,0,,,0,descartada:sin-volumen
+rezdy alternative parasailing,en,B,parasailing,Rezdy,0,,,0,descartada:sin-volumen
+alternativa a rezdy parasailing,es,B,parasailing,Rezdy,0,,,0,descartada:sin-volumen
+fareharbor alternative catamaran cruise,en,B,catamaran,FareHarbor,0,,,0,descartada:sin-volumen
+alternativa a fareharbor excursiones en catamarán,es,B,catamaran,FareHarbor,0,,,0,descartada:sin-volumen
+bókun alternative catamaran cruise,en,B,catamaran,Bókun,0,,,0,descartada:sin-volumen
+alternativa a bókun excursiones en catamarán,es,B,catamaran,Bókun,0,,,0,descartada:sin-volumen
+turitop alternative catamaran cruise,en,B,catamaran,TuriTop,0,,,0,descartada:sin-volumen
+alternativa a turitop excursiones en catamarán,es,B,catamaran,TuriTop,0,,,0,descartada:sin-volumen
+peek alternative catamaran cruise,en,B,catamaran,Peek,0,,,0,descartada:sin-volumen
+alternativa a peek excursiones en catamarán,es,B,catamaran,Peek,0,,,0,descartada:sin-volumen
+regiondo alternative catamaran cruise,en,B,catamaran,Regiondo,0,,,0,descartada:sin-volumen
+alternativa a regiondo excursiones en catamarán,es,B,catamaran,Regiondo,0,,,0,descartada:sin-volumen
+rezdy alternative catamaran cruise,en,B,catamaran,Rezdy,0,,,0,descartada:sin-volumen
+alternativa a rezdy excursiones en catamarán,es,B,catamaran,Rezdy,0,,,0,descartada:sin-volumen
+fareharbor alternative inflatable water park,en,B,hinchables,FareHarbor,0,,,0,descartada:sin-volumen
+alternativa a fareharbor parque acuático hinchable,es,B,hinchables,FareHarbor,0,,,0,descartada:sin-volumen
+bókun alternative inflatable water park,en,B,hinchables,Bókun,0,,,0,descartada:sin-volumen
+alternativa a bókun parque acuático hinchable,es,B,hinchables,Bókun,0,,,0,descartada:sin-volumen
+turitop alternative inflatable water park,en,B,hinchables,TuriTop,0,,,0,descartada:sin-volumen
+alternativa a turitop parque acuático hinchable,es,B,hinchables,TuriTop,0,,,0,descartada:sin-volumen
+peek alternative inflatable water park,en,B,hinchables,Peek,0,,,0,descartada:sin-volumen
+alternativa a peek parque acuático hinchable,es,B,hinchables,Peek,0,,,0,descartada:sin-volumen
+regiondo alternative inflatable water park,en,B,hinchables,Regiondo,0,,,0,descartada:sin-volumen
+alternativa a regiondo parque acuático hinchable,es,B,hinchables,Regiondo,0,,,0,descartada:sin-volumen
+rezdy alternative inflatable water park,en,B,hinchables,Rezdy,0,,,0,descartada:sin-volumen
+alternativa a rezdy parque acuático hinchable,es,B,hinchables,Rezdy,0,,,0,descartada:sin-volumen
+fareharbor alternative watersports,en,B,generico,FareHarbor,0,,/en/fareharbor-alternative-watersports,0,descartada:sin-volumen
+alternativa a fareharbor actividades acuáticas,es,B,generico,FareHarbor,0,,,0,descartada:sin-volumen
+bókun alternative watersports,en,B,generico,Bókun,0,,,0,descartada:sin-volumen
+alternativa a bókun actividades acuáticas,es,B,generico,Bókun,0,,,0,descartada:sin-volumen
+turitop alternative watersports,en,B,generico,TuriTop,0,,/en/turitop-alternative-watersports,0,descartada:sin-volumen
+alternativa a turitop actividades acuáticas,es,B,generico,TuriTop,0,,,0,descartada:sin-volumen
+peek alternative watersports,en,B,generico,Peek,0,,,0,descartada:sin-volumen
+alternativa a peek actividades acuáticas,es,B,generico,Peek,0,,,0,descartada:sin-volumen
+regiondo alternative watersports,en,B,generico,Regiondo,0,,,0,descartada:sin-volumen
+alternativa a regiondo actividades acuáticas,es,B,generico,Regiondo,0,,,0,descartada:sin-volumen
+rezdy alternative watersports,en,B,generico,Rezdy,0,,,0,descartada:sin-volumen
+alternativa a rezdy actividades acuáticas,es,B,generico,Rezdy,0,,,0,descartada:sin-volumen
+jet ski rental agreement template,en,C,jet-ski,contrato,10,2 (solutions.lokki.rent; waiver.smartwaiver.com),/en/jet-ski-rental-contract-template,5,candidata
+contrato de alquiler motos de agua,es,C,jet-ski,contrato,0,,/es/contrato-alquiler-motos-de-agua,0,descartada:sin-volumen
+jet ski waiver template,en,C,jet-ski,exencion,10,3 (waiver.smartwaiver.com; app.waiverelectronic.com; equipdash.com),borrador:/en/watersports-liability-waiver-template,4,candidata
+exención de responsabilidad motos de agua,es,C,jet-ski,exencion,0,,borrador:/es/plantilla-exencion-responsabilidad-actividades-acuaticas,0,descartada:sin-volumen
+jet ski price list template,en,C,jet-ski,precios,0,,,0,descartada:sin-volumen
+plantilla lista de precios motos de agua,es,C,jet-ski,precios,0,,,0,descartada:sin-volumen
+jet ski safety checklist,en,C,jet-ski,checklist,10,0,,6,candidata
+checklist de seguridad motos de agua,es,C,jet-ski,checklist,0,,,0,descartada:sin-volumen
+jet ski logbook,en,C,jet-ski,libro,0,,/en/jet-ski-logbook,0,descartada:sin-volumen
+libro de registro motos de agua,es,C,jet-ski,libro,0,,/es/libro-registro-motos-de-agua,0,descartada:sin-volumen
+boat charter rental agreement template,en,C,charter,contrato,0,,borrador:/en/boat-charter-agreement-template,0,descartada:sin-volumen
+contrato de alquiler chárter náutico,es,C,charter,contrato,0,,borrador:/es/contrato-alquiler-barco-charter,0,descartada:sin-volumen
+boat charter waiver template,en,C,charter,exencion,0,,,0,descartada:sin-volumen
+exención de responsabilidad chárter náutico,es,C,charter,exencion,0,,,0,descartada:sin-volumen
+boat charter price list template,en,C,charter,precios,0,,,0,descartada:sin-volumen
+plantilla lista de precios chárter náutico,es,C,charter,precios,0,,,0,descartada:sin-volumen
+boat charter safety checklist,en,C,charter,checklist,0,,,0,descartada:sin-volumen
+checklist de seguridad chárter náutico,es,C,charter,checklist,0,,,0,descartada:sin-volumen
+boat charter logbook,en,C,charter,libro,0,,,0,descartada:sin-volumen
+libro de registro chárter náutico,es,C,charter,libro,0,,,0,descartada:sin-volumen
+kayak rental agreement template,en,C,kayak,contrato,20,0,,8,candidata
+contrato de alquiler kayak,es,C,kayak,contrato,0,,,0,descartada:sin-volumen
+kayak waiver template,en,C,kayak,exencion,0,,borrador:/en/watersports-liability-waiver-template,0,descartada:sin-volumen
+exención de responsabilidad kayak,es,C,kayak,exencion,0,,borrador:/es/plantilla-exencion-responsabilidad-actividades-acuaticas,0,descartada:sin-volumen
+kayak price list template,en,C,kayak,precios,0,,,0,descartada:sin-volumen
+plantilla lista de precios kayak,es,C,kayak,precios,0,,,0,descartada:sin-volumen
+kayak safety checklist,en,C,kayak,checklist,10,0,,4,candidata
+checklist de seguridad kayak,es,C,kayak,checklist,0,,,0,descartada:sin-volumen
+kayak logbook,en,C,kayak,libro,10,0,,4,candidata
+libro de registro kayak,es,C,kayak,libro,0,,,0,descartada:sin-volumen
+paddle board rental agreement template,en,C,paddle-surf,contrato,0,,,0,descartada:sin-volumen
+contrato de alquiler paddle surf,es,C,paddle-surf,contrato,0,,,0,descartada:sin-volumen
+paddle board waiver template,en,C,paddle-surf,exencion,0,,,0,descartada:sin-volumen
+exención de responsabilidad paddle surf,es,C,paddle-surf,exencion,0,,,0,descartada:sin-volumen
+paddle board price list template,en,C,paddle-surf,precios,0,,,0,descartada:sin-volumen
+plantilla lista de precios paddle surf,es,C,paddle-surf,precios,0,,,0,descartada:sin-volumen
+paddle board safety checklist,en,C,paddle-surf,checklist,0,,,0,descartada:sin-volumen
+checklist de seguridad paddle surf,es,C,paddle-surf,checklist,0,,,0,descartada:sin-volumen
+paddle board logbook,en,C,paddle-surf,libro,0,,,0,descartada:sin-volumen
+libro de registro paddle surf,es,C,paddle-surf,libro,0,,,0,descartada:sin-volumen
+parasailing rental agreement template,en,C,parasailing,contrato,0,,,0,descartada:sin-volumen
+contrato de alquiler parasailing,es,C,parasailing,contrato,0,,,0,descartada:sin-volumen
+parasailing waiver template,en,C,parasailing,exencion,0,,borrador:/en/watersports-liability-waiver-template,0,descartada:sin-volumen
+exención de responsabilidad parasailing,es,C,parasailing,exencion,0,,borrador:/es/plantilla-exencion-responsabilidad-actividades-acuaticas,0,descartada:sin-volumen
+parasailing price list template,en,C,parasailing,precios,0,,,0,descartada:sin-volumen
+plantilla lista de precios parasailing,es,C,parasailing,precios,0,,,0,descartada:sin-volumen
+parasailing safety checklist,en,C,parasailing,checklist,0,,,0,descartada:sin-volumen
+checklist de seguridad parasailing,es,C,parasailing,checklist,0,,,0,descartada:sin-volumen
+parasailing logbook,en,C,parasailing,libro,0,,,0,descartada:sin-volumen
+libro de registro parasailing,es,C,parasailing,libro,0,,,0,descartada:sin-volumen
+catamaran cruise rental agreement template,en,C,catamaran,contrato,0,,,0,descartada:sin-volumen
+contrato de alquiler excursiones en catamarán,es,C,catamaran,contrato,0,,,0,descartada:sin-volumen
+catamaran cruise waiver template,en,C,catamaran,exencion,0,,,0,descartada:sin-volumen
+exención de responsabilidad excursiones en catamarán,es,C,catamaran,exencion,0,,,0,descartada:sin-volumen
+catamaran cruise price list template,en,C,catamaran,precios,0,,,0,descartada:sin-volumen
+plantilla lista de precios excursiones en catamarán,es,C,catamaran,precios,0,,,0,descartada:sin-volumen
+catamaran cruise safety checklist,en,C,catamaran,checklist,0,,,0,descartada:sin-volumen
+checklist de seguridad excursiones en catamarán,es,C,catamaran,checklist,0,,,0,descartada:sin-volumen
+catamaran cruise logbook,en,C,catamaran,libro,0,,,0,descartada:sin-volumen
+libro de registro excursiones en catamarán,es,C,catamaran,libro,0,,,0,descartada:sin-volumen
+inflatable water park rental agreement template,en,C,hinchables,contrato,0,,,0,descartada:sin-volumen
+contrato de alquiler parque acuático hinchable,es,C,hinchables,contrato,0,,,0,descartada:sin-volumen
+inflatable water park waiver template,en,C,hinchables,exencion,0,,,0,descartada:sin-volumen
+exención de responsabilidad parque acuático hinchable,es,C,hinchables,exencion,0,,,0,descartada:sin-volumen
+inflatable water park price list template,en,C,hinchables,precios,0,,,0,descartada:sin-volumen
+plantilla lista de precios parque acuático hinchable,es,C,hinchables,precios,0,,,0,descartada:sin-volumen
+inflatable water park safety checklist,en,C,hinchables,checklist,0,,,0,descartada:sin-volumen
+checklist de seguridad parque acuático hinchable,es,C,hinchables,checklist,0,,,0,descartada:sin-volumen
+inflatable water park logbook,en,C,hinchables,libro,0,,,0,descartada:sin-volumen
+libro de registro parque acuático hinchable,es,C,hinchables,libro,0,,,0,descartada:sin-volumen
+watersports rental agreement template,en,C,generico,contrato,0,,,0,descartada:sin-volumen
+contrato de alquiler actividades acuáticas,es,C,generico,contrato,0,,,0,descartada:sin-volumen
+watersports waiver template,en,C,generico,exencion,0,,borrador:/en/watersports-liability-waiver-template,0,descartada:sin-volumen
+exención de responsabilidad actividades acuáticas,es,C,generico,exencion,0,,borrador:/es/plantilla-exencion-responsabilidad-actividades-acuaticas,0,descartada:sin-volumen
+watersports price list template,en,C,generico,precios,0,,,0,descartada:sin-volumen
+plantilla lista de precios actividades acuáticas,es,C,generico,precios,0,,,0,descartada:sin-volumen
+watersports safety checklist,en,C,generico,checklist,0,,,0,descartada:sin-volumen
+checklist de seguridad actividades acuáticas,es,C,generico,checklist,0,,,0,descartada:sin-volumen
+watersports logbook,en,C,generico,libro,0,,,0,descartada:sin-volumen
+libro de registro actividades acuáticas,es,C,generico,libro,0,,,0,descartada:sin-volumen
+how to sell jet ski on viator,en,D,jet-ski,Viator,0,,,0,descartada:sin-volumen
+cómo vender motos de agua en viator,es,D,jet-ski,Viator,0,,,0,descartada:sin-volumen
+how to sell jet ski on getyourguide,en,D,jet-ski,GetYourGuide,0,,,0,descartada:sin-volumen
+cómo vender motos de agua en getyourguide,es,D,jet-ski,GetYourGuide,0,,,0,descartada:sin-volumen
+how to sell jet ski on civitatis,en,D,jet-ski,Civitatis,0,,,0,descartada:sin-volumen
+cómo vender motos de agua en civitatis,es,D,jet-ski,Civitatis,0,,,0,descartada:sin-volumen
+how to sell boat charter on viator,en,D,charter,Viator,0,,,0,descartada:sin-volumen
+cómo vender chárter náutico en viator,es,D,charter,Viator,0,,,0,descartada:sin-volumen
+how to sell boat charter on getyourguide,en,D,charter,GetYourGuide,0,,,0,descartada:sin-volumen
+cómo vender chárter náutico en getyourguide,es,D,charter,GetYourGuide,0,,,0,descartada:sin-volumen
+how to sell boat charter on civitatis,en,D,charter,Civitatis,0,,,0,descartada:sin-volumen
+cómo vender chárter náutico en civitatis,es,D,charter,Civitatis,0,,,0,descartada:sin-volumen
+how to sell kayak on viator,en,D,kayak,Viator,0,,,0,descartada:sin-volumen
+cómo vender kayak en viator,es,D,kayak,Viator,0,,,0,descartada:sin-volumen
+how to sell kayak on getyourguide,en,D,kayak,GetYourGuide,0,,,0,descartada:sin-volumen
+cómo vender kayak en getyourguide,es,D,kayak,GetYourGuide,0,,,0,descartada:sin-volumen
+how to sell kayak on civitatis,en,D,kayak,Civitatis,0,,,0,descartada:sin-volumen
+cómo vender kayak en civitatis,es,D,kayak,Civitatis,0,,,0,descartada:sin-volumen
+how to sell paddle board on viator,en,D,paddle-surf,Viator,0,,,0,descartada:sin-volumen
+cómo vender paddle surf en viator,es,D,paddle-surf,Viator,0,,,0,descartada:sin-volumen
+how to sell paddle board on getyourguide,en,D,paddle-surf,GetYourGuide,0,,,0,descartada:sin-volumen
+cómo vender paddle surf en getyourguide,es,D,paddle-surf,GetYourGuide,0,,,0,descartada:sin-volumen
+how to sell paddle board on civitatis,en,D,paddle-surf,Civitatis,0,,,0,descartada:sin-volumen
+cómo vender paddle surf en civitatis,es,D,paddle-surf,Civitatis,0,,,0,descartada:sin-volumen
+how to sell parasailing on viator,en,D,parasailing,Viator,0,,,0,descartada:sin-volumen
+cómo vender parasailing en viator,es,D,parasailing,Viator,0,,,0,descartada:sin-volumen
+how to sell parasailing on getyourguide,en,D,parasailing,GetYourGuide,0,,,0,descartada:sin-volumen
+cómo vender parasailing en getyourguide,es,D,parasailing,GetYourGuide,0,,,0,descartada:sin-volumen
+how to sell parasailing on civitatis,en,D,parasailing,Civitatis,0,,,0,descartada:sin-volumen
+cómo vender parasailing en civitatis,es,D,parasailing,Civitatis,0,,,0,descartada:sin-volumen
+how to sell catamaran cruise on viator,en,D,catamaran,Viator,0,,,0,descartada:sin-volumen
+cómo vender excursiones en catamarán en viator,es,D,catamaran,Viator,0,,,0,descartada:sin-volumen
+how to sell catamaran cruise on getyourguide,en,D,catamaran,GetYourGuide,0,,,0,descartada:sin-volumen
+cómo vender excursiones en catamarán en getyourguide,es,D,catamaran,GetYourGuide,0,,,0,descartada:sin-volumen
+how to sell catamaran cruise on civitatis,en,D,catamaran,Civitatis,0,,,0,descartada:sin-volumen
+cómo vender excursiones en catamarán en civitatis,es,D,catamaran,Civitatis,0,,,0,descartada:sin-volumen
+how to sell inflatable water park on viator,en,D,hinchables,Viator,0,,,0,descartada:sin-volumen
+cómo vender parque acuático hinchable en viator,es,D,hinchables,Viator,0,,,0,descartada:sin-volumen
+how to sell inflatable water park on getyourguide,en,D,hinchables,GetYourGuide,0,,,0,descartada:sin-volumen
+cómo vender parque acuático hinchable en getyourguide,es,D,hinchables,GetYourGuide,0,,,0,descartada:sin-volumen
+how to sell inflatable water park on civitatis,en,D,hinchables,Civitatis,0,,,0,descartada:sin-volumen
+cómo vender parque acuático hinchable en civitatis,es,D,hinchables,Civitatis,0,,,0,descartada:sin-volumen
+how to sell watersports on viator,en,D,generico,Viator,0,,,0,descartada:sin-volumen
+cómo vender actividades acuáticas en viator,es,D,generico,Viator,0,,,0,descartada:sin-volumen
+how to sell watersports on getyourguide,en,D,generico,GetYourGuide,0,,,0,descartada:sin-volumen
+cómo vender actividades acuáticas en getyourguide,es,D,generico,GetYourGuide,0,,,0,descartada:sin-volumen
+how to sell watersports on civitatis,en,D,generico,Civitatis,0,,,0,descartada:sin-volumen
+cómo vender actividades acuáticas en civitatis,es,D,generico,Civitatis,0,,,0,descartada:sin-volumen
+how to start a jet ski rental business,en,E,jet-ski,start,50,0,/en/how-to-start-a-jet-ski-rental-business,20,lote-1
+jet ski rental insurance,en,E,jet-ski,insurance,110,0,/en/jet-ski-rental-insurance,44,lote-1
+is a jet ski rental business profitable,en,E,jet-ski,profit,10,1 (rentmy.co),/en/how-to-start-a-jet-ski-rental-business,4,lote-1
+how to price jet ski rentals,en,E,jet-ski,pricing,0,,,0,descartada:sin-volumen
+jet ski rental business plan,en,E,jet-ski,plan,110,1 (rentmy.co),/en/how-to-start-a-jet-ski-rental-business,40,lote-1
+how much does a jet ski rental business make,en,E,jet-ski,revenue,10,1 (rentmy.co),,4,candidata
+jet ski rental license requirements,en,E,jet-ski,license,0,,,0,descartada:sin-volumen
+best jet skis for a rental fleet,en,E,jet-ski,fleet,0,,,0,descartada:sin-volumen
+how to market a jet ski rental business,en,E,jet-ski,marketing,0,,,0,descartada:sin-volumen
+how to start a boat charter business,en,E,charter,start,70,1 (bookeo.com),/en/how-to-start-a-boat-charter-business,20,lote-1
+boat charter insurance,en,E,charter,insurance,390,0,,125,candidata
+is a boat charter business profitable,en,E,charter,profit,0,,,0,descartada:sin-volumen
+how much does a boat charter business make,en,E,charter,revenue,0,,,0,descartada:sin-volumen
+boat charter business plan,en,E,charter,plan,50,2 (marketing.fareharbor.com; bookeo.com),/en/how-to-start-a-boat-charter-business,13,lote-1
+how to price boat charters,en,E,charter,pricing,0,,,0,descartada:sin-volumen
+charter captain license requirements,en,E,charter,license,590,0,,189,candidata
+how to start a kayak rental business,en,E,kayak,start,30,0,/en/how-to-start-a-kayak-rental-business,8,lote-1
+kayak rental insurance,en,E,kayak,insurance,30,0,/en/kayak-rental-insurance,8,lote-1
+is a kayak rental business profitable,en,E,kayak,profit,10,0,/en/how-to-start-a-kayak-rental-business,3,lote-1
+kayak rental business plan,en,E,kayak,plan,90,0,/en/how-to-start-a-kayak-rental-business,25,lote-1
+how to price kayak rentals,en,E,kayak,pricing,0,,,0,descartada:sin-volumen
+how much does a kayak rental business make,en,E,kayak,revenue,10,1 (rentmy.co),,3,candidata
+kayak rental business permit,en,E,kayak,license,0,,,0,descartada:sin-volumen
+how to market a kayak rental business,en,E,kayak,marketing,0,,,0,descartada:sin-volumen
+how to start a paddle board rental business,en,E,paddle-surf,start,10,0,,3,candidata
+paddle board rental insurance,en,E,paddle-surf,insurance,10,1 (peekpro.com),,3,candidata
+is a paddle board rental business profitable,en,E,paddle-surf,profit,0,,,0,descartada:sin-volumen
+paddle board rental business plan,en,E,paddle-surf,plan,10,2 (peekpro.com; rentmy.co),,2,candidata
+how to price paddle board rentals,en,E,paddle-surf,pricing,0,,,0,descartada:sin-volumen
+paddle board rental permit,en,E,paddle-surf,license,0,,,0,descartada:sin-volumen
+how to start a parasailing business,en,E,parasailing,start,10,0,,4,candidata
+parasailing business insurance,en,E,parasailing,insurance,10,0,,4,candidata
+how much does a parasailing business make,en,E,parasailing,revenue,0,,,0,descartada:sin-volumen
+is a parasailing business profitable,en,E,parasailing,profit,0,,,0,descartada:sin-volumen
+parasailing business plan,en,E,parasailing,plan,10,0,,4,candidata
+parasail boat for sale,en,E,parasailing,fleet,140,0,,50,candidata
+parasailing operator license,en,E,parasailing,license,0,,,0,descartada:sin-volumen
+how to start a catamaran tour business,en,E,catamaran,start,0,,,0,descartada:sin-volumen
+catamaran tour business insurance,en,E,catamaran,insurance,0,,,0,descartada:sin-volumen
+is a catamaran charter business profitable,en,E,catamaran,profit,0,,,0,descartada:sin-volumen
+how much does a catamaran charter business make,en,E,catamaran,revenue,0,,,0,descartada:sin-volumen
+catamaran tour business plan,en,E,catamaran,plan,0,,,0,descartada:sin-volumen
+how to price catamaran tours,en,E,catamaran,pricing,0,,,0,descartada:sin-volumen
+how to start an inflatable water park business,en,E,hinchables,start,0,,,0,descartada:sin-volumen
+inflatable water park insurance,en,E,hinchables,insurance,0,,,0,descartada:sin-volumen
+is an inflatable water park profitable,en,E,hinchables,profit,0,,,0,descartada:sin-volumen
+how much does an inflatable water park cost,en,E,hinchables,cost,0,,,0,descartada:sin-volumen
+inflatable water park business plan,en,E,hinchables,plan,10,0,,2,candidata
+floating water park permit,en,E,hinchables,license,0,,,0,descartada:sin-volumen
+how much does an inflatable water park make,en,E,hinchables,revenue,0,,,0,descartada:sin-volumen

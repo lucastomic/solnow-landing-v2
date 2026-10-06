@@ -3,6 +3,7 @@ import { locales, SITE_URL } from "@/i18n/config";
 import { GUIDES, localizedSlug, hasEnPage } from "@/content/guides";
 import { PRODUCTS, productHubPath, productPath } from "@/content/products";
 import { pricingPath } from "@/content/pricingRoute";
+import { PAGINAS } from "@/content/seo/paginas";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
@@ -111,5 +112,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  return [...home, ...pricing, ...productHub, ...productAreas, ...guides, ...calculator, ...legal];
+  // Páginas programáticas: solo las de lotes aprobados, y solo en su idioma
+  // (mismos alternates que emite `buildSeoMetadata`).
+  const seo: MetadataRoute.Sitemap = PAGINAS.map((p) => {
+    const url = `${SITE_URL}/${p.locale}/${p.slug}`;
+    return {
+      url,
+      lastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+      alternates: { languages: { [p.locale]: url } },
+    };
+  });
+
+  return [...home, ...pricing, ...productHub, ...productAreas, ...guides, ...seo, ...calculator, ...legal];
 }

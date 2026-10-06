@@ -144,8 +144,22 @@ for (const key of Object.keys(EN_CONSOLIDATE) as GuideKey[]) {
 
 /* ---- Content shape (mirrors the JSON stored in messages/*.json) ---- */
 
-export type GuideBlock =
+/**
+ * `verify` marca un bloque con una afirmación sobre seguros, licencias,
+ * normativa o fiscalidad que tiene que revisar una persona antes de publicar.
+ * `GuidePage` lo pinta a la vista con el motivo; se quita cuando alguien lo ha
+ * comprobado.
+ */
+export type GuideBlock = GuideBlockBody & { verify?: string };
+
+type GuideBlockBody =
   | { type: 'p'; text: string }
+  /**
+   * Hueco para un dato propio que todavía no tenemos (cifra de cartera,
+   * captura del producto…). Se ve en la página a propósito: un marcador
+   * invisible acaba publicado, una cifra inventada también.
+   */
+  | { type: 'pending'; text: string }
   | { type: 'list'; items: string[] }
   | { type: 'callout'; tone?: 'warn' | 'info' | 'accent'; text: string }
   | { type: 'steps'; items: string[] }
@@ -205,6 +219,8 @@ export interface GuideContent {
     eyebrow: string;
     h1: string;
     lede: string;
+    /** Como `verify` en los bloques, para una respuesta directa que afirma algo legal o de seguros. */
+    verify?: string;
     updated: string;
     readingTime: string;
     /** Logo del cliente, solo en los casos de éxito. Lo enlaza `website`. */
@@ -215,13 +231,17 @@ export interface GuideContent {
   download?: { title: string; desc: string; fileLabel: string; href: string };
   disclaimer?: string;
   sections: GuideSection[];
-  faq: { q: string; a: string }[];
+  /** `verify`: como en los bloques, la respuesta pendiente de revisión humana. */
+  faq: { q: string; a: string; verify?: string }[];
   related: { label: string; slug: string }[];
   /**
    * `href` es opcional y va sin locale (`demo` → `/es/demo`). Sin él, el botón
    * apunta al ancla de la home, que es lo que quieren las guías informativas.
    * Los casos de éxito lo sobrescriben: su CTA promete probar el agente, y
    * mandarlo a la home obligaría a buscarlo.
+   *
+   * Con `download`, la llamada a la acción es la descarga: `href` es la ruta
+   * absoluta del fichero (`/assets/…`) y la página no ofrece la demo.
    */
-  cta: { title: string; desc: string; button: string; href?: string };
+  cta: { title: string; desc: string; button: string; href?: string; download?: boolean };
 }
