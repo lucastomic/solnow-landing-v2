@@ -1874,7 +1874,8 @@
       "recurso": "Recursos",
       "comparativa": "Comparativas",
       "geo": "Zonas",
-      "caso": "Casos de éxito"
+      "caso": "Casos de éxito",
+      "actividad": "Actividades"
     },
     "tenerife": {
       "meta": {
@@ -4347,6 +4348,14 @@
         {
           "label": "Libro de registro: qué es y cómo llevarlo",
           "slug": "libro-registro-motos-de-agua"
+        },
+        {
+          "label": "Plantilla de contrato de alquiler de barco o chárter",
+          "slug": "contrato-alquiler-barco-charter"
+        },
+        {
+          "label": "Plantilla de exención de responsabilidad",
+          "slug": "plantilla-exencion-responsabilidad-actividades-acuaticas"
         }
       ],
       "cta": {
@@ -4875,6 +4884,10 @@
         {
           "label": "Contratos digitales y firma electrónica",
           "slug": "contrato-alquiler-motos-de-agua"
+        },
+        {
+          "label": "Plantilla de exención de responsabilidad",
+          "slug": "plantilla-exencion-responsabilidad-actividades-acuaticas"
         }
       ],
       "cta": {
@@ -5205,6 +5218,734 @@
         "desc": "Escríbele al agente como si fueras un cliente tuyo y compruébalo en segundos. Si prefieres verlo montado con tus barcos y tus precios, reserva 30 minutos.",
         "button": "Probar el agente",
         "href": "demo"
+      }
+    },
+    "kayak": {
+      "meta": {
+        "title": "Software de alquiler de kayak y paddle surf: reservas, contratos y mostrador | Solnow",
+        "description": "Qué tiene que hacer un software para alquilar kayaks y tablas de paddle surf: stock por hora, pago online, contrato firmado antes de llegar a la playa y venta rápida al cliente sin reserva.",
+        "ogTitle": "Software de alquiler de kayak y paddle surf"
+      },
+      "hero": {
+        "eyebrow": "ACTIVIDADES · KAYAK Y PADDLE SURF",
+        "h1": "Software de alquiler de kayak y paddle surf",
+        "lede": "Un software de alquiler de kayak y paddle surf vende tus unidades por horas sobre el stock real (kayak individual, doble, tabla), cobra online, recoge el contrato firmado antes de que el cliente pise la playa y despacha en segundos al que llega sin reserva. Si hoy eso pasa entre una libreta, un datáfono y un WhatsApp, este es el orden para digitalizarlo.",
+        "updated": "Actualizado · octubre de 2026",
+        "readingTime": "6 min de lectura"
+      },
+      "sections": [
+        {
+          "h": "Lo que tiene que resolver (checklist)",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "El alquiler de kayak y paddle surf es de ticket bajo y mucha rotación: el margen está en no perder ninguna hora de tabla y en que el mostrador no sea un cuello de botella a las once de la mañana."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Stock por tipo de unidad y por franja: cuántos kayaks dobles quedan a las 12:00, no «hay plazas».",
+                "Precios por duración y temporada aplicados solos (1 h, 2 h, medio día).",
+                "Pago online completo o señal, con el resto cobrado en la playa.",
+                "Contrato y declaración de riesgos firmados en el móvil del cliente, también los de menores con su tutor.",
+                "Venta rápida al cliente sin reserva, desde el mostrador o desde un QR que él mismo rellena.",
+                "Respuesta en WhatsApp en el idioma del cliente, con la disponibilidad real."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "Cómo se monta, paso a paso",
+          "blocks": [
+            {
+              "type": "steps",
+              "items": [
+                "Das de alta cada producto con su stock: kayak individual, kayak doble, tabla de paddle surf, salida guiada.",
+                "Defines duraciones y precios por temporada; el motor los aplica solo en la web, en WhatsApp y en el mostrador.",
+                "Subes tu contrato y tu declaración de riesgos: el cliente los firma al reservar, o con el QR del mostrador si llega sin reserva.",
+                "En la playa, el personal ve en una pantalla quién ha salido, con qué unidad y a qué hora tiene que volver.",
+                "Al cierre del día, ventas por canal y por producto sin cuadrar a mano."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "Dato propio: lo que hace el agente de WhatsApp en un operador de kayak",
+          "blocks": [
+            {
+              "type": "figure",
+              "src": "/casos/moraira-cueva.webp",
+              "alt": "Dos clientes de Moraira Boats en kayak dentro de una cueva marina de la costa de Moraira",
+              "w": 510,
+              "h": 560,
+              "side": "right",
+              "caption": "Moraira Boats Adventures alquila barcos y vende salidas en kayak en la Costa Blanca. Usa el agente de WhatsApp y el motor web de Solnow."
+            },
+            {
+              "type": "feature",
+              "tone": "ink",
+              "value": "80 %",
+              "label": "de los turnos de WhatsApp",
+              "text": "los atiende la IA en Moraira Boats, y responde en 14 segundos a cualquier hora. Datos de producción de agosto de 2026."
+            },
+            {
+              "type": "p",
+              "text": "En una actividad de ticket bajo, contestar tarde es perder la venta: el cliente pregunta a tres empresas de la misma playa y reserva con la primera que responde. El caso completo, con el resto de cifras, está en el caso de éxito de Moraira Boats."
+            }
+          ]
+        },
+        {
+          "h": "Dónde suele fallar",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Overbooking de dobles: el stock se lleva en una libreta y la web vende lo que ya salió por el mostrador.",
+                "Contratos en papel mojado que nadie vuelve a encontrar cuando hay una reclamación.",
+                "Días de levante o poniente: cancelar y recolocar a todos uno por uno por teléfono.",
+                "Palas, chalecos y bidones estancos que se alquilan como extra y no se cobran porque no están en el sistema."
+              ]
+            },
+            {
+              "type": "callout",
+              "tone": "warn",
+              "verify": "Normativa de navegación de kayak y paddle surf (zonas balizadas, distancia a la costa) y seguro exigible. Varía por comunidad autónoma y municipio; confirmar con Capitanía Marítima y asesor.",
+              "text": "La zona por la que pueden navegar tus clientes, la distancia máxima a la costa y el seguro que necesitas dependen de la normativa de tu zona y de las condiciones de tu autorización en la playa. Déjalo por escrito en el contrato y en las instrucciones antes de la salida."
+            }
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Puede el cliente firmar el contrato antes de llegar a la playa?",
+          "a": "Sí. Al reservar en la web o por WhatsApp recibe el contrato en el móvil y lo firma ahí. Si llega sin reserva, escanea un QR en el mostrador y lo firma mientras espera."
+        },
+        {
+          "q": "¿Sirve también para salidas guiadas en kayak, no solo para alquiler?",
+          "a": "Sí. Una salida guiada se configura como un producto con horario y plazas; el alquiler libre, como stock por franja. Conviven en el mismo calendario."
+        },
+        {
+          "q": "¿Qué pasa con el cliente que llega sin reserva?",
+          "a": "Se vende desde el mostrador en segundos o el propio cliente se registra con un QR. La unidad sale del stock en ese momento, así que la web deja de venderla."
+        }
+      ],
+      "related": [
+        {
+          "label": "Plantilla de exención de responsabilidad (jet ski, kayak, parasailing)",
+          "slug": "plantilla-exencion-responsabilidad-actividades-acuaticas"
+        },
+        {
+          "label": "Caso de éxito: Moraira Boats",
+          "slug": "caso-de-exito-moraira"
+        },
+        {
+          "label": "Digitalizar el mostrador",
+          "slug": "digitalizar-mostrador-alquiler-motos-de-agua"
+        },
+        {
+          "label": "Mejores software de reservas para actividades acuáticas",
+          "slug": "mejores-software-reservas-actividades-acuaticas"
+        }
+      ],
+      "cta": {
+        "title": "Míralo con tu operación real",
+        "desc": "Te montamos la demo con tus kayaks y tablas, tus bases y tu volumen real. 30 minutos, sin compromiso.",
+        "button": "Pedir demo"
+      }
+    },
+    "charter": {
+      "meta": {
+        "title": "Software para alquiler de barcos y chárter: reservas, contratos y fianzas | Solnow",
+        "description": "Qué necesita un software de chárter náutico: disponibilidad por barco, precios por temporada y duración, señal online, contrato y datos del patrón antes de zarpar, y WhatsApp en el idioma del cliente.",
+        "ogTitle": "Software para alquiler de barcos y chárter"
+      },
+      "hero": {
+        "eyebrow": "ACTIVIDADES · CHÁRTER",
+        "h1": "Software para alquiler de barcos y chárter",
+        "lede": "Un software de chárter vende barcos, no plazas: muestra la disponibilidad real de cada embarcación por medio día, día o semana, aplica el precio de temporada, cobra la señal online y deja firmado el contrato —con los datos del patrón o de su titulación— antes de que nadie suba a bordo. Si tu flota se gestiona con un calendario compartido y presupuestos por WhatsApp, aquí tienes qué exigir y cómo montarlo.",
+        "updated": "Actualizado · octubre de 2026",
+        "readingTime": "7 min de lectura"
+      },
+      "sections": [
+        {
+          "h": "Lo que tiene que resolver (checklist)",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Disponibilidad por barco y por duración: medio día, día completo, varios días.",
+                "Precios por temporada, duración y base, aplicados solos en la web y en cada presupuesto.",
+                "Señal online y resto cobrado antes de embarcar, con la fianza registrada en el contrato.",
+                "Contrato firmado en el móvil del cliente, con los datos del patrón o de quien gobierna el barco.",
+                "Extras que se venden y se cobran: patrón, combustible, paddle surf, catering, amarre.",
+                "Presupuestos y dudas por WhatsApp contestados al momento, en el idioma del cliente.",
+                "Hoteles, brokers y agencias que reservan sobre tu disponibilidad con su comisión calculada."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "Con patrón o sin patrón: lo que cambia en el sistema",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "El mismo barco puede salir con patrón tuyo o alquilarse a un cliente que lo gobierna. Para el software son dos productos sobre la misma embarcación: comparten disponibilidad, pero llevan precio, contrato y datos distintos."
+            },
+            {
+              "type": "list",
+              "verify": "Requisitos de titulación para alquiler sin patrón y régimen del arrendamiento náutico (Ley 14/2014 de Navegación Marítima). Confirmar con asesor y Capitanía Marítima.",
+              "items": [
+                "Sin patrón: el contrato tiene que recoger la titulación náutica de quien gobierna el barco y su vigencia.",
+                "Con patrón: el patrón queda asignado a la salida, y el contrato refleja que la embarcación se cede con tripulación."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "Cómo se monta, paso a paso",
+          "blocks": [
+            {
+              "type": "steps",
+              "items": [
+                "Das de alta cada barco con su base, su capacidad y las modalidades en que sale (con o sin patrón).",
+                "Cargas la tabla de precios por temporada y duración, y los extras con su precio.",
+                "Conectas el motor de reservas a tu web: el cliente elige barco y fecha, paga la señal y firma.",
+                "El agente de WhatsApp responde presupuestos con la misma disponibilidad y los mismos precios.",
+                "El día de la salida, el equipo ve qué barco sale, con quién y qué falta por cobrar."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "Dato propio: clientes que escriben en otro idioma",
+          "blocks": [
+            {
+              "type": "feature",
+              "value": "43 %",
+              "label": "de las conversaciones",
+              "text": "llegan en otro idioma en Moraira Boats Adventures, operador de alquiler de barcos en la Costa Blanca. El agente contesta en el del cliente sin pasarle el chat a nadie. Datos de agosto de 2026."
+            },
+            {
+              "type": "p",
+              "text": "En chárter el cliente extranjero pregunta antes de reservar: qué barco, cuánta gente, si hace falta titulación, dónde se embarca. Si la respuesta tarda hasta que alguien que habla inglés coge el móvil, la reserva se va a otra empresa del puerto."
+            },
+            {
+              "type": "pending",
+              "text": "Captura del calendario de flota de un operador de chárter (barcos en filas, salidas por día). Sustituir por una imagen real del producto con datos anonimizados."
+            }
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Se puede cobrar una señal y el resto antes de salir?",
+          "a": "Sí. El motor cobra la reserva completa o una señal con Stripe, y el resto queda pendiente para cobrarlo en la base."
+        },
+        {
+          "q": "¿Sirve para varias bases o puertos?",
+          "a": "Sí. Cada barco pertenece a una base y la disponibilidad, los precios y las ventas se ven juntos o por base."
+        },
+        {
+          "q": "¿Pueden reservar brokers y hoteles?",
+          "a": "Sí, desde un portal de colaboradores: ven tu disponibilidad real, reservan directamente y su comisión se calcula sola."
+        }
+      ],
+      "related": [
+        {
+          "label": "Plantilla de contrato de alquiler de barco o chárter",
+          "slug": "contrato-alquiler-barco-charter"
+        },
+        {
+          "label": "Caso de éxito: Moraira Boats",
+          "slug": "caso-de-exito-moraira"
+        },
+        {
+          "label": "Eliminar el papeleo del alquiler náutico",
+          "slug": "eliminar-papeleo-alquiler-nautico"
+        },
+        {
+          "label": "Software de reservas para excursiones en catamarán",
+          "slug": "software-reservas-excursiones-catamaran"
+        }
+      ],
+      "cta": {
+        "title": "Míralo con tu operación real",
+        "desc": "Te montamos la demo con tus barcos, tus bases y tu volumen real. 30 minutos, sin compromiso.",
+        "button": "Pedir demo"
+      }
+    },
+    "catamaran": {
+      "meta": {
+        "title": "Software de reservas para excursiones en catamarán: plazas, salidas y agencias | Solnow",
+        "description": "Cómo vender excursiones en catamarán por plazas en cada salida, combinar salidas compartidas y privadas en el mismo barco, dar acceso a hoteles y agencias, y embarcar con QR.",
+        "ogTitle": "Software de reservas para excursiones en catamarán"
+      },
+      "hero": {
+        "eyebrow": "ACTIVIDADES · CATAMARÁN",
+        "h1": "Software de reservas para excursiones en catamarán",
+        "lede": "Un software de reservas para catamarán vende plazas en cada salida —no barcos enteros— y bloquea la salida completa cuando alguien reserva el barco en privado. Además deja a hoteles y agencias reservar sobre tu disponibilidad con su comisión, y embarca a la gente con un QR en vez de con una lista en papel. Estos son los requisitos y cómo se ponen en marcha.",
+        "updated": "Actualizado · octubre de 2026",
+        "readingTime": "6 min de lectura"
+      },
+      "sections": [
+        {
+          "h": "Lo que tiene que resolver (checklist)",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Plazas por salida, con precios de adulto, niño y bebé.",
+                "Salida compartida y chárter privado sobre el mismo barco, sin que se pisen.",
+                "Canal de hoteles y agencias con su comisión y su saldo al día.",
+                "Venta en OTAs (Viator, GetYourGuide) sin vender dos veces la misma plaza.",
+                "Lista de embarque en el móvil y check-in con QR, también sin cobertura en el pantalán.",
+                "Aviso y recolocación de todos los pasajeros de una salida cuando se cancela por mar o viento."
+              ]
+            },
+            {
+              "type": "callout",
+              "tone": "warn",
+              "verify": "Capacidad máxima de pasaje según el certificado de la embarcación y obligaciones de despacho/lista de pasajeros. Confirmar con Capitanía Marítima.",
+              "text": "El aforo que configures nunca puede superar el número de pasajeros que autoriza el certificado de tu barco. Ponlo como tope de la salida y no como una cifra comercial."
+            }
+          ]
+        },
+        {
+          "h": "Cómo se monta, paso a paso",
+          "blocks": [
+            {
+              "type": "steps",
+              "items": [
+                "Das de alta cada catamarán con su aforo y sus horarios de salida (mañana, tarde, puesta de sol).",
+                "Creas los productos: salida compartida por plaza y chárter privado por barco, con sus precios.",
+                "Das acceso a hoteles y agencias al portal de colaboradores, cada uno con su comisión.",
+                "Conectas el motor a tu web y el agente de WhatsApp responde con las plazas que quedan.",
+                "El día de la salida, la tripulación escanea el QR de cada pasajero al embarcar."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "Dato propio",
+          "blocks": [
+            {
+              "type": "pending",
+              "text": "Cifra de cartera de un operador de catamarán o de excursiones en barco (p. ej. % de reservas que llegan por colaboradores u OTAs, o tiempo de embarque con QR). No tenemos cliente de catamarán con datos publicables: no usar cifras de otros sectores."
+            }
+          ]
+        },
+        {
+          "h": "Por qué no basta con un motor de tours genérico",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "Un motor de tours vende plazas, pero se queda en el pago. Lo que pasa después —quién ha embarcado, qué agencia te debe cuánto, a quién hay que avisar porque la salida de las 17:00 se cae— sigue en una hoja de cálculo. En una operación de catamarán, con decenas de pasajeros por salida y varios canales vendiendo a la vez, esa parte es la que más horas se come."
+            }
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Puedo vender a la vez por mi web, por agencias y en Viator o GetYourGuide?",
+          "a": "Sí. Todos los canales venden sobre la misma disponibilidad, así que una plaza vendida por un canal desaparece en los demás."
+        },
+        {
+          "q": "¿Se puede reservar el catamarán en privado?",
+          "a": "Sí. El chárter privado es otro producto sobre el mismo barco: al reservarlo se bloquea la salida compartida de esa franja."
+        },
+        {
+          "q": "¿Cómo se embarca a los pasajeros?",
+          "a": "Cada reserva lleva un QR. La tripulación lo escanea en el pantalán y la lista de embarque se actualiza sola."
+        }
+      ],
+      "related": [
+        {
+          "label": "Software para alquiler de barcos y chárter",
+          "slug": "software-alquiler-barcos-charter"
+        },
+        {
+          "label": "Plantilla de exención de responsabilidad",
+          "slug": "plantilla-exencion-responsabilidad-actividades-acuaticas"
+        },
+        {
+          "label": "Mejores software de reservas para actividades acuáticas",
+          "slug": "mejores-software-reservas-actividades-acuaticas"
+        }
+      ],
+      "cta": {
+        "title": "Míralo con tu operación real",
+        "desc": "Te montamos la demo con tus catamaranes, tus bases y tu volumen real. 30 minutos, sin compromiso.",
+        "button": "Pedir demo"
+      }
+    },
+    "hinchables": {
+      "meta": {
+        "title": "Software de reservas para parques acuáticos hinchables: turnos, aforo y firmas | Solnow",
+        "description": "Cómo vender turnos con aforo en un parque acuático hinchable, recoger la firma de cada participante (y del tutor si es menor) antes de entrar y despachar la cola de la playa sin papel.",
+        "ogTitle": "Software de reservas para parques acuáticos hinchables"
+      },
+      "hero": {
+        "eyebrow": "ACTIVIDADES · PARQUE HINCHABLE",
+        "h1": "Software de reservas para parques acuáticos hinchables",
+        "lede": "Un parque acuático hinchable vende turnos con aforo —45 o 60 minutos para un número máximo de personas— y necesita la firma de cada participante, y la del tutor en los menores, antes de que entren al agua. El software tiene que hacer las dos cosas a la vez que despacha una cola de familias en la playa. Esto es lo que tiene que hacer y cómo se monta.",
+        "updated": "Actualizado · octubre de 2026",
+        "readingTime": "5 min de lectura"
+      },
+      "sections": [
+        {
+          "h": "Lo que tiene que resolver (checklist)",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Turnos con aforo máximo, vendidos por persona y no por grupo.",
+                "Firma de cada participante; en menores, la del tutor legal vinculada a la misma reserva.",
+                "Venta en la playa sin cola: el cliente escanea un QR, rellena sus datos y firma mientras espera.",
+                "Packs de grupo y cumpleaños con precio cerrado.",
+                "Control de quién está dentro en cada turno y cuándo le toca salir."
+              ]
+            },
+            {
+              "type": "callout",
+              "tone": "warn",
+              "verify": "Normas técnicas de seguridad de hinchables acuáticos, edades/alturas mínimas, socorrismo obligatorio y autorización de ocupación de playa (Costas/ayuntamiento). Confirmar con asesor y con la autorización del parque.",
+              "text": "Edad mínima, altura, uso de chaleco y número de socorristas por turno salen de las normas de seguridad que aplican a tu instalación y de tu autorización en la playa. El aforo del turno debe ser el que fija tu autorización, no el que cabe comercialmente."
+            }
+          ]
+        },
+        {
+          "h": "Cómo se monta, paso a paso",
+          "blocks": [
+            {
+              "type": "steps",
+              "items": [
+                "Defines los turnos del día (duración y aforo) y los precios por persona y por pack.",
+                "Subes la declaración de riesgos y el consentimiento de tutor para menores.",
+                "Pones el QR en la caseta: el cliente compra, firma y entra sin pasar por el mostrador.",
+                "El monitor ve en el móvil quién está en el turno y quién falta por firmar."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "Dato propio",
+          "blocks": [
+            {
+              "type": "pending",
+              "text": "Cifra o captura de un parque hinchable en producción (p. ej. % de participantes que llegan con la firma hecha, o tiempo medio de venta por QR). No tenemos cliente de parque hinchable con datos publicables."
+            }
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Cada niño necesita su propia firma?",
+          "a": "Cada participante tiene su registro. En menores firma el tutor legal, y la firma queda vinculada a la reserva del grupo."
+        },
+        {
+          "q": "¿Se puede vender en la playa sin personal en caja?",
+          "a": "Sí. Con el modo kiosko o el QR, el cliente compra el turno, rellena sus datos y firma desde su móvil."
+        },
+        {
+          "q": "¿Qué pasa si sopla viento y hay que cerrar?",
+          "a": "Ves en una lista a todas las personas de los turnos afectados para avisarlas y cambiarles el turno."
+        }
+      ],
+      "related": [
+        {
+          "label": "Plantilla de exención de responsabilidad",
+          "slug": "plantilla-exencion-responsabilidad-actividades-acuaticas"
+        },
+        {
+          "label": "Digitalizar el mostrador",
+          "slug": "digitalizar-mostrador-alquiler-motos-de-agua"
+        },
+        {
+          "label": "Software de alquiler de kayak y paddle surf",
+          "slug": "software-alquiler-kayak-paddle-surf"
+        }
+      ],
+      "cta": {
+        "title": "Míralo con tu operación real",
+        "desc": "Te montamos la demo con tus turnos, tus bases y tu volumen real. 30 minutos, sin compromiso.",
+        "button": "Pedir demo"
+      }
+    },
+    "contratoCharter": {
+      "meta": {
+        "title": "Contrato de alquiler de barco o chárter: plantilla gratis (PDF) | Solnow",
+        "description": "Descarga un modelo de contrato de alquiler de barco o chárter, con y sin patrón: partes, embarcación, fianza, seguro, titulación, zona de navegación y devolución. Y cómo rellenarlo.",
+        "ogTitle": "Plantilla de contrato de alquiler de barco o chárter (PDF)"
+      },
+      "hero": {
+        "eyebrow": "RECURSOS · CONTRATOS",
+        "h1": "Contrato de alquiler de barco o chárter (plantilla gratis)",
+        "lede": "Un contrato de alquiler de barco tiene que identificar a las partes y la embarcación, fijar periodo, precio y fianza, decir si el barco sale con patrón o sin él (y con qué titulación), limitar la zona de navegación y repartir la responsabilidad por daños. Aquí tienes la plantilla en PDF con todos esos bloques, para descargar y adaptar a tu empresa.",
+        "updated": "Actualizado · octubre de 2026",
+        "readingTime": "6 min de lectura"
+      },
+      "download": {
+        "title": "Plantilla de contrato de chárter (PDF gratis)",
+        "desc": "Con y sin patrón: partes, embarcación, periodo, precio y fianza, seguro, titulación, zona de navegación, devolución, datos y anexo de tripulación y pasaje.",
+        "fileLabel": "Descargar plantilla PDF",
+        "href": "/assets/modelo-contrato-alquiler-barco-charter.pdf"
+      },
+      "disclaimer": "Esta plantilla y esta guía son orientativas y no constituyen asesoramiento legal. Antes de usar el contrato con clientes, revísalo con un asesor jurídico y comprueba los requisitos de tu Capitanía Marítima y de tu comunidad autónoma.",
+      "sections": [
+        {
+          "h": "Qué lleva el contrato",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Partes: empresa arrendadora (razón social, CIF, domicilio) y arrendatario (nombre, documento, teléfono).",
+                "Embarcación: nombre, matrícula, eslora, base de salida y capacidad máxima de personas.",
+                "Modalidad: con patrón (nombre del patrón) o sin patrón (titulación de quien gobierna).",
+                "Periodo: fecha y hora de embarque y de devolución, y puerto de devolución si es distinto.",
+                "Precio, señal y fianza: importes, forma de pago y cuándo y cómo se devuelve la fianza.",
+                "Estado a la entrega: inventario, daños previos, combustible y horas de motor.",
+                "Zona de navegación y condiciones de uso.",
+                "Responsabilidad por daños, sanciones y retrasos, y protección de datos."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "Las cláusulas que más se olvidan",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Combustible: si se entrega lleno y se devuelve lleno, o se cobra por consumo u horas de motor.",
+                "Meteorología: quién decide cancelar, y si se devuelve el importe o se cambia la fecha.",
+                "Retraso en la devolución: cuánto cuesta cada hora y qué pasa con el cliente siguiente.",
+                "Número de personas a bordo: el tope del certificado del barco, no el que pida el cliente."
+              ]
+            },
+            {
+              "type": "p",
+              "verify": "Seguro obligatorio de responsabilidad civil para embarcaciones de recreo (RD 607/1999) y titulación exigible para alquiler sin patrón. Confirmar vigencia y alcance con asesor.",
+              "text": "La plantilla da por hecho que el barco tiene el seguro de responsabilidad civil obligatorio y deja un hueco para la franquicia que asume el cliente. En alquiler sin patrón, recoge la titulación de quien gobierna y comprueba que habilita para la eslora y la zona del contrato."
+            }
+          ]
+        },
+        {
+          "h": "Cómo rellenarla, paso a paso",
+          "blocks": [
+            {
+              "type": "steps",
+              "items": [
+                "Pon tus datos fiscales y los de la embarcación una sola vez; son fijos para cada barco.",
+                "Marca la modalidad (con o sin patrón) y rellena el bloque que corresponda.",
+                "Apunta el estado de entrega con el cliente delante: inventario, daños, combustible y horas de motor.",
+                "Completa el anexo de pasaje con las personas que embarcan.",
+                "Firmáis las dos partes y guardas una copia junto a la reserva."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "Del PDF a la firma en el móvil",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "El PDF sirve para empezar. En temporada, rellenar cada contrato a mano es justo lo que retrasa la salida: con Solnow el contrato se genera con los datos de la reserva, el cliente lo firma en su móvil antes de llegar al puerto y queda archivado con la reserva."
+            }
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Sirve para alquiler con patrón y sin patrón?",
+          "a": "Sí. La plantilla tiene un bloque para cada modalidad; se rellena el que corresponda y se tacha el otro."
+        },
+        {
+          "q": "¿Puedo usarla tal cual?",
+          "a": "Es un punto de partida. Adáptala a tu empresa y revísala con un asesor jurídico antes de usarla con clientes."
+        },
+        {
+          "q": "¿Se puede firmar en digital?",
+          "a": "Sí. Puedes firmarla en papel o generar el contrato desde Solnow para que el cliente lo firme en su móvil al reservar."
+        }
+      ],
+      "related": [
+        {
+          "label": "Software para alquiler de barcos y chárter",
+          "slug": "software-alquiler-barcos-charter"
+        },
+        {
+          "label": "Plantilla de exención de responsabilidad",
+          "slug": "plantilla-exencion-responsabilidad-actividades-acuaticas"
+        },
+        {
+          "label": "Modelo de contrato de alquiler de motos de agua",
+          "slug": "contrato-alquiler-motos-de-agua"
+        }
+      ],
+      "cta": {
+        "title": "Descarga la plantilla de contrato de chárter",
+        "desc": "PDF gratis, con y sin patrón, listo para adaptar a tu empresa.",
+        "button": "Descargar plantilla PDF",
+        "href": "/assets/modelo-contrato-alquiler-barco-charter.pdf",
+        "download": true
+      }
+    },
+    "exencion": {
+      "meta": {
+        "title": "Plantilla de exención de responsabilidad para jet ski, kayak y parasailing (PDF) | Solnow",
+        "description": "Descarga una plantilla de declaración de riesgos y exención de responsabilidad para actividades acuáticas, con anexos para moto de agua, kayak y parasailing y consentimiento del tutor para menores.",
+        "ogTitle": "Plantilla de exención de responsabilidad: jet ski, kayak, parasailing"
+      },
+      "hero": {
+        "eyebrow": "RECURSOS · FIRMAS",
+        "h1": "Plantilla de exención de responsabilidad para actividades acuáticas",
+        "lede": "Una exención de responsabilidad para actividades acuáticas es, en la práctica, una declaración de riesgos y consentimiento informado: el participante declara que conoce los riesgos de la actividad, que está en condiciones de hacerla y que seguirá las instrucciones. Te sirve como prueba de que informaste, pero no te exime de responder por tu propia negligencia. Descarga la plantilla con anexos para moto de agua, kayak y parasailing.",
+        "updated": "Actualizado · octubre de 2026",
+        "readingTime": "6 min de lectura"
+      },
+      "download": {
+        "title": "Plantilla de exención de responsabilidad (PDF gratis)",
+        "desc": "Declaración de riesgos, condiciones físicas, normas de seguridad, anexos por actividad (moto de agua, kayak, parasailing), consentimiento del tutor y protección de datos.",
+        "fileLabel": "Descargar plantilla PDF",
+        "href": "/assets/plantilla-exencion-responsabilidad-actividades-acuaticas.pdf"
+      },
+      "disclaimer": "Esta plantilla y esta guía son orientativas y no constituyen asesoramiento legal. La validez de estos documentos depende de la normativa aplicable a tu actividad y a tus clientes; revísala con un asesor jurídico antes de usarla.",
+      "sections": [
+        {
+          "h": "Para qué sirve y para qué no",
+          "blocks": [
+            {
+              "type": "p",
+              "verify": "Afirmación sobre cláusulas abusivas frente a consumidores (Texto Refundido de la Ley General para la Defensa de los Consumidores y Usuarios, art. 86). Confirmar con asesor jurídico.",
+              "text": "En España, una cláusula que exima al operador de responder por los daños personales que cause a un consumidor se considera, por lo general, abusiva y no vale. Por eso el documento útil no es un «el cliente renuncia a todo», sino una declaración de riesgos bien hecha: demuestra que el cliente fue informado, que declaró estar en condiciones y que aceptó unas normas concretas."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Sí sirve para: probar que informaste de los riesgos y de las normas, y que el cliente declaró su estado de salud y su capacidad.",
+                "Sí sirve para: dejar constancia del consentimiento del tutor cuando participa un menor.",
+                "No sirve para: cubrir un fallo de mantenimiento, de material o de supervisión por tu parte."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "Qué incluye la plantilla",
+          "blocks": [
+            {
+              "type": "list",
+              "items": [
+                "Datos del participante y de la actividad (fecha, hora, base).",
+                "Declaración de riesgos generales de la actividad en el mar.",
+                "Declaración de salud: saber nadar, no estar embarazada si la actividad lo desaconseja, no haber tomado alcohol ni sustancias, problemas cardíacos o de espalda.",
+                "Compromiso de seguir las instrucciones del monitor y de usar el chaleco.",
+                "Anexo por actividad: moto de agua, kayak o paddle surf, parasailing.",
+                "Consentimiento del tutor legal para menores.",
+                "Autorización de uso de imagen (opcional, por separado).",
+                "Protección de datos."
+              ]
+            }
+          ]
+        },
+        {
+          "h": "Lo que cambia en cada actividad",
+          "blocks": [
+            {
+              "type": "table",
+              "columns": [
+                "Moto de agua",
+                "Kayak / paddle surf",
+                "Parasailing"
+              ],
+              "rows": [
+                {
+                  "label": "Riesgo principal",
+                  "cells": [
+                    "Colisión y caídas a velocidad",
+                    "Corrientes y alejarse de la costa",
+                    "Despegue, aterrizaje y cambios de viento"
+                  ]
+                },
+                {
+                  "label": "Qué declara el cliente",
+                  "cells": [
+                    "Que ha recibido las instrucciones de manejo y la zona permitida",
+                    "Que sabe nadar y no se alejará de la zona indicada",
+                    "Su peso, y que no tiene lesiones de espalda o cuello"
+                  ]
+                },
+                {
+                  "label": "Dato que conviene registrar",
+                  "cells": [
+                    "Conductor y pasajero, por separado",
+                    "Unidad y hora de salida",
+                    "Combinación de vuelo (individual, doble, triple)"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "callout",
+              "tone": "warn",
+              "verify": "Requisitos de edad y titulación para conducir motos de agua en España (con y sin monitor). Confirmar con Capitanía Marítima.",
+              "text": "En moto de agua, la edad mínima para conducir y la titulación que se exige dependen de si la actividad es guiada con monitor o alquiler libre. Ajusta el anexo a la modalidad que ofreces."
+            }
+          ]
+        },
+        {
+          "h": "Cómo usarla, paso a paso",
+          "blocks": [
+            {
+              "type": "steps",
+              "items": [
+                "Adapta la plantilla con tus datos y con las normas concretas de tu base.",
+                "Deja solo los anexos de las actividades que vendes.",
+                "Que cada participante firme el suyo; el tutor firma el de cada menor.",
+                "Guarda el documento vinculado a la reserva, para encontrarlo si hay una reclamación."
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Con Solnow la declaración se firma en el móvil del cliente al reservar o con el QR del mostrador, y queda archivada con la reserva: nada de carpetas de papel mojado."
+            }
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Una exención de responsabilidad me protege ante cualquier accidente?",
+          "a": "No. Sirve para probar que informaste de los riesgos y que el cliente aceptó las normas, pero no cubre los daños causados por tu negligencia. El seguro es lo que te protege frente a eso.",
+          "verify": "Alcance de la exención frente a consumidores y papel del seguro de responsabilidad civil. Confirmar con asesor jurídico."
+        },
+        {
+          "q": "¿Tiene que firmar cada participante?",
+          "a": "Sí, cada persona la suya. En los menores firma el tutor legal."
+        },
+        {
+          "q": "¿Vale la firma en el móvil?",
+          "a": "La plantilla se puede firmar en papel o en digital. Con Solnow, el cliente la firma en su móvil y queda guardada con la reserva."
+        }
+      ],
+      "related": [
+        {
+          "label": "Software de reservas para parasailing",
+          "slug": "software-reservas-parasailing"
+        },
+        {
+          "label": "Software de alquiler de kayak y paddle surf",
+          "slug": "software-alquiler-kayak-paddle-surf"
+        },
+        {
+          "label": "Modelo de contrato de alquiler de motos de agua",
+          "slug": "contrato-alquiler-motos-de-agua"
+        }
+      ],
+      "cta": {
+        "title": "Descarga la plantilla de exención",
+        "desc": "PDF gratis con anexos para moto de agua, kayak y parasailing.",
+        "button": "Descargar plantilla PDF",
+        "href": "/assets/plantilla-exencion-responsabilidad-actividades-acuaticas.pdf",
+        "download": true
       }
     }
   }

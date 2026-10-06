@@ -31,6 +31,14 @@ export const GUIDES = [
   { slug: 'software-alquiler-motos-de-agua-mexico', key: 'mexico', group: 'geo', download: false, howTo: false, priority: 0.8 },
   { slug: 'caso-de-exito-marinajets', key: 'marinajets', group: 'caso', download: false, howTo: false, priority: 0.8 },
   { slug: 'caso-de-exito-moraira', key: 'moraira', group: 'caso', download: false, howTo: false, priority: 0.8 },
+  // Categoría por actividad: captan la búsqueda «[actividad] booking software» del operador. Objetivo: demo.
+  { slug: 'software-alquiler-kayak-paddle-surf', key: 'kayak', group: 'actividad', download: false, howTo: true, priority: 0.8 },
+  { slug: 'software-alquiler-barcos-charter', key: 'charter', group: 'actividad', download: false, howTo: true, priority: 0.8 },
+  { slug: 'software-reservas-excursiones-catamaran', key: 'catamaran', group: 'actividad', download: false, howTo: true, priority: 0.8 },
+  { slug: 'software-reservas-parque-acuatico-hinchable', key: 'hinchables', group: 'actividad', download: false, howTo: true, priority: 0.8 },
+  // Recurso de operador: plantillas descargables. Objetivo: público de retargeting, no demo.
+  { slug: 'contrato-alquiler-barco-charter', key: 'contratoCharter', group: 'recurso', download: true, howTo: true, priority: 0.8 },
+  { slug: 'plantilla-exencion-responsabilidad-actividades-acuaticas', key: 'exencion', group: 'recurso', download: true, howTo: true, priority: 0.8 },
 ] as const;
 
 export type GuideGroup = Guide['group'];
@@ -74,6 +82,12 @@ const EN_SLUG: Partial<Record<GuideKey, string>> = {
   marinajets: 'marinajets-case-study',
   moraira: 'moraira-boats-case-study',
   libro: 'jet-ski-logbook',
+  kayak: 'kayak-paddle-board-rental-software',
+  charter: 'boat-yacht-charter-software',
+  catamaran: 'catamaran-cruise-booking-software',
+  hinchables: 'inflatable-water-park-booking-software',
+  contratoCharter: 'boat-charter-agreement-template',
+  exencion: 'watersports-liability-waiver-template',
 };
 
 /**
