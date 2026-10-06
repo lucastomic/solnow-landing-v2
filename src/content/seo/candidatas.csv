@@ -279,17 +279,17 @@ how to price kayak rentals,en,E,kayak,pricing,0,,,0,descartada:sin-volumen
 how much does a kayak rental business make,en,E,kayak,revenue,10,1 (rentmy.co),,3,candidata
 kayak rental business permit,en,E,kayak,license,0,,,0,descartada:sin-volumen
 how to market a kayak rental business,en,E,kayak,marketing,0,,,0,descartada:sin-volumen
-how to start a paddle board rental business,en,E,paddle-surf,start,10,0,,3,candidata
-paddle board rental insurance,en,E,paddle-surf,insurance,10,1 (peekpro.com),,3,candidata
+how to start a paddle board rental business,en,E,paddle-surf,start,10,0,/en/how-to-start-a-paddle-board-rental-business,3,lote-2
+paddle board rental insurance,en,E,paddle-surf,insurance,10,1 (peekpro.com),/en/how-to-start-a-paddle-board-rental-business,3,lote-2
 is a paddle board rental business profitable,en,E,paddle-surf,profit,0,,,0,descartada:sin-volumen
-paddle board rental business plan,en,E,paddle-surf,plan,10,2 (peekpro.com; rentmy.co),,2,candidata
+paddle board rental business plan,en,E,paddle-surf,plan,10,2 (peekpro.com; rentmy.co),/en/how-to-start-a-paddle-board-rental-business,2,lote-2
 how to price paddle board rentals,en,E,paddle-surf,pricing,0,,,0,descartada:sin-volumen
 paddle board rental permit,en,E,paddle-surf,license,0,,,0,descartada:sin-volumen
-how to start a parasailing business,en,E,parasailing,start,10,0,,4,candidata
-parasailing business insurance,en,E,parasailing,insurance,10,0,,4,candidata
+how to start a parasailing business,en,E,parasailing,start,10,0,/en/how-to-start-a-parasailing-business,4,lote-2
+parasailing business insurance,en,E,parasailing,insurance,10,0,/en/how-to-start-a-parasailing-business,4,lote-2
 how much does a parasailing business make,en,E,parasailing,revenue,0,,,0,descartada:sin-volumen
 is a parasailing business profitable,en,E,parasailing,profit,0,,,0,descartada:sin-volumen
-parasailing business plan,en,E,parasailing,plan,10,0,,4,candidata
+parasailing business plan,en,E,parasailing,plan,10,0,/en/how-to-start-a-parasailing-business,4,lote-2
 parasail boat for sale,en,E,parasailing,fleet,140,0,,50,candidata
 parasailing operator license,en,E,parasailing,license,0,,,0,descartada:sin-volumen
 how to start a catamaran tour business,en,E,catamaran,start,0,,,0,descartada:sin-volumen
@@ -298,10 +298,10 @@ is a catamaran charter business profitable,en,E,catamaran,profit,0,,,0,descartad
 how much does a catamaran charter business make,en,E,catamaran,revenue,0,,,0,descartada:sin-volumen
 catamaran tour business plan,en,E,catamaran,plan,0,,,0,descartada:sin-volumen
 how to price catamaran tours,en,E,catamaran,pricing,0,,,0,descartada:sin-volumen
-how to start an inflatable water park business,en,E,hinchables,start,0,,,0,descartada:sin-volumen
-inflatable water park insurance,en,E,hinchables,insurance,0,,,0,descartada:sin-volumen
+how to start an inflatable water park business,en,E,hinchables,start,0,,/en/how-to-start-an-inflatable-water-park-business,0,lote-2
+inflatable water park insurance,en,E,hinchables,insurance,0,,/en/how-to-start-an-inflatable-water-park-business,0,lote-2
 is an inflatable water park profitable,en,E,hinchables,profit,0,,,0,descartada:sin-volumen
 how much does an inflatable water park cost,en,E,hinchables,cost,0,,,0,descartada:sin-volumen
-inflatable water park business plan,en,E,hinchables,plan,10,0,,2,candidata
+inflatable water park business plan,en,E,hinchables,plan,10,0,/en/how-to-start-an-inflatable-water-park-business,2,lote-2
 floating water park permit,en,E,hinchables,license,0,,,0,descartada:sin-volumen
 how much does an inflatable water park make,en,E,hinchables,revenue,0,,,0,descartada:sin-volumen

@@ -30,12 +30,12 @@ export interface PaginaSeo {
   build: () => GuideContent;
 }
 
-const plan = (id: ActividadId, area: ProductKey, consultas: string[]): PaginaSeo => ({
+const plan = (id: ActividadId, area: ProductKey, consultas: string[], lote = 1): PaginaSeo => ({
   slug: planSlug(ACTIVIDADES[id]),
   locale: 'en',
   matriz: 'E',
   actividad: id,
-  lote: 1,
+  lote,
   consultas,
   area,
   build: () => plantillaPlan(ACTIVIDADES[id]),
@@ -66,6 +66,11 @@ export const PAGINAS: PaginaSeo[] = [
   plan('charter', 'motor', ['boat charter business plan', 'how to start a boat charter business']),
   seguro('jet-ski', ['jet ski rental insurance']),
   seguro('kayak', ['kayak rental insurance']),
+  // Lote 2: cada página cubre también el plan de negocio y el seguro de su
+  // actividad en secciones propias (esas consultas no tienen página aparte).
+  plan('parasailing', 'tpv', ['how to start a parasailing business', 'parasailing business plan', 'parasailing business insurance'], 2),
+  plan('paddle-surf', 'tpv', ['how to start a paddle board rental business', 'paddle board rental business plan', 'paddle board rental insurance'], 2),
+  plan('hinchables', 'tpv', ['inflatable water park business plan', 'how to start an inflatable water park business', 'inflatable water park insurance'], 2),
 ];
 
 export function paginaSeo(locale: string, slug: string): PaginaSeo | undefined {

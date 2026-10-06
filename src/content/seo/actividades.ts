@@ -13,12 +13,14 @@
 
 import type { GuideBlock, GuideSection } from '@/content/guides';
 
-export type ActividadId = 'jet-ski' | 'kayak' | 'charter';
+export type ActividadId = 'jet-ski' | 'kayak' | 'charter' | 'parasailing' | 'paddle-surf' | 'hinchables';
 
 export interface Actividad {
   id: ActividadId;
   /** «jet ski rental», para frases como «a jet ski rental business». */
   business: string;
+  /** Artículo delante de `business` («an inflatable water park»). Por defecto, «a». */
+  article?: 'a' | 'an';
   /** Unidad que se alquila, en singular y plural. */
   unit: string;
   units: string;
@@ -29,6 +31,8 @@ export interface Actividad {
     h1: string;
     /** Respuesta directa: va como primer párrafo. */
     lede: string;
+    /** Aviso VERIFICAR para la respuesta directa, si afirma algo legal o de seguros. */
+    ledeVerify?: string;
     /** Cómo se gana el dinero, en una fórmula sin cifras inventadas. */
     formula: string;
     drivers: string[];
@@ -40,6 +44,16 @@ export interface Actividad {
     /** La cifra de cartera que falta para el plan (siempre pendiente hasta tenerla). */
     benchmark: string;
     faq: { q: string; a: string; verify?: string }[];
+    /**
+     * Sección propia «qué lleva el plan de negocio», para las páginas que
+     * cubren también la consulta «business plan» de la actividad.
+     */
+    planSections?: string[];
+    /**
+     * Sección propia de seguro, para las actividades cuya consulta de seguro
+     * no tiene página aparte.
+     */
+    insuranceSection?: { intro: string; covers: string[]; coversVerify: string; insurerAsks: string[] };
   };
 
   insurance?: {
@@ -416,6 +430,330 @@ export const ACTIVIDADES: Record<ActividadId, Actividad> = {
       { label: 'Eliminate paperwork in boat rental', slug: 'eliminar-papeleo-alquiler-nautico' },
       { label: 'Case study: Moraira Boats', slug: 'caso-de-exito-moraira' },
       { label: 'Answer WhatsApp 24/7 with AI', slug: 'whatsapp-reservas-motos-de-agua' },
+    ],
+  },
+
+  parasailing: {
+    id: 'parasailing',
+    business: 'parasailing',
+    unit: 'parasail boat',
+    units: 'parasail boats',
+    plan: {
+      title: 'How to Start a Parasailing Business: Business Plan & Insurance',
+      description:
+        'What it takes to start a parasailing business: winch boat, canopies, a licensed captain, flying area, wind policy, insurance and a flight-based business plan. Free plan template.',
+      h1: 'How to start a parasailing business',
+      lede:
+        'To start a parasailing business you need a winch boat built or converted for parasail, canopies and harnesses rated for the flight combinations you will sell, a licensed captain and deck crew, an area where you are allowed to fly, and insurance written specifically for parasail operations. The money is made per flight: each boat runs a rotation of single, tandem and triple flights, and the wind decides how many scheduled slots actually fly. The business plan template below is built around that rotation, and the insurance section covers what to ask before you buy the boat.',
+      ledeVerify:
+        'Captain licensing for carrying paying passengers, where parasailing may operate and the availability of parasail-specific insurance vary by country and state. Confirm before publishing.',
+      formula:
+        'Daily revenue ≈ boats × hours you can fly × flights per hour per boat × average flyers per flight × price per flyer, plus observer seats and photo or video packages. The rotation (launch, flight, winch-in, swap flyers) sets flights per hour; the wind sets how many of the scheduled hours you actually fly.',
+      drivers: [
+        'Rotation time: every minute saved between winch-in and the next launch is another flight in the afternoon.',
+        'Flight mix: tandem and triple flights put more paying flyers on the same rope time as a single.',
+        'Weight limits: groups whose combined weight is outside the canopy range have to be split, which costs a slot.',
+        'Observer seats and photos: passengers who ride but do not fly fill deck space you are already paying to run.',
+        'Wind days: a gusty afternoon cancels a full boat, so a fast rebooking routine protects revenue already sold.',
+        'Fuel per rotation: the boat runs under load for the whole flight, so fuel is a real cost per flight.',
+      ],
+      startupCosts: [
+        'Parasail boat with winch and flight deck, new or converted, plus a survey before purchase.',
+        'Canopies for light and stronger wind, harnesses, spreader bars and towlines, with spares.',
+        'A replacement schedule for towlines and webbing, budgeted as a running cost.',
+        'Captain and deck crew, their licences and training.',
+        'Wind meter, radios, life jackets for flyers and observers, first aid and rescue equipment.',
+        'Berth or dock, and a booking booth where customers check in and are weighed.',
+        'Insurance written for parasail operations.',
+        'Booking system that records each flyer\'s weight and signed waiver before boarding.',
+      ],
+      steps: [
+        'Confirm where you may operate and fly, and what the authority requires of parasail operators there.',
+        'Hire or become the licensed captain, and train deck crew on launch, recovery and emergency procedures.',
+        'Get insurance quotes before you buy the boat: some insurers will only cover certain boats and equipment.',
+        'Buy or convert the boat and the flight equipment, and follow the manufacturer\'s limits for each canopy.',
+        'Write the wind go/no-go policy and the weight limits per flight combination before the first booking.',
+        'Set up booking that captures weight, flight type and the signed waiver for every flyer.',
+        'Agree commissions with hotels and beach agents: parasailing sells heavily through them.',
+      ],
+      permits: {
+        text: 'Parasail operators are usually regulated twice: as a passenger-carrying boat, which brings captain licensing and boat inspection, and as an activity, which can bring rules on where you fly, wind limits and equipment standards. Confirm both with the maritime authority where you operate before you commit to a boat.',
+        verify: 'Parasail regulation (captain licensing, vessel inspection, flying areas, wind limits, standards such as ASTM F3099 in the US) varies by country and state. Confirm with a maritime advisor.',
+      },
+      dato: {
+        h: 'Our data: parasailing sells on WhatsApp, at night too',
+        blocks: [
+          {
+            type: 'feature',
+            tone: 'ink',
+            value: '70%',
+            label: 'of night-time sales turns',
+            text: `are handled by the AI at ${MARINAJETS}, which sells parasailing alongside jet skis and towables; it replies in 9 seconds against 1 h 50 for a person. Group-wide figure, not parasailing alone. Production data, August 2026.`,
+          },
+        ],
+      },
+      benchmark:
+        'Portfolio benchmark for the plan: average flyers per flight and share of tandem/triple flights across Solnow parasailing operators. Pull from the production database only with explicit approval; do not estimate.',
+      planSections: [
+        'Flight rotation and capacity: rotation time per boat, flights per hour, flyers per flight.',
+        'Price tiers: single, tandem, triple, observer, photo or video package.',
+        'Flying calendar: months and hours with usable wind, and the share of days you expect to cancel.',
+        'Equipment replacement: towlines, webbing and canopies on a schedule, as a yearly cost.',
+        'Captain availability: who skippers each boat every day of the season.',
+        'Sales channels: walk-up at the booth, hotels and beach agents (with their commission), online.',
+      ],
+      insuranceSection: {
+        intro:
+          'Parasail insurance is specialist cover: ask a broker who already insures parasail operators, and get quotes before you buy the boat, because the insurer may set conditions on the boat, the winch and the flight equipment.',
+        covers: [
+          'Marine liability for passengers, including flyers while they are in the air, not only on deck.',
+          'Hull and machinery for the boat, and cover for the winch, canopies and towlines.',
+          'Liability to third parties: swimmers, other boats, the shore.',
+          'Crew cover: employer\'s liability or the maritime equivalent for captain and deck hands.',
+        ],
+        coversVerify: 'Whether flyers count as passengers, and the names and availability of each cover, depend on the jurisdiction and the insurer. Confirm with a broker.',
+        insurerAsks: [
+          'The captain\'s licence and the crew\'s training.',
+          'The maintenance and replacement log for towlines, winch and canopies.',
+          'Your wind limit, how you measure it and who decides to stop flying.',
+          'How flyers are weighed and how the flight combination is chosen.',
+          'Signed waivers for every flyer, including guardians for minors.',
+        ],
+      },
+      faq: [
+        {
+          q: 'How many flights can one boat do a day?',
+          a: 'It depends on your rotation time, the hours you can fly and the wind. Time a full rotation (launch, flight, winch-in, swap) on your boat and work out flights per hour from that; the template has a sheet for it. We do not publish an average we cannot back.',
+        },
+        {
+          q: 'Do I need a captain\'s licence to run a parasail boat?',
+          a: 'In most places, carrying paying passengers requires a licensed captain, and parasailing may add its own requirements. Confirm with the maritime authority where you will operate.',
+          verify: 'Captain licensing for commercial parasailing by jurisdiction. Confirm.',
+        },
+        {
+          q: 'Is parasailing profitable?',
+          a: 'It can be when the boat flies full rotations through the windy season and tandem and triple flights fill the rope time. The costs that decide it are the boat, the captain, insurance and equipment replacement; test them in the template with your own numbers.',
+        },
+      ],
+    },
+    related: [
+      { label: 'Parasailing booking software', slug: 'software-reservas-parasailing' },
+      { label: 'Case study: Grupo Marina Jets', slug: 'caso-de-exito-marinajets' },
+      { label: 'Answer WhatsApp 24/7 with AI', slug: 'whatsapp-reservas-motos-de-agua' },
+    ],
+  },
+
+  'paddle-surf': {
+    id: 'paddle-surf',
+    business: 'paddle board rental',
+    unit: 'paddle board',
+    units: 'paddle boards',
+    plan: {
+      title: 'How to Start a Paddle Board Rental Business: Business Plan & Insurance',
+      description:
+        'Starting a paddle board (SUP) rental: sheltered water, inflatable vs hard boards, lessons and tours, wind days, insurance and a business plan template made for SUP.',
+      h1: 'How to start a paddle board rental business',
+      lede:
+        'To start a paddle board rental business you need sheltered water where you are allowed to rent, a fleet of boards in a few sizes (inflatable, hard or a mix) with adjustable paddles, leashes and life jackets, insurance that covers both rentals and lessons, and a sign-and-go routine at the stand. Many renters are first-timers, so lessons, guided tours and classes such as SUP yoga often earn more per hour than plain rentals, and offshore wind is the condition that closes the water. The business plan and insurance sections below are written for SUP.',
+      formula:
+        'Revenue ≈ (boards × rentable hours × utilization × price per hour) + lessons and classes (places × price) + guided tours, over the days the wind allows. A board is cheap to buy; the stand, staff, storage and the days you cannot open are what decide the year.',
+      drivers: [
+        'Lessons and classes: a beginner lesson or a SUP yoga session sells more per hour of board time than a rental.',
+        'Offshore wind: it is the condition that blows beginners away from shore, so it closes the stand and caps the season.',
+        'Board choice: inflatables travel and store easily and survive drops; hard boards glide better but ding and need racks.',
+        'Sizes: a light renter on a big board or a heavy renter on a small one ends the rental early.',
+        'Fixed stand or mobile: a van that delivers boards to lakes and events reaches more water with the same fleet.',
+        'Small losses: paddles, fins and leashes go missing unless they are listed on the agreement.',
+      ],
+      startupCosts: [
+        'Boards in two or three sizes, inflatable or hard, plus spare fins.',
+        'Adjustable paddles, leashes, life jackets in every size, and pumps for inflatables.',
+        'Racks, a storage unit, and a trailer or van if you operate from more than one spot.',
+        'Stand or booth, and the permit or concession for the launch spot.',
+        'Instructor certification for whoever teaches lessons and classes.',
+        'Wetsuits if the water is cold in your shoulder season.',
+        'Insurance covering rentals, lessons and classes.',
+        'Booking and waiver system that works from a QR code at the stand.',
+      ],
+      steps: [
+        'Choose water that is sheltered from offshore wind, and get permission to rent there.',
+        'Decide inflatable, hard or a mix, and buy sizes for the renters you expect.',
+        'Certify at least one instructor before you sell lessons.',
+        'Design the formats: hourly rental, beginner lesson, guided tour, sunset or yoga session.',
+        'Get insurance that names every format you sell.',
+        'Set up booking and waivers so renters sign before they reach the water, or at the stand from a QR code.',
+        'Write the wind rule (who closes the stand and when) and the rebooking policy.',
+      ],
+      permits: {
+        text: 'Depending on where you operate, a paddle board can count as a vessel, which brings its own rules on life jackets and safety equipment; renting from a beach or lake usually needs a permit or concession; and teaching may require a recognised instructor certification. Confirm all three locally before the season.',
+        verify: 'Whether a SUP counts as a vessel (e.g. US Coast Guard rules outside swimming/surfing areas), required equipment, rental permits and instructor certification vary by country and local authority. Confirm.',
+      },
+      dato: {
+        h: 'Our data',
+        blocks: [
+          {
+            type: 'pending',
+            text: 'Own data for SUP: e.g. share of revenue from lessons and classes vs rentals, or share of renters signing before they arrive, from a Solnow paddle board operator. We have no SUP client with publishable data yet; do not reuse kayak or jet ski figures.',
+          },
+        ],
+      },
+      benchmark:
+        'Portfolio benchmark for the plan: average price per board-hour and lesson share across Solnow paddle board operators. Pull from the production database only with explicit approval; do not estimate.',
+      planSections: [
+        'Fleet by type and size, with the expected life of each board.',
+        'Formats and schedule: rentals, lessons, tours and classes, with places and prices.',
+        'Wind calendar: months, and the share of days you expect offshore wind to close the stand.',
+        'Fixed stand or mobile: the van, the trailer and the spots you will serve.',
+        'Instructor cost: certification, hours and who covers lessons on busy days.',
+        'Small-equipment budget: paddles, fins and leashes lost or broken each season.',
+      ],
+      insuranceSection: {
+        intro:
+          'For SUP, the format you sell changes the cover: an insurer looks differently at an unsupervised rental, a lesson with an instructor and a yoga class on the water. List every format when you ask for a quote.',
+        covers: [
+          'General liability for rentals: injury or damage to others caused by renters.',
+          'Professional or instructor liability for lessons, tours and classes.',
+          'Equipment cover for boards and paddles against theft from the beach and storm damage.',
+          'Vehicle cover for the van or trailer if you deliver boards.',
+        ],
+        coversVerify: 'Names, scope and availability of each cover depend on the jurisdiction and the insurer. Confirm with a broker.',
+        insurerAsks: [
+          'Which formats you sell, and whether classes such as SUP yoga are included.',
+          'Instructor certifications and the instructor-to-participant ratio.',
+          'Your leash and life jacket policy.',
+          'Your offshore wind rule and the area renters may paddle in.',
+          'Signed waivers for every participant, including guardians for minors.',
+        ],
+      },
+      faq: [
+        {
+          q: 'Inflatable or hard paddle boards for a rental fleet?',
+          a: 'Inflatables are easier to transport, store and repair, and they survive being dropped; hard boards are faster and more stable for experienced paddlers but ding and need racks. Many rentals start with inflatables and add a few hard boards for tours.',
+        },
+        {
+          q: 'Do I need to offer lessons?',
+          a: 'You can rent without them, but beginners who take a lesson stay out longer and come back. If you teach, certify the instructor and make sure the insurance names lessons.',
+          verify: 'Instructor certification and insurance requirements for SUP lessons by jurisdiction. Confirm.',
+        },
+        {
+          q: 'How long is the paddle board season?',
+          a: 'It is set by water temperature and wind where you operate, not by the calendar. The template has a sheet to forecast it month by month.',
+        },
+      ],
+    },
+    related: [
+      { label: 'How to start a kayak rental business', slug: 'how-to-start-a-kayak-rental-business' },
+      { label: 'Digitize the front desk', slug: 'digitalizar-mostrador-alquiler-motos-de-agua' },
+      { label: 'Best watersports booking software compared', slug: 'mejores-software-reservas-actividades-acuaticas' },
+    ],
+  },
+
+  hinchables: {
+    id: 'hinchables',
+    business: 'inflatable water park',
+    article: 'an',
+    unit: 'module',
+    units: 'inflatable modules',
+    plan: {
+      title: 'How to Start an Inflatable Water Park: Business Plan & Insurance',
+      description:
+        'Starting an inflatable (floating) water park: water concession, modules and anchoring, lifeguards, timed sessions, insurance and a business plan template for floating parks.',
+      h1: 'How to start an inflatable water park business',
+      lede:
+        'To start an inflatable water park you need a stretch of water where you are allowed to anchor a floating course for the season, modules and an anchoring system from a manufacturer, lifeguards on every session, and liability insurance that covers people on the course. The park sells timed sessions to a capped number of people, so revenue depends on how many sessions you fill each day, while most of the investment comes before the first ticket: modules, anchoring and installation. The business plan and insurance sections below follow that model.',
+      ledeVerify:
+        'Water-space permits, lifeguard requirements and liability insurance for floating parks vary by country and local authority. Confirm before publishing.',
+      formula:
+        'Daily revenue ≈ sessions per day × capacity per session × fill rate × price per person, plus groups, birthday parties and season passes. Installation, removal, anchoring and the season\'s lifeguard rota are fixed whether the sessions fill or not.',
+      drivers: [
+        'Fill rate on weekdays: weekends sell out, and the season is made or lost on the weekday sessions.',
+        'Capacity per session: set by the course and by how many lifeguards are on the water, not by demand.',
+        'Session length: shorter sessions mean more turns per day but more changeover time.',
+        'Groups: schools, summer camps and parties fill weekday mornings at a fixed price.',
+        'Water temperature and weather: they set the opening and closing dates and close sessions on bad days.',
+        'Wear and repairs: punctures and UV damage take modules out of the course mid-season.',
+      ],
+      startupCosts: [
+        'Inflatable modules for the course layout, from a manufacturer with installation guidance.',
+        'Anchoring and mooring system for the site\'s depth and bottom.',
+        'Installation and removal each season, and winter storage for the modules.',
+        'Blowers or compressors and repair kits.',
+        'Life jackets in every size, rescue boards and first aid.',
+        'Lifeguards: certification, uniforms and a full-season rota.',
+        'Water concession and permits, and insurance.',
+        'Booth, lockers and a booking and waiver system with guardian consent for minors.',
+      ],
+      steps: [
+        'Find the water and get the concession or permit to anchor there for the season.',
+        'Choose the manufacturer and layout, and take their capacity, depth and age guidance as your limits.',
+        'Plan lifeguard staffing per session before you set session sizes.',
+        'Get liability insurance for participants on the course before installation.',
+        'Install and anchor following the manufacturer\'s instructions, and keep a daily inspection log.',
+        'Set the session grid and capacity, and sell groups and parties for weekday mornings.',
+        'Have every participant sign a waiver, with a guardian signing for each minor, before they reach the booth.',
+      ],
+      permits: {
+        text: 'A floating park usually needs permission to occupy the water for the season, has to meet the safety standards that apply to floating inflatable play equipment where you operate, and must be staffed by qualified lifeguards. Each of these comes from a different authority; confirm all of them before you order modules.',
+        verify: 'Water-space concessions, applicable safety standards for floating inflatables (e.g. EN 15649 in Europe, ASTM F2374 for inflatable amusement devices in the US), lifeguard qualifications and ratios vary by country and authority. Confirm.',
+      },
+      dato: {
+        h: 'Our data',
+        blocks: [
+          {
+            type: 'pending',
+            text: 'Own data for floating parks: e.g. share of participants arriving with the waiver already signed, or weekday vs weekend fill rate, from a Solnow inflatable park operator. We have no inflatable park client with publishable data; do not reuse other activities\' figures.',
+          },
+        ],
+      },
+      benchmark:
+        'Portfolio benchmark for the plan: average fill rate per session on weekdays vs weekends across Solnow inflatable park operators. Pull from the production database only with explicit approval; do not estimate.',
+      planSections: [
+        'Course and capacity: modules, layout and the capacity per session the manufacturer and your lifeguards allow.',
+        'Session grid: sessions per day, length and changeover time.',
+        'Fill-rate forecast: weekdays and weekends, month by month.',
+        'Season cost of installing, removing and storing the course.',
+        'Lifeguard rota: cost per session and for the season.',
+        'Group sales: schools, camps and parties, with their prices.',
+      ],
+      insuranceSection: {
+        intro:
+          'For a floating park, the cover that matters most is liability for participants on the course; equipment cover for the modules is the second line. Insurers will want to see how the course is installed, inspected and supervised.',
+        covers: [
+          'Public or general liability for participants and visitors.',
+          'Equipment cover for modules and anchoring against storms, punctures and vandalism.',
+          'Employer\'s liability or workers\' compensation for lifeguards and staff.',
+          'Business interruption for closures caused by damage to the course.',
+        ],
+        coversVerify: 'Names, scope and availability of each cover depend on the jurisdiction and the insurer. Confirm with a broker.',
+        insurerAsks: [
+          'The manufacturer, the installation and who certified the anchoring.',
+          'The daily inspection log: inflation, anchors, seams.',
+          'Lifeguard qualifications and how many are on the water per session.',
+          'Minimum age and height, mandatory life jackets, and the safety briefing before each session.',
+          'Signed waivers for every participant, with guardian consent for minors.',
+        ],
+      },
+      faq: [
+        {
+          q: 'How many people can be on the course at once?',
+          a: 'The manufacturer\'s capacity for your layout and the number of lifeguards on the water set the limit. Use the lower of the two for every session.',
+          verify: 'Capacity and lifeguard ratio rules for floating parks by jurisdiction. Confirm.',
+        },
+        {
+          q: 'Can young children use an inflatable water park?',
+          a: 'Usually with a minimum age or height and a life jacket, as the manufacturer and local rules set. Put the rule on the booking page and the waiver so parents know before they arrive.',
+          verify: 'Minimum age/height rules for floating inflatable parks. Confirm.',
+        },
+        {
+          q: 'Is an inflatable water park profitable?',
+          a: 'It depends on filling weekday sessions across a season long enough to pay back the modules, installation and lifeguards. The template lets you test the session grid and fill rate with your own numbers.',
+        },
+      ],
+    },
+    related: [
+      { label: 'Digitize the front desk', slug: 'digitalizar-mostrador-alquiler-motos-de-agua' },
+      { label: 'How to start a paddle board rental business', slug: 'how-to-start-a-paddle-board-rental-business' },
+      { label: 'Best watersports booking software compared', slug: 'mejores-software-reservas-actividades-acuaticas' },
     ],
   },
 };

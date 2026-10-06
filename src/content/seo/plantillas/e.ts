@@ -16,6 +16,8 @@ import type { Actividad } from '@/content/seo/actividades';
 const UPDATED = 'Updated · October 2026';
 
 const businessSlug = (a: Actividad) => a.business.replace(/ /g, '-');
+/** «a jet ski rental» / «an inflatable water park». */
+const withArticle = (a: Actividad) => `${a.article ?? 'a'} ${a.business}`;
 
 /** Ficheros que genera `scripts/seo/generate-downloads.mjs` (mismos nombres). */
 export const planDownloadHref = (a: Actividad) => `/assets/seo/${businessSlug(a)}-business-plan-template.pdf`;
@@ -30,6 +32,7 @@ export function plantillaPlan(a: Actividad): GuideContent {
       eyebrow: 'RESOURCES · BUSINESS PLAN',
       h1: p.h1,
       lede: p.lede,
+      verify: p.ledeVerify,
       updated: UPDATED,
       readingTime: '8 min read',
     },
@@ -41,7 +44,7 @@ export function plantillaPlan(a: Actividad): GuideContent {
     },
     sections: [
       {
-        h: `Is a ${a.business} business profitable?`,
+        h: `Is ${withArticle(a)} business profitable?`,
         blocks: [
           { type: 'p', text: p.formula },
           { type: 'list', items: p.drivers },
@@ -56,9 +59,35 @@ export function plantillaPlan(a: Actividad): GuideContent {
         ],
       },
       {
-        h: `How to start a ${a.business} business, step by step`,
+        h: `How to start ${withArticle(a)} business, step by step`,
         blocks: [{ type: 'steps', items: p.steps }],
       },
+      // Secciones propias para las consultas «business plan» e «insurance»
+      // que no tienen página aparte (solo si la actividad las trae).
+      ...(p.planSections
+        ? [
+            {
+              h: `What goes in ${withArticle(a)} business plan`,
+              blocks: [
+                { type: 'p' as const, text: `The template has one section for each of these, written for ${a.units}; fill them in with your own quotes.` },
+                { type: 'list' as const, items: p.planSections },
+              ],
+            },
+          ]
+        : []),
+      ...(p.insuranceSection
+        ? [
+            {
+              h: `Insurance for ${withArticle(a)} business`,
+              blocks: [
+                { type: 'p' as const, text: p.insuranceSection.intro, verify: p.insuranceSection.coversVerify },
+                { type: 'list' as const, items: p.insuranceSection.covers, verify: p.insuranceSection.coversVerify },
+                { type: 'p' as const, text: 'What the insurer will ask about your operation:' },
+                { type: 'list' as const, items: p.insuranceSection.insurerAsks },
+              ],
+            },
+          ]
+        : []),
       {
         h: 'Permits, licences and insurance',
         blocks: [{ type: 'callout', tone: 'warn', verify: p.permits.verify, text: p.permits.text }],
@@ -142,7 +171,7 @@ export function plantillaSeguro(a: Actividad): GuideContent {
   };
 }
 
-export const planSlug = (a: Actividad) => `how-to-start-a-${businessSlug(a)}-business`;
+export const planSlug = (a: Actividad) => `how-to-start-${a.article ?? 'a'}-${businessSlug(a)}-business`;
 export const insuranceSlug = (a: Actividad) => `${businessSlug(a)}-insurance`;
 
 function capitalize(s: string) {
