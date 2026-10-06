@@ -1,7 +1,8 @@
 // Genera los descargables de las páginas programáticas (matriz E).
 // Uso: node --experimental-strip-types scripts/seo/generate-downloads.mjs [actividad …]
 //   Sin argumentos genera todos; con ids (`parasailing paddle-surf`) solo esos,
-//   para no reescribir PDFs ya publicados.
+//   y con `actividad:documento` (`kayak:contrato`) solo ese documento, para no
+//   reescribir PDFs ya publicados. Documentos: plan, seguro, contrato, checklist.
 //
 // Lee las listas por actividad (costes, coberturas, preguntas del seguro) de
 // src/content/seo/actividades.ts, la misma fuente que pinta la página, para que
@@ -157,6 +158,29 @@ function render(file, { sub, title, intro, draft, sections, footer }) {
       for (const r of rows) drawRow([r, ...columns.slice(1).map(() => '')], false);
       doc.moveDown(0.3);
     }
+    if (s.clauses) {
+      for (const [h, text] of s.clauses) {
+        room(50);
+        doc.fillColor(INK).font('Helvetica-Bold').fontSize(10).text(h, X);
+        doc.fillColor('#1f4d6b').font('Helvetica').fontSize(9.5).text(text, { align: 'justify', lineGap: 1.5 });
+        doc.moveDown(0.5);
+      }
+    }
+    if (s.signers) {
+      room(90);
+      doc.moveDown(0.2);
+      doc.fillColor(MUTED).font('Helvetica').fontSize(9).text('Place and date: ______________________________', X);
+      doc.moveDown(2);
+      const colW = (W - 40) / 3;
+      const y = doc.y;
+      s.signers.forEach((label, i) => {
+        const x = X + i * (colW + 20);
+        doc.moveTo(x, y).lineTo(x + colW, y).strokeColor(LINE).lineWidth(0.8).stroke();
+        doc.fillColor(MUTED).font('Helvetica').fontSize(8).text(label, x, y + 5, { width: colW });
+      });
+      doc.x = X;
+      doc.y = y + 30;
+    }
     if (s.formula) {
       room(30);
       doc.moveDown(0.3);
@@ -176,10 +200,10 @@ function render(file, { sub, title, intro, draft, sections, footer }) {
 const DRAFT_TEXT = 'DRAFT · PENDING REVIEW. The covers listed depend on the country and the insurer and have not been verified by a person. Do not publish until this notice is removed.';
 
 const only = process.argv.slice(2);
+const want = (a, docName) => !only.length || only.includes(a.id) || only.includes(`${a.id}:${docName}`);
 for (const a of Object.values(ACTIVIDADES)) {
-  if (only.length && !only.includes(a.id)) continue;
   const p = a.plan;
-  render(`${slug(a)}-business-plan-template.pdf`, {
+  if (want(a, 'plan')) render(`${slug(a)}-business-plan-template.pdf`, {
     sub: `${cap(a.business)} business plan template`,
     title: `${a.business.toUpperCase()} BUSINESS PLAN`,
     intro: pdfText(`Fill in every line with your own quotes and numbers. ${p.formula}`),
@@ -197,7 +221,7 @@ for (const a of Object.values(ACTIVIDADES)) {
     footer: 'Template provided by Solnow for planning only; it is not financial, legal or insurance advice. Run bookings, signed agreements and check-in from day one with Solnow: solnow.io',
   });
 
-  if (a.insurance) {
+  if (a.insurance && want(a, 'seguro')) {
     const s = a.insurance;
     render(`${slug(a)}-insurance-broker-checklist.pdf`, {
       sub: `${cap(a.business)} insurance: broker checklist`,
@@ -213,4 +237,42 @@ for (const a of Object.values(ACTIVIDADES)) {
       footer: 'Checklist provided by Solnow for information only; it is not insurance or legal advice. Cover and requirements depend on where you operate and on each insurer. Store every signed agreement and waiver with its booking with Solnow: solnow.io',
     });
   }
+  const unit = a.unit.replace(/ /g, '-');
+
+  if (a.contrato && want(a, 'contrato')) {
+    const c = a.contrato;
+    render(`${unit}-rental-agreement-template.pdf`, {
+      sub: `${cap(a.unit)} rental agreement template`,
+      title: `${a.unit.toUpperCase()} RENTAL AGREEMENT`,
+      draft: 'DRAFT · PENDING LEGAL REVIEW. The release and declaration clauses depend on the law where you operate and have not been reviewed by a person. Do not use with customers until this notice is removed.',
+      intro: 'Fill in the details for each rental. Every adult paddler signs, and a parent or legal guardian signs for each minor.',
+      sections: [
+        { head: 'Rental details', fields: c.fields },
+        { head: 'Terms', clauses: c.clauses },
+        { head: 'Minors (complete only if applicable)', fields: [['Minor', 'Full name · date of birth'], ['Parent or legal guardian', 'Full name · ID · relationship to the minor']] },
+        { head: 'Signatures', signers: ['The rental company', 'The renter', 'Parent or guardian (if applicable)'] },
+      ],
+      footer: 'Template provided by Solnow for guidance only; it is not legal advice. Have every paddler sign on their phone and file the agreement with the booking with Solnow: solnow.io',
+    });
+  }
+
+  if (a.checklist && want(a, 'checklist')) {
+    const k = a.checklist;
+    const box = (items, hint) => items.map((i) => [`[  ] ${i}`, hint]);
+    render(`${unit}-safety-checklist.pdf`, {
+      sub: `${cap(a.unit)} safety checklist for rental operators`,
+      title: `${a.unit.toUpperCase()} SAFETY CHECKLIST · ONE SHEET PER RIDE`,
+      intro: 'Run the same checks on every ride and keep the sheet with the booking. Requirements on age, licences and on-board equipment depend on where you operate: confirm them locally and add them below.',
+      sections: [
+        { head: 'Ride', fields: [['Craft no. · booking ref.', ''], ['Driver and passengers', 'Names'], ['Launch time · agreed return time', '']] },
+        { head: '1 · Before launch: the craft', fields: box(k.craft, '') },
+        { head: '2 · The renter', fields: box(k.renter, '') },
+        { head: '3 · The briefing', fields: box(k.briefing, '') },
+        { head: '4 · On return', fields: box(k.onReturn, '') },
+        { head: 'Checked by', signers: ['Staff member', 'Renter (briefing received)', 'Return checked by'] },
+      ],
+      footer: 'Checklist provided by Solnow for guidance only. Run check-in, signed agreements and boarding scans from one system with Solnow: solnow.io',
+    });
+  }
+
 }

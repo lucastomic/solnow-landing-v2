@@ -70,6 +70,37 @@ export interface Actividad {
     faq: { q: string; a: string; verify?: string }[];
   };
 
+  /** Matriz C · contrato de alquiler: página + PDF (mismos campos y cláusulas). */
+  contrato?: {
+    title: string;
+    description: string;
+    h1: string;
+    lede: string;
+    includes: string[];
+    forgotten: string[];
+    release: { text: string; verify: string };
+    steps: string[];
+    /** Campos y cláusulas del PDF. */
+    fields: [string, string][];
+    clauses: [string, string][];
+    faq: { q: string; a: string; verify?: string }[];
+  };
+
+  /** Matriz C · checklist de seguridad: página + PDF (mismas listas). */
+  checklist?: {
+    title: string;
+    description: string;
+    h1: string;
+    lede: string;
+    craft: string[];
+    renter: string[];
+    renterVerify: string;
+    briefing: string[];
+    onReturn: string[];
+    dato: GuideBlock[];
+    faq: { q: string; a: string; verify?: string }[];
+  };
+
   /** Guías existentes (slug físico) o páginas programáticas (slug inglés). */
   related: { label: string; slug: string }[];
 }
@@ -212,6 +243,67 @@ export const ACTIVIDADES: Record<ActividadId, Actividad> = {
         },
       ],
     },
+    checklist: {
+      title: 'Jet Ski Safety Checklist for Rental Operators (Free PDF)',
+      description:
+        'The safety checklist a jet ski rental runs on every ride: the craft before launch, the renter, the briefing and the return. Free printable PDF for operators.',
+      h1: 'Jet ski safety checklist for rental operators',
+      lede:
+        'A jet ski safety checklist for a rental business has four parts: the craft before it launches (hull, fuel, engine, kill-switch lanyard), the renter (age and any licence your location requires, life jacket fit), the briefing (controls, riding zone, return signal) and the return (time, damage, fuel). Run it the same way on every ride and keep a record of it, because that record is what shows how you operate when something goes wrong. Download the printable checklist below.',
+      craft: [
+        'Hull: no cracks or new damage since the last ride; drain plugs in.',
+        'Engine starts and idles normally; no fuel smell in the engine compartment.',
+        'Fuel enough for the slot plus a reserve.',
+        'Kill-switch lanyard present and working: the engine stops when it is pulled.',
+        'Throttle and handlebar move freely and return to neutral.',
+        'Required equipment on board for your location, such as a whistle or a fire extinguisher.',
+      ],
+      renter: [
+        'Age and any licence or boater card required where you operate, checked against an ID.',
+        'Rental agreement and waiver signed, by the driver and by every passenger.',
+        'Life jacket of the right size, fastened and adjusted, for everyone on board.',
+        'Not under the influence of alcohol or drugs.',
+        'Number of people on the craft within its rated capacity.',
+      ],
+      renterVerify: 'Minimum age, licence/boater-education rules and required on-board equipment for jet ski rental vary by country and state. Confirm with the local authority.',
+      briefing: [
+        'Controls: throttle, how to stop the engine, and that a jet ski needs throttle to steer.',
+        'Lanyard attached to the driver\u2019s wrist or life jacket at all times.',
+        'The riding zone, its limits, and the distance to keep from swimmers, other boats and the shore.',
+        'How to reboard after a fall, and what to do if the engine stops.',
+        'The return time and the signal staff use to call riders back.',
+      ],
+      onReturn: [
+        'Return time recorded; late returns noted under the rental agreement.',
+        'Craft checked for new damage, with photos if there is any.',
+        'Fuel level recorded and the craft refuelled for the next slot.',
+        'Any incident during the ride written down while the renter is still there.',
+      ],
+      dato: [
+        {
+          type: 'stats',
+          items: [
+            { value: '7,500+', label: 'passengers boarded with a QR scan in one month, each check-in recorded against its booking.' },
+            { value: '36%', label: 'of customers reach the pontoon with the agreement already signed from home.' },
+          ],
+        },
+        { type: 'p', text: `${MARINAJETS}. Production data, August 2026. When the renter checks are done before the customer reaches the pontoon, the briefing is the only thing left at the dock.` },
+      ],
+      faq: [
+        {
+          q: 'Who should fill in the checklist?',
+          a: 'The person who launches the craft. The point is that the same checks happen on every ride, whoever is on shift, and that each one leaves a record.',
+        },
+        {
+          q: 'Paper or digital?',
+          a: 'Either works if it is done every time. Digital makes the record searchable by craft, renter and date; paper is fine as long as it is filed with the booking.',
+        },
+        {
+          q: 'Does the checklist replace the rental agreement?',
+          a: 'No. The agreement sets the terms of the rental; the checklist records that the craft and the renter were checked before launch. You need both.',
+        },
+      ],
+    },
     related: [
       { label: 'Jet ski rental software: the 2026 checklist', slug: 'software-alquiler-motos-de-agua' },
       { label: 'Jet ski rental contract template', slug: 'contrato-alquiler-motos-de-agua' },
@@ -342,6 +434,75 @@ export const ACTIVIDADES: Record<ActividadId, Actividad> = {
           q: 'Does a signed waiver replace insurance?',
           a: 'No. A waiver records that the participant was informed of the risks and accepted the rules; it does not pay for an injury.',
           verify: 'Relationship between waivers and liability/insurance by jurisdiction. Confirm with a legal advisor.',
+        },
+      ],
+    },
+    contrato: {
+      title: 'Kayak Rental Agreement Template (Free PDF): Clauses Every Operator Needs',
+      description:
+        'Free kayak and paddle board rental agreement template: renter details, equipment, deposit, paddling zone, return time, declarations, release and signatures for every paddler.',
+      h1: 'Kayak rental agreement template',
+      lede:
+        'A kayak rental agreement identifies the renter and the equipment, sets the rental period, price and deposit, records the paddling zone and the return time, collects the renter\u2019s declarations (can swim, will wear a life jacket) and an acknowledgement of risk, and is signed by every paddler, or by a guardian for minors. Below is a free PDF template with those clauses, built for kayak and paddle board rentals, and how to get it signed before customers reach the beach.',
+      includes: [
+        'Renter: name, ID, phone and an emergency contact.',
+        'Equipment: each kayak or board by number, with paddles, life jackets and extras.',
+        'Period: start time and agreed return time.',
+        'Price, payment and deposit, and what the deposit covers.',
+        'Paddling zone and the conditions under which staff call everyone back.',
+        'Renter declarations: can swim, fit to paddle, no alcohol, will wear the life jacket.',
+        'Acknowledgement of risk and release, within what the law allows.',
+        'Signature of every adult paddler, and of a guardian for each minor.',
+      ],
+      forgotten: [
+        'Doubles: both paddlers sign, not just the one who paid.',
+        'Lost or damaged paddles, leashes and dry bags: what each one costs.',
+        'Wind and swell: staff can end the rental early, and what happens to the price.',
+        'Late return: how it is charged and how you check that everyone came back.',
+      ],
+      release: {
+        text: 'A release clause records that the renter accepted the inherent risks of paddling. How far it protects you depends on where you operate: some places uphold clear recreational releases, others limit them, and in many jurisdictions no clause excludes liability for your own negligence. Keep the release, but do not rely on it instead of insurance and good operating practice.',
+        verify: 'Enforceability of liability releases in rental agreements varies by US state and is limited under EU/UK consumer law. Confirm with a legal advisor for each market.',
+      },
+      steps: [
+        'Add your company details, prices and deposit once.',
+        'Mark the paddling zone and the return time on every agreement.',
+        'Record each unit by number, with the paddles and life jackets that go with it.',
+        'Have every adult paddler sign, and a guardian sign for each minor.',
+        'File the agreement with the booking, and check the equipment back in against it.',
+      ],
+      fields: [
+        ['Rental company', 'Legal name · address · phone'],
+        ['Renter', 'Full name · ID/Passport · phone · emergency contact'],
+        ['Equipment', 'Kayak / board no. · type (single, double, SUP) · paddles · life jackets · extras'],
+        ['Period', 'Date · start time · agreed return time'],
+        ['Price and deposit', 'Amount · payment method · deposit held'],
+        ['Paddling zone', 'Area and limits shown to the renter'],
+      ],
+      clauses: [
+        ['1. Rental', 'The rental company provides the equipment listed above for the agreed period. The renter returns it at the agreed time, at the same place and in the same condition.'],
+        ['2. Price and deposit', 'The renter pays the agreed price. The deposit covers loss of or damage to the equipment and late return, and is refunded on return less any amounts due.'],
+        ['3. Paddling zone and conditions', 'The renter stays within the zone shown and returns immediately if called back by staff or if wind or sea conditions change. Staff may end the rental early for safety reasons.'],
+        ['4. Renter declarations', 'The renter declares that they can swim, are fit to paddle, are not under the influence of alcohol or drugs, will wear the life jacket provided at all times and have received the safety briefing.'],
+        ['5. Equipment', 'The renter is responsible for the equipment during the rental and pays for loss or damage caused by misuse, according to the price list displayed.'],
+        ['6. Acknowledgement of risk', 'The renter acknowledges the inherent risks of paddling, including capsizing, cold water, wind and currents, and, to the extent permitted by applicable law, accepts them. Nothing in this agreement limits liability that cannot be excluded by law.'],
+        ['7. Minors', 'A minor may only paddle with the written consent of a parent or legal guardian, who signs this agreement on their behalf.'],
+        ['8. Data protection', 'Personal data is processed to manage the rental and meet legal obligations, in accordance with applicable data protection law.'],
+      ],
+      faq: [
+        {
+          q: 'Does every paddler need to sign?',
+          a: 'Every adult on the water should sign their own agreement or be listed and sign on the same one; for a double kayak that means both paddlers. A guardian signs for each minor.',
+        },
+        {
+          q: 'Is a release in the agreement enough to protect me?',
+          a: 'No. It records that the renter accepted the risks, but how far it holds depends on where you operate, and it will not cover your own negligence. Insurance and a consistent safety routine do that work.',
+          verify: 'Scope of liability releases by jurisdiction. Confirm with a legal advisor.',
+        },
+        {
+          q: 'Can customers sign it on their phone?',
+          a: 'Yes. Electronic signatures are accepted for this kind of agreement in many places; with Solnow customers sign when they book or from a QR code at the stand, and the agreement is filed with the booking.',
+          verify: 'Validity of electronic signatures for rental agreements and waivers by jurisdiction (e.g. ESIGN/UETA in the US, eIDAS in the EU). Confirm.',
         },
       ],
     },

@@ -16,6 +16,7 @@ import type { Locale } from '@/i18n/config';
 import type { ProductKey } from '@/content/products';
 import { ACTIVIDADES, type ActividadId } from '@/content/seo/actividades';
 import { insuranceSlug, planSlug, plantillaPlan, plantillaSeguro } from '@/content/seo/plantillas/e';
+import { checklistSlug, contratoSlug, plantillaChecklist, plantillaContrato } from '@/content/seo/plantillas/c';
 
 export interface PaginaSeo {
   slug: string;
@@ -71,6 +72,35 @@ export const PAGINAS: PaginaSeo[] = [
   plan('parasailing', 'tpv', ['how to start a parasailing business', 'parasailing business plan', 'parasailing business insurance'], 2),
   plan('paddle-surf', 'tpv', ['how to start a paddle board rental business', 'paddle board rental business plan', 'paddle board rental insurance'], 2),
   plan('hinchables', 'tpv', ['inflatable water park business plan', 'how to start an inflatable water park business', 'inflatable water park insurance'], 2),
+  // Lote 3, matriz C: documentos del operador con su descargable.
+  {
+    slug: contratoSlug(ACTIVIDADES.kayak),
+    locale: 'en',
+    matriz: 'C',
+    actividad: 'kayak',
+    lote: 3,
+    consultas: ['kayak rental agreement template'],
+    area: 'contratos',
+    build: () =>
+      plantillaContrato(ACTIVIDADES.kayak, [
+        { label: 'Watersports liability waiver template', slug: 'plantilla-exencion-responsabilidad-actividades-acuaticas' },
+        { label: 'Kayak rental insurance for operators', slug: insuranceSlug(ACTIVIDADES.kayak) },
+      ]),
+  },
+  {
+    slug: checklistSlug(ACTIVIDADES['jet-ski']),
+    locale: 'en',
+    matriz: 'C',
+    actividad: 'jet-ski',
+    lote: 3,
+    consultas: ['jet ski safety checklist'],
+    area: 'operacion',
+    build: () =>
+      plantillaChecklist(ACTIVIDADES['jet-ski'], [
+        { label: 'Jet ski rental insurance for operators', slug: insuranceSlug(ACTIVIDADES['jet-ski']) },
+        { label: 'How to start a jet ski rental business', slug: planSlug(ACTIVIDADES['jet-ski']) },
+      ]),
+  },
 ];
 
 export function paginaSeo(locale: string, slug: string): PaginaSeo | undefined {
