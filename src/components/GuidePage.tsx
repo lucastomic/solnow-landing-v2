@@ -47,16 +47,24 @@ const ARROW = (
 
 /**
  * Marcadores editoriales: lo que falta (dato propio) y lo que tiene que revisar
- * una persona (seguros, licencias, normativa, fiscalidad). Van a la vista y en
- * castellano en las dos versiones, porque los lee el equipo, no el visitante:
- * la página no está lista para publicarse mientras quede uno.
+ * una persona (seguros, licencias, normativa, fiscalidad). Van en castellano en
+ * las dos versiones porque los lee el equipo, no el visitante.
+ *
+ * Solo se pintan fuera de producción (local y previews de Vercel), que es donde
+ * se revisa. En solnow.io no aparecen: un `pending` no se pinta y la sección
+ * que se queda vacía desaparece, y un bloque con `verify` sale sin el aviso.
+ * Que no se vea no significa que esté revisado: el aviso sigue en los datos
+ * hasta que alguien lo quite.
  */
+const SHOW_MARKERS = process.env.VERCEL_ENV !== 'production';
+
 const MARKER = {
   pending: 'PENDIENTE · DATO PROPIO',
   verify: 'VERIFICAR',
 };
 
 function Marker({ label, text }: { label: string; text: string }) {
+  if (!SHOW_MARKERS) return null;
   return (
     <span
       className="mono"
@@ -79,7 +87,7 @@ function Marker({ label, text }: { label: string; text: string }) {
 }
 
 function Block({ block }: { block: GuideBlock }) {
-  if (!block.verify) return <BlockBody block={block} />;
+  if (!block.verify || !SHOW_MARKERS) return <BlockBody block={block} />;
   return (
     <div style={{ outline: '1px dashed var(--warn)', outlineOffset: 6, borderRadius: 4, margin: '0 0 22px' }}>
       <Marker label={MARKER.verify} text={block.verify} />
@@ -90,6 +98,7 @@ function Block({ block }: { block: GuideBlock }) {
 
 function BlockBody({ block }: { block: GuideBlock }) {
   if (block.type === 'pending') {
+    if (!SHOW_MARKERS) return null;
     return (
       <div
         style={{
@@ -488,7 +497,14 @@ export function GuidePage({
   locale: Locale;
   labels: GuideLabels;
 }) {
-  const { hero, download, sections, faq, related, cta, disclaimer } = content;
+  const { hero, download, faq, related, cta, disclaimer } = content;
+  // En producción, una sección que solo era un hueco pendiente no se pinta (ni
+  // sale en el índice): un título sin nada debajo es peor que no tenerlo.
+  const sections = SHOW_MARKERS
+    ? content.sections
+    : content.sections
+        .map((s) => ({ ...s, blocks: s.blocks.filter((b) => b.type !== 'pending') }))
+        .filter((s) => s.blocks.length > 0);
   // Una descarga apunta al fichero tal cual; el resto va a una página del locale.
   const ctaHref = cta.download && cta.href ? cta.href : cta.href ? `/${locale}/${cta.href}` : `/${locale}#cta`;
   const ctaDownload = cta.download ? true : undefined;
@@ -593,7 +609,7 @@ export function GuidePage({
               <h1 className="h-display" style={{ fontSize: 'clamp(32px, 4.6vw, 54px)', margin: '20px 0 20px' }}>
                 {hero.h1}
               </h1>
-              {hero.verify && (
+              {hero.verify && SHOW_MARKERS && (
                 <div style={{ maxWidth: '60ch' }}>
                   <Marker label={MARKER.verify} text={hero.verify} />
                 </div>
