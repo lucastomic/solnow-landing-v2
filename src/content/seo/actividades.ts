@@ -43,6 +43,20 @@ export interface Actividad {
     dato: GuideSection;
     /** La cifra de cartera que falta para el plan (siempre pendiente hasta tenerla). */
     benchmark: string;
+    /**
+     * Cifras con fuente (base de datos de Solnow, fabricantes, tarifas
+     * oficiales). Con ellas la página ya no deja el hueco de `benchmark`.
+     * Toda celda de precio lleva su fuente al lado: si no hay fuente, el texto
+     * lo dice en vez de poner una cifra.
+     */
+    numbers?: {
+      data: GuideBlock[];
+      prices?: GuideBlock;
+      costs: GuideBlock;
+      costsNote: string;
+      example?: GuideBlock;
+      exampleResult?: string;
+    };
     faq: { q: string; a: string; verify?: string }[];
     /**
      * Sección propia «qué lleva el plan de negocio», para las páginas que
@@ -174,6 +188,137 @@ export const ACTIVIDADES: Record<ActividadId, Actividad> = {
       },
       benchmark:
         'Portfolio benchmark for the plan: average utilization per jet ski in peak weeks and average price per 30 minutes across Solnow operators. Pull from the production database only with explicit approval; do not estimate.',
+      numbers: {
+        "data": [
+          {
+            "type": "stats",
+            "items": [
+              {
+                "value": "€82",
+                "label": "median price of a 30-minute jet ski rental, per craft (middle half of rides: €60–85)."
+              },
+              {
+                "value": "€130",
+                "label": "median price of a 1-hour rental (middle half: €112–140); 2 hours, €190."
+              },
+              {
+                "value": "79%",
+                "label": "of the season’s rides happen in July and August; June to September, 97%."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "text": "Source: over 5,000 paid jet ski rentals at Grupo Marina Jets (8 bases in Spain) in the 2026 season, from Solnow. About three quarters were registered by staff at the desk or the dock (walk-ins and phone sales), 16% came through the online booking engine and 8% through WhatsApp."
+          }
+        ],
+        "costs": {
+          "type": "table",
+          "columns": [
+            "Price",
+            "Source"
+          ],
+          "rows": [
+            {
+              "label": "Sea-Doo Spark (2-up / 3-up)",
+              "cells": [
+                "from $7,099 / $8,699",
+                "sea-doo.brp.com, 2027 US MSRP"
+              ]
+            },
+            {
+              "label": "Sea-Doo GTI 130",
+              "cells": [
+                "from $12,299",
+                "sea-doo.brp.com, 2027 US MSRP"
+              ]
+            },
+            {
+              "label": "Yamaha JetBlaster / VX",
+              "cells": [
+                "$8,999 / $12,899",
+                "yamahawaverunners.com, US MSRP, Oct 2026"
+              ]
+            },
+            {
+              "label": "Insurance",
+              "cells": [
+                "Quote from a broker",
+                "No credible published premiums found; ask a watersports broker for a quote"
+              ]
+            }
+          ]
+        },
+        "costsNote": "Manufacturer prices exclude freight, preparation and taxes. Ask the dealer about fleet or outfitter programs: BRP publishes one for Sea-Doo, without prices.",
+        "prices": {
+          "type": "table",
+          "columns": [
+            "Price",
+            "Source"
+          ],
+          "rows": [
+            {
+              "label": "30 minutes · Spain",
+              "cells": [
+                "€82 median (€60–85)",
+                "Solnow data · Grupo Marina Jets, 8 bases in Spain, 2026 season"
+              ]
+            },
+            {
+              "label": "1 hour · Spain",
+              "cells": [
+                "€130 median (€112–140)",
+                "Solnow data · Grupo Marina Jets, 8 bases in Spain, 2026 season"
+              ]
+            },
+            {
+              "label": "30 min / 1 hour · Spain, list prices",
+              "cells": [
+                "€90–110 / €130–190",
+                "Solnow · rates set by jet ski operators in Spain (2 for 30 min, 3 for 1 h), 2026"
+              ]
+            },
+            {
+              "label": "30 min / 1 hour · US",
+              "cells": [
+                "$60–90 / $80–150",
+                "getmyboat.com, July 2026 (planning baseline)"
+              ]
+            }
+          ]
+        },
+        "example": {
+          "type": "table",
+          "columns": [
+            "Figure",
+            "Source"
+          ],
+          "rows": [
+            {
+              "label": "Two 30-minute rides in one hour",
+              "cells": [
+                "2 × €82 = €164",
+                "Solnow data · Grupo Marina Jets, 8 bases in Spain, 2026 season"
+              ]
+            },
+            {
+              "label": "One 1-hour ride",
+              "cells": [
+                "€130",
+                "Solnow data · Grupo Marina Jets, 8 bases in Spain, 2026 season"
+              ]
+            },
+            {
+              "label": "Rides to equal the price of a GTI 130 (US)",
+              "cells": [
+                "$12,299 ÷ $60–90 = 137–205 rides of 30 min",
+                "sea-doo.brp.com + getmyboat.com"
+              ]
+            }
+          ]
+        },
+        "exampleResult": "Filled back to back, 30-minute slots bring in about 26% more per craft-hour than 1-hour rides, before the turnaround time between riders. And because almost four fifths of the season falls in July and August, those two months have to pay for most of the year."
+      },
       faq: [
         {
           q: 'Is a jet ski rental business profitable?',
@@ -185,7 +330,7 @@ export const ACTIVIDADES: Record<ActividadId, Actividad> = {
         },
         {
           q: 'How much does it cost to start a jet ski rental business?',
-          a: 'It depends on new or used craft, the site and its fees, and the insurance your location requires. The template lists every line to fill in; we do not publish averages we cannot back with data.',
+          a: 'It depends on new or used craft, the site and its fees, and the insurance your location requires. The startup-costs table above lists the published craft prices we could check; insurance and site fees have to be quoted for your location, and the template has a line for each.',
         },
       ],
     },
@@ -328,7 +473,7 @@ export const ACTIVIDADES: Record<ActividadId, Actividad> = {
       drivers: [
         'Turnover per unit: short slots and a fast check-in matter more than the price per hour.',
         'Fleet mix: groups and families want doubles; a fleet of singles turns away whole groups.',
-        'Guided tours: caves, sunsets or nature routes sell at several times the rental price per person.',
+        'Guided tours: caves, sunsets or nature routes sell per person for about twice what the same hours of rental earn per paddler.',
         'Extras: dry bags, waterproof phone cases, photos and wetsuits add margin with almost no cost.',
         'Weather days: wind closes the beach, so a clear rebooking policy protects the revenue already sold.',
       ],
@@ -369,6 +514,140 @@ export const ACTIVIDADES: Record<ActividadId, Actividad> = {
       },
       benchmark:
         'Portfolio benchmark for the plan: average price per hour and share of guided tours vs free rental across Solnow kayak operators. Pull from the production database only with explicit approval; do not estimate.',
+      numbers: {
+        "data": [
+          {
+            "type": "stats",
+            "items": [
+              {
+                "value": "€25–30",
+                "label": "per hour for a double kayak; €50 for two hours."
+              },
+              {
+                "value": "€45–50",
+                "label": "per person for a 2 to 3-hour guided kayak tour."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "text": "Source: rates set in Solnow by two kayak and paddle board operators in Spain (Costa Blanca and Castellón), 2026 season. A guided tour sells per person for about what a double kayak earns in two hours."
+          }
+        ],
+        "costs": {
+          "type": "table",
+          "columns": [
+            "Price",
+            "Source"
+          ],
+          "rows": [
+            {
+              "label": "Single sit-on-top kayak (Perception)",
+              "cells": [
+                "$559–899",
+                "confluenceoutdoor.com, Oct 2026"
+              ]
+            },
+            {
+              "label": "Tandem sit-on-top kayak (Perception)",
+              "cells": [
+                "$799–1,249",
+                "confluenceoutdoor.com, Oct 2026"
+              ]
+            },
+            {
+              "label": "Tandem sit-on-top (Feelfree Gemini)",
+              "cells": [
+                "$749",
+                "feelfreeus.com, Oct 2026"
+              ]
+            },
+            {
+              "label": "Insurance",
+              "cells": [
+                "Quote from a broker",
+                "No credible published premiums found; ask a watersports broker for a quote"
+              ]
+            }
+          ]
+        },
+        "costsNote": "Manufacturer retail prices; paddles, seats and life jackets are extra.",
+        "prices": {
+          "type": "table",
+          "columns": [
+            "Price",
+            "Source"
+          ],
+          "rows": [
+            {
+              "label": "Double kayak · 1 h · Spain",
+              "cells": [
+                "€25–30",
+                "Solnow · rates of two operators in Spain, 2026"
+              ]
+            },
+            {
+              "label": "Double kayak · 2 h · Spain",
+              "cells": [
+                "€50",
+                "Solnow · one operator on the Costa Blanca, 2026"
+              ]
+            },
+            {
+              "label": "Guided tour · per person · Spain",
+              "cells": [
+                "€45–50",
+                "Solnow · rates of two operators in Spain, 2026"
+              ]
+            },
+            {
+              "label": "Single / double · 1 h · Mallorca",
+              "cells": [
+                "€16 / €27",
+                "barcelo.com listing, one operator, Oct 2026"
+              ]
+            },
+            {
+              "label": "Single / double · 1 h · US",
+              "cells": [
+                "$15–30 / $20–40",
+                "Three operators in FL, VA and MA (published rates, Oct 2026)"
+              ]
+            }
+          ]
+        },
+        "example": {
+          "type": "table",
+          "columns": [
+            "Figure",
+            "Source"
+          ],
+          "rows": [
+            {
+              "label": "Tandem kayak (Perception Rambler 13.5 T)",
+              "cells": [
+                "$799",
+                "confluenceoutdoor.com"
+              ]
+            },
+            {
+              "label": "Double kayak rental, 1 hour (US)",
+              "cells": [
+                "$20–40",
+                "Published rates of three US operators"
+              ]
+            },
+            {
+              "label": "Rental hours to equal its price",
+              "cells": [
+                "$799 ÷ $20–40 = 20–40 hours",
+                "Calculated"
+              ]
+            }
+          ]
+        },
+        "exampleResult": "A double kayak pays for itself in a few busy weekends; the margin then depends on how many hours each unit is out and on how many guided tours you add, not on the hourly price."
+      },
       faq: [
         {
           q: 'Is a kayak rental business profitable?',
@@ -571,6 +850,130 @@ export const ACTIVIDADES: Record<ActividadId, Actividad> = {
       },
       benchmark:
         'Portfolio benchmark for the plan: average days booked per boat in high season and split between half and full days across Solnow charter operators. Pull from the production database only with explicit approval; do not estimate.',
+      numbers: {
+        "data": [
+          {
+            "type": "stats",
+            "items": [
+              {
+                "value": "€745",
+                "label": "median price of a half-day charter (3–5 h); middle half €540–875."
+              },
+              {
+                "value": "€1,340",
+                "label": "median price of a full-day charter (6–8 h); middle half €1,000–2,075."
+              },
+              {
+                "value": "86%",
+                "label": "of those charters go out with a skipper."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "text": "Source: 176 charter prices quoted through Solnow by 9 operators in Spain in 2026. 95% of the trips fall between May and September, with June the busiest month."
+          }
+        ],
+        "costs": {
+          "type": "table",
+          "columns": [
+            "Price",
+            "Source"
+          ],
+          "rows": [
+            {
+              "label": "Berth, Port de Pollença (Mallorca) · low season, Oct–May",
+              "cells": [
+                "€0.485 per m² per day",
+                "Official maximum tariff, BOIB, January 2025"
+              ]
+            },
+            {
+              "label": "Berth, Port de Pollença · high season, Jun–Sep",
+              "cells": [
+                "€1.298 per m² per day",
+                "Official maximum tariff, BOIB, January 2025"
+              ]
+            },
+            {
+              "label": "Skipper day rate",
+              "cells": [
+                "No official source",
+                "Only single-operator listings found; ask local skippers"
+              ]
+            },
+            {
+              "label": "Insurance",
+              "cells": [
+                "Quote from a broker",
+                "No credible published premiums found; ask a watersports broker for a quote"
+              ]
+            }
+          ]
+        },
+        "costsNote": "Berth tariffs vary by marina; most Balearic ports publish theirs in the official gazette (BOIB).",
+        "prices": {
+          "type": "table",
+          "columns": [
+            "Price",
+            "Source"
+          ],
+          "rows": [
+            {
+              "label": "Half day (3–5 h) · Spain",
+              "cells": [
+                "€745 median (€540–875)",
+                "Solnow · 51 quotes, 7 operators in Spain, 2026"
+              ]
+            },
+            {
+              "label": "Full day (6–8 h) · Spain",
+              "cells": [
+                "€1,340 median (€1,000–2,075)",
+                "Solnow · 112 quotes, 5 operators in Spain, 2026"
+              ]
+            }
+          ]
+        },
+        "example": {
+          "type": "table",
+          "columns": [
+            "Figure",
+            "Source"
+          ],
+          "rows": [
+            {
+              "label": "Berth of 48 m² (e.g. 12 × 4 m), Jun–Sep (122 days)",
+              "cells": [
+                "48 × €1.298 × 122 = €7,601",
+                "Official tariff, Port de Pollença"
+              ]
+            },
+            {
+              "label": "Same berth, Oct–May (243 days)",
+              "cells": [
+                "48 × €0.485 × 243 = €5,657",
+                "Official tariff, Port de Pollença"
+              ]
+            },
+            {
+              "label": "Berth for a year",
+              "cells": [
+                "€13,258",
+                "Calculated"
+              ]
+            },
+            {
+              "label": "Full-day charters to cover it",
+              "cells": [
+                "€13,258 ÷ €1,340 = about 10",
+                "Solnow median, Spain 2026"
+              ]
+            }
+          ]
+        },
+        "exampleResult": "At the maximum official tariff, ten median full-day charters pay one boat’s berth for the year; insurance, maintenance, skippers and financing come on top. The berth size is an example: use your own boat’s."
+      },
       faq: [
         {
           q: 'Is a boat charter business profitable?',
@@ -655,6 +1058,137 @@ export const ACTIVIDADES: Record<ActividadId, Actividad> = {
       },
       benchmark:
         'Portfolio benchmark for the plan: average flyers per flight and share of tandem/triple flights across Solnow parasailing operators. Pull from the production database only with explicit approval; do not estimate.',
+      numbers: {
+        "data": [
+          {
+            "type": "stats",
+            "items": [
+              {
+                "value": "€60",
+                "label": "median ticket per parasailing booking (middle half €50–120)."
+              },
+              {
+                "value": "58%",
+                "label": "of bookings sold at the booth on the dock; 18% on the online booking engine."
+              },
+              {
+                "value": "76%",
+                "label": "of the season’s bookings in July and August."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "text": "Source: 1,572 paid parasailing bookings at Grupo Marina Jets (Spain) in the 2026 season, from Solnow. A booking can include more than one flyer."
+          }
+        ],
+        "costs": {
+          "type": "table",
+          "columns": [
+            "Price",
+            "Source"
+          ],
+          "rows": [
+            {
+              "label": "Commercial parasail canopy (35–52 ft)",
+              "cells": [
+                "C$5,785–10,728",
+                "Canadian Aerosports 2024 price list"
+              ]
+            },
+            {
+              "label": "Winch boat, used (2019 OceanPro 35, USCG-certified for 15)",
+              "cells": [
+                "$235,000 asking",
+                "One listing, denisonyachtsales.com, Aug 2026"
+              ]
+            },
+            {
+              "label": "New winch boat",
+              "cells": [
+                "No published price",
+                "Builders quote on request"
+              ]
+            },
+            {
+              "label": "Insurance",
+              "cells": [
+                "Quote from a broker",
+                "No credible published premiums found; ask a watersports broker for a quote"
+              ]
+            }
+          ]
+        },
+        "costsNote": "Harness, bar and towline are priced separately from the canopy.",
+        "prices": {
+          "type": "table",
+          "columns": [
+            "Price",
+            "Source"
+          ],
+          "rows": [
+            {
+              "label": "Per booking · Spain",
+              "cells": [
+                "€60 median (€50–120)",
+                "Solnow data · Grupo Marina Jets, 8 bases in Spain, 2026 season"
+              ]
+            },
+            {
+              "label": "Single / tandem / triple · Benidorm",
+              "cells": [
+                "€80 / €120 / €180",
+                "comunitatvalenciana.com, one operator, Oct 2026"
+              ]
+            },
+            {
+              "label": "Per flyer by height · Clearwater, FL",
+              "cells": [
+                "$91–115",
+                "aaa.com listing, Oct 2026"
+              ]
+            },
+            {
+              "label": "Flyer / observer · Destin, FL",
+              "cells": [
+                "$67.80 / $50.85",
+                "greetwell.com listing, Oct 2026"
+              ]
+            }
+          ]
+        },
+        "example": {
+          "type": "table",
+          "columns": [
+            "Figure",
+            "Source"
+          ],
+          "rows": [
+            {
+              "label": "Used winch boat (one listing)",
+              "cells": [
+                "$235,000",
+                "denisonyachtsales.com"
+              ]
+            },
+            {
+              "label": "Price per flyer, Clearwater",
+              "cells": [
+                "$91–115",
+                "aaa.com"
+              ]
+            },
+            {
+              "label": "Flyers to equal the boat’s price",
+              "cells": [
+                "$235,000 ÷ $91–115 = about 2,000–2,600",
+                "Calculated"
+              ]
+            }
+          ]
+        },
+        "exampleResult": "The boat is the investment that decides the plan: it takes a couple of thousand flyers just to equal the price of one used boat, before captain, fuel, insurance and canopy replacement. That is why rotation time and tandem or triple flights matter so much."
+      },
       planSections: [
         'Flight rotation and capacity: rotation time per boat, flights per hour, flyers per flight.',
         'Price tiers: single, tandem, triple, observer, photo or video package.',
@@ -719,7 +1253,7 @@ export const ACTIVIDADES: Record<ActividadId, Actividad> = {
       formula:
         'Revenue ≈ (boards × rentable hours × utilization × price per hour) + lessons and classes (places × price) + guided tours, over the days the wind allows. A board is cheap to buy; the stand, staff, storage and the days you cannot open are what decide the year.',
       drivers: [
-        'Lessons and classes: a beginner lesson or a SUP yoga session sells more per hour of board time than a rental.',
+        'Lessons and classes: a lesson sells for about twice an hour\u2019s rental on the same board.',
         'Offshore wind: it is the condition that blows beginners away from shore, so it closes the stand and caps the season.',
         'Board choice: inflatables travel and store easily and survive drops; hard boards glide better but ding and need racks.',
         'Sizes: a light renter on a big board or a heavy renter on a small one ends the rental early.',
@@ -760,6 +1294,126 @@ export const ACTIVIDADES: Record<ActividadId, Actividad> = {
       },
       benchmark:
         'Portfolio benchmark for the plan: average price per board-hour and lesson share across Solnow paddle board operators. Pull from the production database only with explicit approval; do not estimate.',
+      numbers: {
+        "data": [
+          {
+            "type": "stats",
+            "items": [
+              {
+                "value": "€10",
+                "label": "for 30 minutes on a paddle board (two operators); €15 for an hour."
+              },
+              {
+                "value": "€30",
+                "label": "for a paddle board lesson."
+              }
+            ]
+          },
+          {
+            "type": "p",
+            "text": "Source: rates set in Solnow by paddle board operators in Castellón, Spain, 2026 season. A lesson sells for twice an hour’s rental on the same board."
+          }
+        ],
+        "costs": {
+          "type": "table",
+          "columns": [
+            "Price",
+            "Source"
+          ],
+          "rows": [
+            {
+              "label": "Inflatable boards (Tower)",
+              "cells": [
+                "$349–549",
+                "towerpaddleboards.com, Oct 2026"
+              ]
+            },
+            {
+              "label": "Fleet discount (Tower, 5+ boards)",
+              "cells": [
+                "$30 off per board",
+                "towerpaddleboards.com, Oct 2026"
+              ]
+            },
+            {
+              "label": "Insurance",
+              "cells": [
+                "Quote from a broker",
+                "No credible published premiums found; ask a watersports broker for a quote"
+              ]
+            }
+          ]
+        },
+        "costsNote": "Inflatable boards usually ship with paddle, pump and leash; check what each package includes.",
+        "prices": {
+          "type": "table",
+          "columns": [
+            "Price",
+            "Source"
+          ],
+          "rows": [
+            {
+              "label": "Paddle board · 30 min / 1 h · Spain",
+              "cells": [
+                "€10 / €15",
+                "Solnow · two operators (30 min) and one (1 h) in Castellón, 2026"
+              ]
+            },
+            {
+              "label": "Paddle board · 1 h · Mallorca / Barcelona",
+              "cells": [
+                "€16 / €15",
+                "barcelo.com and guruwalk.com listings, Oct 2026"
+              ]
+            },
+            {
+              "label": "Lesson · Spain",
+              "cells": [
+                "€30",
+                "Solnow · one operator in Castellón, 2026"
+              ]
+            },
+            {
+              "label": "Paddle board · 1 h · US",
+              "cells": [
+                "$20–35",
+                "Three operators in FL, VA and MA (published rates, Oct 2026)"
+              ]
+            }
+          ]
+        },
+        "example": {
+          "type": "table",
+          "columns": [
+            "Figure",
+            "Source"
+          ],
+          "rows": [
+            {
+              "label": "Inflatable board (Tower Premium)",
+              "cells": [
+                "$449",
+                "towerpaddleboards.com"
+              ]
+            },
+            {
+              "label": "Rental, 1 hour (US)",
+              "cells": [
+                "$20–35",
+                "Published rates of three US operators"
+              ]
+            },
+            {
+              "label": "Rental hours to equal its price",
+              "cells": [
+                "$449 ÷ $20–35 = 13–22 hours",
+                "Calculated"
+              ]
+            }
+          ]
+        },
+        "exampleResult": "A board pays for itself in a couple of busy weeks. What decides the year is how many days the wind lets you open and how much of the revenue comes from lessons and classes."
+      },
       planSections: [
         'Fleet by type and size, with the expected life of each board.',
         'Formats and schedule: rentals, lessons, tours and classes, with places and prices.',
@@ -868,6 +1522,59 @@ export const ACTIVIDADES: Record<ActividadId, Actividad> = {
       },
       benchmark:
         'Portfolio benchmark for the plan: average fill rate per session on weekdays vs weekends across Solnow inflatable park operators. Pull from the production database only with explicit approval; do not estimate.',
+      numbers: {
+        "data": [
+          {
+            "type": "p",
+            "text": "We have no inflatable park among Solnow operators with data we can publish, so this page has no session prices of our own. The equipment prices below are published dealer prices."
+          }
+        ],
+        "costs": {
+          "type": "table",
+          "columns": [
+            "Price",
+            "Source"
+          ],
+          "rows": [
+            {
+              "label": "Large commercial module (Aquaglide Kaos)",
+              "cells": [
+                "$6,639.99",
+                "barts.com dealer list, Oct 2026"
+              ]
+            },
+            {
+              "label": "Smaller modules (Swimstairs XL / Plunge Slide)",
+              "cells": [
+                "$1,029.99 / $979.99",
+                "barts.com dealer list, Oct 2026"
+              ]
+            },
+            {
+              "label": "Anchoring: anchor bag set / vertical mooring line",
+              "cells": [
+                "$114.99 / $113.99",
+                "barts.com dealer list, Oct 2026"
+              ]
+            },
+            {
+              "label": "Complete park",
+              "cells": [
+                "Quote only",
+                "Manufacturers do not publish complete-park prices"
+              ]
+            },
+            {
+              "label": "Insurance",
+              "cells": [
+                "Quote from a broker",
+                "No credible published premiums found; ask a watersports broker for a quote"
+              ]
+            }
+          ]
+        },
+        "costsNote": "A park is several modules plus anchoring, installation and lifeguards; ask the manufacturer for a quote on your layout."
+      },
       planSections: [
         'Course and capacity: modules, layout and the capacity per session the manufacturer and your lifeguards allow.',
         'Session grid: sessions per day, length and changeover time.',

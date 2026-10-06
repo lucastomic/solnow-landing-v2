@@ -21,6 +21,8 @@ export async function getGuide(
     disclaimerLabel: g.disclaimerLabel,
     breadcrumbHome: g.breadcrumbHome,
     viewProduct: g.viewProduct,
+    byLabel: g.byLabel,
+    logosTitle: g.logosTitle,
     groupLabel: groups[group] ?? '',
     // Cada guía apunta a la landing de producto de su tema, no al hub genérico.
     productHref: productPath(AREA_FOR_GUIDE[key], locale),

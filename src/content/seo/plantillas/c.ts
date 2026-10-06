@@ -12,6 +12,7 @@
 
 import type { GuideContent } from '@/content/guides';
 import type { Actividad } from '@/content/seo/actividades';
+import { AUTHOR, pdfPreview } from '@/content/seo/plantillas/e';
 
 const UPDATED = 'Updated · October 2026';
 
@@ -35,7 +36,10 @@ export function plantillaContrato(a: Actividad, extraRelated: { label: string; s
       desc: 'Renter and equipment details, period, deposit, paddling zone, declarations, acknowledgement of risk, minors and signatures, ready to adapt.',
       fileLabel: 'Download the template',
       href,
+      preview: pdfPreview(href),
     },
+    author: AUTHOR,
+    logos: true,
     disclaimer:
       'This template and guide are for guidance only and do not constitute legal advice. Review the agreement with a legal advisor where you operate before using it with customers.',
     sections: [
@@ -76,7 +80,10 @@ export function plantillaChecklist(a: Actividad, extraRelated: { label: string; 
       desc: 'One printable sheet per ride: the craft, the renter, the briefing and the return, with space to sign each check.',
       fileLabel: 'Download the checklist',
       href,
+      preview: pdfPreview(href),
     },
+    author: AUTHOR,
+    logos: true,
     sections: [
       { h: 'Before launch: the craft', blocks: [{ type: 'list', items: k.craft }] },
       { h: 'The renter', blocks: [{ type: 'list', items: k.renter, verify: k.renterVerify }] },

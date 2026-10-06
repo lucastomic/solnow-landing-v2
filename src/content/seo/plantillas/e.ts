@@ -15,6 +15,16 @@ import type { Actividad } from '@/content/seo/actividades';
 
 const UPDATED = 'Updated · October 2026';
 
+/** Firma de las páginas de negocio y seguros (decisión del 2026-10-06). */
+export const AUTHOR = { name: 'Lucas Tomic', role: 'CEO, Solnow' };
+
+/** Imagen de la primera página de un PDF de `public/assets/seo/` (la genera pdftoppm a 360 px). */
+export const pdfPreview = (href: string) => ({
+  src: href.replace(/^\/assets\/seo\/(.*)\.pdf$/, '/assets/seo/previews/$1.png'),
+  w: 360,
+  h: 510,
+});
+
 const businessSlug = (a: Actividad) => a.business.replace(/ /g, '-');
 /** «a jet ski rental» / «an inflatable water park». */
 const withArticle = (a: Actividad) => `${a.article ?? 'a'} ${a.business}`;
@@ -41,21 +51,46 @@ export function plantillaPlan(a: Actividad): GuideContent {
       desc: `Sections for the ${a.unit} fleet, the site, startup costs, prices, a capacity sheet and the season forecast, ready to fill in with your own numbers.`,
       fileLabel: 'Download the business plan',
       href,
+      preview: pdfPreview(href),
     },
+    author: AUTHOR,
+    logos: true,
     sections: [
       {
         h: `Is ${withArticle(a)} business profitable?`,
         blocks: [
           { type: 'p', text: p.formula },
           { type: 'list', items: p.drivers },
-          { type: 'pending', text: p.benchmark },
+          // Con cifras de fuente, van aquí; sin ellas, el hueco queda pendiente.
+          ...(p.numbers
+            ? [...p.numbers.data, ...(p.numbers.prices ? [p.numbers.prices] : [])]
+            : [{ type: 'pending' as const, text: p.benchmark }]),
         ],
       },
+      ...(p.numbers?.example
+        ? [
+            {
+              h: 'A worked example with real numbers',
+              blocks: [
+                { type: 'p' as const, text: 'Every figure below comes from the source next to it; nothing is estimated.' },
+                p.numbers.example,
+                { type: 'p' as const, text: p.numbers.exampleResult ?? '' },
+              ],
+            },
+          ]
+        : []),
       {
         h: 'Startup costs to budget',
         blocks: [
           { type: 'p', text: 'These are the lines your plan needs. The template has a row for each one; fill in your own quotes rather than an average from the internet.' },
           { type: 'list', items: p.startupCosts },
+          ...(p.numbers
+            ? [
+                { type: 'p' as const, text: 'Published prices we could check, with their source:' },
+                p.numbers.costs,
+                { type: 'p' as const, text: p.numbers.costsNote },
+              ]
+            : []),
         ],
       },
       {
@@ -113,6 +148,9 @@ export function plantillaPlan(a: Actividad): GuideContent {
       button: 'Download the business plan',
       href,
       download: true,
+      // Quien está montando el negocio es un cliente potencial: aquí la demo
+      // va de segunda acción (cambio de regla aprobado el 2026-10-06).
+      secondary: { label: 'Book a demo' },
     },
   };
 }
@@ -135,7 +173,10 @@ export function plantillaSeguro(a: Actividad): GuideContent {
       desc: 'The covers to ask about, the questions an insurer will ask you, and a sheet to compare quotes side by side.',
       fileLabel: 'Download the broker checklist',
       href,
+      preview: pdfPreview(href),
     },
+    author: AUTHOR,
+    logos: true,
     disclaimer:
       'This guide and checklist are for information only and are not insurance or legal advice. Cover, limits and requirements depend on where you operate and on each insurer; confirm them with a licensed broker.',
     sections: [

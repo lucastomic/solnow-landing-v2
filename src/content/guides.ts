@@ -174,6 +174,12 @@ type GuideBlockBody =
    * invisible acaba publicado, una cifra inventada también.
    */
   | { type: 'pending'; text: string }
+  /**
+   * Pantalla del producto: el mockup del área (`AreaMock`), el mismo que
+   * enseñan las landings de producto. Motor de reservas, contrato en el móvil
+   * o panel de operación.
+   */
+  | { type: 'mock'; area: 'motor' | 'contratos' | 'operacion'; caption: string }
   | { type: 'list'; items: string[] }
   | { type: 'callout'; tone?: 'warn' | 'info' | 'accent'; text: string }
   | { type: 'steps'; items: string[] }
@@ -242,7 +248,18 @@ export interface GuideContent {
     /** Web del cliente, solo en los casos de éxito. Enlaza el logo y va en la línea de metadatos. */
     website?: { href: string; label: string };
   };
-  download?: { title: string; desc: string; fileLabel: string; href: string };
+  /** `preview`: imagen de la primera página del PDF, junto al botón. */
+  download?: {
+    title: string;
+    desc: string;
+    fileLabel: string;
+    href: string;
+    preview?: { src: string; w: number; h: number };
+  };
+  /** Quien firma el contenido; va en la cabecera y como `author` del JSON-LD. */
+  author?: { name: string; role: string };
+  /** Franja con los logos de clientes (los de `clientLogos.ts`). */
+  logos?: boolean;
   disclaimer?: string;
   sections: GuideSection[];
   /** `verify`: como en los bloques, la respuesta pendiente de revisión humana. */
@@ -257,5 +274,17 @@ export interface GuideContent {
    * Con `download`, la llamada a la acción es la descarga: `href` es la ruta
    * absoluta del fichero (`/assets/…`) y la página no ofrece la demo.
    */
-  cta: { title: string; desc: string; button: string; href?: string; download?: boolean };
+  cta: {
+    title: string;
+    desc: string;
+    button: string;
+    href?: string;
+    download?: boolean;
+    /**
+     * Demo como segunda acción, solo donde se ha decidido que la página la
+     * lleve (las «how to start»). `href` sin locale, como `href`; sin él, va al
+     * CTA de la home.
+     */
+    secondary?: { label: string; href?: string };
+  };
 }

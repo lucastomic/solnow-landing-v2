@@ -1870,6 +1870,8 @@
     "disclaimerLabel": "Disclaimer",
     "breadcrumbHome": "Home",
     "viewProduct": "See the product",
+    "byLabel": "By",
+    "logosTitle": "Operators already running on Solnow",
     "groups": {
       "recurso": "Resources",
       "comparativa": "Comparisons",
@@ -3599,6 +3601,26 @@
           ]
         },
         {
+          "h": "What it looks like in Solnow",
+          "blocks": [
+            {
+              "type": "mock",
+              "area": "motor",
+              "caption": "Booking engine: real availability, price and payment in one checkout."
+            },
+            {
+              "type": "mock",
+              "area": "contratos",
+              "caption": "Rental agreement signed on the customer’s phone before they arrive."
+            },
+            {
+              "type": "mock",
+              "area": "operacion",
+              "caption": "Live operations dashboard: who is on the water at every base."
+            }
+          ]
+        },
+        {
           "h": "Generic vs. vertical: why it matters",
           "blocks": [
             {
@@ -3684,7 +3706,8 @@
         "title": "See Solnow with your real fleet",
         "desc": "We'll set up a demo with your craft, your bases and your real volume. 30 minutes, no commitment.",
         "button": "Book a demo"
-      }
+      },
+      "logos": true
     },
     "mostrador": {
       "meta": {
@@ -4751,6 +4774,26 @@
           ]
         },
         {
+          "h": "What it looks like in Solnow",
+          "blocks": [
+            {
+              "type": "mock",
+              "area": "motor",
+              "caption": "Booking engine: real availability, price and payment in one checkout."
+            },
+            {
+              "type": "mock",
+              "area": "contratos",
+              "caption": "Rental agreement signed on the customer’s phone before they arrive."
+            },
+            {
+              "type": "mock",
+              "area": "operacion",
+              "caption": "Live operations dashboard: who is on the water at every base."
+            }
+          ]
+        },
+        {
           "h": "Weather day? Rebook everyone before they even call",
           "blocks": [
             {
@@ -4894,7 +4937,8 @@
         "title": "See your dock running on Solnow",
         "desc": "20-minute demo configured with your boats and rotation times.",
         "button": "Book a demo"
-      }
+      },
+      "logos": true
     },
     "marinajets": {
       "meta": {
@@ -5270,6 +5314,26 @@
           ]
         },
         {
+          "h": "What it looks like in Solnow",
+          "blocks": [
+            {
+              "type": "mock",
+              "area": "motor",
+              "caption": "Booking engine: real availability, price and payment in one checkout."
+            },
+            {
+              "type": "mock",
+              "area": "contratos",
+              "caption": "Rental agreement signed on the customer’s phone before they arrive."
+            },
+            {
+              "type": "mock",
+              "area": "operacion",
+              "caption": "Live operations dashboard: who is on the water at every base."
+            }
+          ]
+        },
+        {
           "h": "Our data: what the WhatsApp agent does for a kayak operator",
           "blocks": [
             {
@@ -5351,6 +5415,11 @@
         "title": "See it with your real operation",
         "desc": "We'll set up the demo with your kayaks and boards, your bases and your real volume. 30 minutes, no commitment.",
         "button": "Book a demo"
+      },
+      "logos": true,
+      "author": {
+        "name": "Lucas Tomic",
+        "role": "CEO, Solnow"
       }
     },
     "charter": {
@@ -5402,6 +5471,26 @@
           ]
         },
         {
+          "h": "What it looks like in Solnow",
+          "blocks": [
+            {
+              "type": "mock",
+              "area": "motor",
+              "caption": "Booking engine: real availability, price and payment in one checkout."
+            },
+            {
+              "type": "mock",
+              "area": "contratos",
+              "caption": "Rental agreement signed on the customer’s phone before they arrive."
+            },
+            {
+              "type": "mock",
+              "area": "operacion",
+              "caption": "Live operations dashboard: who is on the water at every base."
+            }
+          ]
+        },
+        {
           "h": "How to set it up, step by step",
           "blocks": [
             {
@@ -5428,10 +5517,6 @@
             {
               "type": "p",
               "text": "Charter customers ask before they book: which boat, how many people, is a licence needed, where do we board. If the answer waits until someone who speaks the language picks up the phone, the booking goes to another company in the marina."
-            },
-            {
-              "type": "pending",
-              "text": "Screenshot of a charter operator's fleet calendar (boats in rows, trips per day). Replace with a real, anonymized product image."
             }
           ]
         }
@@ -5472,6 +5557,11 @@
         "title": "See it with your real operation",
         "desc": "We'll set up the demo with your boats, your bases and your real volume. 30 minutes, no commitment.",
         "button": "Book a demo"
+      },
+      "logos": true,
+      "author": {
+        "name": "Lucas Tomic",
+        "role": "CEO, Solnow"
       }
     },
     "catamaran": {
@@ -5526,6 +5616,26 @@
           ]
         },
         {
+          "h": "What it looks like in Solnow",
+          "blocks": [
+            {
+              "type": "mock",
+              "area": "motor",
+              "caption": "Booking engine: real availability, price and payment in one checkout."
+            },
+            {
+              "type": "mock",
+              "area": "contratos",
+              "caption": "Rental agreement signed on the customer’s phone before they arrive."
+            },
+            {
+              "type": "mock",
+              "area": "operacion",
+              "caption": "Live operations dashboard: who is on the water at every base."
+            }
+          ]
+        },
+        {
           "h": "Our data",
           "blocks": [
             {
@@ -5576,6 +5686,11 @@
         "title": "See it with your real operation",
         "desc": "We'll set up the demo with your catamarans, your bases and your real volume. 30 minutes, no commitment.",
         "button": "Book a demo"
+      },
+      "logos": true,
+      "author": {
+        "name": "Lucas Tomic",
+        "role": "CEO, Solnow"
       }
     },
     "hinchables": {
@@ -5628,6 +5743,26 @@
           ]
         },
         {
+          "h": "What it looks like in Solnow",
+          "blocks": [
+            {
+              "type": "mock",
+              "area": "motor",
+              "caption": "Booking engine: real availability, price and payment in one checkout."
+            },
+            {
+              "type": "mock",
+              "area": "contratos",
+              "caption": "Rental agreement signed on the customer’s phone before they arrive."
+            },
+            {
+              "type": "mock",
+              "area": "operacion",
+              "caption": "Live operations dashboard: who is on the water at every base."
+            }
+          ]
+        },
+        {
           "h": "Our data",
           "blocks": [
             {
@@ -5669,6 +5804,11 @@
         "title": "See it with your real operation",
         "desc": "We'll set up the demo with your sessions, your bases and your real volume. 30 minutes, no commitment.",
         "button": "Book a demo"
+      },
+      "logos": true,
+      "author": {
+        "name": "Lucas Tomic",
+        "role": "CEO, Solnow"
       }
     },
     "contratoCharter": {
@@ -5688,7 +5828,12 @@
         "title": "Boat charter agreement template (free PDF)",
         "desc": "Skippered and bareboat: parties, vessel, period, price and deposit, insurance, licence, cruising area, return, data protection and a crew and passenger annex.",
         "fileLabel": "Download PDF template",
-        "href": "/assets/modelo-contrato-alquiler-barco-charter-en.pdf"
+        "href": "/assets/modelo-contrato-alquiler-barco-charter-en.pdf",
+        "preview": {
+          "src": "/assets/seo/previews/modelo-contrato-alquiler-barco-charter-en.png",
+          "w": 360,
+          "h": 510
+        }
       },
       "disclaimer": "This template and guide are for guidance only and do not constitute legal advice. Before using the agreement with customers, review it with a legal advisor and check the requirements of your maritime authority and jurisdiction.",
       "sections": [
@@ -5788,7 +5933,12 @@
         "button": "Download PDF template",
         "href": "/assets/modelo-contrato-alquiler-barco-charter-en.pdf",
         "download": true
-      }
+      },
+      "author": {
+        "name": "Lucas Tomic",
+        "role": "CEO, Solnow"
+      },
+      "logos": true
     },
     "exencion": {
       "meta": {
@@ -5807,7 +5957,12 @@
         "title": "Watersports liability waiver template (free PDF)",
         "desc": "Risk acknowledgement, fitness declaration, safety rules, annexes per activity (jet ski, kayak/SUP, parasailing), guardian consent and data protection.",
         "fileLabel": "Download PDF template",
-        "href": "/assets/plantilla-exencion-responsabilidad-actividades-acuaticas-en.pdf"
+        "href": "/assets/plantilla-exencion-responsabilidad-actividades-acuaticas-en.pdf",
+        "preview": {
+          "src": "/assets/seo/previews/plantilla-exencion-responsabilidad-actividades-acuaticas-en.png",
+          "w": 360,
+          "h": 510
+        }
       },
       "disclaimer": "This template and guide are for guidance only and do not constitute legal advice. Whether a waiver is enforceable depends on the law that applies to your activity and your customers; review it with a legal advisor before using it.",
       "sections": [
@@ -5946,7 +6101,12 @@
         "button": "Download PDF template",
         "href": "/assets/plantilla-exencion-responsabilidad-actividades-acuaticas-en.pdf",
         "download": true
-      }
+      },
+      "author": {
+        "name": "Lucas Tomic",
+        "role": "CEO, Solnow"
+      },
+      "logos": true
     }
   }
 }

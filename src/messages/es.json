@@ -1870,6 +1870,8 @@
     "disclaimerLabel": "Aviso",
     "breadcrumbHome": "Inicio",
     "viewProduct": "Ver el producto",
+    "byLabel": "Por",
+    "logosTitle": "Operadores que ya trabajan con Solnow",
     "groups": {
       "recurso": "Recursos",
       "comparativa": "Comparativas",
@@ -3599,6 +3601,26 @@
           ]
         },
         {
+          "h": "Así se ve en Solnow",
+          "blocks": [
+            {
+              "type": "mock",
+              "area": "motor",
+              "caption": "Motor de reservas: disponibilidad real, precio y pago en un solo checkout."
+            },
+            {
+              "type": "mock",
+              "area": "contratos",
+              "caption": "Contrato firmado en el móvil del cliente, antes de llegar a la base."
+            },
+            {
+              "type": "mock",
+              "area": "operacion",
+              "caption": "Panel de operación en vivo: quién está en el agua en cada base."
+            }
+          ]
+        },
+        {
           "h": "Genérico vs. vertical: por qué importa",
           "blocks": [
             {
@@ -3684,7 +3706,8 @@
         "title": "Mira Solnow con tu flota real",
         "desc": "Te montamos una demo con tus motos, tus bases y tu volumen real. 30 minutos, sin compromiso.",
         "button": "Pedir demo"
-      }
+      },
+      "logos": true
     },
     "mostrador": {
       "meta": {
@@ -4751,6 +4774,26 @@
           ]
         },
         {
+          "h": "Así se ve en Solnow",
+          "blocks": [
+            {
+              "type": "mock",
+              "area": "motor",
+              "caption": "Motor de reservas: disponibilidad real, precio y pago en un solo checkout."
+            },
+            {
+              "type": "mock",
+              "area": "contratos",
+              "caption": "Contrato firmado en el móvil del cliente, antes de llegar a la base."
+            },
+            {
+              "type": "mock",
+              "area": "operacion",
+              "caption": "Panel de operación en vivo: quién está en el agua en cada base."
+            }
+          ]
+        },
+        {
           "h": "¿Día de viento? Recoloca a todos antes de que te llamen",
           "blocks": [
             {
@@ -4894,7 +4937,8 @@
         "title": "Mira tu pantalán funcionando con Solnow",
         "desc": "Demo de 20 minutos configurada con tus barcos y tus horarios de rotación.",
         "button": "Pedir demo"
-      }
+      },
+      "logos": true
     },
     "marinajets": {
       "meta": {
@@ -5270,6 +5314,26 @@
           ]
         },
         {
+          "h": "Así se ve en Solnow",
+          "blocks": [
+            {
+              "type": "mock",
+              "area": "motor",
+              "caption": "Motor de reservas: disponibilidad real, precio y pago en un solo checkout."
+            },
+            {
+              "type": "mock",
+              "area": "contratos",
+              "caption": "Contrato firmado en el móvil del cliente, antes de llegar a la base."
+            },
+            {
+              "type": "mock",
+              "area": "operacion",
+              "caption": "Panel de operación en vivo: quién está en el agua en cada base."
+            }
+          ]
+        },
+        {
           "h": "Dato propio: lo que hace el agente de WhatsApp en un operador de kayak",
           "blocks": [
             {
@@ -5351,6 +5415,11 @@
         "title": "Míralo con tu operación real",
         "desc": "Te montamos la demo con tus kayaks y tablas, tus bases y tu volumen real. 30 minutos, sin compromiso.",
         "button": "Pedir demo"
+      },
+      "logos": true,
+      "author": {
+        "name": "Lucas Tomic",
+        "role": "CEO, Solnow"
       }
     },
     "charter": {
@@ -5402,6 +5471,26 @@
           ]
         },
         {
+          "h": "Así se ve en Solnow",
+          "blocks": [
+            {
+              "type": "mock",
+              "area": "motor",
+              "caption": "Motor de reservas: disponibilidad real, precio y pago en un solo checkout."
+            },
+            {
+              "type": "mock",
+              "area": "contratos",
+              "caption": "Contrato firmado en el móvil del cliente, antes de llegar a la base."
+            },
+            {
+              "type": "mock",
+              "area": "operacion",
+              "caption": "Panel de operación en vivo: quién está en el agua en cada base."
+            }
+          ]
+        },
+        {
           "h": "Cómo se monta, paso a paso",
           "blocks": [
             {
@@ -5428,10 +5517,6 @@
             {
               "type": "p",
               "text": "En chárter el cliente extranjero pregunta antes de reservar: qué barco, cuánta gente, si hace falta titulación, dónde se embarca. Si la respuesta tarda hasta que alguien que habla inglés coge el móvil, la reserva se va a otra empresa del puerto."
-            },
-            {
-              "type": "pending",
-              "text": "Captura del calendario de flota de un operador de chárter (barcos en filas, salidas por día). Sustituir por una imagen real del producto con datos anonimizados."
             }
           ]
         }
@@ -5472,6 +5557,11 @@
         "title": "Míralo con tu operación real",
         "desc": "Te montamos la demo con tus barcos, tus bases y tu volumen real. 30 minutos, sin compromiso.",
         "button": "Pedir demo"
+      },
+      "logos": true,
+      "author": {
+        "name": "Lucas Tomic",
+        "role": "CEO, Solnow"
       }
     },
     "catamaran": {
@@ -5526,6 +5616,26 @@
           ]
         },
         {
+          "h": "Así se ve en Solnow",
+          "blocks": [
+            {
+              "type": "mock",
+              "area": "motor",
+              "caption": "Motor de reservas: disponibilidad real, precio y pago en un solo checkout."
+            },
+            {
+              "type": "mock",
+              "area": "contratos",
+              "caption": "Contrato firmado en el móvil del cliente, antes de llegar a la base."
+            },
+            {
+              "type": "mock",
+              "area": "operacion",
+              "caption": "Panel de operación en vivo: quién está en el agua en cada base."
+            }
+          ]
+        },
+        {
           "h": "Dato propio",
           "blocks": [
             {
@@ -5576,6 +5686,11 @@
         "title": "Míralo con tu operación real",
         "desc": "Te montamos la demo con tus catamaranes, tus bases y tu volumen real. 30 minutos, sin compromiso.",
         "button": "Pedir demo"
+      },
+      "logos": true,
+      "author": {
+        "name": "Lucas Tomic",
+        "role": "CEO, Solnow"
       }
     },
     "hinchables": {
@@ -5628,6 +5743,26 @@
           ]
         },
         {
+          "h": "Así se ve en Solnow",
+          "blocks": [
+            {
+              "type": "mock",
+              "area": "motor",
+              "caption": "Motor de reservas: disponibilidad real, precio y pago en un solo checkout."
+            },
+            {
+              "type": "mock",
+              "area": "contratos",
+              "caption": "Contrato firmado en el móvil del cliente, antes de llegar a la base."
+            },
+            {
+              "type": "mock",
+              "area": "operacion",
+              "caption": "Panel de operación en vivo: quién está en el agua en cada base."
+            }
+          ]
+        },
+        {
           "h": "Dato propio",
           "blocks": [
             {
@@ -5669,6 +5804,11 @@
         "title": "Míralo con tu operación real",
         "desc": "Te montamos la demo con tus turnos, tus bases y tu volumen real. 30 minutos, sin compromiso.",
         "button": "Pedir demo"
+      },
+      "logos": true,
+      "author": {
+        "name": "Lucas Tomic",
+        "role": "CEO, Solnow"
       }
     },
     "contratoCharter": {
@@ -5688,7 +5828,12 @@
         "title": "Plantilla de contrato de chárter (PDF gratis)",
         "desc": "Con y sin patrón: partes, embarcación, periodo, precio y fianza, seguro, titulación, zona de navegación, devolución, datos y anexo de tripulación y pasaje.",
         "fileLabel": "Descargar plantilla PDF",
-        "href": "/assets/modelo-contrato-alquiler-barco-charter.pdf"
+        "href": "/assets/modelo-contrato-alquiler-barco-charter.pdf",
+        "preview": {
+          "src": "/assets/seo/previews/modelo-contrato-alquiler-barco-charter.png",
+          "w": 360,
+          "h": 510
+        }
       },
       "disclaimer": "Esta plantilla y esta guía son orientativas y no constituyen asesoramiento legal. Antes de usar el contrato con clientes, revísalo con un asesor jurídico y comprueba los requisitos de tu Capitanía Marítima y de tu comunidad autónoma.",
       "sections": [
@@ -5788,7 +5933,12 @@
         "button": "Descargar plantilla PDF",
         "href": "/assets/modelo-contrato-alquiler-barco-charter.pdf",
         "download": true
-      }
+      },
+      "author": {
+        "name": "Lucas Tomic",
+        "role": "CEO, Solnow"
+      },
+      "logos": true
     },
     "exencion": {
       "meta": {
@@ -5807,7 +5957,12 @@
         "title": "Plantilla de exención de responsabilidad (PDF gratis)",
         "desc": "Declaración de riesgos, condiciones físicas, normas de seguridad, anexos por actividad (moto de agua, kayak, parasailing), consentimiento del tutor y protección de datos.",
         "fileLabel": "Descargar plantilla PDF",
-        "href": "/assets/plantilla-exencion-responsabilidad-actividades-acuaticas.pdf"
+        "href": "/assets/plantilla-exencion-responsabilidad-actividades-acuaticas.pdf",
+        "preview": {
+          "src": "/assets/seo/previews/plantilla-exencion-responsabilidad-actividades-acuaticas.png",
+          "w": 360,
+          "h": 510
+        }
       },
       "disclaimer": "Esta plantilla y esta guía son orientativas y no constituyen asesoramiento legal. La validez de estos documentos depende de la normativa aplicable a tu actividad y a tus clientes; revísala con un asesor jurídico antes de usarla.",
       "sections": [
@@ -5946,7 +6101,12 @@
         "button": "Descargar plantilla PDF",
         "href": "/assets/plantilla-exencion-responsabilidad-actividades-acuaticas.pdf",
         "download": true
-      }
+      },
+      "author": {
+        "name": "Lucas Tomic",
+        "role": "CEO, Solnow"
+      },
+      "logos": true
     }
   }
 }

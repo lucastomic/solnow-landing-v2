@@ -21,7 +21,14 @@ export function buildGuideJsonLd(content: GuideContent, locale: Locale, slug: st
       mainEntityOfPage: url,
       datePublished: '2026-06-24',
       dateModified: '2026-07-14',
-      author: { '@id': `${SITE_URL}/#organization` },
+      author: content.author
+        ? {
+            '@type': 'Person',
+            name: content.author.name,
+            jobTitle: content.author.role,
+            worksFor: { '@id': `${SITE_URL}/#organization` },
+          }
+        : { '@id': `${SITE_URL}/#organization` },
       publisher: { '@id': `${SITE_URL}/#organization` },
     },
     {

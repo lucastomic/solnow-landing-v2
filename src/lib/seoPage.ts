@@ -20,6 +20,8 @@ export async function getSeoPage(p: PaginaSeo): Promise<{ content: GuideContent;
       disclaimerLabel: g.disclaimerLabel,
       breadcrumbHome: g.breadcrumbHome,
       viewProduct: g.viewProduct,
+      byLabel: g.byLabel,
+      logosTitle: g.logosTitle,
       groupLabel: g.groups.recurso,
       productHref: productPath(p.area, p.locale),
     },

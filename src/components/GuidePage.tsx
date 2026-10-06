@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { Footer } from '@/components/sections/SectionsEnd';
 import { BulletList } from '@/components/atoms';
 import { GuideToc } from '@/components/GuideToc';
+import { AreaMock } from '@/components/product/mocks';
+import { CLIENT_LOGOS } from '@/components/sections/clientLogos';
 import { localizedSlugFromSlug, type GuideBlock, type GuideContent } from '@/content/guides';
 import type { Locale } from '@/i18n/config';
 
@@ -14,6 +16,9 @@ export interface GuideLabels {
   disclaimerLabel: string;
   breadcrumbHome: string;
   viewProduct: string;
+  /** «Por» / «By», delante del autor. */
+  byLabel: string;
+  logosTitle: string;
   groupLabel: string;
   /** Landing de producto del tema de esta guía; la resuelve `getGuide`. */
   productHref: string;
@@ -97,6 +102,20 @@ function Block({ block }: { block: GuideBlock }) {
 }
 
 function BlockBody({ block }: { block: GuideBlock }) {
+  if (block.type === 'mock') {
+    return (
+      <figure style={{ margin: '10px 0 30px' }}>
+        <AreaMock areaKey={block.area} />
+        <figcaption
+          className="mono"
+          style={{ fontSize: 12, color: 'var(--muted-2)', letterSpacing: '0.04em', textAlign: 'center', marginTop: 14 }}
+        >
+          {block.caption}
+        </figcaption>
+      </figure>
+    );
+  }
+
   if (block.type === 'pending') {
     if (!SHOW_MARKERS) return null;
     return (
@@ -508,6 +527,7 @@ export function GuidePage({
   // Una descarga apunta al fichero tal cual; el resto va a una página del locale.
   const ctaHref = cta.download && cta.href ? cta.href : cta.href ? `/${locale}/${cta.href}` : `/${locale}#cta`;
   const ctaDownload = cta.download ? true : undefined;
+  const secondaryHref = cta.secondary?.href ? `/${locale}/${cta.secondary.href}` : `/${locale}#cta`;
   const productHref = labels.productHref;
   const sectionId = (i: number) => `sec-${i + 1}`;
   const tocItems = sections.map((s, i) => ({ id: sectionId(i), label: s.h }));
@@ -616,6 +636,12 @@ export function GuidePage({
               )}
               <p className="lede" style={{ maxWidth: '60ch' }}>{hero.lede}</p>
               <p className="mono" style={{ fontSize: 12.5, color: 'var(--muted-2)', letterSpacing: '0.04em', marginTop: 18 }}>
+                {content.author && (
+                  <>
+                    {labels.byLabel} {content.author.name}, {content.author.role}
+                    {' · '}
+                  </>
+                )}
                 {hero.updated} · {hero.readingTime}
                 {/* Enlace a la web del cliente: el caso habla de un negocio real
                     y cualquiera tiene que poder comprobarlo. */}
@@ -638,11 +664,18 @@ export function GuidePage({
                   {cta.button}
                   {ARROW}
                 </a>
-                {/* Una sola llamada a la acción: en una plantilla es la descarga. */}
-                {!cta.download && (
-                  <a className="btn btn-secondary" href={productHref}>
-                    {labels.viewProduct}
+                {/* En una plantilla la acción es la descarga; la demo solo va de
+                    segunda donde se ha decidido (`cta.secondary`). */}
+                {cta.secondary ? (
+                  <a className="btn btn-secondary" href={secondaryHref}>
+                    {cta.secondary.label}
                   </a>
+                ) : (
+                  !cta.download && (
+                    <a className="btn btn-secondary" href={productHref}>
+                      {labels.viewProduct}
+                    </a>
+                  )
                 )}
               </div>
             </div>
@@ -669,7 +702,27 @@ export function GuidePage({
                     background: 'var(--accent-bg)',
                   }}
                 >
-                  <div style={{ maxWidth: '46ch' }}>
+                  {download.preview && (
+                    <a href={download.href} download style={{ flex: 'none', display: 'block' }} aria-hidden tabIndex={-1}>
+                      <Image
+                        src={download.preview.src}
+                        alt=""
+                        width={download.preview.w}
+                        height={download.preview.h}
+                        unoptimized
+                        style={{
+                          width: 120,
+                          height: 'auto',
+                          display: 'block',
+                          borderRadius: 4,
+                          border: '1px solid var(--line)',
+                          boxShadow: '0 8px 18px -10px rgba(8,57,84,0.45)',
+                          background: '#fff',
+                        }}
+                      />
+                    </a>
+                  )}
+                  <div style={{ maxWidth: '46ch', flex: '1 1 260px' }}>
                     <div className="h-3" style={{ marginBottom: 6 }}>{download.title}</div>
                     <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: 'var(--fg-2)' }}>{download.desc}</p>
                   </div>
@@ -715,6 +768,38 @@ export function GuidePage({
                 </div>
               )}
             </article>
+
+            {/* Logos de clientes: quién trabaja ya con Solnow, antes de las dudas. */}
+            {content.logos && (
+              <section style={{ marginTop: 64 }}>
+                <p className="mono" style={{ fontSize: 12, letterSpacing: '0.08em', color: 'var(--muted)', textAlign: 'center', margin: '0 0 18px' }}>
+                  {labels.logosTitle.toUpperCase()}
+                </p>
+                <div
+                  style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '22px 36px',
+                    padding: '22px 0',
+                    borderBlock: '1px solid var(--line-soft)',
+                  }}
+                >
+                  {CLIENT_LOGOS.map((l) => (
+                    <Image
+                      key={l.src}
+                      src={l.src}
+                      alt={l.alt}
+                      width={l.w}
+                      height={l.h}
+                      unoptimized
+                      style={{ height: 38, width: 'auto', maxWidth: 150, objectFit: 'contain' }}
+                    />
+                  ))}
+                </div>
+              </section>
+            )}
 
             {/* FAQ. Puede no haberla: los casos de éxito van directos al CTA. */}
             {faq.length > 0 && (
@@ -798,10 +883,17 @@ export function GuidePage({
             <h2 className="h-2" style={{ color: 'var(--ink-fg)', fontSize: 'clamp(24px, 3vw, 34px)', marginBottom: 12 }}>{cta.title}</h2>
             <p style={{ margin: 0, fontSize: 16, lineHeight: 1.6, color: 'var(--ink-muted)' }}>{cta.desc}</p>
           </div>
-          <a className="btn btn-primary" href={ctaHref} download={ctaDownload} style={{ whiteSpace: 'nowrap', position: 'relative' }}>
-            {cta.button}
-            {ARROW}
-          </a>
+          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', position: 'relative' }}>
+            <a className="btn btn-primary" href={ctaHref} download={ctaDownload} style={{ whiteSpace: 'nowrap' }}>
+              {cta.button}
+              {ARROW}
+            </a>
+            {cta.secondary && (
+              <a className="btn btn-secondary" href={secondaryHref} style={{ whiteSpace: 'nowrap' }}>
+                {cta.secondary.label}
+              </a>
+            )}
+          </div>
         </div>
       </section>
 
