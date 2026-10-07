@@ -37,8 +37,12 @@ const ADS_PATHS = new Set<string>([
   adsMostradorPath('en'),
 ]);
 
+/** Landings de destino de Google Ads (`/[locale]/lp/…`): todas son de campaña. */
+export const LP_BASE = 'lp';
+
 /** `true` si el pathname corresponde a una landing de campaña, en cualquier locale. */
 export function isAdsPath(pathname: string | null | undefined): boolean {
   if (!pathname) return false;
-  return ADS_PATHS.has(pathname.replace(/\/+$/, ''));
+  const path = pathname.replace(/\/+$/, '');
+  return ADS_PATHS.has(path) || /^\/(es|en)\/lp\//.test(path);
 }

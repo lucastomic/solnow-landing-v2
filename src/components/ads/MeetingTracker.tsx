@@ -13,7 +13,14 @@ type TagGlobals = {
 };
 
 /** Desde qué página se ha reservado, para separar campaña y orgánico. */
-export type MeetingFormLocation = 'ads_demo' | 'ads_mostrador' | 'home';
+export type MeetingFormLocation = 'ads_demo' | 'ads_mostrador' | 'ads_lp' | 'home';
+
+/**
+ * Guard de página, no de componente: las landings de `/lp` llevan dos bloques
+ * de demo (hero y cierre) y cada uno monta su listener. La conversión es de la
+ * reunión, no del bloque, así que solo puede contarse una vez por carga.
+ */
+let bookedThisPage = false;
 
 /**
  * Conversión de reunión reservada (landing de anuncios y home).
@@ -36,7 +43,7 @@ export type MeetingFormLocation = 'ads_demo' | 'ads_mostrador' | 'home';
  * HubSpot no permite inyectar ese id). La CAPI es la fuente única: a prueba de
  * ad blockers y del CMP, y cubre también el alta manual por WhatsApp.
  */
-export function MeetingTracker({ formLocation }: { formLocation: MeetingFormLocation }) {
+export function MeetingTracker({ formLocation, page }: { formLocation: MeetingFormLocation; page?: string }) {
   const fired = useRef(false);
 
   useEffect(() => {
@@ -53,10 +60,12 @@ export function MeetingTracker({ formLocation }: { formLocation: MeetingFormLoca
 
       const data = event.data as { meetingBookSucceeded?: boolean } | null;
       if (data?.meetingBookSucceeded !== true) return;
+      if (bookedThisPage) return;
 
       fired.current = true;
+      bookedThisPage = true;
       const w = window as unknown as TagGlobals;
-      w.dataLayer?.push({ event: 'meeting_booked', form_location: formLocation });
+      w.dataLayer?.push({ event: 'meeting_booked', form_location: formLocation, ...(page ? { lp_page: page } : {}) });
 
       // Misma conversión hacia el pixel de OpenAI. Sin `amount`: reservar demo
       // no factura nada, el valor lo pone el deal y no esta página.
@@ -65,7 +74,7 @@ export function MeetingTracker({ formLocation }: { formLocation: MeetingFormLoca
 
     window.addEventListener('message', onMessage);
     return () => window.removeEventListener('message', onMessage);
-  }, [formLocation]);
+  }, [formLocation, page]);
 
   return null;
 }

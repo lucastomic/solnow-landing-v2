@@ -56,11 +56,14 @@ const CAMPAIGN_PARAMS = [
   'calc_total',
 ] as const;
 
-function withCampaignParams(src: string): string {
+function withCampaignParams(src: string, prefill?: Record<string, string>): string {
   const incoming = new URLSearchParams(window.location.search);
   const url = new URL(src);
   for (const key of CAMPAIGN_PARAMS) {
     const value = incoming.get(key);
+    if (value) url.searchParams.set(key, value);
+  }
+  for (const [key, value] of Object.entries(prefill ?? {})) {
     if (value) url.searchParams.set(key, value);
   }
   return url.toString();
@@ -84,6 +87,14 @@ interface DemoCalendarProps {
   trackConversion?: MeetingFormLocation;
   /** Alto reservado, por si el hueco de la página no es el de la home. */
   minHeight?: number;
+  /**
+   * Valores que el visitante ya ha escrito (landings `/lp`), con el nombre de
+   * la propiedad de HubSpot que los recibe. Viajan en la URL del embed junto a
+   * los de campaña; HubSpot rellena con ellos su formulario de reserva.
+   */
+  prefill?: Record<string, string>;
+  /** Página de origen, para la conversión (`lp_page` en el dataLayer). */
+  trackPage?: string;
 }
 
 /**
@@ -106,6 +117,8 @@ export function DemoCalendar({
   passThroughParams = false,
   trackConversion,
   minHeight = CALENDAR_MIN_HEIGHT,
+  prefill,
+  trackPage,
 }: DemoCalendarProps = {}) {
   // `eager` no pasa por estado: hacerlo obligaría a un `setState` síncrono en el
   // efecto y a un render extra para algo que ya se sabe al montar.
@@ -127,10 +140,13 @@ export function DemoCalendar({
   // el `data-src` renderizado en servidor no puede conocerlos y cualquier
   // diferencia rompería la hidratación. `MeetingsEmbedCode.js` lo lee al cargar
   // —una petición de red más tarde—, así que llega siempre después de esto.
+  // `prefill` se serializa para que el efecto dependa del contenido, no de la
+  // identidad del objeto (que cambia en cada render del padre).
+  const prefillKey = JSON.stringify(prefill ?? {});
   useEffect(() => {
-    if (!passThroughParams || !embedRef.current) return;
-    embedRef.current.dataset.src = withCampaignParams(EMBED_SRC);
-  }, [passThroughParams]);
+    if ((!passThroughParams && prefillKey === '{}') || !embedRef.current) return;
+    embedRef.current.dataset.src = withCampaignParams(EMBED_SRC, JSON.parse(prefillKey));
+  }, [passThroughParams, prefillKey]);
 
   useEffect(() => {
     if (armed) return;
@@ -187,7 +203,7 @@ export function DemoCalendar({
           strategy="afterInteractive"
         />
       )}
-      {trackConversion && <MeetingTracker formLocation={trackConversion} />}
+      {trackConversion && <MeetingTracker formLocation={trackConversion} page={trackPage} />}
     </div>
   );
 }

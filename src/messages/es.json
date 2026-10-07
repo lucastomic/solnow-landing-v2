@@ -6108,5 +6108,168 @@
       },
       "logos": true
     }
+  },
+  "lp": {
+    "demo": {
+      "title": "Reserva una demo de 30 minutos",
+      "sub": "Con tu flota y tus bases.",
+      "name": "Tu nombre",
+      "email": "Tu email",
+      "company": "Empresa",
+      "submit": "Ver horarios disponibles",
+      "note": "Después eliges día y hora.",
+      "edit": "Cambiar datos",
+      "privacy": "Al continuar aceptas la {link}.",
+      "privacyLink": "política de privacidad"
+    },
+    "whatsapp": {
+      "label": "¿Prefieres escribirnos? Abre WhatsApp",
+      "message": "Hola, quiero ver una demo de Solnow"
+    },
+    "pricing": {
+      "cta": "Pide la demo y te calculamos la factura",
+      "eyebrow": "Precio"
+    },
+    "proof": {
+      "logosTitle": "Operadores que ya trabajan con Solnow"
+    },
+    "compare": {
+      "title": "Solnow frente a los motores de reservas",
+      "lede": "Los motores de reservas venden online. Solnow sustituye el tuyo y además lleva el mostrador, los contratos y la operación.",
+      "more": "Comparativa completa con {name}",
+      "tableTitle": "Solnow frente a {name}"
+    },
+    "migration": {
+      "title": "Qué pasa con tu motor actual"
+    },
+    "faq": {
+      "title": "Preguntas rápidas",
+      "items": [
+        {
+          "q": "¿Puedo mantener mi motor de reservas?",
+          "a": "No hace falta: Solnow lo sustituye y migramos tus datos sin downtime."
+        },
+        {
+          "q": "¿Cómo cobro?",
+          "a": "Online con Stripe (completo o señal) y el resto en el mostrador. También con tu pasarela."
+        },
+        {
+          "q": "¿Cuánto cuesta?",
+          "a": "{pricing}"
+        }
+      ]
+    },
+    "pricingFaq": "Desde {from}/mes, todo incluido. 0 % de lo que vende tu equipo.",
+    "final": {
+      "title": "Míralo con tu flota en 30 minutos"
+    },
+    "sticky": {
+      "cta": "Reservar demo",
+      "note": "30 minutos, con tu flota"
+    },
+    "pages": {
+      "jetski": {
+        "meta": {
+          "title": "Sistema de reservas para alquiler de motos de agua | Solnow",
+          "description": "Reservas online, por WhatsApp y en el pantalán, contrato firmado en el móvil y todas tus bases en una pantalla. Reserva una demo."
+        },
+        "h1": "Sistema de reservas para alquiler de motos de agua",
+        "sub": "Mostrador, WhatsApp y web en un solo sistema: el cliente firma y paga desde su móvil."
+      },
+      "watersports": {
+        "meta": {
+          "title": "Sistema de reservas para actividades acuáticas | Solnow",
+          "description": "Motos de agua, barcos, kayak o parasailing: reservas, cobros, contratos y operación de todas tus bases en un solo sistema. Reserva una demo."
+        },
+        "h1": "Sistema de reservas para actividades acuáticas",
+        "sub": "Mostrador, WhatsApp y web en un solo sistema: el cliente firma y paga desde su móvil."
+      },
+      "alt": {
+        "meta": {
+          "title": "Alternativa a {name} para actividades acuáticas | Solnow",
+          "description": "Compara {name} con Solnow: mostrador, contratos, agente de WhatsApp y operación multi-base. Migración incluida. Reserva una demo."
+        },
+        "h1": "La alternativa a {name} para operadores de actividades acuáticas",
+        "sub": "{name} vende online. Solnow lleva todo lo demás: mostrador, contratos, WhatsApp y todas tus bases."
+      }
+    },
+    "story": {
+      "problem": {
+        "title": "Cada reserva, la misma cadena a mano",
+        "lede": "Entre por donde entre, alguien tiene que contestar, cotizar, tomar datos, firmar, cobrar y embarcar.",
+        "costs": [
+          {
+            "h": "Horas del equipo",
+            "p": "en papeles y mensajes"
+          },
+          {
+            "h": "Reservas perdidas",
+            "p": "que nadie contesta a tiempo"
+          },
+          {
+            "h": "Cero visibilidad",
+            "p": "de caja, conversiones y bases"
+          }
+        ]
+      },
+      "today": {
+        "title": "Los motores de reservas solo cubren el online",
+        "lede": "Y entre el 70 % y el 85 % de la facturación de un operador de motos de agua entra por el mostrador."
+      },
+      "how": {
+        "title": "Solnow es el sistema por el que pasa todo tu negocio",
+        "cards": [
+          {
+            "h": "WhatsApp que vende solo",
+            "p": "Contesta en segundos con tu disponibilidad real, cotiza y manda el enlace de pago. También de noche."
+          },
+          {
+            "h": "Contrato y embarque sin papel",
+            "p": "El cliente firma en su móvil antes de llegar, también el de menores, y embarca con un QR."
+          },
+          {
+            "h": "Todas tus bases en una pantalla",
+            "p": "Quién está en el agua, qué hay en caja y qué ha vendido cada base, en vivo."
+          }
+        ],
+        "install": "Lo instalamos nosotros: flota, precios y formación del equipo."
+      },
+      "proof": {
+        "title": "Ya funciona en producción",
+        "items": [
+          {
+            "k": "9 s",
+            "u": "responde la IA",
+            "d": "Una persona: 1 h 50"
+          },
+          {
+            "k": "9 de cada 10",
+            "u": "reservas del agente se pagan solas",
+            "d": "Moraira Boats"
+          },
+          {
+            "k": "≈ 450 h",
+            "u": "al mes que no hizo nadie",
+            "d": "Grupo Marina Jets"
+          },
+          {
+            "k": "+12.000",
+            "u": "contratos firmados en el móvil al mes",
+            "d": "Grupo Marina Jets"
+          }
+        ],
+        "note": "Datos de producción, agosto de 2026."
+      }
+    },
+    "cta": "Reservar demo",
+    "heroTrust": "Ya trabajan con Solnow",
+    "expect": {
+      "title": "Qué vas a ver en la demo",
+      "items": [
+        "Solnow configurado con tu flota y tus bases",
+        "Tu factura calculada con tus números",
+        "30 minutos, sin compromiso"
+      ]
+    }
   }
 }

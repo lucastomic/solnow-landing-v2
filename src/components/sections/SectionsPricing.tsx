@@ -28,7 +28,20 @@ function euroFmt(locale: Locale) {
  * la calculadora: tres superficies diciendo lo mismo, o el día que cambie una
  * tarifa habría tres sitios donde se queda vieja.
  */
-export async function PricingTeaser({ locale }: { locale: Locale }) {
+export async function PricingTeaser({
+  locale,
+  cta,
+  eyebrow,
+}: {
+  locale: Locale;
+  /**
+   * Botón alternativo. Las landings de campaña no pueden sacar al visitante a
+   * `/precios`: allí el botón lleva al bloque de demo de la propia página.
+   */
+  cta?: { href: string; label: string };
+  /** Antetítulo propio; en la home lleva la numeración de sus secciones. */
+  eyebrow?: string;
+}) {
   const t = await getT(locale);
   const eur = euroFmt(locale);
   const rows = t<{ l: string }[]>('pricing.teaser.rows');
@@ -43,7 +56,7 @@ export async function PricingTeaser({ locale }: { locale: Locale }) {
     <section id="pricing" className="section" style={{ paddingBlock: 42 }}>
       <div className="container">
         <SectionHead
-          eyebrow={t('pricing.eyebrow')}
+          eyebrow={eyebrow ?? t('pricing.eyebrow')}
           title={<>{t('pricing.title')}</>}
           lede={t('pricing.teaser.lede')}
           compact
@@ -104,7 +117,7 @@ export async function PricingTeaser({ locale }: { locale: Locale }) {
               </div>
             </div>
             <a
-              href={pricingPath(locale)}
+              href={cta?.href ?? pricingPath(locale)}
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -117,7 +130,7 @@ export async function PricingTeaser({ locale }: { locale: Locale }) {
                 color: 'var(--accent-fg)',
               }}
             >
-              {t('pricing.teaser.cta')}
+              {cta?.label ?? t('pricing.teaser.cta')}
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                 <path
                   d="M3 7h8M7.5 3.5 11 7l-3.5 3.5"

@@ -61,14 +61,14 @@ const ARROW = (
  * Que no se vea no significa que esté revisado: el aviso sigue en los datos
  * hasta que alguien lo quite.
  */
-const SHOW_MARKERS = process.env.VERCEL_ENV !== 'production';
+export const SHOW_MARKERS = process.env.VERCEL_ENV !== 'production';
 
-const MARKER = {
+export const MARKER = {
   pending: 'PENDIENTE · DATO PROPIO',
   verify: 'VERIFICAR',
 };
 
-function Marker({ label, text }: { label: string; text: string }) {
+export function Marker({ label, text }: { label: string; text: string }) {
   if (!SHOW_MARKERS) return null;
   return (
     <span
@@ -84,6 +84,8 @@ function Marker({ label, text }: { label: string; text: string }) {
         borderRadius: 6,
         padding: '6px 10px',
         marginBottom: 8,
+        // Los avisos citan URLs largas: que partan antes que desbordar una celda.
+        overflowWrap: 'anywhere',
       }}
     >
       {label} — {text}

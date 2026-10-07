@@ -26,8 +26,8 @@ const WHATSAPP_NUMBER = '34744622093';
  * en su propio WhatsApp y cualquier cosa que le metamos ahí la lee él. La
  * atribución de campaña viaja por el evento de `dataLayer`, no por el mensaje.
  */
-export function whatsappHref(message: string): string {
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+export function whatsappHref(message: string, number: string = WHATSAPP_NUMBER): string {
+  return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 }
 
 interface WhatsAppCtaProps {
@@ -36,7 +36,16 @@ interface WhatsAppCtaProps {
   /** Mensaje precargado en la conversación. */
   message: string;
   /** Dónde está el botón, para separar el del hero del del cierre. */
-  placement: 'hero' | 'final';
+  placement: string;
+  /**
+   * Evento del dataLayer. Por defecto el de `/demo`; las landings `/lp`
+   * emiten `whatsapp_click`, que es un CTA secundario y no la conversión.
+   */
+  eventName?: string;
+  /** `form_location` completo, si no es el de `/demo`. */
+  formLocation?: string;
+  /** Número de destino (formato `wa.me`), si no es el del agente demo. */
+  number?: string;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -59,7 +68,7 @@ interface WhatsAppCtaProps {
  * —abrible en pestaña nueva, copiable— y funciona aunque el `dataLayer` no
  * exista porque el CMP ha bloqueado GTM.
  */
-export function WhatsAppCta({ label, message, placement, className, style }: WhatsAppCtaProps) {
+export function WhatsAppCta({ label, message, placement, className, style, eventName = 'whatsapp_demo_click', formLocation, number }: WhatsAppCtaProps) {
   const fired = useRef(false);
 
   const onClick = () => {
@@ -67,14 +76,15 @@ export function WhatsAppCta({ label, message, placement, className, style }: Wha
     fired.current = true;
 
     const w = window as unknown as TagGlobals;
-    w.dataLayer?.push({ event: 'whatsapp_demo_click', form_location: `ads_demo_${placement}` });
-    measureOpenAI('lead_created', { type: 'customer_action' });
+    w.dataLayer?.push({ event: eventName, form_location: formLocation ?? `ads_demo_${placement}` });
+    // El clic en WhatsApp de las `/lp` no es un lead: allí la conversión es la reunión.
+    if (eventName === 'whatsapp_demo_click') measureOpenAI('lead_created', { type: 'customer_action' });
   };
 
   return (
     <a
       className={className}
-      href={whatsappHref(message)}
+      href={whatsappHref(message, number)}
       target="_blank"
       rel="noopener noreferrer"
       onClick={onClick}

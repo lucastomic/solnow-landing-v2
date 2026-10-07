@@ -6108,5 +6108,168 @@
       },
       "logos": true
     }
+  },
+  "lp": {
+    "demo": {
+      "title": "Book a 30-minute demo",
+      "sub": "With your fleet and your bases.",
+      "name": "Your name",
+      "email": "Your email",
+      "company": "Company",
+      "submit": "See available times",
+      "note": "Next, pick a day and time.",
+      "edit": "Change details",
+      "privacy": "By continuing you accept the {link}.",
+      "privacyLink": "privacy policy"
+    },
+    "whatsapp": {
+      "label": "Rather message us? Open WhatsApp",
+      "message": "Hi, I would like to see a Solnow demo"
+    },
+    "pricing": {
+      "cta": "Book the demo and we will work out your bill",
+      "eyebrow": "Pricing"
+    },
+    "proof": {
+      "logosTitle": "Operators already running on Solnow"
+    },
+    "compare": {
+      "title": "Solnow vs booking engines",
+      "lede": "Booking engines sell online. Solnow replaces yours and also runs the desk, the agreements and the operation.",
+      "more": "Full comparison with {name}",
+      "tableTitle": "Solnow vs {name}"
+    },
+    "migration": {
+      "title": "What happens to your current booking engine"
+    },
+    "faq": {
+      "title": "Quick answers",
+      "items": [
+        {
+          "q": "Can I keep my booking engine?",
+          "a": "No need: Solnow replaces it, and we migrate your data with no downtime."
+        },
+        {
+          "q": "How do I get paid?",
+          "a": "Online through Stripe (full or deposit), the rest at the desk. Your own gateway works too."
+        },
+        {
+          "q": "How much is it?",
+          "a": "{pricing}"
+        }
+      ]
+    },
+    "pricingFaq": "From {from}/month, everything included. 0% on what your team sells.",
+    "final": {
+      "title": "See it with your fleet in 30 minutes"
+    },
+    "sticky": {
+      "cta": "Book a demo",
+      "note": "30 minutes, with your fleet"
+    },
+    "pages": {
+      "jetski": {
+        "meta": {
+          "title": "Jet Ski Booking System for Rental Operators | Solnow",
+          "description": "Online, WhatsApp and dock sales, rental agreements signed on the customer’s phone, and every base on one screen. Book a demo."
+        },
+        "h1": "Jet ski booking system",
+        "sub": "Front desk, WhatsApp and web in one system: customers sign and pay on their phone. Online payments via Stripe."
+      },
+      "watersports": {
+        "meta": {
+          "title": "Water Sports Booking System for Operators | Solnow",
+          "description": "Jet skis, boats, kayaks or parasailing: bookings, payments, agreements and operations for every base in one system. Book a demo."
+        },
+        "h1": "Water sports booking system",
+        "sub": "Front desk, WhatsApp and web in one system: customers sign and pay on their phone. Online payments via Stripe."
+      },
+      "alt": {
+        "meta": {
+          "title": "{name} Alternative for Water Sports Operators | Solnow",
+          "description": "Compare {name} with Solnow: front desk, agreements, WhatsApp agent and multi-base operations. Migration included. Book a demo."
+        },
+        "h1": "The {name} alternative for water sports operators",
+        "sub": "{name} sells online. Solnow runs everything else: the desk, agreements, WhatsApp and every base."
+      }
+    },
+    "story": {
+      "problem": {
+        "title": "Every booking, the same manual chain",
+        "lede": "Wherever it comes from, someone has to reply, quote, take details, sign, charge and board.",
+        "costs": [
+          {
+            "h": "Staff hours",
+            "p": "spent on paperwork and messages"
+          },
+          {
+            "h": "Lost bookings",
+            "p": "nobody answers in time"
+          },
+          {
+            "h": "Zero visibility",
+            "p": "of cash, conversions and bases"
+          }
+        ]
+      },
+      "today": {
+        "title": "Booking engines only cover online sales",
+        "lede": "Yet 70–85% of a jet ski operator’s revenue comes through the front desk."
+      },
+      "how": {
+        "title": "Solnow is the system your whole business runs through",
+        "cards": [
+          {
+            "h": "WhatsApp that sells itself",
+            "p": "Replies in seconds with your real availability, quotes and sends the payment link. At night too."
+          },
+          {
+            "h": "Paperless agreements and boarding",
+            "p": "Customers sign on their phone before they arrive, guardians included, and board with a QR code."
+          },
+          {
+            "h": "Every base on one screen",
+            "p": "Who is on the water, what is in the till and what each base has sold, live."
+          }
+        ],
+        "install": "We set it up for you: fleet, prices and team training."
+      },
+      "proof": {
+        "title": "Already running in production",
+        "items": [
+          {
+            "k": "9 s",
+            "u": "AI reply time",
+            "d": "A person: 1 h 50"
+          },
+          {
+            "k": "9 out of 10",
+            "u": "agent bookings paid with no one on the team",
+            "d": "Moraira Boats"
+          },
+          {
+            "k": "≈ 450 h",
+            "u": "a month nobody had to work",
+            "d": "Grupo Marina Jets"
+          },
+          {
+            "k": "12,000+",
+            "u": "agreements signed on phones a month",
+            "d": "Grupo Marina Jets"
+          }
+        ],
+        "note": "Production data, August 2026."
+      }
+    },
+    "cta": "Book a demo",
+    "heroTrust": "Already running on Solnow",
+    "expect": {
+      "title": "What you will see in the demo",
+      "items": [
+        "Solnow set up with your fleet and bases",
+        "Your bill worked out with your numbers",
+        "30 minutes, no commitment"
+      ]
+    }
   }
 }

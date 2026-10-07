@@ -18,7 +18,7 @@ interface DemoStickyCtaProps {
   label: string;
   note: string;
   /** Qué landing es, para separar los clics en el etiquetado. */
-  formLocation?: 'ads_demo_sticky' | 'ads_mostrador_sticky';
+  formLocation?: 'ads_demo_sticky' | 'ads_mostrador_sticky' | `ads_lp_${string}_sticky`;
 }
 
 /**

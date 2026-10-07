@@ -110,9 +110,13 @@ const TEAM = [
   { name: 'Dani', src: '/assets/equipo/dani.webp' },
 ];
 
-/** La jornada de cada persona del equipo, de 09:00 a 21:00, llena de papel y mensajes. */
-export function TeamHours({ ill }: { ill: Ill }) {
-  const people = TEAM;
+/**
+ * La jornada de cada persona del equipo, de 09:00 a 21:00, llena de papel y mensajes.
+ *
+ * `people` sustituye a las caras del equipo: en páginas públicas (las landings
+ * de campaña) van puestos sin foto, no personas reales.
+ */
+export function TeamHours({ ill, people = TEAM }: { ill: Ill; people?: { name: string; src?: string }[] }) {
   return (
     <div style={{ ...card, padding: 'clamp(16px, 2vw, 26px)', display: 'flex', flexDirection: 'column', gap: 14 }}>
       <div style={{ display: 'grid', gridTemplateColumns: '84px 1fr', gap: 12, fontSize: 11, color: 'var(--muted-2)' }} className="mono">
@@ -126,13 +130,15 @@ export function TeamHours({ ill }: { ill: Ill }) {
       {people.map((p, row) => (
         <div key={row} style={{ display: 'grid', gridTemplateColumns: '84px 1fr', gap: 12, alignItems: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, fontWeight: 500, color: 'var(--fg)' }}>
-            <Image
-              src={p.src}
-              alt=""
-              width={28}
-              height={28}
-              style={{ width: 28, height: 28, borderRadius: '50%', border: '1px solid var(--line)', flex: 'none', objectFit: 'cover' }}
-            />
+            {p.src && (
+              <Image
+                src={p.src}
+                alt=""
+                width={28}
+                height={28}
+                style={{ width: 28, height: 28, borderRadius: '50%', border: '1px solid var(--line)', flex: 'none', objectFit: 'cover' }}
+              />
+            )}
             {p.name}
           </div>
           <div style={{ display: 'flex', gap: 2, height: 30, borderRadius: 6, overflow: 'hidden', background: 'var(--surface-2)' }}>
