@@ -260,6 +260,27 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: def
    al colapsar a una columna vuelve a mandar el orden de lectura. */
 @media (min-width: 769px) {
   .r-media-first > :first-child { order: 2; }
+
+  /* Imagen del hero: más grande que su columna. El PNG trae aire transparente
+     alrededor de las tarjetas, así que puede desbordar hacia el margen derecho
+     (la sección recorta con overflow: hidden) sin pisar el texto. */
+  .r-hero-img {
+    max-width: none !important;
+    width: 106% !important;
+    margin-left: -3%;
+    /* El PNG trae ~9% de aire transparente arriba: se sube para que la primera
+       tarjeta quede a la altura del titular. */
+    margin-top: -9%;
+  }
+}
+/* Con margen lateral de sobra, la imagen crece más. Por debajo, la tarjeta de
+   WhatsApp se cortaría contra el borde de la ventana. */
+@media (min-width: 1400px) {
+  .r-hero-img {
+    width: 118% !important;
+    margin-left: -4%;
+    margin-top: -10%;
+  }
 }
 
 .rule { height: 1px; background: var(--line); }
@@ -446,6 +467,10 @@ section[id] { scroll-margin-top: 72px; }
   section[id] { scroll-margin-top: 60px; }
 
   .r-split  { grid-template-columns: 1fr !important; gap: 40px !important; }
+
+  /* Hero apilado: el titular arranca pegado a la navbar fija (64px) si no se
+     le da algo más de aire que en desktop. */
+  .r-hero-top { padding-top: 96px !important; }
   .r-cols-3 { grid-template-columns: repeat(2, 1fr) !important; }
   .r-cols-4 { grid-template-columns: repeat(2, 1fr) !important; }
   .r-cols-5 { grid-template-columns: repeat(2, 1fr) !important; gap: 28px 32px !important; }
@@ -464,15 +489,6 @@ section[id] { scroll-margin-top: 72px; }
   /* Tabla Comparativa: scroll horizontal con tamaños legibles */
   .r-cmp-wrap { overflow-x: auto !important; -webkit-overflow-scrolling: touch; }
   .r-cmp-row  { min-width: 600px; }
-
-  /* Hero mock: visible en móvil bajo el texto.
-     Se conserva la composición del desktop y se escala en bloque con zoom
-     (a diferencia de transform, zoom sí recalcula la altura del flujo). */
-  .r-hero-mock {
-    width: 600px;
-    zoom: 0.72;
-    margin: 0 auto;
-  }
 
   /* ContractMock: aplanar tarjetas rotadas/desplazadas que se salían */
   .r-contract > div {
@@ -501,8 +517,6 @@ section[id] { scroll-margin-top: 72px; }
   /* Mockups de ancho fijo → fluido */
   .r-fluid { max-width: 100% !important; width: 100% !important; }
 
-  .r-hero-mock { zoom: 0.66; }
-
 /* Hero fleet dashboard: reflujo de la tabla densa */
   .r-fleet-stats { grid-template-columns: repeat(2, 1fr) !important; }
   .r-fleet-row {
@@ -520,14 +534,6 @@ section[id] { scroll-margin-top: 72px; }
     gap: 6px 10px !important;
   }
   .r-planrow > :nth-child(2) { display: none !important; }
-}
-
-/* Hero mock: pasos de escala para que los 600px de diseño quepan siempre */
-@media (max-width: 430px) {
-  .r-hero-mock { zoom: 0.58; }
-}
-@media (max-width: 380px) {
-  .r-hero-mock { zoom: 0.48; }
 }
 
 /* ─────────────────────────────────────────────────────────────────────────

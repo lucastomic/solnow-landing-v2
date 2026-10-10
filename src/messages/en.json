@@ -36,7 +36,8 @@
       "sub": "Solnow is the operating system that replaces Excel, calendars and four disconnected tools with a single platform built for high-volume, multi-base operations."
     },
     "ctaPrimary": "Book a personalized demo",
-    "ctaSecondary": "See how it works"
+    "ctaSecondary": "See how it works",
+    "imageAlt": "Customers picking up life jackets by the jet skis at sunset, surrounded by the pieces of Solnow: web booking, AI WhatsApp agent, counter POS, self-service kiosk and GetYourGuide and Viator connections."
   },
   "painBar": {
     "headPre": "If you handle 30+ bookings a day, you already know that adding volume means ",

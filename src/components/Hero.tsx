@@ -1,6 +1,6 @@
 import type { Locale } from '@/i18n/config';
 import { getT } from '@/i18n/dictionaries';
-import HeroMockup from './HeroMockup';
+import Image from 'next/image';
 
 interface HeroProps {
   locale: Locale;
@@ -36,7 +36,7 @@ export default async function Hero({ locale, variant = 'a' }: HeroProps) {
   const c = headlines[variant] || headlines.a;
 
   return (
-    <section id="top" style={{ position: 'relative', paddingTop: 116, paddingBottom: 64, overflow: 'hidden' }}>
+    <section id="top" className="r-hero-top" style={{ position: 'relative', paddingTop: 104, paddingBottom: 64, overflow: 'hidden' }}>
       <div
         aria-hidden
         style={{
@@ -66,7 +66,9 @@ export default async function Hero({ locale, variant = 'a' }: HeroProps) {
             display: 'grid',
             gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1.05fr)',
             gap: 64,
-            alignItems: 'center',
+            // Arriba, no centrado: la imagen es más alta que el texto y, centrado,
+            // empujaba el titular hacia abajo, lejos de la navbar.
+            alignItems: 'start',
           }}
         >
           <div className="hero-rise">
@@ -89,7 +91,20 @@ export default async function Hero({ locale, variant = 'a' }: HeroProps) {
           </div>
 
           <div className="hero-rise r-fluid" style={{ ['--reveal-delay' as string]: '120ms', position: 'relative' }}>
-            <HeroMockup />
+            <Image
+              src="/assets/solnow-canales.webp"
+              alt={t('hero.imageAlt')}
+              className="r-hero-img"
+              width={1400}
+              height={1400}
+              priority
+              sizes="(max-width: 768px) 100vw, 760px"
+              style={{
+                display: 'block',
+                width: '100%',
+                height: 'auto',
+              }}
+            />
           </div>
         </div>
       </div>
