@@ -3,6 +3,7 @@ import { locales, SITE_URL } from "@/i18n/config";
 import { GUIDES, localizedSlug, hasEnPage } from "@/content/guides";
 import { PRODUCTS, productHubPath, productPath } from "@/content/products";
 import { pricingPath } from "@/content/pricingRoute";
+import { guidesIndexPath } from "@/content/guidesRoute";
 import { PAGINAS } from "@/content/seo/paginas";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -100,6 +101,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     alternates: { languages: Object.fromEntries(locales.map((l) => [l, `${SITE_URL}${pricingPath(l)}`])) },
   }));
 
+  // Índice de guías: en los dos idiomas, con alternates cruzados. Es el salto
+  // que lleva al crawler a todas las guías desde una sola página.
+  const guidesIndex: MetadataRoute.Sitemap = locales.map((locale) => ({
+    url: `${SITE_URL}${guidesIndexPath(locale)}`,
+    lastModified,
+    changeFrequency: "weekly",
+    priority: 0.8,
+    alternates: { languages: Object.fromEntries(locales.map((l) => [l, `${SITE_URL}${guidesIndexPath(l)}`])) },
+  }));
+
   // Calculadora: solo `/es`, sin alternates. `proxy.ts` redirige `/en/calculator`
   // aquí mismo, así que declarar una alternativa inglesa sería anunciar una URL
   // que responde 301 a esta.
@@ -125,5 +136,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     };
   });
 
-  return [...home, ...pricing, ...productHub, ...productAreas, ...guides, ...seo, ...calculator, ...legal];
+  return [...home, ...pricing, ...productHub, ...productAreas, ...guidesIndex, ...guides, ...seo, ...calculator, ...legal];
 }

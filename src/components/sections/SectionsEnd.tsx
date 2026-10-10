@@ -4,6 +4,7 @@ import { SectionHead } from '../atoms';
 import { getT } from '@/i18n/dictionaries';
 import type { Locale } from '@/i18n/config';
 import { GUIDES, localizedSlug, hasEnPage } from '@/content/guides';
+import { guidesIndexPath } from '@/content/guidesRoute';
 import { PRODUCTS, productHubPath, productPath, type ProductSummary } from '@/content/products';
 import { CLIENT_LOGOS } from './clientLogos';
 import { DemoCalendar } from './DemoCalendar';
@@ -302,10 +303,14 @@ export async function Footer({ locale }: { locale: Locale }) {
   const loc = locale as Locale;
   // Los casos de éxito van en la columna de recursos: una séptima columna
   // rompería la rejilla del footer por un solo enlace.
-  const recursoLinks = GUIDES.filter((g) => g.group === 'recurso' || g.group === 'caso').map((g) => ({
-    label: resourcesCol[g.key],
-    href: `/${locale}/${localizedSlug(g.key, loc)}`,
-  }));
+  const recursoLinks = [
+    ...GUIDES.filter((g) => g.group === 'recurso' || g.group === 'caso').map((g) => ({
+      label: resourcesCol[g.key],
+      href: `/${locale}/${localizedSlug(g.key, loc)}`,
+    })),
+    // Al final de la columna: el índice con todas, incluidas las que no caben aquí.
+    { label: resourcesCol.all, href: guidesIndexPath(loc) },
+  ];
   const comparativaLinks = GUIDES.filter((g) => g.group === 'comparativa').map((g) => ({
     label: comparativasCol[g.key],
     href: `/${locale}/${localizedSlug(g.key, loc)}`,

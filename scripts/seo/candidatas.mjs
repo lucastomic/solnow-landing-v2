@@ -225,16 +225,62 @@ for (const [matriz, gen] of Object.entries(MATRICES)) {
   }
 }
 
+// F. quiosco de autoservicio × actividad (solo castellano). Lista de
+// actividades propia: el usuario pidió estas seis, con «barcos» y «alquiler de
+// activos» en vez de chárter y genérico. Se publicaron sin medir (lote 4), así
+// que entran ya con su estado; `demanda.mjs` no toca filas en lote.
+const QUIOSCO_ACTIVIDADES = [
+  { id: 'motos-de-agua', para: 'para motos de agua', slug: 'quiosco-autoservicio-alquiler-motos-de-agua' },
+  { id: 'parasailing', para: 'para parasailing', slug: 'quiosco-autoservicio-parasailing' },
+  { id: 'kayak', para: 'para kayak', slug: 'quiosco-autoservicio-alquiler-kayak' },
+  { id: 'barcos', para: 'para barcos', slug: 'quiosco-autoservicio-alquiler-barcos' },
+  { id: 'catamaranes', para: 'para catamaranes', slug: 'quiosco-autoservicio-excursiones-catamaran' },
+  { id: 'activos', para: 'para alquiler de activos', slug: 'quiosco-autoservicio-alquiler-activos' },
+];
+const QUIOSCO_SINONIMOS = [
+  'quiosco de autoservicio',
+  'kiosco de autoservicio',
+  'terminal de autoservicio',
+  'pantalla de pedido',
+  'caja de autopago',
+  'caja de autoservicio',
+  'autopago',
+  'tótem digital',
+  'punto de autoservicio',
+  'máquina de autoservicio',
+  'máquina expendedora',
+];
+for (const a of QUIOSCO_ACTIVIDADES) {
+  for (const sin of QUIOSCO_SINONIMOS) {
+    filas.push({
+      consulta: `${sin} ${a.para}`,
+      idioma: 'es',
+      matriz: 'F',
+      actividad: a.id,
+      modificador: sin,
+      volumen: '',
+      top10_sector: '',
+      pagina_existente: `/es/${a.slug}`,
+      puntuacion: '',
+      estado: 'lote-4',
+    });
+  }
+}
+
 // Conserva lo ya medido o decidido.
 if (existsSync(OUT)) {
   const previas = new Map(parseCsv(readFileSync(OUT, 'utf8')).map((r) => [`${r.consulta}|${r.idioma}`, r]));
   for (const f of filas) {
     const p = previas.get(`${f.consulta}|${f.idioma}`);
-    if (p) for (const c of ['volumen', 'top10_sector', 'puntuacion', 'estado']) f[c] = p[c];
+    if (!p) continue;
+    for (const c of ['volumen', 'top10_sector', 'puntuacion', 'estado']) f[c] = p[c];
+    // La página publicada se apunta a mano al cerrar un lote: no se pierde si
+    // la tabla EXISTENTES de arriba no la conoce.
+    if (!f.pagina_existente && p.pagina_existente) f.pagina_existente = p.pagina_existente;
   }
 }
 
 mkdirSync(dirname(OUT), { recursive: true });
 writeFileSync(OUT, toCsv(filas, COLUMNS));
-const porMatriz = Object.fromEntries(Object.keys(MATRICES).map((m) => [m, filas.filter((f) => f.matriz === m).length]));
+const porMatriz = Object.fromEntries([...Object.keys(MATRICES), 'F'].map((m) => [m, filas.filter((f) => f.matriz === m).length]));
 console.log(`${filas.length} candidatas →`, OUT.replace(ROOT + '/', ''), porMatriz);

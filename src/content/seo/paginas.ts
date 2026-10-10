@@ -11,23 +11,27 @@
  * esta máquina evita. Sin gemela, el hreflang declara solo `en` y `x-default`.
  */
 
-import type { GuideContent } from '@/content/guides';
+import type { GuideContent, GuideGroup } from '@/content/guides';
 import type { Locale } from '@/i18n/config';
 import type { ProductKey } from '@/content/products';
 import { ACTIVIDADES, type ActividadId } from '@/content/seo/actividades';
 import { insuranceSlug, planSlug, plantillaPlan, plantillaSeguro } from '@/content/seo/plantillas/e';
 import { checklistSlug, contratoSlug, plantillaChecklist, plantillaContrato } from '@/content/seo/plantillas/c';
+import { plantillaQuiosco, quioscoSlug, type QuioscoId } from '@/content/seo/plantillas/f';
 
 export interface PaginaSeo {
   slug: string;
   locale: Locale;
-  matriz: 'A' | 'B' | 'C' | 'D' | 'E';
-  actividad: ActividadId;
+  matriz: 'A' | 'B' | 'C' | 'D' | 'E' | 'F';
+  /** La matriz F tiene su propia lista de actividades (`QuioscoId`). */
+  actividad: ActividadId | QuioscoId;
   lote: number;
   /** Consultas de `candidatas.csv` que responde (trazabilidad, no se pintan). */
   consultas: string[];
   /** Landing de producto del tema, para las etiquetas compartidas de la guía. */
   area: ProductKey;
+  /** Grupo en el índice de guías y en la miga de pan. Por defecto, `recurso`. */
+  grupo?: GuideGroup;
   build: () => GuideContent;
 }
 
@@ -52,6 +56,39 @@ const seguro = (id: ActividadId, consultas: string[]): PaginaSeo => ({
   area: 'contratos',
   build: () => plantillaSeguro(ACTIVIDADES[id]),
 });
+
+/**
+ * Matriz F: quiosco de autoservicio × actividad, solo en castellano. Una página
+ * por actividad cubre los diez sinónimos de la búsqueda (ver `plantillas/f.ts`).
+ * Publicadas sin medir demanda por decisión del usuario (2026-10-10).
+ */
+const quiosco = (id: QuioscoId, consultas: string[]): PaginaSeo => ({
+  slug: quioscoSlug(id),
+  locale: 'es',
+  matriz: 'F',
+  actividad: id,
+  lote: 4,
+  consultas,
+  area: 'tpv',
+  grupo: 'actividad',
+  build: () => plantillaQuiosco(id),
+});
+
+/** Las diez formas de buscar un quiosco, con el «para …» de cada actividad detrás. */
+const SINONIMOS = [
+  'quiosco de autoservicio',
+  'kiosco de autoservicio',
+  'terminal de autoservicio',
+  'pantalla de pedido',
+  'caja de autopago',
+  'caja de autoservicio',
+  'autopago',
+  'tótem digital',
+  'punto de autoservicio',
+  'máquina de autoservicio',
+  'máquina expendedora',
+];
+const consultasQuiosco = (para: string) => SINONIMOS.map((s) => `${s} ${para}`);
 
 export const PAGINAS: PaginaSeo[] = [
   plan('jet-ski', 'tpv', [
@@ -101,6 +138,13 @@ export const PAGINAS: PaginaSeo[] = [
         { label: 'How to start a jet ski rental business', slug: planSlug(ACTIVIDADES['jet-ski']) },
       ]),
   },
+  // Lote 4, matriz F: quiosco de autoservicio por actividad.
+  quiosco('motos-de-agua', consultasQuiosco('para motos de agua')),
+  quiosco('parasailing', consultasQuiosco('para parasailing')),
+  quiosco('kayak', consultasQuiosco('para kayak')),
+  quiosco('barcos', consultasQuiosco('para barcos')),
+  quiosco('catamaranes', consultasQuiosco('para catamaranes')),
+  quiosco('activos', consultasQuiosco('para alquiler de activos')),
 ];
 
 export function paginaSeo(locale: string, slug: string): PaginaSeo | undefined {

@@ -193,6 +193,36 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: def
   box-shadow: 0 1px 0 rgba(8,57,84,0.04), 0 4px 12px -6px rgba(8,57,84,0.06);
 }
 
+/* Índice de guías (/es/guias, /en/guides). Aquí y no inline por el :hover. */
+.guides-grid {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+}
+.guides-grid > li { display: flex; }
+.guide-card {
+  flex: 1;
+  display: flex; flex-direction: column; gap: 10px;
+  padding: 22px;
+  color: inherit;
+  transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease;
+}
+.guide-card:hover {
+  border-color: rgba(16,102,149,0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 1px 0 rgba(8,57,84,0.04), 0 14px 30px -14px rgba(8,57,84,0.22);
+}
+.guide-card-desc {
+  margin: 0; font-size: 14px; line-height: 1.5; color: var(--muted);
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
+.guide-card-more {
+  margin-top: auto; padding-top: 6px;
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent);
+}
+@media (prefers-reduced-motion: reduce) { .guide-card, .guide-card:hover { transition: none; transform: none; } }
+
 .card-ink {
   background: linear-gradient(180deg, var(--ink-2), var(--ink));
   border: 1px solid var(--ink-line);

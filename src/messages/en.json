@@ -1456,6 +1456,7 @@
     },
     "resources": {
       "h": "Resources",
+      "all": "All guides",
       "software": "Booking software",
       "mostrador": "Digitize the front desk",
       "multibase": "Multi-base management",
@@ -6272,5 +6273,18 @@
         "30 minutes, no commitment"
       ]
     }
+  },
+  "guidesIndex": {
+    "meta": {
+      "title": "Guides and templates for watersports rental businesses — Solnow",
+      "description": "Every Solnow guide for watersports operators: downloadable contract and waiver templates, software by activity, business plans, comparisons with FareHarbor and Turitop, and case studies.",
+      "ogTitle": "Guides and templates for watersports operators"
+    },
+    "eyebrow": "Guides",
+    "h1": "Guides and templates for watersports operators",
+    "lede": "Everything we've published for people who rent jet skis, boats or kayaks or run tours: templates you can download, how to run day-to-day operations, and how each tool compares.",
+    "count": "{n} guides",
+    "download": "Download",
+    "read": "Read"
   }
 }

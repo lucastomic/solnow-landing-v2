@@ -1456,6 +1456,7 @@
     },
     "resources": {
       "h": "Recursos",
+      "all": "Ver todas las guías",
       "software": "Software de reservas",
       "mostrador": "Digitalizar el mostrador",
       "multibase": "Gestión multi-base",
@@ -6272,5 +6273,18 @@
         "30 minutos, sin compromiso"
       ]
     }
+  },
+  "guidesIndex": {
+    "meta": {
+      "title": "Guías y plantillas para empresas de actividades acuáticas — Solnow",
+      "description": "Todas las guías de Solnow para operadores náuticos: plantillas de contrato y exención descargables, software por actividad, comparativas con FareHarbor y Turitop, casos de éxito y zonas.",
+      "ogTitle": "Guías y plantillas para operadores náuticos"
+    },
+    "eyebrow": "Guías",
+    "h1": "Guías y plantillas para operadores náuticos",
+    "lede": "Todo lo que hemos publicado para quien alquila motos de agua, barcos, kayaks o excursiones: plantillas que puedes descargar, cómo resolver la operación del día a día y cómo se compara cada herramienta.",
+    "count": "{n} guías",
+    "download": "Descargable",
+    "read": "Leer"
   }
 }

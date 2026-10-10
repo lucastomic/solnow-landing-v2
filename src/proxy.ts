@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { locales, defaultLocale, isLocale, type Locale } from "@/i18n/config";
 import { EN_REDIRECTS, EN_REWRITES, localizedSlug } from "@/content/guides";
+import { GUIDES_INDEX_SLUG, guidesIndexPath } from "@/content/guidesRoute";
 import {
   LEGACY_SLUGS,
   PRODUCT_BASE,
@@ -69,6 +70,16 @@ export function proxy(request: NextRequest) {
     const locale = (legacyLocale ?? pickLocale(request)) as Locale;
     request.nextUrl.pathname = LEGACY_ROUTES[legacySeg](locale);
     return NextResponse.redirect(request.nextUrl, 301);
+  }
+
+  // Índice de guías con el slug del otro idioma (`/es/guides`, `/en/guias`)
+  // → el del suyo. Mismo motivo que el bloque de producto de más abajo.
+  if (parts.length === 2 && isLocale(parts[0])) {
+    const locale = parts[0];
+    if (parts[1] !== GUIDES_INDEX_SLUG[locale] && Object.values(GUIDES_INDEX_SLUG).includes(parts[1])) {
+      request.nextUrl.pathname = guidesIndexPath(locale);
+      return NextResponse.redirect(request.nextUrl, 301);
+    }
   }
 
   // English slug canonicalization (SEO). Only guide roots directly under /en/
