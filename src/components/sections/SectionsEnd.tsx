@@ -350,6 +350,9 @@ export async function Footer({ locale }: { locale: Locale }) {
             <div style={{ display: 'flex', gap: 8, marginTop: 22 }}>
               <LocaleSelect locale={locale} label={t('footer.langLabel')} />
             </div>
+            <Link href={`/${locale}/narrativa`} className="btn btn-secondary" style={{ marginTop: 18, fontSize: 13, padding: '8px 14px' }}>
+              {t('footer.narrativa')} →
+            </Link>
           </div>
           <div>
             <div className="mono" style={{ fontSize: 11, letterSpacing: '0.1em', color: 'var(--muted-2)', marginBottom: 14 }}>
