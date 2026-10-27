@@ -2002,7 +2002,7 @@ Configuramos Solnow con tu flota, tus precios y tus puntos de operación, migram
 **Política de Privacidad**
 *Última actualización: 19 de mayo de 2026*
 
-En SolNow, operado por Sailing Paradise LLC ("nosotros", "nuestro", "nos"), tu privacidad es una prioridad. Esta Política describe qué información recopilamos y cómo la utilizamos.
+En SolNow, operado por Solnow Technology, S.L. ("nosotros", "nuestro", "nos"), tu privacidad es una prioridad. Esta Política describe qué información recopilamos y cómo la utilizamos.
 
 ### 1. Información que recopilamos
 1.1. Información proporcionada por el usuario:
@@ -2041,14 +2041,14 @@ Aplicamos medidas técnicas y organizativas para proteger tu información. El ac
 Puedes ejercer tus derechos de acceso, rectificación, eliminación, oposición y portabilidad escribiendo a lucastomic@solnow.io.
 
 ### 7. Contacto
-Sailing Paradise LLC · Email: lucastomic@solnow.io
+Solnow Technology, S.L. · Email: lucastomic@solnow.io
 
 ## Términos (/terms)
 **Términos y Condiciones**
 *Última actualización: 3 de mayo de 2026*
 
 ### 1. Introducción
-SolNow, operado por Sailing Paradise LLC, es una plataforma para la gestión centralizada de empresas de alquiler de embarcaciones. Al acceder o utilizar el Servicio, aceptas quedar vinculado por estos Términos y Condiciones. Si no estás de acuerdo con alguno de ellos, no debes utilizar la plataforma.
+SolNow, operado por Solnow Technology, S.L., es una plataforma para la gestión centralizada de empresas de alquiler de embarcaciones. Al acceder o utilizar el Servicio, aceptas quedar vinculado por estos Términos y Condiciones. Si no estás de acuerdo con alguno de ellos, no debes utilizar la plataforma.
 
 ### 2. Definiciones
 - Usuario: cualquier persona que accede o utiliza la plataforma.
@@ -2067,4 +2067,4 @@ SolNow ofrece distintos planes de suscripción con renovación automática. Nos 
 No garantizamos que el servicio esté disponible de forma ininterrumpida. SolNow no será responsable de ningún daño directo, indirecto, incidental, especial o consecuente derivado del uso o de la imposibilidad de uso del Servicio.
 
 ### 6. Contacto
-Para cualquier consulta sobre estos Términos, puedes escribirnos a lucastomic@solnow.io. SolNow es operado por Sailing Paradise LLC.
+Para cualquier consulta sobre estos Términos, puedes escribirnos a lucastomic@solnow.io. SolNow es operado por Solnow Technology, S.L.
