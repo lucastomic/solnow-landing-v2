@@ -123,7 +123,7 @@ function Proposal({ quote, index, many }: { quote: Quote; index: number; many: b
   const channels = [...quote.lines.filter((l) => l.key !== 'fixed')].sort((a, b) => {
     const pct = (l: CostLine) => (l.channel ? pricing.rates[l.channel].pct : 0);
     // A igualdad de porcentaje se respeta el orden de la factura, para que dos
-    // canales al 2% no bailen entre sí al mover un deslizador.
+    // canales al 1% no bailen entre sí al mover un deslizador.
     return pct(a) - pct(b) || quote.lines.indexOf(a) - quote.lines.indexOf(b);
   });
 
@@ -379,7 +379,7 @@ function Breakdown({ quote }: { quote: Quote }) {
   return (
     <Block
       title="De qué se compone"
-      caption="Una cuota por base y un escalón de comisión por canal. Cada escalón es una cosa más que hacemos por esa reserva."
+      caption="Una cuota por base y una tarifa por canal: 0 % lo que vende tu equipo, 1 % el agente de IA y las OTAs, 3 % la web, que paga tu cliente incluido en el precio."
     >
       <div style={{ display: 'flex', height: 72, borderRadius: 10, overflow: 'hidden', border: '1px solid var(--line)' }}>
         {quote.lines.filter((l) => l.amount > 0).map((l) => {
@@ -503,7 +503,7 @@ function Schedule({ quote }: { quote: Quote }) {
               verticalAlign: -1,
             }}
           />
-          {freeMonths.join(', ')}: solo comisión de lo que vendas, sin cuota.
+          {freeMonths.join(', ')}: solo la tarifa por canal de lo que vendas, sin cuota.
         </p>
       )}
 
@@ -658,7 +658,7 @@ function Comparison({
         <strong style={{ fontWeight: 500 }}>
           {Math.round(quote.channels.manual + quote.channels.card)}%
         </strong>{' '}
-        — y lo que apuntas a mano no paga comisión.
+        — y lo que vende tu equipo en el mostrador va al 0 %.
       </p>
       )}
 

@@ -1,12 +1,11 @@
 /**
  * Datos editables de la calculadora pública de precio (`/es/calculator`).
  *
- * Fuente de verdad: `Pricing v1` en el vault de Obsidian — «El fijo y la
- * escalera», «Canal de origen y atribución» y «Reglas de cálculo y
- * facturación». Si esas notas y este fichero discrepan, mandan las notas.
+ * Fuente de verdad: `SolNow/Pricing/Pricing 2027.md` en el vault de Obsidian.
+ * Si esa nota y este fichero discrepan, manda la nota.
  *
- * Todo lo que cambia con el tiempo vive aquí y solo aquí: tarifas, escalera de
- * comisión, pagos presenciales, competencia, estacionalidad y ticket medio. La
+ * Todo lo que cambia con el tiempo vive aquí y solo aquí: tarifas por canal,
+ * pagos presenciales, competencia, estacionalidad y ticket medio. La
  * lógica (`@/lib/calculator`) no contiene ni una cifra, y la UI no contiene
  * ninguna fórmula. Cambiar un precio es tocar este fichero y nada más.
  */
@@ -28,12 +27,10 @@ export type Billing = 'monthly' | 'season';
 /**
  * Los cinco canales en los que se reparte lo que vende el operador.
  *
- * `manual` y `card` son los dos presenciales, y son **canales distintos**, no
- * uno con un matiz: una reserva que apuntas a mano y cobras en efectivo no nos
- * paga nada; la misma reserva cobrada con nuestro datáfono paga el 1% + 0,20 €.
- * Que pase por el mostrador y que se meta a mano son dos cosas diferentes, y
- * meterlas en el mismo saco hacía que la tabla cobrara 0% sobre dinero que sí
- * lleva tarifa.
+ * `manual` y `card` son los dos presenciales, y son **canales distintos**: una
+ * reserva que apuntas a mano y cobras en efectivo no le cuesta nada a nadie; la
+ * misma reserva cobrada con tarjeta en nuestro TPV no nos paga tarifa (0 %),
+ * pero el cobro con tarjeta cuesta lo que cuesta en su banco.
  */
 export type ChannelKey = 'manual' | 'card' | 'online' | 'whatsapp' | 'otas';
 
@@ -52,14 +49,13 @@ export const CHANNEL_ORDER: readonly ChannelKey[] = ['online', 'otas', 'card', '
 /* ── 1 · El fijo ──────────────────────────────────────────────────────── */
 
 /**
- * Cuota por base. Un solo producto, todo incluido: motor, bono, links de pago,
- * WhatsApp (atención y persigue), OTAs, colaboradores, TPV, contratos y firma,
- * embarque, pizarra, liquidaciones, dashboards, kiosk, datáfono, usuarios
- * ilimitados, **conversaciones ilimitadas** y onboarding done-for-you.
+ * Cuota por base del plan **Escalar** (todos los canales: TPV, kioskos, OTAs,
+ * colaboradores, agente de IA), que es el que cubre lo que esta comparativa
+ * mide —el mostrador con tarjeta—. Despegue (99 €/mes, 1 base, solo canales
+ * digitales) no cubre TPV, así que no se modela aquí; el porcentaje por canal
+ * es el mismo en los dos planes.
  *
- * No son planes y no hay tiers de features: es la misma cosa para todos.
- *
- * El anual son ocho cuotas —cuatro gratis, un 33% menos— y se paga al abrir
+ * El anual es un 33 % menos que doce mensualidades y se paga al abrir
  * temporada. Es la respuesta a la objeción de invierno.
  */
 export const FIXED = {
@@ -82,42 +78,33 @@ export interface Rate {
 }
 
 /**
- * Lo que cobra SolNow en cada canal.
+ * La tarifa de SolNow en cada canal (Pricing 2027). Depende de **dónde se
+ * vende y quién fija el precio**, nunca del medio de pago, y es la misma en los
+ * dos planes:
  *
- * Los cuatro primeros son la escalera de comisión, y el escalón lo decide
- * **quién creó la reserva**, no cómo se pagó:
+ * - `manual` **0 %** — lo que vende tu equipo: mostrador, teléfono, a mano.
+ * - `card` **0 %** — mostrador cobrado con tarjeta en el TPV. Sin tarifa; el
+ *   cobro cuesta lo mismo que en su banco (paridad), y eso lo suma
+ *   `@/lib/calculator` con el `bank` que pone el visitante.
+ * - `online` **3 %** — motor web. Lo paga el cliente final, incluido en el
+ *   precio; si el operador no lo repercute, lo asume al mismo 3 %. Se cuenta
+ *   en la barra igual que el fee al viajero de FareHarbor.
+ * - `otas` **1 %** — OTA sincronizada; lo paga el operador.
+ * - `whatsapp` **1 %** — reservas del agente de IA; lo paga el operador.
  *
- * - `manual` **0%** — lo hiciste vos: a mano, en efectivo, pizarra,
- *   formularios. No hay comisión donde SolNow no es dueña del flujo.
- * - `online` **2%** — SolNow lo cobró: motor de reservas, bono regalo, links.
- * - `otas` **2%** — OTAs conectadas. Adicional a lo que ya cobra la propia OTA,
- *   y sobre el precio bruto de la reserva.
- * - `whatsapp` **4%** — SolNow lo vendió: reserva creada por el agente y
- *   cobrada por su link. Es el escalón más alto porque es el único canal en el
- *   que el software no asiste la venta: la cierra.
- *
- * `card` está **fuera de la escalera**: no es comisión, es la pasarela del
- * datáfono y el kiosk con la adquirencia dentro, y sustituye a la del banco en
- * vez de sumarse a ella.
- *
- * ⚠️ El precio de `card` no está cerrado. La nota de pricing dice que no se
- * publica hasta tener el coste de adquirencia negociado por escrito, y que si
- * el mezclado real supera el 0,85% el precio de lanzamiento sube a
- * 1,2% + 0,20 €.
+ * Los kioskos (1 % en la base, 3 % con colaborador) no tienen canal propio en
+ * esta comparativa.
  *
  * Invariante del modelo: `manual` es el más barato de los cinco. Si dejara de
  * serlo, vender más a mano subiría el precio y el argumento se daría la vuelta.
  */
 export const RATES: Record<ChannelKey, Rate> = {
   manual: { pct: 0, perBooking: 0 },
-  card: { pct: 0.01, perBooking: 0.2 },
-  online: { pct: 0.02, perBooking: 0 },
-  whatsapp: { pct: 0.04, perBooking: 0 },
-  otas: { pct: 0.02, perBooking: 0 },
+  card: { pct: 0, perBooking: 0 },
+  online: { pct: 0.03, perBooking: 0 },
+  whatsapp: { pct: 0.01, perBooking: 0 },
+  otas: { pct: 0.01, perBooking: 0 },
 };
-
-/** Mínimo por reserva comisionable, en euros. Solo en escalones > 0%. */
-export const COMMISSION_MIN = 0.2;
 
 /* ── 3 · Lo que paga cuando la plataforma no cubre el canal ───────────── */
 
@@ -332,10 +319,9 @@ export const MONTH_LABELS = [
 /**
  * Ticket medio, en euros. El valor de partida es el de «Ejemplos y margen».
  *
- * Influye en todo lo que no es un porcentaje: el fijo de 0,20 € por operación
- * de datáfono, el mínimo por reserva comisionable y el coste por reserva de
- * Regiondo. Con tickets bajos esas tres cosas pesan mucho más, así que dejarlo
- * fijo escondía justo el caso en el que la cuenta cambia de forma.
+ * Influye en todo lo que no es un porcentaje: el coste por reserva de Regiondo
+ * y el de atender WhatsApp a mano. Con tickets bajos esos costes pesan mucho
+ * más, así que dejarlo fijo escondía justo el caso en el que la cuenta cambia.
  */
 export const TICKET = { min: 15, max: 400, step: 1, initial: 141 };
 
@@ -351,7 +337,7 @@ export const CARD_SHARE = { min: 0, max: 100, step: 5, initial: 70 };
  * Es el coste que tiene hoy y que ninguna alternativa le quita, porque ninguna
  * atiende WhatsApp: alguien de su equipo contesta, cotiza y cobra. Con nosotros
  * lo hace el agente, y por eso en nuestra barra este tramo no existe — en su
- * lugar está el 4%.
+ * lugar está el 1 % del agente.
  *
  * Mismo patrón que `BANK`: un coste real del operador que aparece en todas las
  * barras menos en la nuestra, y que sin él haría comparar dos cosas distintas.
@@ -365,12 +351,10 @@ export const HUMAN_WHATSAPP = { min: 0, max: 40, step: 0.1, initial: 11.7 };
  *
  * Es un coste que el operador ya tiene, con SolNow y sin SolNow, y por eso
  * aparece en **todas** las barras de la comparativa: con las alternativas lo
- * paga sobre el 100% de lo que cobra con tarjeta, porque ninguna le da
- * terminal; con nosotros, solo sobre lo que no pasa por el nuestro.
+ * paga a su banco porque ninguna le da terminal; con nosotros paga lo mismo,
+ * porque los pagos van al precio de su banco.
  *
- * El valor de partida es el mezclado de «Ejemplos y margen». Ojo: esa cifra es
- * el coste de adquirencia estimado *nuestro* tras negociar, no lo que el banco
- * de un operador sin negociar le cobra a él, que suele ser bastante más alto.
+ * El valor de partida es el mezclado de «Ejemplos y margen».
  */
 export const BANK = { min: 0, max: 3, step: 0.1, initial: 0.9 };
 
@@ -381,7 +365,7 @@ export const BASES = { min: 1, max: 12, step: 1, initial: 2 };
 
 /**
  * Reparto de partida. Es el perfil ICP de «Ejemplos y margen» —800 K, 2–3
- * bases— y reproduce sus cifras: ~9.300 € sin datáfono, ~11.600 € con él.
+ * bases.
  *
  * `online` no tiene control propio: es el resto, y por eso no aparece aquí.
  */

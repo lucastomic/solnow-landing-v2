@@ -1,59 +1,48 @@
 'use client';
 
 import { useId, useMemo } from 'react';
-import {
-  computeQuote,
-  isAvailable,
-  type Inputs,
-  type PlanKey,
-} from '@/lib/pricingCalc';
+import { computeQuote, withShare, type ChannelKey, type Inputs, type ShareKey } from '@/lib/pricingCalc';
 
 /**
- * Calculadora de la sección de pricing.
+ * Calculadora corta del Pricing 2027 (la usa el modal de la narrativa).
  *
- * Los textos llegan por props, resueltos en servidor: `I18nProvider` serializa
- * en el HTML de *todas* las páginas lo que reciba, así que meter el namespace
- * `pricing` en `CLIENT_NAMESPACES` se pagaría en cada carga del sitio para una
- * sección que vive en una sola. Aquí solo viaja lo que esta isla usa.
+ * Entradas: facturación, % web, % agente de IA, % OTAs y bases. Salida: el
+ * fijo, el 1 % que pagas tú y el 3 % que paga tu cliente, por separado. Sin
+ * conmutador de repercutir: el 3 % va incluido en el precio por defecto, y si
+ * el operador no lo repercute lo asume al mismo 3 % (lo dice `absorbNote`).
  *
- * Las fórmulas están en `@/lib/pricingCalc`, ninguna aquí.
+ * Los textos llegan por props, resueltos en servidor (`pricing.calc`). Las
+ * fórmulas están en `@/lib/pricingCalc`, ninguna aquí.
  */
 export interface CalcCopy {
   title: string;
   lede: string;
   gmv: string;
-  online: string;
-  onlineHint: string;
-  whatsapp: string;
+  web: string;
+  webHint: string;
+  agent: string;
+  agentHint: string;
+  ota: string;
+  otaHint: string;
   bases: string;
   basesUnit: string;
   basesUnitOne: string;
   planLabel: string;
-  planPricier: string;
-  planUnavailable: string;
-  ledeLocked: string;
-  cta: string;
-  planLockedHint: string;
-  cheapest: string;
-  lines: Record<'manual' | 'channel' | 'agent', { l: string; d: string }>;
-  otaNote: string;
-  feeToggle: string;
-  feeTeaser: string;
-  feeScope: string;
+  planWhy: { despegue: string; escalar: string };
+  kioskNote: string;
+  lines: Record<ChannelKey, string>;
   fixed: string;
-  totalYear: string;
+  youPay: string;
+  youPayHint: string;
+  clientPays: string;
+  clientPaysHint: string;
+  absorbNote: string;
   ofBilling: string;
+  cta: string;
 }
 
-const PLAN_NAME: Record<PlanKey, string> = { despegue: 'Despegue', escalar: 'Escalar' };
-const PLAN_KEYS: PlanKey[] = ['despegue', 'escalar'];
+const PLAN_NAME = { despegue: 'Despegue', escalar: 'Escalar' } as const;
 
-/**
- * La factura. El estado no vive aquí sino en `PricingSurface`, que lo comparte
- * con las tarjetas: el conmutador mensual/temporada mueve las dos superficies a
- * la vez, y con un estado por superficie el total dejaría de cuadrar con el
- * precio que anuncia la tarjeta de arriba.
- */
 export default function PricingCalculator({
   copy,
   locale,
@@ -72,29 +61,64 @@ export default function PricingCalculator({
   const uid = useId();
 
   const nLoc = locale === 'en' ? 'en-US' : 'es-ES';
-  // `useGrouping: true` no es el defecto en `es-ES`, que deja los cuatro dígitos
-  // sin separar (6628) y los cinco separados (10.544). Mezclar las dos formas en
-  // la misma columna se lee como un error de la página.
+  // `useGrouping: true` no es el defecto en `es-ES`: sin él, 6628 y 10.544
+  // convivirían en la misma columna.
   const eurFmt = new Intl.NumberFormat(nLoc, { maximumFractionDigits: 0, useGrouping: true });
   const eur = (n: number) => '€' + eurFmt.format(Math.round(n));
-  const pct = (n: number) => Math.round(n * 100) + '%';
+  const pct = (n: number) => Math.round(n * 100) + ' %';
 
-  const set = <K extends keyof Inputs>(k: K, v: Inputs[K]) => onChange((p) => ({ ...p, [k]: v }));
+  const setShare = (k: ShareKey, v: number) => onChange((p) => withShare(p, k, v));
 
-  // `DemoCalendar` reenvía los `calc_*` de la URL al embed de HubSpot, que los
-  // adjunta al contacto: el comercial abre la llamada con la facturación y las
-  // bases delante en vez de gastar los diez primeros minutos preguntándolas.
   const demoHref =
     `/${locale}/demo?` +
     new URLSearchParams({
       calc_facturacion: String(input.gmv),
       calc_bases: String(input.bases),
-      calc_canales: `online ${Math.round(input.onlineShare * 100)}% · whatsapp ${Math.round(
-        input.whatsappShare * 100
-      )}%`,
+      calc_canales: `web ${Math.round(input.webShare * 100)}% · agente ${Math.round(
+        input.agentShare * 100
+      )}% · ota ${Math.round(input.otaShare * 100)}%`,
       calc_pago: PLAN_NAME[q.plan],
-      calc_total: String(Math.round(q.netYearAvg)),
+      calc_total: String(Math.round(q.total)),
     }).toString();
+
+  const shareSlider = (k: ShareKey, label: string, hint: string) => (
+    <Slider
+      id={uid + '-' + k}
+      label={label}
+      hint={hint}
+      readout={pct(input[k]) + ' · ' + eur(input.gmv * input[k])}
+      min={0}
+      max={100}
+      step={5}
+      value={Math.round(input[k] * 100)}
+      onChange={(v) => setShare(k, v / 100)}
+    />
+  );
+
+  const totalRow = (label: string, hint: string, amount: number, accent: boolean) => (
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: 10, alignItems: 'baseline' }}>
+      <div>
+        <div style={{ fontSize: 13.5, fontWeight: 500, color: 'var(--fg)' }}>{label}</div>
+        <div style={{ fontSize: 11.5, color: 'var(--muted-2)', marginTop: 1, lineHeight: 1.4 }}>{hint}</div>
+      </div>
+      <span style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
+        <span
+          className="mono"
+          style={{
+            fontSize: 20,
+            fontWeight: 500,
+            color: accent ? 'var(--accent)' : 'var(--fg)',
+            fontVariantNumeric: 'tabular-nums',
+          }}
+        >
+          {eur(amount)}
+        </span>
+        <span className="mono" style={{ fontSize: 11, color: 'var(--muted-2)' }}>
+          {pctOfBilling(amount, input.gmv, nLoc)} {copy.ofBilling}
+        </span>
+      </span>
+    </div>
+  );
 
   return (
     <div
@@ -122,9 +146,7 @@ export default function PricingCalculator({
         <div style={{ fontSize: 15, fontWeight: 500, color: 'var(--fg)', letterSpacing: '-0.012em' }}>
           {copy.title}
         </div>
-        <div style={{ fontSize: 12.5, color: 'var(--muted)' }}>
-          {isAvailable('despegue', input.bases) ? copy.lede : copy.ledeLocked}
-        </div>
+        <div style={{ fontSize: 12.5, color: 'var(--muted)' }}>{copy.lede}</div>
       </div>
 
       <div className="r-calc-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0 }}>
@@ -141,30 +163,11 @@ export default function PricingCalculator({
             max={3_000_000}
             step={25_000}
             value={input.gmv}
-            onChange={(v) => set('gmv', v)}
+            onChange={(v) => onChange((p) => ({ ...p, gmv: v }))}
           />
-          <Slider
-            id={uid + '-online'}
-            label={copy.online}
-            hint={copy.onlineHint}
-            readout={pct(input.onlineShare) + ' · ' + eur(q.onlineGmv)}
-            min={0}
-            max={100}
-            step={5}
-            value={Math.round(input.onlineShare * 100)}
-            onChange={(v) => set('onlineShare', v / 100)}
-          />
-          <p style={{ margin: '-6px 0 0', fontSize: 11, lineHeight: 1.45, color: 'var(--muted-2)' }}>{copy.otaNote}</p>
-          <Slider
-            id={uid + '-whatsapp'}
-            label={copy.whatsapp}
-            readout={pct(input.whatsappShare) + ' · ' + eur(q.whatsappGmv)}
-            min={0}
-            max={100}
-            step={5}
-            value={Math.round(input.whatsappShare * 100)}
-            onChange={(v) => set('whatsappShare', v / 100)}
-          />
+          {shareSlider('webShare', copy.web, copy.webHint)}
+          {shareSlider('agentShare', copy.agent, copy.agentHint)}
+          {shareSlider('otaShare', copy.ota, copy.otaHint)}
           <Stepper
             label={copy.bases}
             unit={copy.basesUnit}
@@ -172,232 +175,120 @@ export default function PricingCalculator({
             value={input.bases}
             min={1}
             max={10}
-            onChange={(v) => set('bases', v)}
+            onChange={(v) => onChange((p) => ({ ...p, bases: v }))}
           />
         </div>
 
         {/* ── Factura ── */}
         <div style={{ padding: '20px 22px', display: 'flex', flexDirection: 'column', gap: 14 }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-              <span className="mono" style={{ fontSize: 10, letterSpacing: '0.1em', color: 'var(--muted-2)' }}>
-                {copy.planLabel.toUpperCase()}
-              </span>
-              <span style={{ display: 'inline-flex', background: 'var(--surface-2)', border: '1px solid var(--line)', borderRadius: 999, padding: 3 }}>
-                {PLAN_KEYS.map((k) => {
-                  const active = q.plan === k;
-                  const allowed = isAvailable(k, input.bases);
-                  return (
-                    <button
-                      key={k}
-                      type="button"
-                      disabled={!allowed}
-                      aria-pressed={active}
-                      onClick={() => set('plan', k)}
-                      title={allowed ? undefined : copy.planLockedHint}
-                      style={{
-                        padding: '5px 12px',
-                        borderRadius: 999,
-                        border: 0,
-                        fontSize: 11.5,
-                        fontFamily: 'var(--font-mono)',
-                        fontWeight: active ? 500 : 400,
-                        letterSpacing: '0.02em',
-                        background: active ? 'var(--accent)' : 'transparent',
-                        color: active ? 'var(--accent-fg)' : allowed ? 'var(--fg-2)' : 'var(--muted-2)',
-                        cursor: allowed ? 'pointer' : 'not-allowed',
-                        opacity: allowed ? 1 : 0.5,
-                        transition: 'background .15s ease, color .15s ease',
-                      }}
-                    >
-                      {PLAN_NAME[k]}
-                      {allowed ? (
-                        q.recommended === k && (
-                          <span style={{ marginLeft: 6, fontSize: 9.5, opacity: active ? 0.85 : 0.7 }}>
-                            {copy.cheapest}
-                          </span>
-                        )
-                      ) : (
-                        <span style={{ marginLeft: 6, fontSize: 9.5, opacity: 0.7 }}>{copy.planUnavailable}</span>
-                      )}
-                    </button>
-                  );
-                })}
-              </span>
-            </div>
-            {q.plan !== q.recommended && (
-              <span style={{ fontSize: 11.5, color: 'var(--muted)', lineHeight: 1.4 }}>{copy.planPricier}</span>
-            )}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+            <span className="mono" style={{ fontSize: 10, letterSpacing: '0.1em', color: 'var(--muted-2)' }}>
+              {copy.planLabel.toUpperCase()} · {PLAN_NAME[q.plan]}
+            </span>
+            <span style={{ fontSize: 11.5, color: 'var(--muted)', lineHeight: 1.4 }}>
+              {copy.planWhy[q.plan]} {copy.kioskNote}
+            </span>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            {q.lines.map((l, idx) => {
-              const zero = l.key === 'manual' || (l.key === 'channel' && input.bookingFee);
-              return (
-                <div
-                  key={l.key}
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: '1fr auto',
-                    gap: 10,
-                    padding: '8px 0',
-                    borderBottom: idx < q.lines.length - 1 ? '1px solid var(--line-soft)' : 0,
-                    alignItems: 'baseline',
-                  }}
-                >
-                  <div>
-                    <div style={{ fontSize: 13, color: 'var(--fg-2)' }}>
-                      {copy.lines[l.key].l}
-                      <span className="mono" style={{ fontSize: 11, color: 'var(--muted-2)', marginLeft: 8 }}>
-                        {l.rate === 0 ? '0%' : pct(l.rate)} ·{' '}
-                        {l.isRange
-                          ? eur(l.base) + '–' + eur(l.baseHigh)
-                          : eur(l.base)}
-                      </span>
-                    </div>
-                    <div style={{ fontSize: 11.5, color: 'var(--muted-2)', marginTop: 1 }}>
-                      {copy.lines[l.key].d}
-                    </div>
-                  </div>
-                  <div
-                    className="mono"
-                    style={{
-                      fontSize: 14,
-                      fontWeight: 500,
-                      whiteSpace: 'nowrap',
-                      fontVariantNumeric: 'tabular-nums',
-                      color: zero ? 'var(--accent)' : 'var(--fg)',
-                    }}
-                  >
-                    {zero && l.key === 'channel' ? (
-                      <>
-                        <span style={{ textDecoration: 'line-through', color: 'var(--muted-2)', fontWeight: 400, marginRight: 6 }}>
-                          {eur(l.gross)}
-                        </span>
-                        {eur(0)}
-                      </>
-                    ) : l.isRange ? (
-                      eur(l.net) + '–' + eur(l.netHigh)
-                    ) : (
-                      eur(l.net)
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Una opción más de la factura, no un cartel: sin caja ni fondo, con
-              el mismo peso tipográfico que las notas de las líneas de arriba. */}
-          <label
-            style={{
-              display: 'flex',
-              alignItems: 'flex-start',
-              gap: 8,
-              cursor: 'pointer',
-              marginTop: -4,
-            }}
-          >
-            <input
-              type="checkbox"
-              checked={input.bookingFee}
-              onChange={(e) => set('bookingFee', e.target.checked)}
-              style={{ width: 13, height: 13, marginTop: 2, accentColor: 'var(--accent)', cursor: 'pointer' }}
-            />
-            <span style={{ flex: 1 }}>
-              <span style={{ display: 'block', fontSize: 12, color: 'var(--fg-2)' }}>{copy.feeToggle}</span>
-              <span style={{ display: 'block', fontSize: 11, color: 'var(--muted-2)', marginTop: 1, lineHeight: 1.4 }}>
-                {copy.feeScope}
-              </span>
-            </span>
-          </label>
-
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'baseline',
-              justifyContent: 'space-between',
-              gap: 10,
-              paddingTop: 10,
-              borderTop: '1px solid var(--line-soft)',
-              flexWrap: 'wrap',
-            }}
-          >
-            <span style={{ fontSize: 13, color: 'var(--fg-2)' }}>
-              {copy.totalYear}
-              <span className="mono" style={{ fontSize: 11, color: 'var(--muted-2)', marginLeft: 8 }}>
-                {copy.fixed} {eur(q.fixed)}
-              </span>
-            </span>
-            <span style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
-              <span
-                className="mono"
-                style={{ fontSize: 22, fontWeight: 500, color: 'var(--accent)', fontVariantNumeric: 'tabular-nums' }}
-              >
-                {eur(q.netYearAvg)}
-              </span>
-              <span className="mono" style={{ fontSize: 11, color: 'var(--muted-2)' }}>
-                {pctOfBilling(q.netYearAvg, input.gmv, nLoc)} {copy.ofBilling}
-              </span>
-            </span>
-          </div>
-
-          {/* La puerta iluminada: el número ya calculado, antes de tocar nada. */}
-          {!input.bookingFee && (
-            <p style={{ margin: '-4px 0 0', fontSize: 12, lineHeight: 1.45, color: 'var(--muted)' }}>
-              {copy.feeTeaser.replace('{pct}', pct(q.lines[1].rate))}{' '}
-              <strong style={{ color: 'var(--ok)', fontWeight: 500, fontFamily: 'var(--font-mono)' }}>
-                {eur(q.netYearAvgWithFee)}
-              </strong>
-              .
-            </p>
-          )}
-
-          {!noCta && (
-          <div
-            style={{ display: 'flex', justifyContent: 'flex-end' }}
-          >
-            <a
-              href={demoHref}
+            <div
               style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 8,
-                padding: '9px 15px',
-                borderRadius: 999,
-                fontSize: 13,
-                fontWeight: 500,
-                background: 'var(--accent)',
-                color: 'var(--accent-fg)',
-                whiteSpace: 'nowrap',
+                display: 'grid',
+                gridTemplateColumns: '1fr auto',
+                gap: 10,
+                padding: '8px 0',
+                borderBottom: '1px solid var(--line-soft)',
+                alignItems: 'baseline',
               }}
             >
-              {copy.cta}
-              <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                <path
-                  d="M3 7h8M7.5 3.5 11 7l-3.5 3.5"
-                  stroke="currentColor"
-                  strokeWidth="1.6"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </a>
+              <span style={{ fontSize: 13, color: 'var(--fg-2)' }}>{copy.fixed}</span>
+              <span className="mono" style={{ fontSize: 14, fontWeight: 500, fontVariantNumeric: 'tabular-nums' }}>
+                {eur(q.fixed)}
+              </span>
+            </div>
+            {q.lines.map((l, idx) => (
+              <div
+                key={l.key}
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: '1fr auto',
+                  gap: 10,
+                  padding: '8px 0',
+                  borderBottom: idx < q.lines.length - 1 ? '1px solid var(--line-soft)' : 0,
+                  alignItems: 'baseline',
+                }}
+              >
+                <div style={{ fontSize: 13, color: 'var(--fg-2)' }}>
+                  {copy.lines[l.key]}
+                  <span className="mono" style={{ fontSize: 11, color: 'var(--muted-2)', marginLeft: 8 }}>
+                    {pct(l.rate)} · {eur(l.base)}
+                  </span>
+                </div>
+                <div
+                  className="mono"
+                  style={{
+                    fontSize: 14,
+                    fontWeight: 500,
+                    whiteSpace: 'nowrap',
+                    fontVariantNumeric: 'tabular-nums',
+                    color: l.amount === 0 ? 'var(--accent)' : 'var(--fg)',
+                  }}
+                >
+                  {eur(l.amount)}
+                </div>
+              </div>
+            ))}
           </div>
-          )}
 
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 12, paddingTop: 10, borderTop: '1px solid var(--line-soft)' }}>
+            {totalRow(copy.youPay, copy.youPayHint, q.youPay, true)}
+            {totalRow(copy.clientPays, copy.clientPaysHint, q.clientPays, false)}
+          </div>
+
+          <p style={{ margin: 0, fontSize: 11.5, lineHeight: 1.45, color: 'var(--muted-2)' }}>{copy.absorbNote}</p>
+
+          {!noCta && (
+            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+              <a
+                href={demoHref}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 8,
+                  padding: '9px 15px',
+                  borderRadius: 999,
+                  fontSize: 13,
+                  fontWeight: 500,
+                  background: 'var(--accent)',
+                  color: 'var(--accent-fg)',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                {copy.cta}
+                <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                  <path
+                    d="M3 7h8M7.5 3.5 11 7l-3.5 3.5"
+                    stroke="currentColor"
+                    strokeWidth="1.6"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </a>
+            </div>
+          )}
         </div>
       </div>
     </div>
   );
 }
 
-/** Porcentaje que representa la factura sobre la facturación, con un decimal. */
-function pctOfBilling(net: number, gmv: number, nLoc: string): string {
+/** Porcentaje que representa un importe sobre la facturación, con un decimal. */
+function pctOfBilling(amount: number, gmv: number, nLoc: string): string {
   if (gmv <= 0) return '—';
-  const v = (net / gmv) * 100;
+  const v = (amount / gmv) * 100;
   const digits = v < 10 ? 1 : 0;
-  return new Intl.NumberFormat(nLoc, { minimumFractionDigits: digits, maximumFractionDigits: digits }).format(v) + '%';
+  return new Intl.NumberFormat(nLoc, { minimumFractionDigits: digits, maximumFractionDigits: digits }).format(v) + ' %';
 }
 
 function Slider({
@@ -421,8 +312,7 @@ function Slider({
   value: number;
   onChange: (v: number) => void;
 }) {
-  // El relleno del raíl es lo único que no se puede expresar sin conocer el
-  // valor, así que viaja como custom property y el resto se queda en el CSS.
+  // El relleno del raíl viaja como custom property; el resto está en el CSS.
   const fill = max > min ? ((value - min) / (max - min)) * 100 : 0;
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>

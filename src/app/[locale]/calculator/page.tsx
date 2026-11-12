@@ -6,8 +6,9 @@ import Nav from '@/components/Nav';
 import { Footer } from '@/components/sections/SectionsEnd';
 import { Calculator } from '@/components/calculator/Calculator';
 import { FIXED, RATES, type ChannelKey } from '@/content/calculator';
+import { PLANS } from '@/lib/pricingCalc';
 
-/** Cómo se nombra cada escalón en el dato estructurado. */
+/** Cómo se nombra cada canal en el dato estructurado. */
 const CHANNEL_NAME: Record<ChannelKey, string> = {
   manual: 'a mano',
   card: 'con tarjeta en el sitio',
@@ -81,15 +82,16 @@ function OfferJsonLd() {
     offers: {
       '@type': 'AggregateOffer',
       priceCurrency: 'EUR',
-      lowPrice: String(FIXED.monthly.extra),
+      // Despegue (1 base) y Escalar (primera base).
+      lowPrice: String(PLANS.despegue.monthly.first),
       highPrice: String(FIXED.monthly.first),
       offerCount: '2',
       description:
-        'Cuota fija por base, todo incluido, más una escalera de comisión por canal de origen: ' +
+        'Cuota fija mensual (Despegue o Escalar, −33 % en anual) más una tarifa por canal, igual en los dos planes: ' +
         (['manual', 'card', 'online', 'otas', 'whatsapp'] as const)
           .map((k) => `${pct(RATES[k].pct)} ${CHANNEL_NAME[k]}`)
           .join(', ') +
-        '.',
+        '. El 3 % de la web lo paga el cliente final, incluido en el precio.',
     },
   };
 

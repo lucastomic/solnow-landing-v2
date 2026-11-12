@@ -1,5 +1,5 @@
 import type { ProductKey } from '@/content/products';
-import { PLANS, SEASON_DISCOUNT } from '@/lib/pricingCalc';
+import { PLANS, RATES, SEASON_DISCOUNT } from '@/lib/pricingCalc';
 import type { Chapter, NarrativaUI } from '@/content/narrativa';
 
 /**
@@ -393,34 +393,25 @@ export const CHAPTERS_EN: Chapter[] = [
     slides: [
       {
         kind: 'title',
-        title: 'One fee per base, and the bulk follows sales.',
-        em: 'follows sales',
+        title: 'One fee per base and one rate per channel.',
+        em: 'per channel',
       },
       {
         kind: 'price',
         level: 0,
-        title: 'All included, no tiers',
+        title: 'We charge by channel',
         fixed: {
-          first: `${eur(PLANS.escalar.season.first)} per season for the first base`,
+          first: `${eur(PLANS.escalar.season.first)} a year for the first base`,
           extra: `${eur(PLANS.escalar.season.extra)} for each additional base`,
-          monthly: `Or monthly: ${eur(PLANS.escalar.monthly.first)} for the first and ${eur(PLANS.escalar.monthly.extra)} for each additional (${pct(SEASON_DISCOUNT)} more than the season price).`,
+          monthly: `Or monthly: ${eur(PLANS.escalar.monthly.first)} for the first and ${eur(PLANS.escalar.monthly.extra)} for each additional. Paying annually saves ${pct(SEASON_DISCOUNT)}.`,
         },
         rows: [
-          { k: '0%', h: 'of everything you do yourself', p: 'Front desk, manual, partners.' },
-          {
-            k: pct(PLANS.escalar.channelPct),
-            h: 'of what SolNow collects online',
-            p: 'Can be passed on to the traveller as a booking fee.',
-          },
+          { k: pct(RATES.manual), h: 'on what your team sells', p: 'Front desk, phone, your team’s WhatsApp, partners booked by hand.' },
+          { k: pct(RATES.agent), h: 'AI agent, kiosk at your base and OTAs', p: 'You pay it.' },
+          { k: pct(RATES.web), h: 'booking engine and partner kiosks', p: 'Your customer pays it, included in the price. If you don’t pass it on, you absorb it at the same 3%.' },
         ],
-        agent: {
-          h: 'AI agent, included',
-          p: 'Live from day one. Answering, replying, following up and after-sales are covered by the fee.',
-          k: `+${pct(PLANS.escalar.vendorPct)}`,
-          kp: 'Only on bookings it charges through its own link.',
-        },
-        note: 'In November the invoice goes down on its own.',
-        alt: `One base and just starting? Despegue: ${eur(PLANS.despegue.season.first)} per season (${eur(PLANS.despegue.monthly.first)} a month) and ${pct(PLANS.despegue.channelPct)} of what SolNow collects online. Same modules, same agent.`,
+        note: 'The AI agent is included in both plans. In November the invoice goes down on its own.',
+        alt: `One base and just starting? Despegue: ${eur(PLANS.despegue.season.first)} a year (${eur(PLANS.despegue.monthly.first)} a month), with the digital channels: website, AI agent and OTAs. Same rate per channel.`,
         calculator: 'Work out your fee',
       },
     ],
@@ -450,7 +441,7 @@ export const APPENDIX_EN: Chapter[] = [
           {
             k: '“And in winter?”',
             h: `The fee is ${eur(PLANS.escalar.monthly.first)} a month for the first base`,
-            p: 'The rest is commission on what SolNow collects or closes. In November the invoice goes down on its own.',
+            p: 'The rest is a per-channel rate on what gets sold, and the front desk is 0%. In November the invoice goes down on its own.',
           },
         ],
       },
@@ -467,7 +458,7 @@ export const UI_EN: NarrativaUI = {
   },
   rail: { chapters: 'Chapters', appendix: 'Appendix' },
   logos: { inProduction: 'In production' },
-  price: { eyebrow: 'Fee per base · Escalar', variable: 'The bulk follows sales', allIncluded: 'All included, no tiers.' },
+  price: { eyebrow: 'Fee per base · Escalar', variable: 'Rate per channel, the same in both plans', allIncluded: 'No minimum, no per-kiosk fee, no per-conversation charge.' },
   zoom: { close: 'Close', hint: 'Esc to go back to the map', nodeAria: 'see in detail' },
   presenter: {
     title: 'Presenter mode',
@@ -521,7 +512,7 @@ export const UI_EN: NarrativaUI = {
     roiHires: 'People you do not have to hire',
     roiLost: 'Bookings that go cold today and the follow-up recovers',
     roiTotal: 'What you get back per season',
-    roiPay: 'What you pay a year, from your invoice above',
+    roiPay: 'What SolNow charges a year, your share and your customer’s',
     roiBig: 'estimated return on what you pay. Not counting what is never measured: till, nights, languages.',
     hint: 'The same formulas as the website · Estimate using the narrative’s units · Esc to go back',
   },

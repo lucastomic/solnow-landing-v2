@@ -1,5 +1,5 @@
 import type { ProductKey } from '@/content/products';
-import { PLANS, SEASON_DISCOUNT } from '@/lib/pricingCalc';
+import { PLANS, RATES, SEASON_DISCOUNT } from '@/lib/pricingCalc';
 
 /**
  * La narrativa comercial de SolNow, en el orden en que el operador la tiene que
@@ -183,15 +183,10 @@ export interface SlideLogos {
 export interface SlidePrice {
   kind: 'price';
   title: string;
-  /** El fijo, en temporada (lo que se factura a casi todos) y, en pequeño, al mes. */
+  /** El fijo, en anual (lo que se factura a casi todos) y, en pequeño, al mes. */
   fixed: { first: string; extra: string; monthly: string };
+  /** La tarifa por canal: 0 %, 1 % (lo pagas tú) y 3 % (lo paga tu cliente). */
   rows: { k: string; h: string; p: string }[];
-  /**
-   * El agente, en una franja aparte debajo de las dos tarjetas. Como tercera
-   * fila del variable se leía como una comisión más sumada a la online; es un
-   * vendedor que ya viene incluido y solo cobra lo que él mismo cobra.
-   */
-  agent: { h: string; p: string; k: string; kp: string };
   note: string;
   /** Despegue, en una línea discreta: casi nadie va ahí, pero existe. */
   alt: string;
@@ -315,7 +310,7 @@ export const UI_ES: NarrativaUI = {
   },
   rail: { chapters: 'Capítulos', appendix: 'Apéndice' },
   logos: { inProduction: 'En producción' },
-  price: { eyebrow: 'Cuota por base · Escalar', variable: 'El grueso sigue a las ventas', allIncluded: 'Todo incluido, sin tiers.' },
+  price: { eyebrow: 'Cuota por base · Escalar', variable: 'Tarifa por canal, igual en los dos planes', allIncluded: 'Sin mínimo, sin cuota por kiosko, sin cobro por conversación.' },
   zoom: { close: 'Cerrar', hint: 'Esc para volver al grafo', nodeAria: 'ver en detalle' },
   presenter: {
     title: 'Modo presentador',
@@ -369,7 +364,7 @@ export const UI_ES: NarrativaUI = {
     roiHires: 'Gente que no hay que contratar',
     roiLost: 'Reservas que hoy se enfrían y el persigue recupera',
     roiTotal: 'Lo que recuperas por temporada',
-    roiPay: 'Lo que pagas al año, según tu factura de arriba',
+    roiPay: 'Lo que cobra SolNow al año, tu parte y la de tu cliente',
     roiBig: 'de retorno estimado sobre lo que pagas. Sin contar lo que no se mide: caja, noche, idiomas.',
     hint: 'Las mismas fórmulas que la web · Estimación con las unidades de la narrativa · Esc para volver',
   },
@@ -773,34 +768,25 @@ export const CHAPTERS: Chapter[] = [
     slides: [
       {
         kind: 'title',
-        title: 'Una cuota por base, y el grueso sigue a las ventas.',
-        em: 'sigue a las ventas',
+        title: 'Una cuota por base y una tarifa por canal.',
+        em: 'por canal',
       },
       {
         kind: 'price',
         level: 0,
-        title: 'Todo incluido, sin tiers',
+        title: 'Cobramos por canal',
         fixed: {
-          first: `${eur(PLANS.escalar.season.first)} por temporada la primera base`,
+          first: `${eur(PLANS.escalar.season.first)} al año la primera base`,
           extra: `${eur(PLANS.escalar.season.extra)} cada base adicional`,
-          monthly: `O al mes: ${eur(PLANS.escalar.monthly.first)} la primera y ${eur(PLANS.escalar.monthly.extra)} cada adicional (${pct(SEASON_DISCOUNT)} más que en temporada).`,
+          monthly: `O al mes: ${eur(PLANS.escalar.monthly.first)} la primera y ${eur(PLANS.escalar.monthly.extra)} cada adicional. El pago anual ahorra un ${pct(SEASON_DISCOUNT)}.`,
         },
         rows: [
-          { k: '0 %', h: 'de todo lo que haces tú', p: 'Mostrador, manual, colaboradores.' },
-          {
-            k: pct(PLANS.escalar.channelPct),
-            h: 'de lo que SolNow cobra online',
-            p: 'Trasladable al viajero como gastos de gestión.',
-          },
+          { k: pct(RATES.manual), h: 'de lo que vende tu equipo', p: 'Mostrador, teléfono, WhatsApp de tu equipo, colaboradores a mano.' },
+          { k: pct(RATES.agent), h: 'agente de IA, kiosko en tu base y OTAs', p: 'Lo pagas tú.' },
+          { k: pct(RATES.web), h: 'motor web y kioskos con colaborador', p: 'Lo paga tu cliente, incluido en el precio. Si no lo repercutes, lo asumes al mismo 3 %.' },
         ],
-        agent: {
-          h: 'Agente de IA, incluido',
-          p: 'Activo desde el primer día. Atender, responder, perseguir y postventa van dentro de la cuota.',
-          k: `+${pct(PLANS.escalar.vendorPct)}`,
-          kp: 'Solo en las reservas que cobra por su propio enlace.',
-        },
-        note: 'En noviembre la factura baja sola.',
-        alt: `¿Una sola base y empezando? Despegue: ${eur(PLANS.despegue.season.first)} por temporada (${eur(PLANS.despegue.monthly.first)} al mes) y ${pct(PLANS.despegue.channelPct)} de lo que SolNow cobra online. Mismos módulos y mismo agente.`,
+        note: 'El agente de IA va incluido en los dos planes. En noviembre la factura baja sola.',
+        alt: `¿Una sola base y empezando? Despegue: ${eur(PLANS.despegue.season.first)} al año (${eur(PLANS.despegue.monthly.first)} al mes), con los canales digitales: web, agente de IA y OTAs. El mismo porcentaje por canal.`,
         calculator: 'Calcula tu cuota',
       },
     ],
@@ -845,7 +831,7 @@ export const APPENDIX: Chapter[] = [
           {
             k: '«¿Y en invierno?»',
             h: `La cuota es ${eur(PLANS.escalar.monthly.first)} al mes por la primera base`,
-            p: 'El resto es comisión sobre lo que SolNow cobra o cierra. En noviembre la factura baja sola.',
+            p: 'El resto es una tarifa por canal sobre lo que se vende, y el mostrador va al 0 %. En noviembre la factura baja sola.',
           },
         ],
       },

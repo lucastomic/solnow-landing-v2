@@ -139,7 +139,7 @@ function CalculatorBody({ locale, initial }: { locale: string; initial: Inputs }
       calc_facturacion: String(inputs.revenue),
       calc_bases: String(inputs.bases),
       calc_canales: CHANNEL_SUMMARY(ch, ' / '),
-      calc_pago: inputs.billing === 'season' ? 'temporada' : 'mensual',
+      calc_pago: inputs.billing === 'season' ? 'anual' : 'mensual',
       calc_total: String(Math.round(quote.total)),
     }).toString();
 
@@ -152,7 +152,7 @@ function CalculatorBody({ locale, initial }: { locale: string; initial: Inputs }
         `Facturación anual: ${money(inputs.revenue)}`,
         `Bases: ${inputs.bases}`,
         `Canales: ${CHANNEL_SUMMARY(ch, ' · ')}`,
-        `Modalidad: ${inputs.billing === 'season' ? 'pago por temporada' : 'pago mensual'}`,
+        `Modalidad: ${inputs.billing === 'season' ? 'pago anual' : 'pago mensual'}`,
         `Coste anual estimado: ${money(quote.total)} (${percent(quote.effectiveRate)})`,
         '',
         `Mi cálculo: https://www.solnow.io/${locale}/calculator?${query}`,
