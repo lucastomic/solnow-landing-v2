@@ -1,23 +1,42 @@
+import type { CSSProperties } from 'react';
 import type { Locale } from '@/i18n/config';
 import { getT } from '@/i18n/dictionaries';
 import { SectionHead } from '../atoms';
-import PricingSurface, { type MsgPlan, type PlansCopy } from './PricingSurface';
-import { type CalcCopy } from './PricingCalculator';
+import PricingSurface, { type MsgPlan } from './PricingSurface';
 import { FaqAccordion } from './FAQ';
 
+interface ChannelsCopy {
+  eyebrow: string;
+  title: string;
+  head: { channel: string; fee: string; payer: string };
+  rows: { c: string; v: string; p: string }[];
+}
+
+const TH: CSSProperties = {
+  textAlign: 'left',
+  padding: '12px 14px',
+  borderBottom: '1px solid var(--line)',
+  fontWeight: 600,
+  color: 'var(--fg)',
+};
+const TD: CSSProperties = {
+  padding: '12px 14px',
+  borderBottom: '1px solid var(--line-soft)',
+  color: 'var(--fg-2)',
+  verticalAlign: 'top',
+};
+
 /**
- * La página de precios: tarjetas, calculadora y letra pequeña, en ese orden.
+ * La página de precios: cabecera, dos planes, tabla de canales y letra pequeña.
  *
- * Las tarjetas y la calculadora no se separan nunca. Sin los planes al lado, la
- * calculadora pierde el contexto de qué está calculando; juntas son el activo
- * —la página de precios que la competencia no publica— y por eso viven en una
- * URL propia: se comparte por WhatsApp entre socios, es el enlace del
- * seguimiento tras la demo, el destino de los anuncios con intención de precio
- * y lo que posiciona contra las páginas de «contacta con ventas».
+ * La tabla de canales es el pricing: el porcentaje depende del canal y es el
+ * mismo en los dos planes, así que va una vez, debajo de las tarjetas, y no
+ * repetido dentro de cada una.
  */
 export async function PricingPage({ locale }: { locale: Locale }) {
   const t = await getT(locale);
-  const billing = t<{ q: string; a: string }[]>('pricing.billingFaq.items');
+  const faq = t<{ q: string; a: string }[]>('pricing.billingFaq.items');
+  const ch = t<ChannelsCopy>('pricing.channels');
 
   return (
     <main>
@@ -35,26 +54,53 @@ export async function PricingPage({ locale }: { locale: Locale }) {
                 despegue: t<MsgPlan>('pricing.plans.despegue'),
                 escalar: t<MsgPlan>('pricing.plans.escalar'),
               },
-              rows: t<PlansCopy['rows']>('pricing.rows'),
-              agent: t<PlansCopy['agent']>('pricing.agent'),
-              bothPlans: t('pricing.bothPlans'),
+              core: t('pricing.core'),
+              noExtras: t('pricing.noExtras'),
               perMonth: t('pricing.perMonth'),
-              perSeason: t('pricing.perSeason'),
+              perYear: t('pricing.perYear'),
               extraMonth: t('pricing.extraBase'),
-              extraSeason: t('pricing.extraBaseSeason'),
+              extraYear: t('pricing.extraBaseYear'),
               billingMonthly: t('pricing.billingMonthly'),
-              billingSeason: t('pricing.billingSeason'),
+              billingAnnual: t('pricing.billingAnnual'),
             }}
-            calcCopy={t<CalcCopy>('pricing.calc')}
             locale={locale}
           />
         </div>
       </section>
 
-      {/* La letra pequeña como argumento, no como nota al pie: quien llega aquí
-          buscando precio quiere saber justo lo que las demás páginas esconden. */}
+      <section id="canales" className="section" style={{ paddingBlock: 42 }}>
+        <div className="container" style={{ maxWidth: 1000 }}>
+          <SectionHead eyebrow={ch.eyebrow} title={<>{ch.title}</>} compact />
+          <div className="reveal r-cmp-wrap">
+            <table className="r-cmp-row" style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14.5 }}>
+              <thead>
+                <tr>
+                  <th style={TH}>{ch.head.channel}</th>
+                  <th style={{ ...TH, width: 90 }}>{ch.head.fee}</th>
+                  <th style={TH}>{ch.head.payer}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {ch.rows.map((r) => (
+                  <tr key={r.c}>
+                    <td style={{ ...TD, color: 'var(--fg)' }}>{r.c}</td>
+                    <td
+                      className="mono"
+                      style={{ ...TD, color: 'var(--accent)', fontWeight: 500, whiteSpace: 'nowrap', fontVariantNumeric: 'tabular-nums' }}
+                    >
+                      {r.v}
+                    </td>
+                    <td style={TD}>{r.p}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
       <FaqAccordion
-        items={billing}
+        items={faq}
         eyebrow={t('pricing.billingFaq.eyebrow')}
         title={t('pricing.billingFaq.title')}
         id="facturacion"

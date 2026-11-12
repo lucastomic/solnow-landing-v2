@@ -1,15 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  DEFAULTS,
-  PLANS,
-  SEASON_DISCOUNT,
-  type Billing,
-  type Inputs,
-  type PlanKey,
-} from '@/lib/pricingCalc';
-import PricingCalculator, { type CalcCopy } from './PricingCalculator';
+import { PLANS, SEASON_DISCOUNT, type Billing, type PlanKey } from '@/lib/pricingCalc';
 
 const PLAN_KEYS: PlanKey[] = ['despegue', 'escalar'];
 
@@ -20,55 +12,39 @@ export interface MsgPlan {
   name: string;
   audience: string;
   badge?: string;
-  feeNote: string;
-  onboarding: string;
+  /** Texto bajo el precio cuando el plan no admite bases adicionales. */
+  bases?: string;
+  features: string[];
   cta: string;
 }
 
 export interface PlansCopy {
   plans: Record<PlanKey, MsgPlan>;
-  rows: {
-    manual: string;
-    online: string;
-    onlineNote: string;
-    onboarding: string;
-  };
-  /** El agente va debajo de los planes, no dentro: ver `AgentBand`. */
-  agent: { title: string; body: string; fee: string; feeNote: string };
   /** Lo que es igual en los dos planes, dicho una vez y no dos. */
-  bothPlans: string;
+  core: string;
+  noExtras: string;
   /** Sufijos del precio grande, uno por modalidad. */
   perMonth: string;
-  perSeason: string;
+  perYear: string;
   /** Plantillas de la base adicional, con `{price}`. */
   extraMonth: string;
-  extraSeason: string;
+  extraYear: string;
   billingMonthly: string;
-  billingSeason: string;
+  billingAnnual: string;
 }
 
 /**
- * Las tarjetas y la calculadora, gobernadas por un solo estado.
+ * Las dos tarjetas de plan con el conmutador mensual/anual.
  *
- * El conmutador mensual/temporada tiene que mover las dos superficies a la vez:
- * si cada una guardara su modalidad, la tarjeta podría anunciar el precio de
- * temporada mientras la factura de abajo suma doce mensualidades, y el total
- * dejaría de cuadrar con lo que el visitante está leyendo. Por eso el estado
- * vive aquí arriba y baja por props, en vez de dentro de la calculadora.
+ * Solo el fijo sale de `@/lib/pricingCalc` (cuotas y descuento anual). Los
+ * porcentajes por canal no van aquí: son iguales en los dos planes y viven en
+ * la tabla de canales de `PricingPage`.
  *
  * Los textos llegan resueltos desde servidor: meter el namespace `pricing` en
  * el diccionario de cliente se pagaría en el HTML de todas las páginas.
  */
-export default function PricingSurface({
-  copy,
-  calcCopy,
-  locale,
-}: {
-  copy: PlansCopy;
-  calcCopy: CalcCopy;
-  locale: string;
-}) {
-  const [input, setInput] = useState<Inputs>(DEFAULTS);
+export default function PricingSurface({ copy, locale }: { copy: PlansCopy; locale: string }) {
+  const [billing, setBilling] = useState<Billing>('monthly');
 
   const eurFmt = new Intl.NumberFormat(locale === 'en' ? 'en-US' : 'es-ES', {
     maximumFractionDigits: 0,
@@ -80,9 +56,9 @@ export default function PricingSurface({
     <>
       <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 14 }}>
         <BillingToggle
-          value={input.billing}
-          onChange={(billing) => setInput((p) => ({ ...p, billing }))}
-          labels={{ monthly: copy.billingMonthly, season: copy.billingSeason }}
+          value={billing}
+          onChange={setBilling}
+          labels={{ monthly: copy.billingMonthly, season: copy.billingAnnual }}
         />
       </div>
 
@@ -91,70 +67,25 @@ export default function PricingSurface({
         style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20, alignItems: 'stretch' }}
       >
         {PLAN_KEYS.map((key, i) => (
-          <PlanCard key={key} planKey={key} i={i} billing={input.billing} copy={copy} eur={eur} />
+          <PlanCard key={key} planKey={key} i={i} billing={billing} copy={copy} eur={eur} />
         ))}
       </div>
-
-      <AgentBand copy={copy.agent} />
 
       <p
         className="reveal"
         style={{
-          margin: '12px 0 0',
-          fontSize: 12.5,
+          margin: '18px 0 0',
+          fontSize: 13,
           color: 'var(--muted)',
           textAlign: 'center',
-          lineHeight: 1.5,
+          lineHeight: 1.55,
         }}
       >
-        {copy.bothPlans}
+        {copy.core}
+        <br />
+        {copy.noExtras}
       </p>
-
-      <PricingCalculator copy={calcCopy} locale={locale} input={input} onChange={setInput} />
     </>
-  );
-}
-
-/**
- * El agente de IA, debajo de las tarjetas y no como una fila más.
- *
- * Como fila, su +2% quedaba a la altura de las reservas online y se leía como
- * una tercera comisión que se suma. No lo es: el agente ya viene en los dos
- * planes, no se contrata, y ese 2% solo existe en las reservas que él mismo
- * cobra. Es igual en los dos planes, así que tampoco informa repetido en cada
- * columna. El porcentaje sale de `PLANS` como el resto de cifras.
- */
-function AgentBand({ copy }: { copy: PlansCopy['agent'] }) {
-  const fee = copy.fee.replace('{pct}', Math.round(PLANS.escalar.vendorPct * 100) + '%');
-  return (
-    <div
-      className="reveal r-split"
-      style={{
-        marginTop: 20,
-        display: 'grid',
-        gridTemplateColumns: '1fr minmax(0, 300px)',
-        gap: 24,
-        alignItems: 'center',
-        padding: '16px 24px',
-        borderRadius: 18,
-        border: '1px solid var(--line)',
-        background: 'var(--surface)',
-      }}
-    >
-      <div>
-        <h3 style={{ margin: '0 0 4px', fontSize: 16, fontWeight: 500, letterSpacing: '-0.01em' }}>{copy.title}</h3>
-        <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.5, color: 'var(--fg-2)' }}>{copy.body}</p>
-      </div>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-        <span
-          className="mono"
-          style={{ fontSize: 13, fontWeight: 500, color: 'var(--accent)', fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap', flexShrink: 0 }}
-        >
-          {fee}
-        </span>
-        <span style={{ fontSize: 12, lineHeight: 1.4, color: 'var(--muted-2)' }}>{copy.feeNote}</span>
-      </div>
-    </div>
   );
 }
 
@@ -163,7 +94,7 @@ function AgentBand({ copy }: { copy: PlansCopy['agent'] }) {
  *
  * El descuento vive aquí y no en la tarjeta: quien está mirando la vista
  * mensual también tiene que ver que existe un −33%, y en la tarjeta solo lo
- * vería el que ya está en temporada.
+ * vería el que ya está en anual.
  */
 function BillingToggle({
   value,
@@ -246,27 +177,14 @@ function PlanCard({
   const cfg = PLANS[key];
   const msg = copy.plans[key];
   const hi = HIGHLIGHT === key;
-  const pct = (n: number) => Math.round(n * 100) + '%';
-  const season = billing === 'season';
+  const annual = billing === 'season';
 
   // El importe que de verdad se paga en la modalidad elegida, sin equivalencias
-  // mensuales ni asteriscos de «facturado anualmente»: la letra chica de la
-  // que precisamente nos diferenciamos.
-  const price = season ? cfg.season.first : cfg.monthly.first;
-  const extra = season ? cfg.season.extra : cfg.monthly.extra;
+  // mensuales ni asteriscos de «facturado anualmente».
+  const price = annual ? cfg.season.first : cfg.monthly.first;
+  const extra = annual ? cfg.season.extra : cfg.monthly.extra;
   const extraLine =
-    extra === null
-      ? msg.feeNote
-      : (season ? copy.extraSeason : copy.extraMonth).replace('{price}', eur(extra));
-
-  // Solo lo que diferencia a un plan del otro. Módulos y conversaciones son
-  // idénticos en los dos, así que comparar dos columnas iguales no informa:
-  // bajan a la franja común de debajo.
-  const rows: { l: string; v: string; note: string }[] = [
-    { l: copy.rows.manual, v: '0%', note: '' },
-    { l: copy.rows.online, v: pct(cfg.channelPct), note: copy.rows.onlineNote },
-    { l: copy.rows.onboarding, v: msg.onboarding, note: '' },
-  ];
+    extra === null ? (msg.bases ?? '') : (annual ? copy.extraYear : copy.extraMonth).replace('{price}', eur(extra));
 
   return (
     <div
@@ -349,7 +267,7 @@ function PlanCard({
               {eur(price)}
             </span>
             <span style={{ fontSize: 13, color: hi ? 'var(--ink-muted)' : 'var(--muted)' }}>
-              {season ? copy.perSeason : copy.perMonth}
+              {annual ? copy.perYear : copy.perMonth}
             </span>
           </div>
 
@@ -358,43 +276,20 @@ function PlanCard({
           </div>
         </div>
 
-        <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 0, flex: 1 }}>
-          {rows.map((r, idx) => (
+        <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', flex: 1 }}>
+          {msg.features.map((f, idx) => (
             <li
-              key={r.l}
+              key={f}
               style={{
-                padding: '5px 0',
+                padding: '6px 0',
+                fontSize: 13.5,
+                lineHeight: 1.45,
+                color: hi ? 'var(--ink-fg-2)' : 'var(--fg-2)',
                 borderBottom:
-                  idx < rows.length - 1 ? '1px solid ' + (hi ? 'rgba(255,255,255,0.06)' : 'var(--line-soft)') : 0,
+                  idx < msg.features.length - 1 ? '1px solid ' + (hi ? 'rgba(255,255,255,0.06)' : 'var(--line-soft)') : 0,
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 12 }}>
-                <span style={{ fontSize: 13.5, color: hi ? 'var(--ink-fg-2)' : 'var(--fg-2)' }}>{r.l}</span>
-                <span
-                  className="mono"
-                  style={{
-                    fontSize: 13,
-                    fontWeight: 500,
-                    textAlign: 'right',
-                    color: hi ? 'var(--accent-2)' : 'var(--accent)',
-                    fontVariantNumeric: 'tabular-nums',
-                  }}
-                >
-                  {r.v}
-                </span>
-              </div>
-              {r.note && (
-                <div
-                  style={{
-                    fontSize: 12,
-                    lineHeight: 1.35,
-                    marginTop: 2,
-                    color: hi ? 'var(--ink-muted)' : 'var(--muted-2)',
-                  }}
-                >
-                  {r.note}
-                </div>
-              )}
+              {f}
             </li>
           ))}
         </ul>

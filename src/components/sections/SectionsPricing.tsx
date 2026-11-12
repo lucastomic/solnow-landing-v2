@@ -21,12 +21,11 @@ function euroFmt(locale: Locale) {
  *
  * La home cuenta una historia y pide la demo; cuatro deslizadores y una factura
  * desglosada le cortan el clímax al lector y lo mandan a una hoja de cálculo.
- * Aquí solo va la promesa —la escalera en tres líneas y el precio de entrada— y
- * el enlace a la página donde eso se puede calcular.
+ * Aquí solo va la promesa —0 / 1 / 3 % en tres líneas y el precio de entrada— y
+ * el enlace a la página de precios.
  *
- * Las cifras salen de `@/lib/pricingCalc`, las mismas que leen las tarjetas y
- * la calculadora: tres superficies diciendo lo mismo, o el día que cambie una
- * tarifa habría tres sitios donde se queda vieja.
+ * Los porcentajes van en los mensajes, como la tabla de canales de la página
+ * de precios; el precio de entrada sale de `@/lib/pricingCalc`.
  */
 export async function PricingTeaser({
   locale,
@@ -44,13 +43,7 @@ export async function PricingTeaser({
 }) {
   const t = await getT(locale);
   const eur = euroFmt(locale);
-  const rows = t<{ l: string }[]>('pricing.teaser.rows');
-  const pct = (n: number) => Math.round(n * 100) + '%';
-  const values = [
-    '0%',
-    pct(PLANS.escalar.channelPct),
-    '+' + pct(PLANS.escalar.vendorPct),
-  ];
+  const rows = t<{ v: string; l: string }[]>('pricing.teaser.rows');
 
   return (
     <section id="pricing" className="section" style={{ paddingBlock: 42 }}>
@@ -89,7 +82,7 @@ export async function PricingTeaser({
                     fontVariantNumeric: 'tabular-nums',
                   }}
                 >
-                  {values[i]}
+                  {r.v}
                 </span>
                 <span style={{ fontSize: 14, color: 'var(--fg-2)', lineHeight: 1.45 }}>{r.l}</span>
               </li>

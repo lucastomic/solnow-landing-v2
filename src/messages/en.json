@@ -1147,41 +1147,57 @@
   },
   "pricing": {
     "eyebrow": "08 · Pricing",
-    "title": "Two plans, all included.",
-    "lede": "One fee per base, commission only on what we sell.",
+    "title": "We charge by channel.",
+    "lede": "What your team sells is yours: 0%. A fixed fee per base and a rate per channel, the same on both plans.",
     "perMonth": "/ mo",
-    "perSeason": "/ season",
+    "perYear": "/ year",
     "extraBase": "+ {price} / mo per additional base",
-    "extraBaseSeason": "+ {price} per additional base",
-    "rows": {
-      "manual": "Front-desk and manual bookings",
-      "online": "Online bookings",
-      "onlineNote": "Can be passed on to the traveller.",
-      "onboarding": "Onboarding"
-    },
-    "agent": {
-      "title": "AI agent, included on both plans",
-      "body": "Live from day one. Answering, replying, following up and after-sales are covered by the fee.",
-      "fee": "+{pct}",
-      "feeNote": "Only on bookings it charges through its own link."
-    },
-    "bothPlans": "On both plans: every module · unlimited conversations.",
+    "extraBaseYear": "+ {price} / year per additional base",
+    "billingAnnual": "Annual",
+    "core": "On both plans: booking engine, contracts, check-in, guest register, dashboard, payments and AI agent.",
+    "noExtras": "No minimum, no per-kiosk fee, no charge per conversation.",
     "plans": {
       "despegue": {
         "name": "Despegue",
-        "audience": "To get started: one base and the whole product.",
-        "feeNote": "One base maximum. A second base moves you to Escalar.",
-        "onboarding": "Remote assisted",
+        "audience": "One base and the digital channels.",
+        "bases": "1 base",
+        "features": [
+          "Digital channels: booking engine and AI agent on WhatsApp",
+          "OTAs, if you connect them",
+          "Guided setup (1 call)",
+          "No kiosk"
+        ],
         "cta": "Start with Despegue"
       },
       "escalar": {
         "name": "Escalar",
         "badge": "Recommended",
-        "audience": "For operators with volume and several bases.",
-        "feeNote": "",
-        "onboarding": "Full done-for-you",
+        "audience": "Every channel and several bases.",
+        "features": [
+          "Every channel: + kiosks at your base and with partners",
+          "POS / Tap to Pay, OTAs and partners",
+          "Several bases",
+          "Done-for-you setup, kiosks included (you buy the hardware)"
+        ],
         "cta": "Book an Escalar demo"
       }
+    },
+    "channels": {
+      "eyebrow": "Rate per channel",
+      "title": "The same rate on both plans.",
+      "head": {
+        "channel": "Channel",
+        "fee": "Rate",
+        "payer": "Who pays it"
+      },
+      "rows": [
+        { "c": "Booking engine", "v": "3%", "p": "Your customer, included in the final price" },
+        { "c": "Kiosk with a partner (hotel, agency) or away from your base", "v": "3%", "p": "Your customer, included in the final price" },
+        { "c": "AI agent (WhatsApp)", "v": "1%", "p": "You" },
+        { "c": "Kiosk at your base", "v": "1%", "p": "You" },
+        { "c": "Synced OTA", "v": "1%", "p": "You" },
+        { "c": "Front desk, phone, your team's WhatsApp, partners booked by hand", "v": "0%", "p": "—" }
+      ]
     },
     "calc": {
       "title": "What it would cost you",
@@ -1223,58 +1239,65 @@
       "cta": "Book the demo with your number"
     },
     "meta": {
-      "title": "Solnow pricing · Work out your bill",
-      "description": "Two plans, everything included, from €99/mo. 0% on what your team books. Work out your bill with your own figures — no email required.",
-      "ogTitle": "Solnow pricing, with a calculator"
+      "title": "Solnow pricing · A rate per channel",
+      "description": "Two plans from €99/mo. 0% on what your team sells, 1% on the channels you pay for and 3% paid by your customer, included in their price.",
+      "ogTitle": "Solnow pricing: we charge by channel"
     },
     "teaser": {
-      "lede": "One fee per base. 0% on what you book yourself. 2% on what we collect online — and you can pass that one to the traveller. The agent is paid like a salesperson: only on what it closes.",
+      "lede": "We charge by channel. What your team sells is yours.",
       "rows": [
         {
-          "l": "on what your team books: front desk, manual, whiteboard and partners"
+          "v": "0%",
+          "l": "what your team sells: front desk, phone, WhatsApp and partners booked by hand"
         },
         {
-          "l": "on what we collect online, passed to the traveller on engine and payment links"
+          "v": "1%",
+          "l": "AI agent, kiosk at your base and OTAs; you pay it"
         },
         {
-          "l": "only on the bookings the agent closes end to end"
+          "v": "3%",
+          "l": "booking engine and partner kiosks; your customer pays it, included in the price"
         }
       ],
       "from": "from {price}/mo",
-      "fromNote": "Every module included, on both plans.",
-      "cta": "See full pricing and work out your bill"
+      "fromNote": "No minimum and no charge per conversation.",
+      "cta": "See full pricing"
     },
     "billingFaq": {
-      "eyebrow": "Billing",
-      "title": "The small print, in writing.",
+      "eyebrow": "Small print",
+      "title": "The rules, in writing.",
       "items": [
         {
-          "q": "Is there a revenue minimum or a season commitment?",
-          "a": "No minimum: the fixed fee is the floor. The contract runs 12 months and does not pause in winter — which is exactly why the fee is low and the commission moves with the season."
+          "q": "What does the rate depend on?",
+          "a": "On where the sale happens and who sets the price. Never on the payment method."
         },
         {
-          "q": "How is commission charged?",
-          "a": "For the channels we process, it is withheld from each payout with a booking-by-booking breakdown. OTAs and agent sales paid in cash are invoiced on the 1st of the following month."
+          "q": "Who pays the 3%?",
+          "a": "Your customer: it is included in the price they see. If you would rather not pass it on, you absorb it at the same 3%."
+        },
+        {
+          "q": "Does upgrading lower the rate?",
+          "a": "No. Upgrading opens channels; the rate per channel stays the same."
+        },
+        {
+          "q": "What do card payments cost?",
+          "a": "The same as your bank, for Spanish cards."
+        },
+        {
+          "q": "Is there a minimum or a commitment?",
+          "a": "No minimum, no per-kiosk fee, no charge per conversation. The contract runs 12 months and does not pause in winter."
         },
         {
           "q": "What happens with cancellations and refunds?",
-          "a": "Refund the full amount and 100% of the commission is reversed; a partial refund reverses it proportionally. It is settled with the refund or at the next close, as a credit note or netted off."
-        },
-        {
-          "q": "Do OTAs pay commission?",
-          "a": "Yes, the channel layer, on the gross price that arrives through the integration, invoiced separately. They do not allow booking fees: the OTA sets the price, so that share cannot be passed to the traveller."
-        },
-        {
-          "q": "Can I pass the commission to the traveller?",
-          "a": "The channel layer, yes — on the booking engine and payment links, as a booking fee inside the price from the listing. The agent layer, no: it is a salesperson commission, and nobody passes that to their customer."
+          "a": "Refund the full amount and the whole commission is reversed; a partial refund reverses it proportionally."
         },
         {
           "q": "What if I add a base mid-contract?",
-          "a": "It is prorated from the day it is added; removals apply at renewal. A base is a configured point of sale or operation."
+          "a": "It is prorated from the day it is added; removals apply at renewal."
         },
         {
-          "q": "Are the agent conversations charged?",
-          "a": "No. They are unlimited inside the fee, with reasonable use. The agent only charges when it sells: answering, following up and after-sales are inside the fixed fee."
+          "q": "And for large volumes?",
+          "a": "With an annual contract there are tiered rates. Let's talk."
         }
       ]
     },
