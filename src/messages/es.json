@@ -1147,41 +1147,57 @@
   },
   "pricing": {
     "eyebrow": "08 · Pricing",
-    "title": "Dos planes, todo incluido.",
-    "lede": "Una cuota por base y comisión solo sobre lo que vendemos.",
+    "title": "Cobramos por canal.",
+    "lede": "Lo que hace tu equipo es tuyo: 0 %. Una cuota fija por base y una tarifa por canal, igual en los dos planes.",
     "perMonth": "/ mes",
-    "perSeason": "/ temporada",
+    "perYear": "/ año",
     "extraBase": "+ {price} / mes por cada base adicional",
-    "extraBaseSeason": "+ {price} por base adicional",
-    "rows": {
-      "manual": "Reservas de mostrador y manuales",
-      "online": "Reservas online",
-      "onlineNote": "Repercutible al viajero.",
-      "onboarding": "Onboarding"
-    },
-    "agent": {
-      "title": "Agente de IA, incluido en los dos planes",
-      "body": "Activo desde el primer día. Atender, responder, perseguir y postventa van dentro de la cuota.",
-      "fee": "+{pct}",
-      "feeNote": "Solo en las reservas que cobra por su propio enlace."
-    },
-    "bothPlans": "En los dos planes: todos los módulos · conversaciones ilimitadas.",
+    "extraBaseYear": "+ {price} / año por cada base adicional",
+    "billingAnnual": "Pago anual",
+    "core": "En los dos planes: motor web, contratos, check-in, libro de registro, panel, pagos y agente de IA.",
+    "noExtras": "Sin mínimo, sin cuota por kiosko, sin cobro por conversación.",
     "plans": {
       "despegue": {
         "name": "Despegue",
-        "audience": "Para empezar: una base y todo el producto.",
-        "feeNote": "1 base máximo. La segunda base pasa a Escalar.",
-        "onboarding": "Asistido remoto",
+        "audience": "Una base y los canales digitales.",
+        "bases": "1 base",
+        "features": [
+          "Canales digitales: motor web y agente de IA en WhatsApp",
+          "OTAs, si las conectas",
+          "Implantación guiada (1 llamada)",
+          "Sin kiosko"
+        ],
         "cta": "Empezar con Despegue"
       },
       "escalar": {
         "name": "Escalar",
         "badge": "Recomendado",
-        "audience": "Para operadores con volumen y varias bases.",
-        "feeNote": "",
-        "onboarding": "Done-for-you completo",
+        "audience": "Todos los canales y varias bases.",
+        "features": [
+          "Todos los canales: + kioskos en tu base y con colaboradores",
+          "TPV / Tap to Pay, OTAs y colaboradores",
+          "Varias bases",
+          "Implantación done-for-you, kioskos incluidos (el hardware lo compras tú)"
+        ],
         "cta": "Pedir demo de Escalar"
       }
+    },
+    "channels": {
+      "eyebrow": "Tarifa por canal",
+      "title": "El mismo porcentaje en los dos planes.",
+      "head": {
+        "channel": "Canal",
+        "fee": "Tarifa",
+        "payer": "Quién la paga"
+      },
+      "rows": [
+        { "c": "Motor web", "v": "3 %", "p": "Tu cliente, incluido en el precio final" },
+        { "c": "Kiosko con colaborador (hotel, agencia) o fuera de tu base", "v": "3 %", "p": "Tu cliente, incluido en el precio final" },
+        { "c": "Agente de IA (WhatsApp)", "v": "1 %", "p": "Tú" },
+        { "c": "Kiosko en tu base", "v": "1 %", "p": "Tú" },
+        { "c": "OTA sincronizada", "v": "1 %", "p": "Tú" },
+        { "c": "Mostrador, teléfono, WhatsApp de tu equipo, colaboradores a mano", "v": "0 %", "p": "—" }
+      ]
     },
     "calc": {
       "title": "Cuánto te costaría",
@@ -1223,58 +1239,65 @@
       "cta": "Pide la demo con tu número"
     },
     "meta": {
-      "title": "Precios de Solnow · Calculadora de tu factura",
-      "description": "Dos planes con todo incluido desde 99 €/mes. 0% de lo que registra tu equipo. Calcula tu factura con tus propios números, sin dejar el email.",
-      "ogTitle": "Precios de Solnow, con calculadora"
+      "title": "Precios de Solnow · Tarifa por canal",
+      "description": "Dos planes desde 99 €/mes. 0 % en lo que vende tu equipo, 1 % en los canales que pagas tú y 3 % que paga tu cliente, incluido en su precio.",
+      "ogTitle": "Precios de Solnow: cobramos por canal"
     },
     "teaser": {
-      "lede": "Una cuota por base. 0% de lo que haces tú. 2% de lo que cobramos online — y ese lo puedes pasar al viajero. El agente cobra como un vendedor: solo de lo que cierra él.",
+      "lede": "Cobramos por canal. Lo que hace tu equipo es tuyo.",
       "rows": [
         {
-          "l": "de lo que registra tu equipo: mostrador, manual, pizarra y colaboradores"
+          "v": "0 %",
+          "l": "lo que vende tu equipo: mostrador, teléfono, WhatsApp y colaboradores a mano"
         },
         {
-          "l": "de lo que cobramos online, repercutible al viajero en motor y links de pago"
+          "v": "1 %",
+          "l": "agente de IA, kiosko en tu base y OTAs; lo pagas tú"
         },
         {
-          "l": "solo de las reservas que cierra el agente de punta a punta"
+          "v": "3 %",
+          "l": "motor web y kioskos con colaborador; lo paga tu cliente, incluido en el precio"
         }
       ],
       "from": "desde {price}/mes",
-      "fromNote": "Todos los módulos incluidos, en los dos planes.",
-      "cta": "Ve los precios completos y calcula tu factura"
+      "fromNote": "Sin mínimo y sin cobro por conversación.",
+      "cta": "Ve los precios completos"
     },
     "billingFaq": {
-      "eyebrow": "Facturación",
-      "title": "La letra pequeña, por escrito.",
+      "eyebrow": "Letra pequeña",
+      "title": "Las reglas, por escrito.",
       "items": [
         {
-          "q": "¿Hay mínimo de facturación o permanencia de temporada?",
-          "a": "No hay mínimo: la cuota fija es el piso. El contrato es de 12 meses y no se pausa en invierno, que es justamente por lo que el fijo es bajo y la comisión se mueve con la temporada."
+          "q": "¿De qué depende la tarifa?",
+          "a": "De dónde se vende y de quién fija el precio. Nunca del medio de pago."
         },
         {
-          "q": "¿Cómo se cobra la comisión?",
-          "a": "De los canales que procesamos nosotros, por retención en cada liquidación y con el detalle reserva a reserva. Las OTAs y las ventas del agente cobradas en efectivo van por factura el día 1 del mes siguiente."
+          "q": "¿Quién paga el 3 %?",
+          "a": "Tu cliente: va incluido en el precio que ve. Si prefieres no repercutirlo, lo asumes tú al mismo 3 %."
+        },
+        {
+          "q": "¿Subir de plan baja el porcentaje?",
+          "a": "No. Subir de plan abre canales; el porcentaje por canal no cambia."
+        },
+        {
+          "q": "¿Cuánto cuestan los pagos con tarjeta?",
+          "a": "Lo mismo que en tu banco, con tarjeta española."
+        },
+        {
+          "q": "¿Hay mínimo o permanencia?",
+          "a": "No hay mínimo, ni cuota por kiosko, ni cobro por conversación. El contrato es de 12 meses y no se pausa en invierno."
         },
         {
           "q": "¿Qué pasa con las cancelaciones y los reembolsos?",
-          "a": "Si devuelves el importe entero se revierte el 100% de la comisión; si es parcial, la parte proporcional. Se regulariza con el reembolso o en el cierre siguiente, como nota de crédito o por neteo."
-        },
-        {
-          "q": "¿Las OTAs pagan comisión?",
-          "a": "Sí, la capa canal, sobre el precio bruto que llega por la integración, y se factura aparte. No admiten gastos de gestión: el precio lo fija la OTA, así que esa parte no se puede repercutir al viajero."
-        },
-        {
-          "q": "¿Puedo repercutir la comisión al viajero?",
-          "a": "La capa canal sí, en motor y links de pago, como gastos de gestión dentro del precio desde el listado. La del agente no: es la comisión de un vendedor, y nadie se la pasa a su cliente."
+          "a": "Si devuelves el importe entero se revierte toda la comisión; si es parcial, la parte proporcional."
         },
         {
           "q": "¿Qué pasa si doy de alta una base a mitad de contrato?",
-          "a": "Se prorratea desde el alta; las bajas se aplican al renovar. Una base es un punto de venta u operación configurado."
+          "a": "Se prorratea desde el alta; las bajas se aplican al renovar."
         },
         {
-          "q": "¿Se cobran las conversaciones del agente?",
-          "a": "No. Son ilimitadas dentro de la cuota, con uso razonable. El agente solo cobra cuando vende: atender, responder, perseguir y la postventa van dentro del fijo."
+          "q": "¿Y con grandes volúmenes?",
+          "a": "Con contrato anual hay tarifas por tramos. Hablemos."
         }
       ]
     },
