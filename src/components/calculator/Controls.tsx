@@ -2,6 +2,7 @@
 
 import type { CSSProperties } from 'react';
 import {
+  AGENT_ONLINE,
   BANK,
   PRICING_EDITOR,
   BASES,
@@ -265,9 +266,24 @@ export function Controls({
         step={WHATSAPP.step}
         readout={`${ch.whatsapp}%`}
         valueText={`${ch.whatsapp}% por WhatsApp`}
-        hint="Reservas que crea y cobra el agente de IA, atendiendo o persiguiendo carritos caídos."
+        hint="Reservas que cierra el agente de IA, atendiendo o persiguiendo carritos caídos: 1 %, lo pagas tú."
         onChange={(v) => onChannel('whatsapp', v)}
       />
+
+      {ch.whatsapp > 0 && (
+        <Slider
+          id="calc-agent-online"
+          label="De eso, ¿cuánto te pagan online?"
+          value={inputs.agentOnline}
+          min={AGENT_ONLINE.min}
+          max={AGENT_ONLINE.max}
+          step={AGENT_ONLINE.step}
+          readout={`${inputs.agentOnline}%`}
+          valueText={`${inputs.agentOnline}% de lo del agente pagado online`}
+          hint="Lo que el cliente paga online pasa por el motor web y suma su 3 % de gastos de gestión, que paga él. En efectivo, solo el 1 %."
+          onChange={(agentOnline) => onChange({ agentOnline })}
+        />
+      )}
 
       <Slider
         id="calc-otas"
@@ -302,6 +318,24 @@ export function Controls({
           {billing('season', 'Pago anual (−33 %)')}
         </div>
       </div>
+
+      {/* El 3 % de la web y de lo que el agente cobra online lo paga el cliente
+          como gastos de gestión, en línea aparte. Si no lo repercute, lo asume
+          él al mismo 3 %: este conmutador lo pasa a su bolsillo. */}
+      <label style={{ display: 'flex', alignItems: 'flex-start', gap: 9, cursor: 'pointer' }}>
+        <input
+          type="checkbox"
+          checked={inputs.absorb}
+          onChange={(e) => onChange({ absorb: e.target.checked })}
+          style={{ marginTop: 3 }}
+        />
+        <span style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+          <span style={{ fontSize: 14, fontWeight: 500, color: 'var(--fg)' }}>Lo asumo yo: no repercuto los gastos de gestión</span>
+          <span style={{ fontSize: 12, lineHeight: 1.45, color: 'var(--muted)' }}>
+            Por defecto, el 3 % de la web lo paga tu cliente como gastos de gestión, en línea aparte y visible desde el primer precio. Si no lo repercutes, lo pagas tú al mismo 3 %.
+          </span>
+        </span>
+      </label>
 
 
       {/* Los supuestos. Van plegados porque el 90% de los visitantes no los va a

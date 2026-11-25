@@ -406,9 +406,9 @@ export const CHAPTERS_EN: Chapter[] = [
           monthly: `Or monthly: ${eur(PLANS.escalar.monthly.first)} for the first and ${eur(PLANS.escalar.monthly.extra)} for each additional. Paying annually saves ${pct(SEASON_DISCOUNT)}.`,
         },
         rows: [
-          { k: pct(RATES.manual), h: 'on what your team sells', p: 'Front desk, phone, your team’s WhatsApp, partners booked by hand.' },
-          { k: pct(RATES.agent), h: 'AI agent, kiosk at your base and OTAs', p: 'You pay it.' },
-          { k: pct(RATES.web), h: 'booking engine and partner kiosks', p: 'Your customer pays it, included in the price. If you don’t pass it on, you absorb it at the same 3%.' },
+          { k: pct(RATES.manual), h: 'on what your team sells', p: 'Front desk, phone, your team’s WhatsApp, the payment link your team sends, partners booked by hand.' },
+          { k: pct(RATES.agent), h: 'AI agent, kiosk at your base and OTAs', p: `You pay it. If the agent’s customer pays online, the booking engine’s ${pct(RATES.web)} is added, paid by them; in cash, just the ${pct(RATES.agent)}.` },
+          { k: pct(RATES.web), h: 'booking engine and partner kiosks', p: `Your customer pays it as a “booking fee” on a separate line: they see the total from the first price. If you don’t pass it on, you absorb it at the same ${pct(RATES.web)}.` },
         ],
         note: 'The AI agent is included in both plans. In November the invoice goes down on its own.',
         alt: `One base and just starting? Despegue: ${eur(PLANS.despegue.season.first)} a year (${eur(PLANS.despegue.monthly.first)} a month), with the digital channels: website, AI agent and OTAs. Same rate per channel.`,
@@ -440,8 +440,8 @@ export const APPENDIX_EN: Chapter[] = [
           },
           {
             k: '“And in winter?”',
-            h: `The fee is ${eur(PLANS.escalar.monthly.first)} a month for the first base`,
-            p: 'The rest is a per-channel rate on what gets sold, and the front desk is 0%. In November the invoice goes down on its own.',
+            h: `The fee is fixed: ${eur(PLANS.escalar.season.first)} a year or ${eur(PLANS.escalar.monthly.first)} a month for the first base`,
+            p: 'The rest is a per-channel rate on what gets sold, with no minimum, and the front desk is 0%. In November the invoice goes down on its own.',
           },
         ],
       },
@@ -458,7 +458,7 @@ export const UI_EN: NarrativaUI = {
   },
   rail: { chapters: 'Chapters', appendix: 'Appendix' },
   logos: { inProduction: 'In production' },
-  price: { eyebrow: 'Fee per base · Escalar', variable: 'Rate per channel, the same in both plans', allIncluded: 'No minimum, no per-kiosk fee, no per-conversation charge.' },
+  price: { eyebrow: 'Fee per base · Escalar', variable: 'Rate per channel, the same in both plans', allIncluded: 'No minimum, no per-kiosk fee, no per-conversation charge, no volume tiers.' },
   zoom: { close: 'Close', hint: 'Esc to go back to the map', nodeAria: 'see in detail' },
   presenter: {
     title: 'Presenter mode',

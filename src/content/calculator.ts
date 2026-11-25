@@ -55,19 +55,14 @@ export const CHANNEL_ORDER: readonly ChannelKey[] = ['online', 'otas', 'card', '
  * digitales) no cubre TPV, así que no se modela aquí; el porcentaje por canal
  * es el mismo en los dos planes.
  *
- * El anual es un 33 % menos que doce mensualidades y se paga al abrir
- * temporada. Es la respuesta a la objeción de invierno.
+ * El anual es un 33 % menos que doce mensualidades. La cuota es anual o
+ * mensual, nunca ligada a los meses de temporada: lo que baja en invierno es
+ * la parte variable.
  */
 export const FIXED = {
   monthly: { first: 199, extra: 99 },
   season: { first: 1590, extra: 790 },
 } as const;
-
-/**
- * Meses en los que se cobra cuota en modalidad anual (0 = enero).
- * Marzo–octubre: ocho meses, los mismos ocho que financia la tarifa anual.
- */
-export const SEASON_MONTHS = [2, 3, 4, 5, 6, 7, 8, 9] as const;
 
 /* ── 2 · Lo que cobramos por canal ────────────────────────────────────── */
 
@@ -82,15 +77,19 @@ export interface Rate {
  * vende y quién fija el precio**, nunca del medio de pago, y es la misma en los
  * dos planes:
  *
- * - `manual` **0 %** — lo que vende tu equipo: mostrador, teléfono, a mano.
+ * - `manual` **0 %** — lo que vende tu equipo: mostrador, teléfono, WhatsApp
+ *   del equipo, enlace de pago que envía el equipo, colaboradores a mano.
  * - `card` **0 %** — mostrador cobrado con tarjeta en el TPV. Sin tarifa; el
  *   cobro cuesta lo mismo que en su banco (paridad), y eso lo suma
  *   `@/lib/calculator` con el `bank` que pone el visitante.
- * - `online` **3 %** — motor web. Lo paga el cliente final, incluido en el
- *   precio; si el operador no lo repercute, lo asume al mismo 3 %. Se cuenta
- *   en la barra igual que el fee al viajero de FareHarbor.
+ * - `online` **3 %** — motor web. Lo paga el cliente final como «gastos de
+ *   gestión», en línea aparte; si el operador no lo repercute, lo asume al
+ *   mismo 3 % (`absorb` en `Inputs`). Se cuenta en la barra igual que el fee
+ *   al viajero de FareHarbor.
  * - `otas` **1 %** — OTA sincronizada; lo paga el operador.
- * - `whatsapp` **1 %** — reservas del agente de IA; lo paga el operador.
+ * - `whatsapp` **1 %** — reservas del agente de IA; lo paga el operador. Lo
+ *   que el cliente paga online pasa por el motor web y suma además el 3 % de
+ *   `online` (ver `AGENT_ONLINE`); en efectivo, solo el 1 %.
  *
  * Los kioskos (1 % en la base, 3 % con colaborador) no tienen canal propio en
  * esta comparativa.
@@ -372,5 +371,15 @@ export const BASES = { min: 1, max: 12, step: 1, initial: 2 };
 export const PRESENCIAL = { min: 0, max: 100, step: 1, initial: 65 };
 export const WHATSAPP = { min: 0, max: 60, step: 1, initial: 8 };
 export const OTAS = { min: 0, max: 50, step: 1, initial: 10 };
+
+/**
+ * De lo que cierra el agente, el % que el cliente paga online (el resto, en
+ * efectivo). Esa parte pasa por el motor web y suma su 3 % de gastos de
+ * gestión. De partida, todo: el agente cierra mandando el enlace de pago.
+ */
+export const AGENT_ONLINE = { min: 0, max: 100, step: 10, initial: 100 };
+
+/** «Lo asumo yo»: el operador no repercute los gastos de gestión. */
+export const INITIAL_ABSORB = false;
 export const INITIAL_BILLING: Billing = 'season';
 

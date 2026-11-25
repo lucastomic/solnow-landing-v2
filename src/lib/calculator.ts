@@ -7,6 +7,7 @@
  */
 
 import {
+  AGENT_ONLINE,
   BANK,
   BASES,
   CARD_SHARE,
@@ -14,6 +15,7 @@ import {
   CAPABILITIES,
   COMPETITORS,
   FIXED,
+  INITIAL_ABSORB,
   INITIAL_BILLING,
   MONTH_LABELS,
   OTAS,
@@ -25,7 +27,6 @@ import {
   REVENUE,
   SEASONALITY_KEYS,
   SEASONALITY_PRESETS,
-  SEASON_MONTHS,
   SOLNOW_COVERS,
   TICKET,
   UNVERIFIED_COMPETITORS,
@@ -49,9 +50,16 @@ export interface Inputs {
   presencial: number;
   /** % que cierra el agente de WhatsApp. */
   whatsapp: number;
+  /**
+   * De lo que cierra el agente, el % que el cliente paga online. Esa parte
+   * suma el 3 % del motor web (gastos de gestión del cliente).
+   */
+  agentOnline: number;
   /** % que entra por OTAs y colaboradores. */
   otas: number;
   billing: Billing;
+  /** «Lo asumo yo»: no repercute el 3 % y lo paga él, al mismo 3 %. */
+  absorb: boolean;
 
   /* Supuestos. Antes se asumían a espaldas del visitante; ahora los ajusta él,
      y por eso viajan en la URL como cualquier otro control. */
@@ -107,8 +115,10 @@ export const DEFAULTS: Inputs = {
   bases: BASES.initial,
   presencial: PRESENCIAL.initial,
   whatsapp: WHATSAPP.initial,
+  agentOnline: AGENT_ONLINE.initial,
   otas: OTAS.initial,
   billing: INITIAL_BILLING,
+  absorb: INITIAL_ABSORB,
   ticket: TICKET.initial,
   card: CARD_SHARE.initial,
   bank: BANK.initial,
@@ -439,7 +449,15 @@ export interface Quote {
   fixed: number;
   /** Todo lo que no es cuota: la suma de los cinco canales. */
   variable: number;
+  /** Todo lo que cobra SolNow: `youPay + clientPays`. */
   total: number;
+  /**
+   * Lo que paga el cliente final como gastos de gestión, aparte del precio:
+   * el 3 % de la web y de lo que el agente cobra online. 0 con `absorb`.
+   */
+  clientPays: number;
+  /** Lo que sale del bolsillo del operador: `total − clientPays`. */
+  youPay: number;
   /** Coste anual ÷ facturación anual, en tanto por uno. */
   effectiveRate: number;
   schedule: MonthCharge[];
@@ -451,7 +469,7 @@ export interface MonthCharge {
   fixed: number;
   variable: number;
   total: number;
-  /** Mes sin cuota fija: modalidad anual, de noviembre a febrero. */
+  /** Mes sin cuota fija: solo si se ha apagado la cuota en la leyenda. */
   free: boolean;
 }
 
@@ -491,6 +509,7 @@ export function computeQuote(raw: Inputs, hidden: readonly string[] = []): Quote
     card: snap(raw.card, CARD_SHARE),
     bank: snap(raw.bank, BANK),
     human: snap(raw.human, HUMAN_WHATSAPP),
+    agentOnline: snap(raw.agentOnline, AGENT_ONLINE),
   });
 
   const s = split(inputs);
@@ -524,6 +543,25 @@ export function computeQuote(raw: Inputs, hidden: readonly string[] = []): Quote
     });
   }
 
+  // Lo que el agente cobra online pasa por el motor web: suma su 3 % (gastos
+  // de gestión del cliente) sobre esa parte. Cuelga de WhatsApp como el banco
+  // de la tarjeta: es un trozo de lo que vende el agente, no otro canal.
+  //   base = facturación del agente × % pagado online
+  //   importe = base × tarifa del motor web (3 %)
+  {
+    const rate = inputs.pricing.rates.online;
+    const base = (s.revenue.whatsapp * inputs.agentOnline) / 100;
+    channelLines.push({
+      key: 'agentWeb',
+      name: 'WhatsApp pagado online',
+      rate: channelRateLabel(rate),
+      base,
+      amount: base * rate.pct,
+      channel: 'whatsapp',
+      parent: 'whatsapp',
+    });
+  }
+
   const showFixed = !hidden.includes('fixed');
   const shownChannels = channelLines.filter((l) => !hidden.includes(l.key));
 
@@ -548,6 +586,9 @@ export function computeQuote(raw: Inputs, hidden: readonly string[] = []): Quote
   const shownFixed = showFixed ? fixed : 0;
   const variable = sum(shownChannels);
   const total = shownFixed + variable;
+  // Gastos de gestión: el 3 % de la web y de lo que el agente cobra online. Si
+  // el operador no los repercute (`absorb`), pasan a su bolsillo.
+  const clientPays = inputs.absorb ? 0 : sum(shownChannels.filter((l) => CLIENT_PAID.has(l.key)));
 
   return {
     inputs,
@@ -559,6 +600,8 @@ export function computeQuote(raw: Inputs, hidden: readonly string[] = []): Quote
     variable,
     effectiveRate: inputs.revenue > 0 ? total / inputs.revenue : 0,
     total,
+    clientPays,
+    youPay: total - clientPays,
     schedule: schedule(inputs, inputs.revenue > 0 ? variable / inputs.revenue : 0, showFixed),
     seasonSaving: seasonSaving(inputs.bases, inputs.pricing),
   };
@@ -566,14 +609,20 @@ export function computeQuote(raw: Inputs, hidden: readonly string[] = []): Quote
 
 const sum = (lines: CostLine[]) => lines.reduce((a, l) => a + l.amount, 0);
 
+/** Líneas que paga el cliente final como gastos de gestión (si se repercuten). */
+const CLIENT_PAID = new Set(['online', 'agentWeb']);
+
+/**
+ * Mes a mes. La cuota es anual o mensual, no estacional: en anual se
+ * reparte aquí en doce partes iguales para poder leerla junto a la variable,
+ * que es la que sigue a la curva de ventas.
+ */
 function schedule(inputs: Inputs, variableRate: number, showFixed: boolean): MonthCharge[] {
-  const seasonMonthly = fixedRate(inputs.bases, 'season', inputs.pricing) / SEASON_MONTHS.length;
-  const monthly = fixedRate(inputs.bases, 'monthly', inputs.pricing);
+  const perMonth = fixedAnnual(inputs.bases, inputs.billing, inputs.pricing) / 12;
 
   return curveOf(inputs.seasonality).map((weight, i) => {
-    const charged =
-      showFixed && (inputs.billing === 'monthly' || (SEASON_MONTHS as readonly number[]).includes(i));
-    const fixedPart = !charged ? 0 : inputs.billing === 'season' ? seasonMonthly : monthly;
+    const charged = showFixed;
+    const fixedPart = charged ? perMonth : 0;
     const variablePart = inputs.revenue * weight * variableRate;
     return {
       label: MONTH_LABELS[i],
@@ -654,9 +703,10 @@ export function alternatives(
     lines: q.lines,
     capabilities: capabilities(SOLNOW_COVERS),
     note: quotes.length > 1 ? `Propuesta ${PROPOSAL_LABELS[i]}` : 'Tu resultado',
-    // El 3 % del motor web lo paga el cliente final, incluido en el precio,
-    // igual que el fee al viajero de FareHarbor o Peek.
-    chargesTraveler: true,
+    // El 3 % del motor web lo paga el cliente final como gastos de gestión,
+    // igual que el fee al viajero de FareHarbor o Peek, salvo que el operador
+    // lo asuma.
+    chargesTraveler: !q.inputs.absorb,
     verified: true,
     isSolnow: true,
   }));
@@ -743,6 +793,7 @@ export function toQuery(i: Inputs): string {
     b: String(i.bases),
     m: String(presencialShare(ch)),
     w: String(ch.whatsapp),
+    a: String(i.agentOnline),
     o: String(ch.otas),
     p: i.billing === 'season' ? 'temp' : 'mes',
     t: String(i.ticket),
@@ -750,6 +801,7 @@ export function toQuery(i: Inputs): string {
     n: String(i.bank),
     h: String(i.human),
     s: i.seasonality,
+    ...(i.absorb ? { r: '1' } : {}),
     // Solo viaja si se ha tocado: en el 99% de los enlaces el pricing es el de
     // tarifa, y meterlo siempre convertiría una URL que se comparte por
     // WhatsApp en una ristra de nueve números.
@@ -819,8 +871,10 @@ export function fromQuery(search: string): Inputs {
     bases: snap(num('b', DEFAULTS.bases), BASES),
     presencial: clamp(num('m', DEFAULTS.presencial), 0, 100),
     whatsapp: clamp(num('w', DEFAULTS.whatsapp), 0, 100),
+    agentOnline: snap(num('a', DEFAULTS.agentOnline), AGENT_ONLINE),
     otas: clamp(num('o', DEFAULTS.otas), 0, 100),
     billing: p.get('p') === 'mes' ? 'monthly' : p.get('p') === 'temp' ? 'season' : DEFAULTS.billing,
+    absorb: p.get('r') === '1',
     ticket: snap(num('t', DEFAULTS.ticket), TICKET),
     card: snap(num('k', DEFAULTS.card), CARD_SHARE),
     bank: snap(num('n', DEFAULTS.bank), BANK),

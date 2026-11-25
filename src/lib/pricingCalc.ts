@@ -37,17 +37,23 @@ export type Billing = 'monthly' | 'season';
 export const SEASON_DISCOUNT = 1 - PLANS.escalar.season.first / (PLANS.escalar.monthly.first * 12);
 
 /**
- * Tarifa por canal, igual en los dos planes.
+ * Tarifa por canal, igual en los dos planes. Depende de dónde se vende y de
+ * quién fija el precio, nunca del medio de pago.
  *
- * - `web` 3 %: motor web (y kiosko con colaborador o fuera de la base). Lo paga
- *   el cliente final, incluido en el precio. Si el operador no lo repercute, lo
- *   asume al mismo 3 %.
+ * - `web` 3 %: motor web (web, widget, bono) y kiosko con colaborador o fuera
+ *   de la base. Lo paga el cliente final como «gastos de gestión», en línea
+ *   aparte y visibles desde el primer precio. Si el operador no lo repercute,
+ *   lo asume él al mismo 3 %.
  * - `agent` 1 %: reservas del agente de IA en WhatsApp. Lo paga el operador.
+ *   Si el cliente paga online, la reserva pasa además por el motor web y suma
+ *   su 3 % de gastos de gestión (ver `agentOnline` en `Inputs`). Pagada en
+ *   efectivo, solo el 1 %.
  * - `ota` 1 %: OTA sincronizada. Lo paga el operador.
- * - `manual` 0 %: mostrador, teléfono, WhatsApp del equipo, colaboradores a mano.
+ * - `manual` 0 %: mostrador, teléfono, WhatsApp del equipo, enlace de pago que
+ *   envía el equipo, colaboradores a mano.
  *
  * El kiosko en la base (1 %) no tiene control en la calculadora corta: se
- * menciona en una nota para no añadir un quinto deslizador.
+ * menciona en una nota para no añadir otro deslizador.
  */
 export const RATES = {
   web: 0.03,
@@ -58,10 +64,17 @@ export const RATES = {
 
 export type ChannelKey = keyof typeof RATES;
 
-/** Quién paga cada canal. */
-export const PAYER: Record<ChannelKey, 'client' | 'you' | null> = {
+/**
+ * Líneas de la factura: los cuatro canales más `agentWeb`, el 3 % del motor
+ * web sobre lo que el agente cobra online.
+ */
+export type LineKey = ChannelKey | 'agentWeb';
+
+/** Quién paga cada línea, si el operador repercute el 3 %. */
+export const PAYER: Record<LineKey, 'client' | 'you' | null> = {
   web: 'client',
   agent: 'you',
+  agentWeb: 'client',
   ota: 'you',
   manual: null,
 };
@@ -93,19 +106,28 @@ export interface Inputs {
   webShare: number;
   /** Parte que vende el agente de IA en WhatsApp, en tanto por uno. */
   agentShare: number;
+  /**
+   * De lo que vende el agente, la parte que el cliente paga online (el resto,
+   * en efectivo), en tanto por uno. Esa parte suma el 3 % del motor web.
+   */
+  agentOnline: number;
   /** Parte que entra por OTAs, en tanto por uno. */
   otaShare: number;
   bases: number;
   billing: Billing;
+  /** «Lo asumo yo»: el operador no repercute el 3 % y lo paga él. */
+  absorb: boolean;
 }
 
 export const DEFAULTS: Inputs = {
   gmv: 400_000,
   webShare: 0.2,
   agentShare: 0.05,
+  agentOnline: 1,
   otaShare: 0.1,
   bases: 2,
   billing: 'season',
+  absorb: false,
 };
 
 /** Las tres partes de canal nunca suman más de 1: el resto es manual al 0 %. */
@@ -119,8 +141,8 @@ export function withShare(i: Inputs, key: ShareKey, value: number): Inputs {
 }
 
 export interface Line {
-  key: ChannelKey;
-  /** Facturación del canal. */
+  key: LineKey;
+  /** Facturación sobre la que se aplica la tarifa. */
   base: number;
   rate: number;
   amount: number;
@@ -132,33 +154,56 @@ export interface Quote {
   lines: Line[];
   /** Cuota fija del año. */
   fixed: number;
-  /** Lo que sale del bolsillo del operador: fijo + 1 %. */
+  /**
+   * Lo que sale del bolsillo del operador: fijo + 1 % (agente y OTAs). Con
+   * `absorb`, también el 3 %.
+   */
   youPay: number;
-  /** Lo que paga su cliente: el 3 %, incluido en el precio. */
+  /**
+   * Lo que paga su cliente como gastos de gestión, aparte del precio: el 3 %
+   * de la web y de lo que el agente cobra online. 0 con `absorb`.
+   */
   clientPays: number;
   /** Todo lo que cobra SolNow al año. */
   total: number;
 }
 
+/**
+ * La cuenta, sin tramos ni mínimos:
+ *
+ *   web       = gmv × webShare                     → 3 % cliente
+ *   agent     = gmv × agentShare                   → 1 % operador
+ *   agentWeb  = agent × agentOnline                → 3 % cliente
+ *   ota       = gmv × otaShare                     → 1 % operador
+ *   manual    = gmv − web − agent − ota            → 0 %
+ *
+ *   youPay     = fijo + 1 % (+ 3 % si `absorb`)
+ *   clientPays = 3 % (0 si `absorb`)
+ */
 export function computeQuote(i: Inputs): Quote {
   const web = i.gmv * i.webShare;
   const agent = i.gmv * i.agentShare;
+  const agentWeb = agent * i.agentOnline;
   const ota = i.gmv * i.otaShare;
   const manual = Math.max(0, i.gmv - web - agent - ota);
 
-  const line = (key: ChannelKey, base: number): Line => ({
-    key,
-    base,
-    rate: RATES[key],
-    amount: base * RATES[key],
-    payer: PAYER[key],
-  });
-  const lines = [line('web', web), line('agent', agent), line('ota', ota), line('manual', manual)];
+  const line = (key: LineKey, base: number, rate: number): Line => {
+    const payer = PAYER[key];
+    return { key, base, rate, amount: base * rate, payer: payer === 'client' && i.absorb ? 'you' : payer };
+  };
+  const lines = [
+    line('web', web, RATES.web),
+    line('agent', agent, RATES.agent),
+    line('agentWeb', agentWeb, RATES.web),
+    line('ota', ota, RATES.ota),
+    line('manual', manual, RATES.manual),
+  ];
 
   const plan = planFor(i.bases);
   const fixed = fixedFor(plan, i.bases, i.billing);
-  const youPay = fixed + lines.filter((l) => l.payer === 'you').reduce((a, l) => a + l.amount, 0);
-  const clientPays = lines.filter((l) => l.payer === 'client').reduce((a, l) => a + l.amount, 0);
+  const sum = (who: 'client' | 'you') => lines.filter((l) => l.payer === who).reduce((a, l) => a + l.amount, 0);
+  const youPay = fixed + sum('you');
+  const clientPays = sum('client');
 
   return { plan, lines, fixed, youPay, clientPays, total: youPay + clientPays };
 }

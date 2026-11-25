@@ -1131,7 +1131,7 @@
       {
         "pull": "0 % en tu mostrador",
         "h": "Incentivos alineados",
-        "s": "Cobramos por canal: lo que vende tu equipo es tuyo, 1 % en el agente de IA y las OTAs, y 3 % en la web, que paga tu cliente. Sin cobro por conversación."
+        "s": "Cobramos por canal: lo que vende tu equipo es tuyo, 1 % en el agente de IA y las OTAs, y 3 % en la web y en lo que el agente cobra online, que paga tu cliente como gastos de gestión. Sin cobro por conversación."
       },
       {
         "pull": "95% del trabajo",
@@ -1155,7 +1155,7 @@
     "extraBaseYear": "+ {price} / año por cada base adicional",
     "billingAnnual": "Pago anual",
     "core": "En los dos planes: motor web, contratos, check-in, libro de registro, panel, pagos y agente de IA.",
-    "noExtras": "Sin mínimo, sin cuota por kiosko, sin cobro por conversación.",
+    "noExtras": "Sin mínimo, sin cuota por kiosko, sin cobro por conversación, sin tramos por volumen.",
     "plans": {
       "despegue": {
         "name": "Despegue",
@@ -1164,7 +1164,7 @@
         "features": [
           "Canales digitales: motor web y agente de IA en WhatsApp",
           "OTAs, si las conectas",
-          "Implantación guiada (1 llamada)",
+          "Implantación asistida en remoto",
           "Sin kiosko"
         ],
         "cta": "Empezar con Despegue"
@@ -1177,7 +1177,7 @@
           "Todos los canales: + kioskos en tu base y con colaboradores",
           "TPV / Tap to Pay, OTAs y colaboradores",
           "Varias bases",
-          "Implantación done-for-you, kioskos incluidos (el hardware lo compras tú)"
+          "Implantación incluida, kioskos incluidos (el hardware lo compras tú)"
         ],
         "cta": "Pedir demo de Escalar"
       }
@@ -1191,22 +1191,24 @@
         "payer": "Quién la paga"
       },
       "rows": [
-        { "c": "Motor web", "v": "3 %", "p": "Tu cliente, incluido en el precio final" },
-        { "c": "Kiosko con colaborador (hotel, agencia) o fuera de tu base", "v": "3 %", "p": "Tu cliente, incluido en el precio final" },
-        { "c": "Agente de IA (WhatsApp)", "v": "1 %", "p": "Tú" },
-        { "c": "Kiosko en tu base", "v": "1 %", "p": "Tú" },
+        { "c": "Motor web (web, widget, bono)", "v": "3 %", "p": "Tu cliente, como «gastos de gestión» en línea aparte; ve el total desde el primer precio. Si no lo repercutes, lo asumes tú al mismo 3 %" },
+        { "c": "Kiosko con colaborador (hotel, agencia) o instalado fuera de tu base", "v": "3 %", "p": "Tu cliente, igual que en la web" },
+        { "c": "Agente de IA (WhatsApp → motor de reservas)", "v": "1 %", "p": "Tú. Si tu cliente paga online, se suma el 3 % del motor web, que paga él; pagada en efectivo, solo el 1 %" },
+        { "c": "Kiosko en tu base (sin colaborador)", "v": "1 %", "p": "Tú" },
         { "c": "OTA sincronizada", "v": "1 %", "p": "Tú" },
-        { "c": "Mostrador, teléfono, WhatsApp de tu equipo, colaboradores a mano", "v": "0 %", "p": "—" }
+        { "c": "Mostrador, teléfono, WhatsApp de tu equipo, enlace de pago que envía tu equipo, colaboradores a mano", "v": "0 %", "p": "—" }
       ]
     },
     "calc": {
       "title": "Cuánto te costaría",
-      "lede": "Cinco datos. Lo que pagas tú y lo que paga tu cliente, por separado.",
+      "lede": "Tus números. Lo que pagas tú y, aparte, los gastos de gestión que paga tu cliente.",
       "gmv": "Facturación de temporada",
       "web": "Entra por tu web",
-      "webHint": "Motor de reservas: 3 %, lo paga tu cliente.",
+      "webHint": "Motor de reservas: 3 % de gastos de gestión, que paga tu cliente.",
       "agent": "Vende el agente de IA",
-      "agentHint": "Reservas que crea o cobra el agente en WhatsApp: 1 %.",
+      "agentHint": "Reservas que cierra el agente en WhatsApp: 1 %, lo pagas tú.",
+      "agentOnline": "De eso, pagado online",
+      "agentOnlineHint": "Lo que tu cliente paga online pasa por el motor web: suma el 3 % de gastos de gestión, que paga él. En efectivo, solo el 1 %.",
       "ota": "Entra por OTAs",
       "otaHint": "GetYourGuide, Viator… sincronizadas: 1 %.",
       "bases": "Bases",
@@ -1221,21 +1223,24 @@
       "lines": {
         "web": "Motor web",
         "agent": "Agente de IA",
+        "agentWeb": "Agente de IA, pagado online (motor web)",
         "ota": "OTAs",
-        "manual": "Mostrador, teléfono y a mano"
+        "manual": "Mostrador, teléfono, enlace de tu equipo y a mano"
       },
       "fixed": "Cuota fija del año",
       "youPay": "Pagas tú",
       "youPayHint": "Cuota fija + 1 % del agente y las OTAs.",
+      "youPayHintAbsorb": "Cuota fija + 1 % del agente y las OTAs + el 3 % que no repercutes.",
       "clientPays": "Paga tu cliente",
-      "clientPaysHint": "El 3 % de la web, incluido en el precio que ve.",
-      "absorbNote": "Si prefieres no repercutir el 3 %, lo asumes tú al mismo 3 %. Sin mínimo, sin cuota por kiosko, sin cobro por conversación.",
+      "clientPaysHint": "3 % de gastos de gestión, en línea aparte: la web y lo que el agente cobra online.",
+      "absorb": "Lo asumo yo: no repercuto los gastos de gestión",
+      "absorbNote": "Si no repercutes los gastos de gestión, los asumes tú al mismo 3 %. Sin mínimo, sin cuota por kiosko, sin cobro por conversación, sin tramos por volumen.",
       "ofBilling": "de tu facturación",
       "cta": "Pide la demo con tu número"
     },
     "meta": {
       "title": "Precios de Solnow · Tarifa por canal",
-      "description": "Dos planes desde 99 €/mes. 0 % en lo que vende tu equipo, 1 % en los canales que pagas tú y 3 % que paga tu cliente, incluido en su precio.",
+      "description": "Dos planes desde 99 €/mes. 0 % en lo que vende tu equipo, 1 % en los canales que pagas tú y 3 % de gastos de gestión que paga tu cliente, en línea aparte.",
       "ogTitle": "Precios de Solnow: cobramos por canal"
     },
     "teaser": {
@@ -1243,7 +1248,7 @@
       "rows": [
         {
           "v": "0 %",
-          "l": "lo que vende tu equipo: mostrador, teléfono, WhatsApp y colaboradores a mano"
+          "l": "lo que vende tu equipo: mostrador, teléfono, WhatsApp, enlaces de pago que envía y colaboradores a mano"
         },
         {
           "v": "1 %",
@@ -1251,7 +1256,7 @@
         },
         {
           "v": "3 %",
-          "l": "motor web y kioskos con colaborador; lo paga tu cliente, incluido en el precio"
+          "l": "motor web, kioskos con colaborador y lo que el agente cobra online; lo paga tu cliente como gastos de gestión"
         }
       ],
       "from": "desde {price}/mes",
@@ -1264,11 +1269,15 @@
       "items": [
         {
           "q": "¿De qué depende la tarifa?",
-          "a": "De dónde se vende y de quién fija el precio. Nunca del medio de pago."
+          "a": "De dónde se vende y de quién fija el precio. Nunca del medio de pago: un enlace de pago que envía tu equipo va al 0 %, como el mostrador."
         },
         {
           "q": "¿Quién paga el 3 %?",
-          "a": "Tu cliente: va incluido en el precio que ve. Si prefieres no repercutirlo, lo asumes tú al mismo 3 %."
+          "a": "Tu cliente, como «gastos de gestión» en una línea aparte: ve el total desde el primer precio. Si prefieres no repercutirlo, lo asumes tú al mismo 3 %."
+        },
+        {
+          "q": "¿Cómo se cobra el agente de IA?",
+          "a": "1 % de lo que vende, que pagas tú. Si tu cliente paga online, la reserva pasa por el motor web y suma su 3 % de gastos de gestión, que paga él. Si paga en efectivo, solo el 1 %."
         },
         {
           "q": "¿Subir de plan baja el porcentaje?",
@@ -1291,8 +1300,8 @@
           "a": "Se prorratea desde el alta; las bajas se aplican al renovar."
         },
         {
-          "q": "¿Y con grandes volúmenes?",
-          "a": "Con contrato anual hay tarifas por tramos. Hablemos."
+          "q": "¿Hay descuentos por volumen?",
+          "a": "No. Sin tramos por volumen ni descuentos de alta: la misma tarifa por canal para todos."
         }
       ]
     },
@@ -1409,11 +1418,11 @@
     "items": [
       {
         "q": "¿Cuánto cuesta Solnow?",
-        "a": "Una cuota fija por base, desde 99 € al mes, y una tarifa por canal igual en los dos planes: 0 % en lo que vende tu equipo, 1 % en el agente de IA, el kiosko en tu base y las OTAs, y 3 % en la web, que paga tu cliente incluido en el precio."
+        "a": "Una cuota fija por base, desde 99 € al mes, y una tarifa por canal igual en los dos planes: 0 % en lo que vende tu equipo, también con el enlace de pago que envía; 1 % en el agente de IA, el kiosko en tu base y las OTAs, y 3 % en la web y en lo que el agente cobra online, que paga tu cliente como gastos de gestión, en línea aparte."
       },
       {
         "q": "¿Cómo funciona la tarifa por canal?",
-        "a": "Depende de dónde se vende y de quién fija el precio, nunca del medio de pago. Sin mínimo, sin cuota por kiosko y sin cobro por conversación. Con grandes volúmenes y contrato anual, hablamos de tramos."
+        "a": "Depende de dónde se vende y de quién fija el precio, nunca del medio de pago. Sin mínimo, sin cuota por kiosko, sin cobro por conversación y sin tramos por volumen."
       },
       {
         "q": "¿Funciona si no tengo internet estable en la base?",
@@ -1860,7 +1869,7 @@
         },
         {
           "q": "¿Cuánto cuesta?",
-          "a": "Una cuota fija por base, desde {price} al mes, y 0 % de lo que vendes en el mostrador. Cobramos por canal: 1 % en el agente de IA, el kiosko en tu base y las OTAs, y 3 % en la web, que paga tu cliente incluido en el precio."
+          "a": "Una cuota fija por base, desde {price} al mes, y 0 % de lo que vendes en el mostrador. Cobramos por canal: 1 % en el agente de IA, el kiosko en tu base y las OTAs, y 3 % en la web y en lo que el agente cobra online, que paga tu cliente como gastos de gestión."
         },
         {
           "q": "Ya uso TuriTop o FareHarbor. ¿Tengo que dejarlo?",
@@ -2797,7 +2806,7 @@
         },
         {
           "q": "¿En qué se diferencia el precio?",
-          "a": "FareHarbor suele cobrar comisión por reserva. Solnow cobra una cuota fija por base y una tarifa por canal: 0 % en lo que vende tu equipo, 1 % en el agente de IA y las OTAs, y 3 % en la web, que paga tu cliente incluido en el precio."
+          "a": "FareHarbor suele cobrar comisión por reserva. Solnow cobra una cuota fija por base y una tarifa por canal: 0 % en lo que vende tu equipo, 1 % en el agente de IA y las OTAs, y 3 % en la web y en lo que el agente cobra online, que paga tu cliente como gastos de gestión."
         }
       ],
       "related": [
@@ -2973,7 +2982,7 @@
         },
         {
           "q": "¿En qué se diferencia el precio?",
-          "a": "TuriTop trabaja con cuota o plan. Solnow cobra una cuota fija por base y una tarifa por canal: 0 % en lo que vende tu equipo, 1 % en el agente de IA y las OTAs, y 3 % en la web, que paga tu cliente."
+          "a": "TuriTop trabaja con cuota o plan. Solnow cobra una cuota fija por base y una tarifa por canal: 0 % en lo que vende tu equipo, 1 % en el agente de IA y las OTAs, y 3 % en la web y en lo que el agente cobra online, que paga tu cliente como gastos de gestión."
         }
       ],
       "related": [
@@ -3147,7 +3156,7 @@
         },
         {
           "q": "¿En qué se diferencia el precio?",
-          "a": "FareHarbor suele cobrar comisión por reserva. Solnow cobra una cuota fija por base y una tarifa por canal: 0 % en tu mostrador, 1 % en el agente de IA y las OTAs, y 3 % en la web, que paga tu cliente. Sin coste de puesta en marcha."
+          "a": "FareHarbor suele cobrar comisión por reserva. Solnow cobra una cuota fija por base y una tarifa por canal: 0 % en tu mostrador, 1 % en el agente de IA y las OTAs, y 3 % en la web y en lo que el agente cobra online, que paga tu cliente como gastos de gestión. Sin coste de puesta en marcha."
         },
         {
           "q": "¿Puedo migrar de FareHarbor a Solnow?",
@@ -3318,7 +3327,7 @@
         },
         {
           "q": "¿En qué se diferencia el precio?",
-          "a": "TuriTop trabaja con cuota o plan. Solnow cobra una cuota fija por base y una tarifa por canal: 0 % en tu mostrador, 1 % en el agente de IA y las OTAs, y 3 % en la web, que paga tu cliente."
+          "a": "TuriTop trabaja con cuota o plan. Solnow cobra una cuota fija por base y una tarifa por canal: 0 % en tu mostrador, 1 % en el agente de IA y las OTAs, y 3 % en la web y en lo que el agente cobra online, que paga tu cliente como gastos de gestión."
         },
         {
           "q": "¿Puedo migrar de TuriTop a Solnow?",
@@ -3548,7 +3557,7 @@
         },
         {
           "q": "¿Cuánto cuestan estos software?",
-          "a": "Varía según el modelo: comisión por reserva, cuota o plan. Solnow cobra una cuota fija por base y una tarifa por canal: 0 % en lo que vende tu equipo, 1 % en el agente de IA y las OTAs, y 3 % en la web, que paga tu cliente. Sin cobro por conversación."
+          "a": "Varía según el modelo: comisión por reserva, cuota o plan. Solnow cobra una cuota fija por base y una tarifa por canal: 0 % en lo que vende tu equipo, 1 % en el agente de IA y las OTAs, y 3 % en la web y en lo que el agente cobra online, que paga tu cliente como gastos de gestión. Sin cobro por conversación."
         }
       ],
       "related": [
@@ -3701,7 +3710,7 @@
         },
         {
           "q": "¿Cuánto cuesta un software para alquiler de motos de agua?",
-          "a": "Depende del modelo. Solnow cobra una cuota fija por base y una tarifa por canal: 0 % en lo que vende tu equipo, 1 % en el agente de IA y las OTAs, y 3 % en la web, que paga tu cliente incluido en el precio. Sin cobro por conversación."
+          "a": "Depende del modelo. Solnow cobra una cuota fija por base y una tarifa por canal: 0 % en lo que vende tu equipo, 1 % en el agente de IA y las OTAs, y 3 % en la web y en lo que el agente cobra online, que paga tu cliente como gastos de gestión. Sin cobro por conversación."
         },
         {
           "q": "¿Puedo migrar desde Excel?",
@@ -4932,7 +4941,7 @@
         },
         {
           "q": "¿Cuánto cuesta un software de reservas para parasailing?",
-          "a": "Solnow no tiene coste inicial: una cuota fija por base, desde 99 € al mes, y una tarifa por canal (0 % en el pantalán, 1 % en el agente de IA y las OTAs, 3 % en la web, que paga tu cliente), con la configuración, la puesta en marcha y la formación del equipo incluidas."
+          "a": "Solnow no tiene coste inicial: una cuota fija por base, desde 99 € al mes, y una tarifa por canal (0 % en el pantalán, 1 % en el agente de IA y las OTAs, 3 % en la web y en lo que el agente cobra online, que paga tu cliente como gastos de gestión), con la configuración, la puesta en marcha y la formación del equipo incluidas."
         }
       ],
       "related": [
@@ -6179,7 +6188,7 @@
         }
       ]
     },
-    "pricingFaq": "Desde {from}/mes. 0 % de lo que vende tu equipo, 1 % en los canales que pagas tú y 3 % que paga tu cliente, incluido en su precio.",
+    "pricingFaq": "Desde {from}/mes. 0 % de lo que vende tu equipo, 1 % en los canales que pagas tú y 3 % de gastos de gestión que paga tu cliente, en línea aparte.",
     "final": {
       "title": "Míralo con tu flota en 30 minutos"
     },

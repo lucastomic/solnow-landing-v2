@@ -26,6 +26,9 @@ const LINE_COLOR: Record<string, string> = {
   fixed: 'var(--accent-dim)',
   online: 'var(--accent)',
   whatsapp: 'var(--ok)',
+  // El 3 % del motor web sobre lo que el agente cobra online: entre el color
+  // de la web y el de WhatsApp, porque es las dos cosas.
+  agentWeb: 'color-mix(in srgb, var(--accent) 55%, var(--ok))',
   otas: 'var(--accent-2)',
   // Ni el banco ni la atención humana los cobra ninguna plataforma: el operador
   // los paga igual. Por eso salen de la escala de marca —que es la de lo que sí
@@ -121,7 +124,8 @@ function Proposal({ quote, index, many }: { quote: Quote; index: number; many: b
   // reconocer cada tramo en su sitio; aquí importa el relato.
   const fixedLine = quote.lines.find((l) => l.key === 'fixed');
   const channels = [...quote.lines.filter((l) => l.key !== 'fixed')].sort((a, b) => {
-    const pct = (l: CostLine) => (l.channel ? pricing.rates[l.channel].pct : 0);
+    const pct = (l: CostLine) =>
+      l.key === 'agentWeb' ? pricing.rates.online.pct : l.channel ? pricing.rates[l.channel].pct : 0;
     // A igualdad de porcentaje se respeta el orden de la factura, para que dos
     // canales al 1% no bailen entre sí al mover un deslizador.
     return pct(a) - pct(b) || quote.lines.indexOf(a) - quote.lines.indexOf(b);
@@ -157,6 +161,20 @@ function Proposal({ quote, index, many }: { quote: Quote; index: number; many: b
           <span style={{ fontSize: 12, color: 'var(--muted)' }}>al año · {percent(quote.effectiveRate)}</span>
         </span>
       </div>
+
+      {/* Quién paga qué: el bolsillo del operador, y aparte los gastos de
+          gestión del 3 % que ve su cliente en línea aparte (o que asume él). */}
+      <p style={{ margin: 0, fontSize: 12.5, lineHeight: 1.5, color: 'var(--fg-2)' }}>
+        De tu bolsillo: <strong style={{ fontWeight: 500 }}>{money(quote.youPay)}</strong>
+        {quote.inputs.absorb ? (
+          <> · incluye los gastos de gestión del 3 %, que asumes tú.</>
+        ) : (
+          <>
+            {' '}· Gastos de gestión que paga tu cliente, en línea aparte:{' '}
+            <strong style={{ fontWeight: 500 }}>{money(quote.clientPays)}</strong>
+          </>
+        )}
+      </p>
 
       <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column' }}>
         {/* La cuota abre la lista: es lo que se paga pase lo que pase, y las
@@ -202,12 +220,13 @@ const LEGEND_LABEL: Record<string, string> = {
   manual: 'Manual y efectivo',
   bank: 'Tu banco',
   whatsapp: 'WhatsApp',
+  agentWeb: 'WhatsApp pagado online',
   human: 'Atender WhatsApp a mano',
 };
 
 /** El orden de la leyenda es el de la factura, para leerla contra las barras. */
 const LEGEND_ORDER = [
-  'fixed', 'online', 'otas', 'card', 'manual', 'bank', 'whatsapp', 'human',
+  'fixed', 'online', 'otas', 'card', 'manual', 'bank', 'whatsapp', 'agentWeb', 'human',
 ];
 
 /**
@@ -379,7 +398,7 @@ function Breakdown({ quote }: { quote: Quote }) {
   return (
     <Block
       title="De qué se compone"
-      caption="Una cuota por base y una tarifa por canal: 0 % lo que vende tu equipo, 1 % el agente de IA y las OTAs, 3 % la web, que paga tu cliente incluido en el precio."
+      caption="Una cuota por base y una tarifa por canal: 0 % lo que vende tu equipo (también el enlace de pago que envía), 1 % el agente de IA y las OTAs, y 3 % la web y lo que el agente cobra online, que paga tu cliente como gastos de gestión en línea aparte. Si no los repercutes, los asumes tú al mismo 3 %."
     >
       <div style={{ display: 'flex', height: 72, borderRadius: 10, overflow: 'hidden', border: '1px solid var(--line)' }}>
         {quote.lines.filter((l) => l.amount > 0).map((l) => {
@@ -429,18 +448,17 @@ function Breakdown({ quote }: { quote: Quote }) {
 function Schedule({ quote }: { quote: Quote }) {
   const season = quote.inputs.billing === 'season';
   const peak = Math.max(...quote.schedule.map((m) => m.total), 1);
-  const freeMonths = quote.schedule.filter((m) => m.free).map((m) => m.label);
 
   return (
     <Block
       title="Cuándo lo pagas"
       caption={
         season ? (
-          <strong style={{ fontWeight: 500, color: 'var(--accent)' }}>
-            De noviembre a febrero no pagas cuota.
+          <strong style={{ fontWeight: 500 }}>
+            Pago anual: la cuota del año, aquí repartida en doce meses. Lo variable baja cuando bajan tus ventas.
           </strong>
         ) : (
-          <strong style={{ fontWeight: 500 }}>Pagas lo mismo en enero que en agosto.</strong>
+          <strong style={{ fontWeight: 500 }}>Pagas la misma cuota en enero que en agosto; lo variable sube y baja con tus ventas.</strong>
         )
       }
     >
@@ -489,23 +507,6 @@ function Schedule({ quote }: { quote: Quote }) {
         </div>
       </div>
 
-      {season && freeMonths.length > 0 && (
-        <p style={{ margin: 0, fontSize: 12.5, color: 'var(--fg-2)' }}>
-          <span
-            style={{
-              display: 'inline-block',
-              width: 10,
-              height: 10,
-              borderRadius: 2,
-              background: 'var(--accent-bg)',
-              border: '1px dashed var(--accent-2)',
-              marginRight: 7,
-              verticalAlign: -1,
-            }}
-          />
-          {freeMonths.join(', ')}: solo la tarifa por canal de lo que vendas, sin cuota.
-        </p>
-      )}
 
       <p style={footnote}>
         Reparto sobre el perfil «{SEASONALITY_PRESETS[quote.inputs.seasonality].label}» que has

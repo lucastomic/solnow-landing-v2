@@ -1,15 +1,15 @@
 'use client';
 
 import { useId, useMemo } from 'react';
-import { computeQuote, withShare, type ChannelKey, type Inputs, type ShareKey } from '@/lib/pricingCalc';
+import { computeQuote, withShare, type Inputs, type LineKey, type ShareKey } from '@/lib/pricingCalc';
 
 /**
  * Calculadora corta del Pricing 2027 (la usa el modal de la narrativa).
  *
- * Entradas: facturación, % web, % agente de IA, % OTAs y bases. Salida: el
- * fijo, el 1 % que pagas tú y el 3 % que paga tu cliente, por separado. Sin
- * conmutador de repercutir: el 3 % va incluido en el precio por defecto, y si
- * el operador no lo repercute lo asume al mismo 3 % (lo dice `absorbNote`).
+ * Entradas: facturación, % web, % agente de IA (y cuánto de eso se paga
+ * online), % OTAs y bases. Salida: el fijo y el 1 % que pagas tú, y aparte el
+ * 3 % de gastos de gestión que paga tu cliente (web y lo que el agente cobra
+ * online). Con «Lo asumo yo» (`absorb`) el 3 % pasa a tu columna, al mismo 3 %.
  *
  * Los textos llegan por props, resueltos en servidor (`pricing.calc`). Las
  * fórmulas están en `@/lib/pricingCalc`, ninguna aquí.
@@ -22,6 +22,8 @@ export interface CalcCopy {
   webHint: string;
   agent: string;
   agentHint: string;
+  agentOnline: string;
+  agentOnlineHint: string;
   ota: string;
   otaHint: string;
   bases: string;
@@ -30,12 +32,14 @@ export interface CalcCopy {
   planLabel: string;
   planWhy: { despegue: string; escalar: string };
   kioskNote: string;
-  lines: Record<ChannelKey, string>;
+  lines: Record<LineKey, string>;
   fixed: string;
   youPay: string;
   youPayHint: string;
+  youPayHintAbsorb: string;
   clientPays: string;
   clientPaysHint: string;
+  absorb: string;
   absorbNote: string;
   ofBilling: string;
   cta: string;
@@ -167,6 +171,19 @@ export default function PricingCalculator({
           />
           {shareSlider('webShare', copy.web, copy.webHint)}
           {shareSlider('agentShare', copy.agent, copy.agentHint)}
+          {input.agentShare > 0 && (
+            <Slider
+              id={uid + '-agentOnline'}
+              label={copy.agentOnline}
+              hint={copy.agentOnlineHint}
+              readout={pct(input.agentOnline) + ' · ' + eur(input.gmv * input.agentShare * input.agentOnline)}
+              min={0}
+              max={100}
+              step={10}
+              value={Math.round(input.agentOnline * 100)}
+              onChange={(v) => onChange((p) => ({ ...p, agentOnline: v / 100 }))}
+            />
+          )}
           {shareSlider('otaShare', copy.ota, copy.otaHint)}
           <Stepper
             label={copy.bases}
@@ -241,9 +258,21 @@ export default function PricingCalculator({
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12, paddingTop: 10, borderTop: '1px solid var(--line-soft)' }}>
-            {totalRow(copy.youPay, copy.youPayHint, q.youPay, true)}
-            {totalRow(copy.clientPays, copy.clientPaysHint, q.clientPays, false)}
+            {totalRow(copy.youPay, input.absorb ? copy.youPayHintAbsorb : copy.youPayHint, q.youPay, true)}
+            {!input.absorb && totalRow(copy.clientPays, copy.clientPaysHint, q.clientPays, false)}
           </div>
+
+          <label style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 12.5, color: 'var(--fg-2)', cursor: 'pointer' }}>
+            <input
+              type="checkbox"
+              checked={input.absorb}
+              onChange={(e) => {
+                const absorb = e.target.checked;
+                onChange((p) => ({ ...p, absorb }));
+              }}
+            />
+            {copy.absorb}
+          </label>
 
           <p style={{ margin: 0, fontSize: 11.5, lineHeight: 1.45, color: 'var(--muted-2)' }}>{copy.absorbNote}</p>
 

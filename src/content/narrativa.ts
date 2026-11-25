@@ -185,7 +185,7 @@ export interface SlidePrice {
   title: string;
   /** El fijo, en anual (lo que se factura a casi todos) y, en pequeño, al mes. */
   fixed: { first: string; extra: string; monthly: string };
-  /** La tarifa por canal: 0 %, 1 % (lo pagas tú) y 3 % (lo paga tu cliente). */
+  /** La tarifa por canal: 0 %, 1 % (lo pagas tú) y 3 % (gastos de gestión que paga tu cliente). */
   rows: { k: string; h: string; p: string }[];
   note: string;
   /** Despegue, en una línea discreta: casi nadie va ahí, pero existe. */
@@ -310,7 +310,7 @@ export const UI_ES: NarrativaUI = {
   },
   rail: { chapters: 'Capítulos', appendix: 'Apéndice' },
   logos: { inProduction: 'En producción' },
-  price: { eyebrow: 'Cuota por base · Escalar', variable: 'Tarifa por canal, igual en los dos planes', allIncluded: 'Sin mínimo, sin cuota por kiosko, sin cobro por conversación.' },
+  price: { eyebrow: 'Cuota por base · Escalar', variable: 'Tarifa por canal, igual en los dos planes', allIncluded: 'Sin mínimo, sin cuota por kiosko, sin cobro por conversación, sin tramos por volumen.' },
   zoom: { close: 'Cerrar', hint: 'Esc para volver al grafo', nodeAria: 'ver en detalle' },
   presenter: {
     title: 'Modo presentador',
@@ -390,7 +390,7 @@ export const UI_ES: NarrativaUI = {
   fmt: { locale: 'es-ES' },
 };
 
-const eur = (n: number) => `${n.toLocaleString('es-ES')} €`;
+const eur = (n: number) => `${n.toLocaleString('es-ES', { useGrouping: true })} €`;
 const pct = (p: number) => `${Math.round(p * 100)} %`;
 
 export const CHAPTERS: Chapter[] = [
@@ -781,9 +781,9 @@ export const CHAPTERS: Chapter[] = [
           monthly: `O al mes: ${eur(PLANS.escalar.monthly.first)} la primera y ${eur(PLANS.escalar.monthly.extra)} cada adicional. El pago anual ahorra un ${pct(SEASON_DISCOUNT)}.`,
         },
         rows: [
-          { k: pct(RATES.manual), h: 'de lo que vende tu equipo', p: 'Mostrador, teléfono, WhatsApp de tu equipo, colaboradores a mano.' },
-          { k: pct(RATES.agent), h: 'agente de IA, kiosko en tu base y OTAs', p: 'Lo pagas tú.' },
-          { k: pct(RATES.web), h: 'motor web y kioskos con colaborador', p: 'Lo paga tu cliente, incluido en el precio. Si no lo repercutes, lo asumes al mismo 3 %.' },
+          { k: pct(RATES.manual), h: 'de lo que vende tu equipo', p: 'Mostrador, teléfono, WhatsApp de tu equipo, el enlace de pago que envía tu equipo, colaboradores a mano.' },
+          { k: pct(RATES.agent), h: 'agente de IA, kiosko en tu base y OTAs', p: `Lo pagas tú. Si el cliente del agente paga online, se suma el ${pct(RATES.web)} del motor web, que paga él; en efectivo, solo el ${pct(RATES.agent)}.` },
+          { k: pct(RATES.web), h: 'motor web y kioskos con colaborador', p: `Lo paga tu cliente como «gastos de gestión», en línea aparte: ve el total desde el primer precio. Si no lo repercutes, lo asumes tú al mismo ${pct(RATES.web)}.` },
         ],
         note: 'El agente de IA va incluido en los dos planes. En noviembre la factura baja sola.',
         alt: `¿Una sola base y empezando? Despegue: ${eur(PLANS.despegue.season.first)} al año (${eur(PLANS.despegue.monthly.first)} al mes), con los canales digitales: web, agente de IA y OTAs. El mismo porcentaje por canal.`,
@@ -830,8 +830,8 @@ export const APPENDIX: Chapter[] = [
           },
           {
             k: '«¿Y en invierno?»',
-            h: `La cuota es ${eur(PLANS.escalar.monthly.first)} al mes por la primera base`,
-            p: 'El resto es una tarifa por canal sobre lo que se vende, y el mostrador va al 0 %. En noviembre la factura baja sola.',
+            h: `La cuota es fija: ${eur(PLANS.escalar.season.first)} al año o ${eur(PLANS.escalar.monthly.first)} al mes por la primera base`,
+            p: 'El resto es una tarifa por canal sobre lo que se vende, sin mínimo, y el mostrador va al 0 %. En noviembre la factura baja sola.',
           },
         ],
       },

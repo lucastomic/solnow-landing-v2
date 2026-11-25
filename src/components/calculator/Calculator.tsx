@@ -154,6 +154,7 @@ function CalculatorBody({ locale, initial }: { locale: string; initial: Inputs }
         `Canales: ${CHANNEL_SUMMARY(ch, ' · ')}`,
         `Modalidad: ${inputs.billing === 'season' ? 'pago anual' : 'pago mensual'}`,
         `Coste anual estimado: ${money(quote.total)} (${percent(quote.effectiveRate)})`,
+        `De mi bolsillo: ${money(quote.youPay)} · gastos de gestión que paga mi cliente: ${money(quote.clientPays)}${inputs.absorb ? ' (los asumo yo)' : ''}`,
         '',
         `Mi cálculo: https://www.solnow.io/${locale}/calculator?${query}`,
       ].join('\n'),

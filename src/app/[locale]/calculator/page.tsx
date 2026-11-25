@@ -91,7 +91,8 @@ function OfferJsonLd() {
         (['manual', 'card', 'online', 'otas', 'whatsapp'] as const)
           .map((k) => `${pct(RATES[k].pct)} ${CHANNEL_NAME[k]}`)
           .join(', ') +
-        '. El 3 % de la web lo paga el cliente final, incluido en el precio.',
+        '. El 3 % de la web lo paga el cliente final como gastos de gestión, en línea aparte; ' +
+        'en el agente de IA se suma ese 3 % cuando el cliente paga online. El enlace de pago que envía tu equipo va al 0 %.',
     },
   };
 
