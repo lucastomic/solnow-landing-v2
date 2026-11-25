@@ -7,6 +7,7 @@
  */
 
 import {
+  AGENT_ONLINE,
   BANK,
   BASES,
   CARD_SHARE,
@@ -14,10 +15,10 @@ import {
   CAPABILITIES,
   COMPETITORS,
   FIXED,
+  INITIAL_ABSORB,
   INITIAL_BILLING,
   MONTH_LABELS,
   OTAS,
-  COMMISSION_MIN,
   FALLBACK,
   HUMAN_WHATSAPP,
   INITIAL_SEASONALITY,
@@ -26,7 +27,6 @@ import {
   REVENUE,
   SEASONALITY_KEYS,
   SEASONALITY_PRESETS,
-  SEASON_MONTHS,
   SOLNOW_COVERS,
   TICKET,
   UNVERIFIED_COMPETITORS,
@@ -50,9 +50,16 @@ export interface Inputs {
   presencial: number;
   /** % que cierra el agente de WhatsApp. */
   whatsapp: number;
+  /**
+   * De lo que cierra el agente, el % que el cliente paga online. Esa parte
+   * suma el 3 % del motor web (gastos de gestión del cliente).
+   */
+  agentOnline: number;
   /** % que entra por OTAs y colaboradores. */
   otas: number;
   billing: Billing;
+  /** «Lo asumo yo»: no repercute el 3 % y lo paga él, al mismo 3 %. */
+  absorb: boolean;
 
   /* Supuestos. Antes se asumían a espaldas del visitante; ahora los ajusta él,
      y por eso viajan en la URL como cualquier otro control. */
@@ -91,8 +98,6 @@ export interface Inputs {
 export interface Pricing {
   fixed: { monthly: { first: number; extra: number }; season: { first: number; extra: number } };
   rates: Record<ChannelKey, Rate>;
-  /** Mínimo por reserva comisionable, en euros. */
-  min: number;
 }
 
 export const DEFAULT_PRICING: Pricing = {
@@ -103,7 +108,6 @@ export const DEFAULT_PRICING: Pricing = {
   rates: Object.fromEntries(
     CHANNEL_ORDER.map((k) => [k, { ...RATES[k] }]),
   ) as Record<ChannelKey, Rate>,
-  min: COMMISSION_MIN,
 };
 
 export const DEFAULTS: Inputs = {
@@ -111,8 +115,10 @@ export const DEFAULTS: Inputs = {
   bases: BASES.initial,
   presencial: PRESENCIAL.initial,
   whatsapp: WHATSAPP.initial,
+  agentOnline: AGENT_ONLINE.initial,
   otas: OTAS.initial,
   billing: INITIAL_BILLING,
+  absorb: INITIAL_ABSORB,
   ticket: TICKET.initial,
   card: CARD_SHARE.initial,
   bank: BANK.initial,
@@ -147,8 +153,9 @@ export type ControlledChannel = 'presencial' | 'whatsapp' | 'otas';
  * El visitante mueve tres —presencial, WhatsApp y OTAs— y `online` es el resto;
  * que sea derivado es justamente lo que hace imposible enseñar una suma que no
  * cuadre. Lo presencial se parte después en dos canales de verdad según qué
- * parte se cobre con tarjeta: `card` paga nuestro 1% + 0,20 €, `manual` no paga
- * nada. Son tarifas distintas, así que son filas distintas.
+ * parte se cobre con tarjeta: `card` no paga tarifa pero sí el cobro con tarjeta
+ * (al precio de su banco), `manual` no paga nada. Son costes distintos, así que
+ * son filas distintas.
  *
  * Cuando los tres controlados se pasan de 100 entre ellos, el exceso se
  * descuenta de los otros dos manteniendo su proporción, de modo que ningún
@@ -271,7 +278,7 @@ export interface CostLine {
   /** El concepto, a secas: «Web y motor», «Cuota fija», «Tu banco». */
   name: string;
   /**
-   * La tarifa que lo produce: «2%», «1% + 0,20 €», «11,70 €/reserva».
+   * La tarifa que lo produce: «3%», «0,9%», «11,70 €/reserva».
    *
    * Va separada del nombre —antes iban fundidos en una sola cadena— porque la
    * tabla del desglose las quiere en columnas distintas, y partir un rótulo ya
@@ -296,7 +303,7 @@ export interface CostLine {
   parent?: ChannelKey;
 }
 
-/** `Web y motor · 2%`, para el rótulo de un tramo y su tooltip. */
+/** `Web y motor · 3%`, para el rótulo de un tramo y su tooltip. */
 export const lineLabel = (l: CostLine) => (l.rate ? `${l.name} · ${l.rate}` : l.name);
 
 export interface Channelised {
@@ -360,12 +367,10 @@ function costLines(
       key: charge.key,
       name: charge.name,
       rate: charge.rate
-        ? channelRateLabel(charge.rate, spec.minPerBooking ?? 0, ticket)
+        ? channelRateLabel(charge.rate)
         : 'no lo cubre',
       base,
-      amount: charge.rate
-        ? channelAmount(base, bookings, charge.rate, spec.minPerBooking ?? 0, ticket)
-        : 0,
+      amount: charge.rate ? channelAmount(base, bookings, charge.rate) : 0,
       channel: key,
     });
   }
@@ -378,8 +383,6 @@ interface PlatformSpec {
   /** Su tarifa en cada canal. Solo se mira en los canales que cubre. */
   rates: Record<ChannelKey, Rate>;
   covers: Record<CapabilityKey, boolean>;
-  /** Mínimo por reserva comisionable. Regla de SolNow; la competencia pasa 0. */
-  minPerBooking?: number;
   /** Tarifas de repuesto para los canales que no cubre. Ver `FALLBACK`. */
   fallback: Record<'bank' | 'human', { name: string; rate: Rate }>;
 }
@@ -411,32 +414,17 @@ function chargeFor(
   return { key: fallback, name, rate };
 }
 
-/** `2%`, `1% + 0,20 €/reserva`, `11,70 €/reserva`, `0%`. */
-function channelRateLabel(rate: Rate, min: number, ticket: number): string {
+/** `3%`, `2,5% + 0,49 €/reserva`, `11,70 €/reserva`, `0%`. */
+function channelRateLabel(rate: Rate): string {
   const parts: string[] = [];
-  // Con tickets pequeños el mínimo manda sobre el porcentaje anunciado, y decir
-  // «2%» cuando se está cobrando 0,20 € por reserva sería falso.
-  const bound = min > 0 && ticket > 0 && rate.pct > 0 && ticket * rate.pct < min;
-  if (bound) return `mín. ${unitMoney(min)}/reserva`;
   if (rate.pct > 0) parts.push(formatPct(rate.pct));
   if (rate.perBooking > 0) parts.push(`${unitMoney(rate.perBooking)}/reserva`);
   return parts.join(' + ') || '0%';
 }
 
-/**
- * Lo que cuesta un canal: su porcentaje más su fijo por reserva.
- *
- * El mínimo por reserva es `max(importe × %, mínimo)` **por reserva**, no sobre
- * el total del canal, y solo en escalones > 0%: una reserva al 0% no es
- * comisionable, así que tampoco tiene mínimo — sin ese corte, lo que se apunta
- * a mano pasaba a cobrar 0,20 € por reserva.
- */
-function channelAmount(base: number, bookings: number, rate: Rate, min: number, ticket: number): number {
-  const pctPart =
-    rate.pct <= 0 || min <= 0 || ticket <= 0
-      ? base * rate.pct
-      : bookings * Math.max(ticket * rate.pct, min);
-  return pctPart + bookings * rate.perBooking;
+/** Lo que cuesta un canal: su porcentaje más su fijo por reserva. */
+function channelAmount(base: number, bookings: number, rate: Rate): number {
+  return base * rate.pct + bookings * rate.perBooking;
 }
 
 /**
@@ -461,7 +449,15 @@ export interface Quote {
   fixed: number;
   /** Todo lo que no es cuota: la suma de los cinco canales. */
   variable: number;
+  /** Todo lo que cobra SolNow: `youPay + clientPays`. */
   total: number;
+  /**
+   * Lo que paga el cliente final como gastos de gestión, aparte del precio:
+   * el 3 % de la web y de lo que el agente cobra online. 0 con `absorb`.
+   */
+  clientPays: number;
+  /** Lo que sale del bolsillo del operador: `total − clientPays`. */
+  youPay: number;
   /** Coste anual ÷ facturación anual, en tanto por uno. */
   effectiveRate: number;
   schedule: MonthCharge[];
@@ -473,7 +469,7 @@ export interface MonthCharge {
   fixed: number;
   variable: number;
   total: number;
-  /** Mes sin cuota fija: modalidad anual, de noviembre a febrero. */
+  /** Mes sin cuota fija: solo si se ha apagado la cuota en la leyenda. */
   free: boolean;
 }
 
@@ -513,6 +509,7 @@ export function computeQuote(raw: Inputs, hidden: readonly string[] = []): Quote
     card: snap(raw.card, CARD_SHARE),
     bank: snap(raw.bank, BANK),
     human: snap(raw.human, HUMAN_WHATSAPP),
+    agentOnline: snap(raw.agentOnline, AGENT_ONLINE),
   });
 
   const s = split(inputs);
@@ -524,11 +521,46 @@ export function computeQuote(raw: Inputs, hidden: readonly string[] = []): Quote
       monthlyFee: 0,
       rates: inputs.pricing.rates,
       covers: SOLNOW_COVERS,
-      minPerBooking: inputs.pricing.min,
       fallback: fallbackRates(inputs),
     },
     inputs.ticket,
   );
+
+  // Con nosotros el mostrador con tarjeta no paga tarifa (0 %), pero el cobro
+  // sigue costando lo que cuesta: los pagos van al precio de su banco. Es el
+  // mismo tramo «Tu banco» que llevan las alternativas, colgado de la tarjeta.
+  if (SOLNOW_COVERS.card) {
+    const { bank } = fallbackRates(inputs);
+    const base = s.revenue.card;
+    channelLines.push({
+      key: 'bank',
+      name: bank.name,
+      rate: channelRateLabel(bank.rate),
+      base,
+      amount: base * bank.rate.pct,
+      channel: 'card',
+      parent: 'card',
+    });
+  }
+
+  // Lo que el agente cobra online pasa por el motor web: suma su 3 % (gastos
+  // de gestión del cliente) sobre esa parte. Cuelga de WhatsApp como el banco
+  // de la tarjeta: es un trozo de lo que vende el agente, no otro canal.
+  //   base = facturación del agente × % pagado online
+  //   importe = base × tarifa del motor web (3 %)
+  {
+    const rate = inputs.pricing.rates.online;
+    const base = (s.revenue.whatsapp * inputs.agentOnline) / 100;
+    channelLines.push({
+      key: 'agentWeb',
+      name: 'WhatsApp pagado online',
+      rate: channelRateLabel(rate),
+      base,
+      amount: base * rate.pct,
+      channel: 'whatsapp',
+      parent: 'whatsapp',
+    });
+  }
 
   const showFixed = !hidden.includes('fixed');
   const shownChannels = channelLines.filter((l) => !hidden.includes(l.key));
@@ -554,6 +586,9 @@ export function computeQuote(raw: Inputs, hidden: readonly string[] = []): Quote
   const shownFixed = showFixed ? fixed : 0;
   const variable = sum(shownChannels);
   const total = shownFixed + variable;
+  // Gastos de gestión: el 3 % de la web y de lo que el agente cobra online. Si
+  // el operador no los repercute (`absorb`), pasan a su bolsillo.
+  const clientPays = inputs.absorb ? 0 : sum(shownChannels.filter((l) => CLIENT_PAID.has(l.key)));
 
   return {
     inputs,
@@ -565,6 +600,8 @@ export function computeQuote(raw: Inputs, hidden: readonly string[] = []): Quote
     variable,
     effectiveRate: inputs.revenue > 0 ? total / inputs.revenue : 0,
     total,
+    clientPays,
+    youPay: total - clientPays,
     schedule: schedule(inputs, inputs.revenue > 0 ? variable / inputs.revenue : 0, showFixed),
     seasonSaving: seasonSaving(inputs.bases, inputs.pricing),
   };
@@ -572,14 +609,20 @@ export function computeQuote(raw: Inputs, hidden: readonly string[] = []): Quote
 
 const sum = (lines: CostLine[]) => lines.reduce((a, l) => a + l.amount, 0);
 
+/** Líneas que paga el cliente final como gastos de gestión (si se repercuten). */
+const CLIENT_PAID = new Set(['online', 'agentWeb']);
+
+/**
+ * Mes a mes. La cuota es anual o mensual, no estacional: en anual se
+ * reparte aquí en doce partes iguales para poder leerla junto a la variable,
+ * que es la que sigue a la curva de ventas.
+ */
 function schedule(inputs: Inputs, variableRate: number, showFixed: boolean): MonthCharge[] {
-  const seasonMonthly = fixedRate(inputs.bases, 'season', inputs.pricing) / SEASON_MONTHS.length;
-  const monthly = fixedRate(inputs.bases, 'monthly', inputs.pricing);
+  const perMonth = fixedAnnual(inputs.bases, inputs.billing, inputs.pricing) / 12;
 
   return curveOf(inputs.seasonality).map((weight, i) => {
-    const charged =
-      showFixed && (inputs.billing === 'monthly' || (SEASON_MONTHS as readonly number[]).includes(i));
-    const fixedPart = !charged ? 0 : inputs.billing === 'season' ? seasonMonthly : monthly;
+    const charged = showFixed;
+    const fixedPart = charged ? perMonth : 0;
     const variablePart = inputs.revenue * weight * variableRate;
     return {
       label: MONTH_LABELS[i],
@@ -660,7 +703,10 @@ export function alternatives(
     lines: q.lines,
     capabilities: capabilities(SOLNOW_COVERS),
     note: quotes.length > 1 ? `Propuesta ${PROPOSAL_LABELS[i]}` : 'Tu resultado',
-    chargesTraveler: false,
+    // El 3 % del motor web lo paga el cliente final como gastos de gestión,
+    // igual que el fee al viajero de FareHarbor o Peek, salvo que el operador
+    // lo asuma.
+    chargesTraveler: !q.inputs.absorb,
     verified: true,
     isSolnow: true,
   }));
@@ -712,7 +758,7 @@ const rateFmt = new Intl.NumberFormat('es-ES', { minimumFractionDigits: 0, maxim
 export const money = (v: number) => `${eur.format(Math.round(v))} €`;
 
 /**
- * `11,70 €`, `0,20 €`, `99 €`. Para precios unitarios —por reserva, por
+ * `11,70 €`, `0,49 €`, `99 €`. Para precios unitarios —por reserva, por
  * operación—, donde los céntimos son parte de la tarifa y redondearlos la
  * cambia: 11,70 € por reserva no es «12 € por reserva».
  */
@@ -747,6 +793,7 @@ export function toQuery(i: Inputs): string {
     b: String(i.bases),
     m: String(presencialShare(ch)),
     w: String(ch.whatsapp),
+    a: String(i.agentOnline),
     o: String(ch.otas),
     p: i.billing === 'season' ? 'temp' : 'mes',
     t: String(i.ticket),
@@ -754,15 +801,16 @@ export function toQuery(i: Inputs): string {
     n: String(i.bank),
     h: String(i.human),
     s: i.seasonality,
+    ...(i.absorb ? { r: '1' } : {}),
     // Solo viaja si se ha tocado: en el 99% de los enlaces el pricing es el de
     // tarifa, y meterlo siempre convertiría una URL que se comparte por
-    // WhatsApp en una ristra de once números.
+    // WhatsApp en una ristra de nueve números.
     ...(isDefaultPricing(i.pricing) ? {} : { pr: encodePricing(i.pricing) }),
     ...(i.pricingB ? { prb: encodePricing(i.pricingB) } : {}),
   }).toString();
 }
 
-/** Los once números del pricing, en orden fijo. Ver `encodePricing`. */
+/** Los nueve números del pricing, en orden fijo. Ver `encodePricing`. */
 const PRICING_FIELDS: readonly ((p: Pricing) => number)[] = [
   (p) => p.fixed.monthly.first,
   (p) => p.fixed.monthly.extra,
@@ -770,11 +818,9 @@ const PRICING_FIELDS: readonly ((p: Pricing) => number)[] = [
   (p) => p.fixed.season.extra,
   (p) => p.rates.manual.pct * 100,
   (p) => p.rates.card.pct * 100,
-  (p) => p.rates.card.perBooking,
   (p) => p.rates.online.pct * 100,
   (p) => p.rates.otas.pct * 100,
   (p) => p.rates.whatsapp.pct * 100,
-  (p) => p.min,
 ];
 
 const encodePricing = (p: Pricing) => PRICING_FIELDS.map((f) => f(p)).join('_');
@@ -797,12 +843,11 @@ function decodePricing(raw: string | null): Pricing {
     },
     rates: {
       manual: { pct: at(4, d.rates.manual.pct * 100) / 100, perBooking: 0 },
-      card: { pct: at(5, d.rates.card.pct * 100) / 100, perBooking: at(6, d.rates.card.perBooking) },
-      online: { pct: at(7, d.rates.online.pct * 100) / 100, perBooking: 0 },
-      otas: { pct: at(8, d.rates.otas.pct * 100) / 100, perBooking: 0 },
-      whatsapp: { pct: at(9, d.rates.whatsapp.pct * 100) / 100, perBooking: 0 },
+      card: { pct: at(5, d.rates.card.pct * 100) / 100, perBooking: 0 },
+      online: { pct: at(6, d.rates.online.pct * 100) / 100, perBooking: 0 },
+      otas: { pct: at(7, d.rates.otas.pct * 100) / 100, perBooking: 0 },
+      whatsapp: { pct: at(8, d.rates.whatsapp.pct * 100) / 100, perBooking: 0 },
     },
-    min: at(10, d.min),
   };
 }
 
@@ -826,8 +871,10 @@ export function fromQuery(search: string): Inputs {
     bases: snap(num('b', DEFAULTS.bases), BASES),
     presencial: clamp(num('m', DEFAULTS.presencial), 0, 100),
     whatsapp: clamp(num('w', DEFAULTS.whatsapp), 0, 100),
+    agentOnline: snap(num('a', DEFAULTS.agentOnline), AGENT_ONLINE),
     otas: clamp(num('o', DEFAULTS.otas), 0, 100),
     billing: p.get('p') === 'mes' ? 'monthly' : p.get('p') === 'temp' ? 'season' : DEFAULTS.billing,
+    absorb: p.get('r') === '1',
     ticket: snap(num('t', DEFAULTS.ticket), TICKET),
     card: snap(num('k', DEFAULTS.card), CARD_SHARE),
     bank: snap(num('n', DEFAULTS.bank), BANK),

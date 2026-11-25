@@ -74,8 +74,8 @@ function solnow(row: RowKey, locale: Locale): string {
   if (row !== 'pricing') return fixed[row][locale];
   const from = eur(PLANS.despegue.monthly.first, locale);
   return locale === 'es'
-    ? `Cuota fija desde ${from}/mes; 0 % de lo que vende tu equipo`
-    : `Fixed fee from ${from}/mo; 0% on what your team sells`;
+    ? `Cuota fija desde ${from}/mes y tarifa por canal: 0 % lo que vende tu equipo, 1 % agente de IA y OTAs, 3 % web y agente pagado online (gastos de gestión que paga tu cliente)`
+    : `Fixed fee from ${from}/mo and a per-channel rate: 0% on what your team sells, 1% AI agent and OTAs, 3% website and agent bookings paid online (booking fee paid by your customer)`;
 }
 
 interface Competitor {

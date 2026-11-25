@@ -33,7 +33,7 @@ export async function NarrativaTour({ locale }: { locale: Locale }) {
   const pricing = {
     copy: t<CalcCopy>('pricing.calc'),
     locale,
-    billingLabels: { monthly: t('pricing.billingMonthly'), season: t('pricing.billingSeason') },
+    billingLabels: { monthly: t('pricing.billingMonthly'), season: t('pricing.billingAnnual') },
     ui: ui.pricing,
     calcUi: ui.calc,
     labels: ui.price,

@@ -1126,12 +1126,12 @@
   },
   "partner": {
     "eyebrow": "08 · Partner model",
-    "title": "We're not a vendor. We're a partner that gets paid when you do.",
+    "title": "We're not a vendor. We're a partner that charges for the channels it opens for you.",
     "items": [
       {
-        "pull": "0% fixed fee",
+        "pull": "0% at your front desk",
         "h": "Aligned incentives",
-        "s": "We charge a % on the bookings we generate + a cost per AI conversation. No fixed fee. If you don't bill, we don't charge."
+        "s": "We charge by channel: what your team sells is yours, 1% on the AI agent and OTAs, and 3% on the website and on what the agent collects online, paid by your customer as a booking fee. No per-conversation charge."
       },
       {
         "pull": "95% of the work",
@@ -1155,7 +1155,7 @@
     "extraBaseYear": "+ {price} / year per additional base",
     "billingAnnual": "Annual",
     "core": "On both plans: booking engine, contracts, check-in, guest register, dashboard, payments and AI agent.",
-    "noExtras": "No minimum, no per-kiosk fee, no charge per conversation.",
+    "noExtras": "No minimum, no per-kiosk fee, no charge per conversation, no volume tiers.",
     "plans": {
       "despegue": {
         "name": "Despegue",
@@ -1164,7 +1164,7 @@
         "features": [
           "Digital channels: booking engine and AI agent on WhatsApp",
           "OTAs, if you connect them",
-          "Guided setup (1 call)",
+          "Remote assisted setup",
           "No kiosk"
         ],
         "cta": "Start with Despegue"
@@ -1177,7 +1177,7 @@
           "Every channel: + kiosks at your base and with partners",
           "POS / Tap to Pay, OTAs and partners",
           "Several bases",
-          "Done-for-you setup, kiosks included (you buy the hardware)"
+          "Setup included, kiosks too (you buy the hardware)"
         ],
         "cta": "Book an Escalar demo"
       }
@@ -1191,56 +1191,56 @@
         "payer": "Who pays it"
       },
       "rows": [
-        { "c": "Booking engine", "v": "3%", "p": "Your customer, included in the final price" },
-        { "c": "Kiosk with a partner (hotel, agency) or away from your base", "v": "3%", "p": "Your customer, included in the final price" },
-        { "c": "AI agent (WhatsApp)", "v": "1%", "p": "You" },
-        { "c": "Kiosk at your base", "v": "1%", "p": "You" },
+        { "c": "Booking engine (website, widget, vouchers)", "v": "3%", "p": "Your customer, as a “booking fee” on a separate line; they see the total from the first price. If you don't pass it on, you absorb it at the same 3%" },
+        { "c": "Kiosk with a partner (hotel, agency) or installed away from your base", "v": "3%", "p": "Your customer, same as the website" },
+        { "c": "AI agent (WhatsApp → booking engine)", "v": "1%", "p": "You. If your customer pays online, the booking engine's 3% is added, paid by them; paid in cash, just the 1%" },
+        { "c": "Kiosk at your base (no partner)", "v": "1%", "p": "You" },
         { "c": "Synced OTA", "v": "1%", "p": "You" },
-        { "c": "Front desk, phone, your team's WhatsApp, partners booked by hand", "v": "0%", "p": "—" }
+        { "c": "Front desk, phone, your team's WhatsApp, payment link sent by your team, partners booked by hand", "v": "0%", "p": "—" }
       ]
     },
     "calc": {
       "title": "What it would cost you",
-      "lede": "Four figures. We flag the one that costs you least; you choose.",
-      "ledeLocked": "Four figures. With two or more bases, the plan is Escalar.",
+      "lede": "Your numbers. What you pay and, separately, the booking fee your customer pays.",
       "gmv": "Season revenue",
-      "online": "Comes in online",
-      "onlineHint": "Booking engine and payment links.",
-      "otaNote": "Selling through OTAs? That share pays 2% and we go through it in the demo.",
-      "whatsapp": "Sales that start on WhatsApp",
+      "web": "Comes in through your website",
+      "webHint": "Booking engine: a 3% booking fee, paid by your customer.",
+      "agent": "Sold by the AI agent",
+      "agentHint": "Bookings the agent closes on WhatsApp: 1%, you pay it.",
+      "agentOnline": "Of that, paid online",
+      "agentOnlineHint": "What your customer pays online goes through the booking engine: it adds the 3% booking fee, paid by them. In cash, just the 1%.",
+      "ota": "Comes in through OTAs",
+      "otaHint": "GetYourGuide, Viator… synced: 1%.",
       "bases": "Bases",
       "basesUnit": "bases",
       "basesUnitOne": "base",
       "planLabel": "Your plan",
-      "planPricier": "You can take it, but with your figures the other plan costs you less.",
-      "planUnavailable": "· not available with 2+ bases",
-      "planLockedHint": "Despegue allows a single base.",
-      "cheapest": "· cheaper",
-      "lines": {
-        "manual": {
-          "l": "Front desk and manual",
-          "d": "Whatever your team books, however it is paid."
-        },
-        "channel": {
-          "l": "Online bookings",
-          "d": "Booking engine and payment links."
-        },
-        "agent": {
-          "l": "AI agent sales",
-          "d": "Only the ones it closes end to end."
-        }
+      "planWhy": {
+        "despegue": "One base and the digital channels.",
+        "escalar": "With two or more bases, Escalar."
       },
-      "feeToggle": "Pass the booking fee on to the traveller",
-      "feeTeaser": "You can pass the {pct} on your online bookings to the traveller: your cost would drop to",
-      "feeScope": "Applies to the booking engine and payment links, inside the price from the listing.",
-      "fixed": "fee",
-      "totalYear": "Year total",
+      "kioskNote": "Kiosks? They come with Escalar: 1% at your base, 3% with a partner.",
+      "lines": {
+        "web": "Booking engine",
+        "agent": "AI agent",
+        "agentWeb": "AI agent, paid online (booking engine)",
+        "ota": "OTAs",
+        "manual": "Front desk, phone, your team's link and manual"
+      },
+      "fixed": "Fixed fee for the year",
+      "youPay": "You pay",
+      "youPayHint": "Fixed fee + 1% on the agent and OTAs.",
+      "youPayHintAbsorb": "Fixed fee + 1% on the agent and OTAs + the 3% you don't pass on.",
+      "clientPays": "Your customer pays",
+      "clientPaysHint": "A 3% booking fee on a separate line: the website and what the agent collects online.",
+      "absorb": "I'll absorb it: I don't pass on the booking fee",
+      "absorbNote": "If you don't pass on the booking fee, you absorb it at the same 3%. No minimum, no per-kiosk fee, no per-conversation charge, no volume tiers.",
       "ofBilling": "of your revenue",
       "cta": "Book the demo with your number"
     },
     "meta": {
       "title": "Solnow pricing · A rate per channel",
-      "description": "Two plans from €99/mo. 0% on what your team sells, 1% on the channels you pay for and 3% paid by your customer, included in their price.",
+      "description": "Two plans from €99/mo. 0% on what your team sells, 1% on the channels you pay for and a 3% booking fee paid by your customer, on a separate line.",
       "ogTitle": "Solnow pricing: we charge by channel"
     },
     "teaser": {
@@ -1248,7 +1248,7 @@
       "rows": [
         {
           "v": "0%",
-          "l": "what your team sells: front desk, phone, WhatsApp and partners booked by hand"
+          "l": "what your team sells: front desk, phone, WhatsApp, payment links it sends and partners booked by hand"
         },
         {
           "v": "1%",
@@ -1256,7 +1256,7 @@
         },
         {
           "v": "3%",
-          "l": "booking engine and partner kiosks; your customer pays it, included in the price"
+          "l": "booking engine, partner kiosks and what the agent collects online; your customer pays it as a booking fee"
         }
       ],
       "from": "from {price}/mo",
@@ -1269,11 +1269,15 @@
       "items": [
         {
           "q": "What does the rate depend on?",
-          "a": "On where the sale happens and who sets the price. Never on the payment method."
+          "a": "On where the sale happens and who sets the price. Never on the payment method: a payment link sent by your team is 0%, just like the front desk."
         },
         {
           "q": "Who pays the 3%?",
-          "a": "Your customer: it is included in the price they see. If you would rather not pass it on, you absorb it at the same 3%."
+          "a": "Your customer, as a “booking fee” on a separate line: they see the total from the first price. If you would rather not pass it on, you absorb it at the same 3%."
+        },
+        {
+          "q": "How is the AI agent charged?",
+          "a": "1% of what it sells, paid by you. If your customer pays online, the booking goes through the booking engine and adds its 3% booking fee, paid by them. If they pay in cash, just the 1%."
         },
         {
           "q": "Does upgrading lower the rate?",
@@ -1296,13 +1300,12 @@
           "a": "It is prorated from the day it is added; removals apply at renewal."
         },
         {
-          "q": "And for large volumes?",
-          "a": "With an annual contract there are tiered rates. Let's talk."
+          "q": "Are there volume discounts?",
+          "a": "No. No volume tiers and no sign-up discounts: the same rate per channel for everyone."
         }
       ]
     },
-    "billingMonthly": "Monthly",
-    "billingSeason": "Per season"
+    "billingMonthly": "Monthly"
   },
   "onboarding": {
     "eyebrow": "09 · Onboarding",
@@ -1415,11 +1418,11 @@
     "items": [
       {
         "q": "How much does Solnow cost?",
-        "a": "We charge a % on the bookings we generate through our platform + a cost per AI conversation. No fixed fee and no setup fee. Aligned model: if you don't bill, we don't charge."
+        "a": "A fixed fee per base, from €99 a month, and a per-channel rate that is the same in both plans: 0% on what your team sells, payment links it sends included; 1% on the AI agent, the kiosk at your base and OTAs; and 3% on the website and on what the agent collects online, paid by your customer as a booking fee on a separate line."
       },
       {
-        "q": "How does the commission model work?",
-        "a": "We apply a commission on the GMV of bookings processed by Solnow (engine + WhatsApp AI + OTAs). The exact detail is agreed based on your volume and channel mix at the kickoff."
+        "q": "How does the per-channel rate work?",
+        "a": "It depends on where the sale happens and who sets the final price, never on the payment method. No minimum, no per-kiosk fee, no per-conversation charge and no volume tiers."
       },
       {
         "q": "Does it work if I don't have stable internet at the base?",
@@ -1443,7 +1446,7 @@
       },
       {
         "q": "How is it billed: per booking or monthly?",
-        "a": "Monthly invoice with a breakdown per booking, commission and AI conversations. Automatic settlement via Stripe Connect to your account the following month."
+        "a": "The fixed fee, monthly or annually. The per-channel rate is withheld from each payment where it goes through our payments and, where it doesn't, invoiced monthly in arrears, with a booking-by-booking breakdown."
       }
     ]
   },
@@ -1866,7 +1869,7 @@
         },
         {
           "q": "How much does it cost?",
-          "a": "A fixed fee per base, from {price} a month, and 0% on what you sell at the front desk. There's only a commission on what comes in online; what you do yourself pays nothing."
+          "a": "A fixed fee per base, from {price} a month, and 0% on what you sell at the front desk. We charge by channel: 1% on the AI agent, the kiosk at your base and OTAs, and 3% on the website and on what the agent collects online, paid by your customer as a booking fee."
         },
         {
           "q": "I already use TuriTop or FareHarbor. Do I have to drop it?",
@@ -2766,7 +2769,7 @@
                   "label": "Pricing model",
                   "cells": [
                     "Commission per booking",
-                    "% of what it generates, no fixed fee"
+                    "Fee per base + rate per channel (0% / 1% / 3%)"
                   ]
                 }
               ]
@@ -2803,7 +2806,7 @@
         },
         {
           "q": "How does the pricing differ?",
-          "a": "FareHarbor usually charges commission per booking. Solnow charges a % of the bookings it generates, with no fixed fee: if you don't bill, we don't charge."
+          "a": "FareHarbor usually charges commission per booking. Solnow charges a fixed fee per base and a per-channel rate: 0% on what your team sells, 1% on the AI agent and OTAs, and 3% on the website and on what the agent collects online, paid by your customer as a booking fee."
         }
       ],
       "related": [
@@ -2942,7 +2945,7 @@
                   "label": "Pricing model",
                   "cells": [
                     "Fee / plan",
-                    "% of what it generates, no fixed fee"
+                    "Fee per base + rate per channel (0% / 1% / 3%)"
                   ]
                 }
               ]
@@ -2979,7 +2982,7 @@
         },
         {
           "q": "How does the pricing differ?",
-          "a": "TuriTop works on a fee or plan. Solnow charges a % of the bookings it generates, with no fixed fee."
+          "a": "TuriTop works on a fee or plan. Solnow charges a fixed fee per base and a per-channel rate: 0% on what your team sells, 1% on the AI agent and OTAs, and 3% on the website and on what the agent collects online, paid by your customer as a booking fee."
         }
       ],
       "related": [
@@ -3104,7 +3107,7 @@
                   "label": "Pricing",
                   "cells": [
                     "Commission per booking",
-                    "% of what it generates, no fixed fee"
+                    "Fee per base + rate per channel (0% / 1% / 3%)"
                   ]
                 },
                 {
@@ -3153,7 +3156,7 @@
         },
         {
           "q": "How does the pricing differ?",
-          "a": "FareHarbor usually charges commission per booking. Solnow charges a % of what it generates, with no fixed fee or setup."
+          "a": "FareHarbor usually charges commission per booking. Solnow charges a fixed fee per base and a per-channel rate: 0% at your front desk, 1% on the AI agent and OTAs, and 3% on the website and on what the agent collects online, paid by your customer as a booking fee. No setup cost."
         },
         {
           "q": "Can I migrate from FareHarbor to Solnow?",
@@ -3282,7 +3285,7 @@
                   "label": "Pricing",
                   "cells": [
                     "Fee / plan",
-                    "% of what it generates, no fixed fee"
+                    "Fee per base + rate per channel (0% / 1% / 3%)"
                   ]
                 }
               ]
@@ -3324,7 +3327,7 @@
         },
         {
           "q": "How does the pricing differ?",
-          "a": "TuriTop works on a fee or plan. Solnow charges a % of what it generates, with no fixed fee."
+          "a": "TuriTop works on a fee or plan. Solnow charges a fixed fee per base and a per-channel rate: 0% at your front desk, 1% on the AI agent and OTAs, and 3% on the website and on what the agent collects online, paid by your customer as a booking fee."
         },
         {
           "q": "Can I migrate from TuriTop to Solnow?",
@@ -3440,7 +3443,7 @@
           "blocks": [
             {
               "type": "p",
-              "text": "An operating system for high-volume watercraft rental: WhatsApp sales with AI, front desk (POS + kiosk), live multi-base operation and after-sales (logbook, reviews, CRM). Built for jet ski operators with volume, with a no-fixed-fee model."
+              "text": "An operating system for high-volume watercraft rental: WhatsApp sales with AI, front desk (POS + kiosk), live multi-base operation and after-sales (logbook, reviews, CRM). Built for jet ski operators with volume, with a fee per base and a per-channel rate: 0% at the front desk."
             }
           ]
         },
@@ -3554,7 +3557,7 @@
         },
         {
           "q": "How much do these software cost?",
-          "a": "It varies by model: commission per booking, fee or plan. Solnow charges no fixed fee: it applies a % on the bookings it generates plus a cost per AI conversation."
+          "a": "It varies by model: commission per booking, fee or plan. Solnow charges a fixed fee per base and a per-channel rate: 0% on what your team sells, 1% on the AI agent and OTAs, and 3% on the website and on what the agent collects online, paid by your customer as a booking fee. No per-conversation charge."
         }
       ],
       "related": [
@@ -3682,7 +3685,7 @@
           "blocks": [
             {
               "type": "p",
-              "text": "Solnow is the operating system for high-volume watercraft rental companies: it digitizes sales, paperwork, real-time operation and after-sales in a single multi-base platform. No fixed fee: we charge a % of the bookings we generate."
+              "text": "Solnow is the operating system for high-volume watercraft rental companies: it digitizes sales, paperwork, real-time operation and after-sales in a single multi-base platform. A fixed fee per base and a per-channel rate: what your team sells, at 0%."
             },
             {
               "type": "callout",
@@ -3707,7 +3710,7 @@
         },
         {
           "q": "How much does jet ski rental software cost?",
-          "a": "It depends on the model. Solnow charges no fixed fee: it applies a % on the bookings it generates plus a cost per AI conversation. If you don't bill, we don't charge."
+          "a": "It depends on the model. Solnow charges a fixed fee per base and a per-channel rate: 0% on what your team sells, 1% on the AI agent and OTAs, and 3% on the website and on what the agent collects online, paid by your customer as a booking fee. No per-conversation charge."
         },
         {
           "q": "Can I migrate from Excel?",
@@ -4906,7 +4909,7 @@
           ]
         },
         {
-          "h": "Done-for-you setup, commission-based pricing",
+          "h": "Done-for-you setup, per-channel pricing",
           "blocks": [
             {
               "type": "p",
@@ -4914,7 +4917,7 @@
             },
             {
               "type": "p",
-              "text": "Pricing is commission-based with no upfront cost — you pay a small percentage on what you bill, so a rained-out week costs you nothing in software."
+              "text": "No upfront cost: a fixed fee per base and a per-channel rate. What you sell at the dock is 0%, and the variable part follows your sales, so a rained-out week barely costs you anything in software."
             }
           ]
         }
@@ -4938,7 +4941,7 @@
         },
         {
           "q": "How much does parasailing booking software cost?",
-          "a": "Solnow has no upfront cost and works on commission — a small percentage of what you bill through the platform, with setup, configuration and crew training included."
+          "a": "Solnow has no upfront cost: a fixed fee per base, from €99 a month, and a per-channel rate (0% at the dock, 1% on the AI agent and OTAs, 3% on the website and on what the agent collects online, paid by your customer as a booking fee), with setup, configuration and crew training included."
         }
       ],
       "related": [
@@ -6185,7 +6188,7 @@
         }
       ]
     },
-    "pricingFaq": "From {from}/month, everything included. 0% on what your team sells.",
+    "pricingFaq": "From {from}/month. 0% on what your team sells, 1% on the channels you pay for and a 3% booking fee paid by your customer, on a separate line.",
     "final": {
       "title": "See it with your fleet in 30 minutes"
     },

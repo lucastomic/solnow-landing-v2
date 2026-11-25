@@ -9,15 +9,15 @@ type PricingUI = NarrativaUI['pricing'];
 type CalcUI = NarrativaUI['calc'];
 
 /**
- * La calculadora de precio de \`/precios\`, en un modal encima del tour.
+ * La calculadora del Pricing 2027, en un modal encima del tour.
  *
- * Misma isla, mismas fórmulas (\`@/lib/pricingCalc\`) y mismo copy que la
- * página pública, así que no puede desfasarse de ella. Solo cambian dos
- * cosas: no lleva el botón de demo (el tour no tiene enlaces) y arranca en
- * temporada, que es lo que se factura a casi todos (\`DEFAULTS.billing\`).
+ * Fórmulas en \`@/lib/pricingCalc\` (las mismas cuotas y tarifas que
+ * \`/precios\`) y copy en \`pricing.calc\`. Sin botón de demo (el tour no tiene
+ * enlaces) y arranca en pago anual (\`DEFAULTS.billing\`).
  *
- * El conmutador mensual/temporada vive aquí, como en \`PricingSurface\`: el
- * total de la calculadora cuadra con lo que dice la tarjeta del capítulo.
+ * El retorno se calcula sobre el **total** que cobra SolNow (fijo + 1 % + 3 %),
+ * no solo sobre lo que sale del bolsillo del operador: es el criterio del
+ * cuadro de ROI de la nota de pricing y es la lectura conservadora.
  */
 export function PricingModal({
   copy,
@@ -44,7 +44,7 @@ export function PricingModal({
   const [months, setMonths] = useState(5);
   const q = useMemo(() => computeQuote(input), [input]);
   const est = useMemo(() => estimate(bookings, chats, months), [bookings, chats, months]);
-  const cost = Math.max(1, q.netYearAvg);
+  const cost = Math.max(1, q.total);
   const roi: [number, number] = [est.totalSeason[0] / cost, est.totalSeason[1] / cost];
   const nLoc = locale === 'en' ? 'en-US' : 'es-ES';
   const times = (n: number) => `×${n.toLocaleString(nLoc, { maximumFractionDigits: 1 })}`;
@@ -118,7 +118,7 @@ export function PricingModal({
             </div>
             <div className="tour-roi-line">
               <span>{ui.roiPay}</span>
-              <strong className="mono">{Math.round(q.netYearAvg).toLocaleString(nLoc)} €</strong>
+              <strong className="mono">{Math.round(q.total).toLocaleString(nLoc)} €</strong>
             </div>
             <div className="card-ink tour-roi-total">
               <span className="tour-roi-big">{times(roi[0])} – {times(roi[1])}</span>

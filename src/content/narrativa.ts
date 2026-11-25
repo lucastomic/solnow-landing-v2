@@ -1,5 +1,5 @@
 import type { ProductKey } from '@/content/products';
-import { PLANS, SEASON_DISCOUNT } from '@/lib/pricingCalc';
+import { PLANS, RATES, SEASON_DISCOUNT } from '@/lib/pricingCalc';
 
 /**
  * La narrativa comercial de SolNow, en el orden en que el operador la tiene que
@@ -183,15 +183,10 @@ export interface SlideLogos {
 export interface SlidePrice {
   kind: 'price';
   title: string;
-  /** El fijo, en temporada (lo que se factura a casi todos) y, en pequeño, al mes. */
+  /** El fijo, en anual (lo que se factura a casi todos) y, en pequeño, al mes. */
   fixed: { first: string; extra: string; monthly: string };
+  /** La tarifa por canal: 0 %, 1 % (lo pagas tú) y 3 % (gastos de gestión que paga tu cliente). */
   rows: { k: string; h: string; p: string }[];
-  /**
-   * El agente, en una franja aparte debajo de las dos tarjetas. Como tercera
-   * fila del variable se leía como una comisión más sumada a la online; es un
-   * vendedor que ya viene incluido y solo cobra lo que él mismo cobra.
-   */
-  agent: { h: string; p: string; k: string; kp: string };
   note: string;
   /** Despegue, en una línea discreta: casi nadie va ahí, pero existe. */
   alt: string;
@@ -315,7 +310,7 @@ export const UI_ES: NarrativaUI = {
   },
   rail: { chapters: 'Capítulos', appendix: 'Apéndice' },
   logos: { inProduction: 'En producción' },
-  price: { eyebrow: 'Cuota por base · Escalar', variable: 'El grueso sigue a las ventas', allIncluded: 'Todo incluido, sin tiers.' },
+  price: { eyebrow: 'Cuota por base · Escalar', variable: 'Tarifa por canal, igual en los dos planes', allIncluded: 'Sin mínimo, sin cuota por kiosko, sin cobro por conversación, sin tramos por volumen.' },
   zoom: { close: 'Cerrar', hint: 'Esc para volver al grafo', nodeAria: 'ver en detalle' },
   presenter: {
     title: 'Modo presentador',
@@ -369,7 +364,7 @@ export const UI_ES: NarrativaUI = {
     roiHires: 'Gente que no hay que contratar',
     roiLost: 'Reservas que hoy se enfrían y el persigue recupera',
     roiTotal: 'Lo que recuperas por temporada',
-    roiPay: 'Lo que pagas al año, según tu factura de arriba',
+    roiPay: 'Lo que cobra SolNow al año, tu parte y la de tu cliente',
     roiBig: 'de retorno estimado sobre lo que pagas. Sin contar lo que no se mide: caja, noche, idiomas.',
     hint: 'Las mismas fórmulas que la web · Estimación con las unidades de la narrativa · Esc para volver',
   },
@@ -395,8 +390,8 @@ export const UI_ES: NarrativaUI = {
   fmt: { locale: 'es-ES' },
 };
 
-const eur = (n: number) => `${n.toLocaleString('es-ES')} €`;
-const pct = (p: number) => `${Math.round(p * 100)} %`;
+const eur = (n: number) => `${n.toLocaleString('es-ES', { useGrouping: true })} €`;
+const pct = (p: number) => `${Math.round(p * 100)}\u00a0%`;
 
 export const CHAPTERS: Chapter[] = [
   {
@@ -523,7 +518,7 @@ export const CHAPTERS: Chapter[] = [
           },
           {
             h: 'Un motor de reservas',
-            p: 'TuriTop, FareHarbor, Bookeo, WooCommerce hacen bien el online, pero están hechos para tours y museos: no saben qué es una moto, un contrato con menores ni un libro de registro. Y el online es la puerta pequeña: en un operador de mostrador el 80-90 % de la facturación entra en la base, y ahí el motor no existe, no cierra el contrato del sector ni opera el día.',
+            p: 'TuriTop, FareHarbor, Bookeo, WooCommerce hacen bien el online, pero están hechos para tours y museos: no saben qué es una moto, un contrato con menores ni un libro de registro. Y el online es la puerta pequeña: en un operador de mostrador el 80-90 % de la facturación entra en la base, y ahí el motor no existe, no cierra el contrato del sector ni opera el día.',
             covers: [false, false, false, false],
           },
           {
@@ -662,12 +657,12 @@ export const CHAPTERS: Chapter[] = [
             type: 'bars',
             title: 'Conversaciones que cierran, según los turnos que la IA lleva sola antes de que entre una persona',
             items: [
-              { label: '0', value: 27, display: '27 %' },
-              { label: '1', value: 41, display: '41 %' },
-              { label: '2', value: 45, display: '45 %' },
-              { label: '3', value: 41, display: '41 %' },
-              { label: '4', value: 46, display: '46 %' },
-              { label: '5+', value: 54, display: '54 %' },
+              { label: '0', value: 27, display: '27 %' },
+              { label: '1', value: 41, display: '41 %' },
+              { label: '2', value: 45, display: '45 %' },
+              { label: '3', value: 41, display: '41 %' },
+              { label: '4', value: 46, display: '46 %' },
+              { label: '5+', value: 54, display: '54 %' },
             ],
             max: 60,
             xLabel: 'turnos que la IA llevó sola',
@@ -691,8 +686,8 @@ export const CHAPTERS: Chapter[] = [
           {
             type: 'compare',
             title: 'Facturación de un operador de mostrador que ve cada sistema',
-            a: { k: '11 %', h: 'un motor de reservas: solo el online', value: 11 },
-            b: { k: '100 %', h: 'SolNow: todo lo que entra por la base', value: 100 },
+            a: { k: '11 %', h: 'un motor de reservas: solo el online', value: 11 },
+            b: { k: '100 %', h: 'SolNow: todo lo que entra por la base', value: 100 },
           },
         ],
         note: 'Cada cifra de este capítulo sale del panel del operador tal cual: quién escribió, quién pagó, qué se cerró de noche, qué canal cancela. **Ninguna se calculó para este documento.**',
@@ -718,7 +713,7 @@ export const CHAPTERS: Chapter[] = [
           {
             label: 'Más reservas',
             nodes: [
-              { k: '60 %', h: 'de los turnos de venta los atiende la IA', p: 'De noche, el 70 %.' },
+              { k: '60 %', h: 'de los turnos de venta los atiende la IA', p: 'De noche, el 70 %.' },
               { k: '6 de cada 10', h: 'reservas del agente se pagan solas', p: 'Sin que nadie del equipo escriba.' },
             ],
           },
@@ -726,7 +721,7 @@ export const CHAPTERS: Chapter[] = [
             label: 'El persigue',
             nodes: [
               { k: '+1.000', h: 'conversaciones se enfrían al mes', p: 'El cliente recibe precio y calla.' },
-              { k: '78 %', h: 'vuelve con un seguimiento', p: 'Frente al 31 % que vuelve solo.' },
+              { k: '78 %', h: 'vuelve con un seguimiento', p: 'Frente al 31 % que vuelve solo.' },
               { k: '10.000-27.000 €', h: 'al mes recuperados', p: 'Reservas que antes no ocurrían.' },
             ],
           },
@@ -743,9 +738,9 @@ export const CHAPTERS: Chapter[] = [
           {
             label: 'Más reservas',
             nodes: [
-              { k: '14 s', h: 'tarda en responder', p: 'El 99,9 % de las veces, en menos de un minuto.' },
-              { k: '80 %', h: 'de los turnos de WhatsApp los atiende la IA', p: 'De día y de noche, en el idioma del cliente: el 43 % llega en otro.' },
-              { k: '71 %', h: 'cierra cuando el agente manda el enlace de pago' },
+              { k: '14 s', h: 'tarda en responder', p: 'El 99,9 % de las veces, en menos de un minuto.' },
+              { k: '80 %', h: 'de los turnos de WhatsApp los atiende la IA', p: 'De día y de noche, en el idioma del cliente: el 43 % llega en otro.' },
+              { k: '71 %', h: 'cierra cuando el agente manda el enlace de pago' },
               { k: '9 de cada 10', h: 'reservas del agente se pagan solas', p: 'Sin que nadie del equipo escriba una línea.' },
             ],
           },
@@ -773,34 +768,25 @@ export const CHAPTERS: Chapter[] = [
     slides: [
       {
         kind: 'title',
-        title: 'Una cuota por base, y el grueso sigue a las ventas.',
-        em: 'sigue a las ventas',
+        title: 'Una cuota por base y una tarifa por canal.',
+        em: 'por canal',
       },
       {
         kind: 'price',
         level: 0,
-        title: 'Todo incluido, sin tiers',
+        title: 'Cobramos por canal',
         fixed: {
-          first: `${eur(PLANS.escalar.season.first)} por temporada la primera base`,
+          first: `${eur(PLANS.escalar.season.first)} al año la primera base`,
           extra: `${eur(PLANS.escalar.season.extra)} cada base adicional`,
-          monthly: `O al mes: ${eur(PLANS.escalar.monthly.first)} la primera y ${eur(PLANS.escalar.monthly.extra)} cada adicional (${pct(SEASON_DISCOUNT)} más que en temporada).`,
+          monthly: `O al mes: ${eur(PLANS.escalar.monthly.first)} la primera y ${eur(PLANS.escalar.monthly.extra)} cada adicional. El pago anual ahorra un ${pct(SEASON_DISCOUNT)}.`,
         },
         rows: [
-          { k: '0 %', h: 'de todo lo que haces tú', p: 'Mostrador, manual, colaboradores.' },
-          {
-            k: pct(PLANS.escalar.channelPct),
-            h: 'de lo que SolNow cobra online',
-            p: 'Trasladable al viajero como gastos de gestión.',
-          },
+          { k: pct(RATES.manual), h: 'de lo que vende tu equipo', p: 'Mostrador, teléfono, WhatsApp de tu equipo, el enlace de pago que envía tu equipo, colaboradores a mano.' },
+          { k: pct(RATES.agent), h: 'agente de IA, kiosko en tu base y OTAs', p: `Lo pagas tú. Si el cliente del agente paga online, se suma el ${pct(RATES.web)} del motor web, que paga él; en efectivo, solo el ${pct(RATES.agent)}.` },
+          { k: pct(RATES.web), h: 'motor web y kioskos con colaborador', p: `Lo paga tu cliente como «gastos de gestión», en línea aparte: ve el total desde el primer precio. Si no lo repercutes, lo asumes tú al mismo ${pct(RATES.web)}.` },
         ],
-        agent: {
-          h: 'Agente de IA, incluido',
-          p: 'Activo desde el primer día. Atender, responder, perseguir y postventa van dentro de la cuota.',
-          k: `+${pct(PLANS.escalar.vendorPct)}`,
-          kp: 'Solo en las reservas que cobra por su propio enlace.',
-        },
-        note: 'En noviembre la factura baja sola.',
-        alt: `¿Una sola base y empezando? Despegue: ${eur(PLANS.despegue.season.first)} por temporada (${eur(PLANS.despegue.monthly.first)} al mes) y ${pct(PLANS.despegue.channelPct)} de lo que SolNow cobra online. Mismos módulos y mismo agente.`,
+        note: 'El agente de IA va incluido en los dos planes. En noviembre la factura baja sola.',
+        alt: `¿Una sola base y empezando? Despegue: ${eur(PLANS.despegue.season.first)} al año (${eur(PLANS.despegue.monthly.first)} al mes), con los canales digitales: web, agente de IA y OTAs. El mismo porcentaje por canal.`,
         calculator: 'Calcula tu cuota',
       },
     ],
@@ -840,12 +826,12 @@ export const APPENDIX: Chapter[] = [
           {
             k: '«¿Vende peor que una persona?»',
             h: 'Los datos dicen lo contrario',
-            p: 'Cuantos más turnos lleva la IA sola, más cierra la conversación: del 27 % al 54 %. Y los días en que el equipo la interrumpe más no cierran más.',
+            p: 'Cuantos más turnos lleva la IA sola, más cierra la conversación: del 27 % al 54 %. Y los días en que el equipo la interrumpe más no cierran más.',
           },
           {
             k: '«¿Y en invierno?»',
-            h: `La cuota es ${eur(PLANS.escalar.monthly.first)} al mes por la primera base`,
-            p: 'El resto es comisión sobre lo que SolNow cobra o cierra. En noviembre la factura baja sola.',
+            h: `La cuota es fija: ${eur(PLANS.escalar.season.first)} al año o ${eur(PLANS.escalar.monthly.first)} al mes por la primera base`,
+            p: 'El resto es una tarifa por canal sobre lo que se vende, sin mínimo, y el mostrador va al 0 %. En noviembre la factura baja sola.',
           },
         ],
       },

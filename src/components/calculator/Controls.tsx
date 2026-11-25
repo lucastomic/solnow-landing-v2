@@ -2,6 +2,7 @@
 
 import type { CSSProperties } from 'react';
 import {
+  AGENT_ONLINE,
   BANK,
   PRICING_EDITOR,
   BASES,
@@ -241,8 +242,8 @@ export function Controls({
 
       {/* La segunda mitad de la pregunta presencial, y por eso va pegada a ella
           y no en Ajustes avanzados: es la que parte lo presencial en los dos
-          canales que de verdad son. Lo que se apunta a mano no nos paga nada;
-          lo que pasa por nuestro datáfono, un 1% + 0,20 €. */}
+          canales que de verdad son. Ninguno de los dos nos paga tarifa; lo que
+          se cobra con tarjeta cuesta, eso sí, lo que cobra su banco. */}
       <Slider
         id="calc-card"
         label="De eso, ¿cuánto cobras con tarjeta?"
@@ -252,7 +253,7 @@ export function Controls({
         step={CARD_SHARE.step}
         readout={`${inputs.card}%`}
         valueText={`${inputs.card}% del presencial con tarjeta`}
-        hint="Con datáfono o kiosko. El resto lo apuntas a mano o lo cobras en efectivo, y eso no nos paga nada."
+        hint="Con TPV o Tap to Pay. Lo que vende tu equipo no nos paga nada; el cobro con tarjeta va al precio de tu banco."
         onChange={(card) => onChange({ card })}
       />
 
@@ -265,9 +266,24 @@ export function Controls({
         step={WHATSAPP.step}
         readout={`${ch.whatsapp}%`}
         valueText={`${ch.whatsapp}% por WhatsApp`}
-        hint="Reservas que crea y cobra el agente de IA, atendiendo o persiguiendo carritos caídos."
+        hint="Reservas que cierra el agente de IA, atendiendo o persiguiendo carritos caídos: 1 %, lo pagas tú."
         onChange={(v) => onChannel('whatsapp', v)}
       />
+
+      {ch.whatsapp > 0 && (
+        <Slider
+          id="calc-agent-online"
+          label="De eso, ¿cuánto te pagan online?"
+          value={inputs.agentOnline}
+          min={AGENT_ONLINE.min}
+          max={AGENT_ONLINE.max}
+          step={AGENT_ONLINE.step}
+          readout={`${inputs.agentOnline}%`}
+          valueText={`${inputs.agentOnline}% de lo del agente pagado online`}
+          hint="Lo que el cliente paga online pasa por el motor web y suma su 3 % de gastos de gestión, que paga él. En efectivo, solo el 1 %."
+          onChange={(agentOnline) => onChange({ agentOnline })}
+        />
+      )}
 
       <Slider
         id="calc-otas"
@@ -299,9 +315,27 @@ export function Controls({
         <span style={{ fontSize: 14, fontWeight: 500, color: 'var(--fg)' }}>¿Cómo prefieres pagar la cuota?</span>
         <div className="calc-toggle" role="group" aria-label="Modalidad de pago">
           {billing('monthly', 'Pago mensual')}
-          {billing('season', 'Pago por temporada')}
+          {billing('season', 'Pago anual (−33 %)')}
         </div>
       </div>
+
+      {/* El 3 % de la web y de lo que el agente cobra online lo paga el cliente
+          como gastos de gestión, en línea aparte. Si no lo repercute, lo asume
+          él al mismo 3 %: este conmutador lo pasa a su bolsillo. */}
+      <label style={{ display: 'flex', alignItems: 'flex-start', gap: 9, cursor: 'pointer' }}>
+        <input
+          type="checkbox"
+          checked={inputs.absorb}
+          onChange={(e) => onChange({ absorb: e.target.checked })}
+          style={{ marginTop: 3 }}
+        />
+        <span style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+          <span style={{ fontSize: 14, fontWeight: 500, color: 'var(--fg)' }}>Lo asumo yo: no repercuto los gastos de gestión</span>
+          <span style={{ fontSize: 12, lineHeight: 1.45, color: 'var(--muted)' }}>
+            Por defecto, el 3 % de la web lo paga tu cliente como gastos de gestión, en línea aparte y visible desde el primer precio. Si no lo repercutes, lo pagas tú al mismo 3 %.
+          </span>
+        </span>
+      </label>
 
 
       {/* Los supuestos. Van plegados porque el 90% de los visitantes no los va a
@@ -335,7 +369,7 @@ export function Controls({
             step={TICKET.step}
             readout={money(inputs.ticket)}
             valueText={`${inputs.ticket} euros de ticket medio`}
-            hint="Cuántos euros deja una reserva de media. Manda en los importes que no son porcentaje: el mínimo por reserva y el fijo por operación del datáfono."
+            hint="Cuántos euros deja una reserva de media. Manda en los importes que no son porcentaje, como el coste por reserva de algunas alternativas o el de atender WhatsApp a mano."
             onChange={(ticket) => onChange({ ticket })}
           />
 
@@ -348,7 +382,7 @@ export function Controls({
             step={BANK.step}
             readout={percentOf100(inputs.bank)}
             valueText={`${percentOf100(inputs.bank)} de comisión bancaria`}
-            hint="Lo que te descuenta hoy tu TPV. Este coste lo tienes con nosotros y con cualquier alternativa, así que sale en todas las barras."
+            hint="Lo que te descuenta hoy tu TPV. Con nosotros pagas lo mismo (los pagos van al precio de tu banco) y con cualquier alternativa también, así que sale en todas las barras."
             onChange={(bank) => onChange({ bank })}
           />
 
@@ -399,7 +433,7 @@ export function Controls({
 }
 
 /**
- * Los once números de una propuesta, cada uno con cómo leerlo y cómo escribirlo.
+ * Los nueve números de una propuesta, cada uno con cómo leerlo y cómo escribirlo.
  *
  * La tabla existe para no repetir once veces el mismo `<Price>` con dos
  * columnas: con dos propuestas en pantalla serían veintidós campos escritos a
@@ -435,19 +469,9 @@ const PRICING_FIELDS: readonly {
   },
   ...pctField('manual', 'Manual y efectivo'),
   ...pctField('card', 'Tarjeta física'),
-  {
-    group: 'escalera', label: 'Tarjeta · fijo por operación', suffix: '€', step: 0.05,
-    get: (p) => p.rates.card.perBooking,
-    set: (p, v) => setRate(p, 'card', { perBooking: v }),
-  },
   ...pctField('online', 'Web y motor'),
   ...pctField('otas', 'OTAs'),
   ...pctField('whatsapp', 'WhatsApp'),
-  {
-    group: 'escalera', label: 'Mínimo por reserva', suffix: '€', step: 0.05,
-    get: (p) => p.min,
-    set: (p, v) => ({ ...p, min: v }),
-  },
 ];
 
 function setRate(p: Pricing, key: ChannelKey, patch: Partial<Rate>): Pricing {
@@ -552,7 +576,7 @@ function PricingEditor({
         )}
 
         {group('fijo', 'Cuota por base')}
-        {group('escalera', 'La escalera')}
+        {group('escalera', 'Tarifa por canal')}
 
         {(!isDefaultPricing(pricing) || pricingB) && (
           <button
