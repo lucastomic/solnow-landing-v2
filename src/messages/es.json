@@ -212,7 +212,7 @@
         "hero": {
           "eyebrow": "Mostrador · TPV",
           "h1": "El TPV que digitaliza tu mostrador: venta, contrato y cobro en segundos",
-          "lede": "Entre el 70 % y el 85 % de la facturación de un operador de motos de agua entra por el mostrador. Es también el canal que sigue funcionando con carpetas, fotocopias y firmas a bolígrafo. Un TPV pensado para el alquiler náutico lo convierte en un flujo de segundos que el propio cliente termina desde su móvil."
+          "lede": "Entre el 70 % y el 85 % de la facturación de un operador de motos de agua entra por el mostrador. Es también el canal que sigue funcionando con carpetas, fotocopias y firmas a bolígrafo. Un TPV pensado para el alquiler náutico lo convierte en un flujo de segundos que el propio cliente termina desde su móvil."
         },
         "bullets": [
           "Carga la venta en segundos: producto, franja, número de motos y extras",
@@ -1129,9 +1129,9 @@
     "title": "No somos un proveedor. Somos un partner que cobra por los canales que te abre.",
     "items": [
       {
-        "pull": "0 % en tu mostrador",
+        "pull": "0 % en tu mostrador",
         "h": "Incentivos alineados",
-        "s": "Cobramos por canal: lo que vende tu equipo es tuyo, 1 % en el agente de IA y las OTAs, y 3 % en la web y en lo que el agente cobra online, que paga tu cliente como gastos de gestión. Sin cobro por conversación."
+        "s": "Cobramos por canal: lo que vende tu equipo es tuyo, 1 % en el agente de IA y las OTAs, y 3 % en la web y en lo que el agente cobra online, que paga tu cliente como gastos de gestión. Sin cobro por conversación."
       },
       {
         "pull": "95% del trabajo",
@@ -1148,7 +1148,7 @@
   "pricing": {
     "eyebrow": "08 · Pricing",
     "title": "Cobramos por canal.",
-    "lede": "Lo que hace tu equipo es tuyo: 0 %. Una cuota fija por base y una tarifa por canal, igual en los dos planes.",
+    "lede": "Lo que hace tu equipo es tuyo: 0 %. Una cuota fija por base y una tarifa por canal, igual en los dos planes.",
     "perMonth": "/ mes",
     "perYear": "/ año",
     "extraBase": "+ {price} / mes por cada base adicional",
@@ -1191,12 +1191,12 @@
         "payer": "Quién la paga"
       },
       "rows": [
-        { "c": "Motor web (web, widget, bono)", "v": "3 %", "p": "Tu cliente, como «gastos de gestión» en línea aparte; ve el total desde el primer precio. Si no lo repercutes, lo asumes tú al mismo 3 %" },
-        { "c": "Kiosko con colaborador (hotel, agencia) o instalado fuera de tu base", "v": "3 %", "p": "Tu cliente, igual que en la web" },
-        { "c": "Agente de IA (WhatsApp → motor de reservas)", "v": "1 %", "p": "Tú. Si tu cliente paga online, se suma el 3 % del motor web, que paga él; pagada en efectivo, solo el 1 %" },
-        { "c": "Kiosko en tu base (sin colaborador)", "v": "1 %", "p": "Tú" },
-        { "c": "OTA sincronizada", "v": "1 %", "p": "Tú" },
-        { "c": "Mostrador, teléfono, WhatsApp de tu equipo, enlace de pago que envía tu equipo, colaboradores a mano", "v": "0 %", "p": "—" }
+        { "c": "Motor web (web, widget, bono)", "v": "3 %", "p": "Tu cliente, como «gastos de gestión» en línea aparte; ve el total desde el primer precio. Si no lo repercutes, lo asumes tú al mismo 3 %" },
+        { "c": "Kiosko con colaborador (hotel, agencia) o instalado fuera de tu base", "v": "3 %", "p": "Tu cliente, igual que en la web" },
+        { "c": "Agente de IA (WhatsApp → motor de reservas)", "v": "1 %", "p": "Tú. Si tu cliente paga online, se suma el 3 % del motor web, que paga él; pagada en efectivo, solo el 1 %" },
+        { "c": "Kiosko en tu base (sin colaborador)", "v": "1 %", "p": "Tú" },
+        { "c": "OTA sincronizada", "v": "1 %", "p": "Tú" },
+        { "c": "Mostrador, teléfono, WhatsApp de tu equipo, enlace de pago que envía tu equipo, colaboradores a mano", "v": "0 %", "p": "—" }
       ]
     },
     "calc": {
@@ -1204,13 +1204,13 @@
       "lede": "Tus números. Lo que pagas tú y, aparte, los gastos de gestión que paga tu cliente.",
       "gmv": "Facturación de temporada",
       "web": "Entra por tu web",
-      "webHint": "Motor de reservas: 3 % de gastos de gestión, que paga tu cliente.",
+      "webHint": "Motor de reservas: 3 % de gastos de gestión, que paga tu cliente.",
       "agent": "Vende el agente de IA",
-      "agentHint": "Reservas que cierra el agente en WhatsApp: 1 %, lo pagas tú.",
+      "agentHint": "Reservas que cierra el agente en WhatsApp: 1 %, lo pagas tú.",
       "agentOnline": "De eso, pagado online",
-      "agentOnlineHint": "Lo que tu cliente paga online pasa por el motor web: suma el 3 % de gastos de gestión, que paga él. En efectivo, solo el 1 %.",
+      "agentOnlineHint": "Lo que tu cliente paga online pasa por el motor web: suma el 3 % de gastos de gestión, que paga él. En efectivo, solo el 1 %.",
       "ota": "Entra por OTAs",
-      "otaHint": "GetYourGuide, Viator… sincronizadas: 1 %.",
+      "otaHint": "GetYourGuide, Viator… sincronizadas: 1 %.",
       "bases": "Bases",
       "basesUnit": "bases",
       "basesUnitOne": "base",
@@ -1219,7 +1219,7 @@
         "despegue": "Una base y los canales digitales.",
         "escalar": "Con dos o más bases, Escalar."
       },
-      "kioskNote": "¿Kioskos? Van en Escalar: 1 % en tu base, 3 % con colaborador.",
+      "kioskNote": "¿Kioskos? Van en Escalar: 1 % en tu base, 3 % con colaborador.",
       "lines": {
         "web": "Motor web",
         "agent": "Agente de IA",
@@ -1229,33 +1229,33 @@
       },
       "fixed": "Cuota fija del año",
       "youPay": "Pagas tú",
-      "youPayHint": "Cuota fija + 1 % del agente y las OTAs.",
-      "youPayHintAbsorb": "Cuota fija + 1 % del agente y las OTAs + el 3 % que no repercutes.",
+      "youPayHint": "Cuota fija + 1 % del agente y las OTAs.",
+      "youPayHintAbsorb": "Cuota fija + 1 % del agente y las OTAs + el 3 % que no repercutes.",
       "clientPays": "Paga tu cliente",
-      "clientPaysHint": "3 % de gastos de gestión, en línea aparte: la web y lo que el agente cobra online.",
+      "clientPaysHint": "3 % de gastos de gestión, en línea aparte: la web y lo que el agente cobra online.",
       "absorb": "Lo asumo yo: no repercuto los gastos de gestión",
-      "absorbNote": "Si no repercutes los gastos de gestión, los asumes tú al mismo 3 %. Sin mínimo, sin cuota por kiosko, sin cobro por conversación, sin tramos por volumen.",
+      "absorbNote": "Si no repercutes los gastos de gestión, los asumes tú al mismo 3 %. Sin mínimo, sin cuota por kiosko, sin cobro por conversación, sin tramos por volumen.",
       "ofBilling": "de tu facturación",
       "cta": "Pide la demo con tu número"
     },
     "meta": {
       "title": "Precios de Solnow · Tarifa por canal",
-      "description": "Dos planes desde 99 €/mes. 0 % en lo que vende tu equipo, 1 % en los canales que pagas tú y 3 % de gastos de gestión que paga tu cliente, en línea aparte.",
+      "description": "Dos planes desde 99 €/mes. 0 % en lo que vende tu equipo, 1 % en los canales que pagas tú y 3 % de gastos de gestión que paga tu cliente, en línea aparte.",
       "ogTitle": "Precios de Solnow: cobramos por canal"
     },
     "teaser": {
       "lede": "Cobramos por canal. Lo que hace tu equipo es tuyo.",
       "rows": [
         {
-          "v": "0 %",
+          "v": "0 %",
           "l": "lo que vende tu equipo: mostrador, teléfono, WhatsApp, enlaces de pago que envía y colaboradores a mano"
         },
         {
-          "v": "1 %",
+          "v": "1 %",
           "l": "agente de IA, kiosko en tu base y OTAs; lo pagas tú"
         },
         {
-          "v": "3 %",
+          "v": "3 %",
           "l": "motor web, kioskos con colaborador y lo que el agente cobra online; lo paga tu cliente como gastos de gestión"
         }
       ],
@@ -1269,15 +1269,15 @@
       "items": [
         {
           "q": "¿De qué depende la tarifa?",
-          "a": "De dónde se vende y de quién fija el precio. Nunca del medio de pago: un enlace de pago que envía tu equipo va al 0 %, como el mostrador."
+          "a": "De dónde se vende y de quién fija el precio. Nunca del medio de pago: un enlace de pago que envía tu equipo va al 0 %, como el mostrador."
         },
         {
-          "q": "¿Quién paga el 3 %?",
-          "a": "Tu cliente, como «gastos de gestión» en una línea aparte: ve el total desde el primer precio. Si prefieres no repercutirlo, lo asumes tú al mismo 3 %."
+          "q": "¿Quién paga el 3 %?",
+          "a": "Tu cliente, como «gastos de gestión» en una línea aparte: ve el total desde el primer precio. Si prefieres no repercutirlo, lo asumes tú al mismo 3 %."
         },
         {
           "q": "¿Cómo se cobra el agente de IA?",
-          "a": "1 % de lo que vende, que pagas tú. Si tu cliente paga online, la reserva pasa por el motor web y suma su 3 % de gastos de gestión, que paga él. Si paga en efectivo, solo el 1 %."
+          "a": "1 % de lo que vende, que pagas tú. Si tu cliente paga online, la reserva pasa por el motor web y suma su 3 % de gastos de gestión, que paga él. Si paga en efectivo, solo el 1 %."
         },
         {
           "q": "¿Subir de plan baja el porcentaje?",
@@ -1418,7 +1418,7 @@
     "items": [
       {
         "q": "¿Cuánto cuesta Solnow?",
-        "a": "Una cuota fija por base, desde 99 € al mes, y una tarifa por canal igual en los dos planes: 0 % en lo que vende tu equipo, también con el enlace de pago que envía; 1 % en el agente de IA, el kiosko en tu base y las OTAs, y 3 % en la web y en lo que el agente cobra online, que paga tu cliente como gastos de gestión, en línea aparte."
+        "a": "Una cuota fija por base, desde 99 € al mes, y una tarifa por canal igual en los dos planes: 0 % en lo que vende tu equipo, también con el enlace de pago que envía; 1 % en el agente de IA, el kiosko en tu base y las OTAs, y 3 % en la web y en lo que el agente cobra online, que paga tu cliente como gastos de gestión, en línea aparte."
       },
       {
         "q": "¿Cómo funciona la tarifa por canal?",
@@ -1671,7 +1671,7 @@
           "d": "una persona tarda 1 h 50 de media"
         },
         {
-          "k": "90 %",
+          "k": "90 %",
           "u": "de las reservas del agente se pagan solas",
           "d": "sin que nadie del equipo escriba",
           "caseSlug": "caso-de-exito-moraira",
@@ -1806,7 +1806,7 @@
           "d": "en un solo mes, sin un papel"
         },
         {
-          "k": "36 %",
+          "k": "36 %",
           "u": "llega al pantalán con el contrato firmado",
           "d": "desde casa, antes de pisar la cola"
         },
@@ -1869,7 +1869,7 @@
         },
         {
           "q": "¿Cuánto cuesta?",
-          "a": "Una cuota fija por base, desde {price} al mes, y 0 % de lo que vendes en el mostrador. Cobramos por canal: 1 % en el agente de IA, el kiosko en tu base y las OTAs, y 3 % en la web y en lo que el agente cobra online, que paga tu cliente como gastos de gestión."
+          "a": "Una cuota fija por base, desde {price} al mes, y 0 % de lo que vendes en el mostrador. Cobramos por canal: 1 % en el agente de IA, el kiosko en tu base y las OTAs, y 3 % en la web y en lo que el agente cobra online, que paga tu cliente como gastos de gestión."
         },
         {
           "q": "Ya uso TuriTop o FareHarbor. ¿Tengo que dejarlo?",
@@ -2769,7 +2769,7 @@
                   "label": "Modelo de precio",
                   "cells": [
                     "Comisión por reserva",
-                    "Cuota por base + tarifa por canal (0 % / 1 % / 3 %)"
+                    "Cuota por base + tarifa por canal (0 % / 1 % / 3 %)"
                   ]
                 }
               ]
@@ -2806,7 +2806,7 @@
         },
         {
           "q": "¿En qué se diferencia el precio?",
-          "a": "FareHarbor suele cobrar comisión por reserva. Solnow cobra una cuota fija por base y una tarifa por canal: 0 % en lo que vende tu equipo, 1 % en el agente de IA y las OTAs, y 3 % en la web y en lo que el agente cobra online, que paga tu cliente como gastos de gestión."
+          "a": "FareHarbor suele cobrar comisión por reserva. Solnow cobra una cuota fija por base y una tarifa por canal: 0 % en lo que vende tu equipo, 1 % en el agente de IA y las OTAs, y 3 % en la web y en lo que el agente cobra online, que paga tu cliente como gastos de gestión."
         }
       ],
       "related": [
@@ -2945,7 +2945,7 @@
                   "label": "Modelo de precio",
                   "cells": [
                     "Cuota / plan",
-                    "Cuota por base + tarifa por canal (0 % / 1 % / 3 %)"
+                    "Cuota por base + tarifa por canal (0 % / 1 % / 3 %)"
                   ]
                 }
               ]
@@ -2982,7 +2982,7 @@
         },
         {
           "q": "¿En qué se diferencia el precio?",
-          "a": "TuriTop trabaja con cuota o plan. Solnow cobra una cuota fija por base y una tarifa por canal: 0 % en lo que vende tu equipo, 1 % en el agente de IA y las OTAs, y 3 % en la web y en lo que el agente cobra online, que paga tu cliente como gastos de gestión."
+          "a": "TuriTop trabaja con cuota o plan. Solnow cobra una cuota fija por base y una tarifa por canal: 0 % en lo que vende tu equipo, 1 % en el agente de IA y las OTAs, y 3 % en la web y en lo que el agente cobra online, que paga tu cliente como gastos de gestión."
         }
       ],
       "related": [
@@ -3107,7 +3107,7 @@
                   "label": "Precio",
                   "cells": [
                     "Comisión por reserva",
-                    "Cuota por base + tarifa por canal (0 % / 1 % / 3 %)"
+                    "Cuota por base + tarifa por canal (0 % / 1 % / 3 %)"
                   ]
                 },
                 {
@@ -3156,7 +3156,7 @@
         },
         {
           "q": "¿En qué se diferencia el precio?",
-          "a": "FareHarbor suele cobrar comisión por reserva. Solnow cobra una cuota fija por base y una tarifa por canal: 0 % en tu mostrador, 1 % en el agente de IA y las OTAs, y 3 % en la web y en lo que el agente cobra online, que paga tu cliente como gastos de gestión. Sin coste de puesta en marcha."
+          "a": "FareHarbor suele cobrar comisión por reserva. Solnow cobra una cuota fija por base y una tarifa por canal: 0 % en tu mostrador, 1 % en el agente de IA y las OTAs, y 3 % en la web y en lo que el agente cobra online, que paga tu cliente como gastos de gestión. Sin coste de puesta en marcha."
         },
         {
           "q": "¿Puedo migrar de FareHarbor a Solnow?",
@@ -3285,7 +3285,7 @@
                   "label": "Precio",
                   "cells": [
                     "Cuota / plan",
-                    "Cuota por base + tarifa por canal (0 % / 1 % / 3 %)"
+                    "Cuota por base + tarifa por canal (0 % / 1 % / 3 %)"
                   ]
                 }
               ]
@@ -3327,7 +3327,7 @@
         },
         {
           "q": "¿En qué se diferencia el precio?",
-          "a": "TuriTop trabaja con cuota o plan. Solnow cobra una cuota fija por base y una tarifa por canal: 0 % en tu mostrador, 1 % en el agente de IA y las OTAs, y 3 % en la web y en lo que el agente cobra online, que paga tu cliente como gastos de gestión."
+          "a": "TuriTop trabaja con cuota o plan. Solnow cobra una cuota fija por base y una tarifa por canal: 0 % en tu mostrador, 1 % en el agente de IA y las OTAs, y 3 % en la web y en lo que el agente cobra online, que paga tu cliente como gastos de gestión."
         },
         {
           "q": "¿Puedo migrar de TuriTop a Solnow?",
@@ -3443,7 +3443,7 @@
           "blocks": [
             {
               "type": "p",
-              "text": "Sistema operativo para alquiler acuático de alto volumen: venta por WhatsApp con IA, mostrador (TPV + kiosko), operación en vivo multi-base y postventa (libro de registro, reseñas, CRM). Pensado para operadores de motos de agua con volumen, con cuota por base y tarifa por canal: 0 % en el mostrador."
+              "text": "Sistema operativo para alquiler acuático de alto volumen: venta por WhatsApp con IA, mostrador (TPV + kiosko), operación en vivo multi-base y postventa (libro de registro, reseñas, CRM). Pensado para operadores de motos de agua con volumen, con cuota por base y tarifa por canal: 0 % en el mostrador."
             }
           ]
         },
@@ -3557,7 +3557,7 @@
         },
         {
           "q": "¿Cuánto cuestan estos software?",
-          "a": "Varía según el modelo: comisión por reserva, cuota o plan. Solnow cobra una cuota fija por base y una tarifa por canal: 0 % en lo que vende tu equipo, 1 % en el agente de IA y las OTAs, y 3 % en la web y en lo que el agente cobra online, que paga tu cliente como gastos de gestión. Sin cobro por conversación."
+          "a": "Varía según el modelo: comisión por reserva, cuota o plan. Solnow cobra una cuota fija por base y una tarifa por canal: 0 % en lo que vende tu equipo, 1 % en el agente de IA y las OTAs, y 3 % en la web y en lo que el agente cobra online, que paga tu cliente como gastos de gestión. Sin cobro por conversación."
         }
       ],
       "related": [
@@ -3685,7 +3685,7 @@
           "blocks": [
             {
               "type": "p",
-              "text": "Solnow es el sistema operativo para empresas de alquiler acuático de alto volumen: digitaliza venta, papeleo, operación en tiempo real y postventa en una sola plataforma multi-base. Una cuota fija por base y una tarifa por canal: lo que vende tu equipo, al 0 %."
+              "text": "Solnow es el sistema operativo para empresas de alquiler acuático de alto volumen: digitaliza venta, papeleo, operación en tiempo real y postventa en una sola plataforma multi-base. Una cuota fija por base y una tarifa por canal: lo que vende tu equipo, al 0 %."
             },
             {
               "type": "callout",
@@ -3710,7 +3710,7 @@
         },
         {
           "q": "¿Cuánto cuesta un software para alquiler de motos de agua?",
-          "a": "Depende del modelo. Solnow cobra una cuota fija por base y una tarifa por canal: 0 % en lo que vende tu equipo, 1 % en el agente de IA y las OTAs, y 3 % en la web y en lo que el agente cobra online, que paga tu cliente como gastos de gestión. Sin cobro por conversación."
+          "a": "Depende del modelo. Solnow cobra una cuota fija por base y una tarifa por canal: 0 % en lo que vende tu equipo, 1 % en el agente de IA y las OTAs, y 3 % en la web y en lo que el agente cobra online, que paga tu cliente como gastos de gestión. Sin cobro por conversación."
         },
         {
           "q": "¿Puedo migrar desde Excel?",
@@ -4917,7 +4917,7 @@
             },
             {
               "type": "p",
-              "text": "Sin coste inicial: una cuota fija por base y una tarifa por canal. Lo que vendes en el pantalán va al 0 %, y la parte variable sigue a tus ventas, así que una semana pasada por agua apenas te cuesta en software."
+              "text": "Sin coste inicial: una cuota fija por base y una tarifa por canal. Lo que vendes en el pantalán va al 0 %, y la parte variable sigue a tus ventas, así que una semana pasada por agua apenas te cuesta en software."
             }
           ]
         }
@@ -4941,7 +4941,7 @@
         },
         {
           "q": "¿Cuánto cuesta un software de reservas para parasailing?",
-          "a": "Solnow no tiene coste inicial: una cuota fija por base, desde 99 € al mes, y una tarifa por canal (0 % en el pantalán, 1 % en el agente de IA y las OTAs, 3 % en la web y en lo que el agente cobra online, que paga tu cliente como gastos de gestión), con la configuración, la puesta en marcha y la formación del equipo incluidas."
+          "a": "Solnow no tiene coste inicial: una cuota fija por base, desde 99 € al mes, y una tarifa por canal (0 % en el pantalán, 1 % en el agente de IA y las OTAs, 3 % en la web y en lo que el agente cobra online, que paga tu cliente como gastos de gestión), con la configuración, la puesta en marcha y la formación del equipo incluidas."
         }
       ],
       "related": [
@@ -4972,7 +4972,7 @@
     "marinajets": {
       "meta": {
         "title": "Caso de éxito: Grupo Marina Jets, ≈450 h de trabajo ahorradas en agosto",
-        "description": "Agosto de 2026 en Grupo Marina Jets, 8 bases: la IA responde en 9 segundos, atiende el 60 % de los turnos de venta por WhatsApp y cierra sola el 34 % de las conversaciones. Unas 450 horas al mes de mostrador y WhatsApp que no hizo nadie.",
+        "description": "Agosto de 2026 en Grupo Marina Jets, 8 bases: la IA responde en 9 segundos, atiende el 60 % de los turnos de venta por WhatsApp y cierra sola el 34 % de las conversaciones. Unas 450 horas al mes de mostrador y WhatsApp que no hizo nadie.",
         "ogTitle": "Grupo Marina Jets: ≈450 h de trabajo ahorradas en agosto"
       },
       "hero": {
@@ -4992,7 +4992,7 @@
           "label": "marinajets.com"
         }
       },
-      "disclaimer": "Datos de producción de Solnow en Grupo Marina Jets: agosto de 2026 completo y la temporada de junio a agosto. Los volúmenes absolutos van redondeados a petición del cliente. Las horas son una estimación frente al proceso en papel —un minuto por mensaje y por pasajero, tres por contrato—, no un cronómetro: el rango va de 340 a 560 al mes. «Cerrar sola» una conversación significa que nadie del equipo escribió antes del primer pago, y el 57 % está calculado sobre las reservas que crea el agente, no sobre todas las que entran por WhatsApp. Método completo disponible bajo petición.",
+      "disclaimer": "Datos de producción de Solnow en Grupo Marina Jets: agosto de 2026 completo y la temporada de junio a agosto. Los volúmenes absolutos van redondeados a petición del cliente. Las horas son una estimación frente al proceso en papel —un minuto por mensaje y por pasajero, tres por contrato—, no un cronómetro: el rango va de 340 a 560 al mes. «Cerrar sola» una conversación significa que nadie del equipo escribió antes del primer pago, y el 57 % está calculado sobre las reservas que crea el agente, no sobre todas las que entran por WhatsApp. Método completo disponible bajo petición.",
       "sections": [
         {
           "h": "Ocho bases y un mostrador que no daba más",
@@ -5035,11 +5035,11 @@
               "tone": "ink",
               "value": "9 s",
               "label": "de día y de noche",
-              "text": "tarda la IA en responder. Una persona tarda 1 h 50 de media. De noche el agente se queda con el 70 % de los turnos de venta; en el conjunto del día, con el 60 %."
+              "text": "tarda la IA en responder. Una persona tarda 1 h 50 de media. De noche el agente se queda con el 70 % de los turnos de venta; en el conjunto del día, con el 60 %."
             },
             {
               "type": "p",
-              "text": "En agosto cerró solo el 34 % de las conversaciones, y el 57 % de las reservas que crea se pagan sin que nadie del equipo escriba una línea: el mostrador se entera cuando ya están cobradas. A lo largo de la temporada multiplicó por cuatro las reservas que abre por su cuenta."
+              "text": "En agosto cerró solo el 34 % de las conversaciones, y el 57 % de las reservas que crea se pagan sin que nadie del equipo escriba una línea: el mostrador se entera cuando ya están cobradas. A lo largo de la temporada multiplicó por cuatro las reservas que abre por su cuenta."
             },
             {
               "type": "figure",
@@ -5066,7 +5066,7 @@
                   "label": "contratos firmados en el móvil del cliente en un mes. Ni un papel."
                 },
                 {
-                  "value": "36 %",
+                  "value": "36 %",
                   "label": "de los clientes llega al pantalán con el contrato ya firmado desde casa."
                 },
                 {
@@ -5104,22 +5104,22 @@
                 {
                   "label": "Calló sin precio todavía",
                   "cells": [
-                    "9 % / 2 %",
-                    "28 % / 9 %"
+                    "9 % / 2 %",
+                    "28 % / 9 %"
                   ]
                 },
                 {
                   "label": "Calló con el precio dado",
                   "cells": [
-                    "15 % / 4 %",
-                    "28 % / 14 %"
+                    "15 % / 4 %",
+                    "28 % / 14 %"
                   ]
                 },
                 {
                   "label": "Calló con el enlace de pago en la mano",
                   "cells": [
-                    "31 % / 9 %",
-                    "78 % / 32 %"
+                    "31 % / 9 %",
+                    "78 % / 32 %"
                   ]
                 }
               ]
@@ -5128,7 +5128,7 @@
               "type": "feature",
               "value": "10.000 – 27.000 €",
               "label": "al mes · recuperados",
-              "text": "de las más de mil conversaciones que se enfrían cada mes. Es la diferencia entre el 31 % que vuelve solo y el 78 % que vuelve cuando le llega un seguimiento con el enlace de pago."
+              "text": "de las más de mil conversaciones que se enfrían cada mes. Es la diferencia entre el 31 % que vuelve solo y el 78 % que vuelve cuando le llega un seguimiento con el enlace de pago."
             },
             {
               "type": "figure",
@@ -5167,7 +5167,7 @@
     "moraira": {
       "meta": {
         "title": "Caso de éxito: Moraira Boats, el WhatsApp que vende solo",
-        "description": "Agosto de 2026 en Moraira Boats Adventures: la IA atiende el 80 % de los turnos de WhatsApp, responde en 14 segundos y 9 de cada 10 reservas del agente se pagan sin que nadie del equipo escriba.",
+        "description": "Agosto de 2026 en Moraira Boats Adventures: la IA atiende el 80 % de los turnos de WhatsApp, responde en 14 segundos y 9 de cada 10 reservas del agente se pagan sin que nadie del equipo escriba.",
         "ogTitle": "Moraira Boats: el WhatsApp que vende solo"
       },
       "hero": {
@@ -5199,9 +5199,9 @@
             {
               "type": "feature",
               "tone": "ink",
-              "value": "80 %",
+              "value": "80 %",
               "label": "de los turnos de WhatsApp",
-              "text": "los atiende la IA. Responde en 14 segundos, y el 99,9 % de las veces en menos de un minuto, a cualquier hora del día."
+              "text": "los atiende la IA. Responde en 14 segundos, y el 99,9 % de las veces en menos de un minuto, a cualquier hora del día."
             },
             {
               "type": "callout",
@@ -5227,7 +5227,7 @@
               "type": "stats",
               "items": [
                 {
-                  "value": "71 %",
+                  "value": "71 %",
                   "label": "de las conversaciones cierran cuando el agente manda el enlace de pago."
                 },
                 {
@@ -5251,7 +5251,7 @@
             },
             {
               "type": "feature",
-              "value": "43 %",
+              "value": "43 %",
               "label": "de las conversaciones",
               "text": "llegan en otro idioma. El agente contesta en el del cliente, sin pasarle el chat a quien hable inglés ni cambiar de herramienta."
             },
@@ -5377,7 +5377,7 @@
             {
               "type": "feature",
               "tone": "ink",
-              "value": "80 %",
+              "value": "80 %",
               "label": "de los turnos de WhatsApp",
               "text": "los atiende la IA en Moraira Boats, y responde en 14 segundos a cualquier hora. Datos de producción de agosto de 2026."
             },
@@ -5539,7 +5539,7 @@
           "blocks": [
             {
               "type": "feature",
-              "value": "43 %",
+              "value": "43 %",
               "label": "de las conversaciones",
               "text": "llegan en otro idioma en Moraira Boats Adventures, operador de alquiler de barcos en la Costa Blanca. El agente contesta en el del cliente sin pasarle el chat a nadie. Datos de agosto de 2026."
             },
@@ -6188,7 +6188,7 @@
         }
       ]
     },
-    "pricingFaq": "Desde {from}/mes. 0 % de lo que vende tu equipo, 1 % en los canales que pagas tú y 3 % de gastos de gestión que paga tu cliente, en línea aparte.",
+    "pricingFaq": "Desde {from}/mes. 0 % de lo que vende tu equipo, 1 % en los canales que pagas tú y 3 % de gastos de gestión que paga tu cliente, en línea aparte.",
     "final": {
       "title": "Míralo con tu flota en 30 minutos"
     },
@@ -6243,7 +6243,7 @@
       },
       "today": {
         "title": "Los motores de reservas solo cubren el online",
-        "lede": "Y entre el 70 % y el 85 % de la facturación de un operador de motos de agua entra por el mostrador."
+        "lede": "Y entre el 70 % y el 85 % de la facturación de un operador de motos de agua entra por el mostrador."
       },
       "how": {
         "title": "Solnow es el sistema por el que pasa todo tu negocio",
